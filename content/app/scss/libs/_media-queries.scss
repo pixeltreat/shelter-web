@@ -1,0 +1,35 @@
+// ****************************************
+// media-queries
+// ****************************************
+
+// BREAK POINTS
+$xsmall-bp : 30em !default; // 30x16 = 480px
+$small-bp  : 40em !default; // 40x16 = 640px
+$medium-bp : 64em !default; // 64x16 = 1024px
+$large-bp  : 80em !default; // 80x16 = 1280px
+
+$screen            : "only screen" !default;
+$landscape         : "#{$screen} and (orientation: landscape)" !default;
+$portrait          : "#{$screen} and (orientation: portrait)" !default;
+
+$xmobile           : "#{$screen} and (max-width: #{$xsmall-bp})" !default;
+$mobile            : "#{$screen} and (max-width: #{$small-bp})" !default;
+
+$tablet-and-below  : "#{$screen} and (max-width: #{$medium-bp})" !default;
+$tablet            : "#{$screen} and (min-width: #{$small-bp + 0.063}) and (max-width: #{$medium-bp})" !default;
+$tablet-and-above  : "#{$screen} and (min-width: #{$small-bp + 0.063})" !default;
+
+$desktop-and-below : "#{$screen} and (max-width: #{$large-bp})" !default;
+$desktop           : "#{$screen} and (min-width: #{$medium-bp + 0.063}) and (max-width: #{$large-bp})" !default;
+$desktop-and-above : "#{$screen} and (min-width: #{$medium-bp + 0.063})" !default;
+
+$xlarge-and-above  : "#{$screen} and (min-width: #{$large-bp + 0.063})" !default;
+
+// ****************************************
+// Media Queries configuration
+// ****************************************
+@mixin MediaQueries($breakpoint, $ie:null) {
+    @media #{$breakpoint} {
+        @content;
+    }
+}

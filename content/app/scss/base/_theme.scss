@@ -1,0 +1,47 @@
+// ****************************************
+// theme
+// ****************************************
+
+// brand colors
+$primary-color            : #375D81;
+$secondary-color          : #ABC8E2;
+$tertiary-color           : #183152;
+$quaternary-color         : #F8F8F8;
+$quinary-color            : ;
+
+// base colors
+$base-white               : #fff;
+$base-black               : #000;
+$base-red                 : #c00;
+
+$border-color             : #d4d9e3;
+
+// body colors
+$body__text-color         : $tertiary-color;
+$body__bg-color           : $quaternary-color;
+
+// link colors
+$link                     : ;
+$visited                  : ;
+$hover                    : ;
+$visited                  : ;
+
+// header
+$app-header-bg            : $primary-color;
+$app-logo-bg              : $tertiary-color;
+$menu-collapse-btn-normal : $secondary-color;
+$menu-collapse-btn-hover  : $base-white;
+
+// navigation
+$main-nav-bg              : $primary-color;
+$main-nav-text            : $secondary-color;
+$main-nav-active-bg       : $tertiary-color;
+$main-nav-active-text     : $base-white;
+$main-nav-divider         : #2b4b6e;
+
+// footer
+$footer-border            : $secondary-color;
+$footer-text              : $primary-color;
+
+// alerts
+$alerts-title-bg: #689f38;

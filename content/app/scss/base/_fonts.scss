@@ -1,0 +1,71 @@
+// ****************************************
+// fonts
+// ****************************************
+
+// font path
+$fontspath: '../fonts/Roboto/';
+
+// font types object to generate @font-face
+$fontTypes: (
+  (
+    "Roboto",
+    300,
+    normal,
+    "Roboto-Light"
+  ),
+  (
+    "Roboto",
+    300,
+    italic,
+    "Roboto-LightItalic"
+  ),
+  (
+    "Roboto",
+    400,
+    normal,
+    "Roboto-Regular"
+  ),
+  (
+    "Roboto",
+    400,
+    italic,
+    "Roboto-Italic"
+  ),
+  (
+    "Roboto",
+    600,
+    normal,
+    "Roboto-Medium"
+  ),
+  (
+    "Roboto",
+    600,
+    italic,
+    "Roboto-MediumItalic"
+  ),
+  (
+    "Roboto",
+    700,
+    normal,
+    "Roboto-Bold"
+  ),
+  (
+    "Roboto",
+    700,
+    italic,
+    "Roboto-BoldItalic"
+  )
+);
+
+// iterator will generate @font-face selector for each font type
+@each $fontfamily, $weight, $style, $type  in $fontTypes {
+    @font-face {
+        font-family: $fontfamily;
+        font-weight: $weight;
+        font-style: $style;
+        font-stretch: normal;
+        // since all the browsers currently supports woff, we are going to use only woff.
+        // add eot reference if supporting IE8
+        src: local($fontfamily), url( ($fontspath + $type +'-webfont.woff') ) format('woff');
+    }
+}

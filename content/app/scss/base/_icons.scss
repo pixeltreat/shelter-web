@@ -1,0 +1,51 @@
+// ****************************************
+// icons
+// ****************************************
+// fonts path
+$iconsFont: "../fonts/icon-fonts";
+
+/* Regular */
+@font-face {
+    font-family: "icons";
+    font-weight: normal;
+    font-style: normal;
+    src: url($iconsFont + ".woff") format("woff");
+}
+
+.f-icon__text{
+    @extend .sr-only;
+}
+
+[data-icon]:before {
+    content: attr(data-icon);
+}
+
+.f-icon:before,
+[data-icon]:before,
+[class*="f-icon"]:before {
+    display: inline-block;
+    font-family: "icons";
+    font-style: normal;
+    font-weight: normal;
+    font-variant: normal;
+    line-height: 1;
+    text-decoration: inherit;
+    cursor: pointer;
+    text-rendering: optimizeLegibility;
+    text-transform: none;
+    -moz-osx-font-smoothing: grayscale;
+    -webkit-font-smoothing: antialiased;
+    font-smoothing: antialiased;
+}
+
+.f-icon__nav-admin:before { content: "\f100"; }
+.f-icon__nav-contact:before { content: "\f101"; }
+.f-icon__nav-dashboard:before { content: "\f102"; }
+.f-icon__nav-employee:before { content: "\f103"; }
+.f-icon__nav-help:before { content: "\f104"; }
+.f-icon__nav-logout:before { content: "\f105"; }
+.f-icon__nav-refresh:before { content: "\f106"; }
+.f-icon__nav-reports:before { content: "\f107"; }
+.f-icon__nav-shelter:before { content: "\f108"; }
+.f-icon__nav-transport:before { content: "\f109"; }
+.f-icon__nav-user:before { content: "\f10a"; }

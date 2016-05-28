@@ -1,0 +1,66 @@
+// ****************************************
+// layout
+// ****************************************
+
+h1, h2, h3, h4, h5, h6{
+    margin: 0;
+}
+
+body {
+    font-family: $base__font-family;
+    font-weight: $regular;
+    font-size: $body-copy;
+    line-height: $base__line-height;
+    min-width: 320px;
+    background-color: $body__bg-color;
+    color: $body__text-color;
+}
+
+.accessibility-links {
+    position: fixed;
+    z-index: 99;
+    top: 10px;
+    left: 10px;
+
+    & > a {
+        display: inline-block;
+        padding: 3px 5px;
+    }
+
+    .sr-only:active,
+    .sr-only:focus {
+        clip: auto;
+        height: auto;
+        margin: 0;
+        overflow: visible;
+        position: static;
+        width: auto;
+    }
+}
+
+.page-wrap{
+    position: relative;
+    padding-left: 55px;
+    transition: $transition__default-all;
+
+    .has-nav-expanded & {
+        padding-left: $nav-width;
+    }
+}
+
+.wrapper {
+    position: relative;
+    margin: 0;
+    width: 100%;
+    padding: 1rem 2rem;
+}
+
+.app-content{
+    @extend .wrapper;
+    min-width: 265px;
+    min-height: calc(100vh - 55px);
+}
+
+.app-view{
+    padding: 2rem 0;
+}

@@ -1,0 +1,76 @@
+// ****************************************
+// mixins
+// ****************************************
+
+// Image 2x size
+// usage @include retina-img("../img/retina/image.png", auto, 46px);
+@mixin RetinaImg($image, $width:null, $height: null) {
+    @media (min--moz-device-pixel-ratio: 1.5),
+            (-ms-min-device-pixel-ratio: 1.5),
+            (-webkit-min-device-pixel-ratio: 1.5),
+            (min-device-pixel-ratio: 1.5),
+            (min-resolution: 1.5dppx) {
+
+        background-image: url($image);
+
+        @if ($width) {
+            background-size: $width $height;
+        }
+    }
+}
+
+// arrow mixin
+@mixin Arrow($size, $position, $color: inherit) {
+    content: "";
+    border: #{$size}px solid transparent;
+    border-#{$position}-color: $color;
+    vertical-align: middle;
+    display: inline-block;
+}
+
+/**
+ * Dropdown animation
+ */
+// hide
+@mixin drop-down__hide($extend: 'extend') {
+    @if ($extend == 'no-extend') {
+        backface-visibility: hidden;
+        transform: scale(0);
+        opacity: 0;
+        transition: $transition__default-all;
+        visibility: hidden;
+    } @else {
+        @extend %drop-down__hide;
+    }
+}
+
+// show
+@mixin drop-down__show($extend: 'extend') {
+    @if ($extend == 'no-extend') {
+        transform: scale(1);
+        opacity: 1;
+        visibility: visible;
+    } @else {
+        @extend %drop-down__show;
+    }
+}
+
+// extend for hide
+%drop-down__hide {
+    @include drop-down__hide('no-extend');
+}
+
+// extend for show
+%drop-down__show {
+    @include drop-down__show('no-extend');
+}
+
+// loop through array functionality
+// $mode: ('primary': $primary-color , 'secondary': $secondary-color, 'tertiary': $tertiary-color);
+//
+// // loop through the competencies and print selectors for each one.
+// @each $theme, $color in $mode {
+//     [data-theme="#{$theme}"]:before {
+//         background-color: $color;
+//     }
+// }

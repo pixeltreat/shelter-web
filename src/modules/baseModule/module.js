@@ -4,8 +4,9 @@ define(
         './mainMenu/component',
         './footer/component',
         './common/component',
-        './employeeHeader/component'
-    ], function (Boiler, PageHeaderComponent, MainMenuComponent, FooterComponent, CommonComponent, EmployeeHeader) {
+        './employeeHeader/component',
+        './alerts/component'
+    ], function (Boiler, PageHeaderComponent, MainMenuComponent, FooterComponent, CommonComponent, EmployeeHeader, Alerts) {
 
         var Module = function (globalContext) {
             var context = new Boiler.Context(globalContext);
@@ -18,7 +19,8 @@ define(
                 ".page-header": new PageHeaderComponent(context),
                 ".main-menu": new MainMenuComponent(context),
                 ".footer": new FooterComponent(context),
-                ".employee-header": new EmployeeHeader(context)
+                ".employee-header": new EmployeeHeader(context),
+                ".alerts": new Alerts(context)
             });
 
             controller.start();

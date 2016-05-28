@@ -1,0 +1,58 @@
+
+<div id="vwDownloadEmployee">
+    <!--View name : vwDownloadEmployee-->
+    <!--Control id prefix : vwde-->
+    <div class="wrapper wrapper2 cfx" style="background: #fff;">
+        <div class="cssform paddingT0">
+            <!-- Top heading and buttons -->
+            <!-- Top heading and buttons -->
+            <!-- Search and buttons -->
+            <div class="clear">
+            </div>
+            <!-- Search and buttons -->
+            <!-- Download employee data -->
+            <div class="history-box cfx">
+                <div class="title-new div-title">
+                    <h5>
+                        <i class="icon-help-circled" data-bind="click:helpClick"></i>{{nls.headerDownloadEmployee}}
+                    </h5>
+                </div>
+                <div class="cssform">
+
+
+                    <div class="paddingL165">
+                        <label for="vwdpDdlRegions">
+                            <span class="">{{nls.lblShelter}}</span>
+                        </label>
+                        <div class="item_parent">
+                            <div class="item_width">
+                                <select id="vwdeDdlShelters" class="inputClass" data-role="dropdownlist" data-bind="source:dsShelters,value:selectedShelterItem"
+                                        data-text-field="Name" data-value-field="Id" required />
+                            </div>
+                            <div class="clear"></div>
+                        </div>
+                    </div>
+
+
+
+                    <div class="paddingL165">
+                        <label>
+                        </label>
+                        <div class="item_parent">
+
+                            <button class="btn" data-bind="click:btnDownloadEmployeeDataClick" type="button">
+                                {{nls.btnDownloadEmployee}}
+                            </button>
+
+                            <div class="clear">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+            </div>
+
+        </div>
+    </div>
+</div>

@@ -1,0 +1,28 @@
+/* ==========================================================================
+    This should be last file when including css files.
+    Donot merge this file with main.css, include as separate file, when theming needs to be changed, replace this file.
+   ========================================================================== */
+
+
+.topbar{
+	background: #292929;
+	border-bottom-color: #a8a8a8;
+	color:#fff;
+}
+#bd .wrapper{
+	background:#fff;
+}
+.lblue, .admin.active > li{
+	color:#2bc1e6;
+}
+.topNav li a, .nav > li{
+	color:#fff;
+}
+.nav li li {
+	color:#fff;
+	background-color:#000;
+	border-bottom-color: #333;
+}
+.grid tr:nth-of-type(odd) {
+	background: #f5f5f5;
+}

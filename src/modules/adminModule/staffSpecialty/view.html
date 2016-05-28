@@ -1,0 +1,102 @@
+
+<div id="vwStaffSpecialty">
+
+    <!--View name : vwStaffSpecialty-->
+    <!--Control id prefix : vwss-->
+
+
+    <div class="two-col btnmaintop">
+        <button class="btn" type="button" data-bind="click:btnSaveClick">
+            {{nls.btnSave}}
+        </button>
+        <button class="btn" type="button" data-bind="click:btnCancelClick">
+            {{nls.btnCancel}}
+        </button>
+    </div>
+    <div class="module cfx no-margin-top">
+        <h2 class="title">
+            {{nls.headerAddEditStaffSpecialty}}
+        </h2>
+        <div class="module-container">
+            <table cellspacing="0" cellpadding="0" border="0" class="grid split-table two-col-grid gridmobilev">
+                <tbody>
+                    <tr>
+                        <td class="tdtitle">
+                            {{nls.lblName}}
+                        </td>
+                        <td>
+                            <fieldset>
+                                <input id="vwssTbName" name="vwssTbName" maxlength="250" type="text" data-bind="value:staffSpecialtyData.StaffSpeciality.Name"
+                                       required validationmessage="{{nls.valmsgNameRequired}}">
+                            </fieldset>
+                            <span class="k-invalid-msg" data-for="vwssTbName"></span>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td class="tdtitle">
+                            {{nls.lblDescription}}
+                        </td>
+                        <td>
+                            <fieldset>
+                                <textarea id="vwssTaDescription" name="vwssTaDescription" rows="5" data-bind="value:staffSpecialtyData.StaffSpeciality.Description,attr:{maxlength: DescriptionLength}"
+                                          required validationmessage="{{nls.valmsgDescriptionRequired}}"></textarea>
+                            </fieldset>
+                            <span class="k-invalid-msg" data-for="vwssTaDescription"></span>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td class="tdtitle">
+                            {{nls.lblDisplayOrder}}
+                        </td>
+                        <td>
+                            <span data-bind="attr:{class: setValidClassForDisplayOrder,className:setValidClassForDisplayOrder }">
+                                <fieldset>
+                                    <input id="vwssTbDisplayOrder" name="vwssTbDisplayOrder" type="text" data-role="numerictextbox"
+                                           min="1" max="1000" data-format="n0" data-bind="value:staffSpecialtyData.StaffSpeciality.DisplayOrder"
+                                           data-decimals="0" data-spinners="false"
+                                           required validationmessage="{{nls.valmsgDisplayOrderRequired}}">
+                                </fieldset>
+                            </span>
+                            <span class="k-invalid-msg" data-for="vwssTbDisplayOrder"></span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="tdtitle">
+                            {{nls.lblMedticalConditions}}
+                        </td>
+                        <td>
+                            <div class="optionslisth">
+                                <ul data-template="vwssRow-template" data-bind="source:medicalConditionStaffSpecialities"></ul>
+
+                            </div>
+
+                            <div class="clear"></div>
+
+                            <span class="k-widget k-tooltip k-tooltip-validation" data-bind="invisible: checkMappedMedicalConditions">
+                                <span class="k-icon k-warning"></span>
+                                At least one medical condition should be selected.
+                            </span>
+                        </td>
+
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div class="two-col btnmainbot">
+        <button class="btn" type="button" data-bind="click:btnSaveClick">
+            {{nls.btnSave}}
+        </button>
+        <button class="btn" type="button" data-bind="click:btnCancelClick">
+            {{nls.btnCancel}}
+        </button>
+    </div>
+</div>
+<script type="text/x-kendo-template" id="vwssRow-template">
+    <li>
+        <input type="checkbox" data-bind="checked:IsSelected" >
+        <span data-bind="text: MedicalConditionName"></span>
+    </li>
+</script>

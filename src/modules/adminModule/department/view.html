@@ -1,0 +1,123 @@
+<div id="vwDepartment">
+    <!--View name : vwDepartment-->
+    <!--Control id prefix : vwd-->
+
+    <div class="two-col btnmaintop">
+        <button type="button" class="btn" data-bind="click:btnSaveClick">
+            {{nls.btnSave}}
+        </button>
+        <button type="button" class="btn" data-bind="click:btnCancelClick">
+            {{nls.btnCancel}}
+        </button>
+    </div>
+
+    <div class="module cfx no-margin-top">
+        <h2 class="title">{{nls.headerAddEditDepartment}}</h2>
+        <div class="module-container">
+            <table cellspacing="0" cellpadding="0" border="0" class="grid split-table two-col-grid gridmobilev">
+                <tbody>
+                    <tr>
+                        <td class="tdtitle">{{nls.lblName}}</td>
+                        <td>
+                            <fieldset>
+                                <input id="vwdTbName" name="vwdTbName" type="text" maxlength="250" data-bind="value:departmentData.Department.Name"
+                                       required validationmessage="{{nls.valmsgNameRequired}}" />
+                            </fieldset>
+                            <span class="k-invalid-msg" data-for="vwbtTbName"></span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="tdtitle">{{nls.lblDescription}}</td>
+                        <td>
+                            <fieldset>
+                                <textarea id="vwdTaDescription" name="vwdTaDescription" data-bind="value:departmentData.Department.Description,attr:{maxlength: DescriptionLength} "
+                                          required validationmessage="{{nls.valmsgDescriptionRequired}}" rows="5"></textarea>
+                            </fieldset>
+                            <span class="k-invalid-msg" data-for="vwdTaDescription"></span>
+                    </tr>
+                    <tr>
+                        <td class="tdtitle">{{nls.lblDisplayOrder}}</td>
+
+                        <td>
+                           
+                            <span data-bind="attr:{class: setValidClassForDisplayOrder,className:setValidClassForDisplayOrder }">
+                                <fieldset>
+                                    <input type="text" id="vwdTaDisplayOrder" name="vwdTaDisplayOrder"
+                                           data-role="numerictextbox" min="1" max="1000" data-format="n0" data-decimals="0" data-spinners="false"
+                                           required validationmessage="{{nls.valmsgDisplayOrderRequired}}"
+                                           data-bind="value:departmentData.Department.DisplayOrder}" />
+                                </fieldset>
+                            </span>
+                            <span class="k-invalid-msg" data-for="vwdTaDisplayOrder"></span>
+
+                        </td>
+                       
+                    <tr>
+                    <tr>
+                        <td class="tdtitle">
+                            {{nls.lblAgencies}}
+                        </td>
+                        <td>
+                            <span data-bind="attr: { class: setClassForAgency, className: setClassForAgency }">
+                                <ul data-template="vwdAgencyRow-template" data-bind="source:agencyDepartments"></ul>
+                            </span>
+                            <div class="clear"> </div>
+
+
+                            <!--<span class="k-widget k-tooltip k-tooltip-validation k-invalid-msg" data-bind="invisible:setValidationMsgForAgency">
+                                Please select Agencies 
+                            </span>-->
+
+
+                            <span class="k-widget k-tooltip k-tooltip-validation" data-bind="invisible: setValidationMsgForAgency">
+                                <span class="k-icon k-warning"></span>
+                                Please select agency
+                            </span>
+
+                        </td>
+
+                    </tr>
+
+                </tbody>
+            </table>
+
+     
+          
+
+        </div>
+    </div>
+
+
+
+
+    <div class="two-col btnmainbot">
+        <button type="button" class="btn" data-bind="click:btnSaveClick">
+            {{nls.btnSave}}
+        </button>
+        <button type="button" class="btn" data-bind="click:btnCancelClick">
+            {{nls.btnCancel}}
+        </button>
+
+    </div>
+
+
+</div>
+
+
+<script type="text/x-kendo-template" id="vwdAgencyRow-template">
+
+    <span>
+        <input type="radio" name="vwdRbAgency" value="${AgencyId}" data-bind="checked:agencyDepartmentId " />
+        <span data-bind="text:AgencyName"></span>
+    </span>
+
+</script>
+
+
+
+
+
+
+
+
+

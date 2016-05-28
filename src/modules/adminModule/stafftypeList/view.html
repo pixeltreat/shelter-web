@@ -1,0 +1,85 @@
+<div id="vwStaffTypeList">
+
+    <!--View name : vwTransportationTypeList-->
+    <!--Control id prefix : vwstl-->
+
+    <div class="module cfx">
+        <h2 class="title">
+            {{nls.headerStafftype}} <a data-bind="click:helpClick">
+                <i class="icon-help-circled">
+                </i>
+            </a>
+        </h2>
+        <div class="module-container">
+            <div class="row grid-select-container gridsearch">
+                <div class="two-of-three-col">
+
+                    <label for="vwstlTxtSearch" class="search-label">
+                        <span class="label">{{nls.lblSearch}}:</span>
+                        <fieldset>
+                            <input type="text" id="vwstlTxtSearch" value="" data-bind="value:searchToken,events:{keyup:seachStafftypes}"
+                                   data-value-update="keyup" class="k-textbox searchIcon" />
+                        </fieldset>
+                    </label>
+                </div>
+                <div class="one-col btn-container pull-right">
+                    <button class="btn" data-bind="click:btnAddClick" type="button">
+                        {{nls.btnAdd}}
+                    </button>
+                    <button class="btn" type="button" data-bind="enabled:isRowSelected,click:btnEditClick">
+                        {{nls.btnEdit}}
+                    </button>
+                    <button class="btn" type="button" data-bind="enabled:isRowSelected,click:btnDeleteClick">
+                        {{nls.btnDelete}}
+                    </button>
+                    <!--<a class="btn export-excel">Export Excel</a>-->
+                </div>
+            </div>
+            <div class="table-wrapper">
+                <table id="vwstlDgStafftype" cellspacing="0" cellpadding="0" border="0" class="grid split-table rwd-table1"
+                       data-bind="source:dsStaffTypes, events: { change: rowSelectionChange }" data-role="grid"
+                       data-filterable="true"
+                       data-sortable='{ "mode": "single", "allowUnsort": false }'
+                       data-row-template="vwstlRow-template"
+                       data-selectable="true"
+                       data-columns="[
+                         {field:'Name',title:'{{nls.gdColName}}'},
+                         {field:'Description',title:'{{nls.gdColDescription}}' },
+                         {field:'DisplayOrder',title:'{{nls.gdColDisplayOrder}}'},
+                       {field:'UpdatedByUserName',title:'{{nls.gdColUserName}}'} ,
+                       {field:'UpdatedOn',title:'{{nls.gdColUpdatedDate}}',filterable:false} 
+                        ]"
+                       data-pageable="true"></table>
+            </div>
+        </div>
+    </div>
+    <script type="text/x-kendo-template" id="vwstlRow-template">
+        <tr>
+            <td data-title="{{nls.gdColName}}">
+                ${Name}
+            </td>
+            <td data-title="{{nls.gdColDescription}}">
+                ${Description}
+            </td>
+           
+            <td data-title="{{nls.gdColDisplayOrder}}">
+                ${DisplayOrder}
+            </td>
+
+            <td data-title="{{nls.gdColUserName}}">
+                ${UpdatedByUserName}
+            </td>
+
+            <td data-title="{{nls.gdColUpdatedDate}}">
+                ${UpdatedOnValue}
+            </td>
+           
+            
+
+
+        </tr>
+    </script>
+
+
+
+

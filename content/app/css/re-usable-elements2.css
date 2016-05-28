@@ -1,0 +1,158 @@
+@charset "utf-8";
+/* reusable elements */
+.title-bar {
+	padding-top: 0.7em;
+}
+.title-bar h2{
+	font-size: 1.1em;
+	padding:0 1em 0 0.3em;
+	margin: 0;
+}
+.title-bar .paddtop-01em {
+	padding-top: 0.1em;
+}
+.title-bar .paddright-05em {
+	padding-right: 0.5em;
+}
+.title-bar .linkcolor {
+	color:#000;
+}
+.title-bar a.linkcolor:hover {
+	color:#000;
+}
+.colorgrey {
+	color: #838383;
+}
+.normalfont {
+	font-size: 0.88em;
+}
+.paddB {
+	padding: 0.7em;
+}
+
+
+
+/*  Additional Styles  */
+.sub-bcrumb{
+border-top: 1px solid #d5d5d5;
+border-bottom: 1px solid #d5d5d5;
+width: 100%;
+padding: 1em 0 ;
+color: #868686;
+}
+.sub-bcrumb ul li{
+color: #868686; 
+font-size: 1em;
+}
+.update-details{
+width: 100%;
+/*padding: 1em 0; */
+}
+.update-details2 {
+padding-top:0.6em;
+}
+.history-box{
+border: 1px solid #ccc;
+margin-bottom: 0.8em !important;
+}
+
+.statusUpdateOuterDiv .history-box
+{
+   border: 0px solid #ccc;
+margin-bottom: 0 !important;
+}
+
+.history-box.redBrdr{
+border: 1px solid red;
+}
+.redBrdr{
+border: 1px solid red;
+}
+
+.greyBrdr{
+border: 1px solid blue;
+}
+
+.history-box.rightBrdr{
+border: 0;
+border-right: 1px solid #ccc;
+}
+.history-box .title-new{
+font-size:1.2em;
+text-transform:capitalize;
+padding:0.5em .2em;
+font-weight: normal;
+}
+.history-box .title-new h5{
+margin: 0;
+}
+.history-box .title-new h5 i:last-child{
+margin-right: 0.4em;
+font-style: normal;
+color: #838383;
+}
+.history-box .title-new h5 span{
+font-weight: normal;
+}
+.history-box .content ul li, .history-box .content ul li label, .history-box .content ul li label input, .history-box .content span input{
+list-style: none;
+width: auto;
+display: inline-block;
+padding: 0.2em 0.11em;
+
+}
+.history-box .content ul li label input, .history-box .content span input{
+padding: 0;
+margin: 0.3em 0.5em 0.3em 0;
+}
+.history-box .content span{
+padding: 0.2em 0.6em 0.2em 0;
+}
+.history-box .content ul li{
+width: 49%;
+}
+.history-box .content ul li.red{
+color:red;
+width: 100%;
+}
+.history-box .content ul li.gray{
+color:#CCC;
+}
+.history-box .content{
+padding: 0.5em;
+}
+.history-box .content textarea{
+    border: 1px solid #CCCCCC;
+    margin: 0.5em;
+    width: 97%;
+	height: 182px;
+}
+.history-box .status{
+margin: 0.5em;
+font-weight: bold;
+}
+
+.top-select-boxes label:first-child{
+margin-left: 0;
+}
+.top-select-boxes label{
+margin-left: 1em;
+}
+
+.optionslisthorijantal ul {
+    display: block;
+    float: left;
+    list-style: none outside none;
+    margin: -0.1em 0 0 6px;
+    padding-bottom: 0;
+    padding-right: 0;
+    padding-top: 0;
+}
+
+.optionslisthorijantal li {
+    display: inline;
+    float: left;
+    line-height: 18px;
+    padding-bottom: 0.5em;
+    padding-right: 0.8em;
+}

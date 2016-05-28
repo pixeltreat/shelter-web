@@ -1,0 +1,1250 @@
+/* ==========================================================================
+This controls responsive views.
+========================================================================== */
+
+/* New Merged */
+
+.patientDropdownLabel
+{
+    width:auto;
+    text-align:right;
+    margin-top:5px;
+}
+
+.patientDropdownDiv
+{
+    padding:5px;
+    float:left;
+}
+
+.statusUpdateOuterDiv .split-table > tbody > tr > td {
+	padding-left:0;
+}
+
+.statusUpdateTable
+{
+    width:100%;
+    border:0px;
+    border-collapse:separate;
+    border-spacing:.8em !important;
+}
+
+.statusUpdateTable td
+{
+    border:1px solid #ccc !important;
+    padding:0px;
+    vertical-align:top;
+    margin:0px;
+}
+.nomargin{
+	margin:0 !important;
+	border:0;
+	border-right:
+}
+.nobrdr{
+	border:0 !important;
+}
+.padd5 {
+	padding:1em 2em !important;
+}
+.padd-xl{
+	padding:1em 5em !important;
+}
+.padd-xxl{
+	padding:1em 1em !important;
+}
+.width15 {
+	width:15% !important;
+}
+.width25 {width:25% !important}
+.content-row {
+	float:left; dispaly:block; width:30%; white-space:nowrap; margin-right:0.95em;
+}
+.status-select-container label {
+	width: 48%;
+}
+.top-select-boxes label{
+	width: 20%;
+	white-space: nowrap;
+	margin-left: 4em;
+}
+
+.top-select-boxes .facilityname{width: 40%;}
+.top-select-boxes .facilityname .k-widget{width: 75%;}
+
+
+
+.status-select-container [class*="-col"] input, .status-select-container [class*="-col"] select {
+	width: 80%;
+}
+.status-select-container [class*="-col"] input, .status-select-container [class*="-col"] select.small {
+	width: 50%;
+}
+.history-box .content span input[type="text"]{
+	width:50%;
+	padding:0.3em;
+}
+.history-box fieldset.content-group {border:0;}
+.history-box fieldset.content-group legend{float: left; display: block; width:15%; margin:0em;}
+.history-box fieldset.content-group ul{float: left; display: block; width:83%;}
+.history-box fieldset.content-group li{padding:0; width:32%; padding:0.3em 0 0.5em; white-space: nowrap; float:left;}
+.history-box fieldset.content-group li input{width:3em}
+
+/* Update Status Screen */
+.navigation {
+	height: 470px;
+    width: 100%;
+	overflow: auto;
+	overflow-x: hidden;
+
+}
+.showHideDrop {display: none !important}
+.lhn-display {display: block !important}
+.paddingL165 {
+	padding:1px 0 1px 20%;
+}
+.container100 {width:70% !important}
+.cssform label {
+	float: left;
+	margin-left: -165px; /*width of left column*/
+	width: 150px; /*width of labels. Should be smaller than left column (155px) to create some right margin*/
+}
+
+.statusUpdateBoxWidth {
+	/*width: 49.5% !important;*/
+	width: 100% !important;
+	/*margin-top:-1.55em;*/
+}
+
+
+.topSelectWidth {
+	width: 70% !important;
+}
+ .middle-category-table{
+ 	margin: 1em 0;
+}
+.ie7 .middle-category-table{
+	padding-bottom: 1em;
+	padding-right: 1em;
+}
+
+/* Facility Dashboard */
+
+.doubleWidth{
+width:60%;  padding:0px; float:left; margin-right:1%;  
+}
+.singleWidthResponsive{
+	width:39%;  padding:0px; float:left;
+}
+
+
+.greenBorder {
+    border-bottom: 4px solid #007A22;
+    float: left;
+    margin-bottom: 0.8em;
+    margin-right: 0.8em;
+    width: 100%;
+}
+
+.redBorder {
+    border-bottom: 4px solid #fd0b0b;
+    float: left;
+    margin-bottom: 0.8em;
+    margin-right: 0.8em;
+    width: 100%;
+}
+
+.greyBorder {
+    border-bottom: 4px solid #333333;
+    float: left;
+    margin-bottom: 0.8em;
+    margin-right: 0.8em;
+    width: 100%;
+}
+
+.statusUpdateBoxWidth {
+    min-height: 151px !important;
+    height:auto;
+   /* margin-top:-1.55em;*/
+}
+
+
+.boxWidth{
+	width:32.66% !important;
+	
+}
+
+.quickLinksText {
+    font-weight: bold;
+    margin-left: 15px;
+    margin-top: -36px;
+    float:left;
+}
+.padd185em {
+    padding: 1.18em;
+}
+
+.labelAlign{
+	
+	text-align:right;
+}
+
+.width44Per
+{
+    width:44%;
+}
+
+.width10Per
+{
+    width:10%;
+}
+
+.arrowbuttons
+{
+    padding:7em 1em;
+}
+
+.quicklinksData
+{
+    display:inline-block;
+}
+
+.bedMapping .k-grid-header .k-header, .bedMapping .k-grid-header, .bedMapping .customDataTable td
+{
+   border-top:0px !important;  border-left:0px !important;  border-right:0px !important; border-bottom:1px solid #ccc;
+}
+
+.bedMapping .k-grid-header .k-header, .bedMapping .k-grid-header
+{
+   width:56em; 
+}
+
+.bedMapping .k-grid-content
+{
+    overflow:hidden;
+}
+
+.SearchButtonMargin
+{
+    margin-left:2%;
+}
+.cssform .pull-right
+{
+    float:right !important;
+}
+
+/* New Merged */
+
+/***************************** Media Queries *****************************/
+/* targeting desktop view */
+@media only screen and (min-width : 1025px) {/* 1024/16 = 64 and 1200/16 = 75 */
+/***************************** RWD table *****************************/
+
+}
+/* targeting tablet and above */
+@media only screen and (min-width:48em) {
+
+.statusUpdateOuterDiv .split-table > tbody > tr > td {
+	padding-left: 0;
+	
+}
+
+/* New Merged */
+
+.patientDropdownLabel
+{
+    width:auto;
+    text-align:right;
+    margin-top:5px;
+}
+
+.patientDropdownDiv
+{
+    padding:5px;
+    float:left;
+    
+}
+
+.SearchButtonMargin
+{
+    margin-left:2%;
+    /*margin-top:-10px;*/
+}
+.cssform .pull-right
+{
+    float:right !important;
+}
+
+.width49perResp {
+    width: 49.5% !important;
+}
+
+.paddingL165 {
+	padding:1px 0 1px 20% !important;
+}
+
+
+.history-box{
+	/*margin: 0.5em 0 !important;*/
+}
+
+.history-box .title h5 a{
+	float: right;
+}
+.history-box .title h5 a i:after{
+	content:'History';
+	color: #fff;
+	font-weight: normal;
+	text-decoration: underline;
+}
+.history-box .title h5 a i:last-child{
+	font-size: 15px;
+}
+
+
+/* maintain-generators */
+
+.title-bar .btn-container.pull-right {
+	float: right;
+}
+
+.name-container {
+	float: right;
+	padding:0;
+	text-align: right;
+}
+
+.showHideDrop {display: none !important}
+.lhn-display {display: block !important}
+
+/* Update Status Screen */
+
+.navigation {
+	height: 470px !important;
+}
+
+/* conflit */
+.two-col-grid tr th:first-child {
+	width: 20%;
+	text-align: right;
+}
+
+/* conflit */
+.middle-category-row .content-row{
+	white-space: normal;
+	margin-right: 0.95em;
+	width: 31%;
+}
+.middle-category-row .input-td-width{
+	width: 25%;
+}
+.middle-category-row .middle-category-table td+td{
+	width: 25%;
+}
+.middle-category-row .middle-category-table td+td+td{
+	width: auto;
+}
+
+.status-edit-btns {
+}
+
+/* Facility Dashboard */
+
+.doubleWidth{
+width:60%;  padding:0px; float:left; margin-right:1%; 
+}
+.singleWidthResponsive{
+	width:39%;  padding:0px; float:left;
+}
+
+
+.greenBorder {
+    border-bottom: 4px solid #007A22;
+    float: left;
+    margin-bottom: 0.8em;
+    margin-right: 0.8em;
+    width: 100%;
+}
+
+.redBorder {
+    border-bottom: 4px solid #fd0b0b;
+    float: left;
+    margin-bottom: 0.8em;
+    margin-right: 0.8em;
+    width: 100%;
+}
+
+.greyBorder {
+    border-bottom: 4px solid #333333;
+    float: left;
+    margin-bottom: 0.8em;
+    margin-right: 0.8em;
+    width: 100%;
+}
+
+.boxWidth{
+	width:32.66% !important;
+	
+}
+
+.quickLinksText {
+    font-weight: bold;
+    margin-left: 15px;
+    margin-top: -36px;
+    float:left;
+}
+
+.history-box .content ul li{
+width: 49%;
+}
+
+/* New Merged */
+
+}
+
+
+/* targeting tablet portrait and landscape view */
+@media only screen and (max-width : 64em) and (min-width : 48em) {/* 1024/16 = 64 and 768/16 = 48 */
+
+.statusUpdateOuterDiv .split-table > tbody > tr > td {
+	padding-left: 0;
+	
+}
+/* New Merged */
+
+.census [class*="-col"]
+{
+  padding:.7em;
+padding-top:1.2em;  
+}
+
+.census .prvval{display:block;}
+
+.patientDropdownLabel
+{
+    width:90px;
+    text-align:right;
+    margin-top:5px;
+}
+
+.patientDropdownDiv
+{
+    padding:5px;
+    clear:both;
+    
+}
+
+.inputClass2, .inputClass2_region, inputClass2_facility { /*Ajaxcall input class for IE 6*/
+	width:18em !important;
+	*width:18em !important;
+	*min-width:18em !important;
+}
+
+
+
+
+.SearchButtonMargin
+{
+    margin-left:2%;
+    /*margin-top:-10px;*/
+}
+
+.cssform .pull-right, .wrapper2 .pull-right
+{
+    float:right !important;
+}
+
+.width49perResp {
+    width: 49.5% !important;
+}
+
+.container100 {width:100% !important}
+.cssform .paddingL165 {
+	padding:1px 0 1px 20% !important;
+}
+.cssform .two-of-three-col {width:100% !important}
+
+.title-bar .btn-container.pull-right {
+	float: right !important;
+}
+
+
+.showHideDrop {display: block !important}
+.lhn-display {display: block !important} 
+
+/* Update Status Screen */
+
+.navigation {
+	height: auto !important;
+}
+
+.width25 {
+	width:100% !important
+}
+/*
+.row .one-col {
+	width: 100%;
+}
+*/
+.title-bar .btn-container.pull-right {
+	float: right;
+	width: auto;
+	clear: none;
+	margin-top: 0;
+}
+
+/* Facility Dashboard */
+
+.doubleWidth{
+width:60%;  padding:0px; float:left; margin-right:1%; 
+}
+.singleWidthResponsive{
+	width:39%;  padding:0px; float:left; 
+}
+
+
+.greenBorder {
+    border-bottom: 4px solid #007A22;
+    float: left;
+    margin-bottom: 0.8em;
+    margin-right: 0.8em;
+    width: 100%;
+}
+
+.redBorder {
+    border-bottom: 4px solid #fd0b0b;
+    float: left;
+    margin-bottom: 0.8em;
+    margin-right: 0.8em;
+    width: 100%;
+}
+
+.greyBorder {
+    border-bottom: 4px solid #333333;
+    float: left;
+    margin-bottom: 0.8em;
+    margin-right: 0.8em;
+    width: 100%;
+}
+
+
+
+.top-select-boxes label{float:left; width:46%;}
+.top-select-boxes .k-widget{width: 80% !important;}
+.top-select-boxes button{float:left; margin-top:1em;}
+.top-select-boxes .facilityname{width: 90% !important; margin-left:0 !important; margin-top:1em; clear:both; display:block;}
+.top-select-boxes .facilityname .k-widget{width: 86% !important;}
+
+.datacellAdminHeader .top-select-boxes label{float:left; width:44%; margin-left:1em !important;}
+.datacellAdminHeader .top-select-boxes button{float:left; margin-top:0px !important;}
+
+.boxWidth{
+	width:32.66% !important;
+	
+	
+}
+
+.previousData
+{
+    margin-left:10em;
+}
+
+.quickLinksText {
+    font-weight: bold;
+    margin-left: 15px;
+    margin-top: -18px;
+    float:left;
+}
+.padd185em {
+    padding: 1.18em;
+    padding-left: 1em;
+}
+
+.quicklinksData
+{
+    display:block;
+}
+
+.box-container .pull-right
+{
+    float:right !important;
+}
+
+.customDataTable tr td:first-child  { border: 1px solid #ccc !important; }
+
+.cssform label {
+	float: left;
+	margin-left: -142px; /*width of left column*/
+	width: 142px; /*width of labels. Should be smaller than left column (155px) to create some right margin*/
+}
+
+.statusUpdateCommentSpacer
+{
+    width:101%;
+}
+
+/* New Merged */
+
+
+}
+
+
+/* targeting mobile portrait and landscape view */
+@media only screen and (max-width : 47.9em) {/* but650/16 = 40.625 */
+
+.customDataTable tr td:first-child, .statusUpdateOuterDiv tr td:first-child { border-top: 1px solid #ccc !important; }
+
+.statusUpdateOuterDiv .split-table > tbody > tr > td {
+	padding-left: 0;
+	border-top:0px !important;
+}
+
+.statusUpdateBoxWidth .div-title{border-top:1px solid #ccc;}
+
+table.tdPadding 
+{
+   border-collapse:inherit;
+ }
+
+.nav{ width:100%;}
+
+/* New Merged */
+
+.patientDropdownLabel
+{
+    width:90px;
+    text-align:left;
+    margin-top:5px;
+}
+
+.patientDropdownDiv
+{
+    padding:5px;
+    clear:both;
+    width:100%;
+    
+}
+
+.mobilePatientselectWidth
+{
+    width:100%;
+}
+
+.mobilePatientbuttonMargin
+{
+    margin-top:5px;
+}
+
+.inputClass2, .inputClass2_region, .inputClass2_facility { /*Ajaxcall input class for IE 6*/
+	width:25em !important;
+	*width:25em !important;
+	*min-width:25em !important;
+}
+
+.SearchButtonMargin
+{
+    margin-left:10%;
+    /*margin-top:-10px;*/
+}
+
+.cssform .pull-right, .wrapper2 .pull-right
+{
+    float:right !important;
+}
+
+.width49perResp {
+    width: 100% !important;
+}
+
+.statusUpdateBoxWidth {
+	width: 100% !important;
+	/*margin-top:-1.55em;*/
+}
+
+.grid-select-container .label2 {
+	min-width: 20%;
+	display: inline-block;
+}
+.paddingL165 {
+	padding:1px 0 1px 43% !important;
+}
+.middle-category-table .status-select-container [class*="-col"] input, .status-select-container [class*="-col"] select{
+	width: 70% !important;
+}
+.cssform label {
+	float: left;
+	margin-left: -165px; /*width of left column*/
+	width: 150px; /*width of labels. Should be smaller than left column (155px) to create some right margin*/
+}
+.container100 {width:100% !important}
+.update-details2.name-container {
+	padding:0.5em;
+	float:left;
+}
+.history-box {
+	/*margin: 1em 0 !important;*/
+}
+.history-box .title h5 a{
+	float: right;
+	margin:0em;
+}
+.history-box .title h5 a i:after{
+	content:'';
+	color: #fff;
+	font-weight: normal;
+	text-decoration: underline;
+}
+.history-box .title h5 a i:last-child{
+	font-size: 15px;
+}
+.middle-category-table .split-table > thead > tr{
+	position: relative;
+	top: auto;
+	left: auto;
+	margin-bottom: -2.8em;
+}
+.middle-category-table .split-table > tbody {
+	top: 2.65em;
+	position: relative;
+}
+.middle-category-table table{
+	border: none;
+	margin-bottom: 3em;
+}
+.middle-category-table table tr{
+	border-left: 1px solid #c2c2c2;
+	border-right: 1px solid #c2c2c2;
+}
+.middle-category-table table tr:last-child{
+	border-bottom: 1px solid #c2c2c2;
+}
+
+
+.history-box .nav li {
+	background: #5F8A9D !important;
+}
+.history-box .nav li ul li{
+	background: #000 !important;
+	color: #fff;
+}
+
+.title-bar .paddright-05em.icons {
+	/*float: left !important;*/
+	padding-top: 0.5em;
+}
+
+.title-bar .btn-container.pull-right {
+	float: right !important;
+	clear: both;
+	padding: 0.5em 0 0 0;
+}
+
+.update-details2.name-container {
+	padding:0.5em;
+	float:left;
+}
+
+.update-details{
+width: 100%;
+padding: 1em 0; 
+}
+
+.showHideDrop {display: block !important}
+.lhn-display {display: block !important}
+
+
+/* Update Status Screen */
+
+.navigation {
+	height: auto !important;
+}
+
+.history-box fieldset.content-group li{white-space: normal}
+.content-row {
+	float:none; display:block; width:100%; white-space:nowrap;
+}
+.width25 {width:100% !important}
+
+.top-select-boxes select{
+	width: auto;
+}
+.top-select-boxes label{
+	width: auto;
+}
+/*
+.status-select-container [class*="-col"] input,  .status-select-container [class*="-col"] select {
+	width: 70%;
+}
+*/
+.middle-category-table tbody td input.width4em{
+	width: 100% !important;
+}
+.middle-category-table .grid tbody tr td input{
+	width: 100%;
+}
+
+.middle-category-table .grid tbody tr td:last-child {
+	/* display: none; */
+	padding: 0 0.5em 0.5em;
+}
+.middle-category-table .grid tbody tr td:first-child {
+	text-align: left;
+	padding: 0.2em 0 0em 0.5em;
+}
+.middle-category-table .status-select-container [class*="-col"] input, .status-select-container [class*="-col"] select{
+	width: 100%;
+}
+
+.top-total-table .split-table > thead > tr, .split-table > tbody > tr > th {
+	/*top: auto;
+	left: auto;*/
+}
+.top-total-table .grid tr, .top-total-table .grid th {
+	border: none;
+}
+.top-total-table .grid th {
+	padding: 0.598957997em 1.142857142857143em;
+	display: none;
+}
+.top-total-table .grid td{
+	border-bottom: 1px solid #ccc;
+}
+.middle-total-box span{
+	display: block;
+}
+
+/* This can be deleted */
+.checkboxlist .radiobtnlist {
+	padding-bottom: 0.5em;
+}
+.checkboxlist span, .radiobtnlist span {
+	padding-bottom: 0.5em;
+	clear: both;
+	width: 100%;
+	display: table;
+	float:none;
+}
+.checkboxlist input, .radiobtnlist input {
+	margin: 0 0.1em 1em 0;
+}
+/* This can be deleted */
+
+/* Facility Dashboard */
+
+.doubleWidth{
+width:100%;  padding:0px; float:left; 
+}
+.singleWidthResponsive{
+	width:100%;  padding:0px; float:left; 
+}
+
+.singleWidth{
+	width:100%;  padding:0px; float:left; 
+}
+
+
+.greenBorder {
+    border-bottom: 4px solid #007A22;
+    float: left;
+    margin-bottom: 0.8em;
+    margin-right: 0.8em;
+    width: 100%;
+}
+
+.redBorder {
+    border-bottom: 4px solid #fd0b0b;
+    float: left;
+    margin-bottom: 0.8em;
+    margin-right: 0.8em;
+    width: 100%;
+}
+
+.greyBorder {
+    border-bottom: 4px solid #333333;
+    float: left;
+    margin-bottom: 0.8em;
+    margin-right: 0.8em;
+    width: 100%;
+}
+
+.top-select-boxes .k-widget{width: 77.5% !important;}
+.top-select-boxes button{float:right; margin-right:1em;}
+.top-select-boxes .facilityname{width: auto !important;}
+.top-select-boxes .facilityname .k-widget{width: 77.5% !important;}
+
+.boxWidth{
+	width:100% !important;
+	
+}
+
+.autoLabel
+{
+  width:100%;
+    text-align:left;
+	display:inline-block;
+	font-weight:bold;
+	
+}
+
+.quickLinksText {
+    font-weight: bold;
+    margin-left: 15px;
+    margin-top: -18px;
+    float:left;
+}
+
+.width44Per
+{
+    width:100%;
+}
+
+.width10Per
+{
+    width:100%;
+}
+
+.arrowbuttons
+{
+    padding:1em;
+}
+
+.customDataTable td
+{
+    border-left:solid 1px #dddddd !important;
+    border-right:solid 1px #dddddd !important;
+}
+
+.padd185em {
+    padding: 1.18em;
+    padding-left: 0.5em;
+}
+
+.padd1em
+{
+     padding: 1em;
+    padding-left: 0.5em;
+}
+
+.history-box .content ul li{
+width: 49%;
+}
+
+.quicklinksData
+{
+    display:block;
+}
+
+.box-container .pull-right
+{
+    float:right !important;
+}
+
+.bedMapping .k-grid-header-wrap thead{ display:block;}
+
+.bedMapping .k-grid-header .k-header, .bedMapping .k-grid-header, .bedMapping .customDataTable td
+{
+   width:56em; border-right:0px;
+}
+
+.bedMapping .k-grid-content
+{
+    overflow:hidden;
+}
+
+.grid, .split-table, .customDataTable {width:100% !important; height:auto; overflow:hidden !important; }
+
+.k-grid-content
+{
+    overflow-y:hidden !important;
+    overflow-x:hidden !important;
+    overflow:hidden !important;
+   width:auto !important;
+   border:1px solid #ffffff;
+  
+  
+}
+
+.k-window{width:80% !important;}
+.k-window-content{max-width:100% !important; width:100% !important;}
+.popupwindow .section, .popupwindow #section
+{
+    margin:0px !important; 
+}
+
+.add
+{
+   	background-position:-411px -1px;
+	
+    
+}
+
+.remove
+{
+   	background-position:-441px -2px;
+	    
+}
+
+/* New Merged */
+
+}
+
+
+
+/* targeting mobile portrait and landscape view */
+@media only screen and (max-width : 26em) {
+
+
+/* New Merged */
+.add
+{
+   	background-position:-411px -1px;
+	
+    
+}
+
+.remove
+{
+   	background-position:-441px -2px;
+	    
+}
+.customDataTable tr td:first-child, .statusUpdateOuterDiv tr td:first-child { border-top: 1px solid #ccc !important; }
+.statusUpdateBoxWidth .div-title{margin-top:-2.2em; margin-right:-.5em; border-top:1px solid #ccc;}
+.statusUpdateCommentSpacer{display:none;}
+table.tdPadding{border-collapse:inherit;}
+.k-window{width:90% !important;}
+.k-window-content{max-width:100% !important; width:100% !important;}
+
+.grid, .split-table, .customDataTable {width:100% !important; height:auto; overflow:hidden !important; }
+
+.k-grid-content
+{
+    overflow-y:hidden !important;
+    overflow-x:hidden !important;
+    overflow:hidden !important;
+   width:auto !important;
+   border:1px solid #ffffff;
+  
+  
+}
+
+.patientDropdownLabel
+{
+    width:90px;
+    text-align:left;
+    margin-top:5px;
+}
+
+.patientDropdownDiv
+{
+    padding:5px;
+    clear:both;
+    width:100%;
+  
+}
+
+.mobilePatientselectWidth
+{
+    width:100%;
+}
+
+.mobilePatientbuttonMargin
+{
+    margin-top:5px;
+}
+
+
+
+.SearchButtonMargin
+{
+    margin-left:2%;
+    /*margin-top:-10px;*/
+}
+
+.cssform .pull-right, .wrapper2 .pull-right
+{
+    float:right !important;
+}
+.lhn-display {display: block !important}
+
+.grid-select-container .label2 {
+	min-width: 20%;
+	display: inline-block;
+}
+.middle-category-table .status-select-container [class*="-col"] input, .status-select-container [class*="-col"] select{
+	width: 70% !important;
+}
+.paddingL165 {
+	padding:1px 0 1px 1% !important;
+}
+.cssform label {
+	float: none;
+	margin-left: 0; /*width of left column*/
+	width: auto; /*width of labels. Should be smaller than left column (155px) to create some right margin*/
+}
+
+.history-box .title h5 a{
+	float: right;
+}
+.history-box .title h5 a i:after{
+	content:'';
+}
+.history-box .title h5 a i:last-child{
+	font-size: 15px;
+}
+
+.middle-category-table .split-table > thead > tr{
+	position: relative;
+	top: auto;
+	left: auto;
+	margin-bottom: -2.8em;
+}
+.middle-category-table .split-table > tbody {
+	top: 2.65em;
+	position: relative;
+}
+.middle-category-table table{
+	border: none;
+	margin-bottom: 3em;
+}
+.middle-category-table table tr{
+	border-left: 1px solid #c2c2c2;
+	border-right: 1px solid #c2c2c2;
+}
+.middle-category-table table tr:last-child{
+	border-bottom: 1px solid #c2c2c2;
+}
+.top-total-table .split-table > tbody > tr > td{
+	padding:0.1em 0.6em 0.55em 14em;
+}
+.top-total-table .split-table > thead > tr {
+	top:auto;
+}
+
+/* Facility Dashboard */
+
+.doubleWidth{
+width:100%;  padding:0px; float:left; 
+}
+.singleWidthResponsive{
+	width:100%;  padding:0px; float:left; 
+}
+
+
+.greenBorder {
+    border-bottom: 4px solid #007A22;
+    float: left;
+    margin-bottom: 0.8em;
+    margin-right: 0.8em;
+    width: 100%;
+}
+
+.redBorder {
+    border-bottom: 4px solid #fd0b0b;
+    float: left;
+    margin-bottom: 0.8em;
+    margin-right: 0.8em;
+    width: 100%;
+}
+
+.greyBorder {
+    border-bottom: 4px solid #333333;
+    float: left;
+    margin-bottom: 0.8em;
+    margin-right: 0.8em;
+    width: 100%;
+}
+
+.smallLable {
+    display: inline-block;
+    text-align: left;
+    width: 100%;
+}
+
+.autoLabel
+{
+  width:100%;
+    text-align:left;
+	display:inline-block;
+	font-weight:bold;
+}
+
+.boxWidth{
+	width:100% !important;
+	
+}
+.labelAlign{
+	
+	text-align:left;
+}
+
+.marginL90
+{
+    margin-left:5px;
+}
+
+.width44Per
+{
+    width:100%;
+}
+
+.width10Per
+{
+    width:100%;
+}
+
+.arrowbuttons
+{
+    padding:1em;
+}
+.customDataTable td
+{
+    border-left:solid 1px #dddddd !important;
+    border-right:solid 1px #dddddd !important;
+}
+/* New Merged */
+
+.padd185em {
+    padding: 1.18em;
+    padding-left: 0.5em;
+}
+
+.padd1em
+{
+     padding: 1em;
+    padding-left: 0.5em;
+}
+
+.quicklinksData
+{
+    display:block;
+}
+
+.box-container .pull-right
+{
+    float:right !important;
+}
+
+.update-details{
+width: 100%;
+padding: 1em 0; 
+}
+
+.history-box .content ul li{
+width: 100%;
+}
+.top-select-boxes .k-widget { clear: both; display: block;
+width: 100% !important;}
+
+.top-select-boxes .facilityname .k-widget{ clear: both; display: block;
+width: 100% !important;}
+
+.top-select-boxes span{ clear: both; display: block;    
+   white-space: pre-wrap;      /* CSS3 */   
+   white-space: -moz-pre-wrap; /* Firefox */    
+   white-space: -pre-wrap;     /* Opera <7 */   
+   white-space: -o-pre-wrap;   /* Opera 7 */    
+   word-wrap: break-word;      /* IE */
+}
+
+
+}

@@ -1,0 +1,22 @@
+<!-- top bar section -->
+<div class="row topbar">
+    <div class="wrapper">
+        <div class="one-col">
+            <div class="welcome">
+                <i class="icon-user"></i><span class="lblue">{{nls.lblWelcome}}</span> <span id="username" data-bind="text:userFullName"> </span>
+            </div>
+        </div>
+        
+        <div class="two-of-three-col pull-right">
+            <ul class="topNav pull-right cfx">
+
+                <li class="cursor-pointer" data-bind="click:homeClick, style: {display: showHomeAndRefreshStyle}"><i class="icon-home"></i>{{nls.lblHome}}</li>
+                <li class="cursor-pointer" data-bind="click:refreshClick, style: {display: showHomeAndRefreshStyle}"><i class="icon-arrows-cw"></i>{{nls.lblRefresh}}</li>
+                <li ><a href="mailto:esf8help@la.gov"><i class="icon-mail-alt"></i>{{nls.lblContact}}</a></li>
+                <li ><a data-bind="click:helpClick"><i class="icon-help-circled"></i>{{nls.lblHelp}}</a></li>
+                <li data-bind=" click : logOutClick"> <i class="icon-logout"></i>{{nls.lblLogout}}</li>
+
+            </ul>
+        </div>
+    </div>
+</div>

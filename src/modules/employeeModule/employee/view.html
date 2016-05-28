@@ -1,0 +1,255 @@
+<div id="vwEmployee">
+    <!--View name : vwEmployee-->
+    <!--Control id prefix : vwe-->
+    <div id="bd2" class="cfx">
+        <div class="wrapper wrapper2 cfx" style="background: #fff;">
+            <div class="row grid-select-container">
+                <!-- Top heading and buttons -->
+                <div class="title-bar cfx">
+                    <div class="pull-left">
+                        <h2>
+                            {{nls.headerAddEditEmployee}}
+                        </h2>
+                    </div>
+                    <div class="btn-container pull-right">
+                        <button type="button" class="btn" data-bind="click:btnSaveClick">
+                            {{nls.btnSave}}
+                        </button>
+                        <button type="button" class="btn " data-bind="click:btnCancelClick">
+                            {{nls.btnCancel}}
+                        </button>
+                    </div>
+                </div>
+                <div class="clear">
+                </div>
+                <!-- Top heading and buttons -->
+
+                <div class="history-box cfx">
+                    <div class="title-new div-title">
+                        <h5>
+                            <a data-bind="click:helpClick"><i class="icon-help-circled"></i></a>{{nls.headerEmployeeInfo}}
+                        </h5>
+                    </div>
+                    <div class="cssform">
+                       
+                        <div class="paddingL165 pull-left">
+                            <label>
+                                {{nls.lblShelterName}}
+                            </label>
+                            <div class="item_parent">
+                                <div class="item_width">
+                                    <!--<span data-bind="text:ShelterName"></span>-->
+                                    <span data-bind="attr: { class: setClassForShelterName, className:setClassForShelterName}">
+                                        <select id="vweDdlShelters" class="inputClass" data-role="dropdownlist" data-bind="source:dsShelters,value:selectedShelterItem, disabled: isEditModeOrSingleShelterUser"
+                                                data-text-field="Name" data-value-field="Id" required />
+                                    </span>
+
+                                    <span class="k-widget k-tooltip k-tooltip-validation k-invalid-msg displayblock" data-bind="invisible:setValidationMsgForShelterName">
+                                        Please select shelter name
+                                    </span>
+</div>
+                                <div class="clear">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="paddingL165 pull-left">
+                            <label>
+                                {{nls.lblEmployeeId}}
+                            </label>
+                            <div class="item_parent">
+                                <div class="item_width">
+                                    <input type="text" class="inputClassText" id="vweTbEmployeeId" name="vweTbEmployeeId"
+                                          data-bind="value:employeeData.Employee.EmployeeRefId" maxlength="250" />
+                                    <span class="k-invalid-msg" data-for="vweTbEmployeeId"></span>
+                                </div>
+                                <div class="clear">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="clear">
+                        </div>
+                        <div class="paddingL165 pull-left">
+                            <label>
+                                {{nls.lblFirstName}}
+                            </label>
+                            <div class="item_parent">
+                                <div class="item_width">
+                                    <input type="text" class="inputClassText" id="vweTbFirstName" name="vweTbFirstName"
+                                           required validationmessage="{{nls.valmsgFNRequired}}" data-bind="value:employeeData.Employee.FirstName" maxlength="250" />
+                                    <span class="k-invalid-msg" data-for="vweTbFirstName"></span>
+                                </div>
+                                <div class="clear">
+                                </div>
+                            </div>
+                        </div>
+                       
+                        <div class="paddingL165 pull-left">
+                            <label>
+                                {{nls.lblMiddleName}}
+                            </label>
+                            <div class="item_parent">
+                                <div class="item_width">
+                                    <input type="text" class="inputClassText" id="vweTbMiddleName" name="vweTbMiddleName"
+                                           data-bind="value:employeeData.Employee.MiddleName" maxlength="2" />
+                                </div>
+                                <div class="clear">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="clear">
+                        </div>
+                        <div class="paddingL165 pull-left">
+                            <label>
+                                {{nls.lblLastName}}
+                            </label>
+                            <div class="item_parent">
+                                <div class="item_width">
+                                    <input type="text" class="inputClassText" id="vweTbLastName" name="vweTbLastName"
+                                           required validationmessage="{{nls.valmsgLNRequired}}" data-bind="value:employeeData.Employee.LastName" maxlength="250" />
+                                    <span class="k-invalid-msg" data-for="vweTbLastName"></span>
+                                </div>
+                                <div class="clear">
+                                </div>
+                            </div>
+                        </div>
+                     
+                        <div class="paddingL165 pull-left">
+                            <label>
+                                {{nls.lblStaffType}}
+                            </label>
+                            <div class="item_parent">
+                                <div class="item_width">
+
+                                    <span data-bind="attr: { class: setClassForStaffType, className:setClassForStaffType}">
+                                        <select id="vweDdlStaffTypes" data-role="dropdownlist" class="inputClass" data-bind="source:dsStaffTypes, value:selectedStaffType"
+                                                data-text-field="Value" data-value-field="Key" />
+                                    </span>
+
+                                    <span class="k-widget k-tooltip k-tooltip-validation k-invalid-msg displayblock" data-bind="invisible:setValidationMsgForStaffType">
+                                        Please select staff type
+                                    </span>
+
+                                </div>
+                                <div class="clear">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="clear">
+                        </div>
+                        <div class="paddingL165 pull-left">
+                            <label>
+                                {{nls.lblShift}}
+                            </label>
+                            <div class="item_parent">
+                                <div class="item_width">
+                                    <select id="vweDdlShifts" data-role="dropdownlist" class="select inputClass"
+                                            data-bind="source:dsShifts, value:selectedShift"
+                                            data-text-field="Value" data-value-field="Key" />
+                                </div>
+                                <div class="clear">
+                                </div>
+                            </div>
+                        </div>
+                       
+                        <div class="paddingL165 pull-left">
+                            <label>
+                                {{nls.lblDepartment}}
+                            </label>
+                            <div class="item_parent">
+                                <div class="item_width">
+
+                                    <span data-bind="attr: { class: setClassForDepartment, className:setClassForDepartment}">
+                                        <select id="vweDdlDepartments" data-role="dropdownlist" class="inputClass" data-bind="source:dsDepartments, value:selectedDepartment"
+                                                data-text-field="Value" data-value-field="Key" />
+                                    </span>
+
+                                    <span class="k-widget k-tooltip k-tooltip-validation k-invalid-msg displayblock" data-bind="invisible:setValidationMsgForDepartment">
+                                        Please select Department
+                                    </span>
+
+                                </div>
+                                <div class="clear">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="clear">
+                        </div>
+
+                       
+                        <div class="paddingL165 pull-left">
+                            <label>
+                                {{nls.lblStaffSpecialty}}
+                            </label>
+                            <div class="item_parent">
+                                <div class="item_width">
+                                    <select id="vweDdlStaffSpecialties" data-role="dropdownlist" class="select inputClass"
+                                            data-bind="source:dsStaffSpecialties, value:selectedStaffSpecialty"
+                                            data-text-field="Value" data-value-field="Key" />
+                                </div>
+                                <div class="clear">
+                                </div>
+                            </div>
+                        </div>
+
+                         <div class="paddingL165 pull-left">
+                            <label>
+                                {{nls.lblAgency}}
+                            </label>
+                            <div class="item_parent">
+                                <div class="item_width">
+                                    <span data-bind="text:selectedDepartment.AgencyName"></span>
+                                </div>
+                                <div class="clear">
+                                </div>
+                            </div>
+                        </div>
+                      
+                   
+                        <div class="clear">
+                        </div>
+
+                        <div class="paddingL165 pull-left ">
+                            <label>
+                                {{nls.lblIsMedical}}
+                            </label>
+                            <div class="item_parent">
+                                <div class="item_width">
+
+                                    <span class="marginR10">
+                                        <input type="radio" name="vweRbVent" class="check_radio_align" value="true" data-bind="checked:employeeData.Employee.IsMedical" />
+                                        <span>Yes </span>
+                                    </span>
+                                    <span class="">
+                                        <input type="radio" name="vweRbVent" class="check_radio_align" value="false" data-bind="checked: employeeData.Employee.IsMedical" />
+                                        <span>No </span>
+                                    </span>
+
+
+                                </div>
+                                <div class="clear">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="clear">
+                        </div>
+
+
+
+                    </div>
+                </div>
+                <!-- Buttons  bottom -->
+                <div class="update-details cfx">
+                    <div class="one-col btn-container pull-right">
+                        <button type="button" class="btn" data-bind="click:btnSaveClick">
+                            {{nls.btnSave}}
+                        </button>
+                        <button type="button" class="btn  " data-bind="click:btnCancelClick">
+                            {{nls.btnCancel}}
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

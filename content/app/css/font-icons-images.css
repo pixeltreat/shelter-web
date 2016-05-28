@@ -1,0 +1,337 @@
+
+@charset "utf-8";
+
+.doc-icon {
+	/*background: url(../images/doc-icon.gif) no-repeat center left; */
+	 background-image:url('../images/msat-icons-sprite.png');
+	background-repeat:no-repeat;
+	background-position:-204px -3px;
+	width:12px;
+	height:17px; 
+	display: inline-block;
+}
+
+.ie7 .doc-icon {
+	/*background: url(../images/doc-icon.gif) no-repeat center left;*/
+	 background-image:url('../images/msat-icons-sprite.png');
+	background-repeat:no-repeat;
+	background-position:-204px -3px; 
+	width:12px;
+	height:17px; 
+	display: inline-block;
+	position:absolute;
+	top:10px;
+	right:35px;
+}
+
+.history-icon {
+	/*background: url(../images/history-icon.gif) no-repeat center left; */
+	background-image:url('../images/msat-icons-sprite.png');
+	background-repeat:no-repeat;
+	background-position:-218px 0;
+	width:24px;
+	height:18px; 
+	display: inline-block;
+	position:relative;
+	top:1px;
+}
+
+
+.iconMargin .history-icon
+{
+    top:-5px;
+}
+
+.bolt-icon {
+	/*background: url(../images/bolt.gif) no-repeat center left; */
+	background-image:url('../images/msat-icons-sprite.png');
+	background-repeat:no-repeat;
+	background-position:-3px -27px;
+	width:24px;
+	height:26px; 
+	display: inline-block;
+	position:relative;
+	top:0px;
+}
+
+.ie7 .bolt-icon
+{
+    width:16px;
+}
+
+/* Icon classes  */
+
+.icon-home
+{
+    background-image:url('../images/msat-icons-sprite.png');
+	background-repeat:no-repeat;
+	background-position:-18px 0px;
+	*background-position:-18px -3px;
+	display:inline-block;
+	width:16px;
+	height:16px;
+    
+}
+
+.icon-arrows-cw
+{
+    background-image:url('../images/msat-icons-sprite.png');
+	background-repeat:no-repeat;
+	background-position:-118px 0;
+	*background-position:-118px -2px;
+	display:inline-block;
+	width:18px;
+	height:16px;
+    
+}
+
+.icon-mail-alt
+{
+    background-image:url('../images/msat-icons-sprite.png');
+	background-repeat:no-repeat;
+	background-position:-82px 1px;
+	*background-position:-82px -2px;
+	display:inline-block;
+	width:18px;
+	height:16px;
+    
+}
+
+
+
+.icon-logout
+{
+    background-image:url('../images/msat-icons-sprite.png');
+	background-repeat:no-repeat;
+	background-position:-151px 0px;
+	*background-position:-151px -1px;
+	display:inline-block;
+	width:18px;
+	height:16px;
+    
+}
+
+.icon-user
+{
+    background-image:url('../images/msat-icons-sprite.png');
+	background-repeat:no-repeat;
+	background-position:-256px 0;
+	*background-position:-256px -3px;
+	display:inline-block;
+	width:18px;
+	height:16px;
+    
+}
+
+.icon-attention
+{
+    background-image:url('../images/msat-icons-sprite.png');
+	background-repeat:no-repeat;
+	background-position:-27px -34px;
+	*background-position:-27px -32px;
+	display:inline-block;
+	width:18px;
+	height:20px;
+    
+}
+
+.red .icon-attention
+{
+
+	background-position:-27px -29px;
+	*background-position:-27px -31px;
+
+    
+}
+
+.icon-ok-circle
+{
+    background-image:url('../images/msat-icons-sprite.png');
+	background-repeat:no-repeat;
+	background-position:-46px -33px;
+	*background-position:-46px -32px;
+	display:inline-block;
+	width:18px;
+	height:20px;
+    
+}
+
+.wrapper .icon-help-circled, .wrapper2 .icon-help-circled
+{
+    background-image:url('../images/msat-icons-sprite.png');
+	background-repeat:no-repeat;
+	background-position:-277px -2px;
+	display:inline-block;
+	width:18px;
+	height:16px;
+	position:relative;
+	top:4px;
+	*top:0px;
+        
+    /* background: url(../images/help.png) no-repeat center left; 
+	width:16px;
+	height:14px; 
+	display: inline-block;*/
+}
+
+
+.box-container .icon-help-circled
+{
+    background-image:url('../images/msat-icons-sprite.png');
+	background-repeat:no-repeat;
+	background-position:-277px -2px;
+	display:inline-block;
+	width:18px;
+	height:16px;
+	position:relative;
+	top:-1px;
+	*top:4px;
+        
+}
+
+.title-grey .icon-help-circled
+{
+    background-image:url('../images/msat-icons-sprite.png') !important;
+	background-repeat:no-repeat;
+	background-position:-277px -2px !important;
+	display:inline-block;
+	width:18px;
+	height:16px;
+	position:relative;
+	top:4px !important;
+	*top:0px;
+        
+    /* background: url(../images/help.png) no-repeat center left; 
+	width:16px;
+	height:14px; 
+	display: inline-block;*/
+}
+
+.title-bar .icon-help-circled
+{
+    top:3px;
+	*top:0px;
+        
+}
+
+.m-menu .menu .icon-menu{
+width:1.7em;
+height:1.5em;
+ background-image:url('../images/msat-icons-sprite.png') !important;
+	background-repeat:no-repeat !important;
+	background-position:-303px -24px !important;
+	background-color:#666666 !important;
+
+}
+
+.close-btn{
+width:20px;
+height:20px;
+ background-image:url('../images/msat-icons-sprite.png') !important;
+	background-repeat:no-repeat !important;
+	background-position:-303px 0px !important;
+
+}
+
+.close-btn:hover{
+	background-position:-331px 0px !important;
+
+}
+
+
+.ie7 .box-container-header .icon-help-circled
+{
+    top:0px;
+}
+
+.singleWidth .box-container-header .icon-help-circled
+{
+    *top:7px;
+}
+
+.singleWidthResponsive .box-container-header .icon-help-circled
+{
+   *top:3px; 
+}
+
+.padd1em .icon-help-circled
+{
+    background-position:-277px -2px;
+    top:4px;
+}
+
+.ie7 .padd1em .icon-help-circled
+{
+    background-position:-277px -2px;
+    top:1px;
+}
+
+.topNav .icon-help-circled
+{
+    background-image:url('../images/msat-icons-sprite.png');
+	background-repeat:no-repeat;
+	background-position:-49px 0px;
+	*background-position:-49px -3px;
+	display:inline-block;
+	width:17px;
+	height:16px;
+	position:relative;
+	top:1px;
+    
+}
+
+.module .icon-help-circled
+{
+    background-image:url('../images/msat-icons-sprite.png');
+	background-repeat:no-repeat;
+	background-position:-47px 0px;
+	display:inline-block;
+	width:18px;
+	height:16px;
+    position:relative;
+	top:1px;
+	*top:0px;
+    
+}
+
+.icon-sort-down
+{
+    background-image:url('../images/msat-icons-sprite.png');
+	background-repeat:no-repeat;
+	background-position:-372px -1px;
+	display:inline-block;
+	width:12px;
+	height:12px;
+    position:relative !important;
+	top:0px !important;
+	*top:0px;
+    
+}
+
+.add
+{
+    background-image:url('../images/msat-icons-sprite.png');
+	background-repeat:no-repeat;
+	background-position:-468px -2px;
+	display:inline-block;
+	width:12px;
+	height:12px;
+    position:relative !important;
+	top:0px !important;
+	*top:0px;
+    
+}
+
+.remove
+{
+    background-image:url('../images/msat-icons-sprite.png');
+	background-repeat:no-repeat;
+	background-position:-493px -2px;
+	display:inline-block;
+	width:12px;
+	height:12px;
+    position:relative !important;
+	top:0px !important;
+	*top:0px;
+    
+}

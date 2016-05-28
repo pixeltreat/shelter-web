@@ -1,0 +1,123 @@
+
+<div id="vwBulkUpdateEmployeeAttendance">
+    <!--View name : vwBulkUpdateEmployeeAttendance-->
+    <!--Control id prefix : vwbuea-->
+
+
+
+
+    <div id="bd2" class="cfx">
+        <div class="wrapper wrapper2 cfx" style="background: #fff;">
+            <div class="row grid-select-container">
+                <!-- Top heading and buttons -->
+                <div class="title-bar cfx">
+                    <div class="pull-left">
+                        <h2>
+                            {{nls.headerBulkUpdate}}
+                        </h2>
+                    </div>
+                    <div class="btn-container pull-right">
+                        <button type="button" class="btn " data-bind="click:btnUpdateClick">
+                            {{nls.btnUpdate}}
+                        </button>
+                        <button type="button" class="btn " data-bind="click:btnCancelClick">
+                            {{nls.btnCancel}}
+                        </button>
+                    </div>
+                </div>
+                <div class="clear">
+                </div>
+                <!-- Top heading and buttons -->
+                <!-- Patient Info -->
+                <div class="history-box cfx">
+                    <div class="title-new div-title">
+                        <h5>
+                            <a data-bind="click:helpClick"><i class="icon-help-circled"></i></a>{{nls.headerDataCell}}
+                        </h5>
+                    </div>
+                    <div class="cssform">
+
+                        <div class="paddingL165 pull-left" id="vwbueaupdate">
+                            <label>
+                                {{nls.lblStatus}}
+                            </label>
+                            <div class="item_parent">
+                                <div class="item_width">
+
+
+
+
+
+                                    <input data-role="dropdownlist" style="width:90% !important;" class="select inputClass"
+                                           data-bind="source:StatusToLookUpData, value:selectedStatus"
+                                           data-template="item-template" data-value-template="value-template"
+                                           data-text-field="Value" data-value-field="Key" />
+
+
+
+                                </div>
+                                <div class="clear">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="clear">
+                        </div>
+                        <div class="paddingL165 pull-left" id="vwbueaupdate">
+                            <label>
+                                {{nls.lblComment}}
+                            </label>
+                            <div class="item_parent">
+                                <div class="item_width bulkupdate-comment">
+
+
+
+                                    <textarea id="vweacTaDescription" name="vweacTaDescription" data-bind="value:comment , attr:{maxlength: DescriptionLength} "
+                                              rows="5"></textarea>
+
+
+
+
+                                </div>
+                                <div class="clear">
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <div class="clear">
+                        </div>
+
+                    </div>
+                </div>
+                <!-- Buttons update bottom -->
+                <div class="update-details cfx">
+                    <div class="one-col btn-container pull-right">
+                        <button type="button" class="btn " data-bind="click:btnUpdateClick">
+                            {{nls.btnUpdate}}
+                        </button>
+                        <button type="button" class="btn  " data-bind="click:btnCancelClick">
+                            {{nls.btnCancel}}
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script id="item-template" type="text/x-kendo-template">
+    <div>
+        <img src="../../../../content/app/images/images/#:Value #.png" />
+        #:Value #
+    </div>
+
+</script>
+
+<script id="value-template" type="text/x-kendo-template">
+    <div>
+        <img src="../../../../content/app/images/images/#:Value #.png" />
+        #:Value #
+    </div>
+
+</script>

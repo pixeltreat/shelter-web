@@ -1,0 +1,307 @@
+<div id="vwEmployeeAttendance">
+    <!--View name : vwEmployeeAttendance-->
+    <!--Control id prefix : vwea-->
+
+    <div class="wrapper cfx" data-bind="style:{display:showWorkArea}">
+
+        <div class="imp-message_red">
+
+            <div  style="padding: 0px 0px 0.6em 3.8em; ">
+
+                <div class="imp-content">
+                    <span style="display:inline-block; position:relative; float: left">{{nls.lblEndedReportingPeriod}}</span>
+
+
+                    <span class="optionslisthorijantal" style="width: 84%; display: inline-block;">
+
+                        <span data-bind="text:ActiveEvent.EventName">
+
+                        </span>
+                        <span data-bind="text:ActiveEvent.EventDuration">
+
+                        </span>
+                       
+
+                    </span>
+
+                </div>
+                 
+            </div>
+
+
+
+        </div>
+
+
+    </div>
+
+
+
+    <div class="wrapper cfx">
+        <div class="row grid-select-container bg-border datacellAdminHeader">
+            <div class="full-col top-select-boxes">
+
+
+
+                <label>
+                    <span class="label2">Shelters:</span>
+                    <select id="vweaDdlFacilities" data-role="dropdownlist" class="select" data-bind="source:dsFacilities, value:selectedFacility"
+                            data-text-field="Name" data-value-field="Id" />
+
+                </label>
+                <label>
+                    <span class="label2">Shifts:</span>
+                    <select id="vweaDdlShifts" data-role="dropdownlist" class="select" data-bind="source:dsShifts, value:selectedShift"
+                            data-text-field="Value" data-value-field="Key" />
+
+                </label>
+
+
+                <label>
+                    <span class="label2">
+                        Shift Date:
+                    </span>
+                    <input id="vwshStartDate" name="vweaAttendenceDate" data-role="datepicker" data-bind="value:attendenceDate" class="inputClass" />
+
+                    <span class="k-widget k-tooltip k-tooltip-validation shiftdate-valid" data-bind="invisible:isattendenceDateValid">
+                        <span class="k-icon k-warning"></span>Attendance date is required
+                    </span>
+
+                </label>
+                
+
+                    <label>
+                        <span earass="label2"></span>
+                        <button type="button" data-bind="click:btnGoClick" class="btn"> Go </button>
+                    </label>
+
+               
+              
+              
+            </div>
+        </div>
+
+
+
+
+
+    </div>
+
+
+    <div id="bd2" class="cfx">
+
+        <div class="wrapper wrapper2 cfx" style="background:#fff;">
+
+            <div data-bind="style:{display:showMessage}" class="red-bold-text">
+                Employees are not assigned for the selected shift.
+            </div>
+
+            <div class="cssform" data-bind="style:{display:showWorkArea}">
+
+                <div class="red-bold-text">
+                    {{nls.lblMessage}}
+                </div>
+
+                <div>
+                    <table class="customDataTable">
+
+                        <tr>
+                            <th>
+                                {{nls.lblTotal}}
+                            </th>
+                            <th  class="Reported">
+                                {{nls.lblReported}}
+                                                                                                                             
+                            </th>
+                            <th class="NotReported">
+                                {{nls.lblNotReported}}
+                              
+                            </th>
+                            <th class="UnAssigned">
+                                {{nls.lblUnassigned}}
+
+                            </th>
+                        </tr>
+                        <tr>
+                            <td data-title="{{nls.lblTotal}}">
+                                <span data-bind="text:employeeAttendanceSummary.TotalEmployees">
+                                </span>
+                            </td>
+                            <td data-title="{{nls.lblReported}}">
+                                <span data-bind="text:employeeAttendanceSummary.TotalReported">
+                                </span>
+                            </td>
+                            <td data-title="{{nls.lblNotReported}}">
+                                <span data-bind="text:employeeAttendanceSummary.TotalNotReported">
+                                </span>
+                            </td>
+
+                            <td data-title="{{nls.lblUnassigned}}">
+                                <span data-bind="text:employeeAttendanceSummary.TotalUnAssigned">
+                                </span>
+                            </td>
+                        </tr>
+
+                    </table>
+                </div>
+
+                <!-- heading -->
+
+                <div class="title-bar cfx">
+                    <div class="pull-left marginT5 bold ">
+                        {{nls.lblEmployeeList}}
+                    </div>
+
+                    <div class="btn-container pull-right">
+                        <button type="button" data-bind="click:btnBulkUpdateClick" class="btn ">{{nls.btnBulkUpdate}}</button>
+
+                    </div>
+
+                    <div class="pull-right paddright-05em icons marginT0">
+                        <span class="marginR10">
+                            <a class="linkcolor excel underline_text" data-bind="visible:isRecordsPresentForExport, click:btnExportExcelClick">{{nls.btnExportToExcel}}</a>
+                        </span>
+
+
+
+                        <button type="button" data-bind="click:btnFilterOffClick" class="btn ">{{nls.btnShowAll}}</button>
+                    </div>
+
+
+                </div>
+                <div class="clear"></div>
+
+                <!-- Search and buttons -->
+
+                <div  id="vweaDgEmployeeListParent" class="marginB1per" style="margin-bottom:1%;">
+
+                    <div class="table-wrapper  fixedGrid">
+                        <table id="vweaDgEmployeeList" cellspacing="0" cellpadding="0" border="0" class="grid split-table customDataTable"
+                               data-bind="source:dsEmployeeAttendance,
+                        events: { dataBound:vweaDataBoundEvent }"
+                               data-role="grid" data-filterable="true"
+                               data-sortable='{ "mode": "single", "allowUnsort": false }'
+                               data-row-template="vweaRow-template"
+                               data-columns="[{width:'30px'},
+                                {title:'Save',width:'50px'},
+                                {title:'AddComment',width:'100px'},
+                                {field:'FacilityName',title:'{{nls.gdColFacilityName}}', width:'250px' , filterable: {multi:true,dataSource:[]}},
+                                {field:'ShiftTime',title:'{{nls.gdColShiftTime}}', width:'150px',filterable: {multi:true,dataSource:[]}},     
+                                {field:'StatusName',title:'{{nls.gdColStatus}}', width:'250px',filterable: {multi:true,dataSource:[]}},
+                                {field:'FirstName',title:'{{nls.gdColFirstName}}', width:'200px'},
+                                {field:'LastName',title:'{{nls.gdColLastName}}', width:'150px'},
+                                {field:'MiddleName',title:'{{nls.gdColMiddleName}}', width:'150px'},
+                                {field:'StaffSpecialityName',title:'{{nls.gdColStaffSpeciality}}', filterable: {multi:true,dataSource:[]}, width:'150px'},
+                                {field:'Comment',title:'{{nls.gdColComments}}', width:'150px'},
+                                {field:'EmployeeAttendanceUpdatedUserName',title:'{{nls.gdColUpdatedUserName}}', width:'150px'},            {field:'EmployeeAttendanceUpdatedOn',title:'{{nls.gdColUpdatedDate}}',filterable:false,width:'200px'}
+
+                               ]"
+                               data-pageable="true" data-scrollable="true"></table>
+                    </div>
+
+
+
+
+                </div>
+
+
+                <div class="clear"></div>
+
+                <!-- Buttons update bottom -->
+
+            </div>
+
+
+        </div>
+    </div>
+
+
+</div>
+
+
+<script type="text/x-kendo-template" id="vweaRow-template">
+
+    <tr>
+        <td data-title="{{nls.gdColIsSelected}}" class="paddingLR8">
+            <span class="marginL8"><input data-bind="checked:IsSelected, events:{change:vweaChkEmployee}" type="checkbox" data-item-type="child" data-id=${EmployeeId} /></span>
+        </td>
+
+        <td>
+            <img src="content/app/images/save-icon.gif" align="absmiddle" data-bind="click:btnSaveClick" />
+        </td>
+
+        <td>
+            <img src="content/app/images/edit-icon.jpg" align="absmiddle" data-bind="click:btnEditClick" />
+        </td>
+        <td data-title="{{nls.gdColFacilityName}}">
+            ${FacilityName}
+        </td>
+
+        <td data-title="{{nls.gdColShiftTime}}">
+            ${ShiftTime}
+        </td>
+        
+
+        <td data-title="{{nls.gdColStatus}}">
+            <div>
+
+                <input data-role="dropdownlist" style="width:90% !important;" class="select inputClass"
+                       data-bind="source:StatusLookUpData,value:ReportId"
+                    data-template="item-template" data-value-template="value-template"
+                       data-text-field="Value" data-value-field="Key" />
+            </div>
+
+
+
+        </td>
+
+
+        <td data-title="{{nls.gdColFirstName}}">
+            ${FirstName}
+        </td>
+
+        <td data-title="{{nls.gdColLastName}}">
+            ${LastName}
+        </td>
+
+        <td data-title="{{nls.gdColMiddleName}}">
+            ${MiddleName}
+        </td>
+
+        <td data-title="{{nls.gdColStaffSpeciality}}">
+            ${StaffSpecialityName}
+        </td>
+
+
+        <td data-title="{{nls.gdColComments}}">
+            ${Comment}
+        </td>
+
+        <td data-title="{{nls.gdColUserName}}">
+            ${EmployeeAttendanceUpdatedUserName}
+        </td>
+        <td data-title="{{nls.gdColUpdatedDate}}">
+            ${EmployeeAttendanceUpdatedOnValue}
+        </td>
+
+
+    </tr>
+
+</script>
+
+
+<script id="item-template" type="text/x-kendo-template">
+    <div class="#:Value#">
+     
+        #:Value #
+    </div>
+
+</script>
+
+<script id="value-template" type="text/x-kendo-template">
+    <div class="#:Value#">
+     
+        #:Value #
+    </div>
+
+</script>

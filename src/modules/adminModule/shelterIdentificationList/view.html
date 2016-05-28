@@ -1,0 +1,85 @@
+
+<div id="vwShelterIdentificationList">
+    <!--View name : vwShelterIdentificationList-->
+    <!--Control id prefix : vwsil-->
+    <div class="module cfx">
+        <h2 class="title">
+            {{nls.headershelterIdentification}}<a data-bind="click:helpClick">
+                <i class="icon-help-circled">
+                </i>
+            </a>
+        </h2>
+        <div class="module-container">
+            <div class="row grid-select-container gridsearch">
+                <div class="two-of-three-col">
+                    <label for="vwsilTbSearch" class="search-label">
+                        <span class="label">{{nls.lblSearch}}:</span>
+
+                        <fieldset>
+                            <input type="text" id="vwsilTbSearch" value="" data-bind="value:searchToken, events:{keyup:searchShelterIdentifications}"
+                                   data-value-update="keyup" class="k-textbox searchIcon" />
+                        </fieldset>
+                    </label>
+                </div>
+                <div class="one-col btn-container pull-right">
+                    <button class="btn" data-bind="click:btnAddClick" type="button">
+                        {{nls.btnAdd}}
+                    </button>
+                    <button class="btn" type="button" data-bind="enabled:isRowSelected,click:btnEditClick">
+                        {{nls.btnEdit}}
+                    </button>
+                    <button class="btn" type="button" data-bind="enabled:isRowSelected,click:btnDeleteClick">
+                        {{nls.btnDelete}}
+                    </button>
+
+                </div>
+            </div>
+            <div class="table-wrapper">
+                <!--style="width:1150px"-->
+                <table id="vwsilDgShelterIdentification" cellspacing="0" cellpadding="0" border="0" class="grid split-table rwd-table"
+                       data-bind="source:dsShelterIdentification, events: { change: rowSelectionChange }" data-role="grid"
+                       data-filterable="true"
+                       data-sortable='{ "mode": "single", "allowUnsort": false }'
+                       data-row-template="vwsilRow-template"
+                       data-selectable="true"
+                       data-columns="[
+                        {field:'Name',title:'{{nls.gdColName}}',width:'150px'},
+                       {field:'Description',title:'{{nls.gdColDescription}}',width:'150px'},
+                       {field:'DisplayOrder',title:'{{nls.gdColDisplayOrder}}',width:'150px'},
+                       {field:'UpdatedByUserName',title:'{{nls.gdColUserName}}',width:'150px'},
+                       {field:'UpdatedOn',title:'{{nls.gdColUpdatedDate}}',filterable:false,width:'200px'} ]"
+                       data-pageable="true"></table>
+            </div>
+        </div>
+    </div>
+</div>
+<script type="text/x-kendo-template" id="vwsilRow-template">
+    <tr>
+
+        <td data-title="{{nls.gdColName}}">
+            ${Name}
+        </td>
+        <td data-title="{{nls.gdColDescription}}">
+            ${Description}
+        </td>
+
+        <td data-title="{{nls.gdColDisplayOrder}}">
+            ${DisplayOrder}
+        </td>
+        <td data-title="{{nls.gdColUserName}}">
+            ${UpdatedByUserName}
+        </td>
+        <td data-title="{{nls.gdColUpdatedDate}}">
+            ${UpdatedOn}
+        </td>
+
+    </tr>
+</script>
+
+
+
+
+
+
+
+

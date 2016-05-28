@@ -1,0 +1,79 @@
+<div id="vwDepartmentList">
+    <!--View name : vwDepartmentList-->
+    <!--Control id prefix : vwdl-->
+
+    <div class="module cfx">
+        <h2 class="title">
+            {{nls.headerDepartment}} <a data-bind="click:helpClick">
+                <i class="icon-help-circled">
+                </i>
+            </a>
+        </h2>
+        <div class="module-container">
+            <div class="row grid-select-container gridsearch">
+                <div class="two-of-three-col">
+
+                    <label for="vwdlTxtSearch" class="search-label">
+                        <span class="label">{{nls.lblSearch}}:</span>
+                        <fieldset>
+                            <input type="text" id="vwdlTxtSearch" value="" data-bind="value:searchToken,events:{keyup:seachDepartments}"
+                                   data-value-update="keyup" class="k-textbox searchIcon" />
+                        </fieldset>
+                    </label>
+                </div>
+                <div class="one-col btn-container pull-right">
+                    <button class="btn" data-bind="click:btnAddClick" type="button">
+                        {{nls.btnAdd}}
+                    </button>
+                    <button class="btn" type="button" data-bind="enabled:isRowSelected,click:btnEditClick">
+                        {{nls.btnEdit}}
+                    </button>
+                    <button class="btn" type="button" data-bind="enabled:isRowSelected,click:btnDeleteClick">
+                        {{nls.btnDelete}}
+                    </button>
+                    <!--<a class="btn export-excel">Export Excel</a>-->
+                </div>
+            </div>
+            <div class="table-wrapper">
+                <table id="vwdlDgDepartment" cellspacing="0" cellpadding="0" border="0" class="grid split-table rwd-table1"
+                       data-bind="source:dsDepartments, events: { change: rowSelectionChange }" data-role="grid"
+                       data-filterable="true"
+                       data-sortable='{ "mode": "single", "allowUnsort": false }'
+                       data-row-template="vwdlRow-template"
+                       data-selectable="true"
+                       data-columns="[
+                         {field:'Name',title:'{{nls.gdColName}}'},
+                         {field:'Description',title:'{{nls.gdColDescription}}' },
+                         {field:'AgenciesForDisplay',title:'{{nls.gdColAgenciesForDisplay}}'} ,
+                         {field:'DisplayOrder',title:'{{nls.gdColDisplayOrder}}'},
+                         {field:'UpdatedByUserName',title:'{{nls.gdColUpdatedByUserName}}'},
+                         {field:'UpdatedOn',title:'{{nls.gdColUpdatedOnValue}}',filterable:false}  ]"
+                       data-pageable="true"></table>
+            </div>
+        </div>
+    </div>
+    <script type="text/x-kendo-template" id="vwdlRow-template">
+        <tr>
+            <td data-title="{{nls.gdColName}}">
+                ${Name}
+            </td>
+            <td data-title="{{nls.gdColDescription}}">   
+                ${Description}
+            </td>
+            <td data-title="{{nls.gdColAgenciesForDisplay}}">
+                <span data-bind="html: AgenciesForDisplay"></span>
+            </td> 
+            <td data-title="{{nls.gdColDisplayOrder}}">
+                ${DisplayOrder}
+            </td>
+            <td data-title="{{nls.gdColUpdatedByUserName}}">
+                ${UpdatedByUserName}
+            </td>
+            <td data-title="{{nls.gdColUpdatedOnValue}}">
+                ${UpdatedOnValue}
+            </td>
+            
+            
+        </tr>
+    </script>
+

@@ -1,1 +1,5 @@
 /node_modules/
+*.css
+application/assets/js/vendor-libs.*
+application/assets/js/app-libs.*
+application/assets/js/app-scripts.*

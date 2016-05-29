@@ -1,0 +1,145 @@
+// ****************************************
+// app-navigation
+// ****************************************
+
+.main-menu {
+    margin-top: 1px;
+    height: calc(100% - 65px);
+    overflow: auto;
+    min-width: $nav-width;
+}
+
+.app-nav__main {
+    @extend %no-list;
+
+    &__li {
+        &:first-child &__a::after {
+            display: none;
+        }
+
+        &:hover &__a::after,
+        .is-mainnav-active &__a::after,
+        &:hover + & > &__a::after,
+        .is-mainnav-active + & > &__a::after {
+            width: 100%;
+            left: 0;
+        }
+    }
+
+    &__li__a {
+        font-size: 1.5rem;
+        display: block;
+        padding: 10px 15px;
+        position: relative;
+        transition: all 0.2s ease-in;
+        background-color: $main-nav-bg;
+        color: $main-nav-text;
+        cursor: pointer;
+
+        &::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            height: 0;
+            width: 3px;
+            transition: $transition__default-all;
+
+            .is-mainnav-active & {
+                height: 100%;
+            }
+        }
+
+        &::after{
+            content: "";
+            border-bottom-style: solid;
+            border-bottom-width: 1px;
+            position: absolute;
+            top: 0;
+            left: 5%;
+            width: 35px;
+            border-color: $main-nav-divider;
+
+            .has-nav-expanded & {
+                width: 90%;
+            }
+        }
+
+        &__icon {
+            @extend %inline-block__valign-middle;
+            font-size: 2.4rem;
+            margin-right: 13px;
+        }
+
+        &__text {
+            @extend %inline-block__valign-middle;
+            font-weight: $light;
+            opacity: 0;
+            transition: $transition__default-all;
+
+            .has-nav-expanded & {
+                opacity: 1;
+            }
+        }
+
+        &:hover,
+        .is-mainnav-active & {
+            color: $main-nav-active-text;
+            background-color: $main-nav-active-bg;
+        }
+
+        .is-mainnav-active &::before {
+            background-color: $main-nav-text;
+        }
+    }
+}
+
+.app-nav__sub {
+    @extend %no-list;
+    display: none;
+    background-color: #2b4b6e;
+
+    .has-nav-expanded .is-mainnav-active & {
+        display: block;
+    }
+
+    &__li__a {
+        padding: 15px 15px 15px 25px;
+        display: block;
+        border-bottom: 1px solid #203b5d;
+        font-size: 1.4rem;
+        color: $secondary-color;
+        transition: $transition__default-all;
+        font-weight: $light;
+        cursor: pointer;
+
+        &:hover,
+        .is-subnav-active & {
+            color: $base-white;
+            background-color: darken(#2b4b6e, 10%);
+        }
+    }
+
+    &__li:last-child &__li__a {
+        border-bottom: 0;
+    }
+}
+
+// expanded subnav styles
+.app-nav__main__li {
+    position: relative;
+
+    &.has-subnav::after {
+        @include Arrow(6, top);
+        color: $secondary-color;
+        position: absolute;
+        top: 21px;
+        right: 15px;
+        transition: transform $transition__default-time-ease;
+    }
+
+    &.is-mainnav-active::after {
+        top: 16px;
+        transform: rotate(-180deg);
+    }
+}

@@ -1,68 +1,161 @@
-<!-- logo navigation section -->
-<div class="row logo-mainnav no-margin-top">
-    <div class="logo one-col" data-bind="click:homeClick">
-        <img src="assets/img/app-logo.svg" alt="Shelter Logo">
-    </div>
+<nav class="app-nav" role="navigation" id="app-nav">
+    <ol class="app-nav__main">
+        <li class="app-nav__main__li has-subnav" data-bind="click:toggleSubnav">
+            <a class="app-nav__main__li__a">
+                <span class="f-icon__nav-user app-nav__main__li__a__icon" aria-hidden="true"></span>
+                <span class="app-nav__main__li__a__text">
+                    {{nls.lblWelcome}}, Ravi Prasad
+                </span>
+            </a>
 
+            <ul class="app-nav__sub">
+                <li class="app-nav__sub__li" data-bind="click:showActiveState">
+                    <a class="app-nav__sub__li__a">
+                        My Profile
+                    </a>
+                </li>
+                <li class="app-nav__sub__li" data-bind="click:showActiveState">
+                    <a class="app-nav__sub__li__a" data-bind="click:logOutClick">
+                        <!-- <span class="f-icon__nav-logout app-nav__main__li__a__icon" aria-hidden="true"></span> -->
+                        {{nls.lblLogout}}
+                    </a>
+                </li>
+            </ul>
+        </li>
 
-    <!--/ end logo section -->
-    <div class="m-menu v-mob h-desk" data-bind="style: {display: showHideMenuStyle}">
-        <button class="menu">
-            Menu<i class="icon-menu"></i>
-        </button>
-    </div>
-    <nav class="main-nav two-of-three-col v-desk cfx">
-        <ul class="nav pull-right cfx" data-bind="style: {display: showHideMenuStyle}">
-            <li class="admin" data-bind="style: {display: showAdminMenuItem}">
-                <span>Admin <i class="icon-sort-down"></i></span>
-                <ul class="sub-nav">
+        <li class="app-nav__main__li has-subnav" data-bind="click:toggleSubnav">
+            <a class="app-nav__main__li__a">
+                <span class="f-icon__nav-admin app-nav__main__li__a__icon" aria-hidden="true"></span>
+                <span class="app-nav__main__li__a__text">Admin</span>
+            </a>
 
-                    <li data-bind="click:agencyListClick">Agency</li>
-                    <li data-bind="click:departmentListClick">Department</li>
-                    <li data-bind="click:medicalConditionListClick">Medical Condition</li>
-                    <li data-bind="click:medicalConditionTierListClick">Medical Condition Tier</li>
-                    <li data-bind="click:shelterTypeListClick">Shelter Type</li>
-                   <li data-bind="click:sheltreeEmployeeRatioListClick">SheltereeEmployeeRatio</li>
-                    <li data-bind="click:staffSpecialtyListClick">Staff Specialty</li>
-                    <li data-bind="click:stafftypeListClick">Staff Type</li>
-                    <li data-bind="click:transportTypeListClick">Transportation Type</li>
-                    <li data-bind="click:dispositionListClick">Disposition</li>
-                    <li data-bind="click:equipmentSupplyListClick">Equipment Supply</li>
-                    <li data-bind="click:shelterIdentificationListClick">Shelter Identification</li>
+            <ul class="app-nav__sub">
+                <li class="app-nav__sub__li" data-bind="click:showActiveState">
+                    <a class="app-nav__sub__li__a" data-bind="click:agencyListClick">Agency</a>
+                </li>
+                <li class="app-nav__sub__li" data-bind="click:showActiveState">
+                    <a class="app-nav__sub__li__a" data-bind="click:departmentListClick">Department</a>
+                </li>
+                <li class="app-nav__sub__li" data-bind="click:showActiveState">
+                    <a class="app-nav__sub__li__a" data-bind="click:medicalConditionListClick">Medical Condition</a>
+                </li>
+                <li class="app-nav__sub__li" data-bind="click:showActiveState">
+                    <a class="app-nav__sub__li__a" data-bind="click:medicalConditionTierListClick">Medical Condition Tier</a>
+                </li>
+                <li class="app-nav__sub__li" data-bind="click:showActiveState">
+                    <a class="app-nav__sub__li__a" data-bind="click:shelterTypeListClick">Shelter Type</a>
+                </li>
+                <li class="app-nav__sub__li" data-bind="click:showActiveState">
+                    <a class="app-nav__sub__li__a" data-bind="click:sheltreeEmployeeRatioListClick">Shelteree Employee Ratio</a>
+                </li>
 
-                </ul>
-            </li>
-            <li class="admin">
-                <span>Employee <i class="icon-sort-down"></i></span>
-                <ul class="sub-nav">
+                <li class="app-nav__sub__li" data-bind="click:showActiveState">
+                    <a class="app-nav__sub__li__a" data-bind="click:staffSpecialtyListClick">Staff Specialty</a>
+                </li>
+                <li class="app-nav__sub__li" data-bind="click:showActiveState">
+                    <a class="app-nav__sub__li__a" data-bind="click:stafftypeListClick">Staff Type</a>
+                </li>
+                <li class="app-nav__sub__li" data-bind="click:showActiveState">
+                    <a class="app-nav__sub__li__a" data-bind="click:transportTypeListClick">Transportation Type</a>
+                </li>
+                <li class="app-nav__sub__li" data-bind="click:showActiveState">
+                    <a class="app-nav__sub__li__a" data-bind="click:dispositionListClick">Disposition</a>
+                </li>
+                <li class="app-nav__sub__li" data-bind="click:showActiveState">
+                    <a class="app-nav__sub__li__a" data-bind="click:equipmentSupplyListClick">Equipment Supply</a>
+                </li>
+                <li class="app-nav__sub__li" data-bind="click:showActiveState">
+                    <a class="app-nav__sub__li__a" data-bind="click:shelterIdentificationListClick">Shelter Identification</a>
+                </li>
+            </ul>
+        </li>
+        <!-- <li class="app-nav__main__li" data-bind="click:toggleSubnav">
+            <a class="app-nav__main__li__a" href="#/dashboard" ui-sref="dashboard">
+                <span class="f-icon__nav-dashboard app-nav__main__li__a__icon" aria-hidden="true"></span>
+                <span class="app-nav__main__li__a__text">Dashboard</span>
+            </a>
+        </li> -->
 
-                    <li data-bind="click:employeeListClick">Employee List</li>
-                    <li data-bind="click:employeeAttendanceClick">Employee Attendance</li>
+        <li class="app-nav__main__li has-subnav" data-bind="click:toggleSubnav">
+            <a class="app-nav__main__li__a">
+                <span class="f-icon__nav-employee app-nav__main__li__a__icon" aria-hidden="true"></span>
+                <span class="app-nav__main__li__a__text">Employee</span>
+            </a>
 
+            <ul class="app-nav__sub">
+                <li class="app-nav__sub__li" data-bind="click:showActiveState">
+                    <a class="app-nav__sub__li__a" data-bind="click:employeeListClick">Employee List</a>
+                </li>
+                <li class="app-nav__sub__li" data-bind="click:showActiveState">
+                    <a class="app-nav__sub__li__a" data-bind="click:employeeAttendanceClick">Employee Attendance</a>
+                </li>
+            </ul>
+        </li>
 
-                </ul>
-            </li>
-            <li class="admin">
-                <span>Shelter <i class="icon-sort-down"></i></span>
-                <ul class="sub-nav">
-                    <li data-bind="click:shelterStatusClick">Shelter Status</li>
-                </ul>
-            </li>
+        <li class="app-nav__main__li has-subnav" data-bind="click:toggleSubnav">
+            <a class="app-nav__main__li__a">
+                <span class="f-icon__nav-shelter app-nav__main__li__a__icon" aria-hidden="true"></span>
+                <span class="app-nav__main__li__a__text">Shelter</span>
+            </a>
 
-            <!--<li class="admin">
-                <span>Multi Fcaility Employee <i class="icon-sort-down"></i></span>
-                <ul class="sub-nav">
-                    <li data-bind="click:multifacilityEmployeeAttendanceClick">Employee Attendance</li>
-                    <li data-bind="click:multifacilityEmployeeExtendedClick">Employee Extended</li>
-                    <li data-bind="click:multifacilityEmployeeClick">Employee </li>
+            <ul class="app-nav__sub">
+                <li class="app-nav__sub__li" data-bind="click:showActiveState">
+                    <a class="app-nav__sub__li__a" data-bind="click:shelterStatusClick">Shelter Status</a>
+                </li>
+            </ul>
+        </li>
+        <li class="app-nav__main__li has-subnav" data-bind="click:toggleSubnav">
+            <a class="app-nav__main__li__a" data-bind="click:showActiveState">
+                <span class="f-icon__nav-transport app-nav__main__li__a__icon" aria-hidden="true"></span>
+                <span class="app-nav__main__li__a__text">Transportation</span>
+            </a>
 
-                </ul>
-            </li>-->
-            <!--<li data-bind="style: {display: showDashboardMenuItem}, click:dashboardClick">Dashboard</li>
-            <li data-bind="style: {display: showPatientTrackingItem}, click:patientTrackingClick">Patient</li>
-            <li data-bind="style: {display: showDataCellItem}, click:dataCellClick">Data Cell</li>-->
+            <ul class="app-nav__sub">
+                <li class="app-nav__sub__li" data-bind="click:showActiveState">
+                    <a class="app-nav__sub__li__a">Subnav Link1</a>
+                </li>
+            </ul>
+        </li>
 
-        </ul>
-    </nav>
-    <!--/ end main nav section -->
-</div>
+        <li class="app-nav__main__li has-subnav" data-bind="click:toggleSubnav">
+            <a class="app-nav__main__li__a">
+                <span class="f-icon__nav-reports app-nav__main__li__a__icon" aria-hidden="true"></span>
+                <span class="app-nav__main__li__a__text">Reports</span>
+            </a>
+
+            <ul class="app-nav__sub">
+                <li class="app-nav__sub__li" data-bind="click:showActiveState">
+                    <a class="app-nav__sub__li__a" href="">Subnav Link1</a>
+                </li>
+            </ul>
+        </li>
+
+        <li class="app-nav__main__li" data-bind="click:toggleSubnav">
+            <a class="app-nav__main__li__a" data-bind="click:helpClick">
+                <span class="f-icon__nav-help app-nav__main__li__a__icon" aria-hidden="true"></span>
+                <span class="app-nav__main__li__a__text">{{nls.lblHelp}}</span>
+            </a>
+        </li>
+
+        <li class="app-nav__main__li" data-bind="click:toggleSubnav">
+            <a class="app-nav__main__li__a" href="mailto:esf8help@la.gov">
+                <span class="f-icon__nav-contact app-nav__main__li__a__icon" aria-hidden="true"></span>
+                <span class="app-nav__main__li__a__text">{{nls.lblContact}}</span>
+            </a>
+        </li>
+
+        <li class="app-nav__main__li" data-bind="click:toggleSubnav">
+            <a class="app-nav__main__li__a">
+                <span class="f-icon__nav-refresh app-nav__main__li__a__icon" aria-hidden="true"></span>
+                <span class="app-nav__main__li__a__text">Refresh</span>
+            </a>
+        </li>
+
+        <!-- <li class="app-nav__main__li" data-bind="click:toggleSubnav">
+            <a class="app-nav__main__li__a">
+                <span class="f-icon__nav-logout app-nav__main__li__a__icon" aria-hidden="true"></span>
+                <span class="app-nav__main__li__a__text">Logout</span>
+            </a>
+        </li> -->
+    </ol>
+</nav>

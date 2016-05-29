@@ -1,0 +1,119 @@
+// ****************************************
+// app-logo
+// ****************************************
+.app-logo {
+    @extend .flex-row;
+    @extend .flex--center;
+    @extend .flex--space-between;
+    padding: 15px 10px 15px 10px;
+    min-width: $nav-width;
+    background-color: $app-logo-bg;
+
+    &__link{
+        @extend .flex-col__no-expand;
+        min-height: 35px;
+        background-image: url("../img/app-logo.svg");
+        background-repeat: no-repeat;
+        text-indent: -9999px;
+        min-width: 125px;
+    }
+}
+
+.app-logo__menu-collapse {
+    @extend .flex-col__no-expand;
+    position: relative;
+    height: 24px;
+    width: 24px;
+    cursor: pointer;
+    background: none;
+    border: 0;
+    outline: 0;
+    transition: $transition__default-all 0.2s;
+
+    &:hover &-icon,
+    &:hover &-icon::before,
+    &:hover &-icon::after {
+        background-color: $menu-collapse-btn-hover;
+    }
+
+    &-icon{
+        cursor: pointer;
+        position: absolute;
+        top: 10px;
+        left: 0;
+        display: block;
+        width: 24px;
+        height: 3px;
+        font-size: 0;
+        user-select: none;
+        transition: background-color $transition__default-time-ease;
+        border-radius: 3px;
+        background-color: $menu-collapse-btn-normal;
+
+        &::before,
+        &::after{
+            cursor: pointer;
+            border-radius: 3px;
+            content: '';
+            position: absolute;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            transition: $transition__default-all;
+            background: $menu-collapse-btn-normal;
+        }
+
+        &::before{
+            bottom: 1px;
+            transform: translateY(-250%);
+        }
+
+        &::after{
+            top: 1px;
+            transform: translateY(250%);
+        }
+    }
+    // @include MediaQueries(#{tablet-and-below}) {
+    //     display: inline-block;
+    // }
+}
+
+// when expanded
+.has-nav-expanded .app-logo__menu-collapse {
+    border: 1px solid $menu-collapse-btn-normal;
+    border-radius: 100%;
+
+    &-icon {
+        margin: 0 0 0 3px;
+        width: 16px;
+        height: 2px;
+        background-color: transparent;
+
+        &::before,
+        &::after {
+            top: 0;
+        }
+
+        &::before {
+            transform: translateY(0) rotate(45deg);
+        }
+
+        &::after {
+            transform: translateY(0) rotate(-45deg);
+        }
+    }
+
+    // hover state when open
+    &:hover {
+        border-color: $base-red;
+    }
+
+    &:hover .app-logo__menu-collapse-icon {
+        background-color: transparent;
+
+        &::before,
+        &::after {
+            background-color: $menu-collapse-btn-hover;
+        }
+    }
+}

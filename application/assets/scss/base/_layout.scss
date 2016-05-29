@@ -55,9 +55,33 @@ body {
     padding: 1rem 2rem;
 }
 
+.app-header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 55px;
+    overflow: hidden;
+    transition: $transition__default-all;
+    background-color: $app-header-bg;
+
+    &::after {
+        content: "";
+        box-shadow: -1px 0 5px rgba(0,0,0, 0.5);
+        position: absolute;
+        right: 0;
+        height: 100%;
+        width: 1px;
+        top: 0;
+    }
+
+    .has-nav-expanded & {
+        width: $nav-width;
+    }
+}
+
 .app-content{
     @extend .wrapper;
-    padding: 2rem;
     min-width: 265px;
     min-height: calc(100vh - 55px);
 }

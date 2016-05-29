@@ -2,29 +2,28 @@
 
     var ViewModel = function (moduleContext) {
 
-
-        var vm = kendo.observable(
-        {
-
+        var vm = kendo.observable({
 
             showMenu: true,
 
-            setHideMenu: function () {
+            // expand/collapse main nav
+            toggleSubnav: toggleSubnavView,
 
-                vm.set("showMenu", false);
-
-            },
-
-
-            showHideMenuStyle: function () {
-
-                if (vm.get("showMenu")) {
-                    return $ct.styles.getBlockStyle();
-                }
-                else {
-                    return $ct.styles.getNoneStyle();
-                }
-            },
+            // toggle active state for subnav
+            showActiveState: toggleSubnavView,
+            
+            // setHideMenu: function () {
+            //     vm.set("showMenu", false);
+            // },
+            //
+            // showHideMenuStyle: function () {
+            //     if (vm.get("showMenu")) {
+            //         return $ct.styles.getBlockStyle();
+            //     }
+            //     else {
+            //         return $ct.styles.getNoneStyle();
+            //     }
+            // },
 
 
             //CODE TO ENABLE INDIVIDUAL MENU ITEMS
@@ -190,18 +189,18 @@
             },
             equipmentSupplyListClick: function (e) {
 
-              
+
                 Boiler.UrlController.goTo($ct.rn.getequipmentSupplyList());
 
             },
             shelterIdentificationListClick: function (e) {
 
-              
+
                 Boiler.UrlController.goTo($ct.rn.getshelterIdentificationList());
 
             },
-            
-            
+
+
 
             isEmployeListClicked: false,
             employeeListClick: function (e) {
@@ -218,20 +217,20 @@
             },
 
             employeeAttendanceClick:function (e) {
-                
+
                 moduleContext.notify($ct.en.getEmployeeAttendenceList(), null);
                 Boiler.UrlController.goTo($ct.rn.getEmployeeAttendance());
             },
 
             shelterStatusClick:function (e) {
-                
+
                 Boiler.UrlController.goTo($ct.rn.getShelterStatus());
             },
             multifacilityEmployeeAttendanceClick: function (e) {
 
                 Boiler.UrlController.goTo($ct.rn.getMultiFacilityEmployeeAttendance());
             },
-            
+
             multifacilityEmployeeExtendedClick: function (e) {
 
                 Boiler.UrlController.goTo($ct.rn.getMultiFacilityEmployeeExtendedList());
@@ -240,8 +239,8 @@
 
                 Boiler.UrlController.goTo($ct.rn.getMultiFacilityEmployeeList());
             }
-            
-            
+
+
             /*
             dashboardClick: function (e) {
 
@@ -288,3 +287,45 @@
 
     return ViewModel;
 });
+
+/**
+ * toogle subnav on click
+ * @param  {Object} event
+ */
+function toggleSubnavView(event) {
+    // prevent event bubbling
+    event.stopPropagation();
+
+    var $ele        = $(event.currentTarget);
+    var $parent     = $ele.parent();
+    var activeClass = getActiveClass($ele);
+    var hasClass    = $ele.hasClass(activeClass);
+
+    // check if class exisit, if yes, just remove
+    if(hasClass) {
+        $ele.removeClass(activeClass);
+    } else {
+        // remove active class from siblings
+        $parent.children().removeClass(activeClass);
+
+        // set active class
+        $ele.addClass(activeClass);
+    }
+}
+
+/**
+ * return which class to add/remove based on the nav depth
+ * @param  {object} $ele
+ * @return {string} class name
+ */
+function getActiveClass($ele) {
+    var mainNav = $ele.hasClass('app-nav__main__li');
+    var subNav  = $ele.hasClass('app-nav__sub__li');
+
+    // check if it is main nav element or subnav
+    if(mainNav){
+        return 'is-mainnav-active';
+    } else if(subNav) {
+        return 'is-subnav-active';
+    }
+}

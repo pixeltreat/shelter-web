@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <!--[if IE 9]> <html class="no-js ie9"> <![endif]-->
 <!--[if (gt IE 9)|!(IE)]><!-->
-<html class="no-js">
+<html class="no-js has-nav-expanded">
 <!--<![endif]-->
 
 <head>
@@ -24,27 +24,44 @@
 
 <body>
     <div class="page-wrap" id="page-content">
+        <!-- accessibility links to skip to content -->
+        <div class="accessibility-links">
+            <a href="#app-nav" target="_self" class="sr-only">skip to Navigation</a>
+            <a href="#app-content" target="_self" class="sr-only">skip to Content</a>
+        </div>
 
         <!-- page header content -->
-        <div id="hd" class="cfx">
-            <div class="common-module"></div>
-            <div class="page-header"></div>
+        <header role="banner" class="app-header" id="hd">
+            <!-- logo and collapse/expand button for mobile -->
+            <div class="app-logo-wrap"></div>
+
+            <!-- navigation -->
             <div class="main-menu"></div>
-            <div class="employee-header" id="idxEmployeeHeader" style="display:none"></div>
-            <div class="alerts"></div>
-        </div>
 
-        <div id="bd" class="cfx">
-            <div class="wrapper cfx">
-                <div class="appcontent"></div>
-                <div id="workareaoverlay" class="overlay"></div>
-            </div>
-        </div>
+            <!-- TODO need to remove the below components -->
+            <div class="common-module" hidden></div>
+            <div class="page-header" hidden></div>
 
+            <div class="employee-header" id="idxEmployeeHeader" hidden></div>
+        </header>
+
+        <!-- main -->
+        <main role="main" class="app-content" id="bd">
+            <!-- page view changes here -->
+            <section class="appcontent app-view"></section>
+
+            <!-- alerts -->
+            <div class="app-alerts-wrap"></div>
+
+            <!-- overlay loader TODO need to update with new design -->
+            <div id="workareaoverlay" class="overlay" hidden></div>
+        </main>
+
+        <!-- footer -->
         <div class="footer"></div>
     </div>
 
-    <div id="commonWindow" class="popupwindow" style="display: none"
+    <div id="commonWindow" class="popupwindow" hidden
         data-role="window"
         data-visible="false"
         data-modal="true" data-iframe="true"
@@ -54,9 +71,9 @@
         </div>
     </div>
 
-    <div id="pageleveloverlay" class="overlay" style="display: block"></div>
+    <div id="pageleveloverlay" class="overlay" hidden></div>
 
-    <div id="messagepopup" class="msg-container"></div>
+    <div id="messagepopup" class="msg-container" hidden></div>
 
     <!-- scripts block -->
     <script src="assets/js/vendor-libs.js"></script>

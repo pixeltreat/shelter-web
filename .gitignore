@@ -1,5 +1,7 @@
 /node_modules/
-*.css
+application/assets/css/*.css
+application/assets/css/*.map
 application/assets/js/vendor-libs.*
 application/assets/js/app-libs.*
 application/assets/js/app-scripts.*
+application/assets/css/kendo.css.map

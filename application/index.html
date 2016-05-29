@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<!--[if IE 9]> <html class="no-js ie9"> <![endif]-->
+<!--[if (gt IE 9)|!(IE)]><!-->
+<html class="no-js">
+<!--<![endif]-->
+
+<head>
+    <title>MSNS App</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta http-equiv="CACHE-CONTROL" content="NO-CACHE">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="description" content="page description for SEO">
+    <meta name="keywords" content="keywords for SEO">
+    <link rel="icon" type="image/x-icon" href="assets/img/favicon.png">
+
+    <!-- styles -->
+    <link rel="stylesheet" type="text/css" href="assets/css/kendo.css">
+    <link rel="stylesheet" type="text/css" href="assets/css/app-styles.css">
+
+    <!-- HTML5 & CSS3 feature detection libs first JS file be load on the page-->
+    <script src="assets/js/modernizr.min.js" type="text/javascript" async></script>
+</head>
+
+<body>
+    <div class="page-wrap" id="page-content">
+
+        <!-- page header content -->
+        <div id="hd" class="cfx">
+            <div class="common-module"></div>
+            <div class="page-header"></div>
+            <div class="main-menu"></div>
+            <div class="employee-header" id="idxEmployeeHeader" style="display:none"></div>
+            <div class="alerts"></div>
+        </div>
+
+        <div id="bd" class="cfx">
+            <div class="wrapper cfx">
+                <div class="appcontent"></div>
+                <div id="workareaoverlay" class="overlay"></div>
+            </div>
+        </div>
+
+        <div class="footer"></div>
+    </div>
+
+    <div id="commonWindow" class="popupwindow" style="display: none"
+        data-role="window"
+        data-visible="false"
+        data-modal="true" data-iframe="true"
+        data-resizable="false">
+        <div id="helpWindow">
+            Common window area
+        </div>
+    </div>
+
+    <div id="pageleveloverlay" class="overlay" style="display: block"></div>
+
+    <div id="messagepopup" class="msg-container"></div>
+
+    <!-- scripts block -->
+    <script src="assets/js/vendor-libs.js"></script>
+    <script src="assets/js/kendo.all.min.js"></script>
+
+    <!-- app libs -->
+    <script src="assets/js/app-libs.js"></script>
+    <script src="assets/js/app-scripts.js" data-main="src/main"></script>
+</body>
+
+</html>

@@ -1,0 +1,19 @@
+// ****************************************
+// kendo-styles
+// ****************************************
+
+@import "kendo/kendo.common-material.min";
+@import "kendo/kendo.material.min";
+
+// @import "content/kendo/2016.2.504/kendo.common.min.css";
+// @import "content/kendo/2016.2.504/kendo.default.min.css";
+// @import "content/kendo/2016.2.504/kendo.dataviz.min.css";
+// @import "content/kendo/2016.2.504/kendo.default.min.css";
+
+// vars, theme, mixins
+@import "base/vars";
+@import "base/theme";
+@import "libs/mixins";
+
+// kendo overrides
+@import "kendo/k-grid";

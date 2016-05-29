@@ -1,0 +1,98 @@
+// ****************************************
+// app-alerts
+// ****************************************
+.app-alerts {
+    position: fixed;
+    right: 0;
+    top: 0;
+    z-index: 9;
+    width: 50px;
+    height: 46px;
+    background-color: $base-white;
+    box-shadow: -2px 0 4px rgba(0,0,0, 0.2);
+    transition: all $transition__default-time-ease;
+
+    &.is-alerts-visible {
+        width: $app-alerts-width;
+        height: 100%;
+    }
+}
+
+.app-alerts__title {
+    background-color: $alerts-title-bg;
+    padding: 12px 15px 13px 25px;
+    text-transform: uppercase;
+    color: $base-white;
+    font-size: 2rem;
+    font-weight: $light;
+    position: relative;
+    line-height: 1;
+    cursor: pointer;
+    min-width: $app-alerts-width;
+
+
+    &::before {
+        @include Arrow(6, right);
+        opacity: 0.5;
+        position: absolute;
+        left: 5px;
+        top: 15px;
+        transition: $transition__default-all;
+
+        .is-alerts-visible & {
+            transform: rotate(180deg);
+        }
+    }
+
+    &__icon {
+        @extend .f-icon;
+        @extend .f-icon__nav-reports;
+        vertical-align: middle;
+    }
+
+    &__text {
+        vertical-align: middle;
+        padding-left: 10px;
+        display: inline-block;
+        opacity: 0;
+        transition: $transition__default-all;
+
+        .is-alerts-visible & {
+            opacity: 1;
+        }
+    }
+}
+
+.app-alerts__list {
+    padding: 0 5px 0 20px;
+    list-style: none;
+    margin: 0;
+    @include drop-down__hide();
+
+    .is-alerts-visible & {
+        @include drop-down__show();
+
+    }
+
+    &__item {
+        padding: 20px 10px 12px 0;
+        border-bottom: 1px solid $border-color;
+        line-height: 1.1;
+        color: $primary-color;
+
+        &:last-child {
+            border-bottom: 0;
+        }
+
+        &__number {
+            font-size: 3.4rem;
+            float: left;
+            margin-right: 5px;
+            line-height: 0.9;
+        }
+
+        &__text {
+            font-size: 1.5rem;
+        }
+    }
+}

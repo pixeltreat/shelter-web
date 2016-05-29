@@ -57,10 +57,7 @@ body {
 
 .app-content{
     @extend .wrapper;
+    padding: 2rem;
     min-width: 265px;
     min-height: calc(100vh - 55px);
-}
-
-.app-view{
-    padding: 2rem 0;
 }

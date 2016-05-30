@@ -9,23 +9,22 @@
         <h2 class="module-title">
             {{nls.header}}
             <a data-bind="click:helpClick">
-                <i class="icon-help-circled">
-                </i>
+                <i class="icon-help-circled"></i>
             </a>
         </h2>
         <div class="module-container">
-            <div class="row grid-select-container gridsearch">
-                <div class="two-of-three-col">
-
-                    <label for="vwmclTxtSearch" class="search-label">
-                        <span class="label">{{nls.lblSearch}}:</span>
-                        <fieldset>
-                            <input type="text" id="vwttlTxtSearch" value="" data-bind="value:searchToken,events:{keyup:seachTransportationTypes}"
-                                   data-value-update="keyup" class="k-textbox searchIcon" />
-                        </fieldset>
+            <div class="gridsearch">
+                <div class="gridsearch__search-col">
+                    <label class="search-label">
+                        <span class="search-label__text">{{nls.lblSearch}}:</span>
+                        <input type="text"
+                            class="search-label__inp"
+                            id="vwttlTxtSearch"
+                            data-bind="value:searchToken,events:{keyup:seachTransportationTypes}"
+                            data-value-update="keyup" />
                     </label>
                 </div>
-                <div class="one-col btn-container pull-right">
+                <div class="gridsearch__btns-col">
                     <button class="btn" data-bind="click:btnAddClick" type="button">
                         {{nls.btnAdd}}
                     </button>

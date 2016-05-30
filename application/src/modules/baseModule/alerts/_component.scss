@@ -20,7 +20,7 @@
 
 .app-alerts__title {
     background-color: $alerts-title-bg;
-    padding: 12px 15px 13px 25px;
+    padding: 10px 15px 10px 22px;
     text-transform: uppercase;
     color: $base-white;
     font-size: 2rem;
@@ -35,19 +35,20 @@
         @include Arrow(6, right);
         opacity: 0.5;
         position: absolute;
-        left: 5px;
+        left: 2px;
         top: 15px;
         transition: $transition__default-all;
 
         .is-alerts-visible & {
             transform: rotate(180deg);
+            left: 8px;
         }
     }
 
     &__icon {
-        @extend .f-icon;
-        @extend .f-icon__nav-reports;
+        @extend .f-icon, .f-icon__alerts;
         vertical-align: middle;
+        font-size: 2.6rem;
     }
 
     &__text {

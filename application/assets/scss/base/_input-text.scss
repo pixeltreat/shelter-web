@@ -1,0 +1,40 @@
+// ****************************************
+// input text
+// ****************************************
+::placeholder {
+    color: $quaternary-color;
+}
+
+input[type="text"],
+.form-inp {
+    font-size: 1.6rem;
+    display: block;
+    border: 1px solid $border-color;
+    padding: 8px;
+    width: 100%;
+    border-radius: $border-radius__width;
+    height: 40px;
+
+    &:hover {
+        border-color: $secondary-color;
+        box-shadow: 0 0 0;
+    }
+
+    &:focus,
+    &:active {
+        border-color: $primary-color;
+        outline: 0;
+        box-shadow: 0 0 0;
+    }
+}
+
+.form-element-with-label {
+    display: block;
+    max-width: 300px;
+    margin-bottom: 20px;
+
+    &__text {
+        display: block;
+        margin-bottom: 5px;
+    }
+}

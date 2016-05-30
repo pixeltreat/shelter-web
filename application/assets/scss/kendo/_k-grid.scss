@@ -3,6 +3,34 @@ $table-odd-row-bg: $quaternary-color;
 $table-header-bg: $secondary-color;
 $table-header-text: $tertiary-color;
 
+.gridsearch {
+    @extend .flex-row, .flex--center;
+    margin: 0 auto 20px;
+
+    &__search-col {
+        @extend .flex-col__1-2;
+    }
+
+    .search-label {
+        display: block;
+
+        &__text,
+        &__inp {
+            display: inline-block;
+            vertical-align: middle;
+        }
+
+        &__inp {
+            max-width: 80%;
+        }
+    }
+
+    &__btns-col {
+        @extend .flex-col__1-2;
+        text-align: right;
+    }
+}
+
 .k-grid,
 .k-grid-header,
 .k-grid-footer,
@@ -30,9 +58,13 @@ $table-header-text: $tertiary-color;
         background-color: $base-white;
     }
 
-    tr:nth-child(odd) td {
-        //background-color: $table-odd-row-bg;
-    }
+    // tr:nth-child(even) {
+    //     background-color: $table-odd-row-bg;
+    //
+    //     &:hover {
+    //         background-color: darken($table-odd-row-bg, 5%);
+    //     }
+    // }
 
     td {
         padding: 10px 15px;

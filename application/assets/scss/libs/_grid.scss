@@ -24,6 +24,9 @@
 }
 
 // grid columns
+.flex-col__1-2 {
+    flex: 1 1 50%;
+}
 .flex-col__1-3 {
     flex: 1 1 33.3333%;
 }
@@ -78,4 +81,24 @@
 // spacing columns
 .flex--space-between {
     justify-content: space-between;
+}
+
+.flex--space-around {
+    justify-content: space-around;
+}
+
+.flex--space-between {
+    justify-content: space-between;
+}
+
+.flex--right-align {
+    justify-content: flex-end;
+}
+
+.flex--left-align {
+    justify-content: flex-start;
+}
+
+.flex--center-align {
+    justify-content: center;
 }

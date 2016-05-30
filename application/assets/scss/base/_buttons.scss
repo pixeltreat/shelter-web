@@ -1,0 +1,79 @@
+// ****************************************
+// buttons
+// ****************************************
+
+// buttons reset
+input[type="button"],
+button {
+    border: 0;
+    outline: 0;
+    cursor: pointer;
+}
+
+// reset shadow for input elements
+input[type] {
+    appearance: none;
+}
+
+// focus outline for accessability
+*:focus {
+    @extend .outline;
+}
+
+// disabled button state
+button:disabled,
+[disabled] {
+    color: #ddd;
+    cursor: not-allowed;
+    opacity: 0.4;
+}
+
+@mixin button() {
+    font-size: 1.4rem;
+    padding: 12px 25px;
+    border-radius: $border-radius__width;
+    display: inline-block;
+    vertical-align: middle;
+    margin: 0;
+    outline: 0;
+    text-align: center;
+    cursor: pointer;
+    user-select: none;
+    border: 1px solid transparent;
+    text-decoration: none;
+    line-height: 1;
+    font-weight: $semi-bold;
+
+    &:hover,
+    &:active,
+    &:focus,
+    &:visited {
+        text-decoration: none;
+    }
+}
+
+.btn {
+    @include button();
+    background-color: $primary-color;
+    color: $base-white;
+
+    &:hover:not(:disabled) {
+        background-color: lighten($primary-color, 10%);
+    }
+
+    &:active:not(:disabled) {
+        background-color: darken($primary-color, 10%);
+    }
+}
+
+.btn + .btn {
+    margin-left: 15px;
+}
+
+.btn__full {
+    width: 100%;
+}
+
+.footer-bts-container {
+    margin-top: 20px;
+}

@@ -20,6 +20,10 @@ html, body{
     padding: 0;
 }
 
+.outline:focus {
+    outline: 1px dotted $border-color;
+}
+
 input[placeholder]{
     text-overflow: ellipsis;
 

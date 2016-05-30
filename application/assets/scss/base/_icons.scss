@@ -38,14 +38,18 @@ $iconsFont: "../fonts/icon-fonts";
     font-smoothing: antialiased;
 }
 
-.f-icon__nav-admin:before { content: "\f100"; }
-.f-icon__nav-contact:before { content: "\f101"; }
-.f-icon__nav-dashboard:before { content: "\f102"; }
-.f-icon__nav-employee:before { content: "\f103"; }
-.f-icon__nav-help:before { content: "\f104"; }
-.f-icon__nav-logout:before { content: "\f105"; }
-.f-icon__nav-refresh:before { content: "\f106"; }
-.f-icon__nav-reports:before { content: "\f107"; }
-.f-icon__nav-shelter:before { content: "\f108"; }
-.f-icon__nav-transport:before { content: "\f109"; }
-.f-icon__nav-user:before { content: "\f10a"; }
+.f-icon__alerts:before { content: "\f100"; }
+.f-icon__delete:before { content: "\f101"; }
+.f-icon__edit:before { content: "\f102"; }
+.f-icon__nav-admin:before { content: "\f103"; }
+.f-icon__nav-contact:before { content: "\f104"; }
+.f-icon__nav-dashboard:before { content: "\f105"; }
+.f-icon__nav-employee:before { content: "\f106"; }
+.f-icon__nav-help:before { content: "\f107"; }
+.f-icon__nav-logout:before { content: "\f108"; }
+.f-icon__nav-refresh:before { content: "\f109"; }
+.f-icon__nav-reports:before { content: "\f10a"; }
+.f-icon__nav-shelter:before { content: "\f10b"; }
+.f-icon__nav-transport:before { content: "\f10c"; }
+.f-icon__nav-user:before { content: "\f10d"; }
+.f-icon__save:before { content: "\f10e"; }

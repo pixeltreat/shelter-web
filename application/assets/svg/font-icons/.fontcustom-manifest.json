@@ -1,0 +1,106 @@
+{
+  "checksum": {
+    "previous": "bcaf08a96b0d655b1d5ac38bb6aefeae8164d12d8d55e6ec2df26916c23d1b48",
+    "current": "bcaf08a96b0d655b1d5ac38bb6aefeae8164d12d8d55e6ec2df26916c23d1b48"
+  },
+  "fonts": [
+    "icon-fonts/icon-fonts_bcaf08a96b0d655b1d5ac38bb6aefeae.ttf",
+    "icon-fonts/icon-fonts_bcaf08a96b0d655b1d5ac38bb6aefeae.svg",
+    "icon-fonts/icon-fonts_bcaf08a96b0d655b1d5ac38bb6aefeae.woff",
+    "icon-fonts/icon-fonts_bcaf08a96b0d655b1d5ac38bb6aefeae.eot"
+  ],
+  "glyphs": {
+    "alerts": {
+      "codepoint": 61696,
+      "source": "svg-source/alerts.svg"
+    },
+    "delete": {
+      "codepoint": 61697,
+      "source": "svg-source/delete.svg"
+    },
+    "edit": {
+      "codepoint": 61698,
+      "source": "svg-source/edit.svg"
+    },
+    "nav-admin": {
+      "codepoint": 61699,
+      "source": "svg-source/nav-admin.svg"
+    },
+    "nav-contact": {
+      "codepoint": 61700,
+      "source": "svg-source/nav-contact.svg"
+    },
+    "nav-dashboard": {
+      "codepoint": 61701,
+      "source": "svg-source/nav-dashboard.svg"
+    },
+    "nav-employee": {
+      "codepoint": 61702,
+      "source": "svg-source/nav-employee.svg"
+    },
+    "nav-help": {
+      "codepoint": 61703,
+      "source": "svg-source/nav-help.svg"
+    },
+    "nav-logout": {
+      "codepoint": 61704,
+      "source": "svg-source/nav-logout.svg"
+    },
+    "nav-refresh": {
+      "codepoint": 61705,
+      "source": "svg-source/nav-refresh.svg"
+    },
+    "nav-reports": {
+      "codepoint": 61706,
+      "source": "svg-source/nav-reports.svg"
+    },
+    "nav-shelter": {
+      "codepoint": 61707,
+      "source": "svg-source/nav-shelter.svg"
+    },
+    "nav-transport": {
+      "codepoint": 61708,
+      "source": "svg-source/nav-transport.svg"
+    },
+    "nav-user": {
+      "codepoint": 61709,
+      "source": "svg-source/nav-user.svg"
+    },
+    "save": {
+      "codepoint": 61710,
+      "source": "svg-source/save.svg"
+    }
+  },
+  "options": {
+    "autowidth": false,
+    "config": "fontcustom.yml",
+    "css_selector": ".f-icon__{{glyph}}",
+    "debug": false,
+    "font_ascent": 448,
+    "font_descent": 64,
+    "font_design_size": 16,
+    "font_em": 512,
+    "font_name": "icon-fonts",
+    "force": false,
+    "input": {
+      "templates": "svg-source",
+      "vectors": "svg-source"
+    },
+    "no_hash": false,
+    "output": {
+      "css": "icon-fonts",
+      "fonts": "icon-fonts",
+      "preview": "icon-fonts"
+    },
+    "preprocessor_path": null,
+    "quiet": false,
+    "templates": [
+      "css",
+      "preview"
+    ]
+  },
+  "templates": [
+    "icon-fonts/icon-fonts.css",
+    "icon-fonts/icon-fonts-preview.html"
+  ]
+}

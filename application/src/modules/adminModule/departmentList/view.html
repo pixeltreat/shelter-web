@@ -2,7 +2,7 @@
     <!--View name : vwDepartmentList-->
     <!--Control id prefix : vwdl-->
 
-    <div class="module cfx">
+    <div class="module">
         <h2 class="module-title">
             {{nls.headerDepartment}} <a data-bind="click:helpClick">
                 <i class="icon-help-circled">
@@ -10,59 +10,82 @@
             </a>
         </h2>
         <div class="module-container">
-            <div class="row grid-select-container gridsearch">
-                <div class="two-of-three-col">
-
-                    <label for="vwdlTxtSearch" class="search-label">
-                        <span class="label">{{nls.lblSearch}}:</span>
-                        <fieldset>
-                            <input type="text" id="vwdlTxtSearch" value="" data-bind="value:searchToken,events:{keyup:seachDepartments}"
-                                   data-value-update="keyup" class="k-textbox searchIcon" />
-                        </fieldset>
+            <div class="gridsearch">
+                <div class="gridsearch__search-col">
+                    <label class="search-label">
+                        <span class="search-label__text">{{nls.lblSearch}}:</span>
+                        <input type="text"
+                            class="search-label__inp"
+                            id="vwdlTxtSearch"
+                            data-bind="value:searchToken,events:{keyup:seachDepartments}"
+                            data-value-update="keyup" />
                     </label>
                 </div>
-                <div class="one-col btn-container pull-right">
+                <div class="gridsearch__btns-col">
                     <button class="btn" data-bind="click:btnAddClick" type="button">
                         {{nls.btnAdd}}
                     </button>
-                    <button class="btn" type="button" data-bind="enabled:isRowSelected,click:btnEditClick">
+                    <!-- <button class="btn" type="button" data-bind="enabled:isRowSelected,click:btnEditClick">
                         {{nls.btnEdit}}
                     </button>
                     <button class="btn" type="button" data-bind="enabled:isRowSelected,click:btnDeleteClick">
                         {{nls.btnDelete}}
-                    </button>
-                    <!--<a class="btn export-excel">Export Excel</a>-->
+                    </button> -->
                 </div>
             </div>
+
             <div class="table-wrapper">
                 <table id="vwdlDgDepartment" cellspacing="0" cellpadding="0" border="0" class="grid split-table rwd-table1"
-                       data-bind="source:dsDepartments, events: { change: rowSelectionChange }" data-role="grid"
-                       data-filterable="true"
-                       data-sortable='{ "mode": "single", "allowUnsort": false }'
-                       data-row-template="vwdlRow-template"
-                       data-selectable="true"
-                       data-columns="[
-                         {field:'Name',title:'{{nls.gdColName}}'},
-                         {field:'Description',title:'{{nls.gdColDescription}}' },
-                         {field:'AgenciesForDisplay',title:'{{nls.gdColAgenciesForDisplay}}'} ,
-                         {field:'DisplayOrder',title:'{{nls.gdColDisplayOrder}}'},
-                         {field:'UpdatedByUserName',title:'{{nls.gdColUpdatedByUserName}}'},
-                         {field:'UpdatedOn',title:'{{nls.gdColUpdatedOnValue}}',filterable:false}  ]"
-                       data-pageable="true"></table>
+                    data-bind="source:dsDepartments, events: { change: rowSelectionChange }" data-role="grid"
+                    data-filterable="true"
+                    data-sortable='{ "mode": "single", "allowUnsort": false }'
+                    data-row-template="vwdlRow-template"
+                    data-selectable="true"
+                    data-columns="[
+                        {width:'40px'},
+                        {title:'Edit',width:'60px'},
+                        {title:'Delete',width:'70px'},
+                        {field:'Name',title:'{{nls.gdColName}}'},
+                        {field:'Description',title:'{{nls.gdColDescription}}' },
+                        {field:'AgenciesForDisplay',title:'{{nls.gdColAgenciesForDisplay}}'} ,
+                        {field:'DisplayOrder',title:'{{nls.gdColDisplayOrder}}'},
+                        {field:'UpdatedByUserName',title:'{{nls.gdColUpdatedByUserName}}'},
+                        {field:'UpdatedOn',title:'{{nls.gdColUpdatedOnValue}}',filterable:false}
+                    ]"
+                    data-pageable="true">
+                </table>
             </div>
         </div>
     </div>
     <script type="text/x-kendo-template" id="vwdlRow-template">
         <tr>
+            <td>
+                <label class="checkbox">
+                    <input class="checkbox__inp" value="row{number}" type="checkbox" name="row{number}">
+                    <span class="checkbox__text"></span>
+                </label>
+            </td>
+            <td>
+                <button class="btn-edit">
+                    <span class="f-icon f-icon__edit" aria-hidden="true"></span>
+                    <span class="f-icon__text">Edit</span>
+                </button>
+            </td>
+            <td>
+                <button class="btn-delete">
+                    <span class="f-icon f-icon__delete" aria-hidden="true"></span>
+                    <span class="f-icon__text">Delete</span>
+                </button>
+            </td>
             <td data-title="{{nls.gdColName}}">
                 ${Name}
             </td>
-            <td data-title="{{nls.gdColDescription}}">   
+            <td data-title="{{nls.gdColDescription}}">
                 ${Description}
             </td>
             <td data-title="{{nls.gdColAgenciesForDisplay}}">
                 <span data-bind="html: AgenciesForDisplay"></span>
-            </td> 
+            </td>
             <td data-title="{{nls.gdColDisplayOrder}}">
                 ${DisplayOrder}
             </td>
@@ -72,8 +95,7 @@
             <td data-title="{{nls.gdColUpdatedOnValue}}">
                 ${UpdatedOnValue}
             </td>
-            
-            
+
+
         </tr>
     </script>
-

@@ -2,16 +2,7 @@
     <!--View name : vwTransportationType-->
     <!--Control id prefix : vwtt-->
 
-    <!-- <div class="two-col btnmaintop">
-        <button type="button" class="btn" data-bind="click:btnSaveClick">
-            {{nls.btnSave}}
-        </button>
-        <button type="button" class="btn" data-bind="click:btnCancelClick">
-            {{nls.btnCancel}}
-        </button>
-    </div> -->
-
-    <div class="module module--add-form">
+    <div class="module">
         <h2 class="module-title">{{nls.headerAddEditStaffType}}</h2>
         <div class="module-container">
             <label class="form-element-with-label">
@@ -34,25 +25,10 @@
                        data-bind="value:transportationTypeData.TransportationType.DisplayOrder}" />
                 <span class="k-invalid-msg" data-for="vwttTaDisplayOrder"></span>
             </label>
-
-            <!-- <table cellspacing="0" cellpadding="0" border="0" class="grid split-table two-col-grid gridmobilev">
-                <tbody>
-
-                    <tr>
-                        <td class="tdtitle">{{nls.lblDisplayOrder}}</td>
-                        <td>
-                            <span data-bind="attr:{class: setValidClassForDisplayOrder,className:setValidClassForDisplayOrder }">
-
-                            </span>
-                            <span class="k-invalid-msg" data-for="vwttTaDisplayOrder"></span>
-                        </td>
-                        <tr>
-                </tbody>
-            </table> -->
         </div>
     </div>
 
-    <div class="btnmainbot footer-bts-container">
+    <div class="footer-bts-container">
         <button type="button" class="btn" data-bind="click:btnSaveClick">
             {{nls.btnSave}}
         </button>

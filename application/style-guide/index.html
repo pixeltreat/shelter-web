@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<!--[if IE 9]> <html class="no-js ie9"> <![endif]-->
+<!--[if (gt IE 9)|!(IE)]><!-->
+<html class="no-js">
+<!--<![endif]-->
+<head>
+    <title>Style guide</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta http-equiv="CACHE-CONTROL" content="NO-CACHE">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <link rel="icon" type="image/x-icon" href="../../assets/img/favicon.png">
+
+    <!-- styles -->
+    <link rel="stylesheet" type="text/css" href="../assets/css/kendo.css">
+    <link rel="stylesheet" type="text/css" href="../assets/css/app-styles.css">
+    <link rel="stylesheet" type="text/css" href="style-guide.css">
+
+    <!-- HTML5 & CSS3 feature detection libs first JS file be load on the page-->
+    <script src="../assets/js/modernizr.min.js" async></script>
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+    <script src="style-guide.js" defer></script>
+
+</head>
+
+<body>
+    <div class="styleguide-page">
+        <!-- page header content -->
+        <header role="banner" class="styleguide-page__header">
+            <div class="app-logo">
+                <a href="/" class="app-logo__link">MSNS logo</a>
+
+                <h2 class="styleguide-page__header-title">Visual style guide</h2>
+            </div>
+
+            <div class="side-nav">
+                <nav role="navigation" aria-label="Primary Navigation" class="style-guide-nav">
+                    <ul>
+                        <li><a href="#form-elements">Form Elements</a></li>
+                        <!-- <li><a href="#color-palette">Color Palette</a></li>
+                        <li><a href="#typography">Typography</a></li>
+                        <li><a href="#page-search">Page Search</a></li>
+                        <li><a href="#tables">Tables</a></li> -->
+                        <li><a href="#glyphs">Glyphs</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </header>
+
+        <!-- main -->
+        <main role="main" class="styleguide-page__main">
+
+            <article id="form-elements" class="styleguide__form-elements">
+                <h2 class="subsection-title">
+                    <strong class="subsection-number">Form Elements</strong>
+                    <span class="snippet-toggle">code snippet</span>
+                </h2>
+
+                <div class="flex-row">
+                    <div class="flex-col__1-2">
+                        <!-- form input -->
+                        <h3 class="nested-sub-title">Input Text</h3>
+                        <div class="code-sample">
+                            <label class="form-element-with-label">
+                                <span class="form-element-with-label__text">Normal</span>
+                                <input type="text" class="form-element-with-label__inp" />
+                            </label>
+
+                            <label class="form-element-with-label">
+                                <span class="form-element-with-label__text">Invalid with message</span>
+                                <input type="text" class="form-element-with-label__inp k-invalid" />
+                                <span class="k-widget k-tooltip k-tooltip-validation k-invalid-msg" role="alert">
+                                    <span class="k-icon k-warning"></span> Invalid message
+                                </span>
+                            </label>
+                        </div>
+                    </div>
+                    <div class="flex-col__1-2">
+                        <!-- form text area -->
+                        <h3 class="nested-sub-title">Textarea</h3>
+                        <div class="code-sample">
+                            <label class="form-element-with-label">
+                                <span class="form-element-with-label__text">Normal</span>
+                                <textarea class="form-element-with-label__inp"></textarea>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="flex-row">
+                    <div class="flex-col__1-2">
+                        <!-- radio -->
+                        <h3 class="nested-sub-title">Radio Button</h3>
+                        <div class="code-sample">
+                            <label class="radio-button">
+                                <input class="radio-button__inp" checked type="radio">
+                                <span class="radio-button__text">Normal</span>
+                            </label>
+                            <label class="radio-button">
+                                <input class="radio-button__inp" checked type="radio">
+                                <span class="radio-button__text">Checked</span>
+                            </label>
+                            <label class="radio-button">
+                                <input class="radio-button__inp" disabled type="radio">
+                                <span class="radio-button__text">Disabled</span>
+                            </label>
+                            <label class="radio-button">
+                                <input class="radio-button__inp" checked disabled type="radio">
+                                <span class="radio-button__text">Checked and Disabled</span>
+                            </label>
+                        </div>
+                    </div>
+                    <div class="flex-col__1-2">
+                        <!-- checkbox -->
+                        <h3 class="nested-sub-title">Checkbox</h3>
+                        <div class="code-sample">
+                            <label class="checkbox">
+                                <input class="checkbox__inp" type="checkbox">
+                                <span class="checkbox__text">Normal</span>
+                            </label>
+                            <label class="checkbox">
+                                <input class="checkbox__inp" checked type="checkbox">
+                                <span class="checkbox__text">Checked</span>
+                            </label>
+
+                            <label class="checkbox">
+                                <input class="checkbox__inp" disabled type="checkbox">
+                                <span class="checkbox__text">Disabled</span>
+                            </label>
+
+                            <label class="checkbox">
+                                <input class="checkbox__inp" checked disabled type="checkbox">
+                                <span class="checkbox__text">Checked and Disabled</span>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="flex-row">
+                    <div class="flex-col__1-2">
+                        <!-- checkbox -->
+                        <h3 class="nested-sub-title">Checkbox</h3>
+                        <div class="code-sample">
+                            <button class="btn">Normal Button</button>
+                            <button class="btn" disabled>Disabled Button</button>
+                        </div>
+                    </div>
+                    <div class="flex-col__1-2"></div>
+                </div>
+                <div class="flex-row">
+                    <div class="flex-col__1-2"></div>
+                    <div class="flex-col__1-2"></div>
+                </div>
+
+                <!-- go to top link -->
+                <div class="back-to-top"><a href="#">Go to top</a></div>
+            </article>
+
+
+            <article id="glyphs" class="styleguide__glyphs">
+                <h2 class="subsection-title">
+                    <strong class="subsection-number">Icons</strong>
+                    <span class="snippet-toggle">code snippet</span>
+                </h2>
+                <div class="glyphs-container">
+                    <div class="code-sample">
+                        <span class="f-icon f-icon__alerts"></span>
+                        <span class="f-icon f-icon__delete"></span>
+                        <span class="f-icon f-icon__edit"></span>
+                        <span class="f-icon f-icon__nav-admin"></span>
+                        <span class="f-icon f-icon__nav-contact"></span>
+                        <span class="f-icon f-icon__nav-dashboard"></span>
+                        <span class="f-icon f-icon__nav-employee"></span>
+                        <span class="f-icon f-icon__nav-help"></span>
+                        <span class="f-icon f-icon__nav-logout"></span>
+                        <span class="f-icon f-icon__nav-refresh"></span>
+                        <span class="f-icon f-icon__nav-reports"></span>
+                        <span class="f-icon f-icon__nav-shelter"></span>
+                        <span class="f-icon f-icon__nav-transport"></span>
+                        <span class="f-icon f-icon__nav-user"></span>
+                        <span class="f-icon f-icon__save"></span>
+                    </div>
+                </div>
+                <!-- go to top link -->
+                <div class="back-to-top"><a href="#">Go to top</a></div>
+            </article>
+        </main>
+
+        <!-- footer -->
+        <div  class="styleguide-page__footer app-footer">
+            <p>
+                <span class="app-footer__copyright-text">&copy; <strong>ComTec</strong> Information Systems.</span>
+                <span class="app-footer__rights-text">All rights reserved 2016</span>
+            </p>
+        </div>
+    </div>
+</body>
+
+</html>

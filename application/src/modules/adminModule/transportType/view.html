@@ -11,41 +11,44 @@
         </button>
     </div> -->
 
-    <div class="module cfx no-margin-top">
+    <div class="module module--add-form">
         <h2 class="module-title">{{nls.headerAddEditStaffType}}</h2>
         <div class="module-container">
             <label class="form-element-with-label">
                 <span class="form-element-with-label__text">{{nls.lblName}}</span>
-                <input type="text" id="vwttTbName" name="vwstTbName" type="text" maxlength="250" data-bind="value:transportationTypeData.TransportationType.Name" required validationmessage="{{nls.valmsgNameRequired}}">
+                <input type="text" id="vwttTbName" name="vwstTbName" type="text" maxlength="250" class="form-element-with-label__inp" data-bind="value:transportationTypeData.TransportationType.Name" required validationmessage="{{nls.valmsgNameRequired}}">
                 <span class="k-invalid-msg" data-for="vwbtTbName"></span>
             </label>
 
             <label class="form-element-with-label">
                 <span class="form-element-with-label__text">{{nls.lblDescription}}</span>
-                <textarea id="vwttTaDescription" name="vwttTaDescription" data-bind="value:transportationTypeData.TransportationType.Description,attr:{maxlength: DescriptionLength} " required validationmessage="{{nls.valmsgDescriptionRequired}}" rows="5"></textarea>
+                <textarea id="vwttTaDescription" name="vwttTaDescription" class="form-element-with-label__inp" data-bind="value:transportationTypeData.TransportationType.Description,attr:{maxlength: DescriptionLength} " required validationmessage="{{nls.valmsgDescriptionRequired}}" rows="5"></textarea>
                 <span class="k-invalid-msg" data-for="vwdTaDescription"></span>
             </label>
 
+            <label class="form-element-with-label">
+                <span class="form-element-with-label__text">{{nls.lblDisplayOrder}}</span>
+                <input type="text" id="vwttTaDisplayOrder" name="vwttTaDisplayOrder"  class="form-element-with-label__inp"
+                       data-role="numerictextbox" min="1" max="1000" data-format="n0" data-decimals="0" data-spinners="false"
+                       required validationmessage="{{nls.valmsgDisplayOrderRequired}}"
+                       data-bind="value:transportationTypeData.TransportationType.DisplayOrder}" />
+                <span class="k-invalid-msg" data-for="vwttTaDisplayOrder"></span>
+            </label>
 
-            <table cellspacing="0" cellpadding="0" border="0" class="grid split-table two-col-grid gridmobilev">
+            <!-- <table cellspacing="0" cellpadding="0" border="0" class="grid split-table two-col-grid gridmobilev">
                 <tbody>
 
                     <tr>
                         <td class="tdtitle">{{nls.lblDisplayOrder}}</td>
                         <td>
                             <span data-bind="attr:{class: setValidClassForDisplayOrder,className:setValidClassForDisplayOrder }">
-                                <fieldset>
-                                    <input type="text" id="vwttTaDisplayOrder" name="vwttTaDisplayOrder"
-                                           data-role="numerictextbox" min="1" max="1000" data-format="n0" data-decimals="0" data-spinners="false"
-                                           required validationmessage="{{nls.valmsgDisplayOrderRequired}}"
-                                           data-bind="value:transportationTypeData.TransportationType.DisplayOrder}" />
-                                </fieldset>
+
                             </span>
                             <span class="k-invalid-msg" data-for="vwttTaDisplayOrder"></span>
                         </td>
                         <tr>
                 </tbody>
-            </table>
+            </table> -->
         </div>
     </div>
 

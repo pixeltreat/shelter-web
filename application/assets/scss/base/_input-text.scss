@@ -1,19 +1,14 @@
 // ****************************************
 // input text
 // ****************************************
-::placeholder {
-    color: $quaternary-color;
-}
 
-input[type="text"],
-.form-inp {
+@mixin inputStyles() {
     font-size: 1.6rem;
     display: block;
     border: 1px solid $border-color;
     padding: 8px;
     width: 100%;
     border-radius: $border-radius__width;
-    height: 40px;
 
     &:hover {
         border-color: $secondary-color;
@@ -26,6 +21,30 @@ input[type="text"],
         outline: 0;
         box-shadow: 0 0 0;
     }
+
+    &.k-invalid {
+        &,
+        &:hover,
+        &:focus,
+        &:active {
+            border-color: $base-red;
+        }
+    }
+}
+
+// reset shadow for input elements
+input[type="text"] {
+    appearance: none;
+}
+
+::placeholder {
+    color: $quaternary-color;
+}
+
+input[type="text"],
+.form-inp {
+    @include inputStyles();
+    height: 40px;
 }
 
 .form-element-with-label {
@@ -37,4 +56,23 @@ input[type="text"],
         display: block;
         margin-bottom: 5px;
     }
+
+    &__inp {
+
+    }
+}
+
+textarea {
+    @include inputStyles();
+    min-height: 160px;
+}
+
+// invalid message ref: k-widget k-tooltip
+.k-tooltip-validation.k-invalid-msg {
+    box-shadow: none;
+    background: none;
+    border: 0;
+    padding: 0;
+    margin-top: 6px;
+    color: $base-red;   
 }

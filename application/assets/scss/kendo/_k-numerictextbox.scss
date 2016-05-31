@@ -1,0 +1,14 @@
+.k-widget.k-numerictextbox {
+    width: 100%;
+}
+
+.k-numeric-wrap {
+    &.k-state-hover,
+    &.k-state-focused {
+        box-shadow: 0 0 0;
+    }
+
+    &::before {
+        display: none;
+    }
+}

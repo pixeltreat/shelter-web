@@ -45,7 +45,6 @@ $table-header-text: $tertiary-color;
     background-color: $table-header-bg;
     color: $tertiary-color;
     font-weight: $bold;
-    letter-spacing: 1px;
 
     .k-link {
         text-decoration: none;
@@ -53,20 +52,41 @@ $table-header-text: $tertiary-color;
     }
 }
 
+.k-grid td.k-state-selected,
+.k-grid tr.k-state-selected>td {
+    border-color: $table-border;
+}
+
 .k-grid-content {
     table {
         background-color: $base-white;
     }
 
-    // tr:nth-child(even) {
-    //     background-color: $table-odd-row-bg;
-    //
-    //     &:hover {
-    //         background-color: darken($table-odd-row-bg, 5%);
-    //     }
-    // }
+    tr:nth-child(even) {
+        background-color: $table-odd-row-bg;
+
+        &:hover {
+            background-color: darken($table-odd-row-bg, 5%);
+        }
+    }
 
     td {
         padding: 10px 15px;
     }
+}
+
+.k-grid tr.k-state-selected td,
+.k-grid tr.k-state-selected:hover td{
+    background-color: transparent;
+}
+
+.k-grid tr.k-state-selected,
+.k-grid tr.k-state-selected:hover {
+    background-color: rgba($primary-color, 0.3);
+    color: $tertiary-color;
+}
+
+.k-pager-numbers .k-state-selected {
+    border-color: $primary-color transparent transparent;
+    color: $primary-color;
 }

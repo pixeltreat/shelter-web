@@ -2,32 +2,7 @@
 // buttons
 // ****************************************
 
-// buttons reset
-input[type="button"],
-button {
-    border: 0;
-    outline: 0;
-    cursor: pointer;
-}
-
-// reset shadow for input elements
-input[type] {
-    appearance: none;
-}
-
-// focus outline for accessability
-*:focus {
-    @extend .outline;
-}
-
-// disabled button state
-button:disabled,
-[disabled] {
-    color: #ddd;
-    cursor: not-allowed;
-    opacity: 0.4;
-}
-
+// mixins for code DRY
 @mixin button() {
     font-size: 1.4rem;
     padding: 12px 25px;
@@ -50,6 +25,42 @@ button:disabled,
     &:visited {
         text-decoration: none;
     }
+}
+
+@mixin iconButton($color, $gridIcon:false) {
+    background: transparent;
+    font-size: 2rem;
+    padding: 0;
+    width: 24px;
+    height: 24px;
+    color: $color;
+
+    // @if $gridIcon {
+    //     .k-state-selected & {
+    //         text-shadow: 0 1px 2px rgba(0,0,0, 0.6);
+    //     }
+    // }
+}
+
+// buttons reset
+input[type="button"],
+button {
+    border: 0;
+    outline: 0;
+    cursor: pointer;
+}
+
+// focus outline for accessability
+*:focus {
+    @extend .outline;
+}
+
+// disabled button state
+button:disabled,
+[disabled] {
+    color: #ddd;
+    cursor: not-allowed;
+    opacity: 0.4;
 }
 
 .btn {
@@ -76,4 +87,12 @@ button:disabled,
 
 .footer-bts-container {
     margin-top: 20px;
+}
+
+.btn-edit {
+    @include iconButton($color: #f93, $gridIcon: true);
+}
+
+.btn-delete {
+    @include iconButton($color: $base-red, $gridIcon: true);
 }

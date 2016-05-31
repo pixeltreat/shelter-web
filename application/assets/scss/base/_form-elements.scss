@@ -3,4 +3,12 @@
 // ****************************************
 @import "input-text";
 @import "buttons";
-@import "checkbox";
+@import "checkbox-and-radio-button";
+
+.form-list {
+    @extend %no-list;
+
+    li {
+        margin: 10px 0;
+    }
+}

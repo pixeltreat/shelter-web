@@ -1,0 +1,115 @@
+// ****************************************
+// checkbox-and-radio-button
+// ****************************************
+
+@mixin commonCheckRadioStyles() {
+    display: inline-block;
+    position: relative;
+    box-sizing: content-box;
+
+    &__inp {
+        visibility: hidden;
+        opacity: 0;
+        position: absolute;
+        left: 0;
+    }
+
+    &__text {
+        display: inline-block;
+        vertical-align: middle;
+        position: relative;
+        font-size: 1.4rem;
+        cursor: inherit;
+        line-height: 1.4;
+        cursor: pointer;
+    }
+
+    &__text::before {
+        display: inline-block;
+        vertical-align: middle;
+        cursor: inherit;
+        content: "";
+        height: 18px;
+        width: 18px;
+        background: $base-white;
+        transition: $transition__default-all;
+        border: 3px solid $primary-color;
+        margin-right: 5px;
+    }
+
+    &__text::after {
+    	opacity: 0;
+    	content: '';
+    	position: absolute;
+        transition: $transition__default-all;
+    }
+
+    // checked
+    &__inp:checked + &__text::after {
+        opacity: 1;
+    }
+
+    // hover
+    &:hover &__inp:not(:checked, :disabled) + &__text::after {
+        opacity: 0.3;
+    }
+
+    // disabled
+    &__inp:disabled + &__text{
+        cursor: not-allowed;
+
+        &::before{
+            opacity: 0.3;
+        }
+    }
+
+    // disabled and checked
+    &__inp:disabled:checked + &__text::after {
+        opacity: 0.3;
+    }
+}
+
+// ****************************************
+// checkbox
+// ****************************************
+
+.checkbox {
+    @include commonCheckRadioStyles();
+
+    &__text::before {
+        border-radius: $border-radius__width;
+        box-shadow: inset 0 1px 1px rgba(0,0,0,0.5), 0 1px 0 rgba(255,255,255,0.2);
+    }
+
+    &__text::after {
+        top: 8px;
+        left: 6px;
+        width: 9px;
+        height: 4px;
+    	background: transparent;
+    	border: 3px solid $primary-color;
+    	border-top: none;
+    	border-right: none;
+    	transform: rotate(-45deg);
+    }
+}
+
+// ****************************************
+// radio-button
+// ****************************************
+.radio-button {
+    @include commonCheckRadioStyles();
+
+    &__text:before {
+        border-radius: 100%;
+    }
+
+    &__text:after {
+        top: 6px;
+        left: 6px;
+        width: 12px;
+        height: 12px;
+        background: $primary-color;
+        border-radius: 100%;
+    }
+}

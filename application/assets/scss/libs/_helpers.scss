@@ -63,3 +63,7 @@ img{
         clear: both;
     }
 }
+
+.no-list {
+    @extend %no-list;
+}

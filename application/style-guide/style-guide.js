@@ -120,7 +120,7 @@ function scrollNav() {
     $("nav a").click(function(e) {
         e.preventDefault();
         $('html,body').animate({
-            scrollTop: $(this.hash).offset().top
+            scrollTop: ($(this.hash).offset().top - 100)
         }, 600);
 
     });
@@ -141,7 +141,7 @@ function scrollNav() {
 
         for (var i = 0; i < aArray.length; i++) {
             var theID = aArray[i],
-                divPos = $(theID).offset().top - 50,
+                divPos = $(theID).offset().top - 100,
                 divHeight = $(theID).height();
 
             if (windowPos >= divPos && windowPos < (divPos + divHeight)) {

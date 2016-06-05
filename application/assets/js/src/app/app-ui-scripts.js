@@ -3,41 +3,43 @@ $(document).ready(function (e) {
     var $appContent = $('#bd');
 
     // alerts
-    $appContent.on('click', '.app-alerts', function(){
-        $(this).toggleClass('is-alerts-visible');
+    $appContent.on('click', '.app-alerts', alertsToggle);
+
+    // navigation view toggle
+    $appHeader.on({
+        'mouseenter': showNavPanel,
+        'mouseleave': hideNavPanel
     });
 
-    // // submenu
-    // $appHeader.on('click', '.admin', function (e) {
-	// 	$(this).toggleClass('active');
-	// 	$(this).find('.sub-nav').slideToggle();
-	// 	$(this).find('.sub-nav').toggleClass('collapse');
-	// });
-    //
-    // $appHeader.on('mouseleave', '.admin', function (e) {
-	// 	$(this).find('.sub-nav').slideUp();
-	// 	$(this).find('.sub-nav').removeClass('collapse');
-	// 	$($(this)).removeClass('active');
-    // });
-    //
-    // $appHeader.on('click', '.nav a', function (e) {
-	// 	e.preventDefault();
-	// });
-
-
-    /* mobile specific */
-    // $appHeader.on('click', '.m-menu', function (e) {
-    //     // toggle navigation
-    //     $(this).toggleClass('active');
-    //     $('.main-nav').toggleClass('expand');
-    // });
-
-    /*Start of closing error window event*/
-    $('.msg-container').on('click', '.close-btn', function (e) {
-        $(this).closest('.msg-container').animate({
-            bottom: -($('.msg-container').height() + 20)
-        }, function () { $('.msg-container').empty(); });
-    });
-    /*End of closing error window event*/
-
+    // hide nav when close button clicked
+    $appHeader.on('click', '.app-logo__menu-collapse', hideNavPanel);
 });
+
+/**
+ * root HTML element
+ * @type {object}
+ */
+var rootEle = document.documentElement;
+
+/**
+ * Toggle alerts view on the page
+ * @param  {object} e event
+ */
+function alertsToggle(e){
+    var alertsEle = e.currentTarget;
+    $(alertsEle).toggleClass('is-alerts-visible');
+}
+
+/**
+ * show navigation panel
+ */
+function showNavPanel() {
+    $(rootEle).addClass('has-nav-expanded');
+}
+
+/**
+ * hide navigation panel
+ */
+function hideNavPanel() {
+    $(rootEle).removeClass('has-nav-expanded');
+}

@@ -1,0 +1,44 @@
+// ****************************************
+// kendo grid/table
+// ****************************************
+
+.k-combobox.k-header,
+.k-dropdown-wrap.k-state-default {
+    border-color: $inp-normal-border;
+    box-shadow: 0 0 0;
+    width: 100%;
+    max-width: 300px;
+    box-sizing: border-box;
+}
+
+.k-dropdown-wrap {
+    &.k-state-hover,
+    &.k-state-hover > .k-select {
+        border-color: $inp-hover-border;
+    }
+
+    &.k-state-active,
+    &.k-state-active > .k-select {
+        border-color: $inp-focus-border;
+        box-shadow: 0 0 0;
+    }
+}
+
+.k-dropdown-wrap > .k-select {
+    background-color: transparent;
+    border-color: $inp-normal-border;
+}
+
+.k-popup.k-list-container {
+    border-color: $inp-normal-border;
+}
+
+.k-popup .k-list .k-item {
+    border-bottom: 1px solid $border-color;
+}
+
+.k-list>.k-item.k-state-selected,
+.k-list>.k-state-hover {
+    background-color: $secondary-color;
+    color: $tertiary-color;
+}

@@ -7,7 +7,7 @@ $primary-color            : #375D81;
 $secondary-color          : #ABC8E2;
 $tertiary-color           : #183152;
 $quaternary-color         : #F8F8F8;
-$quinary-color            : ;
+$quinary-color            : #333;
 
 // base colors
 $base-white               : #fff;
@@ -44,4 +44,13 @@ $footer-border            : $secondary-color;
 $footer-text              : $primary-color;
 
 // alerts
-$alerts-title-bg: #689f38;
+$alerts-title-bg          : #689f38;
+
+// input states
+$inp-normal-border        : $primary-color;
+$inp-focus-border         : $primary-color;
+$inp-hover-border         : $secondary-color;
+$inp-disabled-bg          : #f2f2f2;
+$inp-disabled-border      : #b2b2b2;
+$inp-sucess-border        : #43a047;
+$inp-error-border         : #e53935;

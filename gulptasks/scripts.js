@@ -1,5 +1,5 @@
 'use strict';
-/*jshint -W024 */
+/* jshint node: true */
 
 var gulp        = require('gulp');
 var plugins     = require('gulp-load-plugins')();
@@ -12,40 +12,46 @@ var config      = require('../config');
 var base     = config.base;
 var filepath = config.filepath;
 
-var files = [
-    {
-        name: 'vendor-libs',
-        path: filepath.vendorLibs
-    },
-    {
-        name: 'app-libs',
-        path: filepath.appLibs
-    },
-    {
-        name: 'app-scripts',
-        path: filepath.appScripts
-    }
-];
+var scripts = {};
 
-function concateScripts(watch, entry) {
+scripts.vendorLibs = function (watch){
     return gulp
-        .src( entry.path )
-        .pipe(plugins.sourcemaps.init())
-        .pipe(plugins.concat(entry.name +'.js'))
+    .src( filepath.vendorLibs )
+    .pipe(plugins.sourcemaps.init())
+    .pipe(plugins.concat('vendor-libs.js'))
 
-        .pipe(plugins.sourcemaps.write('.'))
-        .pipe(gulp.dest(base.js));
+    .pipe(plugins.sourcemaps.write('.'))
+    .pipe(gulp.dest(base.js))
 
-        // .pipe( plugins.if( watch, reload({stream: true}) ) )
-        // .pipe( plugins.size( {title: 'JS bundled'} ) );
-}
-
-module.exports = function (watch) {
-
-    var tasks = files.forEach(function(entry){
-        concateScripts(watch, entry);
-    });
-
-    // create a merged stream
-    return es.merge.apply(null, tasks);
+    .pipe( plugins.if( watch, reload({stream: true}) ) )
+    .pipe( plugins.size( {title: 'JS bundled'} ) );
 };
+
+scripts.appLibs = function (watch){
+    return gulp
+    .src( filepath.appLibs )
+    .pipe(plugins.sourcemaps.init())
+    .pipe(plugins.concat('app-libs.js'))
+
+    .pipe(plugins.sourcemaps.write('.'))
+    .pipe(gulp.dest(base.js))
+
+    .pipe( plugins.if( watch, reload({stream: true}) ) )
+    .pipe( plugins.size( {title: 'JS bundled'} ) );
+};
+
+scripts.appScripts = function (watch){
+    return gulp
+    .src( filepath.appScripts )
+    .pipe(plugins.sourcemaps.init())
+    .pipe(plugins.concat('app-scripts.js'))
+
+    .pipe(plugins.sourcemaps.write('.'))
+    .pipe(gulp.dest(base.js))
+
+    .pipe( plugins.if( watch, reload({stream: true}) ) )
+    .pipe( plugins.size( {title: 'JS bundled'} ) );
+};
+
+// export scripts object
+module.exports = scripts;

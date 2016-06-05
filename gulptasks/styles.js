@@ -1,5 +1,5 @@
 'use strict';
-/*jshint -W024 */
+/* jshint node: true */
 var gulp        = require('gulp');
 var plugins     = require('gulp-load-plugins')();
 var cleanCSS    = require('gulp-clean-css');

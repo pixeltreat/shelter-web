@@ -1,4 +1,5 @@
 'use strict';
+/* jshint node: true */
 var browserSync = require('browser-sync');
 var config      = require('../config');
 
@@ -7,7 +8,7 @@ var buildFolder = config.base.root;
 
 module.exports = function() {
 	browserSync({
-		files: ['application/**/*.html', 'application/**/*.js'],
+		files: ['application/**/*.html'],
 		notify: false,
 		server: { baseDir: buildFolder }
    });

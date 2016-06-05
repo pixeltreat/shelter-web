@@ -1,0 +1,34 @@
+// ****************************************
+// color palette
+// ****************************************
+
+// set contrast color based on the background color
+@function contrast-color($color) {
+    @if (lightness( $color ) > 50) {
+      @return darken($color, 45%);
+    }
+    @else {
+      @return lighten($color, 45%);
+    }
+}
+
+// colors array
+$colors: (
+    'primary'   : $primary-color,
+    'secondary' : $secondary-color,
+    'tertiary'  : $tertiary-color,
+    'quaternary': $quaternary-color,
+    'quinary'   : $quinary-color
+);
+
+// loop through the $colors and print selectors for each one.
+@each $name, $color in $colors {
+    .#{$name}-bg {
+      background: $color;
+      color: contrast-color($color);
+    }
+
+    .#{$name}-text {
+      color: $color;
+    }
+}

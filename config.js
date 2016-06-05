@@ -1,4 +1,5 @@
 'use strict';
+/* jshint node: true */
 var root   = 'application';
 var assets = 'application/assets';
 var scss   = assets + '/scss';

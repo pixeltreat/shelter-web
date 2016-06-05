@@ -4,7 +4,7 @@
  */
 
  'use strict';
- /*jshint -W024 */
+ /* jshint node: true */
 
  // Include gulp
  var gulp          = require('gulp');
@@ -25,12 +25,20 @@
 
  // compile styles
  gulp.task('styles', function() {
-   return stylesCompile(watch, publish);
+    return stylesCompile(watch, publish);
  });
 
  // compile scripts
- gulp.task('scripts', function(){
-     return scriptsCompile(watch, publish);
+ gulp.task('vendorLibs', function(){
+    return scriptsCompile.vendorLibs(watch, publish);
+ });
+
+ gulp.task('appLibs', function(){
+    return scriptsCompile.appLibs(watch, publish);
+ });
+
+ gulp.task('appScripts', function(){
+    return scriptsCompile.appScripts(watch, publish);
  });
 
 // browser-sync task for starting the server.
@@ -40,10 +48,12 @@ gulp.task('browser-sync', require('./gulptasks/browser-reload'));
 gulp.task('watch', function() {
     watch = true;
     gulp.watch(filepath.styles.allScss, ['styles']);
-    gulp.watch([filepath.vendorLibs, filepath.appScripts], ['scripts']);
+    gulp.watch(filepath.vendorLibs, ['vendorLibs']);
+    gulp.watch(filepath.appLibs, ['appLibs']);
+    gulp.watch(filepath.appScripts, ['appScripts']);
 });
 
 // Default task runs dev build, watches for file changes and browser reloads
 gulp.task('default', function(cb) {
-    runSequence('styles', 'browser-sync', 'watch', 'scripts', cb);
+    runSequence('styles', 'browser-sync', 'watch', 'vendorLibs', 'appLibs', 'appScripts', cb);
 });

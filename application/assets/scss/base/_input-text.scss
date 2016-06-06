@@ -75,6 +75,12 @@ input[type="text"],
         margin-bottom: 5px;
     }
 
+    &__value {
+        display: block;
+        line-height: 4rem;
+        font-weight: $semi-bold;
+    }
+
     &__inp {
 
     }
@@ -93,6 +99,8 @@ textarea {
     padding: 0;
     margin-top: 6px;
     color: $inp-error-border;
+    display: block;
+    text-align: left;
 
     .k-icon {
         display: none;

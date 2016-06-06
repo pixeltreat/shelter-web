@@ -13,27 +13,21 @@
             <div class="gridsearch">
                 <div class="gridsearch__search-col">
                     <label class="search-label">
-                        <span class="search-label__text">{{nls.lblSearch}}:</span>
-                        <input type="text"
-                            class="search-label__inp"
-                            id="vwdlTxtSearch"
-                            data-bind="value:searchToken,events:{keyup:seachDepartments}"
-                            data-value-update="keyup" />
+                        <input type="text" id="vwelTxtSearch" class="search-label__inp"
+                        placeholder="Search"
+                        data-bind="value:searchToken,events:{keyup:seachDepartments}"
+                        data-value-update="keyup"/>
                     </label>
                 </div>
                 <div class="gridsearch__btns-col">
-                    <button class="btn" data-bind="click:btnAddClick" type="button">
+                    <button class="btn--secondary" data-bind="click:btnAddClick" type="button">
+                        <span class="f-icon f-icon__add" aria-hidden="true"></span>
                         {{nls.btnAdd}}
                     </button>
-                    <!-- <button class="btn" type="button" data-bind="enabled:isRowSelected,click:btnEditClick">
-                        {{nls.btnEdit}}
-                    </button>
-                    <button class="btn" type="button" data-bind="enabled:isRowSelected,click:btnDeleteClick">
-                        {{nls.btnDelete}}
-                    </button> -->
+
                 </div>
             </div>
-
+            
             <div class="table-wrapper">
                 <table id="vwdlDgDepartment" cellspacing="0" cellpadding="0" border="0" class="grid split-table rwd-table1"
                     data-bind="source:dsDepartments, events: { change: rowSelectionChange }" data-role="grid"

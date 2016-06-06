@@ -18,6 +18,7 @@ a:focus {
     counter-reset: section;
     background:#fff none;
     padding-top: 85px;
+    overflow: hidden;
 }
 
 .styleguide-page__header{

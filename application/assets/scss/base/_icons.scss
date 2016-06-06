@@ -38,9 +38,18 @@ $iconsFont: "../fonts/icon-fonts";
     font-smoothing: antialiased;
 }
 
+.f-icon__add:before { content: "\f10f"; }
 .f-icon__alerts:before { content: "\f100"; }
+.f-icon__calendar:before { content: "\f110"; }
+.f-icon__close:before { content: "\f111"; }
 .f-icon__delete:before { content: "\f101"; }
+.f-icon__download:before { content: "\f112"; }
 .f-icon__edit:before { content: "\f102"; }
+.f-icon__error:before { content: "\f113"; }
+.f-icon__export:before { content: "\f114"; }
+.f-icon__filter-off:before { content: "\f115"; }
+.f-icon__filter-on:before { content: "\f116"; }
+.f-icon__idle:before { content: "\f117"; }
 .f-icon__nav-admin:before { content: "\f103"; }
 .f-icon__nav-contact:before { content: "\f104"; }
 .f-icon__nav-dashboard:before { content: "\f105"; }
@@ -52,4 +61,10 @@ $iconsFont: "../fonts/icon-fonts";
 .f-icon__nav-shelter:before { content: "\f10b"; }
 .f-icon__nav-transport:before { content: "\f10c"; }
 .f-icon__nav-user:before { content: "\f10d"; }
+.f-icon__next:before { content: "\f118"; }
+.f-icon__not-reported:before { content: "\f119"; }
 .f-icon__save:before { content: "\f10e"; }
+.f-icon__search:before { content: "\f11a"; }
+.f-icon__showall:before { content: "\f11b"; }
+.f-icon__success:before { content: "\f11c"; }
+.f-icon__upload:before { content: "\f11e"; }

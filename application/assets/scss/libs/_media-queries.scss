@@ -33,3 +33,6 @@ $xlarge-and-above  : "#{$screen} and (min-width: #{$large-bp + 0.063})" !default
         @content;
     }
 }
+
+// usage
+// @include MediaQueries($tablet) { rules }

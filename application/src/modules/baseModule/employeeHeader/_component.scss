@@ -1,0 +1,25 @@
+// ****************************************
+// eployee header
+// ****************************************
+.employee-header {
+    position: relative;
+    width: 100%;
+}
+
+.employee-header__nav-list {
+    @extend %no-list;
+    position: absolute;
+    right: 60px;
+
+    li {
+        margin-left: 10px;
+        display: inline-block;
+    }
+}
+
+.employee-header__shelter-dropdown {
+    position: absolute;
+    position: absolute;
+    top: 50px;
+    width: 33.3333%;
+}

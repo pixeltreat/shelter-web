@@ -13,6 +13,7 @@
 // vars, theme, mixins
 @import "base/vars";
 @import "base/theme";
+@import "base/icons";
 @import "libs/mixins";
 @import "libs/grid";
 
@@ -20,3 +21,7 @@
 @import "kendo/k-grid";
 @import "kendo/k-numerictextbox";
 @import "kendo/k-combobox";
+
+// Helpers load at the end to get high speficity
+@import "libs/slient-extends";
+@import "libs/helpers";

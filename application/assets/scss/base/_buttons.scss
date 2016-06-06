@@ -5,7 +5,7 @@
 // mixins for code DRY
 @mixin button() {
     font-size: 1.4rem;
-    padding: 12px 25px;
+    padding: 12px 15px;
     border-radius: $border-radius__width;
     display: inline-block;
     vertical-align: middle;
@@ -17,7 +17,7 @@
     border: 1px solid transparent;
     text-decoration: none;
     line-height: 1;
-    font-weight: $semi-bold;
+    font-weight: $regular;
     letter-spacing: 1px;
 
     &:hover,
@@ -78,7 +78,8 @@ button:disabled,
     }
 }
 
-.btn + .btn {
+.btn + .btn,
+.btn--secondary + .btn--secondary {
     margin-left: 15px;
 }
 
@@ -88,6 +89,28 @@ button:disabled,
 
 .footer-bts-container {
     margin-top: 20px;
+}
+
+.btn--secondary {
+    padding: 6px 10px;
+    border: 1px solid $primary-color;
+    font-size: 1.4rem;
+    border-radius: $border-radius__width;
+    background: transparent;
+    color: $primary-color;
+
+    & .f-icon {
+        margin-right: 5px;
+    }
+
+    &:hover:not(:disabled) {
+        border-color: $secondary-color;
+    }
+
+    &:active:not(:disabled) {
+        background-color: $primary-color;
+        color: $base-white;
+    }
 }
 
 .btn-edit {

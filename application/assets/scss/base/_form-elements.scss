@@ -9,6 +9,7 @@
     @extend %no-list;
 
     li {
-        margin: 10px 0;
+        margin: 5px 10px 8px 0;
+        display: inline-block;
     }
 }

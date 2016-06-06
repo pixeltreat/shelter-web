@@ -36,4 +36,12 @@ b, strong, h2, h3, h4{
     margin-bottom: 20px;
     padding-bottom: 5px;
     border-bottom: 1px solid $border-color;
+
+    &__icon {
+        @extend .f-icon, .f-icon__nav-help;
+        font-size: 1.6rem;
+        display: inline-block;
+        vertical-align: middle;
+        margin-left: 5px;
+    }
 }

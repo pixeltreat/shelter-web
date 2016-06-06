@@ -1,22 +1,17 @@
 <div id="vwTransportationTypeList">
-
     <!--View name : vwTransportationTypeList-->
     <!--Control id prefix : vwttl-->
 
-
-    <div class="module cfx">
+    <div class="module">
         <!-- view title -->
         <h2 class="module-title">
-            {{nls.header}}
-            <a data-bind="click:helpClick">
-                <i class="icon-help-circled"></i>
-            </a>
+            {{nls.header}}<span class="module-title__icon" data-bind="click:helpClick"></span>
         </h2>
         <div class="module-container">
             <div class="gridsearch">
                 <div class="gridsearch__search-col">
                     <label class="search-label">
-                        <span class="search-label__text">{{nls.lblSearch}}:</span>
+                        <!-- <span class="search-label__text">{{nls.lblSearch}}:</span> -->
                         <input type="text"
                             class="search-label__inp"
                             id="vwttlTxtSearch"
@@ -25,15 +20,10 @@
                     </label>
                 </div>
                 <div class="gridsearch__btns-col">
-                    <button class="btn" data-bind="click:btnAddClick" type="button">
+                    <button class="btn--secondary" data-bind="click:btnAddClick" type="button">
+                        <span class="f-icon f-icon__add" aria-hidden="true"></span>
                         {{nls.btnAdd}}
                     </button>
-                    <!-- <button class="btn" type="button" data-bind="enabled:isRowSelected,click:btnEditClick">
-                        {{nls.btnEdit}}
-                    </button>
-                    <button class="btn" type="button" data-bind="enabled:isRowSelected,click:btnDeleteClick">
-                        {{nls.btnDelete}}
-                    </button> -->
                 </div>
             </div>
             <div class="table-wrapper">
@@ -57,6 +47,7 @@
             </div>
         </div>
     </div>
+
     <script type="text/x-kendo-template" id="vwttlRow-template">
         <tr>
             <td>
@@ -97,3 +88,4 @@
             </td>
         </tr>
     </script>
+</div>

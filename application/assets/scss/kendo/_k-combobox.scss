@@ -2,16 +2,33 @@
 // kendo grid/table
 // ****************************************
 
+.custom-select {
+    display: inline-block;
+    vertical-align: middle;
+    width: 100%;
+    max-width: 300px;
+}
+
+.k-dropdown.k-header,
 .k-combobox.k-header,
 .k-dropdown-wrap.k-state-default {
     border-color: $inp-normal-border;
     box-shadow: 0 0 0;
     width: 100%;
     max-width: 300px;
+    min-height: 40px;
     box-sizing: border-box;
 }
 
 .k-dropdown-wrap {
+    .k-select {
+        border-left: 1px solid;
+    }
+
+    .k-input {
+        padding: 4px 0 3px;
+    }
+
     &.k-state-hover,
     &.k-state-hover > .k-select {
         border-color: $inp-hover-border;
@@ -21,6 +38,14 @@
     &.k-state-active > .k-select {
         border-color: $inp-focus-border;
         box-shadow: 0 0 0;
+    }
+
+    &.k-state-disabled,
+    &.k-state-disabled > .k-select {
+        background-color: $inp-disabled-bg;
+        border-color: $inp-disabled-border;
+        color: $quinary-color;
+        cursor: not-allowed !important;
     }
 }
 
@@ -41,4 +66,15 @@
 .k-list>.k-state-hover {
     background-color: $secondary-color;
     color: $tertiary-color;
+}
+
+// invalid
+.k-invalid .k-dropdown-wrap,
+.k-invalid .k-dropdown-wrap > .k-select {
+    border-color: $inp-error-border;
+}
+
+.k-valid .k-dropdown-wrap,
+.k-valid .k-dropdown-wrap  > .k-select {
+    border-color: $inp-sucess-border;
 }

@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<svg version="1.1" id="loader" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="64px" height="64px" x="0px" y="0px" preserveAspectRatio="xMidYMid" viewBox="0 0 100 100" enable-background="new 0 0 100 100" xml:space="preserve">
+<svg version="1.1" id="loader" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="96px" height="96px" x="0px" y="0px" preserveAspectRatio="xMidYMid" viewBox="0 0 100 100" enable-background="new 0 0 100 100" xml:space="preserve">
+<circle fill="#ffffff" cx="50" cy="50" r="40"/>
 <g>
 	<g transform="translate(14, 14) scale(2)">
 		<path
@@ -32,7 +33,7 @@
 </g>
 <circle cx="50" cy="50" r="40" stroke="#E0E0E0" fill="none" stroke-width="10" stroke-linecap="round"></circle>
 <circle cx="50" cy="50" r="40" stroke="#9BCD5F" fill="none" stroke-width="10" stroke-linecap="round">
-	<animate attributeName="stroke-dashoffset"  begin="0s" dur="2s" repeatCount="indefinite" from="0" to="500"></animate>
-	<animate attributeName="stroke-dasharray"  begin="0s" dur="2s" repeatCount="indefinite" values="50.2 200.8;1 250;50.2 200.8"></animate>
+	<animate attributeName="stroke-dashoffset"  begin="0s" dur="2s" repeatCount="indefinite" from="0" to="500"/>
+	<animate attributeName="stroke-dasharray"  begin="0s" dur="2s" repeatCount="indefinite" values="50.2 200.8;1 250;50.2 200.8"/>
 </circle>
 </svg>

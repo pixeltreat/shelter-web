@@ -83,15 +83,35 @@ body {
 }
 
 .app-content{
-    @extend .wrapper;
-    padding-bottom: 4rem;
+    padding: 1rem 2rem 2rem;
     min-width: 265px;
     min-height: calc(100vh - 55px);
+
+    @include MediaQueries($xlarge-and-above) {
+        padding: 2rem 8rem 4rem 3rem;
+    }
 }
 
 .loader-icon {
-    width: 64px;
-    height: 64px;
-    border-radius: 100%;
-    background: #fff url(../img/loader.svg) no-repeat center center;
+    width: 96px;
+    height: 96px;
+    background: url(../img/loader.svg) no-repeat center center;
+}
+
+// two column layout for add/edit screens
+.l--two-column {
+    @extend .flex-row;
+
+    .column-one {
+        @extend .flex-col-lg__1-3, .flex-col-md__1-2, .flex-col-sm__full;
+        padding-right: 30px;
+
+        @include MediaQueries($mobile) {
+            padding-right: 0;
+        }
+    }
+
+    .column-two {
+        @extend .flex-col-lg__1-3, .flex-col-md__1-2, .flex-col-sm__full;
+    }
 }

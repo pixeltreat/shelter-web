@@ -13,6 +13,7 @@
 @import "base/form-elements";
 @import "base/typography";
 @import "base/color-palette";
+@import "base/overlay";
 
 // Libs
 @import "libs/media-queries";
@@ -25,6 +26,7 @@
 
 // modules
 @import "../../src/modules/baseModule/_module";
+@import "../../src/modules/employeeModule/_module";
 
 
 // Helpers load at the end to get high speficity

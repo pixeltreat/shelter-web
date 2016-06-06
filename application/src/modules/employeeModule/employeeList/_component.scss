@@ -1,0 +1,17 @@
+// ****************************************
+// employee list
+// ****************************************
+.employee-list__event {
+    @extend .flex-row;
+    padding-left: 36%;
+    margin: 24px 0 40px;
+}
+
+.employee-list__event__name {
+    @extend .flex-col__1-2;
+}
+
+.employee-list__event__duration {
+    @extend .flex-col__1-2, .flex--right-align;
+    text-align: right;
+}

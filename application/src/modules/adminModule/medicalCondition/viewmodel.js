@@ -5,15 +5,15 @@ function (Boiler) {
 
         var vm = kendo.observable({
 
-            staffTypeData: {},
+            medicalConditionData: {},
+            medicalConditionId: -1,
 
-
-            staffTypeId: -1,
             initialLoad: false,
+
             NameLength: 250,
             DescriptionLength: 4000,
-
-
+            questionTypeLookUp: [],
+            selectedQuestionTypeId: -1,
 
             //Fill Query string parameters
             fillQueryParam: function (param) {
@@ -33,7 +33,7 @@ function (Boiler) {
                 $ct.ds.admin.medicalcondition.getMedicalConditionById(this.medicalConditionId, function (result) {
 
                     var resultData = result.Data;
-                    
+
 
                     //For new event
                     if (resultData.MedicalCondition === null) {
@@ -42,13 +42,13 @@ function (Boiler) {
                         resultData.MedicalCondition.Name = "";
                         resultData.MedicalCondition.Description = "";
                         resultData.MedicalCondition.DisplayOrder = 1;
+                        resultData.MedicalCondition.QuestionTypeId = -1;
 
                     }
 
 
-
-
-
+                    vm.set("selectedQuestionTypeId", resultData.MedicalCondition.QuestionTypeId);
+                    vm.set("questionTypeLookUp", resultData.QuestionTypesLookup);
                     vm.set("medicalConditionData", resultData);
 
 
@@ -57,6 +57,16 @@ function (Boiler) {
 
             },
 
+            setValidationMsgForQuestionType: function () {
+
+                if ((vm.get("selectedQuestionTypeId") == null || vm.get("selectedQuestionTypeId") == undefined || vm.get("selectedQuestionTypeId") == -1) && vm.get("initialLoad") == false) {
+                    return false;
+                }
+                else {
+                    return true;
+                }
+
+            },
 
 
             btnSaveClick: function () {
@@ -74,9 +84,15 @@ function (Boiler) {
                 }
 
 
+                if (vm.get("selectedQuestionTypeId") == -1) {
 
-                var saveMedicalConditionData = vm.medicalConditionData;
+                    moduleContext.notify($ct.en.getShowValidationMsg(), $ct.msg.getValidationMsg());
+                    return;
+                }
 
+                var saveMedicalConditionData = vm.medicalConditionData.toJSON();
+                
+                saveMedicalConditionData.MedicalCondition.QuestionTypeId = vm.selectedQuestionTypeId;
 
 
                 $ct.ds.admin.medicalcondition.saveMedicalCondition(saveMedicalConditionData, function (data) {

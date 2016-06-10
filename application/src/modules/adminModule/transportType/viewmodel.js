@@ -8,7 +8,7 @@ function (Boiler) {
             transportationTypeData: {},
 
 
-            staffTypeId: -1,
+            transportationTypeId: -1,
             initialLoad: false,
             NameLength: 250,
             DescriptionLength: 4000,
@@ -75,7 +75,7 @@ function (Boiler) {
 
 
 
-                var saveTransportationTypeData = vm.transportationTypeData;
+                var saveTransportationTypeData = vm.transportationTypeData.toJSON();
 
 
                 $ct.ds.admin.transportationType.saveTransportationType(saveTransportationTypeData, function (data) {

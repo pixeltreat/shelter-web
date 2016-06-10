@@ -1,0 +1,180 @@
+<div id="vwSheltereeHeader" class="wrapper wrapper2">
+
+    <div class="paddingB0 cfx" style="background: #fff;">
+
+        <!--<div data-bind="text:objText">
+        </div>-->
+        <div class=" padding10">
+           <!-- <div class="menu-toparrow">
+            </div>
+            <div class="menu-topline">
+            </div>-->
+            <div class="item_parent" id="activeNav" style="display: block">
+
+                <!--
+                ID NAMING CONVENSION
+                vwshsheltereelist : id naming convetion is  vwsh + <route name of the form>
+                -->
+
+                <div class="item_nav item_nav_active ">
+                    <a id="vwshsheltereelist" data-bind="click:btnManageSheltereeClick">{{nls.mnuShelteree}}</a>
+                </div>
+
+                <div class="item_nav">
+                    <a id="vwshsheltereedischargelist" data-bind="click:btnManageSheltereeDischargeClick">{{nls.mnuSheltereeDischarge}}</a></div>
+                <div class="item_nav">
+                    <a id="vwshsheltereemedicalupdatelist" data-bind="click:btnManageSheltereeMedicalUpdateClick">{{nls.mnuSheltereeMedicalUpdate}}</a>
+                </div>
+                
+                <div class="item_nav">
+                    <a id="vwshuploadshelteree" data-bind="click:btnUploadSheltereeDataClick">{{nls.mnuUploadData}}</a></div>
+                <div class="item_nav">
+                    <a id="vwshdownloadshelteree" data-bind="click:btnDownloadSheltereeDataClick">{{nls.mnuDownloadData}}</a></div>
+                <div class="item_nav">
+                    <a  data-bind="click:btnDownloadSheltereeTemplateClick" >{{nls.mnuDownloadTemplate}}</a></div>
+                <div class="clear">
+                </div>
+                <div class="menu-bottomline">
+                </div>
+            </div>
+
+
+        </div>
+    </div>
+
+
+<!--SHELTER HEADER START-->
+
+
+           <div id = "vwshDDLs" class="cfx marginB-10" style="background:#fff;">
+       <div class="padding10 marginT-20" data-bind="style: {display: showDDLsInShelterHeader}">
+       <div class="patientFilterDiv" >
+
+       
+       <div class="patientDropdownDiv">
+       <div class="paddingR10 patientDropdownLabel pull-left">
+           
+             
+             <!--<label for="vwphDdlFacilityTypes"><span class="label2">{{nls.lblFacilityType}}</span> </label>
+             </div>
+             <div class="paddingR10 mobilePatientselectWidth pull-left">
+                <select id="vwphDdlFacilityTypes" data-role="dropdownlist" class="select inputClass2" data-bind="source:dsFacilityTypes,events:{change:populateRegions},value:selectedFacilityTypeItem"
+                    data-text-field="Value" data-value-field="Key" />
+
+                    </div>-->
+
+             
+             <!--<div class="paddingR10 patientDropdownLabel pull-left">
+              <label for="vwphDdlRegions"><span class="label2">{{nls.lblRegion}}</span></label>
+              </div>
+
+              <div class="paddingR10 mobilePatientselectWidth pull-left">
+                <select id="vwphDdlRegions" data-role="dropdownlist" class="select inputClass2_region" data-bind="source:dsRegions,events:{change:populateParishes},value:selectedRegionItem"
+                    data-text-field="Value" data-value-field="Key" />
+
+                    </div>-->
+
+        </div>
+
+        <div class="patientDropdownDiv">
+              
+                <!--<div class="paddingR10 patientDropdownLabel pull-left">
+              <label for="vwphDdlParishes"><span class="label2">{{nls.lblParish}}</span></label>
+              </div>
+
+              <div class="paddingR10 mobilePatientselectWidth pull-left">
+                <select id="vwphDdlParishes" data-role="dropdownlist" class="select inputClass2" data-bind="source:dsParishes,events:{change:populateFacilityNames},value:selectedParishItem"
+                    data-text-field="Value" data-value-field="Key" />
+
+                    </div>-->
+              
+              <div class="paddingR10 patientDropdownLabel pull-left">
+               <label for="vwshDdlShelterNames"  class="facilityname"><span class="label2">{{nls.lblShelter}}</span></label>
+               </div>
+
+               <div class="paddingR10 mobilePatientselectWidth pull-left">
+                <select id="vwshDdlShelterNames" data-role="dropdownlist" class="select inputClass2_facility" data-bind="source:dsShelterNames,events:{change:ddlShelterNames},value:selectedShelterNameItem"
+                    data-text-field="Name" data-value-field="Id" />
+
+                </div>
+
+              
+              <div class="paddingR10 mobilePatientbuttonMargin pull-left">
+                <button class="btn" type="button" data-bind="disabled:isGoButtonDisabled, click:btnGoClick">
+                {{nls.btnGo}}</button>
+                </div>
+
+
+        </div>
+
+        
+        <div class="clear"></div>
+              
+            </div>
+
+            <div class="menu-bottomline">
+                </div>
+            </div>
+
+            <!--To display readonly header for user associated to single facility-->
+
+<div class="row grid-select-container bg-border" data-bind=" style: {display: showLabelsInShelterHeader}">
+       <div class="full-col top-select-boxes no-margin-top">
+             
+             <!--<label><span class="label2">{{nls.lblFacilityType}} : </span>                
+                    <span data-bind="text:previousFacilityType"></span>
+              </label>
+
+              <label><span class="label2">{{nls.lblRegion}} : </span>
+                    <span data-bind="text:previousRegionName"></span>
+              </label>
+
+              <label><span class="label2">{{nls.lblParish}} : </span>
+                    <span data-bind="text:previousParishName"></span>
+              </label>-->
+    
+               <label  class="facilityname"><span class="label2">{{nls.lblShelter}} : </span>
+                     <span data-bind="text:previousShelterName"></span>
+              </label>
+                            
+            </div>
+            </div>
+
+
+       </div>
+
+
+
+
+
+
+       <div id = "vwshLabels" class="wrapper cfx">
+       <div class="row grid-select-container bg-border">
+       <div class="full-col top-select-boxes">
+             
+             <!--<label><span class="label2">{{nls.lblFacilityType}} : </span>                
+                    <span data-bind="text:previousFacilityType"></span>
+              </label>
+
+              <label><span class="label2">{{nls.lblRegion}} : </span>
+                    <span data-bind="text:previousRegionName"></span>
+              </label>
+
+              <label><span class="label2">{{nls.lblParish}} : </span>
+                    <span data-bind="text:previousParishName"></span>
+              </label>-->
+    
+               <label  class="facilityname"><span class="label2">{{nls.lblShelter}} : </span>
+                     <span data-bind="text:previousShelterName"></span>
+              </label>
+                            
+            </div>
+            </div>
+       </div>
+
+
+<!--FACILITY HEADER END-->
+
+
+    
+</div>

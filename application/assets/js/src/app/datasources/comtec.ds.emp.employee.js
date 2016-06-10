@@ -24,7 +24,7 @@
         }, null, true)
 
         return '';
-    }
+    };
 
    
 

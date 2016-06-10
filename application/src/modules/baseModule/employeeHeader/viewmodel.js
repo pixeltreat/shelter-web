@@ -55,18 +55,18 @@
             },
 
             //loads shelter types, and shelter names
-            initializeEmployeeHeader: function () {
+            initializeEmployeeHeader: function (viewName) {
 
                 vm.set("isMultiShelterUser", $ct.security.isMultiFacilityUser());
 
-                vm.populateShelterNames();
-
+               // vm.populateShelterNames();
+                vm.fillShelters(viewName);
             },
-         populateShelterNames: function (e) {
+         //populateShelterNames: function (e) {
 
-                vm.fillShelters();
+         //       vm.fillShelters();
 
-            },
+         //   },
 
             dsShelterNames: function () {
                 //this.fillShelters();
@@ -74,7 +74,7 @@
 
             isIntialLoad: true,
 
-            fillShelters: function () {
+            fillShelters: function (viewName) {
 
                 vm.set("isGoButtonDisabled", true);
 
@@ -100,8 +100,16 @@
                             vm.setPreviouslySelectedShelterTypeAndShelterNameToCurrent();
                             vm.setEmployeeHeaderDataToGlobalContext();
 
-                            Boiler.UrlController.goTo($ct.rn.getEmployeeList());
-
+                            if (viewName == $ct.rn.getEmployeeList()) {
+                                Boiler.UrlController.goTo($ct.rn.getEmployeeList());
+                            }
+                            else if (viewName == $ct.rn.getEmployeeExtendedList()) {
+                                Boiler.UrlController.goTo($ct.rn.getEmployeeExtendedList());
+                            }
+                            else {
+                                alert("Error in employee header : Not a valid view ");
+                            }
+                            
                         }
 
                     }
@@ -116,6 +124,18 @@
             ddlShelterNames: function (e) {
 
                 //vm.fillGrid();
+
+                this.setPreviouslySelectedShelterTypeAndShelterNameToCurrent();
+                this.setEmployeeHeaderDataToGlobalContext();
+
+                if (moduleContext.parentContext.activeForm == $ct.rn.getEmployeeList()) {
+                    moduleContext.notify($ct.en.getEmployeeHeaderDataChanged(), $ct.rn.getEmployeeList());
+                }
+
+                if (moduleContext.parentContext.activeForm == $ct.rn.getEmployeeExtendedList()) {
+                    moduleContext.notify($ct.en.getEmployeeHeaderDataChanged(), $ct.rn.getEmployeeExtendedList());
+                }
+
 
             },
 

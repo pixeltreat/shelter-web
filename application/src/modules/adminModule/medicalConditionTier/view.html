@@ -1,81 +1,36 @@
 
-
-
 <div id="vwMedicalConditionTier">
-
     <!--View name : vwMedicalConditionTier---->
     <!--Control id prefix : vwmct-->
-
-    <div class="two-col btnmaintop">
-        <button type="button" class="btn" data-bind="click:btnSaveClick">
-            {{nls.btnSave}}
-        </button>
-        <button type="button" class="btn" data-bind="click:btnCancelClick">
-            {{nls.btnCancel}}
-        </button>
-    </div>
-
-    <div class="module cfx no-margin-top">
+    <div class="module">
         <h2 class="module-title">{{nls.headerAddEditMedicalConditionTier}}</h2>
         <div class="module-container">
-            <table cellspacing="0" cellpadding="0" border="0" class="grid split-table two-col-grid gridmobilev">
-                <tbody>
-                    <tr>
-                        <td class="tdtitle">{{nls.lblName}}</td>
-                        <td>
-                            <fieldset>
-                                <input id="vwmctTbName" name="vwmctTbName" type="text" maxlength="250" data-bind="value:medicalConditionTierData.MedicalConditionTier.Name"
-                                       required validationmessage="{{nls.valmsgNameRequired}}" />
-                            </fieldset>
-                            <span class="k-invalid-msg" data-for="vwmctTbName"></span>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td class="tdtitle">{{nls.lblDescription}}</td>
-                        <td>
-                            <fieldset>
-                                <textarea id="vwmctTaDescription" name="vwmctTaDescription" data-bind="value:medicalConditionTierData.MedicalConditionTier.Description , attr:{maxlength: DescriptionLength} "
-                                          required validationmessage="{{nls.valmsgDescriptionRequired}}" rows="5"></textarea>
-                            </fieldset>
-                            <span class="k-invalid-msg" data-for="vwmctTaDescription"></span>
-                    </tr>
-                    <tr>
-                        <td class="tdtitle">{{nls.lblDisplayOrder}}</td>
-
-                        <td>
-                            <span data-bind="attr:{class: setValidClassForDisplayOrder,className:setValidClassForDisplayOrder }">
-                                <fieldset>
-                                    <input type="text" id="vwmctTaDisplayOrder" name="vwmctTaDisplayOrder"
-                                           data-role="numerictextbox" min="1" max="1000" data-format="n0" data-decimals="0" data-spinners="false"
-                                           required validationmessage="{{nls.valmsgDisplayOrderRequired}}"
-                                           data-bind="value:medicalConditionTierData.MedicalConditionTier.DisplayOrder}" />
-                                </fieldset>
-                            </span>
-                            <span class="k-invalid-msg" data-for="vwmctTaDisplayOrder"></span>
-
-                        </td>
-
-                    </tr>
-
-                </tbody>
-            </table>
-
-
-
+            <label class="form-element-with-label">
+                <span class="form-element-with-label__text">{{nls.lblName}}</span>
+                <input type="text" id="vwmctTbName" name="vwmctTbName"  maxlength="250" class="form-element-with-label__inp" data-bind="value:medicalConditionTierData.MedicalConditionTier.Name" required validationmessage="{{nls.valmsgNameRequired}}">
+                <span class="k-invalid-msg" data-for="vwmctTbName"></span>
+            </label>
+            <label class="form-element-with-label">
+                <span class="form-element-with-label__text">{{nls.lblDescription}}</span>
+                <textarea id="vwmctTaDescription" name="vwmctTaDescription" class="form-element-with-label__inp" data-bind="value:medicalConditionTierData.MedicalConditionTier.Description , attr:{maxlength: DescriptionLength} " required validationmessage="{{nls.valmsgDescriptionRequired}}"  rows="5"></textarea>
+                <span class="k-invalid-msg" data-for="vwmctTaDescription"></span>
+            </label>
+            <label class="form-element-with-label">
+                <span class="form-element-with-label__text">{{nls.lblDisplayOrder}}</span>
+                <input type="text" id="vwmctTaDisplayOrder" name="vwmctTaDisplayOrder" class="form-element-with-label__inp"
+                       data-role="numerictextbox" min="1" max="1000" data-format="n0" data-decimals="0" data-spinners="false"
+                       required validationmessage="{{nls.valmsgDisplayOrderRequired}}"
+                       data-bind="value:medicalConditionTierData.MedicalConditionTier.DisplayOrder" />
+                <span class="k-invalid-msg" data-for="vwmctTaDisplayOrder"></span>
+            </label>
         </div>
     </div>
-
-
-    <div class="two-col btnmainbot">
+    <div class="footer-bts-container">
         <button type="button" class="btn" data-bind="click:btnSaveClick">
             {{nls.btnSave}}
         </button>
         <button type="button" class="btn" data-bind="click:btnCancelClick">
             {{nls.btnCancel}}
         </button>
-
     </div>
-
-
 </div>
-

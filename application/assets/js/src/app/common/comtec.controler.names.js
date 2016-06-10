@@ -105,6 +105,17 @@ $ct.cn = function () {
     };
     //end of event controller
 
+
+    // start of shelterstaus controller
+   
+    //end of shelterstaus controller
+    var sheltereeFacilityUrl = baseServiceUrl + "SheltereeFacility/"
+    var getSheltereeFacilityUrl = function () {
+        return sheltereeFacilityUrl;
+    };
+
+    
+
     return {
         //Start of admin controllers
         getAgencyUrl: getAgencyUrl,
@@ -137,7 +148,8 @@ $ct.cn = function () {
         getEventUrl: getEventUrl,
         //end of event controller
     
-        getEmployeeAttendanceUrl: getEmployeeAttendanceUrl
+        getEmployeeAttendanceUrl: getEmployeeAttendanceUrl,   
+        getSheltereeFacilityUrl: getSheltereeFacilityUrl
        
 
 

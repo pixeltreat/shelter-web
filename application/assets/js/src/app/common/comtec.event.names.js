@@ -350,6 +350,113 @@ $ct.en = function () {
 
 
     //End  of employee attendence events
+
+    //start of shelteree events  
+
+    //Use this event when user clicks on shelteree menu item second time onwords
+    var sheltereeMenuItemClicked = "SHELTEREE_MENU_ITEM_CLICKED";
+
+    var getSheltereeMenuItemClicked = function () {
+        return sheltereeMenuItemClicked;
+    };
+
+    //to refresh current shelteree page with newly selected data in shelteree header(Shelter type and Shelter)
+    var sheltereeHeaderDataChanged = "SHELTEREE_HEADER_DATA_CHANGED";
+
+    var getSheltereeHeaderDataChanged = function () {
+        return sheltereeHeaderDataChanged;
+    };
+
+    //to load shelter type, shelter drop down lists, when user click on shelteree menu item first time
+    var loadSheltereeHeaderInfo = "LOAD_SHELTEREE_HEADER_INFO";
+
+    var getLoadSheltereeHeaderInfo = function () {
+        return loadSheltereeHeaderInfo;
+    };
+
+
+    //to show shelter dropdown lists in shelteree shelter header
+    var showSheltereeShelterHeader = "SHOW_SHELTEREE_SHELTER_HEADER";
+
+    var getShowSheltereeShelterHeader = function () {
+        return showSheltereeShelterHeader;
+    };
+
+    //to hide shelter dropdown lists in shelteree shelter header
+    var hideSheltereeShelterHeader = "HIDE_SHELTEREE_SHELTER_HEADER";
+
+    var getHideSheltereeShelterHeader = function () {
+        return hideSheltereeShelterHeader;
+    };
+
+
+    var hideSheltereeHeader = "HIDE_SHELTEREE_HEADER";
+
+    var getHideSheltereeHeader = function () {
+        return hideSheltereeHeader;
+    };
+
+    var hideSheltereeHeaderNav = "HIDE_SHELTEREE_HEADER_NAV";
+
+    var getHideSheltereeHeaderNavigation = function () {
+        return hideSheltereeHeaderNav;
+    };
+
+
+    var showActiveSheltereeHeader = "SHOW_ACTIVE_SHELTEREE_HEADER";
+
+    var getShowActiveSheltereeHeader = function () {
+        return showActiveSheltereeHeader;
+    };
+
+    var sheltereeCreatedOrUpdated = "SHELTEREE_CREATED_OR_UPDATED";
+
+    var getSheltereeCreatedOrUpdated = function () {
+        return sheltereeCreatedOrUpdated;
+    };
+
+    var sheltereeDischargeCreatedOrUpdated = "SHELTEREE_DISCHARGE_CREATED_OR_UPDATED";
+
+    var getSheltereeDischargeCreatedOrUpdated = function () {
+      return sheltereeDischargeCreatedOrUpdated;
+    };
+
+
+    var sheltereeMedicalUpdateCreatedOrUpdated = "SHELTEREE_MEDICAL_UPDATE_CREATED_OR_UPDATED";
+
+    var getSheltereeMedicalUpdateCreatedOrUpdated = function () {
+        return sheltereeMedicalUpdateCreatedOrUpdated;
+    };
+
+
+
+    var sheltereeRecordReload = "RELOAD_SHELTEREE_RECORD";
+
+    var getSheltereeRecordReload = function () {
+        return sheltereeRecordReload;
+    };
+
+    var manageSheltereeClicked = "MANAGE_SHELTEREE_CLICKED";
+
+    var getManageSheltereeClicked = function () {
+        return manageSheltereeClicked;
+    };
+
+    var manageSheltereeDischargeClicked = "MANAGE_SHELTEREE_DISCHARGE_CLICKED";
+
+    var getManageSheltereeDischargeClicked = function () {
+        return manageSheltereeDischargeClicked;
+    };
+
+
+    var manageSheltereeMedicalUpdateClicked = "MANAGE_SHELTEREE_MEDICAL_UPDATE_CLICKED";
+
+    var getManageSheltereeMedicalUpdateClicked = function () {
+        return manageSheltereeMedicalUpdateClicked;
+    };
+
+    //end of shelteree events
+
     return {
 
         //start of application independant common events
@@ -420,9 +527,29 @@ $ct.en = function () {
         //start of employee  attendence events    
         getEmployeeAttendenceComments: getEmployeeAttendenceComments,
         getEmployeeAttendanceUpdated: getEmployeeAttendanceUpdated,
-        getEmployeeAttendenceList: getEmployeeAttendenceList
+        getEmployeeAttendenceList: getEmployeeAttendenceList,
 
 
         //end of employee  attendenceevents 
+
+        //start of shelteree events  
+
+        getSheltereeMenuItemClicked: getSheltereeMenuItemClicked,
+        getSheltereeHeaderDataChanged: getSheltereeHeaderDataChanged,
+        getLoadSheltereeHeaderInfo: getLoadSheltereeHeaderInfo,
+        getShowSheltereeShelterHeader: getShowSheltereeShelterHeader,
+        getHideSheltereeShelterHeader: getHideSheltereeShelterHeader,
+        getHideSheltereeHeader: getHideSheltereeHeader,
+        getHideSheltereeHeaderNavigation: getHideSheltereeHeaderNavigation,
+        getShowActiveSheltereeHeader: getShowActiveSheltereeHeader,
+        getSheltereeCreatedOrUpdated: getSheltereeCreatedOrUpdated,
+        getSheltereeDischargeCreatedOrUpdated: getSheltereeDischargeCreatedOrUpdated,
+        getSheltereeMedicalUpdateCreatedOrUpdated:getSheltereeMedicalUpdateCreatedOrUpdated,
+        getSheltereeRecordReload: getSheltereeRecordReload,
+        getManageSheltereeClicked: getManageSheltereeClicked,
+        getManageSheltereeDischargeClicked: getManageSheltereeDischargeClicked,
+        getManageSheltereeMedicalUpdateClicked: getManageSheltereeMedicalUpdateClicked
+
+        //end of shelteree events
     };
 } ();

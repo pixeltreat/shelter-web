@@ -1,84 +1,48 @@
+
 <div id="vwMedicalCondition">
     <!--View name : vwMedicalCondition-->
     <!--Control id prefix : vwmc-->
-
-
-    <div class="two-col btnmaintop">
-        <button type="button" class="btn" data-bind="click:btnSaveClick">
-            {{nls.btnSave}}
-        </button>
-        <button type="button" class="btn" data-bind="click:btnCancelClick">
-            {{nls.btnCancel}}
-        </button>
-    </div>
-
-    <div class="module cfx no-margin-top">
+    <div class="module">
         <h2 class="module-title">{{nls.headerAddEditMedicalCondition}}</h2>
         <div class="module-container">
-            <table cellspacing="0" cellpadding="0" border="0" class="grid split-table two-col-grid gridmobilev">
-                <tbody>
-                    <tr>
-                        <td class="tdtitle">{{nls.lblName}}</td>
-                        <td>
-                            <fieldset>
-                                <input id="vwmcTbName" name="vwmcTbName" type="text" maxlength="250" data-bind="value:medicalConditionData.MedicalCondition.Name"
-                                       required validationmessage="{{nls.valmsgNameRequired}}" />
-                            </fieldset>
-                            <span class="k-invalid-msg" data-for="vwbtTbName"></span>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td class="tdtitle">{{nls.lblDescription}}</td>
-                        <td>
-                            <fieldset>
-                                <textarea id="vwmcTaDescription" name="vwmcTaDescription" data-bind="value:medicalConditionData.MedicalCondition.Description,attr:{maxlength: DescriptionLength} "
-                                          required validationmessage="{{nls.valmsgDescriptionRequired}}" rows="5"></textarea>
-                            </fieldset>
-                            <span class="k-invalid-msg" data-for="vwdTaDescription"></span>
-                    </tr>
-                    <tr>
-                        <td class="tdtitle">{{nls.lblDisplayOrder}}</td>
+            <label class="form-element-with-label">
+                <span class="form-element-with-label__text">{{nls.lblName}}</span>
+                <input type="text" id="vwmcTbName" name="vwmcTbName" maxlength="250" class="form-element-with-label__inp" data-bind="value:medicalConditionData.MedicalCondition.Name" required validationmessage="{{nls.valmsgNameRequired}}">
+                <span class="k-invalid-msg" data-for="vwmcTbName"></span>
+            </label>
+            <label class="form-element-with-label">
+                <span class="form-element-with-label__text">{{nls.lblDescription}}</span>
+                <textarea id="vwmcTaDescription" name="vwmcTaDescription" class="form-element-with-label__inp" data-bind="value:medicalConditionData.MedicalCondition.Description,attr:{maxlength: DescriptionLength} " required validationmessage="{{nls.valmsgDescriptionRequired}}"  rows="5"></textarea>
+                <span class="k-invalid-msg" data-for="vwmcTaDescription"></span>
+            </label>
+            <label class="form-element-with-label">
+                <span class="form-element-with-label__text">{{nls.lblDisplayOrder}}</span>
+                <input type="text" id="vwmcTaDisplayOrder" name="vwmcTaDisplayOrder" class="form-element-with-label__inp"
+                       data-role="numerictextbox" min="1" max="1000" data-format="n0" data-decimals="0" data-spinners="false"
+                       required validationmessage="{{nls.valmsgDisplayOrderRequired}}"
+                       data-bind="value:medicalConditionData.MedicalCondition.DisplayOrder" />
+                <span class="k-invalid-msg" data-for="vwmcTaDisplayOrder"></span>
+            </label>
 
-                        <td>
+            <label class="form-element-with-label">
+                <span class="form-element-with-label__text">{{nls.lblQuestionTypes}}</span>
+                <ul class="form-list" data-template="vwmcQuestionTypeRow-template" data-bind="source:questionTypeLookUp"></ul>
 
-                            <span data-bind="attr:{class: setValidClassForDisplayOrder,className:setValidClassForDisplayOrder }">
-                                <fieldset>
-                                    <input type="text" id="vwmcTaDisplayOrder" name="vwmcTaDisplayOrder"
-                                           data-role="numerictextbox" min="1" max="1000" data-format="n0" data-decimals="0" data-spinners="false"
-                                           required validationmessage="{{nls.valmsgDisplayOrderRequired}}"
-                                           data-bind="value:medicalConditionData.MedicalCondition.DisplayOrder}" />
-                                </fieldset>
-                            </span>
-                            <span class="k-invalid-msg" data-for="vwmcTaDisplayOrder"></span>
-
-                        </td>
-
-                    </tr>
-
-
-                </tbody>
-            </table>
-
-
-
+                <span class="k-widget k-tooltip k-tooltip-validation k-invalid-msg" role="alert" data-bind="invisible:setValidationMsgForQuestionType">
+                    <span class="k-icon k-warning"></span>Please select question type
+                </span>
+            </label>
 
         </div>
     </div>
-
-
-
-
-    <div class="two-col btnmainbot">
+    <div class="footer-bts-container">
         <button type="button" class="btn" data-bind="click:btnSaveClick">
             {{nls.btnSave}}
         </button>
         <button type="button" class="btn" data-bind="click:btnCancelClick">
             {{nls.btnCancel}}
         </button>
-
     </div>
-
-
 </div>
 
 
@@ -86,10 +50,15 @@
 
 
 
-
-
-
-
+<script type="text/x-kendo-template" id="vwmcQuestionTypeRow-template">
+    <li>
+        <label class="radio-button">
+            <input class="radio-button__inp" type="radio" name="vwmcRbQuestionType"
+                   value="${Key}" data-bind="checked:selectedQuestionTypeId" />
+            <span class="radio-button__text" data-bind="text:Value"></span>
+        </label>
+    </li>
+</script>
 
 
 

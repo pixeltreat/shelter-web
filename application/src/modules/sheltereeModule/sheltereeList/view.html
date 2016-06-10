@@ -1,0 +1,170 @@
+
+<div id="vwSheltereeList">
+    <!--View name : vwSheltereeList-->
+    <!--Control id prefix : vwsl-->
+    <div id="bd2" class="cfx">
+        <div class="wrapper wrapper2 cfx" style="background: #fff;">
+            <div class="cssform paddingT0">
+
+                <div class="marginL10">
+                    <div class="bold" style="position:relative; top:5px;">
+                        <div>
+                            <span>{{nls.lblEventName}} </span>
+                            <span data-bind="text:eventdata.EventName"></span>
+                        </div>
+                        <div>
+                            <span>{{nls.lblDuration}} </span>
+                            <span data-bind="text:eventdata.EventDuration"></span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Search and buttons -->
+                <div class="title-bar cfx">
+                    <div class="pull-left paddtop-01em marginR10 marginL5">
+                        <input type="text" id="vwslTxtSearch" value="" data-bind="value:searchToken,events:{keyup:searchShelterees}"
+                               data-value-update="keyup" class="custom_searchbox" />
+                    </div>
+                    <div class="pull-left">
+
+                    </div>
+                    <div class="btn-container pull-right">
+                        <button type="button" class="btn " data-bind="click:btnBulkUpdateClick">
+                            {{nls.btnBulkUpdate}}
+                        </button>
+                        <button type="button" class="btn" data-bind="click:btnAddClick">
+                            {{nls.btnAdd}}
+                        </button>
+
+                    </div>
+                    <div class="pull-right paddright-05em icons">
+                        <span class="paddingR10" id="vwslBtnExcel">
+                            <a class="linkcolor excel underline_text" data-bind="click:btnExportExcelClick">
+                                {{nls.btnExportToExcel}}
+                            </a>
+                        </span>
+
+                        <span class="paddingR10" data-bind="text : filterText" style="color: #FF0000; font-weight: bold;"> </span>
+
+                        <span class="paddingR10">
+                            <a class="linkcolor underline_text veiwallposition"
+                               data-bind="click:btnFilterOffClick">{{nls.btnFilterOff}}</a>
+                        </span>
+
+                    </div>
+                </div>
+                <div class="clear">
+                </div>
+
+                <!-- facility name -->
+                <div class="marginL10">
+                    <span class="bold" style="position:relative; top:5px;">
+                        <span>{{nls.lblShelterName}} </span>
+                        <span data-bind="text:sheltereeHeaderData.shelter.Name"></span>
+                    </span>
+                </div>
+                <!-- Search and buttons -->
+                <!-- Data grid -->
+                <div id="vwslDgSheltereeListParent" class="padding10 table-wrapper  fixedGrid">
+                    <table id="vwslDgSheltereeList" cellspacing="0" cellpadding="0" border="0" class="grid split-table customDataTable"
+                           data-bind="source:dsSheltereeList, events: { change: rowSelectionChange,dataBound:dsDataBoundEvent }"
+                           data-role="grid" data-filterable="true"
+                           data-sortable='{ "mode": "single", "allowUnsort": false }'
+                           data-row-template="vwslRow-template"
+                           data-selectable="true"
+                           data-columns="[
+                                   {width:'30px'},
+                                   {title:'Edit',width:'50px'},
+                                   {title:'Delete',width:'60px'},
+                                   {field:'FacilityName',title:'{{nls.gdColShelterName}}', filterable: {multi:true, dataSource:[]} ,  width:'250px'},
+                                   {field:'FirstName',title:'{{nls.gdColFirstName}}', width:'150px'},
+                                   {field:'LastName',title:'{{nls.gdColLastName}}' , width:'150px'},
+                                   {field:'HomeParish',title:'{{nls.gdColHomeParish}}' ,filterable: {multi:true, dataSource:[]}, width:'150px'},
+                                   {field:'Region',title:'{{nls.gdColRegion}}',filterable: {multi:true, dataSource:[]}, width:'150px'},
+                                   {field:'Caregivers',title:'{{nls.gdColCaregivers}}' ,filterable: {multi:true, dataSource:[]}, width:'150px'},
+                                   {field:'OxygenDependent',title:'{{nls.gdColOxygenDependent}}', filterable: {multi:true, dataSource:[]}, width:'200px'},
+                                   {field:'ElectricalDependent',title:'{{nls.gdColElectricalDependent}}', filterable: {multi:true, dataSource:[]}, width:'200px'},
+                                   {field:'Disposition',title:'{{nls.gdColDisposition}}', filterable: {multi:true, dataSource:[]}, width:'150px'},
+                                   {field:'UpdatedByUserName',title:'{{nls.gdColUserName}}' , width:'200px'},
+                                   {field:'UpdatedOn',title:'{{nls.gdColLastUpdated}}',filterable:false , width:'200px'}
+                               ]"
+                           data-pageable="true" data-scrollable="true"></table>
+                </div>
+                <!-- Data grid -->
+                <!-- Buttons update bottom -->
+                <div class="update-details cfx">
+                    <div class="one-col btn-container pull-right">
+                        <button type="button" class="btn " data-bind="click:btnBulkUpdateClick">
+                            {{nls.btnBulkUpdate}}
+                        </button>
+                        <button type="button" class="btn" data-bind="click:btnAddClick">
+                            {{nls.btnAdd}}
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div style="display: none">
+        <a id="vwmpAncExportExcel"></a>
+    </div>
+</div>
+<script type="text/x-kendo-template" id="vwmpTest">
+    <span>${data}</span></br>
+</script>
+<script type="text/x-kendo-template" id="vwslRow-template">
+    <tr>
+
+
+        <td data-title="{{nls.gdColIsSelected}}" class="paddingLR8">
+            <span class="marginL8"><input data-bind="checked:IsSelected, events:{change:vwslChkShelteree}" type="checkbox" data-item-type="child" data-id=${Id} /></span>
+        </td>
+
+        <td>
+            <img src="content/app/images/edit-icon.jpg" align="absmiddle" data-bind="click:btnEditClick" />
+        </td>
+        <td>
+            <img src="content/app/images/delete.png" align="absmiddle" data-bind="click:btnDeleteClick" />
+        </td>
+
+        <td data-title="{{nls.gdColShelterName}}">
+            ${FacilityName}
+        </td>
+
+        <td data-title="{{nls.gdColFirstName}}">
+            ${FirstName}
+        </td>
+        <td data-title="{{nls.gdColLastName}}">
+            ${LastName}
+        </td>
+        <td data-title="{{nls.gdColHomeParish}}">
+            ${HomeParish}
+        </td>
+        <td data-title="{{nls.gdColRegion}}">
+            ${Region}
+        </td>
+        <td data-title="{{nls.gdColCaregivers}}">
+            ${Caregivers}
+        </td>
+
+        <td data-title="{{nls.gdColOxygenDependent}}">
+            ${OxygenDependent}
+        </td>
+        <td data-title="{{nls.gdColElectricalDependent}}">
+            ${ElectricalDependent}
+        </td>
+
+        <td data-title="{{nls.gdColDisposition}}">
+            ${Disposition}
+        </td>
+
+        <td data-title="{{nls.gdColUserName}}">
+            ${UpdatedByUserName}
+        </td>
+        <td data-title="{{nls.gdColLastUpdated}}">
+            ${UpdatedOnValue}
+        </td>
+
+    </tr>
+</script>
+

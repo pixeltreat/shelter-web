@@ -21,13 +21,14 @@
                             data-bind="source:dsEventNames,value:selectedEventItem"
                             data-text-field="Value" data-value-field="Key" />
                 </div>
-                <div class="one-col btn-container pull-right">
+                <div class="one-col btn-container pull-right gridsearch__btns-col">
 
                     <!--<a class="btn export-excel">Export Excel</a>-->
                     <button class="btn" type="button" data-bind="enabled:isRecordsPresentForShelterStatusExport,click:btnExportToExcelClick">
                         Export Excel
                     </button>
                 </div>
+                
             </div>
             <div class="table-wrapper">
                 <!--style="width:1150px"-->
@@ -38,12 +39,12 @@
                        data-row-template="vwsstRow-template"
                        data-selectable="true"
                        data-columns="[
-                       {title:'{{nls.gdColSave}}',width:'80px'},
-                        {field:'ShelterTypeName',title:'{{nls.gdColShelterType}}',width:'150px'},
+                       {title:'{{nls.gdColSave}}',width:'100px'},
+                       {field:'ShelterTypeName',title:'{{nls.gdColShelterType}}',width:'150px'},
                        {field:'ShelterName',title:'{{nls.gdColShelterName}}',width:'150px'},
-                       {field:'Status',title:'{{nls.gdColStatus}}',width:'150px'},
-                       {field:'OpenDate',title:'{{nls.gdColOpenDate}}',filterable:false,width:'200px'},
-                       {field:'ClosedDate',title:'{{nls.gdColClosedDate}}',filterable:false,width:'200px'} ]"
+                       {field:'Status',title:'{{nls.gdColStatus}}',width:'120px'},
+                       {field:'OpenDate',title:'{{nls.gdColOpenDate}}',filterable:false,width:'250px'},
+                       {field:'ClosedDate',title:'{{nls.gdColClosedDate}}',filterable:false,width:'250px'} ]"
                        data-pageable="true"></table>
 
             </div>

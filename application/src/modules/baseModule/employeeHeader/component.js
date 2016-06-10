@@ -46,10 +46,10 @@ define(['Boiler', './viewmodel', 'text!./view.html', 'i18n!./nls/resources'], fu
 
         // To load data for shelter types and shelters 
         // when user first visit employee tracking module, this one time operation in entire life cycle of application
-        moduleContext.listen($ct.en.getLoadEmployeeHeaderInfo(), function () {
+        moduleContext.listen($ct.en.getLoadEmployeeHeaderInfo(), function (viewName) {
 
             if (vm) {              
-                vm.data.initializeEmployeeHeader();              
+                vm.data.initializeEmployeeHeader(viewName);
             }
 
         });

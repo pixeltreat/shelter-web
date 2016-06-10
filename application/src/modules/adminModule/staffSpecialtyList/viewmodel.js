@@ -42,14 +42,14 @@ define(["Boiler", 'text!./help/help.html'], function (Boiler, helpTmpl) {
                 this.set("selectedRecordVersion", e.sender.dataItem(e.sender.select()).Version);
             },
 
-            isRowSelected: function (e) {
-                if (this.get("selectedId") === -1 || this.get("selectedId") === null || this.get("selectedId") === undefined) {
-                    return false;
-                }
-                else {
-                    return true;
-                }
-            },
+            //isRowSelected: function (e) {
+            //    if (this.get("selectedId") === -1 || this.get("selectedId") === null || this.get("selectedId") === undefined) {
+            //        return false;
+            //    }
+            //    else {
+            //        return true;
+            //    }
+            //},
 
             staffSpecialtyEditUrl: function (isNew) {
                 if (!isNew) {
@@ -65,6 +65,10 @@ define(["Boiler", 'text!./help/help.html'], function (Boiler, helpTmpl) {
             },
 
             btnEditClick: function (e) {
+
+                this.set("selectedId", e.data.Id);
+                this.set("selectedRecordVersion", e.data.Version);
+
                 Boiler.UrlController.goTo(this.staffSpecialtyEditUrl(false));
             },
 
@@ -77,6 +81,9 @@ define(["Boiler", 'text!./help/help.html'], function (Boiler, helpTmpl) {
                 }
 
                 $ct.helpers.displayWorkAreaBusyCursor();
+
+                this.set("selectedId", e.data.Id);
+                this.set("selectedRecordVersion", e.data.Version);
 
                 $ct.ds.admin.staffspecialty.deleteStaffSpecialtyById(this, function (data) {
 

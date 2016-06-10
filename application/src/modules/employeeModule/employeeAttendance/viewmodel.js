@@ -122,10 +122,11 @@ define(["Boiler", 'text!./help/help.html',
 
 
                     }
+                    vm.initializeShifts();
 
                 });
 
-                vm.initializeShifts();
+              
             },
 
             initializeShifts: function () {
@@ -142,17 +143,20 @@ define(["Boiler", 'text!./help/help.html',
                         var start = $("#vweaAttendenceDate").data("kendoDateTimePicker");
                         var date = (vm.attendenceDate.getMonth() + 1) + "/" + vm.attendenceDate.getDate() + "/" + vm.attendenceDate.getFullYear();
                         vm.set("previousAttendenceDatestring", date);
-
-
+                       
+                      
+                        vm.btnGoClick();
 
 
                     }
 
                 });
+               
+               
             },
 
             btnGoClick: function () {
-
+               
                 vm.set("initialLoadforGo", false);
                 if (vm.isattendenceDateValid()) {
                     var date = (vm.attendenceDate.getMonth() + 1) + "/" + vm.attendenceDate.getDate() + "/" + vm.attendenceDate.getFullYear();

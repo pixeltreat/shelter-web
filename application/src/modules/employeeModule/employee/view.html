@@ -1,121 +1,109 @@
 <div id="vwEmployee">
     <!--View name : vwEmployee-->
     <!--Control id prefix : vwe-->
-
     <div class="module">
         <h2 class="module-title">{{nls.headerAddEditEmployee}}</h2>
         <div class="module-container l--two-column">
-                <div class="column-one">
-                    <label class="form-element-with-label">
-                        <span class="form-element-with-label__text">{{nls.lblShelterName}}</span>
-                        <div class="custom-select" data-bind="attr: { class: setClassForShelterName, className:setClassForShelterName}">
-                            <select id="vweDdlShelters"
+            <div class="column-one">
+                <label class="form-element-with-label">
+                    <span class="form-element-with-label__text">{{nls.lblShelterName}}</span>
+                    <div class="custom-select" data-bind="attr: { class: setClassForShelterName, className:setClassForShelterName}">
+                        <select id="vweDdlShelters"
                                 data-role="dropdownlist"
                                 data-bind="source:dsShelters,value:selectedShelterItem, disabled: isEditModeOrSingleShelterUser"
                                 data-text-field="Name"
                                 data-value-field="Id" required />
-
-                            <span class="k-widget k-tooltip k-tooltip-validation k-invalid-msg" data-bind="invisible:setValidationMsgForShelterName">Please select shelter name</span>
-                        </div>
-                    </label>
-
-                    <label class="form-element-with-label">
-                        <span class="form-element-with-label__text">{{nls.lblFirstName}}</span>
-                        <input type="text" class="form-element-with-label__inp" maxlength="250"
-                            id="vweTbFirstName" name="vweTbFirstName" required
-                            validationmessage="{{nls.valmsgFNRequired}}"
-                            data-bind="value:employeeData.Employee.FirstName" />
-                        <span class="k-invalid-msg" data-for="vweTbFirstName"></span>
-                    </label>
-
-                    <label class="form-element-with-label">
-                        <span class="form-element-with-label__text">{{nls.lblLastName}}</span>
-                        <input type="text" class="form-element-with-label__inp" id="vweTbLastName"
-                            name="vweTbLastName" required validationmessage="{{nls.valmsgLNRequired}}" data-bind="value:employeeData.Employee.LastName" maxlength="250" />
-                        <span class="k-invalid-msg" data-for="vweTbLastName"></span>
-                    </label>
-
-                    <label class="form-element-with-label">
-                        <span class="form-element-with-label__text">{{nls.lblShift}}</span>
-                        <div class="custom-select" >
-                            <select id="vweDdlShifts" data-role="dropdownlist"
+                        <span class="k-widget k-tooltip k-tooltip-validation k-invalid-msg" data-bind="invisible:setValidationMsgForShelterName">Please select shelter name</span>
+                    </div>
+                </label>
+                <label class="form-element-with-label">
+                    <span class="form-element-with-label__text">{{nls.lblFirstName}}</span>
+                    <input type="text" class="form-element-with-label__inp" maxlength="250"
+                           id="vweTbFirstName" name="vweTbFirstName" required
+                           validationmessage="{{nls.valmsgFNRequired}}"
+                           data-bind="value:employeeData.Employee.FirstName" />
+                    <span class="k-invalid-msg" data-for="vweTbFirstName"></span>
+                </label>
+                <label class="form-element-with-label">
+                    <span class="form-element-with-label__text">{{nls.lblLastName}}</span>
+                    <input type="text" class="form-element-with-label__inp" id="vweTbLastName"
+                           name="vweTbLastName" required validationmessage="{{nls.valmsgLNRequired}}" data-bind="value:employeeData.Employee.LastName" maxlength="250" />
+                    <span class="k-invalid-msg" data-for="vweTbLastName"></span>
+                </label>
+                <label class="form-element-with-label">
+                    <span class="form-element-with-label__text">{{nls.lblShift}}</span>
+                    <div class="custom-select">
+                        <select id="vweDdlShifts" data-role="dropdownlist"
                                 data-bind="source:dsShifts, value:selectedShift"
                                 data-text-field="Value" data-value-field="Key" />
-                        </div>
-                    </label>
-
-                    <label class="form-element-with-label">
-                        <span class="form-element-with-label__text">{{nls.lblStaffSpecialty}}</span>
-                        <div class="custom-select" >
-                            <select id="vweDdlStaffSpecialties" data-role="dropdownlist"
+                    </div>
+                </label>
+                <label class="form-element-with-label">
+                    <span class="form-element-with-label__text">{{nls.lblStaffSpecialty}}</span>
+                    <div class="custom-select">
+                        <select id="vweDdlStaffSpecialties" data-role="dropdownlist"
                                 data-bind="source:dsStaffSpecialties, value:selectedStaffSpecialty"
                                 data-text-field="Value" data-value-field="Key" />
-                        </div>
-                    </label>
-
-                    <span class="form-element-with-label">
-                        <span class="form-element-with-label__text">{{nls.lblIsMedical}}</span>
-                        <ul class="form-list">
-                            <li>
-                                <label class="radio-button">
-                                    <input class="radio-button__inp" name="vweRbVent" type="radio"
-                                    value="true" data-bind="checked:employeeData.Employee.IsMedical">
-                                    <span class="radio-button__text">Yes</span>
-                                </label>
-                            </li>
-                            <li>
-                                <label class="radio-button">
-                                    <input class="radio-button__inp" name="vweRbVent" type="radio"
-                                    value="false" data-bind="checked: employeeData.Employee.IsMedical">
-                                    <span class="radio-button__text">No</span>
-                                </label>
-                            </li>
-                        </ul>
-                    </span>
-                </div>
-                <div class="column-two">
-                    <label class="form-element-with-label">
-                        <span class="form-element-with-label__text">{{nls.lblEmployeeId}}</span>
-                        <input type="text" class="form-element-with-label__inp" id="vweTbEmployeeId" name="vweTbEmployeeId"
-                              data-bind="value:employeeData.Employee.EmployeeRefId" maxlength="250" />
-                        <span class="k-invalid-msg" data-for="vweTbEmployeeId"></span>
-                    </label>
-
-                    <label class="form-element-with-label">
-                        <span class="form-element-with-label__text">{{nls.lblMiddleName}}</span>
-                        <input type="text" class="form-element-with-label__inp" id="vweTbMiddleName" name="vweTbMiddleName"
-                            data-bind="value:employeeData.Employee.MiddleName" maxlength="2" />
-                    </label>
-
-                    <label class="form-element-with-label">
-                        <span class="form-element-with-label__text">{{nls.lblStaffType}}</span>
-                        <div class="custom-select" data-bind="attr: { class: setClassForStaffType, className:setClassForStaffType}">
-                            <select id="vweDdlStaffTypes" data-role="dropdownlist" data-bind="source:dsStaffTypes, value:selectedStaffType"
-                            data-text-field="Value" data-value-field="Key" />
-                            <span class="k-widget k-tooltip k-tooltip-validation k-invalid-msg"
-                            data-bind="invisible:setValidationMsgForStaffType">Please select staff type</span>
-                        </div>
-                    </label>
-
-                    <label class="form-element-with-label">
-                        <span class="form-element-with-label__text">{{nls.lblDepartment}}</span>
-                        <div class="custom-select" data-bind="attr: { class: setClassForDepartment, className:setClassForDepartment}">
-                            <select id="vweDdlDepartments" data-role="dropdownlist"
+                    </div>
+                </label>
+                <span class="form-element-with-label">
+                    <span class="form-element-with-label__text">{{nls.lblIsMedical}}</span>
+                    <ul class="form-list">
+                        <li>
+                            <label class="radio-button">
+                                <input class="radio-button__inp" name="vweRbVent" type="radio"
+                                       value="true" data-bind="checked:employeeData.Employee.IsMedical">
+                                <span class="radio-button__text">Yes</span>
+                            </label>
+                        </li>
+                        <li>
+                            <label class="radio-button">
+                                <input class="radio-button__inp" name="vweRbVent" type="radio"
+                                       value="false" data-bind="checked: employeeData.Employee.IsMedical">
+                                <span class="radio-button__text">No</span>
+                            </label>
+                        </li>
+                    </ul>
+                </span>
+            </div>
+            <div class="column-two">
+                <label class="form-element-with-label">
+                    <span class="form-element-with-label__text">{{nls.lblEmployeeId}}</span>
+                    <input type="text" class="form-element-with-label__inp" id="vweTbEmployeeId" name="vweTbEmployeeId"
+                           data-bind="value:employeeData.Employee.EmployeeRefId" maxlength="250" />
+                    <span class="k-invalid-msg" data-for="vweTbEmployeeId"></span>
+                </label>
+                <label class="form-element-with-label">
+                    <span class="form-element-with-label__text">{{nls.lblMiddleName}}</span>
+                    <input type="text" class="form-element-with-label__inp" id="vweTbMiddleName" name="vweTbMiddleName"
+                           data-bind="value:employeeData.Employee.MiddleName" maxlength="2" />
+                </label>
+                <label class="form-element-with-label">
+                    <span class="form-element-with-label__text">{{nls.lblStaffType}}</span>
+                    <div class="custom-select" data-bind="attr: { class: setClassForStaffType, className:setClassForStaffType}">
+                        <select id="vweDdlStaffTypes" data-role="dropdownlist" data-bind="source:dsStaffTypes, value:selectedStaffType"
+                                data-text-field="Value" data-value-field="Key" />
+                        <span class="k-widget k-tooltip k-tooltip-validation k-invalid-msg"
+                              data-bind="invisible:setValidationMsgForStaffType">Please select staff type</span>
+                    </div>
+                </label>
+                <label class="form-element-with-label">
+                    <span class="form-element-with-label__text">{{nls.lblDepartment}}</span>
+                    <div class="custom-select" data-bind="attr: { class: setClassForDepartment, className:setClassForDepartment}">
+                        <select id="vweDdlDepartments" data-role="dropdownlist"
                                 data-bind="source:dsDepartments, value:selectedDepartment"
                                 data-text-field="Value" data-value-field="Key" />
-                            <span class="k-widget k-tooltip k-tooltip-validation k-invalid-msg displayblock"
-                                data-bind="invisible:setValidationMsgForDepartment">Please select Department</span>
-                        </div>
-                    </label>
-
-                    <label class="form-element-with-label">
-                        <span class="form-element-with-label__text">{{nls.lblAgency}}</span>
-                        <strong class="form-element-with-label__value" data-bind="text:selectedDepartment.AgencyName"></strong>
-                    </label>
-                </div>
+                        <span class="k-widget k-tooltip k-tooltip-validation k-invalid-msg displayblock"
+                              data-bind="invisible:setValidationMsgForDepartment">Please select Department</span>
+                    </div>
+                </label>
+                <label class="form-element-with-label">
+                    <span class="form-element-with-label__text">{{nls.lblAgency}}</span>
+                    <strong class="form-element-with-label__value" data-bind="text:selectedDepartment.AgencyName"></strong>
+                </label>
+            </div>
         </div>
     </div>
-
     <div class="footer-bts-container">
         <button type="button" class="btn" data-bind="click:btnSaveClick">
             {{nls.btnSave}}

@@ -518,7 +518,7 @@ function (Boiler, helpTmpl) {
 
                 var columnHeader = $("#vwEmployeeList").find("th[role='columnheader']").first();
 
-                $(columnHeader).html("<input type='checkbox' id='chkAll' />");
+                $(columnHeader).html("<label class='checkbox'><input class='checkbox__inp' type='checkbox' data-item-type='child' id='chkAll' /><span class='checkbox__text'></span></label>");
 
                 $("#vwEmployeeList").find("#chkAll").click(function (e) {
 

@@ -28,4 +28,8 @@ var globalSuperAdminId = 20;
 //Employee template URL
 var globalEmployeeTemplateURL = "http://localhost/FileRepository/ShelterTemplates/Employee_Upload-Template.xlsx";
 
+//Shelteree templat
+
+var globalSheltereeTemplateURL = "http://localhost/FileRepository/ShelterTemplates/Shelteree_Upload-Template.xlsx";
+
 

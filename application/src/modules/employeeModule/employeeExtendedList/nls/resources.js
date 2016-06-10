@@ -24,7 +24,7 @@ define({
         "gdColUserName": "Updated User",
         "gdColLastUpdated": "Updated Date",
         "btnGo": "Go",
-        "btnFilterOff": "View All",
+        "btnFilterOff": "Show All",
         "lblEventName": "EventName:",
         "lblDuration": "Duration:"
 

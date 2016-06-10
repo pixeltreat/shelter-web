@@ -294,8 +294,72 @@ $ct.rn = function () {
 
     //end of employee routes
    
+
+    //start of shelteree routes
+
+
+    var sheltereeList = "sheltereelist";
+
+    var getSheltereeList = function () {
+        return sheltereeList;
+    };
    
-   
+    var sheltereeMedicalUpdateList = "sheltereemedicalupdatelist";
+
+    var getSheltereeMedicalUpdateList = function () {
+        return sheltereeMedicalUpdateList;
+    };
+
+    var sheltereeDischargeList = "sheltereedischargelist";
+
+    var getSheltereeDischargeList = function () {
+        return sheltereeDischargeList;
+    };
+    
+    var shelteree = "shelteree";
+
+    var getShelteree = function () {
+        return shelteree;
+    };
+
+
+    var bulkUpdateShelteree = "bulkupdateshelteree";
+
+    var getBulkUpdateShelteree = function () {
+        return bulkUpdateShelteree;
+    };
+
+    var bulkUpdateSheltereeDischarge = "bulkupdatesheltereedischarge";
+
+    var getBulkUpdateSheltereeDischarge = function () {
+        return bulkUpdateSheltereeDischarge;
+    };
+
+
+    var bulkUpdateSheltereeMedicalUpdate = "bulkupdatesheltereemedicalupdate";
+
+    var getBulkUpdateSheltereeMedicalUpdate = function () {
+        return bulkUpdateSheltereeMedicalUpdate;
+    };
+
+    var downloadShelteree = "downloadshelteree";
+
+    var getDownloadShelteree = function () {
+        return downloadShelteree;
+    };
+
+
+    var uploadShelteree = "uploadshelteree";
+
+    var getUploadShelteree = function () {
+        return uploadShelteree;
+    };
+
+
+
+
+    //end of shelteree routes
+    
 
 
     return {
@@ -357,9 +421,24 @@ $ct.rn = function () {
         getBulkUpdateEmployeeAttendance: getBulkUpdateEmployeeAttendance,
         getMultiFacilityEmployeeAttendance: getMultiFacilityEmployeeAttendance,
         getMultiFacilityEmployeeExtendedList: getMultiFacilityEmployeeExtendedList,
-        getMultiFacilityEmployeeList: getMultiFacilityEmployeeList
+        getMultiFacilityEmployeeList: getMultiFacilityEmployeeList,
 
         //end of employee routes
 
+
+        //start of shelteree routes
+
+        getSheltereeList: getSheltereeList,
+        getSheltereeMedicalUpdateList: getSheltereeMedicalUpdateList,
+        getSheltereeDischargeList: getSheltereeDischargeList,
+        getShelteree: getShelteree,
+        getBulkUpdateShelteree: getBulkUpdateShelteree,
+        getBulkUpdateSheltereeDischarge: getBulkUpdateSheltereeDischarge,
+        getBulkUpdateSheltereeMedicalUpdate: getBulkUpdateSheltereeMedicalUpdate,
+        getDownloadShelteree: getDownloadShelteree,
+        getUploadShelteree: getUploadShelteree
+
+
+        //end of shelteree routes
     };
 } ();

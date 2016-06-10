@@ -53,19 +53,15 @@ define(["Boiler", 'text!./help/help.html'], function (Boiler, helpTmpl) {
                 this.set("selectedRecordVersion", e.sender.dataItem(e.sender.select()).Version);
             },
 
-            isRowSelected: function (e) {
+            //isRowSelected: function (e) {
 
-                if (this.get("selectedId") == -1 || this.get("selectedId") === null || this.get("selectedId") === undefined) {
-                    return false;
-                }
-                else {
-                    return true;
-                }
-            },
-
-
-
-
+            //    if (this.get("selectedId") == -1 || this.get("selectedId") === null || this.get("selectedId") === undefined) {
+            //        return false;
+            //    }
+            //    else {
+            //        return true;
+            //    }
+            //},
 
 
             transportTypestEditUrl: function (isNew) {
@@ -83,8 +79,14 @@ define(["Boiler", 'text!./help/help.html'], function (Boiler, helpTmpl) {
             },
 
             btnEditClick: function (e) {
+
+                this.set("selectedId", e.data.Id);
+                this.set("selectedRecordVersion", e.data.Version);
+
                 Boiler.UrlController.goTo(this.transportTypestEditUrl(false));
             },
+
+
             btnDeleteClick: function (e) {
 
                 moduleContext.notify($ct.en.getHideErrorMsg());
@@ -92,6 +94,9 @@ define(["Boiler", 'text!./help/help.html'], function (Boiler, helpTmpl) {
                 if (!$ct.helpers.displayConfirmWindow($ct.msg.getDeleteConfirmationMsg())) {
                     return;
                 }
+
+                this.set("selectedId", e.data.Id);
+                this.set("selectedRecordVersion", e.data.Version);
 
                 $ct.helpers.displayWorkAreaBusyCursor();
 

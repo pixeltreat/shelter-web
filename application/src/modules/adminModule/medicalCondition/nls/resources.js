@@ -6,6 +6,7 @@ define({
         "lblName": "Name",
         "lblDisplayOrder": "Display Order",
         "lblDescription": "Description",
+        "lblQuestionTypes": "Question Types",
 
 
         //validation messages

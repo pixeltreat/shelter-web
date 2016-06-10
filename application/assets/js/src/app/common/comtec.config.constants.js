@@ -13,10 +13,18 @@ $ct.other = function () {
     };
 
 
+    var sheltereeTemplateURL = globalSheltereeTemplateURL;
+
+    var getSheltereeTemplateURL = function () {
+        return sheltereeTemplateURL;
+    };
+
+
 
     return {
 
-        getEmployeeTemplateURL: getEmployeeTemplateURL
+        getEmployeeTemplateURL: getEmployeeTemplateURL,
+        getSheltereeTemplateURL: getSheltereeTemplateURL
 
     };
 

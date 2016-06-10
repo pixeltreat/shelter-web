@@ -74,7 +74,7 @@ function (Boiler) {
 
                
 
-                var savestaffTypeData = vm.staffTypeData;
+                var savestaffTypeData = vm.staffTypeData.toJSON();
                 
 
                 $ct.ds.admin.stafftype.saveStaffTypes(savestaffTypeData, function (data) {

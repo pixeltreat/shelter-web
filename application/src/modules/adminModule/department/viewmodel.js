@@ -97,7 +97,7 @@ function (Boiler) {
                     return;
                 }
 
-                var saveDepartmentData = vm.departmentData;
+                var saveDepartmentData = vm.departmentData.toJSON();
                 saveDepartmentData.Department.AgencyDepartments = [];
 
 

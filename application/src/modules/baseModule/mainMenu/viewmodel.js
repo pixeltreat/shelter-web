@@ -74,15 +74,44 @@ define(["Boiler"], function (Boiler) {
                 Boiler.UrlController.goTo($ct.rn.getshelterIdentificationList());
             },
 
-            isEmployeListClicked: false,
+            //moduleContext.notify($ct.en.getRefreshView(), moduleContext.parentContext.currentView);
+
+
+            isEmployeeOrEmployeeExpandedListClicked: false,
+
             employeeListClick: function (e) {
-                if (!vm.isEmployeListClicked) {
-                    moduleContext.notify($ct.en.getLoadEmployeeHeaderInfo());
-                    vm.isEmployeListClicked = true;
+
+                if (!vm.isEmployeeOrEmployeeExpandedListClicked) {
+
+                    moduleContext.notify($ct.en.getLoadEmployeeHeaderInfo(), $ct.rn.getEmployeeList());
+                    vm.isEmployeeOrEmployeeExpandedListClicked = true;
+
                 } else {
-                    moduleContext.notify($ct.en.getEmployeeMenuItemClicked());
+
+                    //moduleContext.notify($ct.en.getEmployeeMenuItemClicked());
+                    //Boiler.UrlController.goTo($ct.rn.getEmployeeList());
+
+                    moduleContext.notify($ct.en.getManageEmployeeClicked());
                     Boiler.UrlController.goTo($ct.rn.getEmployeeList());
+
                 }
+
+            },
+
+            employeeExpandedListClick: function (e) {
+
+                if (!vm.isEmployeeOrEmployeeExpandedListClicked) {
+
+                    moduleContext.notify($ct.en.getLoadEmployeeHeaderInfo(), $ct.rn.getEmployeeExtendedList());
+                    vm.isEmployeeOrEmployeeExpandedListClicked = true;
+
+                } else {
+
+                    moduleContext.notify($ct.en.getManageEmployeeExpandedClicked());
+                    Boiler.UrlController.goTo($ct.rn.getEmployeeExtendedList());
+
+                }
+
             },
 
             employeeAttendanceClick: function (e) {

@@ -1,6 +1,7 @@
 <div id="vwEmployeeHeader" class="employee-header">
     <!-- nav list to filter table data -->
     <ul id="activeNav" class="employee-header__nav-list">
+
         <!-- <li><a id="vwehemployeelist" data-bind="click:btnManageEmployeeClick">{{nls.mnuEmployee}}</a></li>
         <li><a id="vwehemployeeextendedlist" data-bind="click:btnManageEmployeeExpandedClick">{{nls.mnuEmployeeExpanded}}</a></li> -->
         <li>
@@ -22,42 +23,37 @@
             </button>
         </li>
     </ul>
-
     <!--SHELTER HEADER START-->
     <div id="vwehDDLs" class="employee-header__shelter-dropdown">
         <label for="vwehDdlShelterNames" class="employee-header__shelter-dropdown__label">{{nls.lblShelter}}:</label>
         <div class="custom-select employee-header__shelter-dropdown__select">
             <select id="vwehDdlShelterNames"
-                data-role="dropdownlist"
-                data-bind="source:dsShelterNames,events:{change:ddlShelterNames},value:selectedShelterNameItem"
-                data-text-field="Name"
-                data-value-field="Id">
-            </select>
+                    data-role="dropdownlist"
+                    data-bind="source:dsShelterNames,events:{change:ddlShelterNames},value:selectedShelterNameItem"
+                    data-text-field="Name"
+                    data-value-field="Id"></select>
         </div>
         <!-- <button class="btn" data-bind="disabled:isGoButtonDisabled, click:btnGoClick">{{nls.btnGo}}</button> -->
     </div>
 </div>
-            <!-- <div class="row grid-select-container bg-border" data-bind=" style: {display: showLabelsInShelterHeader}">
-                <div class="full-col top-select-boxes no-margin-top">
-                    <label class="facilityname">
-                        <span class="label2">{{nls.lblShelter}}:</span>
-                        <span data-bind="text:previousShelterName"></span>
-                    </label>
-                </div>
-            </div> -->
-
-
-        <!-- <div id="vwehLabels" class="wrapper cfx">
-            <div class="row grid-select-container bg-border">
-                <div class="full-col top-select-boxes">
-                    <label class="facilityname">
-                        <span class="label2">{{nls.lblShelter}}
-                            :
-                        </span>
-                        <span data-bind="text:previousShelterName"></span>
-                    </label>
-                </div>
-            </div>
-        </div> -->
-
-    <!--FACILITY HEADER END-->
+<!-- <div class="row grid-select-container bg-border" data-bind=" style: {display: showLabelsInShelterHeader}">
+    <div class="full-col top-select-boxes no-margin-top">
+        <label class="facilityname">
+            <span class="label2">{{nls.lblShelter}}:</span>
+            <span data-bind="text:previousShelterName"></span>
+        </label>
+    </div>
+</div> -->
+<!-- <div id="vwehLabels" class="wrapper cfx">
+    <div class="row grid-select-container bg-border">
+        <div class="full-col top-select-boxes">
+            <label class="facilityname">
+                <span class="label2">{{nls.lblShelter}}
+                    :
+                </span>
+                <span data-bind="text:previousShelterName"></span>
+            </label>
+        </div>
+    </div>
+</div> -->
+<!--FACILITY HEADER END-->

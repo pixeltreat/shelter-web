@@ -1,34 +1,40 @@
-<div id="vwSheltreeEmployeeRatioList">
 
-    <div class="module cfx">
+ <div id="vwSheltreeEmployeeRatioList">
+    <!--View name : vwSheltreeEmployeeRatioList-->
+    <!--Control id prefix : vwserl-->
+
+    <div class="module">
+        <!-- view title -->
         <h2 class="module-title">
-            {{nls.headerSheltreeEmployeeRatio}} <a data-bind="click:helpClick">
-                <i class="icon-help-circled">
-                </i>
-            </a>
+            {{nls.headerSheltreeEmployeeRatio}}
+
+            <span class="module-title__icon" data-bind="click:helpClick"></span>
+
         </h2>
         <div class="module-container">
-            <div class="row grid-select-container gridsearch">
-                <div class="two-of-three-col">
-
-                    <label for="vwserlTxtSearch" class="search-label">
-                        <span class="label">{{nls.lblSearch}}:</span><fieldset>
-                            <input type="text" id="vwserlTxtSearch" value="" data-bind="value:searchToken,events:{keyup:searchSheltreeEmployeeRatio}"
-                                   data-value-update="keyup" class="k-textbox searchIcon" />
-                        </fieldset>
+            <div class="gridsearch">
+                <div class="gridsearch__search-col">
+                    <label class="search-label">
+                        <!--<span class="search-label__text">{{nls.lblSearch}}:</span>-->
+                        <input type="text"
+                               class="search-label__inp"
+                               id="vwserlTxtSearch"
+                                placeholder="Search"
+                              data-bind="value:searchToken,events:{keyup:searchSheltreeEmployeeRatio}"
+                               data-value-update="keyup" />
                     </label>
                 </div>
-                <div class="one-col btn-container pull-right">
-                    <button class="btn" data-bind="click:btnAddClick" type="button">
+                <div class="gridsearch__btns-col">
+                    <button class="btn--secondary" data-bind="click:btnAddClick" type="button">
+                        <span class="f-icon f-icon__add" aria-hidden="true"></span>
                         {{nls.btnAdd}}
                     </button>
-                    <button class="btn" type="button" data-bind="enabled:isRowSelected,click:btnEditClick">
+                    <!-- <button class="btn" type="button" data-bind="enabled:isRowSelected,click:btnEditClick">
                         {{nls.btnEdit}}
                     </button>
                     <button class="btn" type="button" data-bind="enabled:isRowSelected,click:btnDeleteClick">
                         {{nls.btnDelete}}
-                    </button>
-                    <!--<a class="btn export-excel">Export Excel</a>-->
+                    </button> -->
                 </div>
             </div>
             <div class="table-wrapper">
@@ -39,6 +45,8 @@
                        data-row-template="vwserlRow-template"
                        data-selectable="true"
                        data-columns="[
+                         {title:'Edit',width:'60px'},
+                            {title:'Delete',width:'70px'},
                           {field:'StaffSpecialityName',title:'{{nls.gdColName}}' },
                          {field:'EmployeeCount',title:'{{nls.gdColEmployeecount}}' },
                          {field:'SheltreeCount',title:'{{nls.gdColSheltreecount}}'},
@@ -51,25 +59,34 @@
         </div>
     </div>
 </div>
-<script type="text/x-kendo-template" id="vwserlRow-template">
-    <tr>
-        <td data-title="{{nls.gdColName}}">
-            ${StaffSpecialityName}
-        </td>
-        <td data-title="{{nls.gdColEmployeecount}}">
-            ${EmployeeCount}
-        </td>
-
-        <td data-title="{{nls.gdColSheltreecount}}">
-            ${SheltreeCount}
-        </td>
-        <td data-title="{{nls.gdColUpdatedbyusername}}">
-            ${UpdatedByUserName}
-        </td>
-        <td data-title="{{nls.gdColUpdatedon}}">
-            ${UpdatedOnValue}
-        </td>
-    </tr>
-</script>
-
-
+     <script type="text/x-kendo-template" id="vwserlRow-template">
+         <tr>
+             <td>
+                 <button class="btn-edit" data-bind="click:btnEditClick">
+                     <span class="f-icon f-icon__edit" aria-hidden="true"></span>
+                     <span class="f-icon__text">Edit</span>
+                 </button>
+             </td>
+             <td>
+                 <button class="btn-delete" data-bind="click:btnDeleteClick">
+                     <span class="f-icon f-icon__delete" aria-hidden="true"></span>
+                     <span class="f-icon__text">Delete</span>
+                 </button>
+             </td>
+             <td data-title="{{nls.gdColName}}">
+                 ${StaffSpecialityName}
+             </td>
+             <td data-title="{{nls.gdColEmployeecount}}">
+                 ${EmployeeCount}
+             </td>
+             <td data-title="{{nls.gdColSheltreecount}}">
+                 ${SheltreeCount}
+             </td>
+             <td data-title="{{nls.gdColUpdatedbyusername}}">
+                 ${UpdatedByUserName}
+             </td>
+             <td data-title="{{nls.gdColUpdatedon}}">
+                 ${UpdatedOnValue}
+             </td>
+         </tr>
+     </script>

@@ -1,11 +1,16 @@
 <div id="vwTransportationTypeList">
+
     <!--View name : vwTransportationTypeList-->
     <!--Control id prefix : vwttl-->
+
 
     <div class="module">
         <!-- view title -->
         <h2 class="module-title">
-            {{nls.header}}<span class="module-title__icon" data-bind="click:helpClick"></span>
+            {{nls.header}}
+
+            <span class="module-title__icon" data-bind="click:helpClick"></span>
+
         </h2>
         <div class="module-container">
             <div class="gridsearch">
@@ -15,6 +20,7 @@
                         <input type="text"
                             class="search-label__inp"
                             id="vwttlTxtSearch"
+                               placeholder="Search"
                             data-bind="value:searchToken,events:{keyup:seachTransportationTypes}"
                             data-value-update="keyup" />
                     </label>
@@ -24,6 +30,12 @@
                         <span class="f-icon f-icon__add" aria-hidden="true"></span>
                         {{nls.btnAdd}}
                     </button>
+                    <!-- <button class="btn" type="button" data-bind="enabled:isRowSelected,click:btnEditClick">
+        {{nls.btnEdit}}
+    </button>
+    <button class="btn" type="button" data-bind="enabled:isRowSelected,click:btnDeleteClick">
+        {{nls.btnDelete}}
+    </button> -->
                 </div>
             </div>
             <div class="table-wrapper">
@@ -34,7 +46,6 @@
                         data-row-template="vwttlRow-template"
                         data-selectable="true"
                         data-columns="[
-                            {width:'40px'},
                             {title:'Edit',width:'60px'},
                             {title:'Delete',width:'70px'},
                             {field:'Name',title:'{{nls.gdColName}}'},
@@ -47,23 +58,16 @@
             </div>
         </div>
     </div>
-
     <script type="text/x-kendo-template" id="vwttlRow-template">
         <tr>
             <td>
-                <label class="checkbox">
-                    <input class="checkbox__inp" value="row{number}" type="checkbox" name="row{number}">
-                    <span class="checkbox__text"></span>
-                </label>
-            </td>
-            <td>
-                <button class="btn-edit">
+                <button class="btn-edit" data-bind="click:btnEditClick">
                     <span class="f-icon f-icon__edit" aria-hidden="true"></span>
                     <span class="f-icon__text">Edit</span>
                 </button>
             </td>
             <td>
-                <button class="btn-delete">
+                <button class="btn-delete"  data-bind="click:btnDeleteClick">
                     <span class="f-icon f-icon__delete" aria-hidden="true"></span>
                     <span class="f-icon__text">Delete</span>
                 </button>

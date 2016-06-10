@@ -501,7 +501,7 @@ function (Boiler, helpTmpl) {
             dsDataBoundEvent: function (dataEve) {
               
                 var columnHeader = $("#vwEmployeeExtendedList").find("th[role='columnheader']").first();
-                $(columnHeader).html("<input type='checkbox' id='chkAll' />");
+                $(columnHeader).html("<label class='checkbox'><input class='checkbox__inp' type='checkbox' data-item-type='child' id='chkAll' /><span class='checkbox__text'></span></label>");
 
                 $("#vwEmployeeExtendedList").find("#chkAll").click(function (e) {
                     var arrayUnSel = vm.get("empRequestData.UnSelectedEmployeeIds");

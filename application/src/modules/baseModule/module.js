@@ -6,11 +6,12 @@ define(
         './employeeHeader/component',
         './alerts/component',
         './appLogo/component',
-        './footer/component'
+        './footer/component',
+        './sheltereeHeader/component'
 
     //], function (Boiler, PageHeaderComponent, MainMenuComponent, FooterComponent, CommonComponent, EmployeeHeader, Alerts) {
 
-    ], function (Boiler, PageHeaderComponent, MainMenuComponent, CommonComponent, EmployeeHeader, Alerts, AppLogo, FooterComponent) {
+    ], function (Boiler, PageHeaderComponent, MainMenuComponent, CommonComponent, EmployeeHeader, Alerts, AppLogo, FooterComponent, SheltereeHeader) {
 
         var Module = function (globalContext) {
             var context = new Boiler.Context(globalContext);
@@ -26,7 +27,8 @@ define(
 
                 ".app-alerts-wrap": new Alerts(context),
                 ".app-logo-wrap"  : new AppLogo(context),
-                ".footer"         : new FooterComponent(context)
+                ".footer": new FooterComponent(context),
+                ".shelteree-header": new SheltereeHeader(context)
             });
 
             controller.start();

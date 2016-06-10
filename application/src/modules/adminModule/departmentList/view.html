@@ -1,22 +1,27 @@
+
 <div id="vwDepartmentList">
     <!--View name : vwDepartmentList-->
     <!--Control id prefix : vwdl-->
 
     <div class="module">
+        <!-- view title -->
         <h2 class="module-title">
-            {{nls.headerDepartment}} <a data-bind="click:helpClick">
-                <i class="icon-help-circled">
-                </i>
-            </a>
+            {{nls.headerDepartment}} 
+
+            <span class="module-title__icon" data-bind="click:helpClick"></span>
+
         </h2>
         <div class="module-container">
             <div class="gridsearch">
                 <div class="gridsearch__search-col">
                     <label class="search-label">
-                        <input type="text" id="vwelTxtSearch" class="search-label__inp"
-                        placeholder="Search"
+                        
+                        <input type="text" 
+                               class="search-label__inp"
+                               id="vwdlTxtSearch"
+                               placeholder="Search"
                         data-bind="value:searchToken,events:{keyup:seachDepartments}"
-                        data-value-update="keyup"/>
+                        data-value-update="keyup" />
                     </label>
                 </div>
                 <div class="gridsearch__btns-col">
@@ -24,19 +29,22 @@
                         <span class="f-icon f-icon__add" aria-hidden="true"></span>
                         {{nls.btnAdd}}
                     </button>
-
+                    <!-- <button class="btn" type="button" data-bind="enabled:isRowSelected,click:btnEditClick">
+        {{nls.btnEdit}}
+    </button>
+    <button class="btn" type="button" data-bind="enabled:isRowSelected,click:btnDeleteClick">
+        {{nls.btnDelete}}
+    </button> -->
                 </div>
-            </div>
-            
+            </div>         
             <div class="table-wrapper">
-                <table id="vwdlDgDepartment" cellspacing="0" cellpadding="0" border="0" class="grid split-table rwd-table1"
+                <table id="vwdlDgDepartmentList" cellspacing="0" cellpadding="0" border="0" class="grid split-table rwd-table1"
                     data-bind="source:dsDepartments, events: { change: rowSelectionChange }" data-role="grid"
                     data-filterable="true"
                     data-sortable='{ "mode": "single", "allowUnsort": false }'
                     data-row-template="vwdlRow-template"
                     data-selectable="true"
                     data-columns="[
-                        {width:'40px'},
                         {title:'Edit',width:'60px'},
                         {title:'Delete',width:'70px'},
                         {field:'Name',title:'{{nls.gdColName}}'},
@@ -46,27 +54,21 @@
                         {field:'UpdatedByUserName',title:'{{nls.gdColUpdatedByUserName}}'},
                         {field:'UpdatedOn',title:'{{nls.gdColUpdatedOnValue}}',filterable:false}
                     ]"
-                    data-pageable="true">
-                </table>
+                    data-pageable="true"></table>
             </div>
         </div>
     </div>
     <script type="text/x-kendo-template" id="vwdlRow-template">
         <tr>
+           
             <td>
-                <label class="checkbox">
-                    <input class="checkbox__inp" value="row{number}" type="checkbox" name="row{number}">
-                    <span class="checkbox__text"></span>
-                </label>
-            </td>
-            <td>
-                <button class="btn-edit">
+                <button class="btn-edit" data-bind="click:btnEditClick">
                     <span class="f-icon f-icon__edit" aria-hidden="true"></span>
                     <span class="f-icon__text">Edit</span>
                 </button>
             </td>
             <td>
-                <button class="btn-delete">
+                <button class="btn-delete" data-bind="click:btnDeleteClick">
                     <span class="f-icon f-icon__delete" aria-hidden="true"></span>
                     <span class="f-icon__text">Delete</span>
                 </button>
@@ -89,7 +91,5 @@
             <td data-title="{{nls.gdColUpdatedOnValue}}">
                 ${UpdatedOnValue}
             </td>
-
-
         </tr>
     </script>

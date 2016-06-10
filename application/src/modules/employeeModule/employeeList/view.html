@@ -17,9 +17,9 @@
                 <div class="gridsearch__search-col">
                     <label class="search-label">
                         <input type="text" id="vwelTxtSearch" class="search-label__inp"
-                        placeholder="Search"
-                        data-bind="value:searchToken,events:{keyup:searchEmployees}"
-                        data-value-update="keyup"/>
+                               placeholder="Search"
+                               data-bind="value:searchToken,events:{keyup:searchEmployees}"
+                               data-value-update="keyup" />
                     </label>
                 </div>
                 <div class="gridsearch__btns-col">
@@ -27,22 +27,18 @@
                         <span class="f-icon f-icon__filter-off" aria-hidden="true"></span>
                         <span data-bind="text:filterText"></span>
                     </button>
-
                     <button class="btn--secondary" data-bind="click:btnAddClick" type="button">
                         <span class="f-icon f-icon__add" aria-hidden="true"></span>
                         {{nls.btnAdd}}
                     </button>
-
                     <button class="btn--secondary" data-bind="click:btnFilterOffClick" type="button">
                         <span class="f-icon f-icon__showall" aria-hidden="true"></span>
                         {{nls.btnFilterOff}}
                     </button>
-
                     <button class="btn--secondary" data-bind="click:btnExportExcelClick" type="button">
                         <span class="f-icon f-icon__export" aria-hidden="true"></span>
                         {{nls.btnExportToExcel}}
                     </button>
-
                     <button class="btn--secondary" data-bind="click:btnBulkUpdateClick" type="button">
                         <span class="f-icon f-icon__upload" aria-hidden="true"></span>
                         {{nls.btnBulkUpdate}}
@@ -50,19 +46,18 @@
                 </div>
             </div>
             <div class="table-wrapper" id="vwelDgEmployeeListParent">
-                <table
-                    id="vwelDgEmployeeList"
-                    cellspacing="0"
-                    cellpadding="0"
-                    border="0"
-                    class="grid split-table customDataTable"
-                    data-bind="source:dsEmployeeList, events: { change: rowSelectionChange,dataBound:dsDataBoundEvent }"
-                    data-role="grid"
-                    data-filterable="true"
-                    data-sortable='{ "mode": "single", "allowUnsort": false }'
-                    data-row-template="vwelRow-template"
-                    data-selectable="true"
-                    data-columns="[
+                <table id="vwelDgEmployeeList"
+                       cellspacing="0"
+                       cellpadding="0"
+                       border="0"
+                       class="grid split-table customDataTable"
+                       data-bind="source:dsEmployeeList, events: { change: rowSelectionChange,dataBound:dsDataBoundEvent }"
+                       data-role="grid"
+                       data-filterable="true"
+                       data-sortable='{ "mode": "single", "allowUnsort": false }'
+                       data-row-template="vwelRow-template"
+                       data-selectable="true"
+                       data-columns="[
                        {width:'40px'},
                        {title:'Edit',width:'60px'},
                        {title:'Delete',width:'70px'},
@@ -79,32 +74,28 @@
                        {field:'UpdatedByUserName',title:'{{nls.gdColUserName}}' , width:'200px'},
                        {field:'UpdatedOn',title:'{{nls.gdColLastUpdated}}',filterable:false , width:'200px'}
                     ]"
-                    data-pageable="true"
-                    data-scrollable="true"></table>
+                       data-pageable="true"
+                       data-scrollable="true"></table>
             </div>
         </div>
     </div>
-
     <!-- <span class="bold" style="position:relative; top:5px;">
         <span>{{nls.lblShelterName}}
         </span>
         <span data-bind="text:empHeaderData.shelter.Name"></span>
     </span> -->
-
     <div style="display: none">
         <a id="vwmpAncExportExcel"></a>
     </div>
 </div>
-
 <script type="text/x-kendo-template" id="vwmpTest">
     <span>${data}</span>
 </script>
-
 <script type="text/x-kendo-template" id="vwelRow-template">
     <tr>
         <td data-title="{{nls.gdColIsSelected}}">
             <label class="checkbox">
-                <input class="checkbox__inp" data-bind="checked:IsSelected, events:{change:vwelChkEmployee}" type="checkbox">
+                <input class="checkbox__inp" data-bind="checked:IsSelected, events:{change:vwelChkEmployee}" type="checkbox" data-item-type="child" data-id=${Id} />
                 <span class="checkbox__text"></span>
             </label>
         </td>

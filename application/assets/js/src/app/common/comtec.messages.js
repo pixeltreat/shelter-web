@@ -60,6 +60,11 @@ $ct.msg = function () {
         return employeeUploadError;
     };
 
+    var sheltereeUploadError = "Invalid Data";
+    var getSheltereeUploadError = function () {
+        return sheltereeUploadError;
+    };
+
 
 
     //Form specific messages
@@ -227,7 +232,24 @@ $ct.msg = function () {
         return ShelterStatusSuccessMsg;
     };
 
+    // shelteree related messages
 
+    var sheltereeSuccessMsg = "Shelteree" + successMsg;
+    var getSheltereeSuccessMsg = function () {
+        return sheltereeSuccessMsg;
+    };
+
+
+    var sheltereeDeleteSuccessMsg = "Shelteree " + deleteSuccessMsg;
+    var getSheltereeDeleteSuccessMsg = function () {
+        return sheltereeDeleteSuccessMsg;
+    };
+
+
+    var sheltereeUploadSuccessMsg = "Data " + successMsg;
+    var getSheltereeUploadSuccessMsg = function () {
+        return sheltereeUploadSuccessMsg;
+    };
 
     return {
 
@@ -291,7 +313,13 @@ $ct.msg = function () {
         // shelterstatus related messages
 
         getShelterStatusSuccessMsg: getShelterStatusSuccessMsg,
-        getEmployeeAttendenceUpdatedSuccessMsg: getEmployeeAttendenceUpdatedSuccessMsg
+        getEmployeeAttendenceUpdatedSuccessMsg: getEmployeeAttendenceUpdatedSuccessMsg,
+
+        // shelteree related messages
+        getSheltereeSuccessMsg: getSheltereeSuccessMsg,
+        getSheltereeDeleteSuccessMsg:getSheltereeDeleteSuccessMsg,
+        getSheltereeUploadSuccessMsg: getSheltereeUploadSuccessMsg,
+        getSheltereeUploadError: getSheltereeUploadError
 
     };
 } ();

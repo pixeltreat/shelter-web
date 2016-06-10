@@ -1,0 +1,143 @@
+
+<div id="vwUploadShelteree">
+    <!--Control id prefix : vwus--> 
+        <div class="wrapper wrapper2 cfx" style="background: #fff;">
+            <div class="cssform paddingT0">
+                <!-- Top heading and buttons -->
+                <!-- Top heading and buttons -->
+                <!-- Search and buttons -->
+                <div class="clear">
+                </div>
+                <!-- Search and buttons -->
+                <!-- Upload Sheletree data -->
+                <div class="history-box cfx">
+                    <div class="title-new div-title">
+                        <h5>
+                            <i class="icon-help-circled" data-bind="click:helpClick"></i>{{nls.headerUploadShelteree}}
+                        </h5>
+                    </div>
+                    <div class="cssform">
+
+                        <div class="paddingL165">
+                            <label for="vwusDdlFacilityNames" class="facilityname">
+                                <span class="">{{nls.lblFacility}}</span>
+                            </label>
+                            <div class="item_parent">
+                                <div class="item_width">
+                                    <select id="vwusDdlFacilityNames" data-role="dropdownlist" class="select inputClass"
+                                            data-bind="source:dsFacilityNames,events:{change:ddlFacilityNames},value:selectedFacilityNameItem"
+                                            data-text-field="Name" data-value-field="Id" />
+                                </div>
+                                <div class="clear"></div>
+                            </div>
+                        </div>
+
+                        <div class="paddingL165">
+                            <label for="brandList" class="" id="brands">
+                                {{nls.lblOptions}}
+                            </label>
+                            <div class="item_parent" data-template="vwusImportOptions-template" data-bind="source:dsImportOptions"
+                                 data-role="listview" style="border: none">
+                            </div>
+                        </div>
+                        <div class="clear">
+                        </div>
+                        <div class="paddingL165">
+                            <label>
+                                {{nls.lblUpload}}
+                            </label>
+                            <div class="item_parent">
+                                <div class="item_width">
+
+
+
+                                    <input id="vwusUpload" name="vwusUpload" type="file"
+                                           data-role="upload"
+                                           data-multiple=false
+                                           data-async="{ saveUrl:'{{nls.fileUploadUrl}}',
+                                       autoUpload:false}"
+                                           data-bind="events:
+                                        {select: onSelectFile,
+                                        upload:onUploadFile,
+                                        success:onSuccees,
+                                        complete:onCompleteFileUpload,
+                                        error: onError,
+                                        remove:onRemove,
+                                        progress:onProgressFileUpload}" />
+                                </div>
+                                <div>
+                                    <span data-bind="text:fileProgress" id="vwusUploadProgess" style="display: none">
+                                    </span>
+                                </div>
+                                <div class="clear">
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <div class="title-bar cfx">
+                        <div class="pull-right paddright-05em icons" id="vwusExcel" style="display: none">
+                            <span class="paddingR10">
+                                <a class="linkcolor excel underline_text" data-bind="click:btnExportExcelClick">
+                                    {{nls.btnExportToExcel}}
+                                </a>
+                            </span>
+                        </div>
+                        <table class="dataTable textBold" id="vwusSummary" style="display: none">
+                            <tr>
+                                <td>
+                                    {{nls.lblTotalRecords}} : <span data-bind="text:UploadSummary.TotalCount"></span>
+                                </td>
+                                <td>
+                                    {{nls.lblTotalRecordsUpdated}} : <span data-bind="text:UploadSummary.SuccessCount">
+                                    </span>
+                                </td>
+                                <td>
+                                    {{nls.lblTotalRecordsFailed}}: <span data-bind="text:UploadSummary.FailCount"></span>
+                                </td>
+                            </tr>
+                        </table>
+
+                        <div style="display: none" id="vwusDivGrid" class="padding10 table-wrapper customscroll">
+                            <table id="vwuSheltereesList" cellspacing="0" cellpadding="0" border="0" class="grid split-table customDataTable"
+                                   data-scrolable="true" data-bind="source:UploadSummary.FailedImportedShelterees"
+                                   data-role="grid" data-filterable="true" data-sortable="true" data-row-template="vwusRow-template"
+                                   data-selectable="true" data-columns="[{field:'FirstName',title:'{{nls.gdColFirstName}}'},{field:'LastName',title:'{{nls.gdColLastName}}'},{field:'ValidationError',title:'{{nls.gdColReason}}'}]"
+                                   data-pageable="true"></table>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Upload Employee data -->
+                <div style="display: none">
+                    <a id="vwusExportExcel"></a>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+
+    <script type="text/x-kendo-template" id="vwusRow-template">
+
+        <tr>
+            <td>${FirstName}</td>
+            <td>${LastName}</td>
+
+            <td> <span data-bind="text:ValidationError"></span></td>
+        </tr>
+
+    </script>
+
+
+    <script type="text/x-kendo-template" id="vwusImportOptions-template">
+
+        <div class="item_width">
+            <input type="radio" name="ImportActionType" id="${data.Key}" value="${data.Key}" data-bind="checked:selectedImportAction, click:radiobtnClick" class="check_radio_align"></input>
+            <label for="${data.Key}" class="lblfor" style="vertical-align: middle">
+                ${data.Value}
+            </label>
+        </div>
+
+    </script>

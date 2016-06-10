@@ -1,39 +1,41 @@
 
 <div id="vwStaffSpecialtyList">
     <!--View name : vwStaffSpecialtyList-->
-    <!--Control id prefix : vwssl-->
-    <div class="module cfx">
+    <!--Control id prefix : vwssl-->  
+    <div class="module">
+        <!-- view title -->
         <h2 class="module-title">
-            {{nls.headerStaffSpecialtyList}}<a data-bind="click:helpClick">
-                <i class="icon-help-circled">
-                </i>
-            </a>
+            {{nls.headerStaffSpecialtyList}}
+
+            <span class="module-title__icon" data-bind="click:helpClick"></span>
+
         </h2>
         <div class="module-container">
-            <div class="row grid-select-container gridsearch">
-                <div class="two-of-three-col">
-                    <label for="vwsslTbSearch" class="search-label">
-                        <span class="label">{{nls.lblSearch}}:</span>
-                        <fieldset>
-                            <input type="text" id="vwsslTbSearch" value="" data-bind="value:searchToken, events:{keyup:searchStaffSpecialities}"
-                                   data-value-update="keyup" class="k-textbox searchIcon" />
-                        </fieldset>
+            <div class="gridsearch">
+                <div class="gridsearch__search-col">
+                    <label class="search-label">
+                        <!--<span class="search-label__text">{{nls.lblSearch}}:</span>-->
+                        <input type="text"
+                               class="search-label__inp"
+                               id="vwsslTbSearch"
+                               placeholder="Search"
+                               data-bind="value:searchToken, events:{keyup:searchStaffSpecialities}"
+                               data-value-update="keyup" />
                     </label>
                 </div>
-                <div class="one-col btn-container pull-right">
-                    <button class="btn" data-bind="click:btnAddClick" type="button">
+                <div class="gridsearch__btns-col">
+                    <button class="btn--secondary" data-bind="click:btnAddClick" type="button">
+                        <span class="f-icon f-icon__add" aria-hidden="true"></span>
                         {{nls.btnAdd}}
                     </button>
-                    <button class="btn" type="button" data-bind="enabled:isRowSelected,click:btnEditClick">
+                    <!-- <button class="btn" type="button" data-bind="enabled:isRowSelected,click:btnEditClick">
                         {{nls.btnEdit}}
                     </button>
                     <button class="btn" type="button" data-bind="enabled:isRowSelected,click:btnDeleteClick">
                         {{nls.btnDelete}}
-                    </button>
-
+                    </button> -->
                 </div>
             </div>
-
             <div class="table-wrapper">
                 <!--style="width:1000px"-->
                 <table id="vwsslDgStaffSpecialty" cellspacing="0" cellpadding="0" border="0" class="grid split-table rwd-table1"
@@ -42,7 +44,10 @@
                        data-sortable='{ "mode": "single", "allowUnsort": false }'
                        data-row-template="vwsslRow-template"
                        data-selectable="true"
-                       data-columns="[ {field:'Name',title:'{{nls.gdColName}}',width:'150px'},
+                       data-columns="[
+                                        {title:'Edit',width:'60px'},
+                                       {title:'Delete',width:'70px'},
+                                       {field:'Name',title:'{{nls.gdColName}}',width:'150px'},
                                        {field:'Description',title:'{{nls.gdColDescription}}',width:'150px'},
                                        {field:'MedicalConditions',title:'{{nls.gdColMedicalConditions}}',width:'250px'},
                                        {field:'DisplayOrder',title:'{{nls.gdColDisplayOrder}}',width:'150px'},
@@ -50,12 +55,24 @@
                                        {field:'UpdatedOn',title:'{{nls.gdColUpdatedDate}}',filterable:false,width:'200px'} ]"
                        data-pageable="true"></table>
             </div>
-
+            </div>
         </div>
     </div>
-</div>
+
 <script type="text/x-kendo-template" id="vwsslRow-template">
     <tr>
+        <td>
+            <button class="btn-edit" data-bind="click:btnEditClick">
+                <span class="f-icon f-icon__edit" aria-hidden="true"></span>
+                <span class="f-icon__text">Edit</span>
+            </button>
+        </td>
+        <td>
+            <button class="btn-delete" data-bind="click:btnDeleteClick">
+                <span class="f-icon f-icon__delete" aria-hidden="true"></span>
+                <span class="f-icon__text">Delete</span>
+            </button>
+        </td>
         <td data-title="{{nls.gdColName}}">
             ${Name}
         </td>
@@ -65,7 +82,6 @@
         <td data-title="{{nls.gdColMedicalConditions}}">
             <span data-bind="html: MedicalConditionsForDisplay"></span>
         </td>
-
         <td data-title="{{nls.gdColDisplayOrder}}">
             ${DisplayOrder}
         </td>
@@ -75,7 +91,6 @@
         <td data-title="{{nls.gdColUpdatedDate}}">
             ${UpdatedOnValue}
         </td>
-
 
     </tr>
 </script>

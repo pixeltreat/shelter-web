@@ -1,98 +1,73 @@
 
+
+
 <div id="vwShelterType">
     <!--View name : vwShelterType-->
     <!--Control id prefix : vwsht-->
-    <div class="two-col btnmaintop">
-        <button class="btn" type="button" data-bind="click:btnSaveClick">
-            {{nls.btnSave}}
-        </button>
-        <button class="btn" type="button" data-bind="click:btnCancelClick">
-            {{nls.btnCancel}}
-        </button>
-    </div>
-    <div class="module cfx no-margin-top">
-        <h2 class="module-title">
-            {{nls.headerAddEditShelterType}}
-        </h2>
+    <div class="module">
+        <h2 class="module-title">{{nls.headerAddEditShelterType}}</h2>
         <div class="module-container">
-            <table cellspacing="0" cellpadding="0" border="0" class="grid split-table two-col-grid gridmobilev">
-                <tbody>
-                    <tr>
-                        <td class="tdtitle">
-                            {{nls.lblName}}
-                        </td>
-                        <td>
-                            <fieldset>
-                                <input id="vwshtTbName" name="vwshtTbName" maxlength="250" type="text" data-bind="value:shelterTypeData.ShelterType.Name"
-                                       required validationmessage="{{nls.valmsgNameRequired}}">
-                            </fieldset>
-                            <span class="k-invalid-msg" data-for="vwshtTbName"></span>
-                        </td>
-                    </tr>
+            <label class="form-element-with-label">
+                <span class="form-element-with-label__text">{{nls.lblName}}</span>
+                <input type="text" id="vwshtTbName" name="vwshtTbName" type="text" maxlength="250" class="form-element-with-label__inp" data-bind="value:shelterTypeData.ShelterType.Name" required validationmessage="{{nls.valmsgNameRequired}}">
+                <span class="k-invalid-msg" data-for="vwshtTbName"></span>
+            </label>
 
-                    <tr>
-                        <td class="tdtitle">
-                            {{nls.lblDescription}}
-                        </td>
-                        <td>
-                            <fieldset>
-                                <textarea id="vwshtTaDescription" name="vwshtTaDescription" rows="5" data-bind="value:shelterTypeData.ShelterType.Description,attr:{maxlength: DescriptionLength}"
-                                          required validationmessage="{{nls.valmsgDescriptionRequired}}"></textarea>
-                            </fieldset>
-                            <span class="k-invalid-msg" data-for="vwshtTaDescription"></span>
-                        </td>
-                    </tr>
+            <label class="form-element-with-label">
+                <span class="form-element-with-label__text">{{nls.lblDescription}}</span>
+                <textarea id="vwshtTaDescription" name="vwshtTaDescription" class="form-element-with-label__inp"
+                          data-bind="value:shelterTypeData.ShelterType.Description,attr:{maxlength: DescriptionLength}"
+                          required validationmessage="{{nls.valmsgDescriptionRequired}}" rows="5"></textarea>
+                <span class="k-invalid-msg" data-for="vwshtTaDescription"></span>
+            </label>
 
-                    <tr>
-                        <td class="tdtitle">
-                            {{nls.lblDisplayOrder}}
-                        </td>
-                        <td>
-                            <span data-bind="attr:{class: setValidClassForDisplayOrder,className:setValidClassForDisplayOrder }">
-                                <fieldset>
-                                    <input id="vwshtTbDisplayOrder" name="vwshtTbDisplayOrder" type="text" data-role="numerictextbox"
-                                           min="1" max="1000" data-format="n0" data-bind="value:shelterTypeData.ShelterType.DisplayOrder"
-                                           data-decimals="0" data-spinners="false"
-                                           required validationmessage="{{nls.valmsgDisplayOrderRequired}}">
-                                </fieldset>
-                            </span>
-                            <span class="k-invalid-msg" data-for="vwshtTbDisplayOrder"></span>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td class="tdtitle">
-                            {{nls.lblStaffTypes}}
-                        </td>
-                        <td>
-                            <div class="optionslisth">
-                                <ul data-template="vwshtRow-template" data-bind="source:staffTypeShelterTypes"></ul>
 
-                            </div>
-                            <div class="clear"></div>
+            <label class="form-element-with-label">
+                <span class="form-element-with-label__text">{{nls.lblDisplayOrder}}</span>
+                <input type="text" id="vwshtTbDisplayOrder" name="vwshtTbDisplayOrder" class="form-element-with-label__inp"
+                       data-role="numerictextbox" min="1" max="1000" data-format="n0" data-decimals="0" data-spinners="false"
+                       required validationmessage="{{nls.valmsgDisplayOrderRequired}}"
+                       data-bind="value:shelterTypeData.ShelterType.DisplayOrder" />
+                <span class="k-invalid-msg" data-for="vwshtTbDisplayOrder"></span>
+            </label>
 
-                            <span class="k-widget k-tooltip k-tooltip-validation" data-bind="invisible: checkMappedStaffTypes">
-                                <span class="k-icon k-warning"></span>
-                                At least one staff Type should be selected.
-                            </span>
-                        </td>
+            
+           
 
-                    </tr>
-                </tbody>
-            </table>
+
+            <label class="form-element-with-label">
+                <span class="form-element-with-label__text">{{nls.lblStaffTypes}}</span>
+                <ul class="form-list" data-template="vwshtRow-template" data-bind="source:staffTypeShelterTypes"></ul>
+                <span class="k-widget k-tooltip k-tooltip-validation k-invalid-msg" role="alert"  data-bind="invisible:checkMappedStaffTypes">
+                    <span class="k-icon k-warning"></span> At least one staff Type should be selected.
+                </span>
+
+              
+            </label>
+
+
+          
+
         </div>
     </div>
-    <div class="two-col btnmainbot">
-        <button class="btn" type="button" data-bind="click:btnSaveClick">
+    <div class="footer-bts-container">
+        <button type="button" class="btn" data-bind="click:btnSaveClick">
             {{nls.btnSave}}
         </button>
-        <button class="btn" type="button" data-bind="click:btnCancelClick">
+        <button type="button" class="btn" data-bind="click:btnCancelClick">
             {{nls.btnCancel}}
         </button>
     </div>
 </div>
 <script type="text/x-kendo-template" id="vwshtRow-template">
+  
     <li>
-        <input type="checkbox" data-bind="checked:IsSelected">
-        <span data-bind="text:StaffTypeName"></span>
+        <label class="checkbox">
+            <input  class="checkbox__inp" type="checkbox" 
+                  data-bind="checked:IsSelected">
+            <span class="checkbox__text"  data-bind="text:StaffTypeName"></span>
+        </label>
     </li>
+
+
 </script>

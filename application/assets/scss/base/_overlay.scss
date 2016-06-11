@@ -7,6 +7,10 @@
     left: 0;
     text-align: center;
     z-index: 99;
+
+    &#pageleveloverlay {
+        z-index: 10009;
+    }
 }
 
 .overlay__img {

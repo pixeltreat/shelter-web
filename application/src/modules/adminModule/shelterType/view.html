@@ -31,22 +31,22 @@
                 <span class="k-invalid-msg" data-for="vwshtTbDisplayOrder"></span>
             </label>
 
-            
-           
 
 
-            <label class="form-element-with-label">
+
+
+            <div class="form-element-with-label">
                 <span class="form-element-with-label__text">{{nls.lblStaffTypes}}</span>
                 <ul class="form-list" data-template="vwshtRow-template" data-bind="source:staffTypeShelterTypes"></ul>
                 <span class="k-widget k-tooltip k-tooltip-validation k-invalid-msg" role="alert"  data-bind="invisible:checkMappedStaffTypes">
                     <span class="k-icon k-warning"></span> At least one staff Type should be selected.
                 </span>
 
-              
-            </label>
+
+            </div>
 
 
-          
+
 
         </div>
     </div>
@@ -60,10 +60,10 @@
     </div>
 </div>
 <script type="text/x-kendo-template" id="vwshtRow-template">
-  
+
     <li>
         <label class="checkbox">
-            <input  class="checkbox__inp" type="checkbox" 
+            <input  class="checkbox__inp" type="checkbox"
                   data-bind="checked:IsSelected">
             <span class="checkbox__text"  data-bind="text:StaffTypeName"></span>
         </label>

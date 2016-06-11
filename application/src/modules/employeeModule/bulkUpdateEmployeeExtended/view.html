@@ -2,114 +2,60 @@
 <div id="vwBulkUpdateEmployeeExtended">
     <!--View name : vwBulkUpdateEmployeeExtended-->
     <!--Control id prefix : vwbuee-->
-    <div id="bd2" class="cfx">
-        <div class="wrapper wrapper2 cfx" style="background: #fff;">
-            <div class="row grid-select-container">
-                <!-- Top heading and buttons -->
-                <div class="title-bar cfx">
-                    <div class="pull-left">
-                        <h2>
-                            {{nls.headerBulkUpdateEmployee}}
-                        </h2>
-                    </div>
-                    <div class="btn-container pull-right">
-                        <button type="button" class="btn " id="vwbueeSave" data-bind="click:btnSaveClick">
-                            {{nls.btnUpdate}}
-                        </button>
-                        <button type="button" class="btn " data-bind="click:btnCancelClick">
-                            {{nls.btnCancel}}
-                        </button>
-                    </div>
-                </div>
-                <div class="clear">
-                </div>
-                <!-- Top heading and buttons -->
-                <!-- Patient Info -->
-                <div class="history-box cfx">
-                    <div class="title-new div-title">
-                        <h5>
-                            <a data-bind="click:helpClick"><i class="icon-help-circled"></i></a>{{nls.headerEmployee}}
-                        </h5>
-                    </div>
-                    <div class="cssform">
-                        <div class="paddingL165 pull-left">
-                            <label>
-                                {{nls.lblStaffType}}
-                            </label>
-                            <div class="item_parent">
-                                <div class="item_width">
-                                    <select id="vwbueeDdlStaffTypes" data-role="dropdownlist" class="select inputClass"
-                                            data-bind="source:dsLookupData.StaffTypeData, value:saveRequest.valStaffType"
-                                            data-text-field="Value" data-value-field="Key" />
-                                </div>
-                                <div class="clear">
-                                </div>
-                            </div>
-                        </div>
-                        <div class="paddingL165 pull-left">
-                            <label>
-                                {{nls.lblDepartment}}
-                            </label>
-                            <div class="item_parent">
-                                <div class="item_width">
-                                    <select id="vwbueeDdlDepartments" data-role="dropdownlist" class="select inputClass"
-                                            data-bind="source:dsLookupData.AgencyDepartmentData, value:saveRequest.valDepartment"
-                                            data-text-field="Value" data-value-field="Key" />
-                                </div>
-                                <div class="clear">
-                                </div>
-                            </div>
-                        </div>
 
-                        <div class="clear">
-                        </div>
-
-                        <div class="paddingL165 pull-left">
-                            <label>
-                                {{nls.lblShift}}
-                            </label>
-                            <div class="item_parent">
-                                <div class="item_width">
-                                    <select id="vwbueeDdlShifts" data-role="dropdownlist" class="select inputClass"
-                                            data-bind="source:dsLookupData.ShiftTimeData, value:saveRequest.valShiftTime"
-                                            data-text-field="Value" data-value-field="Key" />
-                                </div>
-                                <div class="clear">
-                                </div>
-                            </div>
-                        </div>
-                        <div class="paddingL165 pull-left">
-                            <label>
-                                {{nls.lblStaffSpecialty}}
-                            </label>
-                            <div class="item_parent">
-                                <div class="item_width">
-                                    <select id="vwbueeDdlStaffSpecialties" data-role="dropdownlist" class="select inputClass"
-                                            data-bind="source:dsLookupData.StaffSpecialityData, value:saveRequest.valStaffSpeciality"
-                                            data-text-field="Value" data-value-field="Key" />
-                                </div>
-                                <div class="clear">
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="clear">
-                        </div>
-
-                    </div>
+    <div class="module">
+        <h2 class="module-title">{{nls.headerBulkUpdateEmployee}}<span class="module-title__icon" data-bind="click:helpClick"></span></h2>
+        <div class="module-container">
+            <label class="form-element-with-label">
+                <span class="form-element-with-label__text">{{nls.lblStaffType}}</span>
+                <div class="custom-select">
+                    <select id="vwbueeDdlStaffTypes"
+                        data-role="dropdownlist"
+                        data-bind="source:dsLookupData.StaffTypeData, value:saveRequest.valStaffType"
+                        data-text-field="Value"
+                        data-value-field="Key" />
                 </div>
-                <!-- Buttons update bottom -->
-                <div class="update-details cfx">
-                    <div class="one-col btn-container pull-right">
-                        <button type="button" class="btn " id="vwbueeSave1" data-bind="click:btnSaveClick">
-                            {{nls.btnUpdate}}
-                        </button>
-                        <button type="button" class="btn  " data-bind="click:btnCancelClick">
-                            {{nls.btnCancel}}
-                        </button>
-                    </div>
+            </label>
+            <label class="form-element-with-label">
+                <span class="form-element-with-label__text">{{nls.lblDepartment}}</span>
+                <div class="custom-select">
+                    <select id="vwbueeDdlDepartments"
+                        data-role="dropdownlist"
+                        data-bind="source:dsLookupData.AgencyDepartmentData, value:saveRequest.valDepartment"
+                        data-text-field="Value"
+                        data-value-field="Key" />
                 </div>
-            </div>
+            </label>
+            <label class="form-element-with-label">
+                <span class="form-element-with-label__text">{{nls.lblShift}}</span>
+                <div class="custom-select">
+                    <select id="vwbueeDdlShifts"
+                        data-role="dropdownlist"
+                        data-bind="source:dsLookupData.ShiftTimeData, value:saveRequest.valShiftTime"
+                        data-text-field="Value"
+                        data-value-field="Key" />
+                </div>
+            </label>
+            <label class="form-element-with-label">
+                <span class="form-element-with-label__text">{{nls.lblStaffSpecialty}}</span>
+                <div class="custom-select">
+                    <select id="vwbueeDdlStaffSpecialties"
+                        data-role="dropdownlist"
+                        data-bind="source:dsLookupData.StaffSpecialityData, value:saveRequest.valStaffSpeciality"
+                        data-text-field="Value"
+                        data-value-field="Key" />
+                </div>
+            </label>
         </div>
     </div>
+
+    <div class="footer-bts-container">
+        <button type="button" class="btn" id="vwbueeSave1" data-bind="click:btnSaveClick">
+            {{nls.btnUpdate}}
+        </button>
+        <button type="button" class="btn" data-bind="click:btnCancelClick">
+            {{nls.btnCancel}}
+        </button>
+    </div>
+    
 </div>

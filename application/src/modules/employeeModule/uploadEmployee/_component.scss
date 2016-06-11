@@ -1,0 +1,43 @@
+// ****************************************
+// upload employee
+// ****************************************
+
+.uploaded-employee-data {
+    margin: 40px 0 0;
+}
+
+.uploaded-employee-data__info {
+    padding: 0;
+    list-style: none;
+    margin: 20px 0;
+
+    li {
+        display: inline-block;
+        border-right: 1px solid $border-color;
+        padding: 0 40px;
+        font-size: 1.6rem;
+
+        @include MediaQueries($tablet) {
+            padding: 0 15px;
+        }
+
+        &:first-child {
+            padding-left: 0;
+        }
+
+        &:last-child {
+            border-right: 0;
+            padding-right: 0;
+        }
+
+        .f-icon__success {
+            color: $base-green;
+            font-size: 2rem;
+        }
+
+        .f-icon__not-reported {
+            color: $base-red;
+            font-size: 2rem;
+        }
+    }
+}

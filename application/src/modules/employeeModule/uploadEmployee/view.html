@@ -36,44 +36,56 @@
                             remove:onRemove,
                             progress:onProgressFileUpload}" />
                 </label>
-
-                <div class="title-bar cfx">
-                    <div class="pull-right paddright-05em icons" id="vwueExcel" style="display: none">
-                        <span class="paddingR10">
-                            <a class="linkcolor excel underline_text" data-bind=" click:btnExportExcelClick">
-                                {{nls.btnExportToExcel}}
-                            </a>
-                        </span>
-                    </div>
-                    <table class="dataTable textBold" id="vwupdSummary" style="display: none">
-                        <tr>
-                            <td>
-                                {{nls.lblTotalRecords}} : <span data-bind="text:UploadSummary.TotalCount"></span>
-                            </td>
-                            <td>
-                                {{nls.lblTotalRecordsUpdated}} : <span data-bind="text:UploadSummary.SuccessCount">
-                                </span>
-                            </td>
-                            <td>
-                                {{nls.lblTotalRecordsFailed}}: <span data-bind="text:UploadSummary.FailCount"></span>
-                            </td>
-                        </tr>
-                    </table>
-
-                    <div style="display: none" id="vwueDivGrid" class="padding10 table-wrapper customscroll">
-                        <table id="vwueEmployeesLst" cellspacing="0" cellpadding="0" border="0" class="grid split-table customDataTable"
-                               data-scrolable="true" data-bind="source:UploadSummary.FailedImportedEmployees"
-                               data-role="grid" data-filterable="true" data-sortable="true" data-row-template="vwupdRow-template"
-                               data-selectable="true" data-columns="[{field:'FirstName',title:'{{nls.gdColFirstName}}'},{field:'LastName',title:'{{nls.gdColLastName}}'},{field:'ValidationError',title:'{{nls.gdColReason}}'}]"
-                               data-pageable="true"></table>
-                    </div>
-                </div>
-
-                <!-- Upload Employee data -->
-                <div style="display: none">
-                    <a id="vwueExportExcel"></a>
-                </div>
             </div>
+        </div>
+
+        <!-- uploaded data details -->
+        <section class="uploaded-employee-data">
+            <ul class="uploaded-employee-data__info" id="vwueExcel" hidden>
+                <li>
+                    {{nls.lblTotalRecords}}:
+                    <strong data-bind="text:UploadSummary.TotalCount"></strong>
+                </li>
+                <li>
+                    <span class="f-icon f-icon__success" aria-hidden="true"></span>
+                    {{nls.lblTotalRecordsUpdated}}:
+                    <strong data-bind="text:UploadSummary.SuccessCount"></strong>
+                </li>
+                <li>
+                    <span class="f-icon f-icon__not-reported" aria-hidden="true"></span>
+                    {{nls.lblTotalRecordsFailed}}:
+                    <strong data-bind="text:UploadSummary.FailCount"></strong>
+                </li>
+                <li>
+                    <button class="btn--secondary" data-bind="click:btnExportExcelClick" type="button">
+                        <span class="f-icon f-icon__export" aria-hidden="true"></span>{{nls.btnExportToExcel}}
+                    </button>
+                </li>
+            </ul>
+
+            <div hidden id="vwueDivGrid" class="uploaded-employee-data__table">
+                <table id="vwueEmployeesLst"
+                    data-scrolable="true"
+                    data-bind="source:UploadSummary.FailedImportedEmployees"
+                    data-role="grid"
+                    data-filterable="true"
+                    data-sortable="true"
+                    data-row-template="vwupdRow-template"
+                    data-selectable="true"
+                    data-columns="[
+                        {field:'FirstName',title:'{{nls.gdColFirstName}}', width: '150px'},
+                        {field:'LastName',title:'{{nls.gdColLastName}}', width: '150px'},
+                        {field:'ValidationError',title:'{{nls.gdColReason}}'}
+                    ]"
+                    data-pageable="true">
+                </table>
+            </div>
+
+        </section>
+
+        <!-- Upload Employee data -->
+        <div hidden>
+            <a id="vwueExportExcel"></a>
         </div>
     </div>
 </div>
@@ -82,7 +94,7 @@
      <tr>
         <td>${FirstName}</td>
         <td>${LastName}</td>
-        <td> <span data-bind="text:ValidationError"></span></td>
+        <td><span data-bind="text:ValidationError"></span></td>
     </tr>
 </script>
 

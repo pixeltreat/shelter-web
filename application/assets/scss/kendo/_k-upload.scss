@@ -67,3 +67,25 @@
         }
     }
 }
+
+.k-upload-status.k-upload-status-total{
+    position: relative;
+    color: inherit;
+
+    .k-icon.k-i-tick {}
+}
+
+.k-file-progress {
+    color: $base-black;
+
+    .k-progress {
+        background-color: $base-green;
+    }
+    //
+    // .k-filename,
+    // .k-icon,
+    // .k-upload-pct,
+    // .k-button-bare.k-upload-action {
+    //
+    // }
+}

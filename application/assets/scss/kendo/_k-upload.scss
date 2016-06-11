@@ -1,0 +1,69 @@
+// ****************************************
+// kendo upload
+// ****************************************
+
+.k-upload {
+    background-color: #eef9ff;
+    border: 1px solid $primary-color;
+    border-radius: 0;
+    width: auto;
+    display: inline-block;
+    text-align: center;
+
+    &.k-upload-empty {}
+
+    &.k-header {
+
+    }
+}
+
+.k-upload .k-upload-button {
+    box-shadow: 0 0 0;
+    min-width: auto;
+    background-color: $primary-color;
+    color: $base-white;
+    border-radius: 0;
+    width: 100%;
+    box-sizing: border-box;
+
+    &::before {
+        @extend .f-icon:before, .f-icon__nav-reports:before;
+        font-size: 1.6rem;
+        margin-right: 10px;
+    }
+}
+
+.k-button.k-upload-selected {
+    width: auto;
+    margin-bottom: 15px;
+}
+
+.k-dropzone {
+    padding: 0;
+    width: 100%;
+
+    em {
+        @extend .sr-only;
+    }
+}
+
+.k-upload-files {
+    border: 0 none;
+    text-align: left;
+
+    .k-file {
+        background-color: transparent;
+        border: 0 none;
+
+        .k-filename {
+            margin-left: 5px;
+        }
+
+        .k-icon {
+            @extend .f-icon, .f-icon__nav-reports;
+            font-size: 1.8rem;
+            background: none;
+            color: inherit;
+        }
+    }
+}

@@ -7,6 +7,11 @@
 }
 
 .k-numeric-wrap {
+    &.k-state-default {
+        border: 0;
+        background-color: transparent;  
+    }
+
     &.k-state-hover,
     &.k-state-focused {
         box-shadow: 0 0 0;
@@ -15,4 +20,11 @@
     &::before {
         display: none;
     }
+}
+
+.k-numeric-wrap input.k-input {
+    @include inputStyles();
+    height: auto;
+    line-height: inherit;
+    box-sizing: border-box;
 }

@@ -5,21 +5,23 @@
 // vendor
 @import "vendor/normalize";
 
-// base
+// vars, mixins, themes
 @import "base/vars";
-@import "base/fonts";
-@import "base/icons";
+@import "libs/mixins";
 @import "base/theme";
-@import "base/form-elements";
-@import "base/typography";
-@import "base/color-palette";
-@import "base/overlay";
 
 // Libs
 @import "libs/media-queries";
 @import "libs/animations";
-@import "libs/mixins";
 @import "libs/grid";
+
+// base
+@import "base/fonts";
+@import "base/icons";
+@import "base/form-elements";
+@import "base/typography";
+@import "base/color-palette";
+@import "base/overlay";
 
 // Layout
 @import "base/layout";

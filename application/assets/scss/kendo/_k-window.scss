@@ -1,0 +1,20 @@
+// ****************************************
+// kendo popup window
+// ****************************************
+.k-window {
+    &-titlebar {
+        background-color: $primary-color;
+    }
+
+    &-action {
+        transition: background-color $transition__default-time-ease;
+        border-color: transparent;
+        padding: 3px;
+
+        &.k-state-hover {
+            background-color: $tertiary-color;
+            border-color: transparent;
+        }
+    }
+
+}

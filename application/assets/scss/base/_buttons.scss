@@ -2,47 +2,6 @@
 // buttons
 // ****************************************
 
-// mixins for code DRY
-@mixin button() {
-    font-size: 1.4rem;
-    padding: 12px 15px;
-    border-radius: $border-radius__width;
-    display: inline-block;
-    vertical-align: middle;
-    margin: 0;
-    outline: 0;
-    text-align: center;
-    cursor: pointer;
-    user-select: none;
-    border: 1px solid transparent;
-    text-decoration: none;
-    line-height: 1;
-    font-weight: $regular;
-    letter-spacing: 1px;
-
-    &:hover,
-    &:active,
-    &:focus,
-    &:visited {
-        text-decoration: none;
-    }
-}
-
-@mixin iconButton($color, $gridIcon:false) {
-    background: transparent;
-    font-size: 2rem;
-    padding: 0;
-    width: 24px;
-    height: 24px;
-    color: $color;
-
-    // @if $gridIcon {
-    //     .k-state-selected & {
-    //         text-shadow: 0 1px 2px rgba(0,0,0, 0.6);
-    //     }
-    // }
-}
-
 // buttons reset
 input[type="button"],
 button {
@@ -75,6 +34,34 @@ button:disabled,
 
     &:active:not(:disabled) {
         background-color: darken($primary-color, 10%);
+    }
+}
+
+.k-button {
+    @include button();
+    background-color: $primary-color;
+    color: $base-white;
+    border: 0 none;
+    box-shadow: 0 0 0;
+
+    &:hover:not(:disabled),
+    &:active:hover,
+    &.k-state-active:hover,
+    &.k-state-hover {
+        border: 0 none;
+        color: $base-white;
+        background-color: lighten($primary-color, 10%);
+        box-shadow: 0 0 0;
+    }
+
+    &:focus:not(:disabled),
+    &:active:not(:disabled),
+    &.k-state-focused,
+    &:active:hover {
+        border: 0 none;
+        color: $base-white;
+        background-color: darken($primary-color, 10%);
+        box-shadow: 0 0 0 !important;
     }
 }
 

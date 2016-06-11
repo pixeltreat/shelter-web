@@ -2,54 +2,6 @@
 // input text
 // ****************************************
 
-@mixin inputStyles() {
-    font-size: 1.6rem;
-    display: block;
-    border: 1px solid $inp-normal-border;
-    padding: 8px;
-    width: 100%;
-    border-radius: $border-radius__width;
-    max-width: 300px;
-
-    &:hover {
-        border-color: $inp-hover-border;
-        box-shadow: 0 0 0;
-    }
-
-    &:focus,
-    &:active {
-        border-color: $inp-focus-border;
-        outline: 0;
-        box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.2);
-    }
-
-    &:disabled,
-    .k-state-disabled {
-        background-color: $inp-disabled-bg;
-        border-color: $inp-disabled-border;
-        color: $quinary-color;
-        cursor: not-allowed !important;
-    }
-
-    &.k-invalid {
-        &,
-        &:hover,
-        &:focus,
-        &:active {
-            border-color: $inp-error-border;
-        }
-    }
-
-    &.k-valid {
-        &,
-        &:hover,
-        &:focus,
-        &:active {
-            border-color: $inp-sucess-border;
-        }
-    }
-}
-
 // reset shadow for input elements
 input[type="text"] {
     appearance: none;

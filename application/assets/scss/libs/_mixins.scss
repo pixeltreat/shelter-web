@@ -65,12 +65,164 @@
     @include drop-down__show('no-extend');
 }
 
-// loop through array functionality
-// $mode: ('primary': $primary-color , 'secondary': $secondary-color, 'tertiary': $tertiary-color);
-//
-// // loop through the competencies and print selectors for each one.
-// @each $theme, $color in $mode {
-//     [data-theme="#{$theme}"]:before {
-//         background-color: $color;
-//     }
-// }
+// input styles
+@mixin inputStyles() {
+    font-size: 1.6rem;
+    display: block;
+    border: 1px solid $inp-normal-border;
+    padding: 8px;
+    width: 100%;
+    border-radius: $border-radius__width;
+    max-width: 300px;
+    box-shadow: 0 0 0;
+
+    &:hover {
+        border-color: $inp-hover-border;
+        box-shadow: 0 0 0;
+    }
+
+    &:focus,
+    &:active {
+        border-color: $inp-focus-border;
+        outline: 0;
+        box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.2);
+    }
+
+    &:disabled,
+    .k-state-disabled {
+        background-color: $inp-disabled-bg;
+        border-color: $inp-disabled-border;
+        color: $quinary-color;
+        cursor: not-allowed !important;
+    }
+
+    &.k-invalid {
+        &,
+        &:hover,
+        &:focus,
+        &:active {
+            border-color: $inp-error-border;
+        }
+    }
+
+    &.k-valid {
+        &,
+        &:hover,
+        &:focus,
+        &:active {
+            border-color: $inp-sucess-border;
+        }
+    }
+}
+
+// checkbox and radio styles
+@mixin commonCheckRadioStyles() {
+    display: inline-block;
+    position: relative;
+    box-sizing: content-box;
+
+    &__inp {
+        visibility: hidden;
+        opacity: 0;
+        position: absolute;
+        left: 0;
+    }
+
+    &__text {
+        display: inline-block;
+        vertical-align: middle;
+        position: relative;
+        font-size: 1.4rem;
+        cursor: inherit;
+        line-height: 1.4;
+        cursor: pointer;
+    }
+
+    &__text::before {
+        display: inline-block;
+        vertical-align: middle;
+        cursor: inherit;
+        content: "";
+        height: 18px;
+        width: 18px;
+        background: $base-white;
+        transition: $transition__default-all;
+        border: 1px solid $primary-color;
+        margin: -2px 5px 0 0;
+    }
+
+    &__text::after {
+    	opacity: 0;
+    	content: '';
+    	position: absolute;
+        transition: $transition__default-all;
+    }
+
+    // checked
+    &__inp:checked + &__text::after {
+        opacity: 1;
+    }
+
+    // hover
+    &:hover &__inp:not(:checked, :disabled) + &__text::after {
+        opacity: 0.3;
+    }
+
+    // disabled
+    &__inp:disabled + &__text{
+        cursor: not-allowed;
+        color: $inp-disabled-border;
+
+        &::before{
+            opacity: 1;
+            border-color: $inp-disabled-border;
+        }
+    }
+
+    // disabled and checked
+    &__inp:disabled:checked + &__text::after {
+        opacity: 1;
+        border-color: $inp-disabled-border;
+    }
+}
+
+// button styles
+@mixin button() {
+    font-size: 1.4rem;
+    padding: 12px 15px;
+    border-radius: $border-radius__width;
+    display: inline-block;
+    vertical-align: middle;
+    margin: 0;
+    outline: 0;
+    text-align: center;
+    cursor: pointer;
+    user-select: none;
+    border: 1px solid transparent;
+    text-decoration: none;
+    line-height: 1;
+    font-weight: $regular;
+    letter-spacing: 1px;
+
+    &:hover,
+    &:active,
+    &:focus,
+    &:visited {
+        text-decoration: none;
+    }
+}
+
+@mixin iconButton($color, $gridIcon:false) {
+    background: transparent;
+    font-size: 2rem;
+    padding: 0;
+    width: 24px;
+    height: 24px;
+    color: $color;
+
+    // @if $gridIcon {
+    //     .k-state-selected & {
+    //         text-shadow: 0 1px 2px rgba(0,0,0, 0.6);
+    //     }
+    // }
+}

@@ -1,83 +1,41 @@
-
 <div id="vwUploadEmployee1">
-
     <!--Control id prefix : vwue-->
-
-<div id="vwUploadEmployee">
-    <div class="wrapper wrapper2 cfx" style="background: #fff;">
-        <div class="cssform paddingT0">
-            <!-- Top heading and buttons -->
-            <!-- Top heading and buttons -->
-            <!-- Search and buttons -->
-            <div class="clear">
-            </div>
-            <!-- Search and buttons -->
-            <!-- Upload Employee data -->
-            <div class="history-box cfx">
-                <div class="title-new div-title">
-                    <h5>
-                        <i class="icon-help-circled" data-bind="click:helpClick"></i>{{nls.headerUploadEmployee}}
-                    </h5>
-                </div>
-                <div class="cssform">
-
-                    <div class="paddingL165">
-                        <label for="vwueDdlFacilityNames" class="facilityname">
-                            <span class="">{{nls.lblFacility}}</span>
-                        </label>
-                        <div class="item_parent">
-                            <div class="item_width">
-                                <select id="vwueDdlFacilityNames" data-role="dropdownlist" class="select inputClass"
-                                        data-bind="source:dsFacilityNames,events:{change:ddlFacilityNames},value:selectedFacilityNameItem"
-                                        data-text-field="Name" data-value-field="Id" />
-                            </div>
-                            <div class="clear"></div>
-                        </div>
+    <div id="vwUploadEmployee">
+        <div class="module">
+            <h2 class="module-title">{{nls.headerUploadEmployee}}<span class="module-title__icon" data-bind="click:helpClick"></span></h2>
+            <div class="module-container">
+                <label class="form-element-with-label">
+                    <span class="form-element-with-label__text">{{nls.lblFacility}}</span>
+                    <div class="custom-select">
+                        <select id="vwueDdlFacilityNames"
+                            data-role="dropdownlist"
+                            data-bind="source:dsFacilityNames,events:{change:ddlFacilityNames},value:selectedFacilityNameItem"
+                            data-text-field="Name"
+                            data-value-field="Id" />
                     </div>
+                </label>
 
-                    <div class="paddingL165">
-                        <label for="brandList" class="" id="brands">
-                            {{nls.lblOptions}}
-                        </label>
-                        <div class="item_parent" data-template="vwueImportOptions-template" data-bind="source:dsImportOptions"
-                             data-role="listview" style="border: none">
-                        </div>
-                    </div>
-                    <div class="clear">
-                    </div>
-                    <div class="paddingL165">
-                        <label>
-                            {{nls.lblUpload}}
-                        </label>
-                        <div class="item_parent">
-                            <div class="item_width">
+                <label class="form-element-with-label">
+                    <span class="form-element-with-label__text">{{nls.lblOptions}}</span>
+                    <ul class="form-list" data-template="vwueImportOptions-template" data-bind="source:dsImportOptions"></ul>
+                     <!-- data-role="listview" -->
+                </label>
 
-
-
-                                <input id="vwueUpload" name="vwueUpload" type="file"
-                                       data-role="upload"
-                                       data-multiple=false
-                                       data-async="{ saveUrl:'{{nls.fileUploadUrl}}',
-                                       autoUpload:false}"
-                                       data-bind="events:
-                                        {select: onSelectFile,
-                                        upload:onUploadFile,
-                                        success:onSuccees,
-                                        complete:onCompleteFileUpload,
-                                        error: onError,
-                                        remove:onRemove,
-                                        progress:onProgressFileUpload}" />
-                            </div>
-                            <div>
-                                <span data-bind="text:fileProgress" id="vwueUploadProgess" style="display: none">
-                                </span>
-                            </div>
-                            <div class="clear">
-                            </div>
-                        </div>
-                    </div>
-
-                </div>
+                <label class="form-element-with-label">
+                    <span class="form-element-with-label__text">{{nls.lblUpload}}</span>
+                    <input id="vwueUpload" name="vwueUpload" type="file"
+                           data-role="upload"
+                           data-multiple=false
+                           data-async="{ saveUrl:'{{nls.fileUploadUrl}}', autoUpload:false}"
+                           data-bind="events:{
+                            select: onSelectFile,
+                            upload:onUploadFile,
+                            success:onSuccees,
+                            complete:onCompleteFileUpload,
+                            error: onError,
+                            remove:onRemove,
+                            progress:onProgressFileUpload}" />
+                </label>
 
                 <div class="title-bar cfx">
                     <div class="pull-right paddright-05em icons" id="vwueExcel" style="display: none">
@@ -110,37 +68,32 @@
                                data-pageable="true"></table>
                     </div>
                 </div>
-            </div>
 
-            <!-- Upload Employee data -->
-            <div style="display: none">
-                <a id="vwueExportExcel"></a>
+                <!-- Upload Employee data -->
+                <div style="display: none">
+                    <a id="vwueExportExcel"></a>
+                </div>
             </div>
-
         </div>
     </div>
 </div>
 
-
 <script type="text/x-kendo-template" id="vwupdRow-template">
-   
      <tr>
         <td>${FirstName}</td>
         <td>${LastName}</td>
-
         <td> <span data-bind="text:ValidationError"></span></td>
     </tr>
-
 </script>
 
-
 <script type="text/x-kendo-template" id="vwueImportOptions-template">
-    
-    <div class="item_width">
-        <input type="radio" name="ImportActionType" id="${data.Key}" value="${data.Key}" data-bind="checked:selectedImportAction, click:radiobtnClick" class="check_radio_align"></input>
-        <label for="${data.Key}" class="lblfor" style="vertical-align: middle">
-            ${data.Value}
+    <li>
+        <label class="radio-button">
+            <input class="radio-button__inp" type="radio"
+                name="ImportActionType"
+                id="${data.Key}" value="${data.Key}"
+                data-bind="checked:selectedImportAction, click:radiobtnClick">
+            <span class="radio-button__text">${data.Value}</span>
         </label>
-    </div>
-
+    </li>
 </script>

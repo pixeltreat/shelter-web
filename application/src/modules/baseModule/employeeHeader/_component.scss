@@ -9,7 +9,7 @@
 .employee-header__nav-list {
     @extend %no-list;
     position: absolute;
-    right: 60px;
+    right: 0;
 
     li {
         margin-left: 10px;
@@ -17,9 +17,33 @@
     }
 }
 
-.employee-header__shelter-dropdown {
-    position: absolute;
+.employee-header__shelter {
+    @extend .flex-row;
     position: absolute;
     top: 50px;
-    width: 33.3333%;
+    width: 100%;
+    margin: 20px 0;
+
+    &-dropdown {
+        @extend .flex-col__1-2;
+
+        &__value-label {
+            font-weight: $bold;
+        }
+    }
+
+    &-event {
+        @extend .flex-col__1-2, .flex--right-align;
+        text-align: right;
+    }
+
+    &-event__name {
+        font-size: 1.6rem;
+        font-weight: $bold;
+        text-transform: capitalize;
+    }
+
+    &-event__duration {
+        font-size: 1.2rem;
+    }
 }

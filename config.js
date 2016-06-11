@@ -20,7 +20,7 @@ exports.filepath = {
         allScss     : root + '/**/*.scss'
     },
     vendorLibs : [
-        js + '/src/vendor-libs/jquery-2.2.4.js',
+        js + '/src/vendor-libs/jquery.js',
         js + '/src/plugins/*.js',
         js + '/src/vendor-libs/underscore.js',
         js + '/src/libs/Other/json2.js',

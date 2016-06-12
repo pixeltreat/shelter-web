@@ -4,106 +4,112 @@
     <div class="module" data-bind="style:{display:showWorkArea}">
         <h2 class="module-title">Employee Attendance<span class="module-title__icon" data-bind="click:helpClick"></span></h2>
         <div class="module-container employee-attendance">
-            <!-- event details section -->
-            <div class="employee-attendance__shelter-event">
-                <div class="employee-attendance__shelter-event__name">
-                    <span>{{nls.lblEndedReportingPeriod}}</span>
-                    <strong data-bind="text:ActiveEvent.EventName"></strong>
-                </div>
-                <div class="employee-attendance__shelter-event__duration">
-                    <span>Duration:</span>
-                    <strong data-bind="text:ActiveEvent.EventDuration"></strong>
-                </div>
-            </div>
 
-            <!--  filters section -->
-            <div class="employee-attendance__filters-section">
-                <div class="employee-attendance__filters-section__shelters">
-                    <label>Shelters:</label>
-                    <div class="custom-select">
-                        <select id="vweaDdlFacilities"
-                            data-role="dropdownlist"
-                            data-bind="source:dsFacilities, value:selectedFacility"
-                            data-text-field="Name" data-value-field="Id" />
+            <div class="employee-attendance__row is-filter-shelter">
+                <!--  filters section -->
+                <div class="employee-attendance__filters-section">
+                    <div class="employee-attendance__filters-section__shelters">
+                        <label>Shelters:</label>
+                        <div class="custom-select">
+                            <select id="vweaDdlFacilities"
+                                data-role="dropdownlist"
+                                data-bind="source:dsFacilities, value:selectedFacility"
+                                data-text-field="Name" data-value-field="Id" />
+                        </div>
                     </div>
-                </div>
 
-                <div class="employee-attendance__filters-section__shifts">
-                    <label>Shifts:</label>
-                    <div class="custom-select">
-                        <select id="vweaDdlShifts"
-                            data-role="dropdownlist"
-                            data-bind="source:dsShifts, value:selectedShift"
-                            data-text-field="Value" data-value-field="Key" />
+                    <div class="employee-attendance__filters-section__shifts">
+                        <label>Shifts:</label>
+                        <div class="custom-select">
+                            <select id="vweaDdlShifts"
+                                data-role="dropdownlist"
+                                data-bind="source:dsShifts, value:selectedShift"
+                                data-text-field="Value" data-value-field="Key" />
+                        </div>
                     </div>
-                </div>
 
-                <div class="employee-attendance__filters-section__shifts-date">
-                    <label>Shift Date:</label>
-                     <!-- k-invalid / k-valid needs to be added here-->
-                    <div class="custom-datetimepicker">
-                        <input id="vwshStartDate" name="vweaAttendenceDate"
-                            data-role="datepicker"
-                            data-bind="value:attendenceDate"/>
+                    <div class="employee-attendance__filters-section__shifts-date">
+                        <label>Shift Date:</label>
+                         <!-- k-invalid / k-valid needs to be added here-->
+                        <div class="custom-datetimepicker">
+                            <input id="vwshStartDate" name="vweaAttendenceDate"
+                                data-role="datepicker"
+                                data-bind="value:attendenceDate"/>
 
-                        <span class="k-widget k-tooltip k-tooltip-validation k-invalid-msg"
-                            data-bind="invisible:isattendenceDateValid">
-                            <!-- shiftdate-valid -->
-                            Attendance date is required
+                            <span class="k-widget k-tooltip k-tooltip-validation k-invalid-msg"
+                                data-bind="invisible:isattendenceDateValid">
+                                <!-- shiftdate-valid -->
+                                Attendance date is required
+                            </span>
+                        </div>
+                        <span class="employee-attendance__filters-section__go-btn">
+                            <button type="button" data-bind="click:btnGoClick" class="btn">Go</button>
                         </span>
                     </div>
-                    <span class="employee-attendance__filters-section__go-btn">
-                        <button type="button" data-bind="click:btnGoClick" class="btn">Go</button>
-                    </span>
+
+                </div>
+
+                <!-- event details section -->
+                <div class="employee-attendance__shelter-event">
+                    <div class="employee-attendance__shelter-event__name">
+                        <span>{{nls.lblEndedReportingPeriod}}</span>
+                        <strong >State-Wide Severe Weather March 8-11, 2016</strong>
+                        <!-- data-bind="text:ActiveEvent.EventName" -->
+                    </div>
+                    <div class="employee-attendance__shelter-event__duration">
+                        <span>Duration:</span>
+                        <strong data-bind="text:ActiveEvent.EventDuration"></strong>
+                    </div>
                 </div>
 
             </div>
 
             <!-- <div data-bind="style:{display:showMessage}"> Employees are not assigned for the selected shift. </div> -->
 
-            <!-- notification status -->
-            <div class="employee-attendance__notification-info" data-bind="style:{display:showWorkArea}">
-                <!-- <div class="red-bold-text"> {{nls.lblMessage}} </div> -->
-                <ul>
-                    <li>
-                        <span class="icon-Reported">{{nls.lblReported}}:</span>
-                        <strong>
-                            <span data-bind="text:employeeAttendanceSummary.TotalReported"></span>/<span data-bind="text:employeeAttendanceSummary.TotalEmployees"></span>
-                        </strong>
-                    </li>
-                    <li>
-                        <span class="icon-NotReported">{{nls.lblNotReported}}:</span>
-                        <strong>
-                            <span data-bind="text:employeeAttendanceSummary.TotalNotReported"></span>/<span data-bind="text:employeeAttendanceSummary.TotalEmployees"></span>
-                        </strong>
-                    </li>
-                    <li>
-                        <span class="icon-UnAssigned">{{nls.lblUnassigned}}:</span>
-                        <strong>
-                            <span data-bind="text:employeeAttendanceSummary.TotalUnAssigned"></span>/<span data-bind="text:employeeAttendanceSummary.TotalEmployees"></span>
-                        </strong>
-                    </li>
-                </ul>
+            <div class="employee-attendance__row is-notificaion-action-btns">
+                <!-- notification status -->
+                <div class="employee-attendance__notification-info" data-bind="style:{display:showWorkArea}">
+                    <!-- <div class="red-bold-text"> {{nls.lblMessage}} </div> -->
+                    <ul>
+                        <li>
+                            <span class="icon-Reported">{{nls.lblReported}}:</span>
+                            <strong>
+                                <span data-bind="text:employeeAttendanceSummary.TotalReported"></span>/<span data-bind="text:employeeAttendanceSummary.TotalEmployees"></span>
+                            </strong>
+                        </li>
+                        <li>
+                            <span class="icon-NotReported">{{nls.lblNotReported}}:</span>
+                            <strong>
+                                <span data-bind="text:employeeAttendanceSummary.TotalNotReported"></span>/<span data-bind="text:employeeAttendanceSummary.TotalEmployees"></span>
+                            </strong>
+                        </li>
+                        <li>
+                            <span class="icon-UnAssigned">{{nls.lblUnassigned}}:</span>
+                            <strong>
+                                <span data-bind="text:employeeAttendanceSummary.TotalUnAssigned"></span>/<span data-bind="text:employeeAttendanceSummary.TotalEmployees"></span>
+                            </strong>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- action buttons -->
+                <div class="employee-attendance__action-buttons">
+                    <button class="btn--secondary" data-bind="visible:isRecordsPresentForExport, click:btnExportExcelClick" type="button">
+                        <span class="f-icon f-icon__export" aria-hidden="true"></span>
+                        {{nls.btnExportToExcel}}
+                    </button>
+
+                    <button class="btn--secondary" data-bind="click:btnFilterOffClick" type="button">
+                        <span class="f-icon f-icon__showall" aria-hidden="true"></span>
+                        {{nls.btnShowAll}}
+                    </button>
+
+                    <button type="button" data-bind="click:btnBulkUpdateClick" class="btn--secondary">
+                        <span class="f-icon f-icon__upload" aria-hidden="true"></span>
+                        {{nls.btnBulkUpdate}}
+                    </button>
+                </div>
             </div>
-
-            <!-- action buttons -->
-            <div class="employee-attendance__action-buttons">
-                <button class="btn--secondary" data-bind="visible:isRecordsPresentForExport, click:btnExportExcelClick" type="button">
-                    <span class="f-icon f-icon__export" aria-hidden="true"></span>
-                    {{nls.btnExportToExcel}}
-                </button>
-
-                <button class="btn--secondary" data-bind="click:btnFilterOffClick" type="button">
-                    <span class="f-icon f-icon__showall" aria-hidden="true"></span>
-                    {{nls.btnShowAll}}
-                </button>
-
-                <button type="button" data-bind="click:btnBulkUpdateClick" class="btn--secondary">
-                    <span class="f-icon f-icon__upload" aria-hidden="true"></span>
-                    {{nls.btnBulkUpdate}}
-                </button>
-            </div>
-
             <div class="table-wrapper">
                 <table id="vweaDgEmployeeList"
                     data-bind="source:dsEmployeeAttendance, events: { dataBound:vweaDataBoundEvent }"
@@ -141,7 +147,7 @@
             <button class="btn-save" data-bind="click:btnSaveClick"> <span class="f-icon f-icon__save" aria-hidden="true"></span> <span class="f-icon__text">Save</span> </button>
         </td>
         <td>
-            <button class="btn-edit" data-bind="click:btnEditClick"> <span class="f-icon f-icon__edit" aria-hidden="true"></span> <span class="f-icon__text">Edit</span> </button>
+            <button class="btn-add-comment" data-bind="click:btnEditClick"> <span class="f-icon f-icon__add-comment" aria-hidden="true"></span> <span class="f-icon__text">Edit</span> </button>
         </td>
         <td data-title="{{nls.gdColFacilityName}}"> ${FacilityName} </td>
         <td data-title="{{nls.gdColShiftTime}}"> ${ShiftTime} </td>

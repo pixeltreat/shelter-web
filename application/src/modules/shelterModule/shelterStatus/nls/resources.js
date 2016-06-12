@@ -3,7 +3,7 @@ define({
 
         "headerShelterStatus": "Shelter Status",
         "lblEventName": "Event Name:",
-        "btnExportToExcel": "Export Excel",
+        "btnExportToExcel": "Export",
         "gdColSave": "Save",
         "gdColShelterType": "Shelter Type",
         "gdColShelterName": "Shelter Name",

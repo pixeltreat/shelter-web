@@ -41,6 +41,7 @@ input[type="text"],
 textarea {
     @include inputStyles();
     min-height: 160px;
+    box-sizing: border-box !important;
 }
 
 // invalid message ref: k-widget k-tooltip

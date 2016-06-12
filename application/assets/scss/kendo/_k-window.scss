@@ -2,6 +2,9 @@
 // kendo popup window
 // ****************************************
 .k-window {
+    width: 80%;
+    max-width: 600px;
+
     &-titlebar {
         background-color: $primary-color;
     }
@@ -17,4 +20,8 @@
         }
     }
 
+    .form-element-with-label {
+        max-width: none;
+        width: 100%;
+    }
 }

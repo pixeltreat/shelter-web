@@ -1,43 +1,27 @@
 <div id="vwEmpAttendenceComment">
     <!--View name : vwEmpAttendenceComment-->
     <!--Control id prefix : vweac-->
- 
 
-    <div class="module cfx no-margin-top">
-        <h2 class="module-title">{{nls.headerAddEditComment}}</h2>
+    <div class="module">
+        <!-- <h2 class="module-title">{{nls.headerAddEditComment}}</h2> -->
         <div class="module-container">
-            <table cellspacing="0" cellpadding="0" border="0" class="grid split-table two-col-grid gridmobilev">
-                <tbody>
-                   
-                    <tr>
-                        <td class="tdtitle">{{nls.lblDescription}}</td>
-                        <td>
-                            <fieldset>
-                                <textarea id="vweacTaDescription" name="vweacTaDescription" data-bind="value:comment , attr:{maxlength: DescriptionLength} "
-                                          required validationmessage="{{nls.valmsgDescriptionRequired}}" rows="5"></textarea>
-                            </fieldset>
-                            <span class="k-invalid-msg" data-for="vweacTaDescription"></span>
-                    </tr>
-                    
-
-                </tbody>
-            </table>
-
-
-
+            <label class="form-element-with-label">
+                <span class="form-element-with-label__text">{{nls.lblDescription}}</span>
+                <textarea id="vweacTaDescription" name="vweacTaDescription" required
+                    data-bind="value:comment, attr:{maxlength: DescriptionLength}"
+                    validationmessage="{{nls.valmsgDescriptionRequired}}" rows="5"></textarea>
+                <span class="k-invalid-msg" data-for="vweacTaDescription"></span>
+            </label>
         </div>
     </div>
 
-
-    <div class="two-col btnmainbot">
+    <div class="footer-bts-container">
         <button type="button" class="btn" data-bind="click:savecommentClick">
             {{nls.btnSave}}
         </button>
         <button type="button" class="btn" data-bind="click:btnCancelClick">
             {{nls.btnCancel}}
         </button>
-
     </div>
-
 
 </div>

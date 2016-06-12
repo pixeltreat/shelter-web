@@ -102,9 +102,10 @@ button:disabled,
 
 // icons buttons array
 $iconButtons: (
-    'btn-edit'   : $base-orange,
-    'btn-delete' : $base-red,
-    'btn-save'   : $base-green
+    'btn-edit'       : $base-orange,
+    'btn-delete'     : $base-red,
+    'btn-save'       : $base-green,
+    'btn-add-comment': $base-cyan
 );
 
 // loop through the $iconButtons and print selectors for each one.

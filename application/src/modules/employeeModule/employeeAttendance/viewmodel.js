@@ -38,7 +38,7 @@ define(["Boiler", 'text!./help/help.html',
 
             ActiveEvent: {},
 
-          
+
             dcRequestData: {
                 viewAll: true,
                 fetchSelectedOnly: false,
@@ -56,7 +56,7 @@ define(["Boiler", 'text!./help/help.html',
 
             initializeGlobalData: function () {
 
-                vm.set("dcRequestData", moduleContext.parentContext.dcRequestData);                
+                vm.set("dcRequestData", moduleContext.parentContext.dcRequestData);
                 moduleContext.parentContext.StatusLookUpData = [];
             },
 
@@ -126,7 +126,7 @@ define(["Boiler", 'text!./help/help.html',
 
                 });
 
-              
+
             },
 
             initializeShifts: function () {
@@ -143,20 +143,20 @@ define(["Boiler", 'text!./help/help.html',
                         var start = $("#vweaAttendenceDate").data("kendoDateTimePicker");
                         var date = (vm.attendenceDate.getMonth() + 1) + "/" + vm.attendenceDate.getDate() + "/" + vm.attendenceDate.getFullYear();
                         vm.set("previousAttendenceDatestring", date);
-                       
-                      
+
+
                         vm.btnGoClick();
 
 
                     }
 
                 });
-               
-               
+
+
             },
 
             btnGoClick: function () {
-               
+
                 vm.set("initialLoadforGo", false);
                 if (vm.isattendenceDateValid()) {
                     var date = (vm.attendenceDate.getMonth() + 1) + "/" + vm.attendenceDate.getDate() + "/" + vm.attendenceDate.getFullYear();
@@ -187,7 +187,7 @@ define(["Boiler", 'text!./help/help.html',
                 this.set("dsEmployeeAttendance", $ct.ds.emp.empattendance.getEmployeeAttendence(this, function (result) {
 
                     vm.set("previousAttendenceDatestring", vm.attendenceDatestring);
-                  
+
 
                     vm.shelterFilterLookUp = result.Data.EmployeeAttendanceShelterLookUpData;
                     vm.shiftTimeFilterLookUp = result.Data.EmployeeAttendanceShiftTimeLookUpData;
@@ -348,12 +348,12 @@ define(["Boiler", 'text!./help/help.html',
                     return;
                 }
 
-              
+
 
                 Boiler.UrlController.goTo($ct.rn.getBulkUpdateEmployeeAttendance());
             },
 
-         
+
         setFetchSelectedDataParams: function () {
 
             //Making viewall false
@@ -370,13 +370,13 @@ define(["Boiler", 'text!./help/help.html',
                 vm.dcRequestData.ViewAll = false;
                 moduleContext.parentContext.dcRequestData.ViewAll = false;
 
-               
+
 
 
             }
 
 
-       
+
 
 
         },
@@ -538,7 +538,7 @@ define(["Boiler", 'text!./help/help.html',
             vweaDataBoundEvent: function (dataEve) {
 
                 var columnHeader = $("#vwEmployeeAttendance").find("th[role='columnheader']").first();
-                $(columnHeader).html("<input type='checkbox' id='chkAll' />");
+                $(columnHeader).html('<label class="checkbox"><input class="checkbox__inp" id="chkAll" type="checkbox" /><span class="checkbox__text"></span></label>');
 
                 $("#vwEmployeeAttendance").find("#chkAll").click(function (e) {
                     var arrayUnSel = vm.get("dcRequestData.unSelectedEmployeeIds");
@@ -599,9 +599,9 @@ define(["Boiler", 'text!./help/help.html',
                     moduleContext.parentContext.dcRequestData.unSelectedEmployeeIds = vm.get("dcRequestData.unSelectedEmployeeIds");
                 });
 
-               
 
-              
+
+
 
             },
 
@@ -655,15 +655,3 @@ define(["Boiler", 'text!./help/help.html',
 
     return ViewModel;
 });
-
-
-
-
-
-
-
-
-
-
-
-

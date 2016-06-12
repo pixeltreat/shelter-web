@@ -1,6 +1,28 @@
 // ****************************************
 // kendo grid/table
 // ****************************************
+@mixin kendoInpoutStates() {
+    &.k-state-hover,
+    &.k-state-hover > .k-select {
+        border-color: $inp-hover-border;
+    }
+
+    &.k-state-focused,
+    &.k-state-focused > .k-select,
+    &.k-state-active,
+    &.k-state-active > .k-select {
+        border-color: $inp-focus-border;
+        box-shadow: 0 0 0;
+    }
+
+    &.k-state-disabled,
+    &.k-state-disabled > .k-select {
+        background-color: $inp-disabled-bg;
+        border-color: $inp-disabled-border;
+        color: $quinary-color;
+        cursor: not-allowed !important;
+    }
+}
 
 .custom-select {
     display: inline-block;
@@ -29,24 +51,7 @@
         padding: 4px 0 3px;
     }
 
-    &.k-state-hover,
-    &.k-state-hover > .k-select {
-        border-color: $inp-hover-border;
-    }
-
-    &.k-state-active,
-    &.k-state-active > .k-select {
-        border-color: $inp-focus-border;
-        box-shadow: 0 0 0;
-    }
-
-    &.k-state-disabled,
-    &.k-state-disabled > .k-select {
-        background-color: $inp-disabled-bg;
-        border-color: $inp-disabled-border;
-        color: $quinary-color;
-        cursor: not-allowed !important;
-    }
+    @include kendoInpoutStates();
 }
 
 .k-dropdown-wrap > .k-select {
@@ -77,4 +82,31 @@
 .k-valid .k-dropdown-wrap,
 .k-valid .k-dropdown-wrap  > .k-select {
     border-color: $inp-sucess-border;
+}
+
+// dropdown with status icons
+.icon-Reported::before,
+.icon-UnAssigned::before,
+.icon-NotReported::before {
+    @extend .f-icon:before;
+    margin-right: 6px;
+    font-size: 2rem;
+    vertical-align: -2px;
+}
+
+.icon {
+    &-Reported::before {
+        @extend .f-icon__success:before;
+        color: $base-green;
+    }
+
+    &-UnAssigned::before {
+        @extend .f-icon__nav-help:before;
+        color: $base-orange;
+    }
+
+    &-NotReported::before {
+        @extend .f-icon__not-reported:before;
+        color: $base-red;
+    }
 }

@@ -101,28 +101,15 @@ button:disabled,
 }
 
 // icons buttons array
-$colors: (
-    'primary'   : $primary-color,
-    'secondary' : $secondary-color,
-    'tertiary'  : $tertiary-color,
-    'quaternary': $quaternary-color,
-    'quinary'   : $quinary-color
+$iconButtons: (
+    'btn-edit'   : $base-orange,
+    'btn-delete' : $base-red,
+    'btn-save'   : $base-green
 );
 
-// loop through the $colors and print selectors for each one.
-@each $name, $color in $colors {
-    .#{$name}-bg {
-      background: $color;
-      color: contrast-color($color);
+// loop through the $iconButtons and print selectors for each one.
+@each $class, $color in $iconButtons {
+    .#{$class} {
+        @include iconButton($color);
     }
-
-    .#{$name}-text {
-      color: $color;
-    }
-}
-
-.btn-edit,
-.btn-delete,
-.btn-save {
-    @include iconButton(); //$color: #f93, $base-red
 }

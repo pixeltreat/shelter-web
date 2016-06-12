@@ -1,0 +1,100 @@
+// ****************************************
+// employeeAttendance
+// ****************************************
+.employee-attendance__shelter-event {
+    @extend .flex-row;
+
+    strong {
+        font-weight: $bold;
+    }
+
+    &__name {
+        @extend .flex-col__1-2, .flex-col-sm__full;
+        text-transform: capitalize;
+    }
+
+    &__duration {
+        @extend .flex-col__1-2, .flex-col-sm__full, .flex--right-align;
+        text-align: right;
+
+        @include MediaQueries($mobile){
+            text-align: left;
+        }
+    }
+}
+
+.employee-attendance__filters-section {
+    @extend .flex-row;
+    margin-bottom: 10px;
+
+    label {
+        display: block;
+        margin-bottom: 4px;
+    }
+
+    &__shelters,
+    &__shifts,
+    &__shifts-date {
+        margin: 10px 0;
+        padding-right: 30px;
+        max-width: 300px;
+        width: 100%;
+
+        &:last-child {
+            padding-right: 0;
+        }
+    }
+
+    .custom-datetimepicker {
+        width: calc(100% - 50px);
+    }
+
+    &__go-btn {
+        display: inline-block;
+        vertical-align: top;
+
+        .btn {
+            margin-left: 5px;
+            padding: 12px 10px;
+        }
+    }
+}
+
+.employee-attendance__action-buttons {
+    @extend .flex-row, .flex--right-align;
+    text-align: right;
+    margin: 20px 0;
+}
+
+.employee-attendance__notification-info {
+    ul {
+        @extend %no-list, .flex-row;
+    }
+
+    li {
+        @extend .flex-col__1-3;
+        background-color: $base-white;
+        padding: 10px 20px;
+        border-right: 10px solid $quaternary-color;
+
+        &:last-child {
+            border-right: 0;
+        }
+    }
+
+    strong {
+        font-weight: $bold;
+        font-size: 2.4rem;
+    }
+
+    .icon-Reported,
+    .icon-UnAssigned,
+    .icon-NotReported {
+        font-size: 1.8rem;
+
+        &::before {
+            font-size: 2.8rem;
+            margin-right: 10px;
+        }
+    }
+}

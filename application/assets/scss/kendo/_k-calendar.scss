@@ -1,0 +1,47 @@
+// ****************************************
+// kendo calendar
+// ****************************************
+
+.k-calendar {
+    width: 300px;
+
+    .k-header {
+        background-color: $primary-color;
+    }
+
+    .k-content {
+        padding: 0 18px;
+    }
+
+    td.k-state-selected,
+    td.k-today {
+        background-color: transparent;
+        padding: 5px;
+        border: 0 none;
+        box-shadow: 0 0 0;
+        border-radius: 0;
+    }
+
+    td.k-state-focused,
+    td.k-state-selected.k-state-focused {
+        box-shadow: 0 0 0;
+    }
+
+    .k-content .k-link {
+        border-radius: 100%;
+        min-height: 32px;
+        width: 32px;
+        padding: 0;
+        margin: 0;
+        line-height: 32px;
+    }
+
+    td.k-state-selected .k-link {
+        background-color: $primary-color;
+    }
+
+    td.k-today .k-link {
+        background-color: $secondary-color;
+        color: inherit;
+    }
+}

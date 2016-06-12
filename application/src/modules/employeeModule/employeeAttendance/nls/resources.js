@@ -3,7 +3,7 @@ define({
         "nlsTest": "Localization Test",
 
         "lblEndedReportingPeriod": "Event Name: ",
-        
+
 
         "lblMessage": "The following are Employee status details",
 
@@ -18,7 +18,7 @@ define({
         "gdColComments": "Comments",
         "gdColUpdatedDate": "Updated Date",
         "gdColUpdatedUserName":"User Name",
-        
+
         "lblReported": "Reported",
 
         "lblNotReported": "Not Reported",
@@ -28,8 +28,8 @@ define({
 
         "btnBulkUpdate": "Bulk Update",
         "btnShowAll":"Show All",
-        "btnExportToExcel": "Export Excel"
-      
+        "btnExportToExcel": "Export"
+
 
 
 

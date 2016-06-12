@@ -235,7 +235,6 @@
                                 </span>
                             </span>
                         </div>
-
                     </div>
                     <div class="flex-col__1-2">
                         <!-- From CSS -->
@@ -247,7 +246,42 @@
                         <!-- From Image tag -->
                         <h3 class="nested-sub-title">Loader from Image</h3>
                         <div class="code-sample">
-                            <img src="../assets/img/loader.svg" alt="loader" />
+                            <object type="image/svg+xml" data="../assets/img/loader.svg">Loader image</object>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="flex-row">
+                    <div class="flex-col__1-2">
+                        <!-- valid select datepicker -->
+                        <h3 class="nested-sub-title">Date Picker</h3>
+                        <div class="custom-datepicker">
+                            <input id="datePick"/>
+                            <script>$("#datePick").kendoDatePicker();</script>
+                        </div>
+
+                        <!-- valid select datetimepicker -->
+                        <h3 class="nested-sub-title">Date Time Picker</h3>
+                        <div class="custom-datetimepicker">
+                            <input id="datetimepicker" />
+                            <script>$("#datetimepicker").kendoDateTimePicker();</script>
+                        </div>
+                    </div>
+
+                    <div class="flex-col__1-2">
+                        <!-- valid select datepicker -->
+                        <h3 class="nested-sub-title">Valid Date Picker</h3>
+                        <div class="custom-datepicker k-valid">
+                            <input id="datePick1"/>
+                            <script>$("#datePick1").kendoDatePicker();</script>
+                        </div>
+
+                        <!-- valid select datetimepicker -->
+                        <h3 class="nested-sub-title">Invalid Date Time Picker</h3>
+                        <div class="custom-datetimepicker k-invalid">
+                            <input id="datetimepicker1" />
+                            <span class="k-widget k-tooltip k-tooltip-validation k-invalid-msg">Please select valid date</span>
+                            <script>$("#datetimepicker1").kendoDateTimePicker();</script>
                         </div>
                     </div>
                 </div>

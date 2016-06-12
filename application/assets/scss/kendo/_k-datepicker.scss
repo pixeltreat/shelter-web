@@ -1,0 +1,51 @@
+// ****************************************
+// kendo datepicker
+// ****************************************
+
+.custom-datepicker,
+.custom-datetimepicker {
+    display: inline-block;
+    vertical-align: middle;
+    width: 100%;
+    max-width: 300px;
+}
+
+.k-datepicker,
+.k-datetimepicker {
+    width: 100%;
+    box-sizing: border-box;
+
+    .k-input {
+        background-color: transparent;
+    }
+}
+
+.k-picker-wrap{
+    &.k-state-default {
+        border-color: $inp-normal-border;
+        background-color: $base-white;
+        box-shadow: 0 0 0;
+        min-height: 38px;
+
+        .k-select {
+            border-color: $inp-normal-border;
+        }
+    }
+
+    &.k-state-border-down {
+        border-bottom-width: 1px;
+    }
+
+    @include kendoInpoutStates();
+}
+
+// invalid
+.k-invalid .k-picker-wrap,
+.k-invalid .k-picker-wrap > .k-select {
+    border-color: $inp-error-border;
+}
+
+.k-valid .k-picker-wrap,
+.k-valid .k-picker-wrap > .k-select {
+    border-color: $inp-sucess-border;
+}

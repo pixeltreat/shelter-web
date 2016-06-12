@@ -11,12 +11,20 @@
 
     .k-content {
         padding: 0 18px;
+
+        td,
+        td:hover,
+        td:focus,
+        td:active {
+            background-color: transparent;
+            padding: 5px;
+        }
     }
 
     td.k-state-selected,
-    td.k-today {
+    td.k-today,
+    td.k-state-hover {
         background-color: transparent;
-        padding: 5px;
         border: 0 none;
         box-shadow: 0 0 0;
         border-radius: 0;
@@ -36,8 +44,10 @@
         line-height: 32px;
     }
 
+    td.k-state-hover .k-link,
     td.k-state-selected .k-link {
         background-color: $primary-color;
+        color: $base-white;
     }
 
     td.k-today .k-link {

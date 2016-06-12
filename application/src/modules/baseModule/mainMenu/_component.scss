@@ -97,7 +97,7 @@
 .app-nav__sub {
     @extend %no-list;
     display: none;
-    background-color: #2b4b6e;
+    background-color: $main-nav-divider;
 
     .has-nav-expanded .is-mainnav-active & {
         display: block;
@@ -106,7 +106,7 @@
     &__li__a {
         padding: 15px 15px 15px 25px;
         display: block;
-        border-bottom: 1px solid #203b5d;
+        border-bottom: 1px solid $sub-nav-divider;
         font-size: 1.4rem;
         color: $secondary-color;
         transition: $transition__default-all;
@@ -116,7 +116,7 @@
         &:hover,
         .is-subnav-active & {
             color: $base-white;
-            background-color: darken(#2b4b6e, 10%);
+            background-color: $sub-nav-active-bg;
         }
     }
 

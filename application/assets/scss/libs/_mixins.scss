@@ -136,6 +136,7 @@
         cursor: inherit;
         line-height: 1.4;
         cursor: pointer;
+        padding-left: 28px;
     }
 
     &__text::before {
@@ -148,7 +149,10 @@
         background: $base-white;
         transition: $transition__default-all;
         border: 1px solid $primary-color;
-        margin: -2px 5px 0 0;
+        margin: 0 5px 0 0;
+        position: absolute;
+        top: 0;
+        left: 0;
     }
 
     &__text::after {

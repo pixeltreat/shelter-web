@@ -41,6 +41,10 @@
     return scriptsCompile.appScripts(watch, publish);
  });
 
+ gulp.task('requireMain', function(){
+    return scriptsCompile.requireMain(watch, publish);
+ });
+
 // browser-sync task for starting the server.
 gulp.task('browser-sync', require('./gulptasks/browser-reload'));
 
@@ -55,5 +59,5 @@ gulp.task('watch', function() {
 
 // Default task runs dev build, watches for file changes and browser reloads
 gulp.task('default', function(cb) {
-    runSequence('styles', 'browser-sync', 'watch', 'vendorLibs', 'appLibs', 'appScripts', cb);
+    runSequence('styles', 'browser-sync', 'watch', 'vendorLibs', 'appLibs', 'appScripts', 'requireMain', cb);
 });

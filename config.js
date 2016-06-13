@@ -1,10 +1,12 @@
 'use strict';
 /* jshint node: true */
-var root   = 'application';
-var assets = 'application/assets';
-var scss   = assets + '/scss';
-var css    = assets + '/css';
-var js     = assets + '/js';
+var root        = 'application';
+var assets      = 'application/assets';
+var scss        = assets + '/scss';
+var css         = assets + '/css';
+var js          = assets + '/js';
+var modulesSrc  = root + '/src';
+var requireLibs = '../assets/js/src/libs/require';
 
 exports.base = {
     root  : root,
@@ -70,5 +72,16 @@ exports.filepath = {
     ],
     appScripts : [
         js + '/src/vendor-libs/require.js',
-    ]
+    ],
+    requireMain: modulesSrc + '/main.js'
+};
+
+exports.requirejsOptimizeOptions = {
+    paths: {
+        domReady : requireLibs + '/domReady',
+        Boiler   : './core/_boiler_',
+        text     : requireLibs + '/text',
+        i18n     : requireLibs + '/i18n',
+        path     : requireLibs + '/path'
+    }
 };

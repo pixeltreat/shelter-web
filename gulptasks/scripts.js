@@ -9,8 +9,9 @@ var reload      = browserSync.reload;
 var config      = require('../config');
 
 // base object from config.js
-var base     = config.base;
-var filepath = config.filepath;
+var base       = config.base;
+var filepath   = config.filepath;
+var rjsOptions = config.requirejsOptimizeOptions;
 
 var scripts = {};
 
@@ -24,7 +25,7 @@ scripts.vendorLibs = function (watch){
     .pipe(gulp.dest(base.js))
 
     .pipe( plugins.if( watch, reload({stream: true}) ) )
-    .pipe( plugins.size( {title: 'JS bundled'} ) );
+    .pipe( plugins.size( {title: 'vendor libs bundled'} ) );
 };
 
 scripts.appLibs = function (watch){
@@ -37,7 +38,7 @@ scripts.appLibs = function (watch){
     .pipe(gulp.dest(base.js))
 
     .pipe( plugins.if( watch, reload({stream: true}) ) )
-    .pipe( plugins.size( {title: 'JS bundled'} ) );
+    .pipe( plugins.size( {title: 'app libs bundled'} ) );
 };
 
 scripts.appScripts = function (watch){
@@ -50,7 +51,19 @@ scripts.appScripts = function (watch){
     .pipe(gulp.dest(base.js))
 
     .pipe( plugins.if( watch, reload({stream: true}) ) )
-    .pipe( plugins.size( {title: 'JS bundled'} ) );
+    .pipe( plugins.size( {title: 'app scripts bundled'} ) );
+};
+
+scripts.requireMain = function (watch){
+    return gulp
+    .src(filepath.requireMain)
+	.pipe(plugins.sourcemaps.init())
+	.pipe(plugins.requirejsOptimize(rjsOptions))
+	.pipe(plugins.sourcemaps.write('.'))
+	.pipe(gulp.dest(base.js))
+
+    .pipe( plugins.if( watch, reload({stream: true}) ) )
+    .pipe( plugins.size( {title: 'require main bundled'} ) );
 };
 
 // export scripts object

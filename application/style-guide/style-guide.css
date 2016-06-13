@@ -376,3 +376,9 @@ $links-total: 10;
     display: block;
     margin: 10px 10px;
 }
+
+/* notificaion messages */
+.styleguide__notifications p,
+.styleguide__notifications h4 {
+    margin: 0;
+}

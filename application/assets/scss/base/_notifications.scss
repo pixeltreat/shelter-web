@@ -1,0 +1,76 @@
+// ****************************************
+// notifications
+// ****************************************
+.messages-container{
+    position: fixed;
+    top: -20rem;
+    left: 50%;
+    transform: translateX(-50%);
+    transition: $transition__default-all;
+    z-index: 99;
+
+    &.is-visible {
+        top: 0;
+    }
+}
+
+.message {
+    padding: 5px 30px 5px 55px;
+    background-color: $base-white;
+    border-style: solid;
+    border-width: 0 1px 4px;
+    box-shadow: 0 0 8px rgba(0,0,0, 0.5);
+    position: relative;
+    word-break: break-all;
+    word-wrap: break-word;
+    width: 600px;
+
+    @include MediaQueries($tablet) {
+        width: 480px;
+    }
+
+    @include MediaQueries($mobile) {
+        width: 80%;
+    }
+
+    &__icon {
+        font-size: 3rem;
+        position: absolute;
+        left: 10px;
+        top: 10px;
+        line-height: 1;
+    }
+
+    &__title {
+        font-size: 1.6rem;
+        font-weight: $semi-bold;
+        text-transform: uppercase;
+    }
+
+    &__desc {
+        margin: 0;
+    }
+}
+
+// messages state nested array
+$states: (
+    ('alert', $base-orange, 'idle'),
+    ('success', #489c49, 'success'),
+    ('error', $base-red, 'error')
+);
+
+// loop through the $states and print selectors for each one.
+@each $class, $color, $icon in $states {
+    .message.is-#{$class} {
+        border-color: $color;
+
+        .message__icon {
+            @extend .f-icon, .f-icon__#{$icon};
+            color: $color;
+        }
+
+        .message__title {
+            color: $color;
+        }
+    }
+}

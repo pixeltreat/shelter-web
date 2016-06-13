@@ -1,8 +1,17 @@
-﻿<div class="msg-block pageerror">
+﻿<!-- <div class="msg-block pageerror">
     <hr>
     <div class="container">
         <strong>Error:&nbsp;</strong><span data-bind="html: message"></span><br/>
         <strong>Url:&nbsp;</strong><span data-bind="text: url"></span><br/>
         <i class="icon-cancel-circle close-btn"></i>
     </div>
-</div>
+</div> -->
+
+<article class="message is-error">
+    <span class="message__icon" aria-hidden="true"></span>
+    <h4 class="message__title">Error</h4>
+    <p class="message__desc">
+        <strong>Error:&nbsp;</strong><span data-bind="html: message"></span><br/>
+        <strong>Url:&nbsp;</strong><span data-bind="text: url"></span><br/>
+    </p>
+</article>

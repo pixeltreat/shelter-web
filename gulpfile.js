@@ -13,6 +13,8 @@
  /* all the plugins starts with 'gulp' will loaded using load-plugins */
  var runSequence    = require('run-sequence');
  var config         = require('./config');
+ var del            = require('del');
+
  var watch          = false;
  var publish        = false;
 
@@ -20,8 +22,17 @@
  var filepath = config.filepath;
 
  // gulp build taks import
+ var copyFiles      = require('./gulptasks/copyfiles');
  var stylesCompile  = require('./gulptasks/styles');
  var scriptsCompile = require('./gulptasks/scripts');
+
+ // Clean Output Directory
+ gulp.task('clean', del.bind(null, ['.tmp', base.dist]));
+
+ // copy files to build folder
+ gulp.task('copyFiles', function(){
+     return copyFiles(watch);
+ });
 
  // compile styles
  gulp.task('styles', function() {
@@ -55,9 +66,21 @@ gulp.task('watch', function() {
     gulp.watch(filepath.vendorLibs, ['vendorLibs']);
     gulp.watch(filepath.appLibs, ['appLibs']);
     gulp.watch(filepath.appScripts, ['appScripts']);
+    gulp.watch(config.modulesSrc+'/**/*', ['requireMain']);
+});
+
+// build task
+gulp.task('build', ['clean'], function(cb) {
+    runSequence(['copyFiles'], ['styles'], ['vendorLibs', 'appLibs', 'appScripts', 'requireMain'], cb);
 });
 
 // Default task runs dev build, watches for file changes and browser reloads
-gulp.task('default', function(cb) {
-    runSequence('styles', 'browser-sync', 'watch', 'vendorLibs', 'appLibs', 'appScripts', 'requireMain', cb);
+gulp.task('default', ['build'], function(cb) {
+    runSequence(['browser-sync', 'watch'], cb);
+});
+
+// publish task
+gulp.task('publish', function(cb) {
+    publish = true;
+    runSequence('build', cb);
 });

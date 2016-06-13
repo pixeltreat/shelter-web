@@ -36,7 +36,7 @@ module.exports = function (watch) {
         .pipe( plugins.autoprefixer(afx_browsers) )
         .pipe( cleanCSS() )
         .pipe( plugins.sourcemaps.write('.') )
-        .pipe( gulp.dest(base.css) )
+        .pipe( gulp.dest(base.distCss) )
         .pipe( plugins.if( watch, reload({ stream: true }) ) )
         .pipe( plugins.size({ title: 'Styles' }) );
 };

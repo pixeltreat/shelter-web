@@ -9,3 +9,6 @@ FED Stack: Boilerplate JS, SCSS, Gulp
 
 ## Local Build and Server ##
     'npm run dev'
+
+## Publish Build for deployment ##
+    'npm run publish'

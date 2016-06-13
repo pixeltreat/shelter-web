@@ -8,15 +8,32 @@ var js          = assets + '/js';
 var modulesSrc  = root + '/src';
 var requireLibs = '../assets/js/src/libs/require';
 
+var dist       = 'application/build';
+var distAssets = dist + '/assets';
+var distCss    = distAssets + '/css';
+var distJs     = distAssets + '/js';
+
 exports.base = {
-    root  : root,
-    assets: assets,
-    js    : js,
-    scss  : scss,
-    css   : css
+    root      : root,
+    assets    : assets,
+    js        : js,
+    scss      : scss,
+    css       : css,
+    dist      : dist,
+    distAssets: distAssets,
+    distCss   : distCss,
+    distJs    : distJs
 };
 
 exports.filepath = {
+    copyfiles : [
+        root + '/index.html',
+        assets + '/css/**/*',
+        assets + '/fonts/**/*',
+        assets + '/img/**/*',
+        assets + '/js/vendor/**/*'
+    ],
+
     styles : {
         stylesEntry : [scss + '/app-styles.scss', scss + '/kendo.scss'],
         allScss     : root + '/**/*.scss'

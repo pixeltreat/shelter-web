@@ -22,7 +22,7 @@ scripts.vendorLibs = function (watch){
     .pipe(plugins.concat('vendor-libs.js'))
 
     .pipe(plugins.sourcemaps.write('.'))
-    .pipe(gulp.dest(base.js))
+    .pipe(gulp.dest(base.distJs))
 
     .pipe( plugins.if( watch, reload({stream: true}) ) )
     .pipe( plugins.size( {title: 'vendor libs bundled'} ) );
@@ -35,7 +35,7 @@ scripts.appLibs = function (watch){
     .pipe(plugins.concat('app-libs.js'))
 
     .pipe(plugins.sourcemaps.write('.'))
-    .pipe(gulp.dest(base.js))
+    .pipe(gulp.dest(base.distJs))
 
     .pipe( plugins.if( watch, reload({stream: true}) ) )
     .pipe( plugins.size( {title: 'app libs bundled'} ) );
@@ -48,7 +48,7 @@ scripts.appScripts = function (watch){
     .pipe(plugins.concat('app-scripts.js'))
 
     .pipe(plugins.sourcemaps.write('.'))
-    .pipe(gulp.dest(base.js))
+    .pipe(gulp.dest(base.distJs))
 
     .pipe( plugins.if( watch, reload({stream: true}) ) )
     .pipe( plugins.size( {title: 'app scripts bundled'} ) );
@@ -60,7 +60,7 @@ scripts.requireMain = function (watch){
 	.pipe(plugins.sourcemaps.init())
 	.pipe(plugins.requirejsOptimize(rjsOptions))
 	.pipe(plugins.sourcemaps.write('.'))
-	.pipe(gulp.dest(base.js))
+	.pipe(gulp.dest(base.distJs))
 
     .pipe( plugins.if( watch, reload({stream: true}) ) )
     .pipe( plugins.size( {title: 'require main bundled'} ) );

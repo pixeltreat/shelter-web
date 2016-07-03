@@ -11,14 +11,14 @@ define(['Boiler', './viewmodel', 'text!./view.html', 'i18n!./nls/resources'], fu
 
         moduleContext.listen($ct.en.getHideSheltereeHeaderNavigation(), function () {
             $('#idxSheltereeHeader').show();
-            $("#activeNav").hide();
+            $("#activeNavSheltereeheader").hide();
             
         });
 
 
         moduleContext.listen($ct.en.getShowActiveSheltereeHeader(), function () {
             $('#idxSheltereeHeader').show();
-            $("#activeNav").show();
+            $("#activeNavSheltereeheader").show();
 
 
             $("#vwSheltereeHeader").find(".item_nav_active").removeClass("item_nav_active")
@@ -46,10 +46,10 @@ define(['Boiler', './viewmodel', 'text!./view.html', 'i18n!./nls/resources'], fu
 
         // To load data for shelter types and shelters 
         // when user first visit employee tracking module, this one time operation in entire life cycle of application
-        moduleContext.listen($ct.en.getLoadSheltereeHeaderInfo(), function () {
+        moduleContext.listen($ct.en.getLoadSheltereeHeaderInfo(), function (viewName) {
 
             if (vm) {              
-                vm.data.initializeSheltereeHeader();
+                vm.data.initializeSheltereeHeader(viewName);
             }
 
         });

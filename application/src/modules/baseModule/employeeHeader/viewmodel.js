@@ -21,6 +21,8 @@
 
             isGoButtonDisabled: true,
 
+            eventdata: {},
+
             //For multi shelter user display dropdownlists
             showDDLsInShelterHeader: function () {
 
@@ -80,13 +82,22 @@
 
                 var data = $ct.ds.shlt.shelter.getSheltersWithDs(function (result) {
 
-                    $ct.helpers.hidePageBusyCursor();
+                    //$ct.helpers.hidePageBusyCursor();
 
                     if (result !== undefined && result !== null && result.length > 0) {
 
                         vm.set("isGoButtonDisabled", false);
 
                         vm.set("selectedShelterNameItem", result[0]);
+                        
+                        $ct.ds.emp.employee.getActiveEvents(vm.selectedShelterNameItem.Id, function (result) {
+
+                            $ct.helpers.hidePageBusyCursor();
+                            $ct.helpers.hideWorkAreaBusyCursor();
+
+                            var resultData = result.Data.ActiveEvent;
+                            vm.set("eventdata", resultData);
+                        });
 
                         if (vm.isIntialLoad == true) {
 
@@ -125,16 +136,41 @@
 
                 //vm.fillGrid();
 
-                this.setPreviouslySelectedShelterTypeAndShelterNameToCurrent();
-                this.setEmployeeHeaderDataToGlobalContext();
+                $ct.helpers.displayWorkAreaBusyCursor();
 
-                if (moduleContext.parentContext.activeForm == $ct.rn.getEmployeeList()) {
-                    moduleContext.notify($ct.en.getEmployeeHeaderDataChanged(), $ct.rn.getEmployeeList());
-                }
+                $ct.ds.emp.employee.getActiveEvents(vm.selectedShelterNameItem.Id, function (result) {
 
-                if (moduleContext.parentContext.activeForm == $ct.rn.getEmployeeExtendedList()) {
-                    moduleContext.notify($ct.en.getEmployeeHeaderDataChanged(), $ct.rn.getEmployeeExtendedList());
-                }
+                    $ct.helpers.hidePageBusyCursor();
+                    $ct.helpers.hideWorkAreaBusyCursor();
+
+                    var resultData = result.Data.ActiveEvent;
+                    vm.set("eventdata", resultData);
+
+                    vm.setPreviouslySelectedShelterTypeAndShelterNameToCurrent();
+                    vm.setEmployeeHeaderDataToGlobalContext();
+
+                    if (moduleContext.parentContext.activeForm == $ct.rn.getEmployeeList()) {
+                        moduleContext.notify($ct.en.getEmployeeHeaderDataChanged(), $ct.rn.getEmployeeList());
+                    }
+
+                    if (moduleContext.parentContext.activeForm == $ct.rn.getEmployeeExtendedList()) {
+                        moduleContext.notify($ct.en.getEmployeeHeaderDataChanged(), $ct.rn.getEmployeeExtendedList());
+                    }
+
+
+                });
+
+
+                //this.setPreviouslySelectedShelterTypeAndShelterNameToCurrent();
+                //this.setEmployeeHeaderDataToGlobalContext();
+
+                //if (moduleContext.parentContext.activeForm == $ct.rn.getEmployeeList()) {
+                //    moduleContext.notify($ct.en.getEmployeeHeaderDataChanged(), $ct.rn.getEmployeeList());
+                //}
+
+                //if (moduleContext.parentContext.activeForm == $ct.rn.getEmployeeExtendedList()) {
+                //    moduleContext.notify($ct.en.getEmployeeHeaderDataChanged(), $ct.rn.getEmployeeExtendedList());
+                //}
 
 
             },

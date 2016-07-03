@@ -6,7 +6,7 @@ define({
         "btnDelete": "Delete",
         "btnEdit": "Edit",
         "lblShelterName": "Shelter Name :",
-        "btnExportToExcel": "Export To Excel",
+        "btnExportToExcel": "Export",
         "btnBulkUpdate": "Bulk Update",
         "btnFilterOff": "View All",
         "gdColIsSelected": "",
@@ -22,9 +22,11 @@ define({
         "gdColUserName": "Updated User",
         "gdColLastUpdated": "Updated Date",
         "btnGo": "Go",
-        "btnFilterOff": "View All",
+        "btnFilterOff": "Show All",
         "lblEventName": "EventName:",
-        "lblDuration": "Duration:"
+        "lblDuration": "Duration:",
+        "btnReports": "Report"
+
 
     }
 });

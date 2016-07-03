@@ -1,6 +1,13 @@
-define(["Boiler"], function (Boiler) {
+define(["Boiler", 'text!./help/help.html'], function (Boiler, helpTmpl) {
     var ViewModel = function (moduleContext) {
         var vm = kendo.observable({
+
+            helpClick: function (e) {
+
+                var panel = new Boiler.ViewTemplate(null, helpTmpl, null);
+                $ct.helpers.displayWindow(panel, $ct.ht.getHelp());
+            },
+
             showMenu: true,
 
             // expand/collapse main nav
@@ -15,6 +22,17 @@ define(["Boiler"], function (Boiler) {
                 moduleContext.notify($ct.en.getGoToHome());
                 //Uncommnet below line and comment above line to have old behavior.
                 //moduleContext.notify($ct.en.getGoToDashboard());
+            },
+
+            refreshClick: function (e) {
+               
+                if (moduleContext.parentContext.currentView != undefined) {
+                    moduleContext.notify($ct.en.getRefreshView(), moduleContext.parentContext.currentView);
+                }
+                else {
+                    //for development purpose
+                    $ct.helpers.displayAlertWindow("Current view not set");
+                }
             },
 
             transportTypeListClick: function (e) {
@@ -68,12 +86,17 @@ define(["Boiler"], function (Boiler) {
             },
 
             equipmentSupplyListClick: function (e) {
+                moduleContext.notify($ct.en.getDisplayEquipmentSupplyList(), null);
                 Boiler.UrlController.goTo($ct.rn.getequipmentSupplyList());
             },
             shelterIdentificationListClick: function (e) {
+                moduleContext.notify($ct.en.getDisplayShelterIdentificationList(), null);
                 Boiler.UrlController.goTo($ct.rn.getshelterIdentificationList());
             },
-
+            questionListClick: function (e) {
+                moduleContext.notify($ct.en.getDisplayquestionList(), null);
+                Boiler.UrlController.goTo($ct.rn.getQuestionList());
+            },
             //moduleContext.notify($ct.en.getRefreshView(), moduleContext.parentContext.currentView);
 
 
@@ -109,6 +132,57 @@ define(["Boiler"], function (Boiler) {
 
                     moduleContext.notify($ct.en.getManageEmployeeExpandedClicked());
                     Boiler.UrlController.goTo($ct.rn.getEmployeeExtendedList());
+
+                }
+
+            },
+
+
+            isSheltereeOrDischargeOrMedicalUpdateListClicked: false,
+
+            sheltereeListClick: function (e) {
+
+                if (!vm.isSheltereeOrDischargeOrMedicalUpdateListClicked) {
+
+                    moduleContext.notify($ct.en.getLoadSheltereeHeaderInfo(), $ct.rn.getSheltereeList());
+                    vm.isSheltereeOrDischargeOrMedicalUpdateListClicked = true;
+
+                } else {
+
+                    moduleContext.notify($ct.en.getManageSheltereeClicked());
+                    Boiler.UrlController.goTo($ct.rn.getSheltereeList());
+
+                }
+
+            },
+
+            sheltereeDischargeListClick: function (e) {
+
+                if (!vm.isSheltereeOrDischargeOrMedicalUpdateListClicked) {
+
+                    moduleContext.notify($ct.en.getLoadSheltereeHeaderInfo(), $ct.rn.getSheltereeDischargeList());
+                    vm.isSheltereeOrDischargeOrMedicalUpdateListClicked = true;
+
+                } else {
+
+                    moduleContext.notify($ct.en.getManageSheltereeDischargeClicked());
+                    Boiler.UrlController.goTo($ct.rn.getSheltereeDischargeList());
+
+                }
+
+            },
+
+            sheltereeMedicalUpdateListClick: function (e) {
+
+                if (!vm.isSheltereeOrDischargeOrMedicalUpdateListClicked) {
+
+                    moduleContext.notify($ct.en.getLoadSheltereeHeaderInfo(), $ct.rn.getSheltereeMedicalUpdateList());
+                    vm.isSheltereeOrDischargeOrMedicalUpdateListClicked = true;
+
+                } else {
+
+                    moduleContext.notify($ct.en.getManageSheltereeMedicalUpdateClicked());
+                    Boiler.UrlController.goTo($ct.rn.getSheltereeMedicalUpdateList());
 
                 }
 

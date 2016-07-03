@@ -357,11 +357,11 @@
     };
 
 
-    var getActiveEvents = function (ViewModel, successCallBack) {
+    var getActiveEvents = function (selectedShelterId, successCallBack) {
 
         var requestParam = {};
 
-        requestParam.ShelterId = ViewModel.empHeaderData.shelter.Id;
+        requestParam.ShelterId = selectedShelterId;
         
         $ct.ajax.ajaxPost($ct.cn.getEventUrl() + 'GetActiveEvent', requestParam, function (result) {
 

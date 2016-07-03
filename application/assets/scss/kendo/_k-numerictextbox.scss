@@ -28,3 +28,10 @@
     line-height: inherit;
     box-sizing: border-box;
 }
+//Added style for numeric textbox in filter
+.k-numerictextbox .k-select {
+    border-bottom: 1px solid #3f51b5;
+    border-left: none;
+    border-right: 1px solid #3f51b5;
+    border-top: 1px solid #3f51b5;
+}

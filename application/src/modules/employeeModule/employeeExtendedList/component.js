@@ -100,6 +100,8 @@ define(['Boiler', './viewmodel', 'text!./view.html', 'i18n!./nls/resources'], fu
             moduleContext.parentContext.activeForm = $ct.rn.getEmployeeExtendedList();
             moduleContext.notify($ct.en.getShowActiveEmployeeHeader());
             moduleContext.notify($ct.en.getShowEmployeeShelterHeader(), null);
+            moduleContext.notify($ct.en.getHideSheltereeHeaderNavigation(), null);
+            moduleContext.notify($ct.en.getHideSheltereeShelterHeader(), null);
 
         }
 

@@ -1,7 +1,7 @@
 <div id="vwEmployeeAttendance">
     <!--View name : vwEmployeeAttendance-->
     <!--Control id prefix : vwea-->
-    <div class="module" data-bind="style:{display:showWorkArea}">
+    <div class="module" >
         <h2 class="module-title">Employee Attendance<span class="module-title__icon" data-bind="click:helpClick"></span></h2>
         <div class="module-container employee-attendance">
 
@@ -12,9 +12,9 @@
                         <label>Shelters:</label>
                         <div class="custom-select">
                             <select id="vweaDdlFacilities"
-                                data-role="dropdownlist"
-                                data-bind="source:dsFacilities, value:selectedFacility"
-                                data-text-field="Name" data-value-field="Id" />
+                                    data-role="dropdownlist"
+                                    data-bind="source:dsFacilities, value:selectedFacility"
+                                    data-text-field="Name" data-value-field="Id" />
                         </div>
                     </div>
 
@@ -22,22 +22,22 @@
                         <label>Shifts:</label>
                         <div class="custom-select">
                             <select id="vweaDdlShifts"
-                                data-role="dropdownlist"
-                                data-bind="source:dsShifts, value:selectedShift"
-                                data-text-field="Value" data-value-field="Key" />
+                                    data-role="dropdownlist"
+                                    data-bind="source:dsShifts, value:selectedShift"
+                                    data-text-field="Value" data-value-field="Key" />
                         </div>
                     </div>
 
                     <div class="employee-attendance__filters-section__shifts-date">
                         <label>Shift Date:</label>
-                         <!-- k-invalid / k-valid needs to be added here-->
+                        <!-- k-invalid / k-valid needs to be added here-->
                         <div class="custom-datetimepicker">
                             <input id="vwshStartDate" name="vweaAttendenceDate"
-                                data-role="datepicker"
-                                data-bind="value:attendenceDate"/>
+                                   data-role="datepicker"
+                                   data-bind="value:attendenceDate"/>
 
                             <span class="k-widget k-tooltip k-tooltip-validation k-invalid-msg"
-                                data-bind="invisible:isattendenceDateValid">
+                                  data-bind="invisible:isattendenceDateValid">
                                 <!-- shiftdate-valid -->
                                 Attendance date is required
                             </span>
@@ -53,7 +53,9 @@
                 <div class="employee-attendance__shelter-event">
                     <div class="employee-attendance__shelter-event__name">
                         <span>{{nls.lblEndedReportingPeriod}}</span>
-                        <strong >State-Wide Severe Weather March 8-11, 2016</strong>
+                        <strong ><!--State-Wide Severe Weather March 8-11, 2016-->
+                            <span data-bind="text:ActiveEvent.EventName"></span><br />
+                        </strong>
                         <!-- data-bind="text:ActiveEvent.EventName" -->
                     </div>
                     <div class="employee-attendance__shelter-event__duration">
@@ -63,8 +65,8 @@
                 </div>
 
             </div>
-
-            <!-- <div data-bind="style:{display:showMessage}"> Employees are not assigned for the selected shift. </div> -->
+            
+            <div data-bind="style:{display:showMessage}"> Employees are not assigned for the selected shift. </div>
 
             <div class="employee-attendance__row is-notificaion-action-btns">
                 <!-- notification status -->
@@ -93,7 +95,7 @@
                 </div>
 
                 <!-- action buttons -->
-                <div class="employee-attendance__action-buttons">
+                <div class="employee-attendance__action-buttons" data-bind="style:{display:showWorkArea}">
                     <button class="btn--secondary" data-bind="visible:isRecordsPresentForExport, click:btnExportExcelClick" type="button">
                         <span class="f-icon f-icon__export" aria-hidden="true"></span>
                         {{nls.btnExportToExcel}}
@@ -110,14 +112,13 @@
                     </button>
                 </div>
             </div>
-            <div class="table-wrapper">
+            <div class="table-wrapper"  id="vweaDgEmployeeListParent"  data-bind="style:{display:showWorkArea}">
                 <table id="vweaDgEmployeeList"
-                    data-bind="source:dsEmployeeAttendance, events: { dataBound:vweaDataBoundEvent }"
-                    data-role="grid" data-filterable="true"
-                    data-sortable='{ "mode": "single", "allowUnsort": false }'
-                    data-row-template="vweaRow-template"
-                    data-columns="[{width:'40px'},
-                        {title:'Save',width:'60px'},
+                       data-bind="source:dsEmployeeAttendance, events: { dataBound:vweaDataBoundEvent }"
+                       data-role="grid" data-filterable="true"
+                       data-sortable='{ "mode": "single", "allowUnsort": false }'
+                       data-row-template="vweaRow-template"
+                       data-columns="[{width:'40px'},
                         {title:'Add Comment',width:'120px'},
                         {field:'FacilityName',title:'{{nls.gdColFacilityName}}', width:'250px' , filterable: {multi:true,dataSource:[]}},
                         {field:'ShiftTime',title:'{{nls.gdColShiftTime}}', width:'150px',filterable: {multi:true,dataSource:[]}},
@@ -128,7 +129,7 @@
                         {field:'StaffSpecialityName',title:'{{nls.gdColStaffSpeciality}}', filterable: {multi:true,dataSource:[]}, width:'150px'},
                         {field:'Comment',title:'{{nls.gdColComments}}', width:'150px'},
                         {field:'EmployeeAttendanceUpdatedUserName',title:'{{nls.gdColUpdatedUserName}}', width:'150px'},            {field:'EmployeeAttendanceUpdatedOn',title:'{{nls.gdColUpdatedDate}}',filterable:false,width:'200px'}]"
-                    data-pageable="true" data-scrollable="true"></table>
+                       data-pageable="true" data-scrollable="true"></table>
             </div>
         </div>
     </div>
@@ -143,16 +144,14 @@
                 <span class="checkbox__text"></span>
             </label>
         </td>
-        <td>
-            <button class="btn-save" data-bind="click:btnSaveClick"> <span class="f-icon f-icon__save" aria-hidden="true"></span> <span class="f-icon__text">Save</span> </button>
-        </td>
+
         <td>
             <button class="btn-add-comment" data-bind="click:btnEditClick"> <span class="f-icon f-icon__add-comment" aria-hidden="true"></span> <span class="f-icon__text">Edit</span> </button>
         </td>
         <td data-title="{{nls.gdColFacilityName}}"> ${FacilityName} </td>
         <td data-title="{{nls.gdColShiftTime}}"> ${ShiftTime} </td>
         <td data-title="{{nls.gdColStatus}}">
-            <input data-role="dropdownlist" data-bind="source:StatusLookUpData,value:ReportId" data-template="item-template" data-value-template="value-template" data-text-field="Value" data-value-field="Key"/>
+            <input data-role="dropdownlist" data-bind="source:StatusLookUpData,value:ReportId,events:{change:changeSaveClick}" data-template="item-template" data-value-template="value-template" data-text-field="Value" data-value-field="Key"/>
         </td>
         <td data-title="{{nls.gdColFirstName}}"> ${FirstName} </td>
         <td data-title="{{nls.gdColLastName}}"> ${LastName} </td>

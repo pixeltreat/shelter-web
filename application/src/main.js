@@ -6,18 +6,18 @@
  * files. We will 'import' these scripts, using the alias, later in our application.
  */
 require.config({
-	paths : {
-		// requirejs plugins in use
-		text     : '../assets/js/src/libs/require/text',
-		order    : '../assets/js/src/libs/require/order',
-		i18n     : '../assets/js/src/libs/require/i18n',
-		domReady : '../assets/js/src/libs/require/domReady',
-		path     : '../assets/js/src/libs/require/path',
-		// namespace that aggregate core classes that are in frequent use
-		Boiler : './core/_boiler_'
-},
+    paths: {
+        // requirejs plugins in use
+        text: '../assets/js/vendor/require/text',
+        order: '../assets/js/vendor/require/order',
+        i18n: '../assets/js/vendor/require/i18n',
+        domReady: '../assets/js/vendor/require/domReady',
+        path: '../assets/js/vendor/require/path',
+        // namespace that aggregate core classes that are in frequent use
+        Boiler: './core/_boiler_'
+    },
     //defulat value is 7 seconds
-waitSeconds: 30
+    waitSeconds: 30
 });
 
 
@@ -37,20 +37,20 @@ waitSeconds: 30
 
 require(["./application", "domReady"], function (Application, domReady) {
     domReady(function () {
-       // kendo.culture("en-US");
+        // kendo.culture("en-US");
         jQuery.support.cors = true;
-		/*
+        /*
 		 * The "./appcontext" script contains a requirejs AMD module. It returns
 		 * a function (not an object instance) that encapsulates the logic
 		 * for creating a GlobalContext. In JavaScript, functions can be used
 		 * as classes for OO programming. So below, we create an instance by
 		 * calling the 'new' operator on that function.
 		 */
-	    var app = new Application();
+        var app = new Application();
 
         // Not common function, at this point libraries may not load.
-	   //$('#pageleveloverlay').hide();
+        //$('#pageleveloverlay').hide();
 
 
-	});
+    });
 });

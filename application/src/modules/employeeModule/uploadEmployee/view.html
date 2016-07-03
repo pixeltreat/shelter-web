@@ -15,11 +15,11 @@
                     </div>
                 </label>
 
-                <label class="form-element-with-label">
+                <div class="form-element-with-label">
                     <span class="form-element-with-label__text">{{nls.lblOptions}}</span>
                     <ul class="form-list" data-template="vwueImportOptions-template" data-bind="source:dsImportOptions"></ul>
                      <!-- data-role="listview" -->
-                </label>
+                </div>
 
                 <label class="form-element-with-label">
                     <span class="form-element-with-label__text">{{nls.lblUpload}}</span>
@@ -41,7 +41,9 @@
 
         <!-- uploaded data details -->
         <section class="uploaded-employee-data">
-            <ul class="uploaded-employee-data__info" id="vwueExcel" hidden>
+            
+            
+            <ul class="uploaded-employee-data__info" id="vwupdSummary" hidden>
                 <li>
                     {{nls.lblTotalRecords}}:
                     <strong data-bind="text:UploadSummary.TotalCount"></strong>
@@ -56,11 +58,13 @@
                     {{nls.lblTotalRecordsFailed}}:
                     <strong data-bind="text:UploadSummary.FailCount"></strong>
                 </li>
-                <li>
+
+                <li id="vwueExcel">
                     <button class="btn--secondary" data-bind="click:btnExportExcelClick" type="button">
                         <span class="f-icon f-icon__export" aria-hidden="true"></span>{{nls.btnExportToExcel}}
                     </button>
                 </li>
+               
             </ul>
 
             <div hidden id="vwueDivGrid" class="uploaded-employee-data__table">
@@ -80,8 +84,8 @@
                     data-pageable="true">
                 </table>
             </div>
-
-        </section>
+         
+</section>
 
         <!-- Upload Employee data -->
         <div hidden>

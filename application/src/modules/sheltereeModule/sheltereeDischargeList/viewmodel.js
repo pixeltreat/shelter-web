@@ -376,7 +376,7 @@ function (Boiler, helpTmpl) {
                 // e.data.Id : shelteree id
                 // e.data.Version : shelteree version
 
-                $ct.ds.sheltree.sheltree.deleteSheltereeDischargeById(e.data.Id, e.data.Version, function (data) {
+                $ct.ds.sheltree.sheltree.deleteSheltereeById(e.data.Id, e.data.Version, function (data) {
 
                     $ct.helpers.hideWorkAreaBusyCursor();
 
@@ -439,7 +439,7 @@ function (Boiler, helpTmpl) {
             rowSelectionChange: function (e) {
                 this.set("selectedId", e.sender.dataItem(e.sender.select()).Id);
 
-                this.set("selectedShelterId", e.sender.dataItem(e.sender.select()).FacilityId);
+                this.set("selectedShelterId", e.sender.dataItem(e.sender.select()).ShelterId);
                 this.set("selectedRecordVersion", e.sender.dataItem(e.sender.select()).Version);
 
 
@@ -524,7 +524,7 @@ function (Boiler, helpTmpl) {
 
                 var columnHeader = $("#vwSheltereeDischargeList").find("th[role='columnheader']").first();
 
-                $(columnHeader).html("<input type='checkbox' id='chkAll' />");
+                $(columnHeader).html("<label class='checkbox'><input class='checkbox__inp' type='checkbox' data-item-type='child' id='chkAll' /><span class='checkbox__text'></span></label>");
 
                 $("#vwSheltereeDischargeList").find("#chkAll").click(function (e) {
 
@@ -706,7 +706,7 @@ function (Boiler, helpTmpl) {
                 }
 
 
-                $ct.ds.sheltree.sheltree.getSheltereeDischargeBulkUpdateLookup(this, function (result) {
+                $ct.ds.sheltree.sheltree.getSheltereeBulkUpdateLookup(this, function (result) {
 
                     var errorObj = $ct.mt.getErrorObject(result);
                     if (errorObj != null) {
@@ -726,7 +726,7 @@ function (Boiler, helpTmpl) {
                 this.setFetchSelectedDataParams();
 
                 this.set("selectedId", e.data.Id);
-                this.set("selectedShelterId", e.data.FacilityId);
+                this.set("selectedShelterId", e.data.ShelterId);
                 this.set("selectedRecordVersion", e.data.Version);
 
                 //moduleContext.notify($ct.en.getAddEditPatientRefresh(), null);
@@ -742,6 +742,36 @@ function (Boiler, helpTmpl) {
 
 
                 $ct.ds.sheltree.sheltree.exportSheltereeDischargeesListToExcel(this, function (result) {
+
+                    $ct.helpers.hideWorkAreaBusyCursor();
+
+
+                    if (result.Data.DownloadUrl != undefined) {
+
+                        window.location.href = result.Data.DownloadUrl;
+
+                    }
+                    else {
+
+                        var errorObj = $ct.mt.getErrorObject(result);
+                        if (errorObj != null) {
+                            moduleContext.notify($ct.en.getShowErrorMsg(), errorObj);
+                        }
+
+                    }
+
+                });
+
+            },
+
+            btnReportsClick: function () {
+
+
+                moduleContext.notify($ct.en.getHideErrorMsg());
+                $ct.helpers.displayWorkAreaBusyCursor();
+
+
+                $ct.ds.sheltree.sheltree.generatereportsforDischargeesList(this, function (result) {
 
                     $ct.helpers.hideWorkAreaBusyCursor();
 

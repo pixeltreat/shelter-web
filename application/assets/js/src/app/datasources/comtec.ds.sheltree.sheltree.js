@@ -19,7 +19,7 @@
 
                     requestParam.ShelterId = ViewModel.sheltereeHeaderData.shelter.Id;
                     //requestParam.ShelterId = 1;
-                   
+
                     requestParam.SelectedSheltereeIds = ViewModel.get("sheltereeRequestData.SelectedSheltereeIds");
                     requestParam.UnSelectedSheltereeIds = ViewModel.get("sheltereeRequestData.UnSelectedSheltereeIds");
                     requestParam.ViewAll = ViewModel.sheltereeRequestData.ViewAll;
@@ -27,7 +27,7 @@
 
 
                     ViewModel.set("selectedId", "-1");
-                  
+
                     $ct.ajax.ajaxPost($ct.cn.getSheltereeFacilityUrl() + 'GetShelterees', requestParam, function (result) {
 
                         if ($ct.mt.isNoDataFound(result)) {
@@ -69,14 +69,14 @@
 
     };
 
-    var deleteSheltereeById = function (selEmployeeId, selEmployeeVersion, successCallBack) {
+    var deleteSheltereeById = function (selSheltereeId, selSheltereeVersion, successCallBack) {
 
         var requestParam = {};
 
-        requestParam.Id = selEmployeeId;
-        requestParam.EmployeeVersion = selEmployeeVersion;
-        //getSheltereeFacilityUrl
-        $ct.ajax.ajaxPost($ct.cn.getEmployeeUrl() + 'DeleteEmployee', requestParam, function (result) {
+        requestParam.Id = selSheltereeId;
+        requestParam.SheltereeVersion = selSheltereeVersion;
+
+        $ct.ajax.ajaxPost($ct.cn.getSheltereeFacilityUrl() + 'DeleteShelteree', requestParam, function (result) {
 
             if (successCallBack != null)
                 successCallBack(result);
@@ -115,13 +115,12 @@
 
         requestParam.ShelterId = ViewModel.sheltereeHeaderData.shelter.Id;
 
-        requestParam.SelectedEmployeeIds = ViewModel.get("sheltereeRequestData.SelectedSheltereeIds");
-        requestParam.UnSelectedEmployeeIds = ViewModel.get("sheltereeRequestData.UnSelectedSheltereeIds");
+        requestParam.SelectedSheltereeIds = ViewModel.get("sheltereeRequestData.SelectedSheltereeIds");
+        requestParam.UnSelectedSheltereeIds = ViewModel.get("sheltereeRequestData.UnSelectedSheltereeIds");
         requestParam.ViewAll = ViewModel.sheltereeRequestData.ViewAll;
         requestParam.FetchSelectedOnly = ViewModel.sheltereeRequestData.FetchSelectedOnly;
 
-        //getSheltereeFacilityUrl
-        $ct.ajax.ajaxPost($ct.cn.getEmployeeUrl() + 'ExportEmployeeToExcel', requestParam, function (result) {
+        $ct.ajax.ajaxPost($ct.cn.getSheltereeFacilityUrl() + 'ExportSheltereeDataToExcel', requestParam, function (result) {
 
 
             if (successCallBack != null)
@@ -132,16 +131,17 @@
         return "";
 
     };
+
     var getSheltereeBulkUpdateLookup = function (ViewModel, successCallBack) {
 
         var requestParam = {};
 
-        requestParam.SelectedEmployeeIds = ViewModel.get("sheltereeRequestData.SelectedSheltereeIds");
-        requestParam.UnSelectedEmployeeIds = ViewModel.get("sheltereeRequestData.UnSelectedSheltereeIds");
+        requestParam.SelectedSheltereeIds = ViewModel.get("sheltereeRequestData.SelectedSheltereeIds");
+        requestParam.UnSelectedSheltereeIds = ViewModel.get("sheltereeRequestData.UnSelectedSheltereeIds");
         requestParam.ViewAll = ViewModel.sheltereeRequestData.ViewAll;
         requestParam.FetchSelectedOnly = ViewModel.sheltereeRequestData.FetchSelectedOnly;
-        //getSheltereeFacilityUrl
-        $ct.ajax.ajaxPost($ct.cn.getEmployeeUrl() + 'GetEmployeeBulKUpdateLookupData', requestParam, function (result) {
+
+        $ct.ajax.ajaxPost($ct.cn.getSheltereeFacilityUrl() + 'GetSheltereeBulKUpdateLookupData', requestParam, function (result) {
 
             if (successCallBack != null)
                 successCallBack(result);
@@ -149,6 +149,7 @@
 
         return "";
     };
+
     var bulkUpdateSheltereeData = function (ViewModel, successCallBack) {
 
         var requestParam = {};
@@ -157,12 +158,48 @@
         requestParam.ShelterId = ViewModel.shelterId;
         // requestParam.SelectedPatientIds = ViewModel.SelectedPatientIds;
 
-        requestParam.SelectedStaffTypeId = reqObj.valStaffType;
-        requestParam.SelectedDepartmentId = reqObj.valDepartment;
-        requestParam.SelectedShiftId = reqObj.valShiftTime;
-        requestParam.SelectedStaffSpecialityId = reqObj.valStaffSpeciality;
-        //getSheltereeFacilityUrl
-        $ct.ajax.ajaxPost($ct.cn.getEmployeeUrl() + 'BulkUpdateEmployeeData', requestParam, function (result) {
+        requestParam.SelectedTransportationTypeId = reqObj.valTransportationType;
+        requestParam.SelectedDispositionId = reqObj.valDisposition;
+
+        if (reqObj.valDischargeDate == null) {
+            requestParam.SelectedDischargeDate = reqObj.valDischargeDate;
+        }
+        else {
+            var DischargeDate = (reqObj.valDischargeDate.getMonth() + 1) + "/" + reqObj.valDischargeDate.getDate() + "/" + reqObj.valDischargeDate.getFullYear();
+            requestParam.SelectedDischargeDate = DischargeDate;
+        }
+       
+        if (reqObj.valArrivalDate == null) {
+            
+            requestParam.SelectedArrivalDate = reqObj.valArrivalDate;
+        }
+        else {
+
+            var ArrivalDate = (reqObj.valArrivalDate.getMonth() + 1) + "/" + reqObj.valArrivalDate.getDate() + "/" + reqObj.valArrivalDate.getFullYear();
+            requestParam.SelectedArrivalDate = ArrivalDate;
+        }
+
+        if (reqObj.valDischargeTime == null) {
+            requestParam.SelectedDischargeTime = reqObj.valDischargeTime;
+        }
+        else {
+
+            var DischargeTime = (reqObj.valDischargeTime.getHours()) + ":" + reqObj.valDischargeTime.getMinutes();
+            requestParam.SelectedDischargeTime = DischargeTime;
+        }
+
+        if (reqObj.valArrivalTime == null) {
+            requestParam.SelectedArrivalTime = reqObj.valDischargeTime;
+        }
+        else {
+
+            var ArrivalTime = (reqObj.valArrivalTime.getHours()) + ":" + reqObj.valArrivalTime.getMinutes();
+            requestParam.SelectedArrivalTime = ArrivalTime;
+        }
+
+        requestParam.Destination = reqObj.valDestination;
+       
+        $ct.ajax.ajaxPost($ct.cn.getSheltereeFacilityUrl() + 'BulkUpdateSheltereeData', requestParam, function (result) {
 
             if (successCallBack != null)
                 successCallBack(result);
@@ -172,6 +209,7 @@
 
         return "";
     };
+
     var getActiveEvents = function (ViewModel, successCallBack) {
 
         var requestParam = {};
@@ -261,7 +299,7 @@
                     requestParam.FetchSelectedOnly = ViewModel.sheltereeRequestData.FetchSelectedOnly;
 
                     ViewModel.set("selectedId", "-1");
-                    
+
                     $ct.ajax.ajaxPost($ct.cn.getSheltereeFacilityUrl() + 'GetSheltereeDischargeView', requestParam, function (result) {
 
                         if ($ct.mt.isNoDataFound(result)) {
@@ -292,7 +330,7 @@
                 },
                 model: { // define the model of the data source. Required for validation and property types.
                     fields: {
-                       // IsMedical: { type: "boolean" }
+                        // IsMedical: { type: "boolean" }
                     }
                 }
             }
@@ -302,24 +340,7 @@
 
 
     };
-    var deleteSheltereeDischargeById = function (selEmployeeId, selEmployeeVersion, successCallBack) {
 
-        var requestParam = { };
-
-        requestParam.Id = selEmployeeId;
-        requestParam.EmployeeVersion = selEmployeeVersion;
-        //getSheltereeFacilityUrl
-        $ct.ajax.ajaxPost($ct.cn.getEmployeeUrl() + 'DeleteEmployee', requestParam, function (result) {
-
-            if (successCallBack != null)
-                successCallBack(result);
-
-}, null, true)
-
-
-        return "";
-
-        };
     var exportSheltereeDischargeesListToExcel = function (ViewModel, successCallBack) {
 
         var filter = null;
@@ -347,13 +368,12 @@
 
         requestParam.ShelterId = ViewModel.sheltereeHeaderData.shelter.Id;
 
-        requestParam.SelectedEmployeeIds = ViewModel.get("sheltereeRequestData.SelectedSheltereeIds");
-        requestParam.UnSelectedEmployeeIds = ViewModel.get("sheltereeRequestData.UnSelectedSheltereeIds");
+        requestParam.SelectedSheltereeIds = ViewModel.get("sheltereeRequestData.SelectedSheltereeIds");
+        requestParam.UnSelectedSheltereeIds = ViewModel.get("sheltereeRequestData.UnSelectedSheltereeIds");
         requestParam.ViewAll = ViewModel.sheltereeRequestData.ViewAll;
         requestParam.FetchSelectedOnly = ViewModel.sheltereeRequestData.FetchSelectedOnly;
 
-
-        $ct.ajax.ajaxPost($ct.cn.getEmployeeUrl() + 'ExportEmployeeToExcel', requestParam, function (result) {
+        $ct.ajax.ajaxPost($ct.cn.getSheltereeFacilityUrl() + 'ExportSheltereeDischargeDataToExcel', requestParam, function (result) {
 
 
             if (successCallBack != null)
@@ -364,46 +384,7 @@
         return "";
 
     };
-    var getSheltereeDischargeBulkUpdateLookup = function (ViewModel, successCallBack) {
 
-        var requestParam = {};
-
-        requestParam.SelectedEmployeeIds = ViewModel.get("sheltereeRequestData.SelectedSheltereeIds");
-        requestParam.UnSelectedEmployeeIds = ViewModel.get("sheltereeRequestData.UnSelectedSheltereeIds");
-        requestParam.ViewAll = ViewModel.sheltereeRequestData.ViewAll;
-        requestParam.FetchSelectedOnly = ViewModel.sheltereeRequestData.FetchSelectedOnly;
-        //getSheltereeFacilityUrl
-        $ct.ajax.ajaxPost($ct.cn.getEmployeeUrl() + 'GetEmployeeBulKUpdateLookupData', requestParam, function (result) {
-
-            if (successCallBack != null)
-                successCallBack(result);
-        }, null, true)
-
-        return "";
-    };
-    var bulkUpdateSheltereeDischargeData = function (ViewModel, successCallBack) {
-
-        var requestParam = {};
-        var reqObj = ViewModel.saveRequest;
-
-        requestParam.ShelterId = ViewModel.shelterId;
-        // requestParam.SelectedPatientIds = ViewModel.SelectedPatientIds;
-
-        requestParam.SelectedStaffTypeId = reqObj.valStaffType;
-        requestParam.SelectedDepartmentId = reqObj.valDepartment;
-        requestParam.SelectedShiftId = reqObj.valShiftTime;
-        requestParam.SelectedStaffSpecialityId = reqObj.valStaffSpeciality;
-        //getSheltereeFacilityUrl
-        $ct.ajax.ajaxPost($ct.cn.getEmployeeUrl() + 'BulkUpdateEmployeeData', requestParam, function (result) {
-
-            if (successCallBack != null)
-                successCallBack(result);
-
-        }, null, true)
-
-
-        return "";
-    };
 
     var getSheltereeMedicalUpdatees = function (ViewModel, successCallBack) {
 
@@ -430,7 +411,7 @@
                     requestParam.FetchSelectedOnly = ViewModel.sheltereeRequestData.FetchSelectedOnly;
 
                     ViewModel.set("selectedId", "-1");
-                    
+
                     $ct.ajax.ajaxPost($ct.cn.getSheltereeFacilityUrl() + 'GetSheltereeMedicalUpdateView', requestParam, function (result) {
 
                         if ($ct.mt.isNoDataFound(result)) {
@@ -471,24 +452,7 @@
 
 
     };
-    var deleteSheltereeMedicalUpdateById = function (selEmployeeId, selEmployeeVersion, successCallBack) {
 
-        var requestParam = {};
-
-        requestParam.Id = selEmployeeId;
-        requestParam.EmployeeVersion = selEmployeeVersion;
-        //getSheltereeFacilityUrl
-        $ct.ajax.ajaxPost($ct.cn.getEmployeeUrl() + 'DeleteEmployee', requestParam, function (result) {
-
-            if (successCallBack != null)
-                successCallBack(result);
-
-        }, null, true)
-
-
-        return "";
-
-    };
     var exportSheltereeMedicalUpdateesListToExcel = function (ViewModel, successCallBack) {
 
         var filter = null;
@@ -516,13 +480,12 @@
 
         requestParam.ShelterId = ViewModel.sheltereeHeaderData.shelter.Id;
 
-        requestParam.SelectedEmployeeIds = ViewModel.get("sheltereeRequestData.SelectedSheltereeIds");
-        requestParam.UnSelectedEmployeeIds = ViewModel.get("sheltereeRequestData.UnSelectedSheltereeIds");
+        requestParam.SelectedSheltereeIds = ViewModel.get("sheltereeRequestData.SelectedSheltereeIds");
+        requestParam.UnSelectedSheltereeIds = ViewModel.get("sheltereeRequestData.UnSelectedSheltereeIds");
         requestParam.ViewAll = ViewModel.sheltereeRequestData.ViewAll;
         requestParam.FetchSelectedOnly = ViewModel.sheltereeRequestData.FetchSelectedOnly;
 
-        //getSheltereeFacilityUrl
-        $ct.ajax.ajaxPost($ct.cn.getEmployeeUrl() + 'ExportEmployeeToExcel', requestParam, function (result) {
+        $ct.ajax.ajaxPost($ct.cn.getSheltereeFacilityUrl() + 'ExportSheltereeMedicalUpdateDataToExcel', requestParam, function (result) {
 
 
             if (successCallBack != null)
@@ -533,37 +496,51 @@
         return "";
 
     };
-    var getSheltereeMedicalUpdateBulkUpdateLookup = function (ViewModel, successCallBack) {
+
+    var generatereportsforDischargeesList = function (ViewModel, successCallBack) {
+
+        var requestParam = {};
+       
+        requestParam.ShelterId = ViewModel.sheltereeHeaderData.shelter.Id;
+
+        $ct.ajax.ajaxPost($ct.cn.getSheltereeFacilityUrl() + 'GetSheltereeDischargeReportData', requestParam, function (result) {
+
+
+                if (successCallBack != null)
+                    successCallBack(result);
+
+        }, null, true)
+
+        return "";
+
+    };
+
+    var generatereportsforMedicalUpdateesList = function (ViewModel, successCallBack) {
 
         var requestParam = {};
 
-        requestParam.SelectedEmployeeIds = ViewModel.get("sheltereeRequestData.SelectedSheltereeIds");
-        requestParam.UnSelectedEmployeeIds = ViewModel.get("sheltereeRequestData.UnSelectedSheltereeIds");
-        requestParam.ViewAll = ViewModel.sheltereeRequestData.ViewAll;
-        requestParam.FetchSelectedOnly = ViewModel.sheltereeRequestData.FetchSelectedOnly;
-        //getSheltereeFacilityUrl
-        $ct.ajax.ajaxPost($ct.cn.getEmployeeUrl() + 'GetEmployeeBulKUpdateLookupData', requestParam, function (result) {
+        requestParam.ShelterId = ViewModel.sheltereeHeaderData.shelter.Id;
+
+        $ct.ajax.ajaxPost($ct.cn.getSheltereeFacilityUrl() + 'GetSheltereeMedicalSummaryReportData', requestParam, function (result) {
+
 
             if (successCallBack != null)
                 successCallBack(result);
+
         }, null, true)
 
         return "";
+
     };
-    var bulkUpdateSheltereeMedicalUpdateData = function (ViewModel, successCallBack) {
+
+    var commentMedicalUpdateList = function (MedicalUpdateListId, successCallBack) {
 
         var requestParam = {};
-        var reqObj = ViewModel.saveRequest;
 
-        requestParam.ShelterId = ViewModel.shelterId;
-        // requestParam.SelectedPatientIds = ViewModel.SelectedPatientIds;
+        requestParam.Id = MedicalUpdateListId;
 
-        requestParam.SelectedStaffTypeId = reqObj.valStaffType;
-        requestParam.SelectedDepartmentId = reqObj.valDepartment;
-        requestParam.SelectedShiftId = reqObj.valShiftTime;
-        requestParam.SelectedStaffSpecialityId = reqObj.valStaffSpeciality;
         //getSheltereeFacilityUrl
-        $ct.ajax.ajaxPost($ct.cn.getEmployeeUrl() + 'BulkUpdateEmployeeData', requestParam, function (result) {
+        $ct.ajax.ajaxPost($ct.cn.getSheltereeFacilityUrl() + 'GetSheltereeComments', requestParam, function (result) {
 
             if (successCallBack != null)
                 successCallBack(result);
@@ -573,30 +550,43 @@
 
         return "";
     };
+
+    var commentSaveMedicalUpdateList = function (MedicalUpdateListData, successCallBack) {
+
+
+
+        //getSheltereeFacilityUrl
+        $ct.ajax.ajaxPost($ct.cn.getSheltereeFacilityUrl() + 'SaveSheltereeComment', MedicalUpdateListData, function (result) {
+
+            if (successCallBack != null)
+                successCallBack(result);
+
+        }, null, true)
+
+
+        return "";
+    };
+
 
     return {
 
-        getShelterees:getShelterees,
+        getShelterees: getShelterees,
         deleteSheltereeById: deleteSheltereeById,
         exportSheltereesListToExcel: exportSheltereesListToExcel,
-        getSheltereeBulkUpdateLookup:getSheltereeBulkUpdateLookup,
-        bulkUpdateSheltereeData:bulkUpdateSheltereeData,
+        getSheltereeBulkUpdateLookup: getSheltereeBulkUpdateLookup,
+        bulkUpdateSheltereeData: bulkUpdateSheltereeData,
         getActiveEvents: getActiveEvents,
-        getImportActionOptions:getImportActionOptions,
+        getImportActionOptions: getImportActionOptions,
         getExportFailedImportedSheltereeDataToExcel: getExportFailedImportedSheltereeDataToExcel,
         downloadSheltereeToExcel: downloadSheltereeToExcel,
         getSheltereeDischargees: getSheltereeDischargees,
-        deleteSheltereeDischargeById: deleteSheltereeDischargeById,
         exportSheltereeDischargeesListToExcel: exportSheltereeDischargeesListToExcel,
-        getSheltereeDischargeBulkUpdateLookup: getSheltereeDischargeBulkUpdateLookup,
-        bulkUpdateSheltereeDischargeData: bulkUpdateSheltereeDischargeData,
-
         getSheltereeMedicalUpdatees: getSheltereeMedicalUpdatees,
-        deleteSheltereeMedicalUpdateById: deleteSheltereeMedicalUpdateById,
         exportSheltereeMedicalUpdateesListToExcel: exportSheltereeMedicalUpdateesListToExcel,
-        getSheltereeMedicalUpdateBulkUpdateLookup: getSheltereeMedicalUpdateBulkUpdateLookup,
-        bulkUpdateSheltereeMedicalUpdateData:bulkUpdateSheltereeMedicalUpdateData
-
+        generatereportsforMedicalUpdateesList:generatereportsforMedicalUpdateesList,
+        generatereportsforDischargeesList:generatereportsforDischargeesList,
+        commentMedicalUpdateList: commentMedicalUpdateList,
+        commentSaveMedicalUpdateList: commentSaveMedicalUpdateList
 
     };
 

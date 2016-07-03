@@ -117,9 +117,20 @@ $ct.msg = function () {
         return equipmentSupplySuccessMsg;
     };
 
+    var questionSuccessMsg = "Question" + successMsg;
+    var getQuestionSuccessMsg = function () {
+        return questionSuccessMsg;
+    };
 
+    var questionResponseSuccessMsg = "QuestionResponse" + successMsg;
+    var getQuestionResponseSuccessMsg = function () {
+        return questionResponseSuccessMsg;
+    };
 
-
+        var questionDeleteSuccessMsg = "Question" + deleteSuccessMsg;
+    var getQuestionDeleteSuccessMsg = function () {
+        return questionDeleteSuccessMsg;
+    };
     var agencyDeleteSuccessMsg = "Agency " + deleteSuccessMsg;
     var getAgencyDeleteSuccessMsg = function () {
         return agencyDeleteSuccessMsg;
@@ -250,6 +261,12 @@ $ct.msg = function () {
     var getSheltereeUploadSuccessMsg = function () {
         return sheltereeUploadSuccessMsg;
     };
+    var sheltereeMedicalConditionUpdateListSuccessMsg = "Medical Condition Update  Comment " + successMsg;
+    var getSheltereeMedicalConditionUpdateListCommentSuccessMsg = function () {
+        return sheltereeMedicalConditionUpdateListSuccessMsg;
+    };
+
+    
 
     return {
 
@@ -284,7 +301,9 @@ $ct.msg = function () {
         getDispositionSuccessMsg:getDispositionSuccessMsg,
         getShelterIdentificationSuccessMsg:getShelterIdentificationSuccessMsg,
         getShelterIdentificationDeleteSuccessMsg:getShelterIdentificationDeleteSuccessMsg,
-        getEquipmentSupplySuccessMsg:getEquipmentSupplySuccessMsg,
+        getEquipmentSupplySuccessMsg: getEquipmentSupplySuccessMsg,
+        getQuestionSuccessMsg:getQuestionSuccessMsg,
+        getQuestionResponseSuccessMsg:getQuestionResponseSuccessMsg,
 
 
 
@@ -299,6 +318,7 @@ $ct.msg = function () {
         getStaffTypeDeleteSuccessMsg:getStaffTypeDeleteSuccessMsg,
         getTransportTypeDeleteSuccessMsg: getTransportTypeDeleteSuccessMsg,
         getequipmentSupplyDeleteSuccessMsg: getequipmentSupplyDeleteSuccessMsg,
+        getQuestionDeleteSuccessMsg:getQuestionDeleteSuccessMsg,
 
 
         getUploadValidFile: getUploadValidFile,
@@ -319,7 +339,9 @@ $ct.msg = function () {
         getSheltereeSuccessMsg: getSheltereeSuccessMsg,
         getSheltereeDeleteSuccessMsg:getSheltereeDeleteSuccessMsg,
         getSheltereeUploadSuccessMsg: getSheltereeUploadSuccessMsg,
-        getSheltereeUploadError: getSheltereeUploadError
+        getSheltereeUploadError: getSheltereeUploadError,
+        getSheltereeMedicalConditionUpdateListCommentSuccessMsg: getSheltereeMedicalConditionUpdateListCommentSuccessMsg
+
 
     };
 } ();

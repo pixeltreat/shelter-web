@@ -67,6 +67,9 @@
                 <li class="app-nav__sub__li" data-bind="click:showActiveState">
                     <a class="app-nav__sub__li__a" data-bind="click:shelterIdentificationListClick">Shelter Identification</a>
                 </li>
+                <li class="app-nav__sub__li" data-bind="click:showActiveState">
+                    <a class="app-nav__sub__li__a" data-bind="click:questionListClick">Question</a>
+                </li>
             </ul>
         </li>
         <!-- <li class="app-nav__main__li" data-bind="click:toggleSubnav">
@@ -95,6 +98,26 @@
             </ul>
         </li>
 
+
+        <li class="app-nav__main__li has-subnav" data-bind="click:toggleSubnav">
+            <a class="app-nav__main__li__a">
+                <span class="f-icon__nav-shelteree app-nav__main__li__a__icon" aria-hidden="true"></span>
+                <span class="app-nav__main__li__a__text">Shelteree</span>
+            </a>
+            <ul class="app-nav__sub">
+                <li class="app-nav__sub__li" data-bind="click:showActiveState">
+                    <a class="app-nav__sub__li__a" data-bind="click:sheltereeListClick">Shelteree List</a>
+                </li>
+                <li class="app-nav__sub__li" data-bind="click:showActiveState">
+                    <a class="app-nav__sub__li__a" data-bind="click:sheltereeDischargeListClick">Shelteree Discharge List</a>
+                </li>
+                <li class="app-nav__sub__li" data-bind="click:showActiveState">
+                    <a class="app-nav__sub__li__a" data-bind="click:sheltereeMedicalUpdateListClick">Shelteree Medical Update List</a>
+                </li>
+            </ul>
+        </li>
+
+
         <li class="app-nav__main__li has-subnav" data-bind="click:toggleSubnav">
             <a class="app-nav__main__li__a">
                 <span class="f-icon__nav-shelter app-nav__main__li__a__icon" aria-hidden="true"></span>
@@ -107,18 +130,7 @@
                 </li>
             </ul>
         </li>
-        <li class="app-nav__main__li has-subnav" data-bind="click:toggleSubnav">
-            <a class="app-nav__main__li__a" data-bind="click:showActiveState">
-                <span class="f-icon__nav-transport app-nav__main__li__a__icon" aria-hidden="true"></span>
-                <span class="app-nav__main__li__a__text">Transportation</span>
-            </a>
 
-            <ul class="app-nav__sub">
-                <li class="app-nav__sub__li" data-bind="click:showActiveState">
-                    <a class="app-nav__sub__li__a">Subnav Link1</a>
-                </li>
-            </ul>
-        </li>
 
         <li class="app-nav__main__li has-subnav" data-bind="click:toggleSubnav">
             <a class="app-nav__main__li__a">
@@ -148,7 +160,7 @@
         </li>
 
         <li class="app-nav__main__li" data-bind="click:toggleSubnav">
-            <a class="app-nav__main__li__a">
+            <a class="app-nav__main__li__a" data-bind="click:refreshClick">
                 <span class="f-icon__nav-refresh app-nav__main__li__a__icon" aria-hidden="true"></span>
                 <span class="app-nav__main__li__a__text">Refresh</span>
             </a>

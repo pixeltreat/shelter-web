@@ -186,6 +186,19 @@ $ct.rn = function () {
         return shelterIdentification;
     };
 
+
+    var questionList = "questionlist";
+
+    var getQuestionList = function () {
+        return questionList;
+    };
+
+
+    var question = "question";
+
+    var getQuestion = function () {
+        return question;
+    };
    
     //end of admin routes
     
@@ -397,7 +410,8 @@ $ct.rn = function () {
         getequipmentSupply: getequipmentSupply,
         getshelterIdentification: getshelterIdentification,
         getshelterIdentificationList:getshelterIdentificationList,
-
+        getQuestionList: getQuestionList,
+        getQuestion: getQuestion,
         //end of admin routes
 
 

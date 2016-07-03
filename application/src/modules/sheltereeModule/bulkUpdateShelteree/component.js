@@ -16,7 +16,7 @@ define(['Boiler', './viewmodel', 'text!./view.html', 'i18n!./nls/resources'], fu
 
         });
 
- 
+
 
         this.activate = function (parent, params) {
 

@@ -6,12 +6,17 @@ define(['Boiler', './viewmodel', 'text!./view.html', 'i18n!./nls/resources'], fu
 
 
 
-        //moduleContext.listen($ct.en.getRefreshView(), function (viewName) {
+        moduleContext.listen($ct.en.getRefreshView(), function (viewName) {
 
-        //    if ($ct.rn.getShelterStatus() == viewName) {
-        //        refreshViewData();
-        //    }
-        //});
+            if ($ct.rn.getShelteree() == viewName) {
+
+                if (vm != null)
+                {
+                    vm.data.refreshTabData();
+                }
+
+            }
+        });
 
 
         //var refreshViewData = function () {
@@ -34,10 +39,13 @@ define(['Boiler', './viewmodel', 'text!./view.html', 'i18n!./nls/resources'], fu
 
                 panel = new Boiler.ViewTemplate(parent, template, nls);
                 vm = new ViewModel(moduleContext);
+                vm.data.setTabNumberCalculationFunctionToSheltreeTabs();
+
                 kendo.bind(panel.getDomElement(), vm.data);
             }
 
-
+            vm.data.fillQueryParam(params);
+            vm.data.getDemographicsById(0);
             panel.show();
             moduleContext.notify($ct.en.getHideEmployeeHeaderNavigation(), null);
             moduleContext.notify($ct.en.getHideEmployeeShelterHeader(), null);

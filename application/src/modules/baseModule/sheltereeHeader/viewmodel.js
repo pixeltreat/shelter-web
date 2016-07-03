@@ -21,6 +21,8 @@
 
             isGoButtonDisabled: true,
 
+            eventdata: {},
+
             //For multi shelter user display dropdownlists
             showDDLsInShelterHeader: function () {
 
@@ -55,18 +57,18 @@
             },
 
             //loads shelter types, and shelter names
-            initializeSheltereeHeader: function () {
+            initializeSheltereeHeader: function (viewName) {
 
                 vm.set("isMultiShelterUser", $ct.security.isMultiFacilityUser());
 
-                vm.populateShelterNames();
-
+                //vm.populateShelterNames();
+                vm.fillShelters(viewName);
             },
-         populateShelterNames: function (e) {
+         //populateShelterNames: function (e) {
 
-                vm.fillShelters();
+         //       vm.fillShelters();
 
-            },
+         //   },
 
             dsShelterNames: function () {
                 //this.fillShelters();
@@ -74,19 +76,28 @@
 
             isIntialLoad: true,
 
-            fillShelters: function () {
+            fillShelters: function (viewName) {
 
                 vm.set("isGoButtonDisabled", true);
 
                 var data = $ct.ds.shlt.shelter.getSheltersWithDs(function (result) {
 
-                    $ct.helpers.hidePageBusyCursor();
+                   // $ct.helpers.hidePageBusyCursor();
 
                     if (result !== undefined && result !== null && result.length > 0) {
 
                         vm.set("isGoButtonDisabled", false);
 
                         vm.set("selectedShelterNameItem", result[0]);
+
+                        $ct.ds.emp.employee.getActiveEvents(vm.selectedShelterNameItem.Id, function (result) {
+
+                            $ct.helpers.hidePageBusyCursor();
+                            $ct.helpers.hideWorkAreaBusyCursor();
+
+                            var resultData = result.Data.ActiveEvent;
+                            vm.set("eventdata", resultData);
+                        });
 
                         if (vm.isIntialLoad == true) {
 
@@ -100,7 +111,20 @@
                             vm.setPreviouslySelectedShelterTypeAndShelterNameToCurrent();
                             vm.setSheltereeHeaderDataToGlobalContext();
 
-                            Boiler.UrlController.goTo($ct.rn.getSheltereeList());
+                            if (viewName == $ct.rn.getSheltereeList()) {
+                                Boiler.UrlController.goTo($ct.rn.getSheltereeList());
+                            }
+                            else if (viewName == $ct.rn.getSheltereeDischargeList()) {
+                                Boiler.UrlController.goTo($ct.rn.getSheltereeDischargeList());
+                            }
+                            else if (viewName == $ct.rn.getSheltereeMedicalUpdateList()) {
+                                Boiler.UrlController.goTo($ct.rn.getSheltereeMedicalUpdateList());
+                            }
+                            else {
+                                alert("Error in shelter header : Not a valid view ");
+                            }
+
+                           
 
                         }
 
@@ -117,6 +141,49 @@
 
                 //vm.fillGrid();
 
+                $ct.helpers.displayWorkAreaBusyCursor();
+
+                $ct.ds.emp.employee.getActiveEvents(vm.selectedShelterNameItem.Id, function (result) {
+
+                    $ct.helpers.hidePageBusyCursor();
+                    $ct.helpers.hideWorkAreaBusyCursor();
+
+                    var resultData = result.Data.ActiveEvent;
+                    vm.set("eventdata", resultData);
+
+                    vm.setPreviouslySelectedShelterTypeAndShelterNameToCurrent();
+                    vm.setSheltereeHeaderDataToGlobalContext();
+
+                    if (moduleContext.parentContext.activeForm == $ct.rn.getSheltereeList()) {
+                        moduleContext.notify($ct.en.getSheltereeHeaderDataChanged(), $ct.rn.getSheltereeList());
+                    }
+
+                    if (moduleContext.parentContext.activeForm == $ct.rn.getSheltereeDischargeList()) {
+                        moduleContext.notify($ct.en.getSheltereeHeaderDataChanged(), $ct.rn.getSheltereeDischargeList());
+                    }
+
+
+                    if (moduleContext.parentContext.activeForm == $ct.rn.getSheltereeMedicalUpdateList()) {
+                        moduleContext.notify($ct.en.getSheltereeHeaderDataChanged(), $ct.rn.getSheltereeMedicalUpdateList());
+                    }
+
+                });
+
+                //this.setPreviouslySelectedShelterTypeAndShelterNameToCurrent();
+                //this.setSheltereeHeaderDataToGlobalContext();
+
+                //if (moduleContext.parentContext.activeForm == $ct.rn.getSheltereeList()) {
+                //    moduleContext.notify($ct.en.getSheltereeHeaderDataChanged(), $ct.rn.getSheltereeList());
+                //}
+
+                //if (moduleContext.parentContext.activeForm == $ct.rn.getSheltereeDischargeList()) {
+                //    moduleContext.notify($ct.en.getSheltereeHeaderDataChanged(), $ct.rn.getSheltereeDischargeList());
+                //}
+
+
+                //if (moduleContext.parentContext.activeForm == $ct.rn.getSheltereeMedicalUpdateList()) {
+                //    moduleContext.notify($ct.en.getSheltereeHeaderDataChanged(), $ct.rn.getSheltereeMedicalUpdateList());
+                //}
             },
 
             //End of shelter type and shelter names dropdowns code

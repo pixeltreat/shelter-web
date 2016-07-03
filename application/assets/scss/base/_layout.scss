@@ -69,7 +69,7 @@ body {
     overflow: hidden;
     transition: $transition__default-all;
     background-color: $app-header-bg;
-    z-index: 999;
+    z-index: 10003;
 
     // &::after {
     //     content: "";
@@ -120,3 +120,277 @@ body {
         @extend .flex-col-lg__1-3, .flex-col-md__1-2, .flex-col-sm__full;
     }
 }
+// Start of three column layout for add/edit screens
+.l--three-column {
+    @extend .flex-row;
+	
+    .column-one {
+        @extend .flex-col-lg__1-3, .flex-col-md__1-2, .flex-col-sm__full;
+        padding-right: 30px;
+
+        @include MediaQueries($mobile) {
+            padding-right: 0;
+        }
+    }
+
+    .column-two {
+        @extend .flex-col-lg__1-3, .flex-col-md__1-2, .flex-col-sm__full;
+        padding-right: 30px;
+         @media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) {  
+          flex:0 0 28% !important;
+          }
+        @include MediaQueries($mobile) {
+            padding-right: 0;
+        }
+    }
+	.column-three {
+        @extend .flex-col-lg__1-3, .flex-col-md__full, .flex-col-sm__full ; 
+     
+    }
+}
+
+// End of three column layout for add/edit screens
+
+// Start of four column layout for add/edit screens
+.l--four-column {
+    @extend .flex-row;
+
+    .column-one {
+        @extend .flex-col-lg__1-4, .flex-col-md__2-5, .flex-col-sm__full;
+    }
+
+    .column-two {
+        @extend .flex-col-lg__3-4, .flex-col-md__3-5, .flex-col-sm__full;
+    }
+   
+}
+
+// End of four column layout for add/edit screens
+// Start of Validation message for care requirement page
+
+.l--four-column .k-tooltip-validation.k-invalid-msg {
+   margin-left:98px;
+  
+    @include MediaQueries($desktop-and-below) {
+             margin-left:0;
+        }
+    @include MediaQueries($tablet) {
+            margin-left:0;
+            
+        }
+        @include MediaQueries($mobile) {
+            margin-left:0;
+        }
+}
+// End of Validation message for care requirement page
+
+// Start of sheltree Navigation
+
+.sheltree-navigation {
+    margin:0; 
+    padding:0;
+
+    li{
+        display: inline-block;
+        width: 166px;
+        list-style-type: none;
+        margin: 0;
+        text-align: center;
+        font-size: 16px;
+        cursor:pointer;
+       
+	    span {
+			
+			width:30px;
+			border-radius:50px; 
+			height:28px;
+			position:relative; 
+			top:-17px; 
+			border:3px solid #fff; 
+		    text-align:center;
+			color:#fff;
+			font-size:15px;
+			display:inline-block;
+        }
+		 
+    }   
+        &__title {
+            height:55px;
+            padding: 10px 0 0 0;
+        }
+
+       
+}
+
+.sheltree-navigation__complete-data
+{
+
+.sheltree-navigation__title{
+		background: #DCEDC8;
+          border-bottom:5px solid #9CCC65;
+          color: #689F38;
+		   height:55px;
+            padding: 10px 0 0 0;
+}	
+
+ span
+{
+			margin:-5px  !important;
+		    position:relative  !important;
+			top:-11px  !important;
+			@extend .f-icon, .f-icon__success;
+			border:1px solid #fff  !important ;
+			border-radius:15px  !important; 
+		    color:#9CCC65 !important;
+			font-size:2.4rem  !important;
+			display:inline-block  !important;
+			line-height:2px  !important;
+			box-shadow:0px 0px 0px 13px #fff inset !important;
+			@media screen and (min-width:0\0) and (min-resolution: +72dpi) {
+				margin:-3px !important;
+}	
+}
+  }
+$sheltree-navigation: (
+    
+    ('focus' , #E7EFF7, #395D80, #395D80),
+    ('partial-data', #FFF9C4, #FBC02D, #395D80),
+    ('no-data', #EAEAEA, #B2B2B2, #395D80),
+    ('disabled', #f2f2f2, #e8e8e8, #ddd)
+);
+
+@each $class, $bg-color, $border-color, $color in $sheltree-navigation { 
+    .sheltree-navigation__#{$class} {
+
+        .sheltree-navigation__title {
+          background: $bg-color;
+          border-bottom:5px solid $border-color;
+          color: $color;
+          }
+
+
+		 span{
+
+		  background-color:$border-color;
+	
+		  }
+		 
+    }
+}
+// End of sheltree Navigation
+
+/*newly added styles for sheltree (disposition) starts*/
+
+
+.shelter-identification .l--two-column {
+    
+    .column-one {
+        margin: 5px 0 0 0 !important;
+  @include MediaQueries($tablet) {
+            margin: 0 !important;  
+        }
+    }
+
+    .column-two {
+        flex:0 0 84.8% !important;
+
+  @include MediaQueries($tablet) {
+            flex: 0 0 80.8% !important;
+        }
+  
+    }
+}
+.disposition .l--two-column, .discharge .l--two-column, .shelter-identification .l--two-column {
+    @extend .flex-row;
+
+    .column-one {
+        @extend .flex-col-lg__1-3, .flex-col-md__1-3, .flex-col-sm__full;
+        margin: 10px 0 0 0;
+        max-width: 170px;
+        padding-right: 10px !important;
+        text-align: right;
+
+        @include MediaQueries($mobile) {
+            margin: 10px 0 0 0 !important;
+            padding-right: 10px !important;
+            text-align: right !important;
+        }
+
+        @include MediaQueries($tablet) {
+            margin: 10px 0 0 0 !important;
+            padding-right: 10px !important;
+            text-align: right !important;
+        }
+    }
+
+    .column-two {
+        @extend .flex-col-lg__2-3, .flex-col-md__2-3, .flex-col-sm__full;
+    }
+}
+
+.disposition .l--two-column-datetimepickers, .discharge .l--two-column-datetimepickers {
+    @extend .flex-row;
+
+    .column-one {
+        @extend .flex-col-lg__1-3, .flex-col-md__2-3, .flex-col-sm__full;
+        max-width: 32.5%;
+        padding-right: 10px !important;
+        text-align: right;
+        margin: 0 !important;
+
+        @include MediaQueries($mobile) {
+            padding-right: 0 !important;
+            margin: 0;
+            text-align: right !important;
+            max-width: 100%;
+        }
+
+        @include MediaQueries($tablet) {
+            padding-right: 0px !important;
+            margin: 0;
+            text-align: right !important;
+            max-width: 100%;
+        }
+    }
+
+    .column-two {
+        @extend .flex-col-lg__2-3, .flex-col-md__1-3, .flex-col-sm__full;
+    }
+}
+
+.disposition .inlinedate-time .k-datepicker, .discharge .inlinedate-time .k-datepicker {
+    width: 100%;
+    @include MediaQueries($mobile) {
+            padding-right: 0 !important;
+        }
+
+        @include MediaQueries($tablet) {
+            padding-right: 0px !important;
+        }
+}
+
+.disposition .inlinedate-time .k-timepicker, .discharge .inlinedate-time .k-timepicker {
+    width: 10.4em;
+
+    @include MediaQueries($mobile) {
+         width: 28.4em;
+    }
+
+    @include MediaQueries($tablet) {
+         width: 28.4em;
+    }
+}
+
+.disposition__accepted-text {
+    position: relative;
+    top: 10px;
+    margin: 0 -37px;
+
+    @media screen and (min-width:0\0) and (min-resolution: +72dpi) {
+        position: relative;
+        top: 0 !important;
+    }
+}
+/*newly added styles for sheltree (disposition) ends*/
+
+

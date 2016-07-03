@@ -1,58 +1,25 @@
-
 <div id="vwDownloadShelteree">
     <!--View name : vwDownloadShelteree-->
-    <!--Control id prefix : vwds-->   
-    <div class="wrapper wrapper2 cfx" style="background: #fff;">
-        <div class="cssform paddingT0">
-            <!-- Top heading and buttons -->
-            <!-- Top heading and buttons -->
-            <!-- Search and buttons -->
-            <div class="clear">
-            </div>
-            <!-- Search and buttons -->
-            <!-- Download employee data -->
-            <div class="history-box cfx">
-                <div class="title-new div-title">
-                    <h5>
-                        <i class="icon-help-circled" data-bind="click:helpClick"></i>{{nls.headerDownloadShelteree}}
-                    </h5>
+    <!--Control id prefix : vwds-->
+    <div class="module">
+        <h2 class="module-title">{{nls.headerDownloadShelteree}}<span class="module-title__icon" data-bind="click:helpClick"></span></h2>
+        <div class="module-container">
+            <label class="form-element-with-label">
+                <span class="form-element-with-label__text">{{nls.lblShelter}}</span>
+                <div class="custom-select">
+                    <select id="vwdsDdlShelters"
+                            data-role="dropdownlist"
+                            data-bind="source:dsShelters,value:selectedShelterItem"
+                            data-text-field="Name"
+                            data-value-field="Id"
+                            required />
                 </div>
-                <div class="cssform">
-
-
-                    <div class="paddingL165">
-                        <label for="vwdpDdlRegions">
-                            <span class="">{{nls.lblShelter}}</span>
-                        </label>
-                        <div class="item_parent">
-                            <div class="item_width">
-                                <select id="vwdsDdlShelters" class="inputClass" data-role="dropdownlist" data-bind="source:dsShelters,value:selectedShelterItem"
-                                        data-text-field="Name" data-value-field="Id" required />
-                            </div>
-                            <div class="clear"></div>
-                        </div>
-                    </div>
-
-
-
-                    <div class="paddingL165">
-                        <label>
-                        </label>
-                        <div class="item_parent">
-
-                            <button class="btn" data-bind="click:btnDownloadSheltereeDataClick" type="button">
-                                {{nls.btnDownloadShelteree}}
-                            </button>
-
-                            <div class="clear">
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-
-            </div>
-
+            </label>
         </div>
+    </div>
+    <div class="footer-bts-container">
+        <button class="btn" data-bind="click:btnDownloadSheltereeDataClick" type="button">
+            {{nls.btnDownloadShelteree}}
+        </button>
     </div>
 </div>

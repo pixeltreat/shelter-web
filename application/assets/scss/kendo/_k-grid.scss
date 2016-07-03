@@ -112,3 +112,12 @@
     border-color: $primary-color transparent transparent;
     color: $primary-color;
 }
+
+/*Styles for grid filter checkboxes and radio buttons starts*/
+
+.k-animation-container .k-filter-menu .k-multicheck-wrap li label input[type=checkbox], input[type=radio]{
+      margin:5px !important; 
+ }
+
+/*Styles for grid filter checkboxes and radio buttons ends*/
+

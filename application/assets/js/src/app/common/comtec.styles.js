@@ -166,6 +166,46 @@ $ct.styles = function () {
     //message header classes end
 
 
+    // start of sheltree header classes
+
+    var completeDataPresentClass = "sheltree-navigation__complete-data";
+
+    var getCompleteDataPresentClass = function () {
+        return completeDataPresentClass;
+    };
+
+    var partialDataPresentClass = "sheltree-navigation__partial-data";
+
+    var getPartialDataPresentClass = function () {
+        return partialDataPresentClass;
+    };
+
+    var noDataClass = "sheltree-navigation__no-data";
+
+    var getNoDataClass = function () {
+        return noDataClass;
+    };
+
+    var activeTabClass = "sheltree-navigation__focus";
+
+    var getActiveTabClass = function () {
+        return activeTabClass;
+    };
+
+
+    var tabDisabledClass = "sheltree-navigation__disabled";
+
+    var getTabDisabledClass = function () {
+        return tabDisabledClass;
+    };
+
+
+
+    // end of sheltree header classes
+
+
+
+
     return {
 
         getValidDataBorder: getValidDataBorder,
@@ -199,7 +239,14 @@ $ct.styles = function () {
         getGreenBackgroundClass: getGreenBackgroundClass,
         getRedMessageIconClass: getRedMessageIconClass,
         getGrayMessageIconClass: getGrayMessageIconClass,
-        getGreenMessageIconClass: getGreenMessageIconClass
+        getGreenMessageIconClass: getGreenMessageIconClass,
 
+        // start of sheltree header classes
+        getCompleteDataPresentClass: getCompleteDataPresentClass,
+        getPartialDataPresentClass : getPartialDataPresentClass,
+        getNoDataClass: getNoDataClass,
+        getActiveTabClass: getActiveTabClass,
+        getTabDisabledClass: getTabDisabledClass
+        // end of sheltree header classes
     };
 } ();

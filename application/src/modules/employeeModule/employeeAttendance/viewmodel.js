@@ -11,6 +11,11 @@ define(["Boiler", 'text!./help/help.html',
 
         var vm = kendo.observable({
 
+            helpClick: function (e) {
+                var panel = new Boiler.ViewTemplate(null, helpTmpl, null);
+                $ct.helpers.displayWindow(panel);
+            },
+
             dsFacilities: [],
             selectedFacility: {},
             dsShifts: [],
@@ -408,24 +413,14 @@ define(["Boiler", 'text!./help/help.html',
 
 
             },
-
-            btnSaveClick: function (e) {
-
-                e.data.set("saveClicked", true);
+        
 
 
-
-                if (e.data.ReportId == "-1")
-                    return;
-
+            changeSaveClick: function (e) {
                 var saveEmployeeAttendenceData = {};
                 Objforsave = {};
+                Objforsave = e.data.toJSON();
 
-                Objforsave = e.data;
-
-
-
-                Objforsave.toJSON();
                 saveEmployeeAttendenceData.EmployeeAttendanceRaw = Objforsave;
                 saveEmployeeAttendenceData.FacilityId = vm.previousSelectedFacility;
                 saveEmployeeAttendenceData.ShiftDate = vm.attendenceDatestring;
@@ -455,17 +450,6 @@ define(["Boiler", 'text!./help/help.html',
                     else {
 
                         if (data.Data.EmployeeAttendanceRawData != undefined) {
-
-
-                            e.data.set("EmployeeId", data.Data.EmployeeAttendanceRawData.EmployeeId);
-                            e.data.set("EmployeeAttendanceVersion", data.Data.EmployeeAttendanceRawData.EmployeeAttendanceVersion);
-                            e.data.set("IsNew", data.Data.EmployeeAttendanceRawData.IsNew);
-                            e.data.set("StatusName", data.Data.EmployeeAttendanceRawData.StatusName);
-
-                            e.data.set("EmployeeAttendanceUpdatedUserName", data.Data.EmployeeAttendanceRawData.EmployeeAttendanceUpdatedUserName);
-                            e.data.set("EmployeeAttendanceUpdatedOnValue", data.Data.EmployeeAttendanceRawData.EmployeeAttendanceUpdatedOnValue);
-
-                            vm.set("employeeAttendanceSummary", data.Data.EmployeeAttendanceSummary);
                             vm.dsEmployeeAttendance.read();
 
                         }

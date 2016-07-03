@@ -93,10 +93,15 @@ $ct.helpers = function () {
     };
 
     var clearValidations = function (viewId) {
+
         viewId = '#' + viewId;
         $(viewId).find('.k-invalid-msg').hide();
         var domElement = $(viewId).find('.k-invalid');
         domElement.removeClass('k-invalid');
+
+        var domElement1 = $(viewId).find('.k-valid');
+        domElement1.removeClass('k-valid');
+
     };
 
     var displayAlertWindow = function (msg) {

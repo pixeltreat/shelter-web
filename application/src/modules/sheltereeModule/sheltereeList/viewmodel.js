@@ -532,7 +532,8 @@ function (Boiler, helpTmpl) {
 
                 var columnHeader = $("#vwSheltereeList").find("th[role='columnheader']").first();
 
-                $(columnHeader).html("<input type='checkbox' id='chkAll' />");
+                $(columnHeader).html("<label class='checkbox'><input class='checkbox__inp' type='checkbox' data-item-type='child' id='chkAll' /><span class='checkbox__text'></span></label>");
+               
 
                 $("#vwSheltereeList").find("#chkAll").click(function (e) {
 
@@ -735,7 +736,7 @@ function (Boiler, helpTmpl) {
                 this.setFetchSelectedDataParams();
 
                 this.set("selectedId", e.data.Id);
-                this.set("selectedShelterId", e.data.FacilityId);
+                this.set("selectedShelterId", e.data.ShelterId);
                 this.set("selectedRecordVersion", e.data.Version);
 
                 //moduleContext.notify($ct.en.getAddEditPatientRefresh(), null);
@@ -773,7 +774,7 @@ function (Boiler, helpTmpl) {
 
             },
 
-
+            
             sheltereeEditUrl: function (isNew) {
 
                 if (!isNew) {

@@ -40,7 +40,8 @@ function (Boiler) {
                     if ($ct.mt.isVersionConflict(data)) {
 
                         if ($ct.helpers.displayConfirmWindow($ct.msg.getVersionConflictReloadMsg())) {
-                            
+                            commentsViewModel.btnCancelClick();
+                            moduleContext.notify($ct.en.getEmployeeAttendenceList());
                         }
 
                         return;

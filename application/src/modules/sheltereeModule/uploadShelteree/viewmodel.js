@@ -78,9 +78,9 @@ function (Boiler, helpTmpl) {
                 if (e.files[0].extension === ".xls" || e.files[0].extension === ".xlsx") {
                     //$ct.helpers.displayWorkAreaBusyCursor();
                     $("#vwusUploadProgess").show();
-
+                 
                     if (vm.selectedImportAction == 1) {
-                        moduleContext.notify($ct.en.getShowValidationMsg(), $ct.msg.getSheltereeUploadImportOption());
+                        moduleContext.notify($ct.en.getShowValidationMsg(), $ct.msg.getEmployeesUploadImportOption());
                         $("#vwusUploadProgess").hide();
                         e.preventDefault();
 

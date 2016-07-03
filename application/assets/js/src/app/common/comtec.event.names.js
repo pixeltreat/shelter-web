@@ -235,6 +235,21 @@ $ct.en = function () {
         return ShelterIdentificationCreatedOrUpdated;
     };
 
+
+    var displayquestionList = "DISPLAY_QUESTION_LIST";
+
+    var getDisplayquestionList = function () {
+        return displayquestionList;
+    };
+
+
+    var questionCreatedOrUpdated = "QUESTION_CREATED_OR_UPDATED";
+
+    var getQuestionCreatedOrUpdated = function () {
+        return questionCreatedOrUpdated;
+    };
+
+
     //end of admin events
 
     //start of employee events  
@@ -501,6 +516,8 @@ $ct.en = function () {
         getEquipmentSupplyCreatedOrUpdated: getEquipmentSupplyCreatedOrUpdated,
         getDisplayShelterIdentificationList:getDisplayShelterIdentificationList,
         getShelterIdentificationCreatedOrUpdated:getShelterIdentificationCreatedOrUpdated,
+        getDisplayquestionList: getDisplayquestionList,
+        getQuestionCreatedOrUpdated:getQuestionCreatedOrUpdated,
 
         //end of admin events  
 

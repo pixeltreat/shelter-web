@@ -23,11 +23,11 @@ function (Boiler, helpTmpl) {
                 vm.set("sheltereeRequestData", moduleContext.parentContext.sheltereeRequestData);
                 //vm.set("SelectedEmployeeIds", vm.get("sheltereeRequestData.SelectedEmployeeIds"));
 
-                $ct.ds.sheltree.sheltree.getSheltereeDischargeBulkUpdateLookup(this, function (result) {
+                $ct.ds.sheltree.sheltree.getSheltereeBulkUpdateLookup(this, function (result) {
 
                     $ct.helpers.hideWorkAreaBusyCursor();
 
-                    vm.set("dsLookupData", result.Data.EmployeeLookupData);
+                    vm.set("dsLookupData", result.Data.SheltereeLookupData);
 
                     //Added  to redirect the user back to manage screen when  they have selected patients from different facilities
                     var errorObj = $ct.mt.getErrorObject(result);
@@ -37,11 +37,13 @@ function (Boiler, helpTmpl) {
                         Boiler.UrlController.goTo($ct.rn.getSheltereeDischargeList());
                     }
 
-                    vm.saveRequest.valStaffType = "-1";
-                    vm.saveRequest.valDepartment = "-1";
-                    vm.saveRequest.valShiftTime = "-1";
-                    vm.saveRequest.valStaffSpeciality = "-1";
-
+                    vm.saveRequest.valDisposition = "-1";
+                    vm.saveRequest.valTransportationType = "-1";
+                    vm.saveRequest.valDischargeDate = null;
+                    vm.saveRequest.valDischargeTime = null;
+                    vm.saveRequest.valArrivalDate = null;
+                    vm.saveRequest.valArrivalTime = null;
+                    vm.saveRequest.valDestination = "";
                 });
 
             },
@@ -50,11 +52,13 @@ function (Boiler, helpTmpl) {
 
                 vm.intialize();
 
-                vm.set("saveRequest.valStaffType", "-1");
-                vm.set("saveRequest.valDepartment", "-1");
-                vm.set("saveRequest.valShiftTime", "-1");
-                vm.set("saveRequest.valStaffSpeciality", "-1");
-
+                vm.set("saveRequest.valDisposition", "-1");
+                vm.set("saveRequest.valTransportationType", "-1");
+                vm.set("saveRequest.valDischargeDate", null);
+                vm.set("saveRequest.valDischargeTime", null);
+                vm.set("saveRequest.valArrivalDate", null);
+                vm.set("saveRequest.valArrivalTime", null);
+                vm.set("saveRequest.valDestination", "");
             },
 
             dsLookupData: {
@@ -70,11 +74,15 @@ function (Boiler, helpTmpl) {
 
             saveRequest: {
 
-                valStaffType: "-1",
-                valDepartment: "-1",
-                valShiftTime: "-1",
-                valStaffSpeciality: "-1",
-
+                valDisposition: "-1",
+                valTransportationType: "-1",
+                valDisposition: "-1",
+                valTransportationType: "-1",
+                valDischargeDate: null,
+                valDischargeTime: null,
+                valArrivalDate: null,
+                valArrivalTime: null,
+                valDestination: ""
             },
             //SelectedEmployeeIds: new kendo.data.ObservableArray([]),
 
@@ -86,7 +94,7 @@ function (Boiler, helpTmpl) {
                 $ct.helpers.displayWorkAreaBusyCursor();
 
 
-                $ct.ds.sheltree.sheltree.bulkUpdateSheltereeDischargeData(this, function (result) {
+                $ct.ds.sheltree.sheltree.bulkUpdateSheltereeData(this, function (result) {
 
                     $ct.helpers.hideWorkAreaBusyCursor();
 

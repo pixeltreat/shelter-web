@@ -50,3 +50,46 @@ h1 {
         margin-left: 5px;
     }
 }
+//Start of styles for medical conditions
+.marginL12
+{
+    margin-left:12px !important;
+}
+//End of styles for medical conditions
+
+// Start of styles for sheltree module  
+   
+.module-section {
+  
+    padding: 5px 5px 10px 5px;
+    &__title {
+        font-size:1.6rem;
+        font-weight:$light;
+        margin-bottom: 25px;
+        padding:5px;
+        background-color:#c7daeb;
+        font-weight:$semi-bold;
+		border-radius:5px;
+        }
+		
+}
+// End of styles for sheltree module 
+
+//Start of styles for comments history popup in shelteree medical update 
+.Medicalupdate-Comments-History {
+  word-break:break-all;
+  word-wrap:break-word;
+  height:170px;
+  overflow-y:auto;
+
+  &-label {
+  color:red;
+  }
+
+  &-comment {
+  display:block; 
+  color: #375d81; 
+  margin: 5px 10px 10px 30px;
+  }
+}
+//End of styles for comments history popup in shelteree medical update

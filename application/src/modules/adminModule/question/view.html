@@ -1,0 +1,344 @@
+
+<div id="vwQuestion">
+    <!--View name : vwQuestion-->
+    <!--Control id prefix : vwq-->
+    <div class="module">
+        <h2 class="module-title">{{nls.headerAddEditQuestion}}</h2>
+        <div class="module-container">
+
+            <label class="form-element-with-label">
+                <span class="form-element-with-label__text">{{nls.lblSectionName}}</span>
+                <select id="Select3" data-role="dropdownlist" class="inputClassSelect"
+                        data-bind="source:dsQuestionGroups, value:selectedQuestionGroup"
+                        data-text-field="Value" data-value-field="Key" />
+            </label>
+
+            <label class="form-element-with-label">
+                <span class="form-element-with-label__text">{{nls.lblAnswerType}}</span>
+                <select id="vwserDdlStaffSpeciality" data-role="dropdownlist" class="inputClassSelect"
+                        data-bind="source:dsAnswerTypes, value:selectedAnswerType,enabled: isNewAnswer, events:{change:answerTypeChange}"
+                        data-text-field="Value" data-value-field="Key" />
+            </label>
+            <div data-template="vwqRow-template" data-bind="source:questionData"></div>
+            <label class="form-element-with-label">
+                <span class="form-element-with-label__text">{{nls.lblQuestionType}}</span>
+                <select id="Select1" data-role="dropdownlist" class="inputClassSelect"
+                        data-bind="source:dsQuestionTypes, value:selectedQuestionType,  events:{change:questionTypeChange}"
+                        data-text-field="Value" data-value-field="Key" />
+            </label>
+            <label class="form-element-with-label">
+                <span class="form-element-with-label__text">{{nls.lblQuestionTypeOptions}}</span>
+                <select id="Select2" data-role="dropdownlist" class="inputClassSelect"
+                        data-bind="source:dsQuestionTypeOptions, value:selectedQuestionTypeOption"
+                        data-text-field="Value" data-value-field="Key" />
+            </label>
+
+            <div class="form-element-with-label">
+                <span class="form-element-with-label__text">{{nls.lblEquipmentDependencies}}</span>
+                <ul class="form-list" data-template="vwqcheckboxRow-template" data-bind="source:dsEquipmentDependencies"></ul>
+                <span class="k-widget k-tooltip k-tooltip-validation k-invalid-msg" role="alert" data-bind="invisible:isAtLeastOneEquipmentDependencySelected">
+                    <span class="k-icon k-warning"></span> At least one equipment dependency should be selected.
+                </span>
+
+            </div>
+
+        </div>
+    </div>
+    <div class="footer-bts-container">
+        <button type="button" class="btn" data-bind="click:btnSaveClick">
+            {{nls.btnSave}}
+        </button>
+        <button type="button" class="btn" data-bind="click:btnBackClick">
+           {{nls.btnBack}}
+        </button>
+    </div>
+</div>
+
+<script type="text/x-kendo-template" id="vwqcheckboxRow-template">
+    <li>
+        <label class="checkbox">
+            <input class="checkbox__inp" type="checkbox"
+                   data-bind="checked:IsSelected">
+            <span class="checkbox__text" data-bind="text:EquipmentDependencyName"></span>
+        </label>
+    </li>
+
+</script>
+
+<script type="text/x-kendo-template" id="vwqRow-template">
+
+    <div>
+
+        <label class="form-element-with-label">
+            <span class="form-element-with-label__text">{{nls.lblQuestionText}}</span>
+            <textarea id="vwqQuestion" name="vwqTaDescription" class="form-element-with-label__inp" data-bind="value:Question.QuestionText" rows="5"></textarea>
+            <span class="k-widget k-tooltip k-tooltip-validation k-invalid-msg" data-bind="invisible: Question.hideQTextValidation">Please enter question text</span>
+        </label>
+        <!-- if statement start -->
+        # if( (Question.AnswerTypeId == 1) || (Question.AnswerTypeId == 4)){ #
+
+      
+        <div class="form-element-with-label">
+            <span class="form-element-with-label__text">{{nls.lblChooseOptions}}</span>
+            <ul class="form-list">
+                <li>
+                    <label class="checkbox">
+                        <input class="checkbox__inp" type="checkbox"
+                               data-bind="checked:Question.IsRequired">
+                        <span class="checkbox__text">{{nls.lblRequiredField}}</span>
+                    </label>
+                </li>
+
+            </ul>
+
+        </div>
+
+        <div class="l--two-column">
+            <div class="column-one">
+                <label class="form-element-with-label">
+                    <span class="form-element-with-label__text">{{nls.lblTextBoxLength}}</span>
+                    <input type="text"  class="form-element-with-label__inp"
+                           data-role="numerictextbox" data-spinners="false" min="1" max="5000" data-format="n0"
+                          data-bind="value:Question.AnswerWidth" data-decimals="0" />
+                    <span class="k-widget k-tooltip k-tooltip-validation k-invalid-msg" data-bind="invisible:Question.hideAnswerWidthValidation"> Please enter number</span>
+                </label>
+            </div>
+            <div class="column-two" style="margin:32px 0px 0px -15px;">
+                <span>Characters</span>
+            </div>
+
+        </div>
+        #} else if ((Question.AnswerTypeId == 2) || (Question.AnswerTypeId == 3) ){ #
+
+      
+        <div class="form-element-with-label">
+            <span class="form-element-with-label__text">{{nls.lblChooseOptions}}</span>
+            <ul class="form-list">
+                <li>
+                    <label class="checkbox">
+                        <input class="checkbox__inp" type="checkbox"
+                               data-bind="checked:Question.IsRequired">
+                        <span class="checkbox__text">{{nls.lblRequiredField}}</span>
+                    </label>
+                </li>
+
+            </ul>
+
+        </div>
+        #} else if ((Question.AnswerTypeId == 5) || (Question.AnswerTypeId == 6) ) { #
+
+       
+        <div>
+            <!--<label>Add Options</label>-->
+            <div>
+                <div>
+
+                    <button class="btn--secondary" data-bind="click:btnAddOptionClick" type="button">
+
+                       {{nls.btnAddOption}}
+                    </button>
+                </div>
+
+
+
+                <div data-template="vwqMultipleOption-template" data-bind="source: Question.AnswerOptions"></div>
+            </div>
+
+            <div>
+                <span class="k-widget k-tooltip k-tooltip-validation k-invalid-msg" role="alert" data-bind="invisible: hideQDefValidation">
+                    <span class="k-icon k-warning"></span>  Atleast two options are required
+                </span>
+
+
+
+            </div>
+
+        </div>
+
+        <div class="form-element-with-label">
+            <span class="form-element-with-label__text">{{nls.lblChooseOptions}}</span>
+            <ul class="form-list">
+                <li>
+                    <label class="checkbox">
+                        <input class="checkbox__inp" type="checkbox"
+                               data-bind="checked:Question.IsRequired">
+                        <span class="checkbox__text">{{nls.lblRequiredField}}</span>
+                    </label>
+                </li>
+
+            </ul>
+
+        </div>
+
+        <div class="form-element-with-label">
+            <span class="form-element-with-label__text">Display As</span>
+            <ul class="form-list">
+                <li>
+                    <label class="radio-button">
+                        <input class="radio-button__inp" type="radio" name="vwqRbOptHorizantal"
+                               value="true" data-bind="checked: Question.IsOptionsHorizontal">
+                        <span class="radio-button__text">{{nls.lblIsOptionsHorizontal}}</span>
+                    </label>
+                </li>
+                <li>
+                    <label class="radio-button">
+                        <input class="radio-button__inp" type="radio" name="vwqRbOptHorizantal"
+                               value="false" data-bind="checked: Question.IsOptionsHorizontal">
+                        <span class="radio-button__text">{{nls.lblIsOptionsVerticle}}</span>
+                    </label>
+                </li>
+
+            </ul>
+
+        </div>
+
+
+
+        #} else if (Question.AnswerTypeId == 7){ #
+
+        <div>
+            <!--<label>Add Options</label>-->
+            <div>
+                <div>
+
+                </div>
+
+
+
+                <button class="btn--secondary" data-bind="click:btnAddOptionClick" type="button">
+                    {{nls.btnAddOption}}
+                </button>
+
+                <div data-template="vwqMultipleOption-template" data-bind="source: Question.AnswerOptions"></div>
+            </div>
+
+
+            <div>
+                <span class="k-widget k-tooltip k-tooltip-validation k-invalid-msg" role="alert" data-bind="invisible: hideQDefValidation">
+                    <span class="k-icon k-warning"></span> Atleast two options are required
+                </span>   
+            </div>
+
+        </div>
+
+        <div class="form-element-with-label">
+            <span class="form-element-with-label__text">{{nls.lblChooseOptions}}</span>
+            <ul class="form-list">
+                <li>
+                    <label class="checkbox">
+                        <input class="checkbox__inp" type="checkbox"
+                               data-bind="checked:Question.IsRequired">
+                        <span class="checkbox__text">{{nls.lblRequiredField}}</span>
+                    </label>
+                </li>
+
+            </ul>
+
+        </div>
+
+        <div class="form-element-with-label">
+            <span class="form-element-with-label__text">Display As </span>
+            <ul class="form-list">
+                <li>
+                    <label class="radio-button">
+                        <input class="radio-button__inp" type="radio" name="vwqRbOptHorizantal"
+                               value="true" data-bind="checked: Question.IsOptionsHorizontal">
+                        <span class="radio-button__text">{{nls.lblIsOptionsHorizontal}}</span>
+                    </label>
+                </li>
+                <li>
+                    <label class="radio-button">
+                        <input class="radio-button__inp" type="radio" name="vwqRbOptHorizantal"
+                               value="false" data-bind="checked: Question.IsOptionsHorizontal">
+                        <span class="radio-button__text">{{nls.lblIsOptionsVerticle}}</span>
+                    </label>
+                </li>
+
+            </ul>
+
+        </div>
+
+
+
+        #}else{#
+
+        question type not found there is a configuration issue.
+
+        #}#
+
+
+
+    </div>
+
+
+
+</script>
+
+
+
+
+
+
+
+
+<script type="text/x-kendo-template" id="vwqMultipleOption-template">
+
+    <div>
+
+            <!--
+
+                #  if(AnswerTypeId == 5){ #
+
+                     <input type="radio" disabled="disabled" class="check_radio_align" />
+
+                 #} else if  (AnswerTypeId == 6)  { #
+
+                     <input type="checkbox" disabled="disabled" class="check_radio_align" />
+
+                #}#
+
+            -->
+
+            <div class="l--two-column" style="margin-top:10px;">
+
+                <div class="column-one">
+                    <label class="form-element-with-label">
+
+                        <input type="text" id="vwsecTbName" name="vwsecTbName" maxlength="500" class="form-element-with-label__inp" data-bind="value:ChoiceText">
+
+                    </label>
+                </div>
+
+
+
+
+                <div class="column-two" style="margin-top:5px;">
+                    <button class="btn-delete" data-bind="click:btnOptionDeleteClick">
+                        <span class="f-icon f-icon__delete">
+
+                        </span>
+                    </button>
+                </div>
+            </div>
+          
+              <!--
+                                            <span  class="icon-sprite_disabled icon_trash" >
+                                                {{nls.btnOptionDelete}}
+                                           </span>
+            -->
+
+
+       
+    <div data-bind="invisible: hideCTextValidation">
+
+
+        <span class="k-widget k-tooltip k-tooltip-validation k-invalid-msg" role="alert" data-bind="invisible: hideCTextValidation">
+            <span class="k-icon k-warning"></span>Please enter choice text
+        </span>
+    </div>
+
+    
+
+    </div>
+
+</script>

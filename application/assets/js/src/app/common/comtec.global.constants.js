@@ -9,6 +9,7 @@
 
 //Servicelayer on local machine.
 //var globalBaseServiceUrl = 'http://localhost:7222/api/';
+//var globalBaseServiceUrl = 'https://beta.comtecinfo.com/sheltersl/api/';
 var globalBaseServiceUrl = 'https://beta.comtecinfo.com/sheltersl/api/';
 
 
@@ -24,12 +25,35 @@ var globalFacilityUpdateId = 3;
 var globalFacilityReadOnlyId = 2;
 var globalSuperAdminId = 20;
 
+//Question types
+//we can get rid of this
+var globalAnswerTypes = [
+{ "Key": 1, "Value": "String Text Box" },
+{ "Key": 2, "Value": "Numeric Text Box" },
+{ "Key": 3, "Value": "Decimal Text Box" },
+{ "Key": 4, "Value": "Text Area" },
+{ "Key": 5, "Value": "Multiple Choice Only One Answer" },
+{ "Key": 6, "Value": "MultipleChoice Multiple Answer" },
+{ "Key": 7, "Value": "Dropdown List" }
+];
+
+var globalDefaultAnswerType = { "Key": 1, "Value": "String Text Box" };
+
+
+var globalQtStringTextBoxId = 1;
+var globalQtNumericTextBoxId = 2;
+var globalQtDecimalTextBoxId = 3;
+var globalQtTextAreaId = 4;
+var globalQtMultipleChoiceOnlyOneAnswerId = 5;
+var globalQtMultipleChoiceMultipleAnswerId = 6;
+var globalQtDropdownListId = 7;
+
 
 //Employee template URL
-var globalEmployeeTemplateURL = "http://localhost/FileRepository/ShelterTemplates/Employee_Upload-Template.xlsx";
+var globalEmployeeTemplateURL = "https://beta.comtecinfo.com/FileRepository/ShelterTemplates/Employee_Upload-Template.xlsx";
 
 //Shelteree templat
 
-var globalSheltereeTemplateURL = "http://localhost/FileRepository/ShelterTemplates/Shelteree_Upload-Template.xlsx";
+var globalSheltereeTemplateURL = "https://beta.comtecinfo.com/FileRepository/ShelterTemplates/Shelteree_Upload-Template.xlsx";
 
 

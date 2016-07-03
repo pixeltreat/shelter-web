@@ -42,7 +42,7 @@ function (Boiler, helpTmpl) {
                 }
 
             },
-            eventdata: {},
+            //eventdata: {},
 
             initialize: function () {
 
@@ -67,11 +67,11 @@ function (Boiler, helpTmpl) {
             initializeEmployeeHeader: function () {
 
                 vm.set("empHeaderData", moduleContext.parentContext.empHeaderData);
-                $ct.ds.emp.employee.getActiveEvents(this, function (result) {
+                //$ct.ds.emp.employee.getActiveEvents(this, function (result) {
 
-                    var resultData = result.Data.ActiveEvent;
-                    vm.set("eventdata", resultData);
-                });
+                //    var resultData = result.Data.ActiveEvent;
+                //    vm.set("eventdata", resultData);
+                //});
 
             },
 

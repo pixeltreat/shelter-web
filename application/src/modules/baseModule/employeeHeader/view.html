@@ -26,7 +26,7 @@
 
     <!--SHELTER HEADER START-->
     <div id="vwehDDLs" class="employee-header__shelter">
-    <div class="employee-header__shelter-dropdown">
+            <div class="employee-header__shelter-dropdown">
         <label for="vwehDdlShelterNames" class="employee-header__shelter-dropdown__label">{{nls.lblShelter}}:</label>
         <div class="custom-select employee-header__shelter-dropdown__select">
             <select id="vwehDdlShelterNames"
@@ -36,18 +36,22 @@
                     data-value-field="Id"></select>
         </div>
 
+                <!--To show label for single facility user-->
         <label class="employee-header__shelter-dropdown__value-label" hidden>-- All --</label>
         <!-- <button class="btn" data-bind="disabled:isGoButtonDisabled, click:btnGoClick">{{nls.btnGo}}</button> -->
     </div>
 
+
+
     <div class="employee-header__shelter-event">
         <div class="employee-header__shelter-event__name">
-            <span>Event Name:</span>
-            <strong>Hurricane Name Very Very Big For Testing</strong>
+            <!--Need to populate event and duration from API-->
+            <span>{{nls.lblEventName}}</span>
+            <strong data-bind="text:eventdata.EventName"></strong>
         </div>
         <div class="employee-header__shelter-event__duration">
-            <span>Duration:</span>
-            <strong> May 20 - May 30, 2016</strong>
+            <span>{{nls.lblDuration}}</span>
+            <strong data-bind="text:eventdata.EventDuration"></strong>
         </div>
     </div>
 

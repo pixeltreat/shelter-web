@@ -50,3 +50,30 @@
 .k-valid .k-picker-wrap > .k-select {
     border-color: $inp-sucess-border;
 }
+
+//Styles for aligning date and time picker in bulkupdatesheltree
+.inlinedate-time .k-datepicker{
+width:62%;
+@include MediaQueries($mobile) {
+            width: 100%;
+        }
+
+        @include MediaQueries($tablet) {
+            width: 100%;
+        }
+}
+
+.inlinedate-time .k-timepicker{
+    width: 10.4em;
+    @include MediaQueries($mobile) {
+         width: 28.4em;
+    }
+
+    @include MediaQueries($tablet) {
+         width: 28.4em;
+    }
+}
+//style for date piker formatting in all  pages (in firefox and edge)
+.k-calendar .k-content {
+    padding:0 !important;
+}

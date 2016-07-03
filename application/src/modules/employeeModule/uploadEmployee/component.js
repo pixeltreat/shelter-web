@@ -38,6 +38,8 @@ define(['Boiler', './viewmodel', 'text!./view.html', 'i18n!./nls/resources'], fu
             moduleContext.parentContext.activeForm = $ct.rn.getUploadEmployee();
             moduleContext.notify($ct.en.getShowActiveEmployeeHeader(), null);
             moduleContext.notify($ct.en.getHideEmployeeShelterHeader(), null);
+            moduleContext.notify($ct.en.getHideSheltereeHeaderNavigation(), null);
+            moduleContext.notify($ct.en.getHideSheltereeShelterHeader(), null);
         }
 
         this.deactivate = function () {

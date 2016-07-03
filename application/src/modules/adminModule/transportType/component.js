@@ -40,6 +40,8 @@ define(['Boiler', './viewmodel', 'text!./view.html', 'i18n!./nls/resources'], fu
             panel.show();
             moduleContext.notify($ct.en.getHideEmployeeHeaderNavigation(), null);
             moduleContext.notify($ct.en.getHideEmployeeShelterHeader(), null);
+            moduleContext.notify($ct.en.getHideSheltereeHeaderNavigation(), null);
+            moduleContext.notify($ct.en.getHideSheltereeShelterHeader(), null);
         }
 
         this.deactivate = function () {

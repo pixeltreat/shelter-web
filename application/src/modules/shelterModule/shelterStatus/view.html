@@ -1,14 +1,18 @@
+
 <div id="vwShelterStatus">
+
     <!--View name : vwShelterStatus-->
     <!--Control id prefix : vwsst-->
 
     <div class="module">
-        <h2 class="module-title">{{nls.headerShelterStatus}}<span class="module-title__icon" data-bind="click:helpClick"></span></h2>
+       <h2 class="module-title">{{nls.headerShelterStatus}}<span class="module-title__icon" data-bind="click:helpClick"></span></h2>
 
         <div class="module-container">
             <div class="gridsearch">
                 <div class="gridsearch__search-col">
-                    <span>{{nls.lblEventName}} </span>
+
+                    <span>{{nls.lblEventName}}</span>
+
                     <div class="custom-select">
                         <select id="vwsstDdlEventNames"
                             data-role="dropdownlist"
@@ -25,53 +29,78 @@
                             {{nls.btnExportToExcel}}
                     </button>
                 </div>
+                
             </div>
-
             <div class="table-wrapper">
                 <!--style="width:1150px"-->
-                <table id="vwsstDgShelterStatus"
-                    data-bind="source:dsShelterStatus" data-role="grid"
-                    data-filterable="true"
-                    data-sortable='{ "mode": "single", "allowUnsort": false }'
-                    data-row-template="vwsstRow-template"
-                    data-selectable="true"
-                    data-columns="[
-                        {title:'{{nls.gdColSave}}',width:'60px'},
-                        {field:'ShelterTypeName',title:'{{nls.gdColShelterType}}',width:'100px'},
-                        {field:'ShelterName',title:'{{nls.gdColShelterName}}',width:'150px'},
-                        {field:'Status',title:'{{nls.gdColStatus}}',width:'120px'},
-                        {field:'OpenDate',title:'{{nls.gdColOpenDate}}',filterable:false,width:'250px'},
-                        {field:'ClosedDate',title:'{{nls.gdColClosedDate}}',filterable:false,width:'250px'} ]"
-                    data-pageable="true"></table>
+                <table id="vwsstDgShelterStatus" 
+                       data-bind="source:dsShelterStatus" data-role="grid"
+                       data-filterable="true"
+                       data-sortable='{ "mode": "single", "allowUnsort": false }'
+                       data-row-template="vwsstRow-template"
+                       data-selectable="true"
+                       data-columns="[
+                       {title:'{{nls.gdColSave}}',width:'60px'},
+                       {field:'ShelterTypeName',title:'{{nls.gdColShelterType}}',width:'100px'},
+                       {field:'ShelterName',title:'{{nls.gdColShelterName}}',width:'150px'},
+                       {field:'Status',title:'{{nls.gdColStatus}}',width:'120px'},
+                       {field:'OpenDate',title:'{{nls.gdColOpenDate}}',filterable:false,width:'250px'},
+                       {field:'ClosedDate',title:'{{nls.gdColClosedDate}}',filterable:false,width:'250px'} ]"
+                       data-pageable="true"></table>
 
             </div>
-
         </div>
-
     </div>
 
 </div>
 
+
+
+
+
 <script type="text/x-kendo-template" id="vwsstRow-template">
-<tr>
-    <td data-title="{{nls.gdColSave}}">
-        <button class="btn-save" data-bind="click:btnSaveClick"> <span class="f-icon f-icon__save" aria-hidden="true"></span> <span class="f-icon__text">Save</span> </button>
-    </td>
-    <td data-title="{{nls.gdColShelterType}}"> ${ShelterTypeName} </td>
-    <td data-title="{{nls.gdColShelterName}}"> ${ShelterName} </td>
-    <td data-title="{{nls.gdColStatus}}"> <span data-bind="invisible:onchangeopencloseddate"></span> <span data-bind="text:Status"></span> </td>
-    <td data-title="{{nls.gdColOpenDate}}">
-        <div class="custom-datetimepicker">
-            <input data-role="datetimepicker" data-bind="value: OpenDate" />
-            <span class="k-widget k-tooltip k-tooltip-validation k-invalid-msg" data-bind="invisible: hideOpenDateValidation">Open date is required</span>
-        </div>
-    </td>
-    <td data-title="{{nls.gdColClosedDate}}">
+    <tr>
+
+        <td data-title="{{nls.gdColSave}}">
+
+            <button class="btn-save"  data-bind="click:btnSaveClick"><span class="f-icon f-icon__save" aria-hidden="true"></span> <span class="f-icon__text">Save</span></button>
+        </td>
+
+        
+        <td data-title="{{nls.gdColShelterType}}">
+            ${ShelterTypeName}
+
+        </td>
+
+        <td data-title="{{nls.gdColShelterName}}">
+            ${ShelterName}
+        </td>
+        <td data-title="{{nls.gdColStatus}}">
+
+            <span data-bind="invisible:onchangeopencloseddate"></span>
+
+            <span data-bind="text:Status"></span>
+
+        </td>
+
+        <td data-title="{{nls.gdColOpenDate}}">
+            <div class="custom-datetimepicker">
+                <input data-role="datetimepicker" data-bind="value: OpenDate" />
+                <span class="k-widget k-tooltip k-tooltip-validation k-invalid-msg" data-bind="invisible: hideOpenDateValidation">
+                    Open date is required
+                </span>
+            </div>
+
+        </td>
+         
+        <td data-title="{{nls.gdColClosedDate}}">
         <div class="custom-datetimepicker">
             <input data-role="datetimepicker" data-bind="value: ClosedDate" />
             <span class="k-widget k-tooltip k-tooltip-validation k-invalid-msg" data-bind="invisible: hideClosedDateValidation">Closed date is required</span>
             <span class="k-widget k-tooltip k-tooltip-validation k-invalid-msg" data-bind="invisible: hideOpenClosedDateValidation">Closed date should be greater than Open date </span>
         </div>
     </td>
-</tr>
+
+    </tr>
 </script>
+

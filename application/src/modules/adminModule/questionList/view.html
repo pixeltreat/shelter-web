@@ -1,0 +1,97 @@
+
+<div id="vwQuestionList">
+    <!--View name : vwQuestionList-->
+    <!--Control id prefix : vwql-->
+
+    <div class="module">
+        <!-- view title -->
+        <h2 class="module-title">
+            {{nls.headerQuestion}}
+
+            <span class="module-title__icon" data-bind="click:helpClick"></span>
+
+        </h2>
+        <div class="module-container">
+            <div class="gridsearch">
+                <div class="gridsearch__search-col">
+                    <label class="search-label">
+                        <!--<span class="search-label__text">{{nls.lblSearch}}:</span>-->
+                        <input type="text"
+                               class="search-label__inp"
+                               id="vwqlTxtSearch"
+                               placeholder="Search"
+                               data-bind="value:searchToken,events:{keyup:searchQuestions}"
+                               data-value-update="keyup" />
+                    </label>
+                </div>
+                <div class="gridsearch__btns-col">
+                    <button class="btn--secondary" data-bind="click:btnAddClick" type="button">
+                        <span class="f-icon f-icon__add" aria-hidden="true"></span>
+                        {{nls.btnAdd}}
+                    </button>
+                    <!-- <button class="btn" type="button" data-bind="enabled:isRowSelected,click:btnEditClick">
+                        {{nls.btnEdit}}
+                    </button>
+                    <button class="btn" type="button" data-bind="enabled:isRowSelected,click:btnDeleteClick">
+                        {{nls.btnDelete}}
+                    </button> -->
+                </div>
+            </div>
+            <div class="table-wrapper">
+                <table id="vwqlDgQuestion" cellspacing="0" cellpadding="0" border="0" class="grid split-table rwd-table1"
+                       data-bind="source:dsQuestion, events: { change: rowSelectionChange }" data-role="grid"
+                       data-filterable="true"
+                       data-sortable='{ "mode": "single", "allowUnsort": false }'
+                       data-row-template="vwqlRow-template"
+                       data-selectable="true"
+                       data-columns="[
+                            {title:'Edit',width:'60px'},
+                            {title:'Delete',width:'70px'},
+                            {field:'QuestionText',title:'{{nls.gdColName}}',width:'150px'},
+                            {field:'QuestionGroupName',title:'{{nls.gdColQuestionGroupName}}',width:'150px'},
+                            {field:'QuestionTypeName',title:'{{nls.gdColQuestionTypeName}}',width:'150px'},
+                            {field:'DisplayOrder',title:'{{nls.gdColDisplayOrder}}',width:'150px'},
+                            {field:'UpdatedByUserName',title:'{{nls.gdColUserName}}',width:'150px'},
+                            {field:'UpdatedOn',title:'{{nls.gdColUpdatedDate}}',filterable:false,width:'200px'}
+                        ]"
+                       data-pageable="true"></table>
+            </div>
+        </div>
+    </div>
+    <script type="text/x-kendo-template" id="vwqlRow-template">
+        <tr>
+            <td>
+                <button class="btn-edit" data-bind="click:btnEditClick">
+                    <span class="f-icon f-icon__edit" aria-hidden="true"></span>
+                    <span class="f-icon__text">Edit</span>
+                </button>
+            </td>
+            <td>
+                <button class="btn-delete" data-bind="click:btnDeleteClick">
+                    <span class="f-icon f-icon__delete" aria-hidden="true"></span>
+                    <span class="f-icon__text">Delete</span>
+                </button>
+            </td>
+
+            <td data-title="{{nls.gdColName}}">
+                ${QuestionText}
+            </td>
+            <td data-title="{{nls.gdColQuestionGroupName}}">
+                ${QuestionGroupName}
+            </td>
+            <td data-title="{{nls.gdColQuestionTypeName}}">
+                ${QuestionTypeName}
+            </td>
+
+            <td data-title="{{nls.gdColDisplayOrder}}">
+                ${DisplayOrder}
+            </td>
+            <td data-title="{{nls.gdColUserName}}">
+                ${UpdatedByUserName}
+            </td>
+            <td data-title="{{nls.gdColUpdatedDate}}">
+                ${UpdatedOnValue}
+            </td>
+        </tr>
+    </script>
+

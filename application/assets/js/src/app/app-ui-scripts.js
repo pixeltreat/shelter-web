@@ -33,8 +33,14 @@ function alertsToggle(e){
 /**
  * show navigation panel
  */
-function showNavPanel() {
+function showNavPanel(e) {
+    var focusedElement = document.activeElement;
     $(rootEle).addClass('has-nav-expanded');
+
+    // hack to avoid cursor overlap in IE
+    if(focusedElement.nodeName === 'INPUT') {
+        focusedElement.blur();
+    }
 }
 
 /**

@@ -66,7 +66,7 @@ gulp.task('watch', function() {
     gulp.watch(filepath.vendorLibs, ['vendorLibs']);
     gulp.watch(filepath.appLibs, ['appLibs']);
     gulp.watch(filepath.appScripts, ['appScripts']);
-    gulp.watch(config.modulesSrc+'/**/*', ['requireMain']);
+    gulp.watch('application/src/**/*', ['requireMain']);
 });
 
 // build task

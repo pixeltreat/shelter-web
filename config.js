@@ -39,17 +39,8 @@ exports.filepath = {
         allScss     : root + '/**/*.scss'
     },
     vendorLibs : [
-        js + '/src/vendor-libs/jquery.js',
-        js + '/src/plugins/*.js',
-        js + '/src/vendor-libs/underscore.js',
-        js + '/src/libs/Other/json2.js',
-        js + '/src/libs/signals/signals.js',
-        js + '/src/libs/crossroads/crossroads.js',
-        js + '/src/libs/hasher/hasher.js',
-        js + '/src/libs/pubsub/pubsub.js',
-
-        js + '/src/libs/boilerplate/groundwork.js',
-        js + '/src/libs/Other/math.uuid.js'
+        js + '/src/plugins/jquery.maskedinput.min.js',
+        js + '/src/plugins/jquery.maxlength.js'
     ],
     appLibs : [
         js + '/src/app/common/comtec.global.constants.js',
@@ -83,7 +74,8 @@ exports.filepath = {
         js + '/src/app/datasources/comtec.ds.emp.employee.js',
         js + '/src/app/datasources/comtec.ds.emp.empattendance.js',
         js + '/src/app/datasources/comtec.ds.sheltree.sheltree.js',
-
+        js + '/src/app/datasources/comtec.ds.admin.question.js',
+        js + '/src/app/datasources/comtec.ds.sheltree.sheltreeinput.js',
         js + '/src/app/app-ui-scripts.js'
 
     ],

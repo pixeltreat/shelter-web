@@ -8,7 +8,7 @@ var buildFolder = config.base.dist;
 
 module.exports = function() {
 	browserSync({
-		files: ['application/**/*.html', 'application/src/**/*.js'],
+		files: ['application/**/*.html'], //, 'application/src/**/*.js'
 		notify: false,
 		server: { baseDir: buildFolder }
    });

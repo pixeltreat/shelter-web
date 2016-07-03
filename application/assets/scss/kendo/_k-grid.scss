@@ -2,6 +2,14 @@
 // kendo grid/table
 // ****************************************
 
+.k-grid.k-widget .k-grid-content {
+    overflow-y: visible;
+}
+
+.k-grid.k-widget .k-grid-header {
+    padding-right: 0 !important;
+}
+
 .gridsearch {
     @extend .flex-row, .flex--center;
     margin: 0 auto 20px;
@@ -45,7 +53,7 @@
 
         @include MediaQueries($desktop-and-above){
             text-align: right;
-            margin-top: 0;   
+            margin-top: 0;
         }
     }
 }
@@ -116,8 +124,7 @@
 /*Styles for grid filter checkboxes and radio buttons starts*/
 
 .k-animation-container .k-filter-menu .k-multicheck-wrap li label input[type=checkbox], input[type=radio]{
-      margin:5px !important; 
+      margin:5px !important;
  }
 
 /*Styles for grid filter checkboxes and radio buttons ends*/
-

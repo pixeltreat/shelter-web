@@ -1,10 +1,11 @@
-<div id="vwEmployeeHeader" class="employee-header">
+<div id="vwEmployeeHeader" class="employee-header is-option-one">
     <!-- nav list to filter table data -->
     <ul id="activeNav" class="employee-header__nav-list">
 
         <!-- <li><a id="vwehemployeelist" data-bind="click:btnManageEmployeeClick">{{nls.mnuEmployee}}</a></li>
         <li><a id="vwehemployeeextendedlist" data-bind="click:btnManageEmployeeExpandedClick">{{nls.mnuEmployeeExpanded}}</a></li> -->
-        <li>
+
+        <!-- <li>
             <button class="btn--secondary" data-bind="click:btnDownloadEmployeeTemplateClick">
                 <span class="f-icon f-icon__download" aria-hidden="true"></span>
                 {{nls.mnuDownloadTemplate}}
@@ -21,41 +22,41 @@
                 <span class="f-icon f-icon__download" aria-hidden="true"></span>
                 {{nls.mnuDownloadData}}
             </button>
-        </li>
+        </li> -->
     </ul>
 
     <!--SHELTER HEADER START-->
     <div id="vwehDDLs" class="employee-header__shelter">
-            <div class="employee-header__shelter-dropdown">
-        <label for="vwehDdlShelterNames" class="employee-header__shelter-dropdown__label">{{nls.lblShelter}}:</label>
-        <div class="custom-select employee-header__shelter-dropdown__select">
-            <select id="vwehDdlShelterNames"
-                    data-role="dropdownlist"
-                    data-bind="source:dsShelterNames,events:{change:ddlShelterNames},value:selectedShelterNameItem"
-                    data-text-field="Name"
-                    data-value-field="Id"></select>
+        <div class="employee-header__shelter-dropdown">
+            <!-- <label for="vwehDdlShelterNames" class="employee-header__shelter-dropdown__label">{{nls.lblShelter}}:</label> -->
+            <div class="custom-select employee-header__shelter-dropdown__select">
+                <select id="vwehDdlShelterNames"
+                        data-role="dropdownlist"
+                        data-bind="source:dsShelterNames,events:{change:ddlShelterNames},value:selectedShelterNameItem"
+                        data-text-field="Name"
+                        data-value-field="Id"></select>
+            </div>
+
+                    <!--To show label for single facility user-->
+            <label class="employee-header__shelter-dropdown__value-label" hidden>All Shelters</label>
+            <!-- <button class="btn" data-bind="disabled:isGoButtonDisabled, click:btnGoClick">{{nls.btnGo}}</button> -->
         </div>
 
-                <!--To show label for single facility user-->
-        <label class="employee-header__shelter-dropdown__value-label" hidden>-- All --</label>
-        <!-- <button class="btn" data-bind="disabled:isGoButtonDisabled, click:btnGoClick">{{nls.btnGo}}</button> -->
+
+
+        <div class="employee-header__shelter-event">
+            <div class="employee-header__shelter-event__name">
+                <!--Need to populate event and duration from API-->
+                <span>{{nls.lblEventName}}</span>
+                <strong data-bind="text:eventdata.EventName"></strong>
+            </div>
+            <div class="employee-header__shelter-event__duration">
+                <span>{{nls.lblDuration}}</span>
+                <strong data-bind="text:eventdata.EventDuration"></strong>
+            </div>
+        </div>
+
     </div>
-
-
-
-    <div class="employee-header__shelter-event">
-        <div class="employee-header__shelter-event__name">
-            <!--Need to populate event and duration from API-->
-            <span>{{nls.lblEventName}}</span>
-            <strong data-bind="text:eventdata.EventName"></strong>
-        </div>
-        <div class="employee-header__shelter-event__duration">
-            <span>{{nls.lblDuration}}</span>
-            <strong data-bind="text:eventdata.EventDuration"></strong>
-        </div>
-    </div>
-
-</div>
 
 <!-- <div class="row grid-select-container bg-border" data-bind=" style: {display: showLabelsInShelterHeader}">
     <div class="full-col top-select-boxes no-margin-top">

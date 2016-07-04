@@ -25,7 +25,7 @@
     margin: 20px 0;
 
     &-dropdown {
-        @extend .flex-col__1-2;
+        @extend .flex-col__2-5;
 
         &__value-label {
             font-weight: $bold;
@@ -33,7 +33,7 @@
     }
 
     &-event {
-        @extend .flex-col__1-2, .flex--right-align;
+        @extend .flex-col__3-5, .flex--right-align;
         text-align: right;
     }
 
@@ -45,5 +45,45 @@
 
     &-event__duration {
         //font-size: 1.2rem;
+    }
+}
+
+// alignment fixes
+.employee-header.is-option-one {
+    .employee-header__shelter {
+        top: 35px;
+        background: #fff;
+        padding: 15px;
+        border: 1px solid #ddd;
+    }
+
+    .custom-select {
+        max-width: calc(80% - 6px);
+    }
+}
+
+.app-content.employee-header-option-two {
+    .employee-header__shelter {
+        top: 15px;
+    }
+
+    .is-employee-section {
+        margin-top: 90px;
+    }
+}
+
+.app-content.employee-header-option-three {
+    .employee-header__shelter {
+        background-color: transparent;
+        padding:0 0 20px;
+        border-width: 0 0 1px;
+    }
+
+    .custom-select {
+        max-width: 80%;
+    }
+
+    .is-employee-section {
+        margin-top: 100px;
     }
 }

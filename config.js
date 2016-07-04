@@ -31,7 +31,8 @@ exports.filepath = {
         assets + '/css/**/*',
         assets + '/fonts/**/*',
         assets + '/img/**/*',
-        assets + '/js/vendor/**/*'
+        assets + '/js/vendor/**/*',
+        root + '/style-guide/**/*'
     ],
 
     styles : {

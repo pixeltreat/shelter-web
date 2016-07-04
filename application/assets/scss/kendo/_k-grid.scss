@@ -137,4 +137,13 @@
         position: relative;
         top: 3px;
     }
+
+    .k-numerictextbox .k-select{
+        max-height: 38px;
+        display: inline-block;
+        margin-left: -3px;
+        width: 34px;
+        border-left: 1px solid $primary-color;
+        border-color: $primary-color;
+    }
 }

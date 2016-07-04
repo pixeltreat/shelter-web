@@ -207,7 +207,7 @@ function (Boiler, helpTmpl) {
 
                 $("#vwusExcel").hide(); //added this as export to excel is visible once user comes from other view
                 $("#vwusSummary").hide();
-                $("#vwueDivGrid").hide();
+                $("#vwusDivGrid").hide();
                 $(".k-upload-files.k-reset").find("li").remove();
                 $(".k-upload-files.k-reset").hide();
                 $("#vwusUploadProgess").hide();

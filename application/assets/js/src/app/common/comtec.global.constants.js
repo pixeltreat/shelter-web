@@ -9,10 +9,11 @@
 
 //Servicelayer on local machine.
 //var globalBaseServiceUrl = 'http://localhost:7222/api/';
-//var globalBaseServiceUrl = 'https://beta.comtecinfo.com/sheltersl/api/';
 var globalBaseServiceUrl = 'https://beta.comtecinfo.com/sheltersl/api/';
+//var globalBaseServiceUrl = 'http://localhost:52848/api/';
 
 
+var gloabalHospiceId = 540003;
 
 //Roles
 

@@ -6,6 +6,12 @@
 
 $ct.other = function () {
 
+    var hospiceId = gloabalHospiceId;
+
+    var getHospiceId = function () {
+        return hospiceId;
+    };
+
     var employeeTemplateURL = globalEmployeeTemplateURL;
 
     var getEmployeeTemplateURL = function () {
@@ -22,7 +28,7 @@ $ct.other = function () {
 
 
     return {
-
+        getHospiceId : getHospiceId,
         getEmployeeTemplateURL: getEmployeeTemplateURL,
         getSheltereeTemplateURL: getSheltereeTemplateURL
 

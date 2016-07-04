@@ -9,9 +9,8 @@ define(["Boiler", 'text!./help/help.html'], function (Boiler, helpTmpl) {
             medicalTabIndex: 1,
             careRequirementsTabIndex: 2,
             equipmentSuppliesTabIndex: 3,
-            vitalsTabIndex: 4,
-            medicationTabIndex: 5,
-            shelterIdentificationTabIndex: 6,
+            medicationTabIndex: 4,
+            shelterIdentificationTabIndex: 5,
 
             currentTabIndex: 0,
 
@@ -21,9 +20,8 @@ define(["Boiler", 'text!./help/help.html'], function (Boiler, helpTmpl) {
                 { id: 1,  name: "Medical", tabClass: $ct.styles.getTabDisabledClass() },
                 { id: 2,  name: "Care Requirements", tabClass: $ct.styles.getTabDisabledClass() },
                 { id: 3,  name: "Equipment Supplies", tabClass: $ct.styles.getTabDisabledClass() },
-                { id: 4,  name: "Vitals", tabClass: $ct.styles.getTabDisabledClass() },
-                { id: 5,  name: "Medication", tabClass: $ct.styles.getTabDisabledClass() },
-                { id: 6,  name: "Shelter Identification", tabClass: $ct.styles.getTabDisabledClass() }
+                { id: 4,  name: "Medication", tabClass: $ct.styles.getTabDisabledClass() },
+                { id: 5,  name: "Shelter Identification", tabClass: $ct.styles.getTabDisabledClass() }
             ],
 
             tabNumberCalculation: function () {
@@ -66,12 +64,12 @@ define(["Boiler", 'text!./help/help.html'], function (Boiler, helpTmpl) {
             },
 
 
-            isMedicalOrCareRequirementsOrVitalsActive: function () {
+            isMedicalOrCareRequirementsActive: function () {
 
                 id = vm.get("currentTabIndex");
 
 
-                if ((id == vm.medicalTabIndex) || (id == vm.careRequirementsTabIndex) || (id == vm.vitalsTabIndex)) {
+                if ((id == vm.medicalTabIndex) || (id == vm.careRequirementsTabIndex)) {
                     return true;
                 }
                 else {
@@ -83,7 +81,20 @@ define(["Boiler", 'text!./help/help.html'], function (Boiler, helpTmpl) {
 
             },
             
-            
+            isEquipmentSuppliesActive: function () {
+
+
+                id = vm.get("currentTabIndex");
+
+
+                if (id == vm.equipmentSuppliesTabIndex) {
+                    return true;
+                }
+                else {
+                    return false;
+                }
+
+            },
 
             isMedicationActive: function () {
 
@@ -95,7 +106,7 @@ define(["Boiler", 'text!./help/help.html'], function (Boiler, helpTmpl) {
                 else {
                     return false;
 
-        }
+                }
 
             },
 
@@ -117,37 +128,6 @@ define(["Boiler", 'text!./help/help.html'], function (Boiler, helpTmpl) {
             },
             
 
-            isMedicalActive: function () {
-
-                id = vm.get("currentTabIndex");
-
-
-                if (id == vm.medicalTabIndex) {
-                    return true;
-                }
-                else {
-                    return false;
-                }
-
-
-
-            },
-
-
-            isEquipmentSuppliesActive: function () {
-
-
-                id = vm.get("currentTabIndex");
-
-
-                if (id == vm.equipmentSuppliesTabIndex) {
-                    return true;
-                }
-                else {
-                    return false;
-                }
-
-            },
 
             isPreviousButtonVisible: function () {
 
@@ -197,13 +177,6 @@ define(["Boiler", 'text!./help/help.html'], function (Boiler, helpTmpl) {
 
             },
 
-
-            //demographicsTabClass: $ct.styles.getActiveTabClass(),
-            //medicalTabClass: $ct.styles.getTabDisabledClass(),
-            //careRequirementsTabClass: $ct.styles.getTabDisabledClass(),
-            //equipmentSuppliesTabClass: $ct.styles.getTabDisabledClass(),
-
-
             setTabClasses: function (sheltereeInputFlags, newTabIndex) {
 
                 if (!sheltereeInputFlags.IsDemographicsExist) {
@@ -212,7 +185,6 @@ define(["Boiler", 'text!./help/help.html'], function (Boiler, helpTmpl) {
                     vm.set("sheltreeTabs[" + vm.medicalTabIndex + "].tabClass", $ct.styles.getTabDisabledClass());
                     vm.set("sheltreeTabs[" + vm.careRequirementsTabIndex + "].tabClass", $ct.styles.getTabDisabledClass());
                     vm.set("sheltreeTabs[" + vm.equipmentSuppliesTabIndex + "].tabClass", $ct.styles.getTabDisabledClass());
-                    vm.set("sheltreeTabs[" + vm.vitalsTabIndex + "].tabClass", $ct.styles.getTabDisabledClass());
                     vm.set("sheltreeTabs[" + vm.medicationTabIndex + "].tabClass", $ct.styles.getTabDisabledClass());
                     vm.set("sheltreeTabs[" + vm.shelterIdentificationTabIndex + "].tabClass", $ct.styles.getTabDisabledClass());
 
@@ -255,27 +227,16 @@ define(["Boiler", 'text!./help/help.html'], function (Boiler, helpTmpl) {
                     vm.set("sheltreeTabs[" + vm.careRequirementsTabIndex + "].tabClass", $ct.styles.getNoDataClass());
                 }
 
-                
+                if (newTabIndex == vm.equipmentSuppliesTabIndex) {
 
-                if (newTabIndex == vm.shelterIdentificationTabIndex) {
-
-                    vm.set("sheltreeTabs[" + vm.shelterIdentificationTabIndex + "].tabClass", $ct.styles.getActiveTabClass());
+                    vm.set("sheltreeTabs[" + vm.equipmentSuppliesTabIndex + "].tabClass", $ct.styles.getActiveTabClass());
                 }
-                else if (sheltereeInputFlags.IsShelterIdentificationExist) {
-                    vm.set("sheltreeTabs[" + vm.shelterIdentificationTabIndex + "].tabClass", $ct.styles.getCompleteDataPresentClass());
+                else if (sheltereeInputFlags.IsEquipmentSupplyExist) {
+                    vm.set("sheltreeTabs[" + vm.equipmentSuppliesTabIndex + "].tabClass", $ct.styles.getCompleteDataPresentClass());
                 } else {
-                    vm.set("sheltreeTabs[" + vm.shelterIdentificationTabIndex + "].tabClass", $ct.styles.getNoDataClass());
+                    vm.set("sheltreeTabs[" + vm.equipmentSuppliesTabIndex + "].tabClass", $ct.styles.getNoDataClass());
                 }
 
-                if (newTabIndex == vm.vitalsTabIndex) {
-
-                    vm.set("sheltreeTabs[" + vm.vitalsTabIndex + "].tabClass", $ct.styles.getActiveTabClass());
-                }
-                else if (sheltereeInputFlags.IsVitalsExist) {
-                    vm.set("sheltreeTabs[" + vm.vitalsTabIndex + "].tabClass", $ct.styles.getCompleteDataPresentClass());
-                } else {
-                    vm.set("sheltreeTabs[" + vm.vitalsTabIndex + "].tabClass", $ct.styles.getNoDataClass());
-                }
 
                 if (newTabIndex == vm.medicationTabIndex) {
 
@@ -287,16 +248,16 @@ define(["Boiler", 'text!./help/help.html'], function (Boiler, helpTmpl) {
                     vm.set("sheltreeTabs[" + vm.medicationTabIndex + "].tabClass", $ct.styles.getNoDataClass());
                 }
 
+                if (newTabIndex == vm.shelterIdentificationTabIndex) {
 
-                if (newTabIndex == vm.equipmentSuppliesTabIndex) {
-
-                    vm.set("sheltreeTabs[" + vm.equipmentSuppliesTabIndex + "].tabClass", $ct.styles.getActiveTabClass());
+                    vm.set("sheltreeTabs[" + vm.shelterIdentificationTabIndex + "].tabClass", $ct.styles.getActiveTabClass());
                 }
-                else if (sheltereeInputFlags.IsEquipmentSupplyExist) {
-                    vm.set("sheltreeTabs[" + vm.equipmentSuppliesTabIndex + "].tabClass", $ct.styles.getCompleteDataPresentClass());
+                else if (sheltereeInputFlags.IsShelterIdentificationExist) {
+                    vm.set("sheltreeTabs[" + vm.shelterIdentificationTabIndex + "].tabClass", $ct.styles.getCompleteDataPresentClass());
                 } else {
-                    vm.set("sheltreeTabs[" + vm.equipmentSuppliesTabIndex + "].tabClass", $ct.styles.getNoDataClass());
+                    vm.set("sheltreeTabs[" + vm.shelterIdentificationTabIndex + "].tabClass", $ct.styles.getNoDataClass());
                 }
+
 
             },
 
@@ -304,11 +265,7 @@ define(["Boiler", 'text!./help/help.html'], function (Boiler, helpTmpl) {
 
             sheltreeTabClick: function (event) {
 
-
-               // alert(event.currentTarget.id);
-
                 vm.validateSaveCurrentTabAndMoveToNewTab(event.currentTarget.id);
-
 
             },
 
@@ -344,7 +301,6 @@ define(["Boiler", 'text!./help/help.html'], function (Boiler, helpTmpl) {
             isTabDataValid: function (tabIndex) {
 
                 if (tabIndex == vm.demographicsTabIndex) {
-
                     return vm.isDemographicsDataValid();
                 }
                 else if (tabIndex == vm.medicalTabIndex) {
@@ -353,18 +309,14 @@ define(["Boiler", 'text!./help/help.html'], function (Boiler, helpTmpl) {
                 else if (tabIndex == vm.careRequirementsTabIndex) {
                     return vm.isCareRequirementsDataValid();
                 }
-                else if (tabIndex == vm.shelterIdentificationTabIndex) {
-                    return vm.isShelterIdentyDischargeAndDispositionDataValid();
-                }
                 else if (tabIndex == vm.equipmentSuppliesTabIndex) {
                     return vm.isEquipmentSuppliesDataValid();
                 } 
-                else if (tabIndex == vm.vitalsTabIndex) {
-                    return vm.isVitalsDataValid();
-                }
                 else if (tabIndex == vm.medicationTabIndex) {
-                    return vm.isMedicationDataValid();
-                    
+                    return vm.isMedicationDataValid();   
+                }
+                else if (tabIndex == vm.shelterIdentificationTabIndex) {
+                    return vm.isShelterIdentyDischargeAndDispositionDataValid();
                 }
                 else {
                     alert("Invalid tab index");
@@ -384,17 +336,14 @@ define(["Boiler", 'text!./help/help.html'], function (Boiler, helpTmpl) {
                 else if (currentTabIndex == vm.careRequirementsTabIndex) {
                     return vm.saveCareRequirements(false, newTabIndex);
                 }
-                else if (currentTabIndex == vm.shelterIdentificationTabIndex) {
-                    return vm.saveShelterIdentyDischargeAndDisposition(false, newTabIndex);
-                }
                 else if (currentTabIndex == vm.equipmentSuppliesTabIndex) {
                     return vm.saveEquipmentSupplies(false, newTabIndex);
                 }
-                else if (currentTabIndex == vm.vitalsTabIndex) {
-                    return vm.saveVitals(false, newTabIndex);
-                }
                 else if (currentTabIndex == vm.medicationTabIndex) {
                     return vm.saveMedication(false, newTabIndex);
+                }
+                else if (currentTabIndex == vm.shelterIdentificationTabIndex) {
+                    return vm.saveShelterIdentyDischargeAndDisposition(false, newTabIndex);
                 }
                 else {
                     alert("Invalid tab index");
@@ -424,20 +373,15 @@ define(["Boiler", 'text!./help/help.html'], function (Boiler, helpTmpl) {
                 else if (currentTabIndex == vm.careRequirementsTabIndex) {
                     return vm.saveCareRequirements(true, -1);
                 }
-                else if (currentTabIndex == vm.shelterIdentificationTabIndex) {
-                    return vm.saveShelterIdentyDischargeAndDisposition(true, -1);
-                }
                 else if (currentTabIndex == vm.equipmentSuppliesTabIndex) {
                     return vm.saveEquipmentSupplies(true, -1);
-                }
-                else if (currentTabIndex == vm.vitalsTabIndex) {
-                    return vm.saveVitals(true, -1);
                 }
                 else if (currentTabIndex == vm.medicationTabIndex) {
                     return vm.saveMedication(true, -1);
                 }
-
-                
+                else if (currentTabIndex == vm.shelterIdentificationTabIndex) {
+                    return vm.saveShelterIdentyDischargeAndDisposition(true, -1);
+                }
                 else {
                     alert("Invalid tab index");
                 }
@@ -475,24 +419,17 @@ define(["Boiler", 'text!./help/help.html'], function (Boiler, helpTmpl) {
                     return vm.getCareRequirementsById(newTabIndex);
 
                 }
+                else if (newTabIndex == vm.equipmentSuppliesTabIndex) {
+                    return vm.getEquipmentSuppliesById(newTabIndex);
+                }
+                else if (newTabIndex == vm.medicationTabIndex) {
+                    return vm.getMedicationById(newTabIndex);
+                }
                 else if (newTabIndex == vm.shelterIdentificationTabIndex) {
 
                     return vm.getShelterIdentyDischargeAndDispositionById(newTabIndex);
 
                 }
-                else if (newTabIndex == vm.equipmentSuppliesTabIndex) {
-                    return vm.getEquipmentSuppliesById(newTabIndex);
-                }
-                else if (newTabIndex == vm.vitalsTabIndex) {
-
-                    return vm.getVitalsById(newTabIndex);
-
-                }
-                else if (newTabIndex == vm.medicationTabIndex) {
-
-                    return vm.getMedicationById(newTabIndex);
-
-                }   
                 else {
                     alert("Invalid tab index");
                 }
@@ -533,6 +470,793 @@ define(["Boiler", 'text!./help/help.html'], function (Boiler, helpTmpl) {
 
 
 
+            //start of shelteree demographics
+
+            sheltereeData: [],
+            dsTransportationType: [],
+            selectedTransportationTypeItem: { },
+
+            dsParish: [],
+            selectedParishItem: {
+        },
+
+            selectedHasSignedDNRId : -1,
+            selectedCareSettingsId : -1,
+            selectedHospiceStabilityId : -1,
+            selectedGenderId : -1,
+
+                dsHospice: [],
+                    dsGender: [],
+                        dsCareSettings: [],
+                        hospiceIndex: 1,
+                    setValidationMsgForAge: true,
+                    DOB: null,
+                    isHospiceDisabled: true,
+
+
+                    getDemographicsById: function (newTabIndex) {
+
+                    vm.set("initialLoad", true)
+
+                    $ct.helpers.clearValidations("vwsDemographics");
+
+                        //moduleContext.notify($ct.en.getHideErrorMsg());
+                    $ct.helpers.displayWorkAreaBusyCursor();
+
+
+                    vm.set("sheltereeData", []);
+                    vm.set("dsTransportationType", []);
+                vm.set("selectedTransportationTypeItem", {});
+                    vm.set("dsParish", []);
+                    vm.set("selectedParishItem", { });
+                    vm.set("dsHospice", []);
+                    vm.set("dsGender", []);
+                    vm.set("dsCareSettings", []);
+                    vm.set("hospiceIndex", 1);
+
+
+                $ct.ds.sheltree.sheltreeinput.getDemographicsById(vm.sheltereeId, function (result) {
+
+                    var errorObj = $ct.mt.getErrorObject(result);
+                    if (errorObj != null) {
+                            moduleContext.notify($ct.en.getShowErrorMsg(), errorObj);
+                            vm.set("currentTabIndex", newTabIndex);
+                        return;
+                        }
+
+                    var resultData = result.Data;
+
+                    if (resultData.Shelteree === null) {
+
+                        resultData.Shelteree = { };
+                        resultData.Shelteree.FacilityId = vm.shelterId;
+                        resultData.Shelteree.FirstName = "";
+                        resultData.Shelteree.LastName = "";
+                        resultData.Shelteree.MiddleName = "";
+                        resultData.Shelteree.AddressLane1 = "";
+                        resultData.Shelteree.AddressLane2 = "";
+                        resultData.Shelteree.City = "";
+                        resultData.Shelteree.Zip = "";
+                        resultData.Shelteree.State = "";
+                        resultData.Shelteree.SexId = -1;
+                        resultData.Shelteree.DateOfBirth = null;
+                        resultData.Shelteree.DateOfBirthValue = null;
+                        resultData.Shelteree.Age = 0;
+                        resultData.Shelteree.HomePhone = null;
+                        resultData.Shelteree.CellPhone = null;
+                        resultData.Shelteree.SheltereePhysicianName = "";
+                        resultData.Shelteree.ClinicName = "";
+                        resultData.Shelteree.ClinicPhone = null;
+                        resultData.Shelteree.CareSettingsId = -1;
+                        resultData.Shelteree.HospiceStabilityId = -1;
+                        resultData.Shelteree.SheltereeFacilityName = "";
+                        resultData.Shelteree.HasSignedDNR = -1;
+
+                        resultData.Shelteree.ContactName = "";
+                        resultData.Shelteree.ContactAddressLane1 = "";
+                        resultData.Shelteree.ContactAddressLane2 = "";
+                        resultData.Shelteree.ContactCity = "";
+                        resultData.Shelteree.ContactState = "";
+                        resultData.Shelteree.ContactCity = "";
+                        resultData.Shelteree.ContactHomePhone = null;
+                        resultData.Shelteree.SectionBed = "";
+
+                        resultData.Shelteree.TransportationTypeId = -1;
+                        resultData.Shelteree.HomeParishId = -1;
+
+                        }
+
+
+                    if(resultData.Shelteree.MiddleName == null)
+                    {
+                        resultData.Shelteree.MiddleName = "";
+                    }
+
+                    if(resultData.Shelteree.AddressLane1 == null)
+                    {
+                        resultData.Shelteree.AddressLane1 = "";
+                    }
+
+                    if(resultData.Shelteree.AddressLane2 == null)
+                    {
+                        resultData.Shelteree.AddressLane2 = "";
+                    }
+
+
+                    if(resultData.Shelteree.City == null)
+                    {
+                        resultData.Shelteree.City = "";
+                    }
+
+                    if(resultData.Shelteree.Zip == null)
+                    {
+                        resultData.Shelteree.Zip = "";
+                    }
+
+                    if(resultData.Shelteree.State == null)
+                    {
+                        resultData.Shelteree.State = "";
+                    }
+
+                    if(resultData.Shelteree.SexId == null)
+                    {
+                        resultData.Shelteree.SexId = -1;
+                    }
+
+
+                    //resultData.Shelteree.HomePhone = null;
+                    //resultData.Shelteree.CellPhone = null;
+
+
+                    if(resultData.Shelteree.SheltereePhysicianName == null)
+                    {
+                        resultData.Shelteree.SheltereePhysicianName = "";
+                    }
+
+                    if(resultData.Shelteree.ClinicName == null)
+                    {
+                        resultData.Shelteree.ClinicName = "";
+                    }
+
+                    //resultData.Shelteree.ClinicPhone = null;
+                    //resultData.Shelteree.CareSettingsId = null;
+
+                    
+
+                    if(resultData.Shelteree.CareSettingsId == null)
+                    {
+                        resultData.Shelteree.CareSettingsId = -1;
+                    }
+
+                    if(resultData.Shelteree.HospiceStabilityId == null)
+                    {
+                        resultData.Shelteree.HospiceStabilityId = -1;
+                    }
+
+                    if(resultData.Shelteree.SheltereeFacilityName == null)
+                    {
+                        resultData.Shelteree.SheltereeFacilityName = "";
+                    }
+
+
+                    if(resultData.Shelteree.HasSignedDNR == null)
+                    {
+                        resultData.Shelteree.HasSignedDNR = -1;
+                    }
+
+
+                    if(resultData.Shelteree.ContactName == null)
+                    {
+                        resultData.Shelteree.ContactName = "";
+                    }
+                    if(resultData.Shelteree.ContactAddressLane1 == null)
+                    {
+                        resultData.Shelteree.ContactAddressLane1 = "";
+                    }
+                    if(resultData.Shelteree.ContactAddressLane2 == null)
+                    {
+                        resultData.Shelteree.ContactAddressLane2 = "";
+                        }
+
+                    if(resultData.Shelteree.ContactCity == null)
+                    {
+                        resultData.Shelteree.ContactCity = "";
+                    }
+                    if(resultData.Shelteree.ContactState == null)
+                    {
+                        resultData.Shelteree.ContactState = "";
+                        }
+                    if(resultData.Shelteree.ContactCity == null)
+                    {
+                        resultData.Shelteree.ContactCity = "";
+                    }
+
+                           //resultData.Shelteree.ContactHomePhone = null;
+
+                    if(resultData.Shelteree.SectionBed == null)
+                    {
+                        resultData.Shelteree.SectionBed = "";
+                    }
+
+                                           
+                    if(resultData.Shelteree.TransportationTypeId == null)
+                    {
+                        resultData.Shelteree.TransportationTypeId = -1;
+                    }
+
+                    if(resultData.Shelteree.HomeParishId == null)
+                    {
+                        resultData.Shelteree.HomeParishId = -1;
+                    }
+
+
+                    vm.set("sheltereeData", resultData);
+
+                    //if (vm.sheltereeData.Shelteree.HasSignedDNR == null) {
+                    //    vm.set("sheltereeData.Shelteree.HasSignedDNR", -1);
+                    //}
+
+
+                    if (resultData.SheltereeFacilityLookUpData != null) {
+
+                        vm.set("dsTransportationType", resultData.SheltereeFacilityLookUpData.TransportationTypeData);
+
+                        $.each(vm.dsTransportationType, function (index, record) {
+
+                            if (record.Key == resultData.Shelteree.TransportationTypeId) {
+
+                                vm.set("selectedTransportationTypeItem", record);
+
+                          }
+
+                        });
+
+
+                        vm.set("dsParish", resultData.SheltereeFacilityLookUpData.ParishData);
+                        $.each(vm.dsParish, function (index, record) {
+
+                            if (record.Key == resultData.Shelteree.HomeParishId) {
+
+                                vm.set("selectedParishItem", record);
+                                }
+
+                        });
+
+
+                        vm.set("selectedHasSignedDNRId", resultData.Shelteree.HasSignedDNR);
+                        vm.set("selectedCareSettingsId", resultData.Shelteree.CareSettingsId );
+                        vm.set("selectedHospiceStabilityId", resultData.Shelteree.HospiceStabilityId);
+                        vm.set("selectedGenderId", resultData.Shelteree.SexId);
+
+
+                        if (vm.selectedCareSettingsId == $ct.other.getHospiceId()) {
+                            vm.set("isHospiceDisabled", false);
+                        }
+                        else {
+                            vm.set("isHospiceDisabled", true);
+                        }
+
+                        vm.set("dsCareSettings", resultData.SheltereeFacilityLookUpData.CareSettingsData);
+
+                        vm.set("dsHospice", resultData.SheltereeFacilityLookUpData.HospiceData);
+
+                        vm.set("dsGender", resultData.SheltereeFacilityLookUpData.GenderData);
+
+    
+
+
+                        $.each(vm.dsCareSettings, function (index, record) {
+
+                            if (record.Value == "Hospice") {
+                                vm.set("hospiceIndex", record.Key);
+                            }
+
+                        });
+
+
+
+                    }
+
+                    var start = $("#vwsdDateOfBirth").data("kendoDatePicker");
+                    start.max(new Date());
+
+                    if (vm.sheltereeData.Shelteree.DateOfBirthValue != null) {
+                        vm.set("DOB", kendo.parseDate(vm.sheltereeData.Shelteree.DateOfBirthValue));
+                    }
+                    else {
+
+                        vm.set("DOB", new Date());
+                        vm.set("DOB", null);
+
+                        }
+
+
+                    if (vm.sheltereeData.Shelteree.CareSettingsId == vm.hospiceIndex) {
+                        vm.set("isHospiceDisabled", false);
+                    }
+
+
+
+                    vm.setTabClasses(resultData.SheltereeDependentFlagData, newTabIndex);
+
+                    vm.set("currentTabIndex", newTabIndex);
+
+                    $ct.helpers.hideWorkAreaBusyCursor();
+                    });
+                    },
+
+
+
+
+                    enableHospiceOnChange: function () {
+
+
+
+                        if (vm.selectedCareSettingsId == $ct.other.getHospiceId()) {
+
+                            vm.set("isHospiceDisabled", false);
+                        }
+                        else {
+
+                            vm.set("selectedHospiceStabilityId", -1);
+                            vm.set("isHospiceDisabled", true);
+
+                        }
+                         
+
+                },
+
+                    caliculateAge: function() {
+
+
+                        dob = vm.get("DOB");
+                        var today = new Date();
+                        var age = Math.floor((today -dob) / (365.25 * 24 * 60 * 60 * 1000));
+                vm.set("sheltereeData.Shelteree.Age", age);
+                if(age == 0) {
+                    //    vm.set("setValidationMsgForAge", false);
+                    vm.set("sheltereeData.Shelteree.Age", "0");
+                    }
+                    else {
+                        //  vm.set("setValidationMsgForAge", true);
+                    }
+
+                    },
+
+
+                        trimWhiteSpaces: function () {
+
+                this.sheltereeData.Shelteree.set("FirstName", $.trim(this.sheltereeData.Shelteree.FirstName));
+                this.sheltereeData.Shelteree.set("LastName", $.trim(this.sheltereeData.Shelteree.LastName));
+                this.sheltereeData.Shelteree.set("MiddleName", $.trim(this.sheltereeData.Shelteree.MiddleName));
+                this.sheltereeData.Shelteree.set("AddressLane1", $.trim(this.sheltereeData.Shelteree.AddressLane1));
+                this.sheltereeData.Shelteree.set("AddressLane2", $.trim(this.sheltereeData.Shelteree.AddressLane2));
+                this.sheltereeData.Shelteree.set("City", $.trim(this.sheltereeData.Shelteree.City));
+                this.sheltereeData.Shelteree.set("Zip", $.trim(this.sheltereeData.Shelteree.Zip));
+                this.sheltereeData.Shelteree.set("State", $.trim(this.sheltereeData.Shelteree.State));
+                this.sheltereeData.Shelteree.set("SheltereePhysicianName", $.trim(this.sheltereeData.Shelteree.SheltereePhysicianName));
+                this.sheltereeData.Shelteree.set("ClinicName", $.trim(this.sheltereeData.Shelteree.ClinicName));
+                this.sheltereeData.Shelteree.set("ContactAddressLane1", $.trim(this.sheltereeData.Shelteree.ContactAddressLane1));
+                this.sheltereeData.Shelteree.set("ContactAddressLane2", $.trim(this.sheltereeData.Shelteree.ContactAddressLane2));
+                this.sheltereeData.Shelteree.set("ContactCity", $.trim(this.sheltereeData.Shelteree.ContactCity));
+                this.sheltereeData.Shelteree.set("ContactState", $.trim(this.sheltereeData.Shelteree.ContactState));
+                this.sheltereeData.Shelteree.set("ContactCity", $.trim(this.sheltereeData.Shelteree.ContactCity));
+                this.sheltereeData.Shelteree.set("FacilityName", $.trim(this.sheltereeData.Shelteree.FacilityName));
+
+
+
+},
+
+        setClassForSex: function () {
+            if ((vm.get("selectedGenderId") == -1) && (vm.get("initialLoad") == false))
+                    return $ct.styles.getDataInvalidClass();
+                    else {
+
+                    return "emptycolor";
+        }
+
+
+            },
+
+                isSexValid: function () {
+                    if((vm.get("selectedGenderId") == -1) && (vm.get("initialLoad") == false))
+                    return false;
+                    else
+                    return true;
+        },
+
+
+                setClassForCareSettings: function () {
+                    if((vm.get("selectedCareSettingsId") == -1) &&(vm.get("initialLoad") == false))
+                        return $ct.styles.getDataInvalidClass();
+            else {
+
+                return "emptycolor";
+                }
+
+
+                },
+
+                isCareSettingsValid: function () {
+                    if((vm.get("selectedCareSettingsId") == -1) && (vm.get("initialLoad") == false))
+                        return false;
+                    else
+                        return true;
+                },
+
+
+                setValidationMsgForHospice: function () {
+
+
+                    if (((vm.get("sheltereeData.Shelteree.HospiceStabilityId") == null) || (vm.get("sheltereeData.Shelteree.HospiceStabilityId") == -1))
+                        && (vm.get("initialLoad") == false)
+                             && (vm.get("isHospiceDisabled") == false)
+                            ) {
+                    return false;
+        }
+        else {
+                    return true;
+            }
+
+
+
+},
+            setClassForHasSigned: function () {
+                if ((vm.get("selectedHasSignedDNRId") == -1) && (vm.get("initialLoad") == false))
+                    return $ct.styles.getDataInvalidClass();
+                    else {
+                    return "emptycolor";
+                }
+                },
+
+
+            isHasSignedValid: function () {
+
+                if((vm.get("selectedHasSignedDNRId") == -1) &&(vm.get("initialLoad") == false))
+                    return false;
+            else
+            return true;
+
+                },
+
+
+                        setClassForTransportationType: function () {
+
+                            if((vm.get("selectedTransportationTypeItem.Key") == -1) && (vm.get("initialLoad") == false))
+                                return $ct.styles.getDataInvalidClass();
+                            else
+                                return $ct.styles.getRemoveInvalidDataBorder();
+
+                            },
+
+                                setValidationMsgForTransportationType : function () {
+
+                            if ((vm.get("selectedTransportationTypeItem.Key") == -1) && (vm.get("initialLoad") == false))
+                                return false;
+                            else
+                    return true;
+
+                    },
+
+                        setClassForHomeParish: function () {
+
+                if ((vm.get("selectedParishItem.Key") == -1) &&(vm.get("initialLoad") == false))
+                    return $ct.styles.getDataInvalidClass();
+                else
+                    return $ct.styles.getRemoveInvalidDataBorder();
+
+            },
+
+                setValidationMsgForHomeParish : function () {
+
+                if ((vm.get("selectedParishItem.Key") == -1) && (vm.get("initialLoad") == false))
+                    return false;
+                else
+                    return true;
+
+                },
+
+                isDateOfBirthValid: function () {
+
+                if (vm.get("initialLoad")) {
+                    return true;
+                }
+
+
+                var Dt = vm.get("DOB");
+
+                if((Dt == "") ||(Dt == null)) {
+                    return false;
+                    }
+
+
+                return true;
+
+                },
+
+
+                isPersonalZipValid: function () {
+
+                    if (vm.get("initialLoad")) {
+                        return true;
+                    }
+                    vm.get("sheltereeData.Shelteree.Zip");
+                    var maskedtextbox = $("#vwsdTbZip").data("kendoMaskedTextBox");
+                    var zip = maskedtextbox.raw();
+
+                    return (this.isOptionalZipValueValid(zip));
+
+                },
+
+                isPersonalContactZipValid: function () {
+
+                    if (vm.get("initialLoad")) {
+                        return true;
+                    }
+                    vm.get("sheltereeData.Shelteree.ContactZip");
+                    var maskedtextbox = $("#vwsdTbContactZip").data("kendoMaskedTextBox");
+                    var zip = maskedtextbox.raw();
+
+                    return (this.isOptionalZipValueValid(zip));
+
+                },
+
+                isPersonalHomePhoneValid: function () {
+
+                    if (vm.get("initialLoad")) {
+                        return true;
+                    }
+                    vm.get("sheltereeData.Shelteree.HomePhone");
+                    var maskedtextbox = $("#vwsdTbHomePhone").data("kendoMaskedTextBox");
+                    var homePhone = maskedtextbox.raw();
+
+                    return (this.isOptionalPhoneValueValid(homePhone));
+
+                },
+
+                isPersonalCellPhoneValid: function () {
+
+                    if (vm.get("initialLoad")) {
+                        return true;
+                    }
+
+                    vm.get("sheltereeData.Shelteree.CellPhone");
+                    var maskedtextbox = $("#vwsdTbCellPhone").data("kendoMaskedTextBox");
+                    var cellPhone = maskedtextbox.raw();
+                    return (this.isOptionalPhoneValueValid(cellPhone));
+
+                },
+
+                isPersonalClinicPhoneValid: function () {
+
+                    if (vm.get("initialLoad")) {
+                        return true;
+                    }
+
+                    vm.get("sheltereeData.Shelteree.ClinicPhone");
+                    var maskedtextbox = $("#vwsdTbClinicPhoneNumber").data("kendoMaskedTextBox");
+                    var clinicPhone = maskedtextbox.raw();
+                    return (this.isOptionalPhoneValueValid(clinicPhone));
+
+                },
+
+                isPersonalContactHomePhoneValid: function () {
+
+                    if (vm.get("initialLoad")) {
+                        return true;
+                    }
+
+                    vm.get("sheltereeData.Shelteree.ContactHomePhone");
+                    var maskedtextbox = $("#vwsdTbContactHomePhone").data("kendoMaskedTextBox");
+                    var contactHomePhone = maskedtextbox.raw();
+                    return (this.isOptionalPhoneValueValid(contactHomePhone));
+
+                },
+
+                isPersonalContactCellPhoneValid: function () {
+
+                    if (vm.get("initialLoad")) {
+                        return true;
+                    }
+
+                    var homePhone = vm.get("sheltereeData.Shelteree.ContactCellPhone");
+
+                    var maskedtextbox = $("#vwsdTbContactCellPhone").data("kendoMaskedTextBox");
+                    var contactCellPhone = maskedtextbox.raw();
+                    return (this.isOptionalPhoneValueValid(contactCellPhone));
+
+                },
+
+                isOptionalZipValueValid: function (ctrlValue) {
+
+                    return (this.isOptionalPhoneOrZipValueValid(ctrlValue, 5));
+
+                },
+
+                isOptionalPhoneValueValid: function (ctrlValue) {
+
+                    return (this.isOptionalPhoneOrZipValueValid(ctrlValue, 10));
+
+                },
+
+                isOptionalPhoneOrZipValueValid: function (ctrlValue, maxchar) {
+
+                    if ((ctrlValue == null) || (ctrlValue == undefined) || (ctrlValue.length == 0)) {
+
+                        return true;
+                    }
+
+                    if ((ctrlValue.length > 0) && (ctrlValue.length < maxchar)) {
+
+                        return false;
+
+                    }
+                    else {
+
+                        return true;
+
+                    }
+
+                },
+
+
+                    isDemographicsDataValid: function () {
+
+                vm.trimWhiteSpaces();
+                vm.set("initialLoad", false);
+
+            var validator = $("#vwsDemographics").kendoValidator().data("kendoValidator");
+
+                if ((!validator.validate())) {
+                    return false;
+                }
+
+                //if (
+                    //    (vm.get("sheltereeData.Shelteree.SexId") == null) ||
+                        // (vm.get("sheltereeData.Shelteree.CareSettingsId") == null) ||
+                    // (vm.get("sheltereeData.Shelteree.HasSignedDNR") == null) ||
+                    // (vm.get("selectedTransportationTypeItem.Key") == -1) ||
+                    // (vm.get("selectedParishItem.Key") == -1) ||
+                    //(vm.get("sheltereeData.Shelteree.HospiceStabilityId") == null)) {
+
+                    //    return false;
+                    //}
+
+                if (
+                    (!vm.isSexValid()) ||
+                 (!vm.isCareSettingsValid()) ||
+                 (!vm.isHasSignedValid()) ||
+                 (vm.get("selectedTransportationTypeItem.Key") == -1) ||
+                 (vm.get("selectedParishItem.Key") == -1) ||
+                 (vm.get("DOB") == null)||
+                    (!vm.isPersonalZipValid())||
+                    (!vm.isPersonalContactZipValid())||
+                    (!vm.isPersonalHomePhoneValid())||
+                    (!vm.isPersonalCellPhoneValid())||
+                    (!vm.isPersonalClinicPhoneValid())||
+                    (!vm.isPersonalContactHomePhoneValid())||
+                    (!vm.isPersonalContactCellPhoneValid())
+
+                    ) {
+
+                    return false;
+                }
+
+
+
+                if((vm.selectedCareSettingsId == $ct.other.getHospiceId()) && (vm.selectedHospiceStabilityId == -1) )
+                {
+
+                    return false;
+
+                }
+                        //selectedHasSignedDNRId : -1,
+                        //selectedCareSettingsId : -1,
+                        //    selectedHospiceStabilityId : -1,
+                        //    selectedGenderId : -1,
+
+                        //vm.set("selectedHasSignedDNRId", sheltereeData.Shelteree.HasSignedDNR );
+                        //vm.set("selectedCareSettingsId", resultData.Shelteree.CareSettingsId );
+                        //vm.set("selectedHospiceStabilityId", resultData.Shelteree.HospiceStabilityId);
+                        //vm.set("selectedGenderId", resultData.Shelteree.SexId);
+
+
+
+
+                return true;
+                },
+
+
+
+
+
+
+                // need to call isDemographicsDataValid, before calling saveDemographics
+                    saveDemographics: function (isSaveOnly, newTabIndex) {
+
+                moduleContext.notify($ct.en.getHideErrorMsg());
+
+                if (!vm.isDemographicsDataValid()) {
+                    moduleContext.notify($ct.en.getShowValidationMsg(), $ct.msg.getValidationMsg());
+                    return;
+                }
+
+                var saveDemographicsData = {
+                };
+
+
+                saveDemographicsData.Shelteree = vm.sheltereeData.Shelteree.toJSON();
+                saveDemographicsData.SheltereeId = vm.sheltereeId;
+
+
+                if (vm.DOB != null) {
+                    var DOB = (vm.DOB.getMonth() +1) + "/" +vm.DOB.getDate() + "/" +vm.DOB.getFullYear();
+                }
+
+                saveDemographicsData.Shelteree.DateOfBirthValue = DOB;
+                saveDemographicsData.Shelteree.TransportationTypeId = vm.selectedTransportationTypeItem.Key;
+                saveDemographicsData.Shelteree.HomeParishId = vm.selectedParishItem.Key;
+               
+
+                saveDemographicsData.Shelteree.HasSignedDNR = vm.selectedHasSignedDNRId;
+                saveDemographicsData.Shelteree.CareSettingsId = vm.selectedCareSettingsId;
+
+                if (vm.selectedCareSettingsId == $ct.other.getHospiceId()) {
+
+                    saveDemographicsData.Shelteree.HospiceStabilityId = vm.selectedHospiceStabilityId;
+                }
+                else {
+
+                    saveDemographicsData.Shelteree.HospiceStabilityId = null;
+
+                }
+
+                        
+
+                saveDemographicsData.Shelteree.SexId = vm.selectedGenderId;
+
+                $ct.ds.sheltree.sheltreeinput.saveDemographics(saveDemographicsData, function (data) {
+
+                    $ct.helpers.hideWorkAreaBusyCursor();
+
+                    if ($ct.mt.isVersionConflict(data)) {
+                        if ($ct.helpers.displayConfirmWindow($ct.msg.getVersionConflictReloadMsg())) {
+                            vm.getDemographicsById(vm.currentTabIndex);
+                        }
+                            return;
+                            }
+
+                    var errorObj = $ct.mt.getErrorObject(data);
+                    if (errorObj != null) {
+                        moduleContext.notify($ct.en.getShowErrorMsg(), errorObj);
+                        return;
+                    }
+
+
+                    vm.set("sheltereeId", data.Data.SheltereeId);
+
+
+
+                    if (isSaveOnly) {
+                        vm.getDemographicsById(vm.currentTabIndex);
+
+                        }
+                        else {
+
+                        vm.gotoNewTab(newTabIndex);
+
+                        }
+
+                    moduleContext.notify($ct.en.getShowSuccMsg(), "Data saved successfully.");
+
+
+                        });
+
+                        },
+
+
+            //end of shelteree demographics
+
             //start of medical condition
             // questionRespData will be initialized from service
             questionRespData: {},
@@ -548,7 +1272,7 @@ define(["Boiler", 'text!./help/help.html'], function (Boiler, helpTmpl) {
                 $ct.helpers.displayWorkAreaBusyCursor();
 
 
-                $ct.ds.sheltree.sheltreeinput.getMedicalConditionsMiscellenousAndMedicalEquipment(this.sheltereeId, function (result) {
+                $ct.ds.sheltree.sheltreeinput.getMedicalTabQuestionGroupResponse(this.sheltereeId, function (result) {
 
                     var errorObj = $ct.mt.getErrorObject(result);
                     if (errorObj != null) {
@@ -576,10 +1300,10 @@ define(["Boiler", 'text!./help/help.html'], function (Boiler, helpTmpl) {
                         questionGroups.push(equipmentDependancyQuestionGroup);
                     }
 
-                    //var vitalsQuestionGroup = questionGroupResponse.VitalsQuestionGroup;
-                    //if (vitalsQuestionGroup != null) {
-                    //    questionGroups.push(vitalsQuestionGroup);
-                    //}
+                    var vitalsQuestionGroup = questionGroupResponse.VitalsQuestionGroup;
+                    if (vitalsQuestionGroup != null) {
+                        questionGroups.push(vitalsQuestionGroup);
+                    }
 
                     vm.setAnswersToQuestionDefinition(questionGroups);
                     vm.addValidationsToQuestionDefinition(questionGroups);
@@ -1245,17 +1969,34 @@ define(["Boiler", 'text!./help/help.html'], function (Boiler, helpTmpl) {
 
             //end of equipment supplies
 
-            //start of vitals
 
-            getVitalsById: function (newTabIndex) {
 
-                $ct.helpers.clearValidations("vwQuestionResponse");
+            //Start of medication tab code
+
+            allergyDescriptionLength: 4000,
+
+            sheltereeMedication: {
+        },
+
+            sheltereeMedications: [],
+            originalSheltereeMedications: [],
+            sheltereeMedicationAllergy: { },
+
+
+            getMedicationById: function (newTabIndex) {
+
+                $ct.helpers.clearValidations("vwsMedication");
                 vm.set("initialLoad", false);
-                //moduleContext.notify($ct.en.getHideErrorMsg());
+
+            // moduleContext.notify($ct.en.getHideErrorMsg());
                 $ct.helpers.displayWorkAreaBusyCursor();
 
+            //TODO: Initilization uncomment latter
+            //vm.set("sheltereeMedications", []);
+            //vm.set("originalSheltereeMedications", []);
+            //vm.set("sheltereeMedicationAllergy", {});
 
-                $ct.ds.sheltree.sheltreeinput.getVitals(this.sheltereeId, function (result) {
+                $ct.ds.sheltree.sheltreeinput.getMedicationById(vm.sheltereeId, function (result) {
 
                     var errorObj = $ct.mt.getErrorObject(result);
                     if (errorObj != null) {
@@ -1264,105 +2005,318 @@ define(["Boiler", 'text!./help/help.html'], function (Boiler, helpTmpl) {
                         return;
                     }
 
-
                     var resultData = result.Data;
-                    var questionGroupResponse = resultData.QuestionGroupResponse;
+                    var sheltereeMedicationObj = {
+                    };
 
-                    var questionGroups = [];
+                    sheltereeMedicationObj.SheltereeId = vm.sheltereeId;
+                    sheltereeMedicationObj.Id = -1;
+                    sheltereeMedicationObj.DrugName = "";
+                    sheltereeMedicationObj.Dosage = "";
+                    sheltereeMedicationObj.Frequency = "";
+                    sheltereeMedicationObj.LastTimeUsed = null;
+                    sheltereeMedicationObj.LastTimeUsedValue = "";
+                    sheltereeMedicationObj.DisplayOrder = -1;
+                    sheltereeMedicationObj.Deleted = false;
+                    sheltereeMedicationObj.Version = 1;
+                    sheltereeMedicationObj.triggerValidations = false;
 
-                    var vitalsQuestionGroup = questionGroupResponse.VitalsQuestionGroup;
-                    if (vitalsQuestionGroup != null) {
-                        questionGroups.push(vitalsQuestionGroup);
+                        //sheltereeMedicationObj.isMedicationRecordValid = isMedicationRecordValid;
+                        //sheltereeMedicationObj.isMedicationNameValid = isMedicationNameValid;
+                        //sheltereeMedicationObj.isLastTimeUsedValid = isLastTimeUsedValid;
+
+                    vm.set("sheltereeMedication", sheltereeMedicationObj);
+
+
+                    if (resultData.SheltereeMedications == null) {
+
+                        vm.set("sheltereeMedications", []);
+                        vm.set("originalSheltereeMedications", []);
+
                     }
 
-                    vm.setAnswersToQuestionDefinition(questionGroups);
-                    vm.addValidationsToQuestionDefinition(questionGroups);
+                    else {
 
-                    vm.set("questionRespData", resultData);
-                    vm.set("questionGroupData", questionGroups);
+                        $.each(resultData.SheltereeMedications, function (index, currentMedication) {
+
+                            if (currentMedication.LastTimeUsedValue == null) {
+                                currentMedication.LastTimeUsedValue = "";
+                            }
+
+                                })
 
 
-                    vm.setTabClasses(questionGroupResponse.SheltereeDependentFlagData, newTabIndex);
+                        vm.set("sheltereeMedications", resultData.SheltereeMedications);
+                        vm.set("originalSheltereeMedications", resultData.SheltereeMedications);
+
+                        }
+
+                    if (resultData.SheltereeMedicationAllergy == null) {
+
+                        var sheltereeMedicationAllergyObj = { };
+                        sheltereeMedicationAllergyObj.IsNew = true;
+                        sheltereeMedicationAllergyObj.SheltereeId = vm.sheltereeId;
+                        sheltereeMedicationAllergyObj.Allergies = "";
+                        sheltereeMedicationAllergyObj.Deleted = false;
+                        sheltereeMedicationAllergyObj.Version = 1;
+
+                        vm.set("sheltereeMedicationAllergy", sheltereeMedicationAllergyObj);
+
+                        } else {
+                        vm.set("sheltereeMedicationAllergy", resultData.SheltereeMedicationAllergy);
+
+                        }
+
+                    vm.addMedication();
+
+                    vm.setTabClasses(resultData.SheltereeDependentFlagData, newTabIndex);
                     vm.set("currentTabIndex", newTabIndex);
 
                     $ct.helpers.hideWorkAreaBusyCursor();
-                })
+
+
+                    });
+            },
+
+
+                addMedication: function () {
+
+                var isMedicationNameValid = function () {
+
+                    if (!this.get("triggerValidations")) {
+                        return true;
+                        }
+
+                    if ($.trim(this.get("DrugName")) == "") {
+                        return false;
+                    }
+                    else {
+                        return true;
+                    }
+
+                    };
+
+                var isLastTimeUsedValid = function() {
+
+                    if (!this.get("triggerValidations")) {
+                        return true;
+                    }
+
+                    return true;
+
+                        //TODO : NEED TO IMPLEMENT DATE VALIDATION
+
+                        //if ($.trim(this.get("QuestionText")) == "") {
+                        //    return false;
+                        //}
+                        //else {
+                    //    return true;
+                        //}
+
+                };
+
+                var isMedicationRecordValid = function () {
+
+                    this.set("triggerValidations", true);
+
+                    if (!this.isMedicationNameValid()) {
+                        return false;
+                    }
+
+                    if (!this.isLastTimeUsedValid()) {
+                        return false;
+                        }
+
+                    return true;
+
+                    };
+
+                var newMedicationObject = vm.sheltereeMedication.toJSON();
+                    // newAnsObject.hideCTextValidation = vm.questionData[0].AnswerOption.hideCTextValidation;
+
+
+                newMedicationObject.isMedicationNameValid = isMedicationNameValid;
+                newMedicationObject.isLastTimeUsedValid = isLastTimeUsedValid;
+                newMedicationObject.isMedicationRecordValid = isMedicationRecordValid;
+
+                var maxDispOrder = 0;
+                        //find the maximun value of display order
+                $.each(vm.sheltereeMedications, function (index, currentMedication) {
+
+                    if(maxDispOrder < currentMedication.DisplayOrder)
+                    {
+                        maxDispOrder = currentMedication.DisplayOrder
+                    }
+
+                });
+
+                newMedicationObject.DisplayOrder = maxDispOrder +1;
+
+                vm.get("sheltereeMedications").unshift(newMedicationObject);
+
+                },
+
+                            btnAddMedicationClick: function () {
+
+                        //TODO : use getter check for length
+                        var newMedication = vm.get("sheltereeMedications")[0];
+
+
+                        if (newMedication.isMedicationRecordValid()) {
+
+                    if (newMedication.LastTimeUsed != null) {
+                        newMedication.set("LastTimeUsedValue", (newMedication.LastTimeUsed.getMonth() +1) + "/" +newMedication.LastTimeUsed.getDate() + "/" +newMedication.LastTimeUsed.getFullYear());
+                        }
+
+                    newMedication.set("Id", 0);
+
+
+                            //Setting data in the array element is not reflect in UI, so removed and readded                    
+                    vm.get("sheltereeMedications").splice(0, 1);
+                    vm.get("sheltereeMedications").unshift(newMedication.toJSON());
+
+                    vm.addMedication();
+
+                    } else {
+
+                    moduleContext.notify($ct.en.getShowValidationMsg(), $ct.msg.getValidationMsg());
+                    return;
+                        }
 
             },
 
-            isVitalsDataValid: function () {
+                btnMedicationDeleteClick: function (e) {
 
-                vm.triggerValidationsForQuestionResponse(vm.questionGroupData);
-                return vm.isValidDataPresentForQuestion(vm.questionGroupData);
+                var objIndex = -1;
 
-            },
+                $.each(vm.sheltereeMedications, function (index, currentMedication) {
 
-            // need to call isVitalsDataValid, before calling saveVitals
-            saveVitals: function (isSaveOnly, newTabIndex) {
+                    if (currentMedication.DisplayOrder == e.data.DisplayOrder) {
+                        objIndex = index;
+                    }
+
+                    });
+
+
+                if (objIndex != -1) {
+                    vm.get("sheltereeMedications").splice(objIndex, 1);
+        }
+            else {
+                        //should never occur
+                alert("Object not found ");
+            }
+
+},
+
+
+    isMedicationDataValid: function () {
+
+                vm.set("initialLoad", false);
+
+
+                    //validate text area
+
+                var validator = $("#vwsMedication").kendoValidator().data("kendoValidator");
+
+                if ((!validator.validate())) {
+                    return false;
+                }
+
+                    //TODO: check for zero index
+                if (vm.sheltereeMedications[0].triggerValidations) {
+                    if (!vm.sheltereeMedications[0].isMedicationRecordValid()) {
+                        return false;
+                    }
+                    }
+
+                return true;
+
+                    },
+
+
+                        // need to call isMedicationDataValid, before calling saveMedication
+            saveMedication: function (isSaveOnly, newTabIndex) {
 
                 moduleContext.notify($ct.en.getHideErrorMsg());
 
-                if (!vm.isVitalsDataValid()) {
+                if (!vm.isMedicationDataValid()) {
                     moduleContext.notify($ct.en.getShowValidationMsg(), $ct.msg.getValidationMsg());
                     return;
-                }
+        }
 
-                //var validator = $("#vwQuestionResponse").kendoValidator().data("kendoValidator");
+            //handling deleted medications
+                var saveMedications = vm.sheltereeMedications.toJSON();
+                saveMedications.splice(0, 1);
 
-                //if ((!vm.isValidData(vm.questionGroupData)) || !validator.validate()) {
-                //    moduleContext.notify($ct.en.getShowValidationMsg(), $ct.msg.getValidationMsg());
-                //    return;
-                //}
+                $.each(vm.originalSheltereeMedications, function(index, orgMedication) {
+
+                    var isRecordFound = false;
+
+                    $.each(vm.sheltereeMedications, function (index, updMedication) {
+
+                        if (orgMedication.Id == updMedication.Id) {
+                            isRecordFound = true;
+                            }
+
+                            })
+
+                    if (!isRecordFound) {
+                        orgMedication.Deleted = true;
+                        saveMedications.push(orgMedication.toJSON());
+                    }
+
+                    })
+
+
+                var saveMedicalConditionData = { };
+                saveMedicalConditionData.SheltereeId = vm.sheltereeId;
+                saveMedicalConditionData.SheltereeMedications = saveMedications;
+                saveMedicalConditionData.SheltereeMedicationAllergy = vm.sheltereeMedicationAllergy.toJSON();
+
+                moduleContext.notify($ct.en.getHideErrorMsg());
 
 
 
-                var questionGroups = vm.questionGroupData.toJSON();
-                vm.setQuestionDefinitionToAnswers(questionGroups);
-
-                var saveQuestionResponseData = vm.questionRespData.toJSON();
-                saveQuestionResponseData.QuestionGroupResponse.QuestionGroups = questionGroups;
-
-                $ct.helpers.displayWorkAreaBusyCursor();
-
-                $ct.ds.sheltree.sheltreeinput.saveQuestionResponse(saveQuestionResponseData, function (data) {
+                $ct.ds.sheltree.sheltreeinput.saveMedication(saveMedicalConditionData, function (data) {
 
                     $ct.helpers.hideWorkAreaBusyCursor();
 
+
                     if ($ct.mt.isVersionConflict(data)) {
                         if ($ct.helpers.displayConfirmWindow($ct.msg.getVersionConflictReloadMsg())) {
-                            vm.getVitalsById(vm.currentTabIndex);
+                            vm.getMedicationById(vm.currentTabIndex);
                         }
                         return;
-                    }
+                }
+
 
                     var errorObj = $ct.mt.getErrorObject(data);
                     if (errorObj != null) {
                         moduleContext.notify($ct.en.getShowErrorMsg(), errorObj);
-                        return;
+                    return;
                     }
-                    if (isSaveOnly) {
-                        vm.getVitalsById(vm.currentTabIndex);
 
-                    }
+
+                    if (isSaveOnly) {
+                        vm.getMedicationById(vm.currentTabIndex);
+
+                }
                     else {
 
                         vm.gotoNewTab(newTabIndex);
 
-                    }
+                        }
 
-                    moduleContext.notify($ct.en.getShowSuccMsg(), "Data saved successfully.");
-
-
-                    //moduleContext.notify($ct.en.getAgencyCreatedOrUpdated(), null);
-                    // Boiler.UrlController.goTo($ct.rn.getSheltereeList());
-
-                })
-
-            },
+                    moduleContext.notify($ct.en.getShowSuccMsg(), "Data saved successfully");
 
 
+                });
 
-            //end of vitals
+
+                },
+
+
+            //End of medication tab code
 
 
             //Start of shelter identification, disposition and discharge
@@ -1382,6 +2336,7 @@ define(["Boiler", 'text!./help/help.html'], function (Boiler, helpTmpl) {
             referredShelterLookUp: [],
 
             acceptedToMSNS: false,
+            isMSNSChildDisabled: true,
             selectedReferredShelterId: null,
 
             contactDate: null,
@@ -1476,8 +2431,9 @@ define(["Boiler", 'text!./help/help.html'], function (Boiler, helpTmpl) {
                     }
 
 
-                    if ((resultData.SheltereeDisposition.IsNew) || (resultData.SheltereeDisposition.ReferredShelterId == null)) {
-                        vm.set("selectedReferredShelterId", resultData.ReferredShelterData[0].Key);
+                   if ((resultData.SheltereeDisposition.IsNew) || (resultData.SheltereeDisposition.ReferredShelterId == null)) {
+                       //vm.set("selectedReferredShelterId", resultData.ReferredShelterData[0].Key);
+                        vm.set("selectedReferredShelterId", 0);
                     }
                     else {
                         vm.set("selectedReferredShelterId", resultData.SheltereeDisposition.ReferredShelterId);
@@ -1486,6 +2442,13 @@ define(["Boiler", 'text!./help/help.html'], function (Boiler, helpTmpl) {
                     vm.set("acceptedToMSNS", resultData.SheltereeDisposition.AcceptedToMSNS);
 
 
+                    if (vm.get("acceptedToMSNS") == false) {
+
+                        vm.set("isMSNSChildDisabled", false);
+                    }
+                    else {
+                        vm.set("isMSNSChildDisabled", true);
+                    }
 
                     //date parsing
 
@@ -1528,10 +2491,6 @@ define(["Boiler", 'text!./help/help.html'], function (Boiler, helpTmpl) {
                 });
             },
 
-
-
-
-
             isShelterIdentyDischargeAndDispositionDataValid: function () {
 
                 vm.set("initialLoad", false);
@@ -1564,15 +2523,14 @@ define(["Boiler", 'text!./help/help.html'], function (Boiler, helpTmpl) {
                     return false;
                 }
 
-                //if (!vm.isMSNSChildHasValidData())
-                //{
-                //    return false;
-                //}
-
+                if (!vm.setValidationMsgForMSNS())
+                {
+                    return false;
+                }
+                 
                 return true;
 
             },
-
 
             isDispositionDateValid: function () {
 
@@ -1628,21 +2586,36 @@ define(["Boiler", 'text!./help/help.html'], function (Boiler, helpTmpl) {
 
             },
 
+                setValidationMsgForMSNS: function () {
 
-            showMSNSChildArea: function () {
-
-                if (vm.get("acceptedToMSNS") == "false")
-                {
-                    return true;
-                }
-                else
-                {
-                    return false;
-                }
-
-            },
+                if(((vm.get("selectedReferredShelterId") == 0) || (vm.get("selectedReferredShelterId") == null))
+                    && (vm.get("initialLoad") == false)
+                     && (vm.get("isMSNSChildDisabled") == false)) {
+                            return false;
+                        }
+                        else {
+                                    return true;
+                        }
+                },
 
 
+                enableMSNSChildsOnChange: function () {
+
+
+                if(vm.get("acceptedToMSNS") == "false") {
+
+                    vm.set("isMSNSChildDisabled", false);
+                        //  vm.set("selectedReferredShelterId", vm.referredShelterLookUp[0].Key);
+
+                        }
+                        else {
+
+                    vm.set("isMSNSChildDisabled", true);
+                    vm.set("selectedReferredShelterId", 0);
+
+                    }
+
+                },
 
             // need to call isShelterIdentyDischargeAndDispositionDataValid, before calling saveShelterIdentyDischargeAndDisposition
             saveShelterIdentyDischargeAndDisposition: function (isSaveOnly, newTabIndex) {
@@ -1665,7 +2638,7 @@ define(["Boiler", 'text!./help/help.html'], function (Boiler, helpTmpl) {
                 saveDispositionData.DispositionId = vm.selectedDisposition.Key;
                 saveDispositionData.AcceptedToMSNS = vm.acceptedToMSNS;
 
-                if (vm.acceptedToMSNS) {
+                 if (vm.acceptedToMSNS == "true") {
                     saveDispositionData.ReferredShelterId = null;
                 } else {
                     saveDispositionData.ReferredShelterId = vm.selectedReferredShelterId;
@@ -1739,797 +2712,12 @@ define(["Boiler", 'text!./help/help.html'], function (Boiler, helpTmpl) {
 
                 })
 
-            },
+            }
 
             //End of shelter identification, disposition and discharge
 
 
 
-            //start of shelteree demographics
-
-            sheltereeData: [],
-            dsTransportationType: [],
-            selectedTransportationTypeItem: {},
-
-            dsParish: [],
-            selectedParishItem: {},
-
-            dsHospice: [],
-            dsGender: [],
-            dsCareSettings: [],
-            hospiceIndex: 1,
-            setValidationMsgForAge: true,
-            DOB: null,
-            isHospiceDisabled: true,
-
-
-            getDemographicsById: function (newTabIndex) {
-
-                vm.set("initialLoad", true)
-
-                $ct.helpers.clearValidations("vwsDemographics");
-
-                //moduleContext.notify($ct.en.getHideErrorMsg());
-                $ct.helpers.displayWorkAreaBusyCursor();
-
-
-                vm.set("sheltereeData", []);
-                vm.set("dsTransportationType", []);
-                vm.set("selectedTransportationTypeItem", {});
-                vm.set("dsParish", []);
-                vm.set("selectedParishItem", {});
-                vm.set("dsHospice", []);
-                vm.set("dsGender", []);
-                vm.set("dsCareSettings", []);
-                vm.set("hospiceIndex", 1);
-
-
-                $ct.ds.sheltree.sheltreeinput.getDemographicsById(vm.sheltereeId, function (result) {
-
-                    var errorObj = $ct.mt.getErrorObject(result);
-                    if (errorObj != null) {
-                        moduleContext.notify($ct.en.getShowErrorMsg(), errorObj);
-                        vm.set("currentTabIndex", newTabIndex);
-                        return;
-                    }
-
-                    var resultData = result.Data;
-
-                    if (resultData.Shelteree === null) {
-
-                        resultData.Shelteree = {};
-                        resultData.Shelteree.FacilityId = vm.shelterId;
-                        resultData.Shelteree.FirstName = "";
-                        resultData.Shelteree.LastName = "";
-                        resultData.Shelteree.MiddleName = "";
-                        resultData.Shelteree.AddressLane1 = "";
-                        resultData.Shelteree.AddressLane2 = "";
-                        resultData.Shelteree.City = "";
-                        resultData.Shelteree.Zip = "";
-                        resultData.Shelteree.State = "";
-                        resultData.Shelteree.SexId = null;
-                        resultData.Shelteree.DateOfBirth = null;
-                        resultData.Shelteree.DateOfBirthValue = null;
-                        resultData.Shelteree.Age = 0;
-                        resultData.Shelteree.HomePhone = null;
-                        resultData.Shelteree.CellPhone = null;
-                        resultData.Shelteree.SheltereePhysicianName = "";
-                        resultData.Shelteree.ClinicName = "";
-                        resultData.Shelteree.ClinicPhone = null;
-                        resultData.Shelteree.CareSettingsId = null;
-                        resultData.Shelteree.HospiceStabilityId = null;
-                        resultData.Shelteree.SheltereeFacilityName = "";
-                        resultData.Shelteree.HasSignedDNR = null;
-                        resultData.Shelteree.ContactName = "";
-                        resultData.Shelteree.ContactAddressLane1 = "";
-                        resultData.Shelteree.ContactAddressLane2 = "";
-                        resultData.Shelteree.ContactCity = "";
-                        resultData.Shelteree.ContactState = "";
-                        resultData.Shelteree.ContactCity = "";
-                        resultData.Shelteree.ContactHomePhone = null;
-                        resultData.Shelteree.SectionBed = "";
-                        resultData.Shelteree.TransportationTypeId = -1;
-                        resultData.Shelteree.HomeParishId = -1;
-
-                    }
-
-                    vm.set("sheltereeData", resultData);
-
-                    if (resultData.SheltereeFacilityLookUpData != null) {
-                        vm.set("dsTransportationType", resultData.SheltereeFacilityLookUpData.TransportationTypeData);
-                        $.each(vm.dsTransportationType, function (index, record) {
-
-
-                            if (record.Key == resultData.Shelteree.TransportationTypeId) {
-                                vm.set("selectedTransportationTypeItem", record);
-                            }
-
-                        });
-
-
-                        vm.set("dsParish", resultData.SheltereeFacilityLookUpData.ParishData);
-                        $.each(vm.dsParish, function (index, record) {
-
-                            if (record.Key == resultData.Shelteree.HomeParishId) {
-
-                                vm.set("selectedParishItem", record);
-                            }
-
-                        });
-                        vm.set("dsHospice", resultData.SheltereeFacilityLookUpData.HospiceData);
-
-                        vm.set("dsGender", resultData.SheltereeFacilityLookUpData.GenderData);
-                        vm.set("dsCareSettings", resultData.SheltereeFacilityLookUpData.CareSettingsData);
-
-                        $.each(vm.dsCareSettings, function (index, record) {
-
-                            if (record.Value == "Hospice") {
-                                vm.set("hospiceIndex", record.Key);
-                            }
-
-                        });
-
-
-
-                    }
-
-                    var start = $("#vwsdDateOfBirth").data("kendoDatePicker");
-                    start.max(new Date());
-
-                    if (vm.sheltereeData.Shelteree.DateOfBirthValue != null) {
-                        vm.set("DOB", kendo.parseDate(vm.sheltereeData.Shelteree.DateOfBirthValue));
-                    }
-                    else {
-
-                        vm.set("DOB", new Date());
-                        vm.set("DOB", null);
-
-                    }
-
-
-                    if (vm.sheltereeData.Shelteree.CareSettingsId == vm.hospiceIndex) {
-                        vm.set("isHospiceDisabled", false);
-                    }
-
-
-
-                    vm.setTabClasses(resultData.SheltereeDependentFlagData, newTabIndex);
-
-                    vm.set("currentTabIndex", newTabIndex);
-
-                    $ct.helpers.hideWorkAreaBusyCursor();
-                });
-            },
-
-
-
-
-            enableHospiceOnChange: function () {
-
-                vm.set("sheltereeData.Shelteree.HospiceStabilityId", -1);
-                if (vm.get("sheltereeData.Shelteree.CareSettingsId") == vm.hospiceIndex) {
-                    vm.set("isHospiceDisabled", false);
-                }
-                else {
-                    vm.set("isHospiceDisabled", true);
-
-                }
-
-
-            },
-
-            caliculateAge: function () {
-
-
-                dob = vm.get("DOB");
-                var today = new Date();
-                var age = Math.floor((today - dob) / (365.25 * 24 * 60 * 60 * 1000));
-                vm.set("sheltereeData.Shelteree.Age", age);
-                if (age == 0) {
-                    //    vm.set("setValidationMsgForAge", false);
-                    vm.set("sheltereeData.Shelteree.Age", "0");
-                }
-                else {
-                    //  vm.set("setValidationMsgForAge", true);
-                }
-
-            },
-
-
-            trimWhiteSpaces: function () {
-
-                this.sheltereeData.Shelteree.set("FirstName", $.trim(this.sheltereeData.Shelteree.FirstName));
-                this.sheltereeData.Shelteree.set("LastName", $.trim(this.sheltereeData.Shelteree.LastName));
-                this.sheltereeData.Shelteree.set("MiddleName", $.trim(this.sheltereeData.Shelteree.MiddleName));
-                this.sheltereeData.Shelteree.set("AddressLane1", $.trim(this.sheltereeData.Shelteree.AddressLane1));
-                this.sheltereeData.Shelteree.set("AddressLane2", $.trim(this.sheltereeData.Shelteree.AddressLane2));
-                this.sheltereeData.Shelteree.set("City", $.trim(this.sheltereeData.Shelteree.City));
-                this.sheltereeData.Shelteree.set("Zip", $.trim(this.sheltereeData.Shelteree.Zip));
-                this.sheltereeData.Shelteree.set("State", $.trim(this.sheltereeData.Shelteree.State));
-                this.sheltereeData.Shelteree.set("SheltereePhysicianName", $.trim(this.sheltereeData.Shelteree.SheltereePhysicianName));
-                this.sheltereeData.Shelteree.set("ClinicName", $.trim(this.sheltereeData.Shelteree.ClinicName));
-                this.sheltereeData.Shelteree.set("ContactAddressLane1", $.trim(this.sheltereeData.Shelteree.ContactAddressLane1));
-                this.sheltereeData.Shelteree.set("ContactAddressLane2", $.trim(this.sheltereeData.Shelteree.ContactAddressLane2));
-                this.sheltereeData.Shelteree.set("ContactCity", $.trim(this.sheltereeData.Shelteree.ContactCity));
-                this.sheltereeData.Shelteree.set("ContactState", $.trim(this.sheltereeData.Shelteree.ContactState));
-                this.sheltereeData.Shelteree.set("ContactCity", $.trim(this.sheltereeData.Shelteree.ContactCity));
-                this.sheltereeData.Shelteree.set("FacilityName", $.trim(this.sheltereeData.Shelteree.FacilityName));
-
-
-
-            },
-
-            setClassForSex: function () {
-                if ((vm.get("sheltereeData.Shelteree.SexId") == null) && (vm.get("initialLoad") == false))
-                    return $ct.styles.getDataInvalidClass();
-                else {
-
-                    return "emptycolor";
-                }
-
-
-            },
-
-            setValidationMsgForSex: function () {
-                if ((vm.get("sheltereeData.Shelteree.SexId") == null) && (vm.get("initialLoad") == false))
-                    return false;
-                else
-                    return true;
-            },
-
-
-            setClassForCareSettings: function () {
-                if ((vm.get("sheltereeData.Shelteree.CareSettingsId") == null) && (vm.get("initialLoad") == false))
-                    return $ct.styles.getDataInvalidClass();
-                else {
-
-                    return "emptycolor";
-                }
-
-
-            },
-
-            setValidationMsgForCareSettings: function () {
-                if ((vm.get("sheltereeData.Shelteree.CareSettingsId") == null) && (vm.get("initialLoad") == false))
-                    return false;
-                else
-                    return true;
-            },
-
-
-            setValidationMsgForHospice: function () {
-
-
-                if (((vm.get("sheltereeData.Shelteree.HospiceStabilityId") == null) || (vm.get("sheltereeData.Shelteree.HospiceStabilityId") == -1))
-                    && (vm.get("initialLoad") == false)
-                     && (vm.get("isHospiceDisabled") == false)
-                    ) {
-                    return false;
-                }
-                else {
-                    return true;
-                }
-
-
-
-            },
-
-
-            setValidationMsgForHasSigned: function () {
-                if ((vm.get("sheltereeData.Shelteree.HasSignedDNR") == null) && (vm.get("initialLoad") == false))
-                    return false;
-                else
-                    return true;
-            },
-
-
-            setClassForTransportationType: function () {
-
-                if ((vm.get("selectedTransportationTypeItem.Key") == -1) && (vm.get("initialLoad") == false))
-                    return $ct.styles.getDataInvalidClass();
-                else
-                    return $ct.styles.getRemoveInvalidDataBorder();
-
-            },
-
-            setValidationMsgForTransportationType: function () {
-
-                if ((vm.get("selectedTransportationTypeItem.Key") == -1) && (vm.get("initialLoad") == false))
-                    return false;
-                else
-                    return true;
-
-            },
-
-            setClassForHomeParish: function () {
-
-                if ((vm.get("selectedParishItem.Key") == -1) && (vm.get("initialLoad") == false))
-                    return $ct.styles.getDataInvalidClass();
-                else
-                    return $ct.styles.getRemoveInvalidDataBorder();
-
-            },
-
-            setValidationMsgForHomeParish: function () {
-
-                if ((vm.get("selectedParishItem.Key") == -1) && (vm.get("initialLoad") == false))
-                    return false;
-                else
-                    return true;
-
-            },
-
-            isDateOfBirthValid: function () {
-
-                if (vm.get("initialLoad")) {
-                    return true;
-                }
-
-
-                var Dt = vm.get("DOB");
-
-                if ((Dt == "") || (Dt == null)) {
-                    return false;
-                }
-
-
-                return true;
-
-            },
-
-
-
-            isDemographicsDataValid: function () {
-
-                vm.trimWhiteSpaces();
-                vm.set("initialLoad", false);
-
-                var validator = $("#vwsDemographics").kendoValidator().data("kendoValidator");
-
-                if ((!validator.validate())) {
-                    return false;
-                }
-
-                //if (
-                //    (vm.get("sheltereeData.Shelteree.SexId") == null) ||
-                // (vm.get("sheltereeData.Shelteree.CareSettingsId") == null) ||
-                // (vm.get("sheltereeData.Shelteree.HasSignedDNR") == null) ||
-                // (vm.get("selectedTransportationTypeItem.Key") == -1) ||
-                // (vm.get("selectedParishItem.Key") == -1) ||
-                //(vm.get("sheltereeData.Shelteree.HospiceStabilityId") == null)) {
-
-                //    return false;
-                //}
-
-                if (
-                    (vm.get("sheltereeData.Shelteree.SexId") == null) ||
-                 (vm.get("sheltereeData.Shelteree.CareSettingsId") == null) ||
-                 (vm.get("sheltereeData.Shelteree.HasSignedDNR") == null) ||
-                 (vm.get("selectedTransportationTypeItem.Key") == -1) ||
-                 (vm.get("selectedParishItem.Key") == -1)  ||
-                 (vm.get("DOB") == null)) {
-
-                    return false;
-                }
-
-                return true;
-            },
-
-
-
-
-            // need to call isDemographicsDataValid, before calling saveDemographics
-            saveDemographics: function (isSaveOnly, newTabIndex) {
-
-                moduleContext.notify($ct.en.getHideErrorMsg());
-
-                if (!vm.isDemographicsDataValid()) {
-                    moduleContext.notify($ct.en.getShowValidationMsg(), $ct.msg.getValidationMsg());
-                    return;
-                }
-
-                var saveDemographicsData = {};
-                vm.set("sheltereeData.Shelteree.TransportationTypeId", vm.get("selectedTransportationTypeItem.Key"));
-                vm.set("sheltereeData.Shelteree.HomeParishId", vm.get("selectedParishItem.Key"));
-
-                saveDemographicsData.Shelteree = vm.sheltereeData.Shelteree.toJSON();
-                saveDemographicsData.SheltereeId = vm.sheltereeId;
-                // saveDemographicsData.SheltereeId = $ct.constants.getemptyGUID();
-
-                if (vm.hospiceIndex != saveDemographicsData.Shelteree.CareSettingsId) {
-                    saveDemographicsData.Shelteree.HospiceStabilityId = null;
-                }
-
-                if (vm.DOB != null) {
-                    var DOB = (vm.DOB.getMonth() + 1) + "/" + vm.DOB.getDate() + "/" + vm.DOB.getFullYear();
-                }
-                saveDemographicsData.Shelteree.DateOfBirthValue = DOB;
-
-
-                $ct.ds.sheltree.sheltreeinput.saveDemographics(saveDemographicsData, function (data) {
-
-                    $ct.helpers.hideWorkAreaBusyCursor();
-
-                    if ($ct.mt.isVersionConflict(data)) {
-                        if ($ct.helpers.displayConfirmWindow($ct.msg.getVersionConflictReloadMsg())) {
-                            vm.getDemographicsById(vm.currentTabIndex);
-                        }
-                        return;
-                    }
-
-                    var errorObj = $ct.mt.getErrorObject(data);
-                    if (errorObj != null) {
-                        moduleContext.notify($ct.en.getShowErrorMsg(), errorObj);
-                        return;
-                    }
-
-
-                    vm.set("sheltereeId", data.Data.SheltereeId);
-                    
-                    
-
-                    if (isSaveOnly) {
-                        vm.getDemographicsById(vm.currentTabIndex);
-
-                    }
-                    else {
-
-                        vm.gotoNewTab(newTabIndex);
-
-                    }
-
-                    moduleContext.notify($ct.en.getShowSuccMsg(), "Data saved successfully.");
-
-
-                });
-
-            },
-
-
-            //end of shelteree demographics
-
-            //Start of medication tab code
-
-            allergyDescriptionLength: 4000,
-
-            sheltereeMedication: {},
-
-            sheltereeMedications: [],
-            originalSheltereeMedications: [],
-            sheltereeMedicationAllergy: {},
-
-
-            getMedicationById: function (newTabIndex) {
-
-                $ct.helpers.clearValidations("vwsMedication");
-                vm.set("initialLoad", false);
-
-                // moduleContext.notify($ct.en.getHideErrorMsg());
-                $ct.helpers.displayWorkAreaBusyCursor();
-
-                //TODO: Initilization uncomment latter
-                //vm.set("sheltereeMedications", []);
-                //vm.set("originalSheltereeMedications", []);
-                //vm.set("sheltereeMedicationAllergy", {});
-
-                $ct.ds.sheltree.sheltreeinput.getMedicationById(vm.sheltereeId, function (result) {
-
-                    var errorObj = $ct.mt.getErrorObject(result);
-                    if (errorObj != null) {
-                        moduleContext.notify($ct.en.getShowErrorMsg(), errorObj);
-                        vm.set("currentTabIndex", newTabIndex);
-                        return;
-                    }
-
-                    var resultData = result.Data;
-                    var sheltereeMedicationObj = {};
-
-                    sheltereeMedicationObj.SheltereeId = vm.sheltereeId;
-                    sheltereeMedicationObj.Id = -1;
-                    sheltereeMedicationObj.DrugName = "";
-                    sheltereeMedicationObj.Dosage = "";
-                    sheltereeMedicationObj.Frequency = "";
-                    sheltereeMedicationObj.LastTimeUsed = null;
-                    sheltereeMedicationObj.LastTimeUsedValue = "";
-                    sheltereeMedicationObj.DisplayOrder = -1;
-                    sheltereeMedicationObj.Deleted = false;
-                    sheltereeMedicationObj.Version = 1;
-                    sheltereeMedicationObj.triggerValidations = false;
-
-                    //sheltereeMedicationObj.isMedicationRecordValid = isMedicationRecordValid;
-                    //sheltereeMedicationObj.isMedicationNameValid = isMedicationNameValid;
-                    //sheltereeMedicationObj.isLastTimeUsedValid = isLastTimeUsedValid;
-
-                    vm.set("sheltereeMedication", sheltereeMedicationObj);
-
-
-                    if (resultData.SheltereeMedications == null) {
-
-                        vm.set("sheltereeMedications", []);
-                        vm.set("originalSheltereeMedications", []);
-
-                    }
-
-                    else {
-
-                        $.each(resultData.SheltereeMedications, function (index, currentMedication) {
-
-                            if (currentMedication.LastTimeUsedValue == null) {
-                                currentMedication.LastTimeUsedValue = "";
-                            }
-
-                        })
-
-
-                        vm.set("sheltereeMedications", resultData.SheltereeMedications);
-                        vm.set("originalSheltereeMedications", resultData.SheltereeMedications);
-
-                    }
-
-                    if (resultData.SheltereeMedicationAllergy == null) {
-
-                        var sheltereeMedicationAllergyObj = {};
-                        sheltereeMedicationAllergyObj.IsNew = true;
-                        sheltereeMedicationAllergyObj.SheltereeId = vm.sheltereeId;
-                        sheltereeMedicationAllergyObj.Allergies = "";
-                        sheltereeMedicationAllergyObj.Deleted = false;
-                        sheltereeMedicationAllergyObj.Version = 1;
-
-                        vm.set("sheltereeMedicationAllergy", sheltereeMedicationAllergyObj);
-
-                    } else {
-                        vm.set("sheltereeMedicationAllergy", resultData.SheltereeMedicationAllergy);
-
-                    }
-
-                    vm.addMedication();
-
-                    vm.setTabClasses(resultData.SheltereeDependentFlagData, newTabIndex);
-                    vm.set("currentTabIndex", newTabIndex);
-
-                    $ct.helpers.hideWorkAreaBusyCursor();
-
-
-                });
-            },
-
-
-            addMedication: function () {
-
-                var isMedicationNameValid = function () {
-
-                    if (!this.get("triggerValidations")) {
-                        return true;
-                    }
-
-                    if ($.trim(this.get("DrugName")) == "") {
-                        return false;
-                    }
-                    else {
-                        return true;
-                    }
-
-                };
-
-                var isLastTimeUsedValid = function () {
-
-                    if (!this.get("triggerValidations")) {
-                        return true;
-                    }
-
-                    return true;
-
-                    //TODO : NEED TO IMPLEMENT DATE VALIDATION
-
-                    //if ($.trim(this.get("QuestionText")) == "") {
-                    //    return false;
-                    //}
-                    //else {
-                    //    return true;
-                    //}
-
-                };
-
-                var isMedicationRecordValid = function () {
-
-                    this.set("triggerValidations", true);
-
-                    if (!this.isMedicationNameValid()) {
-                        return false;
-                    }
-
-                    if (!this.isLastTimeUsedValid()) {
-                        return false;
-                    }
-
-                    return true;
-
-                };
-
-                var newMedicationObject = vm.sheltereeMedication.toJSON();
-                // newAnsObject.hideCTextValidation = vm.questionData[0].AnswerOption.hideCTextValidation;
-
-
-                newMedicationObject.isMedicationNameValid = isMedicationNameValid;
-                newMedicationObject.isLastTimeUsedValid = isLastTimeUsedValid;
-                newMedicationObject.isMedicationRecordValid = isMedicationRecordValid;
-
-                var maxDispOrder = 0;
-                //find the maximun value of display order
-                $.each(vm.sheltereeMedications, function (index, currentMedication) {
-
-                    if (maxDispOrder < currentMedication.DisplayOrder)
-                    { maxDispOrder = currentMedication.DisplayOrder }
-
-                });
-
-                newMedicationObject.DisplayOrder = maxDispOrder + 1;
-
-                vm.get("sheltereeMedications").unshift(newMedicationObject);
-
-            },
-
-            btnAddMedicationClick: function () {
-
-                //TODO : use getter check for length
-                var newMedication = vm.get("sheltereeMedications")[0];
-
-
-                if (newMedication.isMedicationRecordValid()) {
-
-                    if (newMedication.LastTimeUsed != null) {
-                        newMedication.set("LastTimeUsedValue", (newMedication.LastTimeUsed.getMonth() + 1) + "/" + newMedication.LastTimeUsed.getDate() + "/" + newMedication.LastTimeUsed.getFullYear());
-                    }
-
-                    newMedication.set("Id", 0);
-
-
-                    //Setting data in the array element is not reflect in UI, so removed and readded                    
-                    vm.get("sheltereeMedications").splice(0, 1);
-                    vm.get("sheltereeMedications").unshift(newMedication.toJSON());
-
-                    vm.addMedication();
-
-                } else {
-
-                    moduleContext.notify($ct.en.getShowValidationMsg(), $ct.msg.getValidationMsg());
-                    return;
-                }
-
-            },
-
-            btnMedicationDeleteClick: function (e) {
-
-                var objIndex = -1;
-
-                $.each(vm.sheltereeMedications, function (index, currentMedication) {
-
-                    if (currentMedication.DisplayOrder == e.data.DisplayOrder) {
-                        objIndex = index;
-                    }
-
-                });
-
-
-                if (objIndex != -1) {
-                    vm.get("sheltereeMedications").splice(objIndex, 1);
-                }
-                else {
-                    //should never occur
-                    alert("Object not found ");
-                }
-
-            },
-
-
-            isMedicationDataValid: function () {
-
-                vm.set("initialLoad", false);
-
-
-                //validate text area
-
-                var validator = $("#vwsMedication").kendoValidator().data("kendoValidator");
-
-                if ((!validator.validate())) {
-                    return false;
-                }
-
-                //TODO: check for zero index
-                if (vm.sheltereeMedications[0].triggerValidations) {
-                    if (!vm.sheltereeMedications[0].isMedicationRecordValid()) {
-                        return false;
-                    }
-                }
-
-                return true;
-
-            },
-
-
-            // need to call isMedicationDataValid, before calling saveMedication
-            saveMedication: function (isSaveOnly, newTabIndex) {
-
-                moduleContext.notify($ct.en.getHideErrorMsg());
-
-                if (!vm.isMedicationDataValid()) {
-                    moduleContext.notify($ct.en.getShowValidationMsg(), $ct.msg.getValidationMsg());
-                    return;
-                }
-
-                //handling deleted medications
-                var saveMedications = vm.sheltereeMedications.toJSON();
-                saveMedications.splice(0, 1);
-
-                $.each(vm.originalSheltereeMedications, function (index, orgMedication) {
-
-                    var isRecordFound = false;
-
-                    $.each(vm.sheltereeMedications, function (index, updMedication) {
-
-                        if (orgMedication.Id == updMedication.Id) {
-                            isRecordFound = true;
-                        }
-
-                    })
-
-                    if (!isRecordFound) {
-                        orgMedication.Deleted = true;
-                        saveMedications.push(orgMedication.toJSON());
-                    }
-
-                })
-
-
-                var saveMedicalConditionData = {};
-                saveMedicalConditionData.SheltereeId = vm.sheltereeId;
-                saveMedicalConditionData.SheltereeMedications = saveMedications;
-                saveMedicalConditionData.SheltereeMedicationAllergy = vm.sheltereeMedicationAllergy.toJSON();
-
-                moduleContext.notify($ct.en.getHideErrorMsg());
-
-
-
-                $ct.ds.sheltree.sheltreeinput.saveMedication(saveMedicalConditionData, function (data) {
-
-                    $ct.helpers.hideWorkAreaBusyCursor();
-
-
-                    if ($ct.mt.isVersionConflict(data)) {
-                        if ($ct.helpers.displayConfirmWindow($ct.msg.getVersionConflictReloadMsg())) {
-                            vm.getMedicationById(vm.currentTabIndex);
-                        }
-                        return;
-                    }
-
-
-                    var errorObj = $ct.mt.getErrorObject(data);
-                    if (errorObj != null) {
-                        moduleContext.notify($ct.en.getShowErrorMsg(), errorObj);
-                        return;
-                    }
-
-
-                    if (isSaveOnly) {
-                        vm.getMedicationById(vm.currentTabIndex);
-
-                    }
-                    else {
-
-                        vm.gotoNewTab(newTabIndex);
-
-                    }
-
-                    moduleContext.notify($ct.en.getShowSuccMsg(), "Data saved successfully");
-
-
-                });
-
-
-            }
-
-
-            //End of medication tab code
 
 
         });

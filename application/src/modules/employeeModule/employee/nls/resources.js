@@ -4,7 +4,7 @@ define({
         "headerAddEditEmployee": "Add edit Employee",
         "lnkHelp": "Help",
         "headerEmployeeInfo": "Employee Info",
-        "lblEmployeeId" :"EmployeeId",
+        "lblEmployeeId" :"Employee Ref Id",
         "lblShelterName": "ShelterName:",
         "lblFirstName": "First Name:",
         "lblMiddleName": "Middle Name:",

@@ -10,7 +10,7 @@ define({
         "btnBulkUpdate": "Bulk Update",
         "btnFilterOff": "View All",
         "gdColIsSelected": "",
-        "gdColEmployeeRefId":"Employee Id",
+        "gdColEmployeeRefId": "Employee Ref Id",
         "gdColFirstName": "First Name",
         "gdColLastName": "Last Name",
         "gdColStaffType": "Staff Type",

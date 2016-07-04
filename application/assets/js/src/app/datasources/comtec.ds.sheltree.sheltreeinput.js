@@ -1,11 +1,11 @@
 ﻿$ct.ds.sheltree.sheltreeinput = function () {
 
-    var getMedicalConditionsMiscellenousAndMedicalEquipment = function (sheltereeId, successCallBack) {
+    var getMedicalTabQuestionGroupResponse = function (sheltereeId, successCallBack) {
 
         var requestParam = {};
         requestParam.SheltereeId = sheltereeId;
 
-        $ct.ajax.ajaxPost($ct.cn.getQuestionResponseUrl() + 'GetMedcialMiscMedicalEquipmentQuestionGroupResponse', requestParam, function (result) {
+        $ct.ajax.ajaxPost($ct.cn.getQuestionResponseUrl() + 'GetMedicalTabQuestionGroupResponse', requestParam, function (result) {
 
             if (successCallBack != null)
                 successCallBack(result);
@@ -182,7 +182,7 @@
 
     return {
 
-        getMedicalConditionsMiscellenousAndMedicalEquipment: getMedicalConditionsMiscellenousAndMedicalEquipment,
+        getMedicalTabQuestionGroupResponse: getMedicalTabQuestionGroupResponse,
         getCareRequirements: getCareRequirements,
         getVitals: getVitals,
         saveQuestionResponse: saveQuestionResponse,

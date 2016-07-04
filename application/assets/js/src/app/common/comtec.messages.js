@@ -99,7 +99,7 @@ $ct.msg = function () {
     var getMedicalConditionSuccessMsg = function () {
         return medicalConditionSuccessMsg;
     };
-    var sheltereeEmployeeSuccessMsg = "shelteree Employee " + successMsg;
+    var sheltereeEmployeeSuccessMsg = "shelteree Employee Ratio" + successMsg;
     var getSheltereeEmployeeSuccessMsg = function () {
         return sheltereeEmployeeSuccessMsg;
     };
@@ -159,7 +159,7 @@ $ct.msg = function () {
     var getMedicalConditionDeleteSuccessMsg = function () {
         return medicalConditionDeleteSuccessMsg;
     };
-    var sheltereeEmployeeDeleteSuccessMsg = "shelteree Employee " + deleteSuccessMsg;
+    var sheltereeEmployeeDeleteSuccessMsg = "shelteree Employee Ratio" + deleteSuccessMsg;
     var getSheltereeEmployeeDeleteSuccessMsg = function () {
         return sheltereeEmployeeDeleteSuccessMsg;
     };

@@ -30,7 +30,7 @@
                             var selectItem = {};
 
                             selectItem.Id = -1;
-                            selectItem.Name = "--All--";
+                            selectItem.Name = "All Shelters";
 
                             resultData.splice(0, 0, selectItem);
 

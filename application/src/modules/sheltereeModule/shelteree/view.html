@@ -96,9 +96,13 @@
                     <div class="column-two">
                         <label class="form-element-with-label">
                             <span class="form-element-with-label__text">{{nls.lblZip}}</span>
-                            <input type="text" class="form-element-with-label__inp" id="vwsdTbZip" required validationmessage="{{nls.valmsgZipRequired}}"
-                                   name="vwsdTbZip" data-bind="value:sheltereeData.Shelteree.Zip" maxlength="10" />
-                            <span class="k-invalid-msg" data-for="vwsdTbZip"></span>
+                            <input data-role="maskedtextbox" type="text" class="form-element-with-label__inp" id="vwsdTbZip"
+                                   name="vwsdTbZip" data-bind="value:sheltereeData.Shelteree.Zip"
+                                    data-mask="(00000)"
+                                    />
+                            <span   style="color:#e53935;"  data-bind="invisible: isPersonalZipValid">
+                                Please enter a valid zip
+                            </span>
                         </label>
                     </div>
                     <div class="column-three">
@@ -150,6 +154,15 @@
                         </label>
                     </div>
 
+                    <div class="column-three">
+                        <label class="form-element-with-label">
+                            <span class="form-element-with-label__text">{{nls.lblSectionBed}}</span>
+                            <input type="text" class="form-element-with-label__inp" maxlength="50"
+                                   data-bind="value: sheltereeData.Shelteree.SectionBed" style="width:100%;">
+
+                        </label>
+                    </div>
+
 
                 </div>
                 <div class="module-container l--three-column">
@@ -170,7 +183,7 @@
                     <div class="column-two">
                         <label class="form-element-with-label">
                             <span class="form-element-with-label__text">{{nls.lblAge}}</span>
-                            <span type="text" id="vwsdTbAge" name="vwsdTbAge"
+                            <span style="font-size:18px;" type="text" id="vwsdTbAge" name="vwsdTbAge"
                                   data-bind="text:sheltereeData.Shelteree.Age">
                             </span>
 
@@ -186,7 +199,7 @@
                             <span data-bind="attr: { class: setClassForSex, className: setClassForSex }">
                                 <ul class="form-list-inline" data-template="vwsdGenderRow-template" data-bind="source:dsGender"></ul>
                             </span>
-                            <span class="k-widget k-tooltip k-tooltip-validation k-invalid-msg" data-bind="invisible:setValidationMsgForSex">
+                            <span class="k-widget k-tooltip k-tooltip-validation k-invalid-msg" data-bind="invisible:isSexValid">
                                
                                 Please select Gender
                             </span>
@@ -204,6 +217,10 @@
                             <input data-role="maskedtextbox" class="form-element-with-label__inp" data-mask="(999) 000-0000" name="vwsdTbHomePhone" id="vwsdTbHomePhone"
                                    data-bind="value: sheltereeData.Shelteree.HomePhone" style="width:100%;">
 
+                            <span  style="color:#e53935;" data-bind="invisible: isPersonalHomePhoneValid">
+                                Please enter a valid phone number
+                            </span>
+
                         </label>
                     </div>
                     <div class="column-two">
@@ -211,6 +228,10 @@
                             <span class="form-element-with-label__text">{{nls.lblCell}}</span>
                             <input data-role="maskedtextbox" class="form-element-with-label__inp" data-mask="(999) 000-0000" name="vwsdTbCellPhone" id="vwsdTbCellPhone"
                                    data-bind="value: sheltereeData.Shelteree.CellPhone" style="width:100%;">
+                          
+                              <span   style="color:#e53935;"  data-bind="invisible: isPersonalCellPhoneValid">
+                                Please enter a valid phone number
+                            </span>
 
                         </label>
                     </div>
@@ -245,16 +266,13 @@
                                 <input data-role="maskedtextbox" class="form-element-with-label__inp" id="vwsdTbClinicPhoneNumber" name="vwsdTbPhoneNumber"
                                        data-bind="value:sheltereeData.Shelteree.ClinicPhone " data-mask="(999) 000-0000" style="width:100%;">
 
-                            </label>
-                        </div>
-                        <div class="column-two">
-                            <label class="form-element-with-label">
-                                <span class="form-element-with-label__text">{{nls.lblSectionBed}}</span>
-                                <input type="text" class="form-element-with-label__inp"  maxlength="50"
-                                       data-bind="value: sheltereeData.Shelteree.SectionBed" style="width:100%;">
+                                <span   style="color:#e53935;"  data-bind="invisible: isPersonalClinicPhoneValid">
+                                    Please enter a valid phone number
+                                </span>
 
                             </label>
                         </div>
+
 
 
                     </div>
@@ -264,7 +282,7 @@
                         <span class="form-element-with-label__text">{{nls.lblCareSettings}}</span>
                             <ul class="form-list" data-template="vwsCareSettingsRow-template" data-bind="source:dsCareSettings"></ul>
 
-                        <span class="k-widget k-tooltip k-tooltip-validation k-invalid-msg" data-bind="invisible:setValidationMsgForCareSettings">
+                        <span class="k-widget k-tooltip k-tooltip-validation k-invalid-msg" data-bind="invisible:isCareSettingsValid">
                             
                             Please select CareSettings
                         </span>
@@ -305,21 +323,21 @@
                                 <li>
                                     <label class="radio-button">
                                         <input class="radio-button__inp" name="vwsdRbHasSignedDNR" type="radio"
-                                               value="true" data-bind="checked:sheltereeData.Shelteree.HasSignedDNR">
+                                               value="true" data-bind="checked: selectedHasSignedDNRId">
                                         <span class="radio-button__text">Yes</span>
                                     </label>
                                 </li>
                                 <li>
                                     <label class="radio-button">
                                         <input class="radio-button__inp" name="vwsdRbHasSignedDNR" type="radio"
-                                               value="false" data-bind="checked: sheltereeData.Shelteree.HasSignedDNR">
+                                               value="false" data-bind="checked: selectedHasSignedDNRId">
                                         <span class="radio-button__text">No</span>
                                     </label>
                                 </li>
 
                             </ul>
 
-                        <span class="k-widget k-tooltip k-tooltip-validation k-invalid-msg" data-bind="invisible:setValidationMsgForHasSigned">
+                        <span class="k-widget k-tooltip k-tooltip-validation k-invalid-msg" data-bind="invisible:isHasSignedValid">
 
                             Please select Has Signed DNR
                         </span>
@@ -363,9 +381,12 @@
                         <div class="column-two">
                             <label class="form-element-with-label">
                                 <span class="form-element-with-label__text">{{nls.lblZip}}</span>
-                                <input type="text" class="form-element-with-label__inp" id="vwsdTbContactZip"
-                                       name="vwsdTbContactZip" data-bind="value:sheltereeData.Shelteree.ContactZip" maxlength="250" />
-                                <span class="k-invalid-msg" data-for="vwsdTbContactZip"></span>
+                                <input  data-role="maskedtextbox" type="text" class="form-element-with-label__inp" id="vwsdTbContactZip"
+                                       name="vwsdTbContactZip" data-bind="value:sheltereeData.Shelteree.ContactZip"
+                                        data-mask="(00000)"/>
+                                <span   style="color:#e53935;"  data-bind="invisible: isPersonalContactZipValid">
+                                    Please enter a valid zip
+                                </span>
                             </label>
                         </div>
                         <div class="column-three">
@@ -385,7 +406,12 @@
                                 <span class="form-element-with-label__text">{{nls.lblHomePhone}}</span>
 
                                 <input data-role="maskedtextbox" class="form-element-with-label__inp"
+                                          name="vwsdTbContactHomePhone" id="vwsdTbContactHomePhone"   
                                        data-bind="value:sheltereeData.Shelteree.ContactHomePhone" data-mask="(999) 000-0000" style="width:100%;">
+
+                                <span   style="color:#e53935;"  data-bind="invisible: isPersonalContactHomePhoneValid">
+                                    Please enter a valid phone number
+                                </span>
 
                             </label>
                         </div>
@@ -394,7 +420,12 @@
                                 <span class="form-element-with-label__text">{{nls.lblCell}}</span>
 
                                 <input data-role="maskedtextbox" class="form-element-with-label__inp"
+                                       name="vwsdTbContactCellPhone" id="vwsdTbContactCellPhone"   
                                        data-bind="value:sheltereeData.Shelteree.ContactCellPhone" data-mask="(999) 000-0000" style="width:100%;">
+
+                                <span   style="color:#e53935;"  data-bind="invisible: isPersonalContactCellPhoneValid">
+                                    Please enter a valid phone number
+                                </span>
 
                             </label>
                         </div>
@@ -417,7 +448,7 @@
 
 
 
-        <div class="module-container" data-bind="visible:isMedicalOrCareRequirementsOrVitalsActive">
+        <div class="module-container" data-bind="visible:isMedicalOrCareRequirementsActive">
 
                 <div  class="module-section" data-template="vwqrSection-template" data-bind="source:questionGroupData">
                 </div>
@@ -461,21 +492,21 @@
                                     <thead role="rowgroup">
                                         <tr role="row">
 
-                                            <th class="k-header">
+                                            <th class="k-header"  width="31%">
                                                 Drug Name
                                             </th>
-                                            <th class="k-header">
+                                            <th class="k-header" width="17%">
                                                 Dosage
                                             </th>
-                                            <th class="k-header">
+                                            <th class="k-header" width="17%">
 
                                                 Frequency
                                             </th>
-                                            <th class="k-header">
+                                            <th class="k-header" width="25%">
 
                                                 Last Time Used
                                             </th>
-                                            <th class="k-header">
+                                            <th class="k-header" width="10%">
 
                                             </th>
                                         </tr>
@@ -596,14 +627,14 @@
                                     <li>
                                         <label class="radio-button">
                                             <input class="radio-button__inp" name="vwssiRbAcceptedToMSNS" type="radio"
-                                                   value="true" data-bind="checked:acceptedToMSNS">
+                                                   value="true" data-bind="checked:acceptedToMSNS,events:{change:enableMSNSChildsOnChange}">
                                             <span class="radio-button__text">Yes</span>
                                         </label>
                                     </li>
                                     <li>
                                         <label class="radio-button">
                                             <input class="radio-button__inp" name="vwssiRbAcceptedToMSNS" type="radio"
-                                                   value="false" data-bind="checked: acceptedToMSNS">
+                                                   value="false" data-bind="checked: acceptedToMSNS,events:{change:enableMSNSChildsOnChange}">
                                             <span class="radio-button__text">No</span>
                                         </label>
                                     </li>
@@ -622,12 +653,12 @@
 
                         <div class="column-two">
                             <div class="form-element-with-label">
-                                <ul class="form-list-horizontal-notaccepted" data-template="vwssiRowReferredShelterLookUp-template" data-bind="source:referredShelterLookUp, visible:showMSNSChildArea">
+                                <ul class="form-list-horizontal-notaccepted" data-template="vwssiRowReferredShelterLookUp-template" data-bind="source:referredShelterLookUp">
                                 </ul> 
                                 
-                                <!--<span class="k-widget k-tooltip k-tooltip-validation k-invalid-msg" role="alert">
-                                    <span class="k-icon k-warning"></span>Please select one option
-                                </span>-->
+                                <span class="k-widget k-tooltip k-tooltip-validation k-invalid-msg" role="alert" data-bind="invisible:setValidationMsgForMSNS">
+                                 Please select one option
+                                </span>
                                                             
                             </div>
                         </div>
@@ -827,23 +858,29 @@
         </td>
 
         <td data-title="Need">
-            <div>
-                <input type="radio" name="#:EquipmentSupplyId#Need" value=true data-bind="checked:Need" />
-                <span>Yes </span>
 
-                <input type="radio" name="#:EquipmentSupplyId#Need" value=false data-bind="checked:Need" />
-                <span>No </span>
-            </div>
+            <label class="radio-button">
+                <input class="radio-button__inp" type="radio" name="#:EquipmentSupplyId#Need" value=true data-bind="checked:Need" />
+                <span class="radio-button__text">Yes</span>
+            </label>
+            <label class="radio-button">
+                <input class="radio-button__inp" type="radio" name="#:EquipmentSupplyId#Need" value=false data-bind="checked:Need" />
+                <span class="radio-button__text marginL12">No</span>
+            </label>
+
         </td>
 
         <td data-title="Have">
-            <div>
-                <input type="radio" value=true name="#:EquipmentSupplyId#Have" data-bind="checked:Have" />
-                <span>Yes </span>
 
-                <input type="radio" value=false name="#:EquipmentSupplyId#Have" data-bind="checked:Have" />
-                <span>No </span>
-            </div>
+            <label class="radio-button">
+                <input class="radio-button__inp" type="radio" value=true name="#:EquipmentSupplyId#Have" data-bind="checked:Have" />
+                <span class="radio-button__text">Yes</span>
+            </label>
+            <label class="radio-button">
+                <input class="radio-button__inp" type="radio" value=false name="#:EquipmentSupplyId#Have" data-bind="checked:Have" />
+                <span class="radio-button__text marginL12">No</span>
+            </label>
+
         </td>
 
         <td data-title="Date">
@@ -896,7 +933,7 @@
 
             <div>
 
-                <input type="text" class="form-element-with-label__inp marginL12" data-bind="value:Answer, attr:{maxlength: AnswerWidth}" />
+                <input type="text" class="form-element-with-label__inp marginL12 medicalconditiontb" data-bind="value:Answer, attr:{maxlength: AnswerWidth}" />
 
                 <span class="k-widget k-tooltip k-tooltip-validation k-invalid-msg" data-bind="invisible: hideValidation">
                     Please enter value
@@ -909,7 +946,7 @@
 
             <div >
 
-                <input type="text" class="form-element-with-label__inp  marginL12"
+                <input type="text" class="form-element-with-label__inp  marginL12 "
                        data-role="numerictextbox" data-spinners="false" min="0" max="9999999" data-format="n0"
                        data-bind="value:Answer"
                        data-decimals="0" />
@@ -939,7 +976,7 @@
 
             <div>
 
-                <textarea rows="5" class="form-element-with-label__inp marginL12" data-bind="value:Answer, attr:{maxlength: AnswerWidth}"></textarea>
+                <textarea rows="5" class="form-element-with-label__inp marginL12 medicalconditiontb" data-bind="value:Answer, attr:{maxlength: AnswerWidth}"></textarea>
 
                 <span  class="k-widget k-tooltip k-tooltip-validation k-invalid-msg" data-bind="invisible: hideValidation">
                   Please enter value
@@ -1082,7 +1119,7 @@
 
         <label class="radio-button">
             <input class="radio-button__inp" name="vwssiTbReferredShelter" type="radio"
-                   value="${Key}" data-bind="checked: selectedReferredShelterId">
+                   value="${Key}" data-bind="checked: selectedReferredShelterId,disabled: isMSNSChildDisabled">
             <span class="radio-button__text" data-bind="text:Value"></span>
         </label>
     </li>
@@ -1095,7 +1132,7 @@
 
         <label class="radio-button">
             <input class="radio-button__inp" name="vwsdRbCareSettings" type="radio"
-                   value="${Key}" data-bind="checked:sheltereeData.Shelteree.CareSettingsId,events:{change:enableHospiceOnChange}">
+                   value="${Key}" data-bind="checked:selectedCareSettingsId,events:{change:enableHospiceOnChange}">
             <span class="radio-button__text" data-bind="text:Value"></span>
         </label>
     </li>
@@ -1107,7 +1144,7 @@
 
         <label class="radio-button">
             <input class="radio-button__inp" name="vwsdTbSex" type="radio"
-                   value="${Key}" data-bind="checked:sheltereeData.Shelteree.SexId">
+                   value="${Key}" data-bind="checked:selectedGenderId">
             <span class="radio-button__text" data-bind="text:Value"></span>
         </label>
     </li>
@@ -1119,7 +1156,7 @@
 
         <label class="radio-button">
             <input class="radio-button__inp" name="vwsdTbHospice" type="radio"
-                   value="${Key}" data-bind="checked:sheltereeData.Shelteree.HospiceStabilityId,disabled: isHospiceDisabled">
+                   value="${Key}" data-bind="checked:selectedHospiceStabilityId, disabled: isHospiceDisabled">
             <span class="radio-button__text" data-bind="text:Value"></span>
         </label>
     </li>
@@ -1134,23 +1171,27 @@
 
         # if (Id == -1) { #
 
-        <td>
-            <input type="text" class="k-textbox" data-bind="value:DrugName" />
+        <td style="vertical-align:top">
+            <input type="text"  class="form-element-with-label__inp medicationtx"  data-bind="value:DrugName" />
             <span class="k-widget k-tooltip k-tooltip-validation k-invalid-msg" data-bind="invisible: isMedicationNameValid">Name is required</span>
         </td>
-        <td>
-            <input type="text" class="k-textbox" data-bind="value:Dosage" />
+        <td style="vertical-align:top">
+            <input type="text"  class="form-element-with-label__inp medicationtx"  data-bind="value:Dosage" />
         </td>
-        <td>
-            <input type="text" class="k-textbox" data-bind="value:Frequency" />
+        <td style="vertical-align:top">
+            <input type="text"  class="form-element-with-label__inp medicationtx"  data-bind="value:Frequency" />
         </td>
-        <td>
-            <input type="text" data-role="datepicker" class="k-datetimepicker" data-bind="value:LastTimeUsed" />
-            <span class="k-widget k-tooltip k-tooltip-validation k-invalid-msg" data-bind="invisible: isLastTimeUsedValid">Please select valid date</span>
+        <td style="vertical-align:top">
+        
+            <div class="custom-datetimepicker">
+                <input type="text" data-role="datepicker" data-bind="value:LastTimeUsed" />
+                <span class="k-widget k-tooltip k-tooltip-validation k-invalid-msg" data-bind="invisible: isLastTimeUsedValid">Please select valid date</span>
+            </div>
+        
         </td>
 
 
-        <td>
+        <td style="vertical-align:top">
             <button class="btn--secondary" data-bind="click:btnAddMedicationClick" type="button">
                 <span class="f-icon f-icon__add" aria-hidden="true"></span>
                 Add

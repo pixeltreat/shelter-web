@@ -706,10 +706,7 @@ function (Boiler, helpTmpl) {
                    ) {
 
                     
-                    var errorObject = {};
-                    errorObject.messageType = $ct.mt.getError();
-                    errorObject.message = "Please select records to bulk update";
-                    moduleContext.notify($ct.en.getShowErrorMsg(), errorObject);
+                    moduleContext.notify($ct.en.getShowValidationMsg(), "Please select records to bulk update");
 
                     return;
                 }

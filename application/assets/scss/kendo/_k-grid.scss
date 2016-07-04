@@ -121,10 +121,20 @@
     color: $primary-color;
 }
 
-/*Styles for grid filter checkboxes and radio buttons starts*/
+// Styles for grid filter checkboxes and radio buttons
+.k-filter-menu {
+    @extend .cfx;
+    min-width: 200px;
 
-.k-animation-container .k-filter-menu .k-multicheck-wrap li label input[type=checkbox], input[type=radio]{
-      margin:5px !important;
- }
+    label {
+        display: block;
+        margin: 5px 0;
+    }
 
-/*Styles for grid filter checkboxes and radio buttons ends*/
+    input[type="checkbox"],
+    input[type="radio"] {
+        margin: 0 5px !important;
+        position: relative;
+        top: 3px;
+    }
+}

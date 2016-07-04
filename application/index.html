@@ -56,7 +56,8 @@
 
             <!-- overlay loader -->
             <div id="workareaoverlay" class="overlay" hidden>
-                <object type="image/svg+xml" class="overlay__img" data="assets/img/loader.svg">Loader image</object>
+                <img class="gif-fallback overlay__img" src="assets/img/loader.gif" alt="loader image" />
+                <object type="image/svg+xml" class="svg-loader overlay__img" data="assets/img/loader.svg">Loader image</object>
             </div>
         </main>
 
@@ -75,7 +76,8 @@
     </div>
 
     <div id="pageleveloverlay" class="overlay">
-        <object type="image/svg+xml" class="overlay__img" data="assets/img/loader.svg">Loader image</object>
+        <img class="gif-fallback overlay__img" src="assets/img/loader.gif" alt="loader image" />
+        <object type="image/svg+xml" class="svg-loader overlay__img" data="assets/img/loader.svg">Loader image</object>
     </div>
 
     <section id="messagepopup" class="messages-container" data-delay-seconds="5"></section>

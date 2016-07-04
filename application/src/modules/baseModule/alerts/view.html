@@ -4,7 +4,12 @@
         <span class="app-alerts__title__text">Alerts</span>
     </h2>
 
-    <ol class="app-alerts__list">
+    <div class="alerts-overlay overlay">
+        <img class="gif-fallback overlay__img" src="assets/img/alerts-loader.gif" alt="alerts loader image" />
+        <object type="image/svg+xml" class="svg-loader overlay__img" data="assets/img/alerts-loader.svg">Alerts Loader image</object>
+    </div>
+
+    <ol class="app-alerts__list" hidden>
         <li class="app-alerts__list__item">
             <span class="app-alerts__list__item__number">5</span>
             <span class="app-alerts__list__item__text">Nurses Availabe at Shelter No 2</span>

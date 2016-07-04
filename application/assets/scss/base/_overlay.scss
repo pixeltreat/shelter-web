@@ -19,3 +19,36 @@
     left: 50%;
     transform: translate(-50%, -50%);
 }
+
+.no-smil .svg-loader,
+.gif-fallback {
+    display: none;
+}
+
+.no-smil .gif-fallback {
+    display: inline-block;
+    width: 64px;
+    background: #fff;
+    border-radius: 100%;
+}
+
+// alerts loader
+.alerts-overlay {
+    position: absolute;
+    height: calc(100vh - 46px);
+    top: 47px;
+
+    &,
+    &[hidden],
+    .is-alerts-visible &[hidden] {
+        display: none;
+    }
+
+    .is-alerts-visible & {
+        display: block;
+    }
+
+    .overlay__img {
+        width: 48px;
+    }
+}

@@ -131,7 +131,7 @@
 
     &.has-subnav::after {
         @include Arrow(6, top);
-        color: $secondary-color;
+        border-top-color: $secondary-color;
         position: absolute;
         top: 21px;
         right: 15px;
@@ -141,5 +141,6 @@
     &.is-mainnav-active::after {
         top: 16px;
         transform: rotate(-180deg);
+        border-top-color: $secondary-color;
     }
 }

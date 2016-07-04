@@ -1,4 +1,4 @@
-<div id="vwSheltereeHeader" class="employee-header">
+<div id="vwSheltereeHeader" class="employee-header is-option-one">
     <!-- nav list to filter table data -->
     <ul id="activeNavSheltereeheader" class="employee-header__nav-list">
 
@@ -24,7 +24,7 @@
     <!--SHELTER HEADER START-->
     <div id="vwshDDLs" class="employee-header__shelter">
         <div class="employee-header__shelter-dropdown">
-            <label for="vwshDdlShelterNames" class="employee-header__shelter-dropdown__label">{{nls.lblShelter}}:</label>
+            <!-- <label for="vwshDdlShelterNames" class="employee-header__shelter-dropdown__label">{{nls.lblShelter}}:</label> -->
             <div class="custom-select employee-header__shelter-dropdown__select">
                 <select id="vwshDdlShelterNames"
                         data-role="dropdownlist"
@@ -33,7 +33,7 @@
                         data-value-field="Id"></select>
             </div>
             <!--To show label for single facility user-->
-            <label class="employee-header__shelter-dropdown__value-label" hidden>-- All --</label>
+            <label class="employee-header__shelter-dropdown__value-label" hidden>All Shelters</label>
             <!-- <button class="btn" data-bind="disabled:isGoButtonDisabled, click:btnGoClick">{{nls.btnGo}}</button> -->
         </div>
 

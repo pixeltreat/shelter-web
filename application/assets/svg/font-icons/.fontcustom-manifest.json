@@ -1,13 +1,13 @@
 {
   "checksum": {
-    "previous": "a5765ca5cb1a39fb3bce11e8dfc38719fec99d85e3a5d6c5adebed13a7d3128b",
-    "current": "a5765ca5cb1a39fb3bce11e8dfc38719fec99d85e3a5d6c5adebed13a7d3128b"
+    "previous": "13be263c27d8f0d206264dbec4585d23d21721145010a3f51ced3502c47104d9",
+    "current": "13be263c27d8f0d206264dbec4585d23d21721145010a3f51ced3502c47104d9"
   },
   "fonts": [
-    "icon-fonts/icon-fonts_a5765ca5cb1a39fb3bce11e8dfc38719.ttf",
-    "icon-fonts/icon-fonts_a5765ca5cb1a39fb3bce11e8dfc38719.svg",
-    "icon-fonts/icon-fonts_a5765ca5cb1a39fb3bce11e8dfc38719.woff",
-    "icon-fonts/icon-fonts_a5765ca5cb1a39fb3bce11e8dfc38719.eot"
+    "icon-fonts/icon-fonts_13be263c27d8f0d206264dbec4585d23.ttf",
+    "icon-fonts/icon-fonts_13be263c27d8f0d206264dbec4585d23.svg",
+    "icon-fonts/icon-fonts_13be263c27d8f0d206264dbec4585d23.woff",
+    "icon-fonts/icon-fonts_13be263c27d8f0d206264dbec4585d23.eot"
   ],
   "glyphs": {
     "add": {
@@ -45,6 +45,10 @@
     "error": {
       "codepoint": 61715,
       "source": "svg-source/error.svg"
+    },
+    "exclamation": {
+      "codepoint": 61733,
+      "source": "svg-source/exclamation.svg"
     },
     "export": {
       "codepoint": 61716,
@@ -98,6 +102,10 @@
       "codepoint": 61707,
       "source": "svg-source/nav-shelter.svg"
     },
+    "nav-shelteree": {
+      "codepoint": 61728,
+      "source": "svg-source/nav-shelteree.svg"
+    },
     "nav-transport": {
       "codepoint": 61708,
       "source": "svg-source/nav-transport.svg"
@@ -114,6 +122,18 @@
       "codepoint": 61721,
       "source": "svg-source/not-reported.svg"
     },
+    "pdf": {
+      "codepoint": 61734,
+      "source": "svg-source/pdf.svg"
+    },
+    "print": {
+      "codepoint": 61729,
+      "source": "svg-source/print.svg"
+    },
+    "reports": {
+      "codepoint": 61730,
+      "source": "svg-source/reports.svg"
+    },
     "save": {
       "codepoint": 61710,
       "source": "svg-source/save.svg"
@@ -125,6 +145,14 @@
     "showall": {
       "codepoint": 61723,
       "source": "svg-source/showall.svg"
+    },
+    "step-complete": {
+      "codepoint": 61731,
+      "source": "svg-source/step-complete.svg"
+    },
+    "step-review": {
+      "codepoint": 61732,
+      "source": "svg-source/step-review.svg"
     },
     "success": {
       "codepoint": 61724,
@@ -147,8 +175,8 @@
     "font_name": "icon-fonts",
     "force": false,
     "input": {
-      "templates": "svg-source",
-      "vectors": "svg-source"
+      "templates": "svg-source/",
+      "vectors": "svg-source/"
     },
     "no_hash": false,
     "output": {

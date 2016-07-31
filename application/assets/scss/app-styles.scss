@@ -28,9 +28,12 @@
 @import "base/layout";
 
 // modules
+@import "../../src/modules/adminModule/_module";
 @import "../../src/modules/baseModule/_module";
 @import "../../src/modules/employeeModule/_module";
-
+@import "../../src/modules/sheltereeModule/_module";
+@import "../../src/modules/shelterModule/_module";
+@import "../../src/modules/reportModule/_module";
 
 // Helpers load at the end to get high speficity
 @import "libs/slient-extends";

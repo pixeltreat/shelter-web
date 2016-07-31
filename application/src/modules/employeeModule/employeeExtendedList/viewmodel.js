@@ -32,13 +32,25 @@ function (Boiler, helpTmpl) {
             staffSpecialityFilterLookUp: [],
             staffTypeFilterLookUp: [],
 
-            filterText: function () {
+
+            //commented code for filter on/off label
+            //filterText: function () {
+
+            //    if (this.get("isFilteredData")) {
+            //        return "Filter On";
+            //    }
+            //    else {
+            //        return "Filter Off";
+            //    }
+
+            //},
+            toggleShowAll: function () {
 
                 if (this.get("isFilteredData")) {
-                    return "Filter On";
+                    return false;
                 }
                 else {
-                    return "Filter Off";
+                    return true;
                 }
 
             },
@@ -203,18 +215,19 @@ function (Boiler, helpTmpl) {
                     vm.shiftTimeFilterLookUp = result.Data.ShiftTimeLookupData;
                     vm.staffSpecialityFilterLookUp = result.Data.StaffSpecialityLookupData;
                     vm.staffTypeFilterLookUp = result.Data.StaffTypeLookupData;
+                    vm.isMedicalFilterLookUp = result.Data.IsMedicalLookupData;
                    
                     $("#vweelDgEmployeeExtendedListParent").find(".k-grid-filter").click(function (e) {
 
 
-                        if ($(e.target).closest("th[data-field='FacilityName']").data("kendoFilterMultiCheck") != undefined) {
+                        //if ($(e.target).closest("th[data-field='FacilityName']").data("kendoFilterMultiCheck") != undefined) {
 
-                            var fmc = $(e.target).closest("th").data("kendoFilterMultiCheck");
-                            fmc.checkSource._view = vm.shelterFilterLookUp;
+                        //    var fmc = $(e.target).closest("th").data("kendoFilterMultiCheck");
+                        //    fmc.checkSource._view = vm.shelterFilterLookUp;
 
-                            fmc.container.empty();
-                            fmc.refresh();
-                        }
+                        //    fmc.container.empty();
+                        //    fmc.refresh();
+                        //}
 
                         if ($(e.target).closest("th[data-field='StaffTypeName']").data("kendoFilterMultiCheck") != undefined) {
 
@@ -263,16 +276,25 @@ function (Boiler, helpTmpl) {
                             fmc.refresh();
                         }
 
+                        if ($(e.target).closest("th[data-field='IsMedicalValue']").data("kendoFilterMultiCheck") != undefined) {
+
+                            var fmc = $(e.target).closest("th").data("kendoFilterMultiCheck");
+                            fmc.checkSource._view = vm.isMedicalFilterLookUp;
+
+                            fmc.container.empty();
+                            fmc.refresh();
+                        }
+
                     });
 
-                    if (!$ct.security.isMultiFacilityUser()) {
+                    //if (!$ct.security.isMultiFacilityUser()) {
 
-                        var gridObj = $("#vweelDgEmployeeExtendedList").data("kendoGrid");
-                        if ((gridObj != undefined) && (gridObj != null)) {
-                            gridObj.showColumn("FacilityName");
-                            gridObj.hideColumn("FacilityName");
-                        }
-                    }
+                    //    var gridObj = $("#vweelDgEmployeeExtendedList").data("kendoGrid");
+                    //    if ((gridObj != undefined) && (gridObj != null)) {
+                    //        gridObj.showColumn("FacilityName");
+                    //        gridObj.hideColumn("FacilityName");
+                    //    }
+                   // }
 
 
                     if (vm.get("dsEmployeeExpandedList").total() > 0) {
@@ -501,7 +523,7 @@ function (Boiler, helpTmpl) {
             dsDataBoundEvent: function (dataEve) {
               
                 var columnHeader = $("#vwEmployeeExtendedList").find("th[role='columnheader']").first();
-                $(columnHeader).html("<label class='checkbox'><input class='checkbox__inp' type='checkbox' data-item-type='child' id='chkAll' /><span class='checkbox__text'></span></label>");
+                $(columnHeader).html("<label class='checkbox'><input class='checkbox__inp' type='checkbox'  id='chkAll' /><span class='checkbox__text'></span></label>");
 
                 $("#vwEmployeeExtendedList").find("#chkAll").click(function (e) {
                     var arrayUnSel = vm.get("empRequestData.UnSelectedEmployeeIds");
@@ -601,11 +623,10 @@ function (Boiler, helpTmpl) {
             },
 
 
-            btnFilterOffClick: function () {
+            //This function will clear all flags and reinitialize grid data
+            clearData: function () {
 
-                //    $ct.helpers.displayWorkAreaBusyCursor();
-
-
+                //$ct.helpers.displayWorkAreaBusyCursor();
 
 
                 vm.empRequestData.ViewAll = true;
@@ -618,7 +639,6 @@ function (Boiler, helpTmpl) {
                 moduleContext.parentContext.empRequestData.SelectedEmployeeIds = new kendo.data.ObservableArray([]);
                 moduleContext.parentContext.empRequestData.UnSelectedEmployeeIds = new kendo.data.ObservableArray([]);
 
-
                 vm.set("empRequestData.SelectedIdsCount", 0);
 
                 //vm.refreshSnapShot();
@@ -628,6 +648,21 @@ function (Boiler, helpTmpl) {
 
 
                 vm.fillGrid();
+                //$ct.helpers.hideWorkAreaBusyCursor();
+
+            },
+
+
+
+            btnFilterOffClick: function () {
+
+                this.clearData();
+
+                //    $ct.helpers.displayWorkAreaBusyCursor();
+                //vm.refreshSnapShot();
+  
+                //$("#vwmpPatientsLst").data("kendoGrid").dataSource.filter({});
+
                 //$("#vwmpexPatientsLst").data("kendoGrid").dataSource.filter({});
 
                 /*
@@ -664,7 +699,7 @@ function (Boiler, helpTmpl) {
                       )
                     {
 
-                    moduleContext.notify($ct.en.getShowValidationMsg(), "Please select records to bulk update");
+                        moduleContext.notify($ct.en.getShowValidationMsg(), $ct.msg.getBulkUpdateEmployeeExtendedValidationMsg());
 
                     return;
                 }
@@ -740,10 +775,10 @@ function (Boiler, helpTmpl) {
             employeeEditUrl: function (isNew) {
 
                 if (!isNew) {
-                    return $ct.rn.getEmployee() + "/" + this.selectedId + "/" + this.selectedShelterId;
+                    return $ct.rn.getEmployee() + "/" + this.selectedId + "/" + this.selectedShelterId + "/" + $ct.rn.getEmployeeExtendedList();
                 }
                 else {
-                    return $ct.rn.getEmployee() + "/" + $ct.constants.getemptyGUID() + "/" + moduleContext.parentContext.empHeaderData.shelter.Id;
+                    return $ct.rn.getEmployee() + "/" + $ct.constants.getemptyGUID() + "/" + moduleContext.parentContext.empHeaderData.shelter.Id + "/" + $ct.rn.getEmployeeExtendedList();
                 }
 
             }

@@ -80,7 +80,7 @@
 
                 vm.set("isGoButtonDisabled", true);
 
-                var data = $ct.ds.shlt.shelter.getSheltersWithDs(function (result) {
+                var data = $ct.ds.shlt.shelter.getSheltersWithSecurityAndCensusForActiveEventWithDs(function (result) {
 
                    // $ct.helpers.hidePageBusyCursor();
 
@@ -90,7 +90,7 @@
 
                         vm.set("selectedShelterNameItem", result[0]);
 
-                        $ct.ds.emp.employee.getActiveEvents(vm.selectedShelterNameItem.Id, function (result) {
+                        $ct.ds.event.getActiveEvent( function (result) {
 
                             $ct.helpers.hidePageBusyCursor();
                             $ct.helpers.hideWorkAreaBusyCursor();
@@ -137,13 +137,13 @@
 
 
 
-            ddlShelterNames: function (e) {
+            ddlShelterChange: function (e) {
 
                 //vm.fillGrid();
 
                 $ct.helpers.displayWorkAreaBusyCursor();
 
-                $ct.ds.emp.employee.getActiveEvents(vm.selectedShelterNameItem.Id, function (result) {
+                $ct.ds.event.getActiveEvent(function (result) {
 
                     $ct.helpers.hidePageBusyCursor();
                     $ct.helpers.hideWorkAreaBusyCursor();
@@ -169,21 +169,6 @@
 
                 });
 
-                //this.setPreviouslySelectedShelterTypeAndShelterNameToCurrent();
-                //this.setSheltereeHeaderDataToGlobalContext();
-
-                //if (moduleContext.parentContext.activeForm == $ct.rn.getSheltereeList()) {
-                //    moduleContext.notify($ct.en.getSheltereeHeaderDataChanged(), $ct.rn.getSheltereeList());
-                //}
-
-                //if (moduleContext.parentContext.activeForm == $ct.rn.getSheltereeDischargeList()) {
-                //    moduleContext.notify($ct.en.getSheltereeHeaderDataChanged(), $ct.rn.getSheltereeDischargeList());
-                //}
-
-
-                //if (moduleContext.parentContext.activeForm == $ct.rn.getSheltereeMedicalUpdateList()) {
-                //    moduleContext.notify($ct.en.getSheltereeHeaderDataChanged(), $ct.rn.getSheltereeMedicalUpdateList());
-                //}
             },
 
             //End of shelter type and shelter names dropdowns code
@@ -198,26 +183,6 @@
 
                 moduleContext.notify($ct.en.getSheltereeHeaderDataChanged(), $ct.rn.getSheltereeList());
             },
-
-            btnGoClick: function (e) {
-
-                this.setPreviouslySelectedShelterTypeAndShelterNameToCurrent();
-                this.setSheltereeHeaderDataToGlobalContext();
-
-                if (moduleContext.parentContext.activeForm == $ct.rn.getSheltereeList()) {
-                    moduleContext.notify($ct.en.getSheltereeHeaderDataChanged(), $ct.rn.getSheltereeList());
-                }
-
-                if (moduleContext.parentContext.activeForm == $ct.rn.getSheltereeDischargeList()) {
-                    moduleContext.notify($ct.en.getSheltereeHeaderDataChanged(), $ct.rn.getSheltereeDischargeList());
-                }
-
-
-                if (moduleContext.parentContext.activeForm == $ct.rn.getSheltereeMedicalUpdateList()) {
-                    moduleContext.notify($ct.en.getSheltereeHeaderDataChanged(), $ct.rn.getSheltereeMedicalUpdateList());
-                }
-            },
-
 
             setPreviouslySelectedShelterTypeAndShelterNameToCurrent: function () {
 
@@ -258,8 +223,6 @@
 
             btnManageSheltereeClick: function (e) {
 
-                this.activateCurrentMenuItem(e);
-                //moduleContext.notify($ct.en.getPatientCreatedOrUpdated());
                 moduleContext.notify($ct.en.getManageSheltereeClicked());
 
                 Boiler.UrlController.goTo($ct.rn.getSheltereeList());
@@ -267,8 +230,6 @@
 
             btnManageSheltereeDischargeClick: function (e) {
 
-                this.activateCurrentMenuItem(e);
-                //moduleContext.notify($ct.en.getPatientMedicalEquipCreatedOrUpdated());
                 moduleContext.notify($ct.en.getManageSheltereeDischargeClicked());
 
                 Boiler.UrlController.goTo($ct.rn.getSheltereeDischargeList());
@@ -276,38 +237,30 @@
 
             btnManageSheltereeMedicalUpdateClick: function (e) {
 
-                this.activateCurrentMenuItem(e);
-                //moduleContext.notify($ct.en.getPatientMedicalEquipCreatedOrUpdated());
                 moduleContext.notify($ct.en.getManageSheltereeMedicalUpdateClicked());
 
                 Boiler.UrlController.goTo($ct.rn.getSheltereeMedicalUpdateList());
-            },
+            }
+
+            //,
 
        
-            btnUploadSheltereeDataClick: function (e) {
-                this.activateCurrentMenuItem(e);
-                moduleContext.notify($ct.en.getSheltereeCreatedOrUpdated());
-                Boiler.UrlController.goTo($ct.rn.getUploadShelteree());
-            },
+            //btnUploadSheltereeDataClick: function (e) {
+
+            //    moduleContext.notify($ct.en.getSheltereeCreatedOrUpdated());
+            //    Boiler.UrlController.goTo($ct.rn.getUploadShelteree());
+            //},
 
 
-            btnDownloadSheltereeDataClick: function (e) {
-                this.activateCurrentMenuItem(e);
-                moduleContext.notify($ct.en.getSheltereeCreatedOrUpdated());
-                Boiler.UrlController.goTo($ct.rn.getDownloadShelteree());
-            },
+            //btnDownloadSheltereeDataClick: function (e) {
 
-            btnDownloadSheltereeTemplateClick: function () {
-                window.location.href = $ct.other.getSheltereeTemplateURL();
-            },
+            //    moduleContext.notify($ct.en.getSheltereeCreatedOrUpdated());
+            //    Boiler.UrlController.goTo($ct.rn.getDownloadShelteree());
+            //},
 
-
-            activateCurrentMenuItem: function (e) {
-
-                $(e.target.parentElement.parentElement).find(".item_nav_active").removeClass("item_nav_active");
-                $(e.target.parentElement).addClass("item_nav_active");
-
-            }
+            //btnDownloadSheltereeTemplateClick: function () {
+            //    window.location.href = $ct.other.getSheltereeTemplateURL();
+            //}
             
 
         }

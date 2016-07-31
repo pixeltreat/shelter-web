@@ -3,17 +3,17 @@
         <li class="app-nav__main__li has-subnav" data-bind="click:toggleSubnav">
             <a class="app-nav__main__li__a">
                 <span class="f-icon__nav-user app-nav__main__li__a__icon" aria-hidden="true"></span>
-                <span class="app-nav__main__li__a__text">
-                    Hi, P Prasad Ravi
+                <span class="app-nav__main__li__a__text"  data-bind="text:userFullName">
+                  
                 </span>
             </a>
 
             <ul class="app-nav__sub">
-                <li class="app-nav__sub__li" data-bind="click:showActiveState">
+                <!--<li class="app-nav__sub__li" data-bind="click:showActiveState">
                     <a class="app-nav__sub__li__a">
                         My Profile
                     </a>
-                </li>
+                </li>-->
                 <li class="app-nav__sub__li" data-bind="click:showActiveState">
                     <a class="app-nav__sub__li__a" data-bind="click:logOutClick">
                         <!-- <span class="f-icon__nav-logout app-nav__main__li__a__icon" aria-hidden="true"></span> -->
@@ -23,52 +23,58 @@
             </ul>
         </li>
 
-        <li class="app-nav__main__li has-subnav" data-bind="click:toggleSubnav">
+        <li class="app-nav__main__li has-subnav" data-bind="click:toggleSubnav, visible: showAdmin" >
             <a class="app-nav__main__li__a">
                 <span class="f-icon__nav-admin app-nav__main__li__a__icon" aria-hidden="true"></span>
-                <span class="app-nav__main__li__a__text">Admin</span>
+                <span class="app-nav__main__li__a__text">{{nls.lblAdmin}}</span>
             </a>
 
             <ul class="app-nav__sub">
                 <li class="app-nav__sub__li" data-bind="click:showActiveState">
-                    <a class="app-nav__sub__li__a" data-bind="click:agencyListClick">Agency</a>
+                    <a class="app-nav__sub__li__a" data-bind="click:agencyListClick">{{nls.lblAgency}}</a>
                 </li>
                 <li class="app-nav__sub__li" data-bind="click:showActiveState">
-                    <a class="app-nav__sub__li__a" data-bind="click:departmentListClick">Department</a>
+                    <a class="app-nav__sub__li__a" data-bind="click:departmentListClick">{{nls.lblDepartment}}</a>
                 </li>
                 <li class="app-nav__sub__li" data-bind="click:showActiveState">
-                    <a class="app-nav__sub__li__a" data-bind="click:medicalConditionListClick">Medical Condition</a>
+                    <a class="app-nav__sub__li__a" data-bind="click:medicalConditionListClick">{{nls.lblMedicalCondition}}</a>
                 </li>
                 <li class="app-nav__sub__li" data-bind="click:showActiveState">
-                    <a class="app-nav__sub__li__a" data-bind="click:medicalConditionTierListClick">Medical Condition Tier</a>
+                    <a class="app-nav__sub__li__a" data-bind="click:medicalConditionTierListClick">{{nls.lblMedicalConditionTier}}</a>
                 </li>
                 <li class="app-nav__sub__li" data-bind="click:showActiveState">
-                    <a class="app-nav__sub__li__a" data-bind="click:shelterTypeListClick">Shelter Type</a>
+                    <a class="app-nav__sub__li__a" data-bind="click:shelterTypeListClick">{{nls.lblShelterType}}</a>
                 </li>
                 <li class="app-nav__sub__li" data-bind="click:showActiveState">
-                    <a class="app-nav__sub__li__a" data-bind="click:sheltreeEmployeeRatioListClick">Shelteree Employee Ratio</a>
+                    <a class="app-nav__sub__li__a" data-bind="click:sheltreeEmployeeRatioListClick">{{nls.lblSheltereeStaffRatio}}</a>
                 </li>
 
                 <li class="app-nav__sub__li" data-bind="click:showActiveState">
-                    <a class="app-nav__sub__li__a" data-bind="click:staffSpecialtyListClick">Staff Specialty</a>
+                    <a class="app-nav__sub__li__a" data-bind="click:staffSpecialtyListClick">{{nls.lblStaffSpecialty}}</a>
                 </li>
                 <li class="app-nav__sub__li" data-bind="click:showActiveState">
-                    <a class="app-nav__sub__li__a" data-bind="click:stafftypeListClick">Staff Type</a>
+                    <a class="app-nav__sub__li__a" data-bind="click:stafftypeListClick">{{nls.lblStaffType}}</a>
                 </li>
                 <li class="app-nav__sub__li" data-bind="click:showActiveState">
-                    <a class="app-nav__sub__li__a" data-bind="click:transportTypeListClick">Transportation Type</a>
+                    <a class="app-nav__sub__li__a" data-bind="click:transportTypeListClick">{{nls.lblTransportationType}}</a>
                 </li>
                 <li class="app-nav__sub__li" data-bind="click:showActiveState">
-                    <a class="app-nav__sub__li__a" data-bind="click:dispositionListClick">Disposition</a>
+                    <a class="app-nav__sub__li__a" data-bind="click:dispositionListClick">{{nls.lblDisposition}}</a>
                 </li>
                 <li class="app-nav__sub__li" data-bind="click:showActiveState">
-                    <a class="app-nav__sub__li__a" data-bind="click:equipmentSupplyListClick">Equipment Supply</a>
+                    <a class="app-nav__sub__li__a" data-bind="click:equipmentSupplyListClick">{{nls.lblEquipmentSupply}}</a>
                 </li>
                 <li class="app-nav__sub__li" data-bind="click:showActiveState">
-                    <a class="app-nav__sub__li__a" data-bind="click:shelterIdentificationListClick">Shelter Identification</a>
+                    <a class="app-nav__sub__li__a" data-bind="click:shelterIdentificationListClick">{{nls.lblShelterIdentification}}</a>
                 </li>
                 <li class="app-nav__sub__li" data-bind="click:showActiveState">
-                    <a class="app-nav__sub__li__a" data-bind="click:questionListClick">Question</a>
+                    <a class="app-nav__sub__li__a" data-bind="click:questionListClick">{{nls.lblQuestion}}</a>
+                </li>
+                <li class="app-nav__sub__li" data-bind="click:showActiveState">
+                    <a class="app-nav__sub__li__a" data-bind="click:shelterStatusClick">{{nls.lblShelterStatus}}</a>
+                </li>
+                <li class="app-nav__sub__li" data-bind="click:showActiveState">
+                    <a class="app-nav__sub__li__a" data-bind="click:eventListClick">{{nls.lblEvent}}</a>
                 </li>
             </ul>
         </li>
@@ -79,46 +85,67 @@
             </a>
         </li> -->
 
-        <li class="app-nav__main__li has-subnav" data-bind="click:toggleSubnav">
+        <li class="app-nav__main__li has-subnav" data-bind="click:toggleSubnav , visible: showStaffAndShelteree">
             <a class="app-nav__main__li__a">
                 <span class="f-icon__nav-employee app-nav__main__li__a__icon" aria-hidden="true"></span>
-                <span class="app-nav__main__li__a__text">Employee</span>
+                <span class="app-nav__main__li__a__text">{{nls.lblStaff}}</span>
             </a>
 
             <ul class="app-nav__sub">
                 <li class="app-nav__sub__li" data-bind="click:showActiveState">
-                    <a class="app-nav__sub__li__a" data-bind="click:employeeListClick">Employee List</a>
+                    <a class="app-nav__sub__li__a" data-bind="click:employeeAttendanceClick">{{nls.lblAttendance}}</a>
                 </li>
                 <li class="app-nav__sub__li" data-bind="click:showActiveState">
-                    <a class="app-nav__sub__li__a" data-bind="click:employeeExpandedListClick">Employee Expanded List</a>
+                    <a class="app-nav__sub__li__a" data-bind="click:employeeListClick">{{nls.lblShortList}}</a>
                 </li>
                 <li class="app-nav__sub__li" data-bind="click:showActiveState">
-                    <a class="app-nav__sub__li__a" data-bind="click:employeeAttendanceClick">Employee Attendance</a>
+                    <a class="app-nav__sub__li__a" data-bind="click:employeeExpandedListClick">{{nls.lblExtendedList}}</a>
                 </li>
+                <li class="app-nav__sub__li" data-bind="click:showActiveState">
+                    <a class="app-nav__sub__li__a" data-bind="click:downloadEmployeeTemplateClick">{{nls.lblDownloadTemplate}}</a>
+                </li>
+                <li class="app-nav__sub__li" data-bind="click:showActiveState">
+                    <a class="app-nav__sub__li__a" data-bind="click:uploadEmployeeDataClick">{{nls.lblUploadData}}</a>
+                </li>
+                <li class="app-nav__sub__li" data-bind="click:showActiveState">
+                    <a class="app-nav__sub__li__a" data-bind="click:downloadEmployeeDataClick">{{nls.lblDownloadData}}</a>
+                </li>
+
             </ul>
         </li>
 
 
-        <li class="app-nav__main__li has-subnav" data-bind="click:toggleSubnav">
+        <li class="app-nav__main__li has-subnav" data-bind="click:toggleSubnav , visible: showStaffAndShelteree">
             <a class="app-nav__main__li__a">
                 <span class="f-icon__nav-shelteree app-nav__main__li__a__icon" aria-hidden="true"></span>
-                <span class="app-nav__main__li__a__text">Shelteree</span>
+                <span class="app-nav__main__li__a__text">{{nls.lblShelteree}}</span>
             </a>
             <ul class="app-nav__sub">
                 <li class="app-nav__sub__li" data-bind="click:showActiveState">
-                    <a class="app-nav__sub__li__a" data-bind="click:sheltereeListClick">Shelteree List</a>
+                    <a class="app-nav__sub__li__a" data-bind="click:sheltereeListClick">{{nls.lblSheltereeList}}</a>
                 </li>
                 <li class="app-nav__sub__li" data-bind="click:showActiveState">
-                    <a class="app-nav__sub__li__a" data-bind="click:sheltereeDischargeListClick">Shelteree Discharge List</a>
+                    <a class="app-nav__sub__li__a" data-bind="click:sheltereeDischargeListClick">{{nls.lblSheltereeDischargeList}}</a>
                 </li>
                 <li class="app-nav__sub__li" data-bind="click:showActiveState">
-                    <a class="app-nav__sub__li__a" data-bind="click:sheltereeMedicalUpdateListClick">Shelteree Medical Update List</a>
+                    <a class="app-nav__sub__li__a" data-bind="click:sheltereeMedicalUpdateListClick">{{nls.lblSheltereeMedicalUpdateList}}</a>
                 </li>
+                <li class="app-nav__sub__li" data-bind="click:showActiveState">
+                    <a class="app-nav__sub__li__a" data-bind="click:downloadSheltereeTemplateClick">{{nls.lblDownloadTemplate}}</a>
+                </li>
+                <li class="app-nav__sub__li" data-bind="click:showActiveState">
+                    <a class="app-nav__sub__li__a" data-bind="click:uploadSheltereeDataClick">{{nls.lblUploadData}}</a>
+                </li>
+                <li class="app-nav__sub__li" data-bind="click:showActiveState">
+                    <a class="app-nav__sub__li__a" data-bind="click:downloadSheltereeDataClick">{{nls.lblDownloadData}}</a>
+                </li>
+
+
             </ul>
         </li>
 
 
-        <li class="app-nav__main__li has-subnav" data-bind="click:toggleSubnav">
+        <!--<li class="app-nav__main__li has-subnav" data-bind="click:toggleSubnav">
             <a class="app-nav__main__li__a">
                 <span class="f-icon__nav-shelter app-nav__main__li__a__icon" aria-hidden="true"></span>
                 <span class="app-nav__main__li__a__text">Shelter</span>
@@ -129,18 +156,24 @@
                     <a class="app-nav__sub__li__a" data-bind="click:shelterStatusClick">Shelter Status</a>
                 </li>
             </ul>          
-        </li>
+        </li>-->
         
 
-        <li class="app-nav__main__li has-subnav" data-bind="click:toggleSubnav">
+        <li class="app-nav__main__li has-subnav" data-bind="click:toggleSubnav , visible: showReports">
             <a class="app-nav__main__li__a">
                 <span class="f-icon__nav-reports app-nav__main__li__a__icon" aria-hidden="true"></span>
-                <span class="app-nav__main__li__a__text">Reports</span>
+                <span class="app-nav__main__li__a__text">{{nls.lblReports}}</span>
             </a>
 
             <ul class="app-nav__sub">
                 <li class="app-nav__sub__li" data-bind="click:showActiveState">
-                    <a class="app-nav__sub__li__a" href="">Subnav Link1</a>
+                    <a class="app-nav__sub__li__a" data-bind="click:staffReportClick">{{nls.lblStaff}}</a>
+                </li>
+                <li class="app-nav__sub__li" data-bind="click:showActiveState">
+                    <a class="app-nav__sub__li__a" data-bind="click:staffAttendanceReportClick">{{nls.lblStaffAttendance}}</a>
+                </li>
+                <li class="app-nav__sub__li" data-bind="click:showActiveState">
+                    <a class="app-nav__sub__li__a" data-bind="click:sheltereeReportClick">{{nls.lblShelteree}}</a>
                 </li>
             </ul>
         </li>
@@ -153,16 +186,16 @@
         </li>
 
         <li class="app-nav__main__li" data-bind="click:toggleSubnav">
-            <a class="app-nav__main__li__a" href="mailto:esf8help@la.gov">
+            <a class="app-nav__main__li__a" href="mailto:eocwatch@la.gov">
                 <span class="f-icon__nav-contact app-nav__main__li__a__icon" aria-hidden="true"></span>
                 <span class="app-nav__main__li__a__text">{{nls.lblContact}}</span>
             </a>
         </li>
 
-        <li class="app-nav__main__li" data-bind="click:toggleSubnav">
+        <li class="app-nav__main__li" data-bind="click:toggleSubnav , visible: showRefresh">
             <a class="app-nav__main__li__a" data-bind="click:refreshClick">
                 <span class="f-icon__nav-refresh app-nav__main__li__a__icon" aria-hidden="true"></span>
-                <span class="app-nav__main__li__a__text">Refresh</span>
+                <span class="app-nav__main__li__a__text">{{nls.lblRefresh}}</span>
             </a>
         </li>
 

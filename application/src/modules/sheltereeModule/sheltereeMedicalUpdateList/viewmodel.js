@@ -36,17 +36,27 @@ define(["Boiler", 'text!./help/help.html',
             parishFilterLookUp: [],
             regionFilterLookUp: [],
 
-            filterText: function () {
+            //commented code for filter on/off label
+            //filterText: function () {
+
+            //    if (this.get("isFilteredData")) {
+            //        return "Filter On";
+            //    }
+            //    else {
+            //        return "Filter Off";
+            //    }
+
+            //},
+            toggleShowAll: function () {
 
                 if (this.get("isFilteredData")) {
-                    return "Filter On";
+                    return false;
                 }
                 else {
-                    return "Filter Off";
+                    return true;
                 }
 
             },
-
             eventdata: {},
 
             initialize: function () {
@@ -74,7 +84,7 @@ define(["Boiler", 'text!./help/help.html',
 
                 vm.set("sheltereeHeaderData", moduleContext.parentContext.sheltereeHeaderData);
 
-                $ct.ds.sheltree.sheltree.getActiveEvents(this, function (result) {
+                $ct.ds.event.getActiveEvent( function (result) {
 
                     var resultData = result.Data.ActiveEvent;
                     vm.set("eventdata", resultData);
@@ -207,7 +217,10 @@ define(["Boiler", 'text!./help/help.html',
                 //    gridObj.hideColumn("FacilityName");
                 //}
 
+
                 this.set("dsSheltereeMedicalUpdateList", $ct.ds.sheltree.sheltree.getSheltereeMedicalUpdatees(this, function (result) {
+
+                    $ct.helpers.hidePageBusyCursor();
 
                     $ct.helpers.hideWorkAreaBusyCursor();
 
@@ -218,14 +231,14 @@ define(["Boiler", 'text!./help/help.html',
                     $("#vwsmulDgSheltereeMedicalUpdateListParent").find(".k-grid-filter").click(function (e) {
 
 
-                        if ($(e.target).closest("th[data-field='FacilityName']").data("kendoFilterMultiCheck") != undefined) {
+                        //if ($(e.target).closest("th[data-field='FacilityName']").data("kendoFilterMultiCheck") != undefined) {
 
-                            var fmc = $(e.target).closest("th").data("kendoFilterMultiCheck");
-                            fmc.checkSource._view = vm.shelterFilterLookUp;
+                        //    var fmc = $(e.target).closest("th").data("kendoFilterMultiCheck");
+                        //    fmc.checkSource._view = vm.shelterFilterLookUp;
 
-                            fmc.container.empty();
-                            fmc.refresh();
-                        }
+                        //    fmc.container.empty();
+                        //    fmc.refresh();
+                        //}
 
                         if ($(e.target).closest("th[data-field='HomeParish']").data("kendoFilterMultiCheck") != undefined) {
 
@@ -248,14 +261,14 @@ define(["Boiler", 'text!./help/help.html',
                        
                     });
 
-                    if (!$ct.security.isMultiFacilityUser()) {
+                    //if (!$ct.security.isMultiFacilityUser()) {
 
-                        var gridObj = $("#vwslDgSheltereeList").data("kendoGrid");
-                        if ((gridObj != undefined) && (gridObj != null)) {
-                            gridObj.showColumn("FacilityName");
-                            gridObj.hideColumn("FacilityName");
-                        }
-                    }
+                    //    var gridObj = $("#vwslDgSheltereeList").data("kendoGrid");
+                    //    if ((gridObj != undefined) && (gridObj != null)) {
+                    //        gridObj.showColumn("FacilityName");
+                    //        gridObj.hideColumn("FacilityName");
+                    //    }
+                    //}
 
 
                     if (vm.get("dsSheltereeMedicalUpdateList").total() > 0) {
@@ -492,7 +505,7 @@ define(["Boiler", 'text!./help/help.html',
 
                 var columnHeader = $("#vwSheltereeMedicalUpdateList").find("th[role='columnheader']").first();
 
-                $(columnHeader).html("<label class='checkbox'><input class='checkbox__inp' type='checkbox' data-item-type='child' id='chkAll' /><span class='checkbox__text'></span></label>");
+                $(columnHeader).html("<label class='checkbox'><input class='checkbox__inp' type='checkbox'  id='chkAll' /><span class='checkbox__text'></span></label>");
 
                 $("#vwSheltereeMedicalUpdateList").find("#chkAll").click(function (e) {
 
@@ -593,7 +606,7 @@ define(["Boiler", 'text!./help/help.html',
                 $ct.helpers.hideWorkAreaBusyCursor();
             },
 
-
+            //This function will clear all flags and reinitialize grid data
             clearData: function () {
 
                 //$ct.helpers.displayWorkAreaBusyCursor();
@@ -665,7 +678,7 @@ define(["Boiler", 'text!./help/help.html',
                    ) {
 
 
-                    moduleContext.notify($ct.en.getShowValidationMsg(), "Please select records to bulk update");
+                    moduleContext.notify($ct.en.getShowValidationMsg(), $ct.msg.getBulkUpdateSheltreeMedicalUpdateValidationMsg());
                     return;
                 }
 
@@ -729,7 +742,38 @@ define(["Boiler", 'text!./help/help.html',
 
 
             },
+            btnReportClick: function (e) {
 
+                moduleContext.notify($ct.en.getHideErrorMsg());
+                $ct.helpers.displayWorkAreaBusyCursor();
+
+                var reportData = {};
+
+                reportData.sheltereeId = e.data.Id;
+                reportData.eventId = e.data.EventId;
+
+                $ct.ds.sheltree.sheltree.generateSheltereeReportClick(reportData, function (result) {
+
+                    $ct.helpers.hideWorkAreaBusyCursor();
+
+
+                    if (result.Data.DownloadUrl != undefined) {
+
+                        window.location.href = result.Data.DownloadUrl;
+
+                    }
+                    else {
+
+                        var errorObj = $ct.mt.getErrorObject(result);
+                        if (errorObj != null) {
+                            moduleContext.notify($ct.en.getShowErrorMsg(), errorObj);
+                        }
+
+                    }
+
+                });
+
+            },
             btnReportsClick: function () {
 
 
@@ -764,11 +808,11 @@ define(["Boiler", 'text!./help/help.html',
             sheltereeEditUrl: function (isNew) {
 
                 if (!isNew) {
-                    return $ct.rn.getShelteree() + "/" + this.selectedId + "/" + this.selectedShelterId;
+                    return $ct.rn.getShelteree() + "/" + this.selectedId + "/" + this.selectedShelterId + "/" + $ct.rn.getSheltereeMedicalUpdateList();
 
                 }
                 else {
-                    return $ct.rn.getShelteree() + "/" + $ct.constants.getemptyGUID() + "/" + moduleContext.parentContext.sheltereeHeaderData.shelter.Id;
+                    return $ct.rn.getShelteree() + "/" + $ct.constants.getemptyGUID() + "/" + moduleContext.parentContext.sheltereeHeaderData.shelter.Id + "/" + $ct.rn.getSheltereeMedicalUpdateList();
                 }
 
             },

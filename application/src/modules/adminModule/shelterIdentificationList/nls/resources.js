@@ -1,6 +1,6 @@
 define({
     "root": {
-        "headershelterIdentification": "Shelter Identification",
+        "headerShelterIdentification": "Shelter Identification",
         "lblSearch": "Search",
         "gdColId": "Id",
         "gdColName": "Name",

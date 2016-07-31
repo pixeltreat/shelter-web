@@ -1,21 +1,21 @@
 ﻿$ct.ds.emp.empattendance = function () {
 
 
-    var getEmployeeAttendenceEvent = function (successCallBack) {
-        var Data = {};
-        Data.ShelterId = 1;
-        $ct.ajax.ajaxPost($ct.cn.getEventUrl() + 'GetActiveEvent', Data, function (result) {
+    //var getEmployeeAttendenceEvent = function (successCallBack) {
+    //    var Data = {};
+    //    Data.ShelterId = 1;
+    //    $ct.ajax.ajaxPost($ct.cn.getEventUrl() + 'GetActiveEvent', Data, function (result) {
 
-            if (successCallBack != null)
-                successCallBack(result);
+    //        if (successCallBack != null)
+    //            successCallBack(result);
 
-        }, null, true)
-
-
-        return "";
+    //    }, null, true)
 
 
-    };
+    //    return "";
+
+
+    //};
     var getEmployeeAttendenceInitialLoad = function (successCallBack) {
 
         $ct.ajax.ajaxPost($ct.cn.getEmployeeAttendanceUrl() + 'GetEmployeeShiftTime', "", function (result) {
@@ -30,20 +30,20 @@
 
 
     };
-    var getEmployeeAttendenceFacilities = function (successCallBack) {
+    //var getEmployeeAttendenceFacilities = function (successCallBack) {
 
-        $ct.ajax.ajaxPost($ct.cn.getShelterUrl() + 'GetSheltersWithSecurity', "", function (result) {
+    //    $ct.ajax.ajaxPost($ct.cn.getShelterUrl() + 'GetSheltersWithSecurity', "", function (result) {
 
-            if (successCallBack != null)
-                successCallBack(result);
+    //        if (successCallBack != null)
+    //            successCallBack(result);
 
-        }, null, true)
-
-
-        return "";
+    //    }, null, true)
 
 
-    };
+    //    return "";
+
+
+    //};
 
     var getEmployeeAttendence = function (ViewModel, successCallBack) {
 
@@ -206,14 +206,50 @@
 
         return "";
     };
+
+
+    var getEmployeeAttendanceCommentHistory = function (commentsViewModel, successCallBack) {
+        var Data = {};
+        Data.EmployeeId = commentsViewModel.datafromParent.griddata.EmployeeId;
+        Data.ShiftDate = commentsViewModel.datafromParent.date;
+        Data.ShiftId = commentsViewModel.datafromParent.griddata.ShiftId;
+        $ct.ajax.ajaxPost($ct.cn.getEmployeeAttendanceUrl() + 'GetEmployeeAttendanceComments', Data, function (result) {
+
+            if (successCallBack != null)
+                successCallBack(result);
+
+        }, null, true)
+
+
+        return "";
+
+
+    };
+
+    var saveEmployeeAttendenceComment = function (saveEmployeeAttendenceData, successCallBack) {
+
+        $ct.ajax.ajaxPost($ct.cn.getEmployeeAttendanceUrl() + 'SaveEmployeeAttendanceComment', saveEmployeeAttendenceData, function (result) {
+
+
+            if (successCallBack != null)
+                successCallBack(result);
+
+        }, null, true)
+
+
+        return "";
+    };
+
     return {
-        getEmployeeAttendenceEvent: getEmployeeAttendenceEvent,
+       // getEmployeeAttendenceEvent: getEmployeeAttendenceEvent,
         getEmployeeAttendenceInitialLoad: getEmployeeAttendenceInitialLoad,
-        getEmployeeAttendenceFacilities: getEmployeeAttendenceFacilities,
+        //getEmployeeAttendenceFacilities: getEmployeeAttendenceFacilities,
         getEmployeeAttendence: getEmployeeAttendence,
         saveEmployeeAttendence: saveEmployeeAttendence,
         bulkUpdateEmployeeAttendence: bulkUpdateEmployeeAttendence,
-        exportEmployeeAttendenceToExcel: exportEmployeeAttendenceToExcel
+        exportEmployeeAttendenceToExcel: exportEmployeeAttendenceToExcel,
+        getEmployeeAttendanceCommentHistory: getEmployeeAttendanceCommentHistory,
+        saveEmployeeAttendenceComment: saveEmployeeAttendenceComment
 
     };
 

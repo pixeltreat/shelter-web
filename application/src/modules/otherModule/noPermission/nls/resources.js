@@ -1,7 +1,7 @@
 define({
     "root": {
 
-        "lblNoPermission": "You do not have enough permissions. Please contact administrator."
+        "lblNoPermission": "You Do Not Have Enough Permissions. Please Contact Administrator."
 
     }
 });

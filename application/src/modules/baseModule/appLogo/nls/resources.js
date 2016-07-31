@@ -1,7 +1,9 @@
 define({
     "root": {
 
-        "lblHome" : "Home"
+        "lblHome": "Home",
+        "lblMSNSLogo": "MSNS Logo",
+        "lblMenuCollapse": "Menu Collapse/Expand"
 
     }
 });

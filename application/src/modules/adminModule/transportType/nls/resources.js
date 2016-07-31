@@ -1,7 +1,7 @@
 define({
     "root": {
 
-        "headerAddEditStaffType": "Add edit Transportation Type",
+        "headerAddEditTransportationType": "Add Edit Transportation Type",
 
         "lblName": "Name",
         "lblDisplayOrder": "Display Order",
@@ -9,12 +9,12 @@ define({
 
 
         //validation messages
-        "valmsgNameRequired": "Name is required",
-        "valmsgDescriptionRequired": "Description is required",
-        "valmsgDisplayOrderRequired": "Display Order is required",
+        "valmsgNameRequired": "Name Is Required",
+        "valmsgDescriptionRequired": "Description Is Required",
+        "valmsgDisplayOrderRequired": "Display Order Is Required",
 
         "btnSave": "Save",
-        "btnCancel": "Back"
+        "btnBack": "Back"
 
     }
 });

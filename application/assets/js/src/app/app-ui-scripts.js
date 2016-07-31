@@ -38,9 +38,13 @@ function showNavPanel(e) {
     $(rootEle).addClass('has-nav-expanded');
 
     // hack to avoid cursor overlap in IE
-    if(focusedElement.nodeName === 'INPUT') {
-        focusedElement.blur();
+    if (focusedElement)
+    {
+        if (focusedElement.nodeName === 'TEXTAREA' || focusedElement.nodeName === 'INPUT') {
+            focusedElement.blur();
+        }
     }
+
 }
 
 /**

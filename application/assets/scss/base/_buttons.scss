@@ -105,7 +105,9 @@ $iconButtons: (
     'btn-edit'       : $base-orange,
     'btn-delete'     : $base-red,
     'btn-save'       : $base-green,
-    'btn-add-comment': $base-cyan
+    'btn-add-comment': $base-cyan,
+    //Added by UI Team
+    'btn-pdf'        : $base-blue
 );
 
 // loop through the $iconButtons and print selectors for each one.
@@ -113,9 +115,4 @@ $iconButtons: (
     .#{$class} {
         @include iconButton($color);
     }
-}
-
-// style to remove border for filter off and on in employee pages
-.label-filter{
-    padding:6px 20px;
 }

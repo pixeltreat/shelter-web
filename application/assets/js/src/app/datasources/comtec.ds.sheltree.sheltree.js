@@ -189,7 +189,7 @@
         }
 
         if (reqObj.valArrivalTime == null) {
-            requestParam.SelectedArrivalTime = reqObj.valDischargeTime;
+            requestParam.SelectedArrivalTime = reqObj.valArrivalTime;
         }
         else {
 
@@ -210,23 +210,23 @@
         return "";
     };
 
-    var getActiveEvents = function (ViewModel, successCallBack) {
+    //var getActiveEvents = function (ViewModel, successCallBack) {
 
-        var requestParam = {};
-
-
-        requestParam.ShelterId = ViewModel.sheltereeHeaderData.shelter.Id;
-
-        $ct.ajax.ajaxPost($ct.cn.getEventUrl() + 'GetActiveEvent', requestParam, function (result) {
-
-            if (successCallBack != null)
-                successCallBack(result);
-
-        }, null, true)
+    //    var requestParam = {};
 
 
-        return "";
-    };
+    //    requestParam.ShelterId = ViewModel.sheltereeHeaderData.shelter.Id;
+
+    //    $ct.ajax.ajaxPost($ct.cn.getEventUrl() + 'GetActiveEvent', requestParam, function (result) {
+
+    //        if (successCallBack != null)
+    //            successCallBack(result);
+
+    //    }, null, true)
+
+
+    //    return "";
+    //};
 
     var getImportActionOptions = function (successCallBack) {
 
@@ -566,7 +566,38 @@
 
         return "";
     };
+    var downloadSheltereeTemplate = function (successCallBack) {
 
+        var Data = "";
+
+        $ct.ajax.ajaxPost($ct.cn.getSheltereeFacilityUrl() + 'DownloadSheltereeTemplate', Data, function (result) {
+
+            if (successCallBack != null)
+                successCallBack(result);
+
+        }, null, true)
+
+        return "";
+
+    };
+
+    var generateSheltereeReportClick = function (ReportData, successCallBack) {
+
+        var requestParam = {};
+        requestParam.SheltereeId = ReportData.sheltereeId;
+        requestParam.EventId = ReportData.eventId;
+
+        $ct.ajax.ajaxPost($ct.cn.getSheltereeFacilityUrl() + 'GetSheltereePDFReport', requestParam, function (result) {
+
+            if (successCallBack != null)
+                successCallBack(result);
+
+        }, null, true)
+
+
+        return "";
+    };
+    
 
     return {
 
@@ -575,7 +606,7 @@
         exportSheltereesListToExcel: exportSheltereesListToExcel,
         getSheltereeBulkUpdateLookup: getSheltereeBulkUpdateLookup,
         bulkUpdateSheltereeData: bulkUpdateSheltereeData,
-        getActiveEvents: getActiveEvents,
+       // getActiveEvents: getActiveEvents,
         getImportActionOptions: getImportActionOptions,
         getExportFailedImportedSheltereeDataToExcel: getExportFailedImportedSheltereeDataToExcel,
         downloadSheltereeToExcel: downloadSheltereeToExcel,
@@ -586,7 +617,9 @@
         generatereportsforMedicalUpdateesList:generatereportsforMedicalUpdateesList,
         generatereportsforDischargeesList:generatereportsforDischargeesList,
         commentMedicalUpdateList: commentMedicalUpdateList,
-        commentSaveMedicalUpdateList: commentSaveMedicalUpdateList
+        commentSaveMedicalUpdateList: commentSaveMedicalUpdateList,
+        downloadSheltereeTemplate: downloadSheltereeTemplate,
+        generateSheltereeReportClick: generateSheltereeReportClick
 
     };
 

@@ -41,6 +41,13 @@
     box-sizing: border-box;
 }
 
+//Added by UI Team
+//Start : Added code to handle background color for dropdowns
+.k-dropdown-wrap.k-state-default {
+    background-color: #fff;
+}
+//End : : Added code to handle background color for dropdowns
+
 .k-dropdown-wrap {
     .k-select {
         border-left: 1px solid;
@@ -83,9 +90,11 @@
     border-color: $inp-sucess-border;
 }
 
+//Added by UI Team
+//Start : Modified code to handle changed label name unAssigned to Assigned in employee attendance
 // dropdown with status icons
 .icon-Reported::before,
-.icon-UnAssigned::before,
+.icon-Assigned::before,
 .icon-NotReported::before {
     @extend .f-icon:before;
     margin-right: 6px;
@@ -99,7 +108,7 @@
         color: $base-green;
     }
 
-    &-UnAssigned::before {
+    &-Assigned::before {
         @extend .f-icon__nav-help:before;
         color: $base-orange;
     }
@@ -109,3 +118,4 @@
         color: $base-red;
     }
 }
+//End  : Modified code to handle changed label name unAssigned to Assigned in employee attendance

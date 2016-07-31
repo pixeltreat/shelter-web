@@ -1,6 +1,6 @@
 define({
     "root": {
-        "header": "Transportation Type",
+        "headerTransportationType": "Transportation Type",
         "lblSearch": "Search",
 
         "gdColName": "Name",

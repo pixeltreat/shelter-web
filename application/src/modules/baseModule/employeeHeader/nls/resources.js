@@ -13,8 +13,9 @@ define({
         "mnuUploadData": "Upload Data",
         "mnuDownloadData": "Download Data",
         "mnuDownloadTemplate": "Download Template",
-        "lblEventName": "Event Name",
-        "lblDuration": "Duration:"
+        "lblEventName": "Event Name:",
+        "lblDuration": "Duration:",
+        "lblAllShelter": "All Shelters"
        
 
 

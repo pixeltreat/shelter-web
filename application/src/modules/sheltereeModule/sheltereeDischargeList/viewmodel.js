@@ -35,13 +35,24 @@ function (Boiler, helpTmpl) {
             transportationTypeFilterLookUp: [],
          
 
-            filterText: function () {
+            //commented code for filter on/off label
+            //filterText: function () {
+
+            //    if (this.get("isFilteredData")) {
+            //        return "Filter On";
+            //    }
+            //    else {
+            //        return "Filter Off";
+            //    }
+
+            //},
+            toggleShowAll: function () {
 
                 if (this.get("isFilteredData")) {
-                    return "Filter On";
+                    return false;
                 }
                 else {
-                    return "Filter Off";
+                    return true;
                 }
 
             },
@@ -73,7 +84,7 @@ function (Boiler, helpTmpl) {
 
                 vm.set("sheltereeHeaderData", moduleContext.parentContext.sheltereeHeaderData);
 
-                $ct.ds.sheltree.sheltree.getActiveEvents(this, function (result) {
+                $ct.ds.event.getActiveEvent( function (result) {
 
                     var resultData = result.Data.ActiveEvent;
                     vm.set("eventdata", resultData);
@@ -221,14 +232,14 @@ function (Boiler, helpTmpl) {
                     $("#vwsdlDgSheltereeDischargeListParent").find(".k-grid-filter").click(function (e) {
 
 
-                        if ($(e.target).closest("th[data-field='FacilityName']").data("kendoFilterMultiCheck") != undefined) {
+                        //if ($(e.target).closest("th[data-field='FacilityName']").data("kendoFilterMultiCheck") != undefined) {
 
-                            var fmc = $(e.target).closest("th").data("kendoFilterMultiCheck");
-                            fmc.checkSource._view = vm.shelterFilterLookUp;
+                        //    var fmc = $(e.target).closest("th").data("kendoFilterMultiCheck");
+                        //    fmc.checkSource._view = vm.shelterFilterLookUp;
 
-                            fmc.container.empty();
-                            fmc.refresh();
-                        }
+                        //    fmc.container.empty();
+                        //    fmc.refresh();
+                        //}
 
                         if ($(e.target).closest("th[data-field='HomeParish']").data("kendoFilterMultiCheck") != undefined) {
 
@@ -248,7 +259,7 @@ function (Boiler, helpTmpl) {
                             fmc.refresh();
                         }
 
-                        if ($(e.target).closest("th[data-field='Caregivers']").data("kendoFilterMultiCheck") != undefined) {
+                        if ($(e.target).closest("th[data-field='CaregiverValue']").data("kendoFilterMultiCheck") != undefined) {
 
                             var fmc = $(e.target).closest("th").data("kendoFilterMultiCheck");
                             fmc.checkSource._view = vm.caregiversFilterLookUp;
@@ -281,14 +292,14 @@ function (Boiler, helpTmpl) {
 
                     });
 
-                    if (!$ct.security.isMultiFacilityUser()) {
+                    //if (!$ct.security.isMultiFacilityUser()) {
 
-                        var gridObj = $("#vwslDgSheltereeList").data("kendoGrid");
-                        if ((gridObj != undefined) && (gridObj != null)) {
-                            gridObj.showColumn("FacilityName");
-                            gridObj.hideColumn("FacilityName");
-                        }
-                    }
+                    //    var gridObj = $("#vwslDgSheltereeList").data("kendoGrid");
+                    //    if ((gridObj != undefined) && (gridObj != null)) {
+                    //        gridObj.showColumn("FacilityName");
+                    //        gridObj.hideColumn("FacilityName");
+                    //    }
+                    //}
 
 
                     if (vm.get("dsSheltereeDischargeList").total() > 0) {
@@ -524,7 +535,7 @@ function (Boiler, helpTmpl) {
 
                 var columnHeader = $("#vwSheltereeDischargeList").find("th[role='columnheader']").first();
 
-                $(columnHeader).html("<label class='checkbox'><input class='checkbox__inp' type='checkbox' data-item-type='child' id='chkAll' /><span class='checkbox__text'></span></label>");
+                $(columnHeader).html("<label class='checkbox'><input class='checkbox__inp' type='checkbox'  id='chkAll' /><span class='checkbox__text'></span></label>");
 
                 $("#vwSheltereeDischargeList").find("#chkAll").click(function (e) {
 
@@ -625,7 +636,7 @@ function (Boiler, helpTmpl) {
                 $ct.helpers.hideWorkAreaBusyCursor();
             },
 
-
+            //This function will clear all flags and reinitialize grid data
             clearData: function () {
 
                 //$ct.helpers.displayWorkAreaBusyCursor();
@@ -697,7 +708,7 @@ function (Boiler, helpTmpl) {
                    ) {
 
 
-                   moduleContext.notify($ct.en.getShowValidationMsg(), "Please select records to bulk update");
+                    moduleContext.notify($ct.en.getShowValidationMsg(), $ct.msg.getBulkUpdateSheltreeDischargeValidationMsg());
                     return;
                 }
 
@@ -789,16 +800,46 @@ function (Boiler, helpTmpl) {
                 });
 
             },
+            btnReportClick: function (e) {
 
+                moduleContext.notify($ct.en.getHideErrorMsg());
+                $ct.helpers.displayWorkAreaBusyCursor();
+
+                var reportData = {};
+
+                reportData.sheltereeId = e.data.Id;
+                reportData.eventId = e.data.EventId;
+
+                $ct.ds.sheltree.sheltree.generateSheltereeReportClick(reportData, function (result) {
+
+                    $ct.helpers.hideWorkAreaBusyCursor();
+
+                    if (result.Data.DownloadUrl != undefined) {
+
+                        window.location.href = result.Data.DownloadUrl;
+
+                    }
+                    else {
+
+                        var errorObj = $ct.mt.getErrorObject(result);
+                        if (errorObj != null) {
+                            moduleContext.notify($ct.en.getShowErrorMsg(), errorObj);
+                        }
+
+                    }
+
+                });
+
+            },
 
             sheltereeEditUrl: function (isNew) {
 
                 if (!isNew) {
-                    return $ct.rn.getShelteree() + "/" + this.selectedId + "/" + this.selectedShelterId;
+                    return $ct.rn.getShelteree() + "/" + this.selectedId + "/" + this.selectedShelterId + "/" + $ct.rn.getSheltereeDischargeList();
 
                 }
                 else {
-                    return $ct.rn.getShelteree() + "/" + $ct.constants.getemptyGUID() + "/" + moduleContext.parentContext.sheltereeHeaderData.shelter.Id;
+                    return $ct.rn.getShelteree() + "/" + $ct.constants.getemptyGUID() + "/" + moduleContext.parentContext.sheltereeHeaderData.shelter.Id + "/" + $ct.rn.getSheltereeDischargeList();
                 }
 
             }

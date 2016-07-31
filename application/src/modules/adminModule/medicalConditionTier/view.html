@@ -6,17 +6,26 @@
         <h2 class="module-title">{{nls.headerAddEditMedicalConditionTier}}</h2>
         <div class="module-container">
             <label class="form-element-with-label">
-                <span class="form-element-with-label__text">{{nls.lblName}}</span>
+                <span class="form-element-with-label__text">
+                    {{nls.lblName}}
+                    <em class="form-element-with-label__text__astrisk">*</em>
+                </span>
                 <input type="text" id="vwmctTbName" name="vwmctTbName"  maxlength="250" class="form-element-with-label__inp" data-bind="value:medicalConditionTierData.MedicalConditionTier.Name" required validationmessage="{{nls.valmsgNameRequired}}">
                 <span class="k-invalid-msg" data-for="vwmctTbName"></span>
             </label>
             <label class="form-element-with-label">
-                <span class="form-element-with-label__text">{{nls.lblDescription}}</span>
+                <span class="form-element-with-label__text">
+                    {{nls.lblDescription}}
+                    <em class="form-element-with-label__text__astrisk">*</em>
+                </span>
                 <textarea id="vwmctTaDescription" name="vwmctTaDescription" class="form-element-with-label__inp" data-bind="value:medicalConditionTierData.MedicalConditionTier.Description , attr:{maxlength: DescriptionLength} " required validationmessage="{{nls.valmsgDescriptionRequired}}"  rows="5"></textarea>
                 <span class="k-invalid-msg" data-for="vwmctTaDescription"></span>
             </label>
             <label class="form-element-with-label">
-                <span class="form-element-with-label__text">{{nls.lblDisplayOrder}}</span>
+                <span class="form-element-with-label__text">
+                    {{nls.lblDisplayOrder}}
+                    <em class="form-element-with-label__text__astrisk">*</em>
+                </span>
                 <input type="text" id="vwmctTaDisplayOrder" name="vwmctTaDisplayOrder" class="form-element-with-label__inp"
                        data-role="numerictextbox" min="1" max="1000" data-format="n0" data-decimals="0" data-spinners="false"
                        required validationmessage="{{nls.valmsgDisplayOrderRequired}}"
@@ -30,7 +39,7 @@
             {{nls.btnSave}}
         </button>
         <button type="button" class="btn" data-bind="click:btnCancelClick">
-            {{nls.btnCancel}}
+            {{nls.btnBack}}
         </button>
     </div>
 </div>

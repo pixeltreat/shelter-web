@@ -1,7 +1,7 @@
 define({
     "root": {
 
-        "headerSheltereeDischarge": "Shelteree Discharge",
+        "headerSheltereeDischarge": "Shelteree Discharge List",
         "btnAdd": "Add",
         "btnDelete": "Delete",
         "btnEdit": "Edit",
@@ -25,7 +25,8 @@ define({
         "btnFilterOff": "Show All",
         "lblEventName": "EventName:",
         "lblDuration": "Duration:",
-        "btnReports": "Report"
+        "btnReports": "Report",
+        "btnReport": "Report"
 
 
     }

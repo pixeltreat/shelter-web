@@ -1,25 +1,31 @@
 <div id="vwTransportationType">
     <!--View name : vwTransportationType-->
     <!--Control id prefix : vwtt-->
-
     <div class="module">
-        <h2 class="module-title">{{nls.headerAddEditStaffType}}</h2>
+        <h2 class="module-title">{{nls.headerAddEditTransportationType}}</h2>
         <div class="module-container">
             <label class="form-element-with-label">
-                <span class="form-element-with-label__text">{{nls.lblName}}</span>
+                <span class="form-element-with-label__text">
+                    {{nls.lblName}}
+                    <em class="form-element-with-label__text__astrisk">*</em>
+                </span>
                 <input type="text" id="vwttTbName" name="vwstTbName" type="text" maxlength="250" class="form-element-with-label__inp" data-bind="value:transportationTypeData.TransportationType.Name" required validationmessage="{{nls.valmsgNameRequired}}">
                 <span class="k-invalid-msg" data-for="vwbtTbName"></span>
             </label>
-
             <label class="form-element-with-label">
-                <span class="form-element-with-label__text">{{nls.lblDescription}}</span>
+                <span class="form-element-with-label__text">
+                    {{nls.lblDescription}}
+                    <em class="form-element-with-label__text__astrisk">*</em>
+                </span>
                 <textarea id="vwttTaDescription" name="vwttTaDescription" class="form-element-with-label__inp" data-bind="value:transportationTypeData.TransportationType.Description,attr:{maxlength: DescriptionLength} " required validationmessage="{{nls.valmsgDescriptionRequired}}" rows="5"></textarea>
                 <span class="k-invalid-msg" data-for="vwdTaDescription"></span>
             </label>
-
             <label class="form-element-with-label">
-                <span class="form-element-with-label__text">{{nls.lblDisplayOrder}}</span>
-                <input type="text" id="vwttTaDisplayOrder" name="vwttTaDisplayOrder"  class="form-element-with-label__inp"
+                <span class="form-element-with-label__text">
+                    {{nls.lblDisplayOrder}}
+                    <em class="form-element-with-label__text__astrisk">*</em>
+                </span>
+                <input type="text" id="vwttTaDisplayOrder" name="vwttTaDisplayOrder" class="form-element-with-label__inp"
                        data-role="numerictextbox" min="1" max="1000" data-format="n0" data-decimals="0" data-spinners="false"
                        required validationmessage="{{nls.valmsgDisplayOrderRequired}}"
                        data-bind="value:transportationTypeData.TransportationType.DisplayOrder}" />
@@ -27,13 +33,12 @@
             </label>
         </div>
     </div>
-
     <div class="footer-bts-container">
         <button type="button" class="btn" data-bind="click:btnSaveClick">
             {{nls.btnSave}}
         </button>
         <button type="button" class="btn" data-bind="click:btnCancelClick">
-            {{nls.btnCancel}}
+            {{nls.btnBack}}
         </button>
     </div>
 </div>

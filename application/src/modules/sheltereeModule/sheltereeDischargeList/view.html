@@ -3,7 +3,7 @@
     <!--Control id prefix : vwsdl-->
     <div class="module">
         <!-- view title -->
-        <h2 class="module-title">Shelteree Discharge List<span class="module-title__icon" data-bind="click:helpClick"></span></h2>
+        <h2 class="module-title">{{nls.headerSheltereeDischarge}}<span class="module-title__icon" data-bind="click:helpClick"></span></h2>
         <div class="module-container is-employee-section">
             <div class="gridsearch">
                 <div class="gridsearch__search-col">
@@ -15,19 +15,19 @@
                     </label>
                 </div>
                 <div class="gridsearch__btns-col">
-                    <label class="label-filter">
+                    <!--<label class="label-filter">
                         <span class="f-icon f-icon__filter-off" aria-hidden="true"></span>
                         <span data-bind="text : filterText"></span>
-                    </label>
+                    </label>-->
+                    <button class="btn--secondary" data-bind="click:btnFilterOffClick,invisible:toggleShowAll" type="button">
+                        <span class="f-icon f-icon__showall" aria-hidden="true"></span>
+                        {{nls.btnFilterOff}}
+                    </button>
                     <button class="btn--secondary" data-bind="click:btnAddClick" type="button">
                         <span class="f-icon f-icon__add" aria-hidden="true"></span>
                         {{nls.btnAdd}}
                     </button>
-                    <button class="btn--secondary" data-bind="click:btnFilterOffClick" type="button">
-                        <span class="f-icon f-icon__showall" aria-hidden="true"></span>
-                        {{nls.btnFilterOff}}
-                    </button>
-                    <button class="btn--secondary" data-bind="click:btnExportExcelClick" type="button">
+                    <button class="btn--secondary" id="vwsdlBtnExcel" data-bind="click:btnExportExcelClick" type="button">
                         <span class="f-icon f-icon__export" aria-hidden="true"></span>
                         {{nls.btnExportToExcel}}
                     </button>
@@ -36,7 +36,7 @@
                         {{nls.btnBulkUpdate}}
                     </button>
                     <button class="btn--secondary" data-bind="click:btnReportsClick" type="button">
-                        <span class="f-icon f-icon__export" aria-hidden="true"></span>
+                        <span class="f-icon  f-icon__nav-reports" aria-hidden="true"></span>
                         {{nls.btnReports}}
                     </button>
                 </div>
@@ -57,12 +57,12 @@
                                    {width:'40px'},
                                    {title:'Edit',width:'60px'},
                                    {title:'Delete',width:'70px'},
-                                   {field:'FacilityName',title:'{{nls.gdColShelterName}}', filterable: {multi:true, dataSource:[]} ,  width:'250px'},
+                                   {title:'',width:'70px'},
                                    {field:'FirstName',title:'{{nls.gdColFirstName}}', width:'150px'},
                                    {field:'LastName',title:'{{nls.gdColLastName}}' , width:'150px'},
                                    {field:'HomeParish',title:'{{nls.gdColHomeParish}}' ,filterable: {multi:true, dataSource:[]}, width:'150px'},
                                    {field:'Region',title:'{{nls.gdColRegion}}',filterable: {multi:true, dataSource:[]}, width:'150px'},
-                                   {field:'Caregivers',title:'{{nls.gdColCaregivers}}' ,filterable: {multi:true, dataSource:[]}, width:'150px'},
+                                   {field:'CaregiverValue',title:'{{nls.gdColCaregivers}}' ,filterable: {multi:true, dataSource:[]}, width:'150px'},
                                    {field:'TransportationType',title:'{{nls.gdColTransportationType}}', filterable: {multi:true, dataSource:[]}, width:'200px'},
                                    {field:'Disposition',title:'{{nls.gdColDisposition}}', filterable: {multi:true, dataSource:[]}, width:'150px'},
                                    {field:'DischargeDateValue',title:'{{nls.gdColDischargeDate}}',filterable:false ,width:'150px'},
@@ -97,20 +97,21 @@
         <td>
             <button class="btn-edit" data-bind="click:btnEditClick">
                 <span class="f-icon f-icon__edit" aria-hidden="true"></span>
-                <span class="f-icon__text">Edit</span>
+                <span class="f-icon__text">{{nls.btnEdit}}</span>
             </button>
         </td>
         <td>
             <button class="btn-delete" data-bind="click:btnDeleteClick">
                 <span class="f-icon f-icon__delete" aria-hidden="true"></span>
-                <span class="f-icon__text">Delete</span>
+                <span class="f-icon__text">{{nls.btnDelete}}</span>
             </button>
         </td>
-        <td data-title="Shelter Name">
-            ${FacilityName}
+        <td>
+            <button class="btn-pdf" data-bind="click:btnReportClick">
+                <span class="f-icon f-icon__pdf" aria-hidden="true"></span>
+                <span class="f-icon__text">{{nls.btnReport}}</span>
+            </button>
         </td>
-
-
         <td data-title="{{nls.gdColFirstName}}">
             ${FirstName}
         </td>
@@ -124,7 +125,7 @@
             ${Region}
         </td>
         <td data-title="{{nls.gdColCaregivers}}">
-            ${Caregivers}
+            ${CaregiverValue}
         </td>
 
         <td data-title="{{nls.gdColTransportationType}}">

@@ -95,7 +95,7 @@ function (Boiler, helpTmpl) {
                         return;
                     }
                     else {
-                        moduleContext.notify($ct.en.getShowSuccMsg(), $ct.msg.getEmployeeUploadSuccessMsg());
+                        moduleContext.notify($ct.en.getShowSuccMsg(),$ct.msg.getEmployeeUploadSuccessMsg());
                         moduleContext.notify($ct.en.getEmployeeCreatedOrUpdated());
                         Boiler.UrlController.goTo($ct.rn.getEmployeeList());
                     }

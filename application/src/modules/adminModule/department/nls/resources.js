@@ -1,20 +1,21 @@
 define({
     "root": {
 
-        "headerAddEditDepartment": "Add edit Department",
+        "headerAddEditDepartment": "Add Edit Department",
 
-       "lblName": "Name", 
+        "lblName": "Name", 
         "lblDisplayOrder": "Display Order",   
         "lblDescription": "Description",
         "lblAgencies": "Agencies",
         
         //validation messages
-        "valmsgNameRequired": "Name is required",
-        "valmsgDescriptionRequired": "Description is required",
-        "valmsgDisplayOrderRequired": "Display Order is required",
+        "valmsgNameRequired": "Name Is Required",
+        "valmsgDescriptionRequired": "Description Is Required",
+        "valmsgDisplayOrderRequired": "Display Order Is Required",
+        "valmsgPleaseSelectAgencyRequired": "Please Select Agency",
 
         "btnSave": "Save",
-        "btnCancel": "Back"
+        "btnBack": "Back"
 
     }
 });

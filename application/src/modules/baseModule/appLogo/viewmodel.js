@@ -4,7 +4,14 @@
 
 
         var vm = kendo.observable({
-            showAppLogo: true
+
+
+            logoClick: function ()
+            {
+                moduleContext.notify($ct.en.getGoToHome());
+            }
+
+
         });
         //end of observable
 

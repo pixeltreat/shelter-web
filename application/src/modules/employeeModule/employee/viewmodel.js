@@ -29,7 +29,7 @@ define(["Boiler", 'text!./help/help.html'], function (Boiler, helpTmpl) {
 
             ShelterName: "",
             ShelterId: "",
-
+            srcView: "",
 
             fillQueryParam: function (param) {
 
@@ -37,6 +37,8 @@ define(["Boiler", 'text!./help/help.html'], function (Boiler, helpTmpl) {
 
                 //TODO: Need to drive througu query parameters
                 vm.set("ShelterId", param.shelterId);
+                vm.set("srcView", param.srcView);
+
                 vm.set("ShelterName", moduleContext.parentContext.empHeaderData.shelter.Name);
                 var obj = {};
                 obj.Id=param.shelterId;
@@ -65,7 +67,7 @@ define(["Boiler", 'text!./help/help.html'], function (Boiler, helpTmpl) {
                 $ct.helpers.displayWorkAreaBusyCursor();
                 vm.set("initialLoad", true);
                 moduleContext.notify($ct.en.getHideErrorMsg());
-                var data = $ct.ds.shlt.shelter.getShelters(function (result) {
+                var data = $ct.ds.shlt.shelter.getSheltersWithSecurityForActiveEvent(function (result) {
 
                     $ct.helpers.hideWorkAreaBusyCursor();
 
@@ -74,11 +76,11 @@ define(["Boiler", 'text!./help/help.html'], function (Boiler, helpTmpl) {
                     if (resultData !== undefined && resultData !== null && resultData.length > 0) {
 
                        
-                        var selectItem = {};
-                        selectItem.Id = -1;
-                        selectItem.Name = "--Select--";
+                        //var selectItem = {};
+                        //selectItem.Id = -1;
+                        //selectItem.Name = "--Select--";
 
-                        resultData.splice(0, 0, selectItem);
+                        //resultData.splice(0, 0, selectItem);
 
                         vm.set("dsShelters", resultData);
 
@@ -278,7 +280,7 @@ define(["Boiler", 'text!./help/help.html'], function (Boiler, helpTmpl) {
 
                     if ($ct.mt.isVersionConflict(data)) {
                         if ($ct.helpers.displayConfirmWindow($ct.msg.getVersionConflictReloadMsg())) {
-                            vm.initialize();
+                            vm.initializeShelters();
                         }
                         return;
                     }
@@ -293,29 +295,35 @@ define(["Boiler", 'text!./help/help.html'], function (Boiler, helpTmpl) {
                         moduleContext.notify($ct.en.getShowSuccMsg(), $ct.msg.getEmployeeSuccessMsg());
                     }
 
-                    if (moduleContext.parentContext.activeForm == "employeeextendedlist") {
-                        moduleContext.notify($ct.en.getEmployeeExpandedCreatedOrUpdated(), null);
-                    }
-                    if (moduleContext.parentContext.activeForm == "employeelist") {
+                    if (vm.srcView == $ct.rn.getEmployeeList()) {
                         moduleContext.notify($ct.en.getEmployeeCreatedOrUpdated(), null);
                     }
-                    Boiler.UrlController.goTo(moduleContext.parentContext.activeForm);
+
+                    if (vm.srcView == $ct.rn.getEmployeeExtendedList()) {
+                        moduleContext.notify($ct.en.getEmployeeExpandedCreatedOrUpdated(), null);
+                    }
+
+                    Boiler.UrlController.goTo(vm.srcView);
 
                 })
 
             },
 
+
             btnCancelClick: function () {
 
                 moduleContext.notify($ct.en.getHideErrorMsg());
 
-                if (moduleContext.parentContext.activeForm == "employeeextendedlist") {
-                    moduleContext.notify($ct.en.getEmployeeExpandedCreatedOrUpdated(), null);
-                }
-                if (moduleContext.parentContext.activeForm == "employeelist") {
+
+                if (vm.srcView == $ct.rn.getEmployeeList()) {
                     moduleContext.notify($ct.en.getEmployeeCreatedOrUpdated(), null);
                 }
-                Boiler.UrlController.goTo(moduleContext.parentContext.activeForm);
+
+                if (vm.srcView == $ct.rn.getEmployeeExtendedList()) {
+                    moduleContext.notify($ct.en.getEmployeeExpandedCreatedOrUpdated(), null);
+                }
+
+                Boiler.UrlController.goTo(vm.srcView);
 
             },
 

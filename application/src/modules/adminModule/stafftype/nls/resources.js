@@ -1,20 +1,20 @@
 define({
     "root": {
 
-        "headerAddEditStaffType": "Add edit Staff Type",
+        "headerAddEditStaffType": "Add Edit Staff Type",
 
         "lblName": "Name",
         "lblDisplayOrder": "Display Order",
         "lblDescription": "Description",
-       
+
 
         //validation messages
-        "valmsgNameRequired": "Name is required",
-        "valmsgDescriptionRequired": "Description is required",
-        "valmsgDisplayOrderRequired": "Display Order is required",
+        "valmsgNameRequired": "Name Is Required",
+        "valmsgDescriptionRequired": "Description Is Required",
+        "valmsgDisplayOrderRequired": "Display Order Is Required",
 
         "btnSave": "Save",
-        "btnCancel": "Back"
+        "btnBack": "Back"
 
     }
 });

@@ -4,13 +4,11 @@ define({
         "headerBulkUpdateSheltereeMedicalUpdate": "BulkUpdate - Shelteree MedicalUpdate",
         "headerEmployee": "BulkUpdate",
         "btnUpdate": "Update",
-        "btnCancel": "Back",       
+        "btnBack": "Back",       
         "lblDiposition": "Diposition",
         "lblTransportation": "Transportation Type",
-        "lblDischargeDate": "Discharge Date",
-        "lblDischargeTime": "Discharge Time",
-        "lblArrivalDate": "Arrival Date",
-        "lblArrivalTime": "Arrival Time",
+        "lblDischargeDate": "Discharge Date & Time",     
+        "lblArrivalDate": "Arrival Date & Time",     
         "lblDestination": "Destination"
 
     }

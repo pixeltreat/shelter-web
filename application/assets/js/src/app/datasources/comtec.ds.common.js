@@ -21,10 +21,26 @@
         return "";
     };
 
+    var getAlertsData = function (successCallBack) {
+
+        var requestParam = "";
+
+        $ct.ajax.ajaxPost($ct.cn.getShelterUrl() + 'GetShelterAlerts', requestParam, function (result) {
+
+            if (successCallBack != null)
+                successCallBack(result);
+
+        }, null, true)
+
+
+        return "";
+    };
+
 
     return {
 
-        getUserIdentityData: getUserIdentityData
+        getUserIdentityData: getUserIdentityData,
+        getAlertsData: getAlertsData
 
     };
 

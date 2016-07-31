@@ -1,7 +1,7 @@
 ﻿//Controler Names
 $ct.cn = function () {
 
-    var baseServiceUrl = globalBaseServiceUrl;
+    var baseServiceUrl = globalBaseServiceUrl + "api/";
 
     
     //Start of admin controllers
@@ -114,6 +114,8 @@ $ct.cn = function () {
         return sheltereeFacilityUrl;
     };
 
+    // start of question controller
+
     var questionUrl = baseServiceUrl + "Question/"
     var getQuestionUrl = function () {
         return questionUrl;
@@ -124,6 +126,15 @@ $ct.cn = function () {
         return questionResponseUrl;
     };
 
+    // end  of question controller
+
+    // start of reports controller
+    var reportsUrl = baseServiceUrl + "Reports/"
+    var getReportsUrl = function () {
+        return reportsUrl;
+    };
+    // end  of reports controller
+    
 
     return {
         //Start of admin controllers
@@ -160,7 +171,13 @@ $ct.cn = function () {
         getEmployeeAttendanceUrl: getEmployeeAttendanceUrl,   
         getSheltereeFacilityUrl: getSheltereeFacilityUrl,
         getQuestionUrl: getQuestionUrl,
-        getQuestionResponseUrl: getQuestionResponseUrl
+        getQuestionResponseUrl: getQuestionResponseUrl,
+
+
+        // start of reports controller
+        getReportsUrl: getReportsUrl
+        //end of reports controller
+
        
 
 

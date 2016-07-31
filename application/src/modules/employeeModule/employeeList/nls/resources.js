@@ -1,16 +1,16 @@
 define({
     "root": {
-        "headerEmployee": "Employee",
-
+        "headerEmployee": "Staff",
+        "headerStaffList" : "Staff List",
         "btnAdd": "Add",
         "btnDelete": "Delete",
         "btnEdit": "Edit",
-        "lblShelterName": "Shelter Name :",
-        "btnExportToExcel": "Export",
+        "lblShelterName": "Shelter Name",
+        "btnExport": "Export",
         "btnBulkUpdate": "Bulk Update",
         "btnFilterOff": "View All",
         "gdColIsSelected": "",
-        "gdColEmployeeRefId": "Employee Ref Id",
+        "gdColEmployeeRefId": "Staff Id",
         "gdColFirstName": "First Name",
         "gdColLastName": "Last Name",
         "gdColStaffType": "Staff Type",
@@ -23,8 +23,8 @@ define({
         "gdColLastUpdated": "Updated Date",
         "btnGo": "Go",
         "btnFilterOff": "Show All",
-        "lblEventName": "EventName:",
-        "lblDuration":"Duration:"
+        "lblEventName": "Event Name",
+        "lblDuration":"Duration"
 
     }
 });

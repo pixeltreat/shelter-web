@@ -1,0 +1,28 @@
+// ****************************************
+// reportsModule
+// ****************************************
+
+//Added by UI Team
+//Start : Added code to handle reports
+//newly added styles for reports starts
+.l--two-column-reports {
+    @extend .flex-row;
+    .column-one {
+        @extend .flex-col-lg__1-5, .flex-col-md__1-2, .flex-col-sm__full;
+        padding-right: 15px;
+       
+    }
+    .column-two {
+        @extend .flex-col-lg__1-5, .flex-col-md__1-2, .flex-col-sm__full;
+       padding-right: 15px;
+    }
+}
+
+.form-list {
+    &.report-list li {
+       width:234px;
+    }
+}
+
+
+//End : Added code to handle reports

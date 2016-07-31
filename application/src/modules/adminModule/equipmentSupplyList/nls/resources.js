@@ -1,7 +1,7 @@
 define({
     "root": {
 
-        "headerEquipmentSupply": "equipment supply",
+        "headerEquipmentSupply": "Equipment Supply",
         "lblSearch": "Search",
         "gdColId": "Id",
         "gdColName": "Name",

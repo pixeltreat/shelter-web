@@ -136,6 +136,8 @@ $ct.helpers = function () {
 
         if (windowTitle !== undefined) {
             window.title(windowTitle);
+        } else {
+            window.title("");
         }
 
         window.center().open();

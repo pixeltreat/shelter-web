@@ -17,15 +17,9 @@ define(['Boiler', './viewmodel', 'text!./view.html', 'i18n!./nls/resources'], fu
 
 
         moduleContext.listen($ct.en.getShowActiveEmployeeHeader(), function () {
+
             $('#idxEmployeeHeader').show();
             $("#activeNav").show();
-
-
-            $("#vwEmployeeHeader").find(".item_nav_active").removeClass("item_nav_active")
-
-            if ($("#vweh" + moduleContext.parentContext.activeForm)[0] != undefined)
-                $($("#vweh" + moduleContext.parentContext.activeForm)[0].parentElement).addClass("item_nav_active");
-
 
         });
 

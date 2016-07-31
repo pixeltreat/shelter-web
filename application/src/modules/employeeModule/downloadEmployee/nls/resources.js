@@ -1,11 +1,11 @@
 define({
     "root": {
 
-        "headerDownloadEmployee": "Download Employee",
+        "headerDownloadEmployee": "Download Staff",
 
-        "lblShelterType": "ShelterType:",
-        "lblShelter": "Shelter:",
-        "btnDownloadEmployee": "Download Employee"
+        "lblShelterType": "Shelter Type",
+        "lblShelter": "Shelter",
+        "btnDownloadEmployee": "Download Staff"
 
         ////validation messages
         //"valmsgNameRequired": "Name is required",

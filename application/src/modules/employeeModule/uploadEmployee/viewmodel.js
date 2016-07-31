@@ -21,7 +21,7 @@ function (Boiler, helpTmpl) {
 
                 $ct.helpers.displayWorkAreaBusyCursor();
 
-                var data = $ct.ds.shlt.shelter.getShelters(function (result) {
+                var data = $ct.ds.shlt.shelter.getSheltersWithSecurityForActiveEvent(function (result) {
 
                     $ct.helpers.hideWorkAreaBusyCursor();
 

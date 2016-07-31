@@ -116,7 +116,7 @@ define(["Boiler", 'text!./help/help.html'], function (Boiler, helpTmpl) {
                 });
 
                 if (!atLeastOneSelected) {
-                    moduleContext.notify($ct.en.getShowValidationMsg(), "Please select atleast one medical condition");
+                    moduleContext.notify($ct.en.getShowValidationMsg(), $ct.msg.getStaffSpecialtyValidationMsg());
                     return;
                 }
                 $ct.helpers.displayWorkAreaBusyCursor();

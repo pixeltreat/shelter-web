@@ -4,12 +4,12 @@ define({
         "headerUploadShelteree": "Upload Shelteree",
 
 
-        "lblFacility": "Facility Name:",
-        "lblUpload": "Upload File:",
-        "lblOptions": "Choose Options:",
+        "lblFacility": "Facility Name",
+        "lblUpload": "Upload File",
+        "lblOptions": "Choose Options",
 
 
-        "btnExportToExcel": "Export to Excel",
+        "btnExportToExcel": "Export",
 
         "lblTotalRecords": "Total No of Records",
         "lblTotalRecordsUpdated": "Total No of Records Updated",

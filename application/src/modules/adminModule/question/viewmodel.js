@@ -257,6 +257,22 @@ function (Boiler) {
 
                 };
 
+                //To validate display order
+                var hideQuestionNumericValidation = function () {
+
+                    if (!this.get("triggerValidations")) {
+                        return true;
+                    }
+                   
+                    if ((this.get("DisplayOrder") == null) || (this.get("DisplayOrder") == undefined)) {
+                        return false;
+                    }
+                    else {
+                        return true;
+                    }
+
+                };
+                
 
 
                 var hideAnswerWidthValidation = function () {
@@ -295,6 +311,7 @@ function (Boiler) {
                 quesDef.AnswerOption.triggerValidations = false;
                 quesDef.AnswerOption.hideCTextValidation = hideChoiceTextValidation;
 
+
                 //To check whether question definition is valid or not.
                 quesDef.triggerValidations = false;
                 quesDef.hideQDefValidation = function () { return true };
@@ -327,6 +344,7 @@ function (Boiler) {
                 //Question level validation
                 quesDef.Question.triggerValidations = false;
                 quesDef.Question.hideQTextValidation = hideQuestionTextValidation;
+                quesDef.Question.hideQNumericValidation = hideQuestionNumericValidation;
 
                 if ((quesDef.Question.AnswerTypeId == $ct.ds.admin.question.getStringTextBoxId())
                 || (quesDef.Question.AnswerTypeId == $ct.ds.admin.question.getTextAreaId())) {
@@ -392,6 +410,12 @@ function (Boiler) {
                     isDataValid = false;
                 }
 
+                
+                //check to see is question attributes are valid
+                if (!vm.questionData[0].Question.hideQNumericValidation()) {
+                    isDataValid = false;
+                }
+
                 if ((vm.questionData[0].Question.AnswerTypeId == $ct.ds.admin.question.getStringTextBoxId()) ||
                 (vm.questionData[0].Question.AnswerTypeId == $ct.ds.admin.question.getTextAreaId())) {
 
@@ -434,6 +458,7 @@ function (Boiler) {
                     return;
                 }
 
+               
                 var saveQuestionData = vm.questionData[0].toJSON();
 
                 saveQuestionData.Question.QuestionTypeId = vm.selectedQuestionType.Key;

@@ -1,0 +1,43 @@
+// ****************************************
+// question
+// ****************************************
+//Added by UI Team
+//Start : Added view specific styles
+.question-textbox {
+    @extend .flex-row;
+
+    &__length {
+        flex: 0 0 27%;
+    }
+
+    &__characters {
+        margin: 32px 0px 0px 10px;
+    }
+}
+
+.add-option {
+    @extend .flex-row;
+
+    &__textbox {
+        @extend .flex-col-lg__1-3, .flex-col-sm__full;
+        padding-right: 30px;
+
+        @include MediaQueries($tablet) {
+            flex: 0 0 44%;
+        }
+
+        @include MediaQueries($mobile) {
+            padding-right: 0;
+        }
+    }
+
+    &__delete {
+        margin: 5px 0px 0px -15px;
+    }
+}
+
+.question-addoption {
+    margin-bottom: 10px;
+}
+
+//End : Added view specific styles

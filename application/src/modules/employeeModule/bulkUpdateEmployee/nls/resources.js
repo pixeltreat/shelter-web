@@ -1,14 +1,14 @@
 define({
     "root": {
 
-        "headerBulkUpdateEmployee": "BulkUpdate - Employee",
-        "headerEmployee": "BulkUpdate",
+        "headerBulkUpdateEmployee": "Bulk Update - Staff",
+        "headerEmployee": "Bulk Update",
         "btnUpdate": "Update",
-        "btnCancel": "Back",
-        "lblStaffType": "StaffType",
+        "btnBack": "Back",
+        "lblStaffType": "Staff Type",
         "lblDepartment": "Department",
         "lblShift": "Shift",
-        "lblStaffSpecialty": "StaffSpecialty"
+        "lblStaffSpecialty": "Staff Specialty"
 
 
     }

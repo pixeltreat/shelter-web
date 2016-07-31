@@ -1,12 +1,12 @@
 define({
     "root": {
-        "headerBulkUpdate": "Bulk Update - Employee Attendance",
+        "headerBulkUpdate": "Bulk Update - Staff Attendance",
         "btnUpdate": "Update",
-        "btnCancel": "Back",
+        "btnBack": "Back",
 
         "headerDataCell": "Bulk Update",
 
-        "lblStatus": "Status ",
+        "lblStatus": "Status",
         "lblComment": "Optional Comment"
 
     }

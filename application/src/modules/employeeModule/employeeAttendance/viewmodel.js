@@ -27,6 +27,7 @@ define(["Boiler", 'text!./help/help.html',
             shiftTimeFilterLookUp: [],
             staffSpecialityFilterLookUp: [],
             statusFilterLookUp: [],
+            departmentFilterLookUp: [],
 
             previousAttendenceDatestring: "",
             previousSelectedShift: -1,
@@ -52,7 +53,7 @@ define(["Boiler", 'text!./help/help.html',
             },
 
             initializeEvent: function () {
-                $ct.ds.emp.empattendance.getEmployeeAttendenceEvent(function (result) {
+                $ct.ds.event.getActiveEvent(function (result) {
 
                     var resultData = result.Data;
                     vm.set("ActiveEvent", resultData.ActiveEvent);
@@ -104,20 +105,17 @@ define(["Boiler", 'text!./help/help.html',
             },
 
             initializeFacilities: function () {
-                $ct.ds.emp.empattendance.getEmployeeAttendenceFacilities(function (result) {
+                $ct.helpers.displayWorkAreaBusyCursor();
 
+                      $ct.ds.shlt.shelter.getSheltersWithSecurityForActiveEvent(function (result) {
+               
 
                     var resultData = result.Data;
 
                     if (resultData !== undefined && resultData !== null && resultData.length > 0) {
 
 
-                        var selectItem = {};
-                        selectItem.Id = -1;
-                        selectItem.Name = "--All--";
-
-                        resultData.splice(0, 0, selectItem);
-
+                     
                         vm.set("dsFacilities", result.Data);
                         vm.set("selectedFacility", result.Data[0]);
 
@@ -161,17 +159,17 @@ define(["Boiler", 'text!./help/help.html',
             },
 
             btnGoClick: function () {
-
+               
                 vm.set("initialLoadforGo", false);
                 if (vm.isattendenceDateValid()) {
                     var date = (vm.attendenceDate.getMonth() + 1) + "/" + vm.attendenceDate.getDate() + "/" + vm.attendenceDate.getFullYear();
                     vm.set("attendenceDatestring", date);
                     vm.set("previousSelectedShift", vm.selectedShift.Key);
                     vm.set("previousSelectedFacility", vm.selectedFacility.Id);
-
+                    $ct.helpers.displayWorkAreaBusyCursor();
                     this.fillGrid();
 
-                    $ct.helpers.displayWorkAreaBusyCursor();
+                   
                 }
 
 
@@ -198,19 +196,14 @@ define(["Boiler", 'text!./help/help.html',
                     vm.shiftTimeFilterLookUp = result.Data.EmployeeAttendanceShiftTimeLookUpData;
                     vm.staffSpecialityFilterLookUp = result.Data.EmployeeAttendanceStaffSpecialityLookUpData;
                     vm.statusFilterLookUp = result.Data.EmployeeAttendanceStatusLookUpData;
+                    vm.departmentFilterLookUp = result.Data.EmployeeAttendanceDepartmentLookUpData;
                     vm.hasCachedData = result.Data.HasCachedData;
                     vm.isLastPageCachedData = result.Data.IsLastPageCachedData;
 
                     $("#vweaDgEmployeeListParent").find(".k-grid-filter").click(function (e) {
 
 
-                        if ($(e.target).closest("th[data-field='FacilityName']").data("kendoFilterMultiCheck") != undefined) {
-
-                            var fmc = $(e.target).closest("th").data("kendoFilterMultiCheck");
-                            fmc.checkSource._view = vm.shelterFilterLookUp;
-                            fmc.container.empty();
-                            fmc.refresh();
-                        }
+                       
 
 
                         if ($(e.target).closest("th[data-field='ShiftTime']").data("kendoFilterMultiCheck") != undefined) {
@@ -241,17 +234,25 @@ define(["Boiler", 'text!./help/help.html',
                             fmc.refresh();
                         }
 
+                        if ($(e.target).closest("th[data-field='DepartmentName']").data("kendoFilterMultiCheck") != undefined) {
+
+                            var fmc = $(e.target).closest("th").data("kendoFilterMultiCheck");
+                            fmc.checkSource._view = vm.departmentFilterLookUp;
+                            fmc.container.empty();
+                            fmc.refresh();
+                        }
+
 
                     });
                     /*To handle hide of data for multi facility user based on isMultiFacilityUser */
-                    if (!$ct.security.isMultiFacilityUser()) {
-                        var gridObj = $("#vweaDgEmployeeList").data("kendoGrid");
-                        if ((gridObj != undefined) && (gridObj != null)) {
-                            gridObj.showColumn("FacilityName");
-                            gridObj.hideColumn("FacilityName");
-                        }
+                    //if (!$ct.security.isMultiFacilityUser()) {
+                    //    var gridObj = $("#vweaDgEmployeeList").data("kendoGrid");
+                    //    if ((gridObj != undefined) && (gridObj != null)) {
+                    //        gridObj.showColumn("FacilityName");
+                    //        gridObj.hideColumn("FacilityName");
+                    //    }
 
-                    }
+                    //}
 
                     if (result.Data.EmployeeAttendanceRawData.length == 0) {
 
@@ -349,7 +350,7 @@ define(["Boiler", 'text!./help/help.html',
                     var errorObject = {};
                     errorObject.messageType = $ct.mt.getError();
                     errorObject.message = "Please select records to bulk update";
-                    moduleContext.notify($ct.en.getShowValidationMsg(), "Please select atleast one Employee.");
+                    moduleContext.notify($ct.en.getShowValidationMsg(), $ct.msg.getBulkUpdateEmployeeAttendanceValidationMsg());
                     return;
                 }
 
@@ -619,6 +620,7 @@ define(["Boiler", 'text!./help/help.html',
                 var vm = new commentsViewModel(moduleContext);
                 $ct.helpers.displayWindow(panel, "Comment", vm.data);
                 vm.data.initialize(bulkupdateobj);
+                vm.data.getCommentsHistory();
 
             }
 

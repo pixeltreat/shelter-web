@@ -18,6 +18,11 @@ $ct.en = function () {
         return goToNoPermissionPage;
     };
 
+    var goToNoRolePage = "GO_TO_NO_ROLE_PAGE";
+    var getGoToNoRolePage = function () {
+        return goToNoRolePage;
+    };
+
     var showValidationMsg = "SHOW_VALIDATION_MESSAGE";
 
     var getShowValidationMsg = function () {
@@ -249,6 +254,19 @@ $ct.en = function () {
         return questionCreatedOrUpdated;
     };
 
+    var displayEventList = "DISPLAY_EVENT_LIST";
+
+    var getDisplayEventList = function () {
+        return displayEventList;
+    };
+
+
+    var eventCreatedOrUpdated = "EVENT_CREATED_OR_UPDATED";
+
+    var getEventCreatedOrUpdated = function () {
+        return eventCreatedOrUpdated;
+    };
+
 
     //end of admin events
 
@@ -477,7 +495,8 @@ $ct.en = function () {
         //start of application independant common events
 
         getUpdateSecuritySettings: getUpdateSecuritySettings,
-        getDoNotHavePermission: getDoNotHavePermission, 
+        getDoNotHavePermission: getDoNotHavePermission,
+        getGoToNoRolePage: getGoToNoRolePage,
         getGoToNoPermissionPage : getGoToNoPermissionPage,
         getShowValidationMsg: getShowValidationMsg,
         getShowSuccMsg: getShowSuccMsg,
@@ -518,7 +537,8 @@ $ct.en = function () {
         getShelterIdentificationCreatedOrUpdated:getShelterIdentificationCreatedOrUpdated,
         getDisplayquestionList: getDisplayquestionList,
         getQuestionCreatedOrUpdated:getQuestionCreatedOrUpdated,
-
+        getDisplayEventList: getDisplayEventList,
+        getEventCreatedOrUpdated: getEventCreatedOrUpdated,
         //end of admin events  
 
 

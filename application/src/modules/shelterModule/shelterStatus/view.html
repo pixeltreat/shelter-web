@@ -8,28 +8,30 @@
        <h2 class="module-title">{{nls.headerShelterStatus}}<span class="module-title__icon" data-bind="click:helpClick"></span></h2>
 
         <div class="module-container">
-            <div class="gridsearch">
-                <div class="gridsearch__search-col">
-
-                    <span>{{nls.lblEventName}}</span>
-
-                    <div class="custom-select">
-                        <select id="vwsstDdlEventNames"
-                            data-role="dropdownlist"
-                            data-bind="source:dsEventNames,value:selectedEventItem"
-                            data-text-field="Value"
-                            data-value-field="Key" />
-                    </div>
+            <div class="l--two-column--shelterstatus">
+                <div class="column-one">
+                    <label class="form-element-with-label">
+                        <span class="form-element-with-label__text">
+                            {{nls.lblEventName}}
+                        </span>
+                        <div class="custom-select">
+                            <select id="vwsstDdlEventNames"
+                                    data-role="dropdownlist"
+                                    data-bind="source:dsEventNames,events:{change:ddlEventChange},value:selectedEventItem"
+                                    data-text-field="Value"
+                                    data-value-field="Key" />
+                        </div>
+                    </label>
                 </div>
-                <div class="gridsearch__btns-col">
+                <div class="column-two">
                     <button class="btn--secondary"
-                        data-bind="enabled:isRecordsPresentForShelterStatusExport,click:btnExportToExcelClick"
-                        type="button">
-                            <span class="f-icon f-icon__export" aria-hidden="true"></span>
-                            {{nls.btnExportToExcel}}
+                            data-bind="enabled:isRecordsPresentForShelterStatusExport,click:btnExportToExcelClick"
+                            type="button">
+                        <span class="f-icon f-icon__export" aria-hidden="true"></span>
+                        {{nls.btnExportToExcel}}
                     </button>
                 </div>
-                
+
             </div>
             <div class="table-wrapper">
                 <!--style="width:1150px"-->
@@ -63,7 +65,7 @@
 
         <td data-title="{{nls.gdColSave}}">
 
-            <button class="btn-save"  data-bind="click:btnSaveClick"><span class="f-icon f-icon__save" aria-hidden="true"></span> <span class="f-icon__text">Save</span></button>
+            <button class="btn-save"  data-bind="click:btnSaveClick"><span class="f-icon f-icon__save" aria-hidden="true"></span> <span class="f-icon__text">{{nls.btnSave}}</span></button>
         </td>
 
         
@@ -83,21 +85,21 @@
 
         </td>
 
-        <td data-title="{{nls.gdColOpenDate}}">
+        <td data-title="{{nls.gdColOpenDate}}" class="align-top">
             <div class="custom-datetimepicker">
                 <input data-role="datetimepicker" data-bind="value: OpenDate" />
                 <span class="k-widget k-tooltip k-tooltip-validation k-invalid-msg" data-bind="invisible: hideOpenDateValidation">
-                    Open date is required
+                    {{nls.valmsgOpenDateRequired}}
                 </span>
             </div>
 
         </td>
          
-        <td data-title="{{nls.gdColClosedDate}}">
+        <td data-title="{{nls.gdColClosedDate}}" class="align-top">
         <div class="custom-datetimepicker">
             <input data-role="datetimepicker" data-bind="value: ClosedDate" />
-            <span class="k-widget k-tooltip k-tooltip-validation k-invalid-msg" data-bind="invisible: hideClosedDateValidation">Closed date is required</span>
-            <span class="k-widget k-tooltip k-tooltip-validation k-invalid-msg" data-bind="invisible: hideOpenClosedDateValidation">Closed date should be greater than Open date </span>
+            <span class="k-widget k-tooltip k-tooltip-validation k-invalid-msg" data-bind="invisible: hideClosedDateValidation">{{nls.valmsgClosedDateRequired}}</span>
+            <span class="k-widget k-tooltip k-tooltip-validation k-invalid-msg" data-bind="invisible: hideOpenClosedDateValidation">{{nls.valmsgCDateGtODateRequired}} </span>
         </div>
     </td>
 

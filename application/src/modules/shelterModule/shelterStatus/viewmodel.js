@@ -33,25 +33,35 @@ define(["Boiler", 'text!./help/help.html'], function (Boiler, helpTmpl) {
 
                         vm.set("dsEventNames", resultData);
                         vm.set("selectedEventItem", resultData[0]);
+                        vm.fillGrid();
                     }
 
                 });
 
             },
 
+            ddlEventChange: function () {
+
+                $ct.helpers.displayWorkAreaBusyCursor();
+
+                vm.fillGrid();
+
+                $ct.helpers.hideWorkAreaBusyCursor();
+            },
+
             dsShelterStatus: function () {
 
 
-                if (this.initialLoad) {
-                    $ct.helpers.displayWorkAreaBusyCursor();
-                }
+                //if (this.initialLoad) {
+                //    $ct.helpers.displayWorkAreaBusyCursor();
+                //}
 
-                this.fillGrid();
+                //this.fillGrid();
 
-                if (this.initialLoad) {
-                    this.initialLoad = false;
-                    $ct.helpers.hideWorkAreaBusyCursor();
-                }
+                //if (this.initialLoad) {
+                //    this.initialLoad = false;
+                //    $ct.helpers.hideWorkAreaBusyCursor();
+                //}
 
             },
 
@@ -63,7 +73,11 @@ define(["Boiler", 'text!./help/help.html'], function (Boiler, helpTmpl) {
                 if ((gridObj != undefined) && (gridObj != null))
                     gridObj.content.scrollLeft("0");
 
+                $ct.helpers.displayWorkAreaBusyCursor();
+
                 this.set("dsShelterStatus", $ct.ds.shlt.shelter.getShelterStatus(this, function (result) {
+
+                    $ct.helpers.hideWorkAreaBusyCursor();
 
                     if (
                     ($ct.mt.isNoDataFound(result))
@@ -106,6 +120,7 @@ define(["Boiler", 'text!./help/help.html'], function (Boiler, helpTmpl) {
                 }
 
                 var saveShelterStatusData = e.data.toJSON();
+                saveShelterStatusData.EventId = vm.selectedEventItem.Key;
 
                 var openDate = new Date(saveShelterStatusData.OpenDate);
                 saveShelterStatusData.OpenDate = kendo.toString(new Date(openDate), "yyyy-MM-ddTHH:mm:ss");

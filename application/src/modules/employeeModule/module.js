@@ -43,7 +43,7 @@ multifacilityEmployeeListComponent
             
             'employeelist': new employeeListComponent(context),
             'employeeextendedlist': new employeeExtendedListComponent(context),
-            'employee/{id}/{shelterId}': new employeeComponent(context),
+            'employee/{id}/{shelterId}/{srcView}': new employeeComponent(context),
             'downloademployee': new downloadEmployeeComponent(context),
             'uploademployee': new uploadEmployeeComponent(context),
             'bulkupdateemployee': new bulkUpdateEmployeeComponent(context),

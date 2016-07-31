@@ -115,7 +115,7 @@ define(["Boiler", 'text!./help/help.html'], function (Boiler, helpTmpl) {
                 });
 
                 if (!atLeastOneSelected) {
-                    moduleContext.notify($ct.en.getShowValidationMsg(), "Please select atleast one staff type");
+                    moduleContext.notify($ct.en.getShowValidationMsg(), $ct.msg.getStaffTypeValidationMsg());
                     return;
                 }
                 $ct.helpers.displayWorkAreaBusyCursor();

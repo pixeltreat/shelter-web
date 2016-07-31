@@ -6,17 +6,20 @@
         <div class="module-container l--two-column">
             <div class="column-one">
                 <label class="form-element-with-label">
-                    <span class="form-element-with-label__text">{{nls.lblShelterName}}</span>
+                    <span class="form-element-with-label__text">
+                        {{nls.lblShelterName}}
+                        <em class="form-element-with-label__text__astrisk">*</em>
+                    </span>
                     <div class="custom-select" data-bind="attr: { class: setClassForShelterName, className:setClassForShelterName}">
                         <select id="vweDdlShelters"
                                 data-role="dropdownlist"
                                 data-bind="source:dsShelters,value:selectedShelterItem, disabled: isEditModeOrSingleShelterUser"
                                 data-text-field="Name"
                                 data-value-field="Id" required />
-                        <span class="k-widget k-tooltip k-tooltip-validation k-invalid-msg" data-bind="invisible:setValidationMsgForShelterName">Please select shelter name</span>
+                        <span class="k-widget k-tooltip k-tooltip-validation k-invalid-msg" data-bind="invisible:setValidationMsgForShelterName">{{nls.valmsgShelterNameRequired}}</span>
                     </div>
                 </label>
-               
+
             </div>
             <div class="column-two">
                 <label class="form-element-with-label">
@@ -24,14 +27,16 @@
                     <input type="text" class="form-element-with-label__inp" id="vweTbEmployeeId" name="vweTbEmployeeId"
                            data-bind="value:employeeData.Employee.EmployeeRefId" maxlength="250" />
                 </label>
-                
-            </div>
 
+            </div>
         </div>
         <div class="module-container l--two-column">
             <div class="column-one">
                 <label class="form-element-with-label">
-                    <span class="form-element-with-label__text">{{nls.lblFirstName}}</span>
+                    <span class="form-element-with-label__text">
+                        {{nls.lblFirstName}}
+                        <em class="form-element-with-label__text__astrisk">*</em>
+                    </span>
                     <input type="text" class="form-element-with-label__inp" maxlength="250"
                            id="vweTbFirstName" name="vweTbFirstName" required
                            validationmessage="{{nls.valmsgFNRequired}}"
@@ -51,7 +56,10 @@
         <div class="module-container l--two-column">
             <div class="column-one">
                 <label class="form-element-with-label">
-                    <span class="form-element-with-label__text">{{nls.lblLastName}}</span>
+                    <span class="form-element-with-label__text">
+                        {{nls.lblLastName}}
+                        <em class="form-element-with-label__text__astrisk">*</em>
+                    </span>
                     <input type="text" class="form-element-with-label__inp" id="vweTbLastName"
                            name="vweTbLastName" required validationmessage="{{nls.valmsgLNRequired}}" data-bind="value:employeeData.Employee.LastName" maxlength="250" />
                     <span class="k-invalid-msg" data-for="vweTbLastName"></span>
@@ -60,12 +68,15 @@
             </div>
             <div class="column-two">
                 <label class="form-element-with-label">
-                    <span class="form-element-with-label__text">{{nls.lblStaffType}}</span>
+                    <span class="form-element-with-label__text">
+                        {{nls.lblStaffType}}
+                        <em class="form-element-with-label__text__astrisk">*</em>
+                    </span>
                     <div class="custom-select" data-bind="attr: { class: setClassForStaffType, className:setClassForStaffType}">
                         <select id="vweDdlStaffTypes" data-role="dropdownlist" data-bind="source:dsStaffTypes, value:selectedStaffType"
                                 data-text-field="Value" data-value-field="Key" />
                         <span class="k-widget k-tooltip k-tooltip-validation k-invalid-msg"
-                              data-bind="invisible:setValidationMsgForStaffType">Please select staff type</span>
+                              data-bind="invisible:setValidationMsgForStaffType">{{nls.valmsgStaffTypeRequired}}</span>
                     </div>
                 </label>
             </div>
@@ -83,13 +94,16 @@
             </div>
             <div class="column-two">
                 <label class="form-element-with-label">
-                    <span class="form-element-with-label__text">{{nls.lblDepartment}}</span>
+                    <span class="form-element-with-label__text">
+                        {{nls.lblDepartment}}
+                        <em class="form-element-with-label__text__astrisk">*</em>
+                    </span>
                     <div class="custom-select" data-bind="attr: { class: setClassForDepartment, className:setClassForDepartment}">
                         <select id="vweDdlDepartments" data-role="dropdownlist"
                                 data-bind="source:dsDepartments, value:selectedDepartment"
                                 data-text-field="Value" data-value-field="Key" />
                         <span class="k-widget k-tooltip k-tooltip-validation k-invalid-msg displayblock"
-                              data-bind="invisible:setValidationMsgForDepartment">Please select Department</span>
+                              data-bind="invisible:setValidationMsgForDepartment">{{nls.valmsgDepartmentRequired}}</span>
                     </div>
                 </label>
             </div>
@@ -117,19 +131,19 @@
             <div class="column-one">
                 <span class="form-element-with-label">
                     <span class="form-element-with-label__text">{{nls.lblIsMedical}}</span>
-                    <ul class="form-list">
+                    <ul class="form-list-inline">
                         <li>
                             <label class="radio-button">
                                 <input class="radio-button__inp" name="vweRbVent" type="radio"
                                        value="true" data-bind="checked:employeeData.Employee.IsMedical">
-                                <span class="radio-button__text">Yes</span>
+                                <span class="radio-button__text">{{nls.lblRbYes}}</span>
                             </label>
                         </li>
                         <li>
                             <label class="radio-button">
                                 <input class="radio-button__inp" name="vweRbVent" type="radio"
                                        value="false" data-bind="checked: employeeData.Employee.IsMedical">
-                                <span class="radio-button__text">No</span>
+                                <span class="radio-button__text">{{nls.lblRbNo}}</span>
                             </label>
                         </li>
                     </ul>
@@ -142,7 +156,7 @@
             {{nls.btnSave}}
         </button>
         <button type="button" class="btn" data-bind="click:btnCancelClick">
-            {{nls.btnCancel}}
+            {{nls.btnBack}}
         </button>
     </div>
 </div>

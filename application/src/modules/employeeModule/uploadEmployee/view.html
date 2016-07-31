@@ -1,8 +1,8 @@
-<div id="vwUploadEmployee1">
+
     <!--Control id prefix : vwue-->
     <div id="vwUploadEmployee">
         <div class="module">
-            <h2 class="module-title">{{nls.headerUploadEmployee}}<span class="module-title__icon" data-bind="click:helpClick"></span></h2>
+            <h2 class="module-title">{{nls.headerUploadStaff}}<span class="module-title__icon" data-bind="click:helpClick"></span></h2>
             <div class="module-container">
                 <label class="form-element-with-label">
                     <span class="form-element-with-label__text">{{nls.lblFacility}}</span>
@@ -23,6 +23,7 @@
 
                 <label class="form-element-with-label">
                     <span class="form-element-with-label__text">{{nls.lblUpload}}</span>
+                </label>
                     <input id="vwueUpload" name="vwueUpload" type="file"
                            data-role="upload"
                            data-multiple=false
@@ -35,7 +36,7 @@
                             error: onError,
                             remove:onRemove,
                             progress:onProgressFileUpload}" />
-                </label>
+              
             </div>
         </div>
 
@@ -61,7 +62,7 @@
 
                 <li id="vwueExcel">
                     <button class="btn--secondary" data-bind="click:btnExportExcelClick" type="button">
-                        <span class="f-icon f-icon__export" aria-hidden="true"></span>{{nls.btnExportToExcel}}
+                        <span class="f-icon f-icon__export" aria-hidden="true"></span>{{nls.btnExport}}
                     </button>
                 </li>
                
@@ -92,7 +93,7 @@
             <a id="vwueExportExcel"></a>
         </div>
     </div>
-</div>
+
 
 <script type="text/x-kendo-template" id="vwupdRow-template">
      <tr>

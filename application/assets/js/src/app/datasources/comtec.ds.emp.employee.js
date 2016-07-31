@@ -26,7 +26,7 @@
         return '';
     };
 
-   
+
 
     var getEmployees = function (ViewModel, successCallBack) {
 
@@ -45,14 +45,14 @@
                     requestParam.Criteria = { PageSize: options.data.pageSize, PageIndex: options.data.page, SearchToken: ViewModel.searchToken, Filter: filter, Sort: sort };
                     //TODO:
                     requestParam.ShelterId = ViewModel.empHeaderData.shelter.Id;
-                  
+
                     requestParam.SelectedEmployeeIds = ViewModel.get("empRequestData.SelectedEmployeeIds");
                     requestParam.UnSelectedEmployeeIds = ViewModel.get("empRequestData.UnSelectedEmployeeIds");
                     requestParam.ViewAll = ViewModel.empRequestData.ViewAll;
                     requestParam.FetchSelectedOnly = ViewModel.empRequestData.FetchSelectedOnly;
-                   
+
                     ViewModel.set("selectedId", "-1");
-                    
+
                     $ct.ajax.ajaxPost($ct.cn.getEmployeeUrl() + 'GetEmployees', requestParam, function (result) {
 
                         if ($ct.mt.isNoDataFound(result)) {
@@ -111,7 +111,7 @@
                     requestParam.Criteria = { PageSize: options.data.pageSize, PageIndex: options.data.page, SearchToken: ViewModel.searchToken, Filter: filter, Sort: sort };
 
                     requestParam.ShelterId = ViewModel.empHeaderData.shelter.Id;
-                    
+
                     requestParam.SelectedEmployeeIds = ViewModel.get("empRequestData.SelectedEmployeeIds");
                     requestParam.UnSelectedEmployeeIds = ViewModel.get("empRequestData.UnSelectedEmployeeIds");
                     requestParam.ViewAll = ViewModel.empRequestData.ViewAll;
@@ -212,7 +212,7 @@
 
         requestParam.Id = selEmployeeId;
         requestParam.EmployeeVersion = selEmployeeVersion;
-        
+
         $ct.ajax.ajaxPost($ct.cn.getEmployeeUrl() + 'DeleteEmployee', requestParam, function (result) {
 
             if (successCallBack != null)
@@ -285,7 +285,7 @@
         requestParam.Criteria = { PageSize: pageSize, PageIndex: pageIndex, SearchToken: ViewModel.searchToken, Filter: filter, Sort: sort };
 
         requestParam.ShelterId = ViewModel.empHeaderData.shelter.Id;
-      
+
 
         //+Note Request Data Added
         requestParam.SelectedEmployeeIds = ViewModel.get("empRequestData.SelectedEmployeeIds");
@@ -293,7 +293,7 @@
         requestParam.ViewAll = ViewModel.empRequestData.ViewAll;
         requestParam.FetchSelectedOnly = ViewModel.empRequestData.FetchSelectedOnly;
 
-        
+
         $ct.ajax.ajaxPost($ct.cn.getEmployeeUrl() + 'ExportEmployeeToExcel', requestParam, function (result) {
 
 
@@ -333,7 +333,7 @@
         var requestParam = {};
         requestParam.Criteria = { PageSize: pageSize, PageIndex: pageIndex, SearchToken: ViewModel.searchToken, Filter: filter, Sort: sort };
         requestParam.ShelterId = ViewModel.empHeaderData.shelter.Id;
-     
+
 
         //+Note Request Data Added
         requestParam.SelectedEmployeeIds = ViewModel.get("empRequestData.SelectedEmployeeIds");
@@ -357,22 +357,22 @@
     };
 
 
-    var getActiveEvents = function (selectedShelterId, successCallBack) {
+    //var getActiveEvents = function (selectedShelterId, successCallBack) {
 
-        var requestParam = {};
+    //    var requestParam = {};
 
-        requestParam.ShelterId = selectedShelterId;
-        
-        $ct.ajax.ajaxPost($ct.cn.getEventUrl() + 'GetActiveEvent', requestParam, function (result) {
+    //    requestParam.ShelterId = selectedShelterId;
 
-            if (successCallBack != null)
-                successCallBack(result);
+    //    $ct.ajax.ajaxPost($ct.cn.getEventUrl() + 'GetActiveEvent', requestParam, function (result) {
 
-        }, null, true)
+    //        if (successCallBack != null)
+    //            successCallBack(result);
+
+    //    }, null, true)
 
 
-        return "";
-    };
+    //    return "";
+    //};
 
     var downloadEmployeeToExcel = function (ViewModel, successCallBack) {
 
@@ -395,11 +395,11 @@
     };
 
     var getEmployeeColumnLookup = function (successCallBack) {
-      
+
         var requestParam = "";
 
         $ct.ajax.ajaxPost($ct.cn.getEmployeeUrl() + 'GetEmployeeFilterLookupData', requestParam, function (result) {
-           
+
             if (successCallBack != null)
                 successCallBack(result);
 
@@ -408,24 +408,37 @@
         return "";
     };
 
+    var downloadEmployeeTemplate = function (successCallBack) {
 
+        var Data = "";
+
+        $ct.ajax.ajaxPost($ct.cn.getEmployeeUrl() + 'DownloadEmployeeTemplate', Data, function (result) {
+
+            if (successCallBack != null)
+                successCallBack(result);
+
+        }, null, true)
+        return "";
+
+    };
 
     return {
 
-            getImportActionOptions: getImportActionOptions,
-            getExportFailedImportedEmployeeDataToExcel: getExportFailedImportedEmployeeDataToExcel,
-            getEmployeeBulkUpdateLookup  : getEmployeeBulkUpdateLookup ,
-            bulkUpdateEmployeeData: bulkUpdateEmployeeData,
-            getEmployees: getEmployees,
-            getEmployeeExpandedList:getEmployeeExpandedList,
-            deleteEmployeeById: deleteEmployeeById,
-            getEmployeeById: getEmployeeById,
-            saveEmployee: saveEmployee,
-            exportEmployeesListToExcel: exportEmployeesListToExcel,
-            exportEmplyeesExpandedListToExcel:exportEmplyeesExpandedListToExcel,
-            downloadEmployeeToExcel: downloadEmployeeToExcel,
-            getActiveEvents: getActiveEvents,
-            getEmployeeColumnLookup: getEmployeeColumnLookup
+        getImportActionOptions: getImportActionOptions,
+        getExportFailedImportedEmployeeDataToExcel: getExportFailedImportedEmployeeDataToExcel,
+        getEmployeeBulkUpdateLookup  : getEmployeeBulkUpdateLookup ,
+        bulkUpdateEmployeeData: bulkUpdateEmployeeData,
+        getEmployees: getEmployees,
+        getEmployeeExpandedList:getEmployeeExpandedList,
+        deleteEmployeeById: deleteEmployeeById,
+        getEmployeeById: getEmployeeById,
+        saveEmployee: saveEmployee,
+        exportEmployeesListToExcel: exportEmployeesListToExcel,
+        exportEmplyeesExpandedListToExcel:exportEmplyeesExpandedListToExcel,
+        downloadEmployeeToExcel: downloadEmployeeToExcel,
+       // getActiveEvents: getActiveEvents,
+        getEmployeeColumnLookup: getEmployeeColumnLookup,
+        downloadEmployeeTemplate: downloadEmployeeTemplate
 
     };
 

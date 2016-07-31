@@ -1,7 +1,11 @@
 define(['Boiler', './settings',
-'./noPermission/component'
+'./noPermission/component',
+'./noRole/component',
+'./noActiveEvent/component'
 ], function (Boiler, settings,
-            NoPermissionComponent
+            NoPermissionComponent,
+            noRoleComponent,
+           noActiveEventComponent
 
 ) {
 
@@ -13,7 +17,9 @@ define(['Boiler', './settings',
 		var controller = new Boiler.UrlController($(".appcontent"));
 		controller.addRoutes({
 
-		    'nopermission': new NoPermissionComponent(context)
+		    'nopermission': new NoPermissionComponent(context),
+		    'norole': new noRoleComponent(context),
+		    'noactiveevent': new noActiveEventComponent(context)
             
 		});
 		controller.start();

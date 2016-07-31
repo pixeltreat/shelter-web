@@ -16,6 +16,15 @@ $base-red:                 #c00;
 $base-orange:              #f93;
 $base-green:               #9CCC65;
 $base-cyan:                #26C6DA;
+//Added by UI Team
+//Start : Added code to handle pdf icon color
+$base-blue:                #5c6bc0;
+//End : Added code to handle pdf icon color
+
+//Added by UI Team
+//Start : Added code to handle instruction text
+$base-grey:                #7b7b7b;
+//End : Added code to handle instruction text
 
 $border-color:             #d4d9e3;
 
@@ -66,3 +75,19 @@ $inp-disabled-bg:          #f2f2f2;
 $inp-disabled-border:      #b2b2b2;
 $inp-sucess-border:        #43a047;
 $inp-error-border:         #e53935;
+
+//Added by UI Team
+//Start : Added code to handle invalid role, no permission and no active event
+//invalid role
+$invalid-role-bg:         #f8f8f8;
+$invalid-icon-bg:         #ef9a9a;
+$invalid-icon-text:       #e53935;
+//End : Added code to handle invalid role, no permission and no active event
+
+
+//Added by UI Team
+//Start : Added code to handle logout
+$logout-bg:              #375e80;
+$logout-icon:            #294f66; 
+$logout-text:            #c3cfd8;
+//End : Added code to handle logout

@@ -40,7 +40,7 @@ uploadSheltereeComponent
             'bulkupdatesheltereedischarge': new bulkUpdateSheltereeDischargeComponent(context),
             'bulkupdatesheltereemedicalupdate': new bulkUpdateSheltereeMedicalUpdateComponent(context),
             'downloadshelteree': new downloadSheltereeComponent(context),
-            'shelteree/{id}/{shelterId}': new sheltereeComponent(context),
+            'shelteree/{id}/{shelterId}/{srcView}': new sheltereeComponent(context),
             'uploadshelteree': new uploadSheltereeComponent(context)
 
 

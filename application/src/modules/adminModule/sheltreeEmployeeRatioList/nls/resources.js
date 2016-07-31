@@ -1,10 +1,10 @@
 define({
     "root": {
-        "headerSheltreeEmployeeRatio": "Shelteree Employee Ratio",
+        "headerSheltreeEmployeeRatio": "Shelteree Staff Ratio",
         "lblSearch": "Search",
 
         "gdColName": " Staff Speciality Name",
-        "gdColEmployeecount": "Employee Count",
+        "gdColEmployeecount": "Staff Count",
         "gdColSheltreecount": "Shelteree Count",
         "gdColStaffspecailityid": "Staffspecaility Id",
         "gdColUserName": "User Name",

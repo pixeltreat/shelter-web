@@ -1,11 +1,11 @@
 define({
     "root": {
 
-        "headerUploadEmployee": "Upload Employee",
-        "lblFacility": "Facility Name:",
-        "lblUpload": "Upload File:",
-        "lblOptions": "Choose Options:",
-        "btnExportToExcel": "Export",
+        "headerUploadStaff": "Upload Staff",
+        "lblFacility": "Facility Name",
+        "lblUpload": "Upload File",
+        "lblOptions": "Choose Options",
+        "btnExport": "Export",
         "lblTotalRecords": "Total Records",
         "lblTotalRecordsUpdated": "Updated",
         "lblTotalRecordsFailed": "Failed",

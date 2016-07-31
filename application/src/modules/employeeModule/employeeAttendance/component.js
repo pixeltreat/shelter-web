@@ -39,7 +39,7 @@ define(['Boiler', './viewmodel', 'text!./view.html', 'i18n!./nls/resources'], fu
             if (panel) {
 
                 moduleContext.parentContext.dcRequestData = {
-                    viewAll: false,
+                    viewAll: true,
                     fetchSelectedOnly: false,
                     selectedEmployeeIds: new kendo.data.ObservableArray([]),
                     unSelectedEmployeeIds: new kendo.data.ObservableArray([])

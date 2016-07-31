@@ -80,7 +80,10 @@ $ct.mt = function () {
         noDataFound: "nodatafound",
         noActiveEvent: "noactiveevent",
         exportToExcel: "exporttoexcel" ,
-        businessRuleValidation: "businessrulevalidation"
+        businessRuleValidation: "businessrulevalidation",
+        authentication: "authentication",
+        concurrentEvent: "concurrentevent"
+
     };
 
     var getSuccess = function () {
@@ -113,6 +116,27 @@ $ct.mt = function () {
 
     var getNoDataFound = function () {
         return messageTypes.noDataFound;
+    };
+
+
+    var getAuthentication = function () {
+        return messageTypes.authentication;
+    };
+
+    var getConcurrentEvent = function () {
+        return messageTypes.concurrentEvent;
+    };
+
+
+    var isAuthenticationFailed = function (response) {
+
+        if ((response.MessageType !== undefined) && (response.MessageType !== null)) {
+            if (messageTypes.authentication === $ct.helpers.toLower(response.MessageType)) {
+                return true;
+            }
+        }
+        return false;
+
     };
 
     var isVersionConflict = function (response) {
@@ -162,6 +186,18 @@ $ct.mt = function () {
     };
 
 
+    var isConcurrentEvent = function (response) {
+
+        if ((response.MessageType !== undefined) && (response.MessageType !== null)) {
+            if (messageTypes.concurrentEvent === $ct.helpers.toLower(response.MessageType)) {
+                return true;
+            }
+        }
+        return false;
+
+    };
+
+
     return {
 
         //Acknowledge types
@@ -177,12 +213,16 @@ $ct.mt = function () {
         getMessage: getMessage,
         getVersionConflict: getVersionConflict,
         getNoDataFound: getNoDataFound,
+        getAuthentication: getAuthentication,
+        getConcurrentEvent: getConcurrentEvent,
 
         //Message type validations
+        isAuthenticationFailed : isAuthenticationFailed,
         isVersionConflict: isVersionConflict,
         isNoDataFound: isNoDataFound,
         isBusinessRule : isBusinessRule,
         isNoActiveEvent: isNoActiveEvent,
+        isConcurrentEvent: isConcurrentEvent,
 
         isError : isError,
         getErrorObject: getErrorObject

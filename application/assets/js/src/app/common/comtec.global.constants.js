@@ -5,26 +5,31 @@
 //global varibales in total application
 
 //Service layer deployed location (Without security)
-//var globalBaseServiceUrl = 'https://beta.comtecinfo.com/IMServiceDemo/api/';
+//var globalBaseServiceUrl = 'https://beta.comtecinfo.com/IMServiceDemo/';
 
 //Servicelayer on local machine.
-//var globalBaseServiceUrl = 'http://localhost:7222/api/';
-var globalBaseServiceUrl = 'https://beta.comtecinfo.com/sheltersl/api/';
-//var globalBaseServiceUrl = 'http://localhost:52848/api/';
+//var globalBaseServiceUrl = 'http://localhost:7222/';
+//var globalBaseServiceUrl = 'https://beta.comtecinfo.com/sheltersl/';
+//QA Service URL
+//var globalBaseServiceUrl = 'https://qa.comtecinfo.com:452/msns/msnsservice/';
+
+//var globalBaseServiceUrl = 'http://localhost:52848/';
+var globalBaseServiceUrl = 'https://beta.comtecinfo.com/msnssldemo/';
 
 
-var gloabalHospiceId = 540003;
+var gloabalHospiceId = 640306;
+
+var gloabalMiscellaneousSectionId = 2;
+var gloabalVitalSignsSectionId = 4;
+
+
 
 //Roles
-
+var globalSuperAdminId = 9;
 var globalAdministratorId = 4;
-var globalAssociationId = 34;
-var globalCallCenterId = 7;
-var globalDrcId = 5;
-var globalDataCellId = 35;
 var globalFacilityUpdateId = 3;
 var globalFacilityReadOnlyId = 2;
-var globalSuperAdminId = 20;
+
 
 //Question types
 //we can get rid of this
@@ -48,13 +53,5 @@ var globalQtTextAreaId = 4;
 var globalQtMultipleChoiceOnlyOneAnswerId = 5;
 var globalQtMultipleChoiceMultipleAnswerId = 6;
 var globalQtDropdownListId = 7;
-
-
-//Employee template URL
-var globalEmployeeTemplateURL = "https://beta.comtecinfo.com/FileRepository/ShelterTemplates/Employee_Upload-Template.xlsx";
-
-//Shelteree templat
-
-var globalSheltereeTemplateURL = "https://beta.comtecinfo.com/FileRepository/ShelterTemplates/Shelteree_Upload-Template.xlsx";
 
 

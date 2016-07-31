@@ -56,7 +56,6 @@ exports.filepath = {
         js + '/src/app/common/comtec.config.constants.js',
         js + '/src/app/comtec.helpers.js',
         js + '/src/app/common/comtec.security.js',
-        js + '/src/app/common/comtec.employeeColumnLookup.js',
         js + '/src/app/comtec.ajax.util.js',
         js + '/src/app/datasources/comtec.ds.common.js',
         js + '/src/app/datasources/comtec.ds.admin.agency.js',
@@ -71,12 +70,15 @@ exports.filepath = {
         js + '/src/app/datasources/comtec.ds.admin.disposition.js',
         js + '/src/app/datasources/comtec.ds.admin.shelterIdentification.js',
         js + '/src/app/datasources/comtec.ds.admin.equipmentSupply.js',
+        js + '/src/app/datasources/comtec.ds.admin.event.js',
         js + '/src/app/datasources/comtec.ds.shlt.shelter.js',
         js + '/src/app/datasources/comtec.ds.emp.employee.js',
         js + '/src/app/datasources/comtec.ds.emp.empattendance.js',
         js + '/src/app/datasources/comtec.ds.sheltree.sheltree.js',
         js + '/src/app/datasources/comtec.ds.admin.question.js',
         js + '/src/app/datasources/comtec.ds.sheltree.sheltreeinput.js',
+        js + '/src/app/datasources/comtec.ds.reports.js',
+        js + '/src/app/datasources/comtec.ds.event.js',       
         js + '/src/app/app-ui-scripts.js'
 
     ],

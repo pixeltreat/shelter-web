@@ -24,7 +24,9 @@ define(['Boiler', './settings',
 './shelterIdentificationList/component',
 './shelterIdentification/component',
 './questionList/component',
-'./question/component'
+'./question/component',
+'./eventList/component',
+'./event/component'
 ], function (Boiler, settings,
 agencyListComponent,
 agencyComponent,
@@ -51,7 +53,9 @@ equipmentSupplyComponent,
 shelterIdentificationListComponent,
 shelterIdentificationComponent,
 questionListComponent,
-questionComponent
+questionComponent,
+eventListComponent,
+eventComponent
 
 
 ) {
@@ -89,7 +93,9 @@ questionComponent
             'shelteridentificationlist': new shelterIdentificationListComponent(context),
             'shelteridentification/{id}': new shelterIdentificationComponent(context),
             'questionlist': new questionListComponent(context),
-            'question/{id}': new questionComponent(context)
+            'question/{id}': new questionComponent(context),
+            'eventlist': new eventListComponent(context),
+            'event/{id}': new eventComponent(context)
             
 
         });

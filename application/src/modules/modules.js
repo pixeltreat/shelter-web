@@ -13,7 +13,9 @@ define(function(require) {
         require('./otherModule/module'),
         require('./employeeModule/module'),
         require('./shelterModule/module'),
-        require('./sheltereeModule/module')
+        require('./sheltereeModule/module'),
+        require('./reportModule/module')
+        
 
 
     ];

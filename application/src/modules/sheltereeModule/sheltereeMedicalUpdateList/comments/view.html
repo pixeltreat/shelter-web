@@ -6,13 +6,16 @@
         <!-- <h2 class="module-title">{{nls.headerAddEditComment}}</h2> -->
         <div class="module-container">
             <label class="form-element-with-label">
-                <span class="form-element-with-label__text">{{nls.lblDescription}}</span>
+                <span class="form-element-with-label__text">
+                    {{nls.lblDescription}}
+                    <em class="form-element-with-label__text__astrisk">*</em>
+                </span>
                 <textarea id="vwsmulcTaDescription" name="vwsmulcTaDescription" required
                           data-bind="value:comment, attr:{maxlength: DescriptionLength}"
                           validationmessage="{{nls.valmsgCommentRequired}}" rows="5"></textarea>
                 <span class="k-invalid-msg" data-for="vwsmulcTaDescription"></span>
             </label>
-           
+
         </div>
     </div>
     <div class="footer-bts-container">
@@ -20,27 +23,30 @@
             {{nls.btnSave}}
         </button>
         <button type="button" class="btn" data-bind="click:btnCancelClick">
-            {{nls.btnCancel}}
+            {{nls.btnBack}}
         </button>
     </div>
 
 
     <div class="form-element-with-label" data-bind="visible:isCommentHistoryPresent">
         <span class="form-element-with-label__text" style="margin-top:15px;">{{nls.lblHistory}}</span>
-        <div data-template="vwsmulcRow-template" data-bind="source:history" class="Medicalupdate-Comments-History"></div>
+        <div data-template="vwsmulcRow-template" data-bind="source:history" class="Comments-History"></div>
     </div>
 
 </div>
 
 
 <script id="vwsmulcRow-template" type="text/x-kendo-template">
+
+
     <div data-title="Comment">
-        <span class="Medicalupdate-Comments-History-label"> >>> Comment </span>
-        <span class="Medicalupdate-Comments-History-label"> added on  </span>
-        <span data-bind="text:CommentDate" class="Medicalupdate-Comments-History-label"></span>
+        <span class="Comments-History-label"> {{nls.lblAddedOn}} </span>
+        <span data-bind="text:CommentDate" class="Comments-History-label"></span>
+        <span class="Comments-History-label">{{nls.lblat}} </span>
+        <span data-bind="text:CommentTime" class="Comments-History-label"></span>
+        <span class="Comments-History-label">{{nls.lblby}}</span>
+        <span data-bind="text:UserName" class="Comments-History-label"></span>
+        <span data-bind="text:Comment" class="Comments-History-comment"></span>
 
-
-
-        <span data-bind="text:Comment" class="Medicalupdate-Comments-History-comment"></span>
     </div>
 </script>

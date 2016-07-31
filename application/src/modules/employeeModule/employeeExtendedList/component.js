@@ -33,8 +33,7 @@ define(['Boiler', './viewmodel', 'text!./view.html', 'i18n!./nls/resources'], fu
                 vm.data.initialize();
                 vm.data.initializeEmployeeHeader();
                 vm.data.fillGrid();
-                //vm.data.refreshSnapShot();
-
+                
             }
         });
 
@@ -48,7 +47,7 @@ define(['Boiler', './viewmodel', 'text!./view.html', 'i18n!./nls/resources'], fu
 
                     vm.data.initialize();
                     vm.data.refreshEmployeeGrid();
-                    //vm.data.fillGrid();
+                   
 
                 }
 
@@ -68,8 +67,10 @@ define(['Boiler', './viewmodel', 'text!./view.html', 'i18n!./nls/resources'], fu
 
                 vm.data.initialize();
                 vm.data.initializeEmployeeHeader();
-                vm.data.fillGrid();
-                //vm.data.refreshSnapShot();
+                //This function call will clear all flags and reinitialize grid data
+                vm.data.clearData();
+                //if we want to link the modules comment the above line and uncomment the below line
+                //vm.data.fillGrid();
             }
 
 
@@ -85,15 +86,16 @@ define(['Boiler', './viewmodel', 'text!./view.html', 'i18n!./nls/resources'], fu
 
                 vm.data.initialize();
                 vm.data.initializeEmployeeHeader();
-                vm.data.fillGrid();
 
+                //This function call will clear all flags and reinitialize grid data
+                vm.data.clearData();
 
-                //vm.data.loadFacilityTypes();
+                //if we want to link the modules comment the above line and uncomment the below line
+                //vm.data.fillGrid();
 
             }
 
-            //vm.data.initialize();
-
+           
             panel.show();
 
 

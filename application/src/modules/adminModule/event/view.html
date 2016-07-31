@@ -1,0 +1,62 @@
+
+<div id="vwEvent">
+    <!--View name : vwEvent-->
+    <!--Control id prefix : vweve-->
+    <div class="module">
+        <h2 class="module-title">{{nls.headerAddEditEvent}}</h2>
+        <div class="module-container">
+            <label class="form-element-with-label">
+                <span class="form-element-with-label__text">
+                    {{nls.lblEventName}}
+                    <em class="form-element-with-label__text__astrisk">*</em>
+                </span>
+                <input type="text" id="vweveTbEventName" name="vweveTbEventName" maxlength="250" class="form-element-with-label__inp" data-bind="value:eventData.Event.EventName" required validationmessage="{{nls.valmsgEventNameRequired}}">
+                <span class="k-invalid-msg" data-for="vweveTbEventName"></span>
+            </label>
+            <label class="form-element-with-label">
+                <span class="form-element-with-label__text">
+                    {{nls.lblEventDescription}}
+                    <em class="form-element-with-label__text__astrisk">*</em>
+                </span>
+                <textarea id="vweveTaEventDescription" name="vweveTaEventDescription" class="form-element-with-label__inp" data-bind="value:eventData.Event.EventDescription , attr:{maxlength: DescriptionLength}" required validationmessage="{{nls.valmsgEventDescriptionRequired}}" rows="5"></textarea>
+                <span class="k-invalid-msg" data-for="vweveTaEventDescription"></span>
+            </label>
+
+            <label class="form-element-with-label">
+                <span class="form-element-with-label__text">
+                    {{nls.lblStartDate}}
+                    <em class="form-element-with-label__text__astrisk">*</em>
+                </span>
+                <input data-role="datetimepicker" name="vweveDtStartDate" id="vweveDtStartDate" data-bind="value:eventData.Event.StartDate" />
+                <span class="k-widget k-tooltip k-tooltip-validation k-invalid-msg"
+                      data-bind="invisible:isStartDateValid">
+
+                    {{nls.valmsgStartDateRequired}}
+                </span>
+            </label>
+
+            <label class="form-element-with-label">
+                <span class="form-element-with-label__text">
+                    {{nls.lblEndDate}}
+                    <em class="form-element-with-label__text__astrisk">*</em>
+                </span>
+                <input data-role="datetimepicker" name="vweveDtEndDate" id="vweveDtEndDate" data-bind="value:eventData.Event.EndDate" />
+
+                <span class="k-widget k-tooltip k-tooltip-validation k-invalid-msg"
+                      data-bind="invisible:isEndDateValid">
+
+                    {{nls.valmsgEndDateRequired}}
+                </span>
+            </label>
+
+        </div>
+    </div>
+    <div class="footer-bts-container">
+        <button type="button" class="btn" data-bind="click:btnSaveClick">
+            {{nls.btnSave}}
+        </button>
+        <button type="button" class="btn" data-bind="click:btnCancelClick">
+            {{nls.btnBack}}
+        </button>
+    </div>
+</div>

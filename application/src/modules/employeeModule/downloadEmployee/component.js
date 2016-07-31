@@ -36,7 +36,7 @@ define(['Boiler', './viewmodel', 'text!./view.html', 'i18n!./nls/resources'], fu
 
             panel.show();
 
-            moduleContext.parentContext.activeForm = $ct.rn.getDownloadEmployee();
+            //moduleContext.parentContext.activeForm = $ct.rn.getDownloadEmployee();
             moduleContext.notify($ct.en.getShowActiveEmployeeHeader(), null);
             moduleContext.notify($ct.en.getHideEmployeeShelterHeader(), null);
             moduleContext.notify($ct.en.getHideSheltereeHeaderNavigation(), null);

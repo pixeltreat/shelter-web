@@ -12,6 +12,7 @@ define(['require', 'Boiler', 'text!./view.html', 'i18n!./nls/resources', './view
                 kendo.bind(panel.getDomElement(), vm.data);
 
             }
+           // vm.data.initialize();
             panel.show();
 
         };

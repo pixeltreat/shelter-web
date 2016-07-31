@@ -2,15 +2,21 @@ define({
     "root": {
         "nlsTest": "Localization Test",
 
-        "lblEndedReportingPeriod": "Event Name: ",
+        "lblEndedReportingPeriod": "Event Name:",
+        "lblDuration": "Duration:",
+        
 
-
-        "lblMessage": "The following are Employee status details",
+        "lblMessage": "The Following Are Staff Status Details",
+        "headerStaffAttendance": "Staff Attendance",
+        "lblShelters": "Shelters",
+        "lblShifts": "Shifts",
+        "lblShiftDate" : "Shift Date",
 
         "gdColIsSelected": "",
         "gdColFacilityName": "Shelter Name",
-        "gdColShiftTime":"Shift",
+        "gdColShiftTime": "Shift",
         "gdColStatus": "Status",
+        "gdColDepartmentName": "Department",
         "gdColFirstName": "First Name",
         "gdColLastName": "Last Name",
         "gdColMiddleName": "Middle Name",
@@ -22,13 +28,16 @@ define({
         "lblReported": "Reported",
 
         "lblNotReported": "Not Reported",
-        "lblUnassigned": "Unassigned",
-        "lblTotal": "All Employees",
-        "lblEmployeeList": "Employee List:",
+        "lblAassigned": "Assigned",
+        "lblTotal": "All Staff",
+        "lblEmployeeList": "Staff List",
 
+        "valmsgAttendancedateisrequired": "Attendance Date Is Required",
+        "valmsgStaffarenotassignedfortheselectedshift": "Staff Are Not Assigned For The Selected Shift",
         "btnBulkUpdate": "Bulk Update",
         "btnShowAll":"Show All",
-        "btnExportToExcel": "Export"
+        "btnExport": "Export",
+        "btnGo" : "Go"
 
 
 

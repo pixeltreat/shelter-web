@@ -1,7 +1,7 @@
 <div id="vwEmployeeList">
     <div class="module">
         <!-- view title -->
-        <h2 class="module-title">Employee List<span class="module-title__icon" data-bind="click:helpClick"></span></h2>
+        <h2 class="module-title">{{nls.headerStaffList}}<span class="module-title__icon" data-bind="click:helpClick"></span></h2>
         <div class="module-container is-employee-section">
             <div class="gridsearch">
                 <div class="gridsearch__search-col">
@@ -13,21 +13,21 @@
                     </label>
                 </div>
                 <div class="gridsearch__btns-col">
-                    <label class="label-filter">
+                    <!--<label class="label-filter">
                         <span class="f-icon f-icon__filter-off" aria-hidden="true"></span>
                         <span data-bind="text:filterText"></span>
-                    </label>
-                    <button class="btn--secondary" data-bind="click:btnAddClick" type="button">
-                        <span class="f-icon f-icon__add" aria-hidden="true"></span>
-                        {{nls.btnAdd}}
-                    </button>
-                    <button class="btn--secondary" data-bind="click:btnFilterOffClick" type="button">
+                    </label>-->
+                    <button class="btn--secondary" data-bind="click:btnFilterOffClick,invisible:toggleShowAll" type="button">
                         <span class="f-icon f-icon__showall" aria-hidden="true"></span>
                         {{nls.btnFilterOff}}
                     </button>
-                    <button class="btn--secondary" data-bind="click:btnExportExcelClick" type="button">
+                    <button class="btn--secondary" data-bind="click:btnAddClick" type="button">
+                        <span class="f-icon f-icon__add" aria-hidden="true"></span>
+                        {{nls.btnAdd}}
+                    </button>          
+                    <button class="btn--secondary" id="vwelBtnExcel" data-bind="click:btnExportExcelClick" type="button">
                         <span class="f-icon f-icon__export" aria-hidden="true"></span>
-                        {{nls.btnExportToExcel}}
+                        {{nls.btnExport}}
                     </button>
                     <button class="btn--secondary" data-bind="click:btnBulkUpdateClick" type="button">
                         <span class="f-icon f-icon__upload" aria-hidden="true"></span>
@@ -51,13 +51,9 @@
                        {width:'40px'},
                        {title:'Edit',width:'60px'},
                        {title:'Delete',width:'70px'},
-                       {field:'FacilityName',title:'Shelter Name', filterable: {multi:true, dataSource:[]} ,  width:'250px'},
-                       {field:'EmployeeRefId',title:'{{nls.gdColEmployeeRefId}}', width:'150px'},
                        {field:'FirstName',title:'{{nls.gdColFirstName}}', width:'150px'},
                        {field:'LastName',title:'{{nls.gdColLastName}}' , width:'150px'},
-                       {field:'StaffTypeName',title:'{{nls.gdColStaffType}}' ,filterable: {multi:true, dataSource:[]}, width:'150px'},
-                       {field:'IsMedical',title:'{{nls.gdColIsMedical}}' , width:'150px'},
-                       {field:'AgencyName',title:'{{nls.gdColAgency}}',filterable: {multi:true, dataSource:[]}, width:'150px'},
+                       {field:'IsMedicalValue',title:'{{nls.gdColIsMedical}}' ,filterable: {multi:true, dataSource:[]}, width:'150px'},
                        {field:'DepartmentName',title:'{{nls.gdColDepartment}}', filterable: {multi:true, dataSource:[]}, width:'150px'},
                        {field:'StaffSpecialityName',title:'{{nls.gdColStaffSpecialty}}', filterable: {multi:true, dataSource:[]}, width:'150px'},
                        {field:'ShiftTime',title:'{{nls.gdColShift}}', filterable: {multi:true, dataSource:[]}, width:'150px'},
@@ -92,20 +88,14 @@
         <td>
             <button class="btn-edit" data-bind="click:btnEditClick">
                 <span class="f-icon f-icon__edit" aria-hidden="true"></span>
-                <span class="f-icon__text">Edit</span>
+                <span class="f-icon__text">{{nls.btnEdit}}</span>
             </button>
         </td>
         <td>
             <button class="btn-delete" data-bind="click:btnDeleteClick">
                 <span class="f-icon f-icon__delete" aria-hidden="true"></span>
-                <span class="f-icon__text">Delete</span>
+                <span class="f-icon__text">{{nls.btnDelete}}</span>
             </button>
-        </td>
-        <td data-title="Shelter Name">
-            ${FacilityName}
-        </td>
-        <td data-title="{{nls.gdColEmployeeRefId}}">
-            ${EmployeeRefId}
         </td>
         <td data-title="{{nls.gdColFirstName}}">
             ${FirstName}
@@ -113,14 +103,8 @@
         <td data-title="{{nls.gdColLastName}}">
             ${LastName}
         </td>
-        <td data-title="{{nls.gdColStaffType}}">
-            ${StaffTypeName}
-        </td>
         <td data-title="{{nls.gdColIsMedical}}">
-            #= IsMedical ? 'Yes' : 'No' #
-        </td>
-        <td data-title="{{nls.gdColAgency}}">
-            ${AgencyName}
+            ${IsMedicalValue} 
         </td>
         <td data-title="{{nls.gdColDepartment}}">
             ${DepartmentName}

@@ -36,41 +36,28 @@ input[type="text"],
     &__inp {
 
     }
+    //Added by UI Team
+    //Start : Modified code to handle 
+    //Style to Occupy text box full width 
 	&-full {
         display: block;
-    margin-bottom: 20px;
+        margin-bottom: 20px;
     }
+    //End : Modified code to handle 
 }
-input[data-role="maskedtextbox"],
-.form-inp {
+
+//Added by UI Team
+//Start : Added code to handle 
+//To apply styles for numeric textbox to be sync with textbox
+
+input[data-role="maskedtextbox"] {
     @include inputStyles();
-    height: 40px;
+    height: 40px !important;
+    padding:0px !important;
+    text-indent: 0.4em;
 }
 
-.form-element-with-label {
-    display: block;
-    max-width: 400px;
-    margin-bottom: 20px;
-
-    &__text {
-        display: block;
-        margin-bottom: 5px;
-    }
-
-    &__value {
-        display: block;
-        line-height: 4rem;
-        font-weight: $semi-bold;
-    }
-
-    &__inp {
-
-    }
-	&-full {
-        display: block;
-    margin-bottom: 20px;
-    }
-}
+//End : Added code to handle 
 textarea {
     @include inputStyles();
     min-height: 160px;
@@ -93,113 +80,3 @@ textarea {
     }
 }
 
-
-
-/*newly added styles for sheltree (care requirement) starts*/
-.l--four-column .column-one input[type=text] {
-
-    display: inline-block !important;
-    width: 61% !important;
-    /*margin-left: 5px !important;*/
-
-    @include MediaQueries($desktop-and-below) {
-            width: 100% !important;
-        }
-
-    @include MediaQueries($tablet) {
-        display: block !important;
-        width: 100% !important;
-    }
-
-    @include MediaQueries($mobile) {
-         display: block !important;
-         width: 100% !important;
-    }
-}
-
-.l--four-column .column-two input[type=text] {
-
-    display: inline-block !important;
-    width: 75% !important;
-    /*margin-left: 5px !important;*/
-
-    @include MediaQueries($tablet) {
-        display: block !important;
-        width: 100% !important;
-    }
-
-    @include MediaQueries($mobile) {
-         display: block !important;
-         width: 100% !important;
-    }
-}
-
-/*newly added styles for sheltree page only (to achieve horizontal lable and input fields)*/
-.form-element-with-label-horizontal {
-    display:block;
-    /*max-width:400px;*/
-    margin: 0 0 20px 15px;
-
-        @include MediaQueries($tablet) {
-                max-width:400px;
-            }
-        @include MediaQueries($mobile) {
-            max-width:400px;
-        }
-   
-    &__text {
-           display: inline-block;
-           margin: 0 5px 5px 0;
-           width: 90px;
-           text-align: right;
-
-            @include MediaQueries($desktop-and-below) {
-                display:block;
-                width:auto;
-                text-align: left;
-            }
-
-            @include MediaQueries($tablet) {
-                text-align: left;
-                display:block;
-            }
-
-            @include MediaQueries($mobile) {
-                display:block;
-                text-align: left;
-            }
-       
-    }
-
-    &__value {
-        display:inline-block;
-        line-height: 4rem;
-        font-weight: $semi-bold;
-
-        @include MediaQueries($desktop-and-below) {
-            display:block;
-        }
-
-        @include MediaQueries($tablet) {
-            display:block;
-        }
-
-        @include MediaQueries($mobile) {
-            display:block;
-        }
-        
-    }
-
-}
-
-/*newly added styles for sheltree (care requirement) ends*/
-
-//Added style to handle medication text box
-.medicationtx {
-    box-sizing:border-box !important;
-}
-// Added styles for question response
-.medicalconditiontb
-{
-    width:98.8% !important;
-}

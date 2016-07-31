@@ -25,3 +25,9 @@
         width: 100%;
     }
 }
+//Added by UI Team
+//Start : Added code to handle verlapping of kendo window on menu
+.k-window{
+    z-index: 10004 !important;
+}
+//End : Added code to handle overlapping of kendo window on menu

@@ -22,6 +22,10 @@
         display: block;
         position: relative;
         max-width: 80%;
+        //Added by UI Team
+        //Start : Added code to show hand cursor on hover of icons in IE 
+        cursor:pointer;
+        //End : Added code to show hand cursor on hover of icons in IE 
 
         &::before {
             @extend .f-icon:before, .f-icon__search:before;

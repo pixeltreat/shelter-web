@@ -35,34 +35,10 @@ define(['Boiler', './viewmodel', 'text!./view.html', 'i18n!./nls/resources'], fu
                 vm.data.initialize();
                 vm.data.initializeEmployeeHeader();
                 vm.data.fillGrid();
-                //vm.data.refreshSnapShot();
+                
 
             }
         });
-
-
-
-        //raised from main menu, when user clicks on patient tracking from second time onwords
-        //        moduleContext.listen($ct.en.getPatientMenuItemClicked(), function () {
-
-        //            if (vm) {
-
-        //                vm.data.reinitializeData();
-        //            }
-
-        //        });
-
-
-
-        //raised from main menu
-        //        moduleContext.listen($ct.en.getManagePatientsList(), function () {
-
-        //            if (vm) {
-        //                vm.data.reinitializeData();
-        //            }
-
-        //        });
-
 
 
         moduleContext.listen($ct.en.getRefreshView(), function (viewName) {
@@ -72,7 +48,7 @@ define(['Boiler', './viewmodel', 'text!./view.html', 'i18n!./nls/resources'], fu
 
                     vm.data.initialize();
                     vm.data.refreshEmployeeGrid();
-                    //vm.data.fillGrid();
+                  
 
                 }
             }
@@ -91,8 +67,10 @@ define(['Boiler', './viewmodel', 'text!./view.html', 'i18n!./nls/resources'], fu
 
                 vm.data.initialize();
                 vm.data.initializeEmployeeHeader();
-                vm.data.fillGrid();
-                //vm.data.refreshSnapShot();
+                //This function call will clear all flags and reinitialize grid data
+                vm.data.clearData();
+                //if we want to link the modules comment the above line and uncomment the below line
+                //vm.data.fillGrid();
             }
 
 
@@ -109,15 +87,17 @@ define(['Boiler', './viewmodel', 'text!./view.html', 'i18n!./nls/resources'], fu
 
                 vm.data.initialize();
                 vm.data.initializeEmployeeHeader();
-                vm.data.fillGrid();
 
+                //This function call will clear all flags and reinitialize grid data
+                vm.data.clearData();
 
-                //vm.data.loadFacilityTypes();
-
+                //if we want to link the modules comment the above line and uncomment the below line
                 //vm.data.fillGrid();
+
+
             }
 
-            //vm.data.initialize();
+           
 
             panel.show();
 

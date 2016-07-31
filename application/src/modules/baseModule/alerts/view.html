@@ -1,34 +1,22 @@
 <article class="app-alerts">
-    <h2 class="app-alerts__title">
+    <h2 class="app-alerts__title"  data-bind="click:alertButtonClicked">
         <span class="app-alerts__title__icon" aria-hidden="true"></span>
-        <span class="app-alerts__title__text">Alerts</span>
+        <span class="app-alerts__title__text">{{nls.lblAlerts}}</span>
     </h2>
 
-    <div class="alerts-overlay overlay">
+    <div class="alerts-overlay overlay" data-bind="invisible:showAlerts">
         <img class="gif-fallback overlay__img" src="assets/img/alerts-loader.gif" alt="alerts loader image" />
-        <object type="image/svg+xml" class="svg-loader overlay__img" data="assets/img/alerts-loader.svg">Alerts Loader image</object>
+        <object type="image/svg+xml" class="svg-loader overlay__img" data="assets/img/alerts-loader.svg">{{nls.lblAlertsLoaderImage}}</object>
     </div>
 
-    <ol class="app-alerts__list" hidden>
-        <li class="app-alerts__list__item">
-            <span class="app-alerts__list__item__number">5</span>
-            <span class="app-alerts__list__item__text">Nurses Availabe at Shelter No 2</span>
-        </li>
-        <li class="app-alerts__list__item">
-            <span class="app-alerts__list__item__number">3</span>
-            <span class="app-alerts__list__item__text">Nurses Availabe at Shelter No 1</span>
-        </li>
-        <li class="app-alerts__list__item">
-            <span class="app-alerts__list__item__number">12</span>
-            <span class="app-alerts__list__item__text">Nurses Availabe at Shelter No 4</span>
-        </li>
-        <li class="app-alerts__list__item">
-            <span class="app-alerts__list__item__number">8</span>
-            <span class="app-alerts__list__item__text">Nurses Availabe at Shelter No 3</span>
-        </li>
-        <li class="app-alerts__list__item">
-            <span class="app-alerts__list__item__number">6</span>
-            <span class="app-alerts__list__item__text">Nurses Availabe at Shelter No 5</span>
-        </li>
-    </ol>
+    <ol class="app-alerts__list" data-template="vwalertsRow-template"  data-bind="source:alertsData, visible:showAlerts"></ol>
+   
+      
+   
 </article>
+<script type="text/x-kendo-template" id="vwalertsRow-template">
+    <li class="app-alerts__list__item">
+        <span class="app-alerts__list__item__number">${StaffCount}</span>
+        <span class="app-alerts__list__item__text">${StaffDetail}</span>
+    </li>
+</script>

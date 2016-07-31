@@ -17,15 +17,9 @@ define(['Boiler', './viewmodel', 'text!./view.html', 'i18n!./nls/resources'], fu
 
 
         moduleContext.listen($ct.en.getShowActiveSheltereeHeader(), function () {
+
             $('#idxSheltereeHeader').show();
             $("#activeNavSheltereeheader").show();
-
-
-            $("#vwSheltereeHeader").find(".item_nav_active").removeClass("item_nav_active")
-
-            if ($("#vwsh" + moduleContext.parentContext.activeForm)[0] != undefined)
-                $($("#vwsh" + moduleContext.parentContext.activeForm)[0].parentElement).addClass("item_nav_active");
-
 
         });
 

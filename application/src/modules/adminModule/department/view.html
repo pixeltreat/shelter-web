@@ -6,7 +6,10 @@
         <h2 class="module-title">{{nls.headerAddEditDepartment}}</h2>
         <div class="module-container">
             <label class="form-element-with-label">
-                <span class="form-element-with-label__text">{{nls.lblName}}</span>
+                <span class="form-element-with-label__text">
+                    {{nls.lblName}}
+                    <em class="form-element-with-label__text__astrisk">*</em>
+                </span>
                 <input id="vwdTbName" name="vwdTbName" type="text" maxlength="250" class="form-element-with-label__inp"
                     data-bind="value:departmentData.Department.Name"
                     required validationmessage="{{nls.valmsgNameRequired}}" />
@@ -14,7 +17,10 @@
             </label>
 
             <label class="form-element-with-label">
-                <span class="form-element-with-label__text">{{nls.lblDescription}}</span>
+                <span class="form-element-with-label__text">
+                   {{nls.lblDescription}}
+                    <em class="form-element-with-label__text__astrisk">*</em>
+                </span>
                 <textarea id="vwdTaDescription" name="vwdTaDescription" class="form-element-with-label__inp"
                     data-bind="value:departmentData.Department.Description,attr:{maxlength: DescriptionLength} "
                     required validationmessage="{{nls.valmsgDescriptionRequired}}" rows="5"></textarea>
@@ -22,7 +28,10 @@
             </label>
 
             <label class="form-element-with-label">
-                <span class="form-element-with-label__text">{{nls.lblDisplayOrder}}</span>
+                <span class="form-element-with-label__text">
+                    {{nls.lblDisplayOrder}}
+                    <em class="form-element-with-label__text__astrisk">*</em>
+                </span>
                 <input type="text" id="vwdTaDisplayOrder" name="vwdTaDisplayOrder" class="form-element-with-label__inp"
                        data-role="numerictextbox" min="1" max="1000" data-format="n0" data-decimals="0" data-spinners="false"
                        required validationmessage="{{nls.valmsgDisplayOrderRequired}}"
@@ -30,12 +39,15 @@
                 <span class="k-invalid-msg" data-for="vwdTaDisplayOrder"></span>
             </label>
 
-            <div class="form-element-with-label">
-                <span class="form-element-with-label__text">{{nls.lblAgencies}}</span>
+            <div class="form-element-with-label">  
+                <span class="form-element-with-label__text">
+                    {{nls.lblAgencies}}
+                    <em class="form-element-with-label__text__astrisk">*</em>
+                </span>
                 <ul class="form-list" data-template="vwdAgencyRow-template" data-bind="source:agencyDepartments"></ul>
 
                 <span class="k-widget k-tooltip k-tooltip-validation k-invalid-msg" role="alert" data-bind="invisible:setValidationMsgForAgency">
-                    <span class="k-icon k-warning"></span>Please select agency
+                    <span class="k-icon k-warning"></span>{{nls.valmsgPleaseSelectAgencyRequired}}
                 </span>
             </div>
         </div>
@@ -46,7 +58,7 @@
             {{nls.btnSave}}
         </button>
         <button type="button" class="btn" data-bind="click:btnCancelClick">
-            {{nls.btnCancel}}
+            {{nls.btnBack}}
         </button>
     </div>
 </div>

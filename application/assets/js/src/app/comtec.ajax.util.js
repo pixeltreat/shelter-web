@@ -53,6 +53,12 @@ $ct.ajax = function () {
                         $ct.helpers.hideWorkAreaBusyCursor();
                         $ct.helpers.hidePageBusyCursor();
                     }
+                    if ($ct.mt.isAuthenticationFailed(response)) {
+
+                        var event = jQuery.Event($ct.en.getGoToNoRolePage());
+                        $(document).trigger(event);
+
+                    }
                 }
                 else {
 

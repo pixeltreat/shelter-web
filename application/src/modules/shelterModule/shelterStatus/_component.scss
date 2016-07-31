@@ -1,0 +1,24 @@
+// ****************************************
+// ShelterStatus
+// ****************************************
+//Added by UI Team
+//Start : Added view specific styles 
+.l--two-column--shelterstatus {
+    @extend .flex-row;
+
+    .column-one {
+        @extend .flex-col-lg__3-4, .flex-col-md__3-4, .flex-col-sm__full;
+     
+    }
+
+    .column-two {
+        @extend .flex-col-lg__1-4, .flex-col-md__1-4, .flex-col-sm__full;
+        text-align:right;
+        margin-top:25px;
+         @include MediaQueries($mobile) {
+           text-align:left;
+            margin-top:10px;
+        }
+    }
+}
+//End : Added view specific styles

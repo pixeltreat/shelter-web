@@ -8,7 +8,6 @@ define({
         "gdColQuestionTypeName": "Question Type Name",
         "gdColDisplayOrder":"Display Order",
         "gdColUserName": "User Name",
-
         "gdColUpdatedDate": "Updated Date",
 
 

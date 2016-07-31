@@ -1,9 +1,10 @@
 ﻿$ct.ds.shlt.shelter = function () {
 
-    var getShelters = function (successCallBack) {
+
+    var getSheltersWithSecurityForActiveEvent = function (successCallBack) {
 
         var requestParam = "";
-        $ct.ajax.ajaxPost($ct.cn.getShelterUrl() + 'GetSheltersWithSecurity', requestParam, function (result) {
+        $ct.ajax.ajaxPost($ct.cn.getShelterUrl() + 'GetSheltersWithSecurityForActiveEvent', requestParam, function (result) {
 
             if (successCallBack != null)
                 successCallBack(result);
@@ -14,7 +15,7 @@
         return "";
     };
 
-    var getSheltersWithDs = function (successCallBack) {
+    var getSheltersWithSecurityForActiveEventWithDs = function (successCallBack) {
 
         var datasource = new kendo.data.DataSource({
             transport: {
@@ -22,17 +23,17 @@
 
                     var requestParam = "";
 
-                    $ct.ajax.ajaxPost($ct.cn.getShelterUrl() + 'GetSheltersWithSecurity', requestParam, function (result) {
+                    $ct.ajax.ajaxPost($ct.cn.getShelterUrl() + 'GetSheltersWithSecurityForActiveEvent', requestParam, function (result) {
                         
                         var resultData = result.Data;
                         if ((resultData !== undefined && resultData !== null && resultData.length > 0) && ($ct.security.isMultiFacilityUser())) {
 
-                            var selectItem = {};
+                            //var selectItem = {};
 
-                            selectItem.Id = -1;
-                            selectItem.Name = "All Shelters";
+                            //selectItem.Id = -1;
+                            //selectItem.Name = "All Shelters";
 
-                            resultData.splice(0, 0, selectItem);
+                            //resultData.splice(0, 0, selectItem);
 
                         }
 
@@ -47,6 +48,43 @@
         return datasource;
 
     };
+
+
+
+    var getSheltersWithSecurityAndCensusForActiveEventWithDs = function (successCallBack) {
+
+        var datasource = new kendo.data.DataSource({
+                transport: {
+                    read: function (options) {
+
+                    var requestParam = "";
+
+                    $ct.ajax.ajaxPost($ct.cn.getShelterUrl() + 'GetSheltersCensusWithSecurityForActiveEvent', requestParam, function (result) {
+
+                        var resultData = result.Data;
+                        if ((resultData !== undefined && resultData !== null && resultData.length > 0) && ($ct.security.isMultiFacilityUser())) {
+
+                                //var selectItem = {};
+
+                                    //selectItem.Id = -1;
+                            //selectItem.Name = "All Shelters";
+
+                    //resultData.splice(0, 0, selectItem);
+
+                    }
+
+            options.success(resultData);
+                        if (successCallBack != null)
+                            successCallBack(resultData);
+                        }, null, true)
+                        }
+                        }
+                        });
+
+        return datasource;
+
+            };
+
 
 
     var getShelterStatus = function (ViewModel, successCallBack) {
@@ -66,7 +104,7 @@
                     var requestParam = {};
 
                     requestParam.Criteria = { PageSize: options.data.pageSize, PageIndex: options.data.page, Filter: filter, Sort: sort };
-
+                    requestParam.EventId = ViewModel.selectedEventItem.Key;
                     $ct.ajax.ajaxPost($ct.cn.getShelterStatusUrl() + 'GetShelterStatusList', requestParam, function (result) {
 
                         if ($ct.mt.isNoDataFound(result)) {
@@ -264,6 +302,7 @@
         requestParam.ShelterStatus.ClosedDate = saveShelterStatusData.ClosedDate;
         requestParam.ShelterStatus.IsNew = saveShelterStatusData.IsNew;
         requestParam.ShelterStatus.Version = saveShelterStatusData.Version;
+        requestParam.ShelterStatus.EventId = saveShelterStatusData.EventId;
 
         $ct.ajax.ajaxPost($ct.cn.getShelterStatusUrl() + 'SaveShelterStatus', requestParam, function (result) {
 
@@ -302,7 +341,7 @@
 
         var requestParam = {};
         requestParam.Criteria = { PageSize: pageSize, PageIndex: pageIndex, SearchToken: ViewModel.searchToken, Filter: filter, Sort: sort };
-
+        requestParam.EventId = ViewModel.selectedEventItem.Key;
 
 
         $ct.ajax.ajaxPost($ct.cn.getShelterStatusUrl() + 'ExportShelterStatusToExcel', requestParam, function (result) {
@@ -318,9 +357,9 @@
 
 
     return {
-
-        getShelters: getShelters,
-        getSheltersWithDs: getSheltersWithDs,
+        getSheltersWithSecurityForActiveEvent: getSheltersWithSecurityForActiveEvent,
+        getSheltersWithSecurityForActiveEventWithDs: getSheltersWithSecurityForActiveEventWithDs,
+        getSheltersWithSecurityAndCensusForActiveEventWithDs: getSheltersWithSecurityAndCensusForActiveEventWithDs,
         getShelterStatus: getShelterStatus,
         getEvents: getEvents,
         saveShelterStatus: saveShelterStatus,

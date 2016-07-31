@@ -12,14 +12,27 @@ $ct.other = function () {
         return hospiceId;
     };
 
-    var employeeTemplateURL = globalEmployeeTemplateURL;
+    var miscellaneousSectionId = gloabalMiscellaneousSectionId;
+
+    var getMiscellaneousSectionId = function () {
+        return miscellaneousSectionId;
+    };
+
+    var vitalSignsSectionId = gloabalVitalSignsSectionId;
+
+    var getVitalSignsSectionId = function () {
+        return vitalSignsSectionId;
+    };
+
+
+    var employeeTemplateURL = globalBaseServiceUrl + "uploadtemplate/" + "EmployeeUploadTemplate.xlsx";
 
     var getEmployeeTemplateURL = function () {
         return employeeTemplateURL;
     };
 
 
-    var sheltereeTemplateURL = globalSheltereeTemplateURL;
+    var sheltereeTemplateURL = globalBaseServiceUrl + "uploadtemplate/" + "SheltereeUploadTemplate.xlsx";
 
     var getSheltereeTemplateURL = function () {
         return sheltereeTemplateURL;
@@ -28,7 +41,9 @@ $ct.other = function () {
 
 
     return {
-        getHospiceId : getHospiceId,
+        getHospiceId: getHospiceId,
+        getMiscellaneousSectionId: getMiscellaneousSectionId,
+        getVitalSignsSectionId : getVitalSignsSectionId,
         getEmployeeTemplateURL: getEmployeeTemplateURL,
         getSheltereeTemplateURL: getSheltereeTemplateURL
 
@@ -41,34 +56,16 @@ $ct.other = function () {
 // role id's for security
 $ct.roles = function () {
 
+    var superAdminId = globalSuperAdminId;
+
+    var getSuperAdminId = function () {
+        return superAdminId;
+    };
+
     var administratorId = globalAdministratorId;
 
     var getAdministratorId = function () {
         return administratorId;
-    };
-
-    var associationId = globalAssociationId;
-
-    var getAssociationId = function () {
-        return associationId;
-    };
-
-    var callCenterId = globalCallCenterId;
-
-    var getCallCenterId = function () {
-        return callCenterId;
-    };
-
-    var drcId = globalDrcId;
-
-    var getDrcId = function () {
-        return drcId;
-    };
-
-    var dataCellId = globalDataCellId;
-
-    var getDataCellId = function () {
-        return dataCellId;
     };
 
     var facilityUpdateId = globalFacilityUpdateId;
@@ -83,23 +80,15 @@ $ct.roles = function () {
         return facilityReadOnlyId;
     };
 
-    var superAdminId = globalSuperAdminId;
 
-    var getSuperAdminId = function () {
-        return superAdminId;
-    };
 
 
     return {
 
+        getSuperAdminId: getSuperAdminId,
         getAdministratorId: getAdministratorId,
-        getAssociationId: getAssociationId,
-        getCallCenterId: getCallCenterId,
-        getDrcId: getDrcId,
-        getDataCellId: getDataCellId,
         getFacilityUpdateId: getFacilityUpdateId,
-        getFacilityReadOnlyId: getFacilityReadOnlyId,
-        getSuperAdminId: getSuperAdminId
+        getFacilityReadOnlyId: getFacilityReadOnlyId
 
     };
 

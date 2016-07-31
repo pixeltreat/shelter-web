@@ -6,15 +6,15 @@
     for care requirements : vwscr
     for equipment supply : vwses
     for medication : vwsm
-    for disposition : vwsdisp 
+    for disposition : vwsdisp
     for discharge : vwsdc
     for shelter identification : vwssi
     for vitals :vwsv-->
-    
+
 
     <script type="text/x-kendo-template" id="vwsNavigationRow-template">
 
-        <li  id=#:id# data-bind="attr:{class:tabClass},click:sheltreeTabClick">
+        <li id=#:id# data-bind="attr:{class:tabClass},click:sheltreeTabClick">
             <div class="sheltree-navigation__title" data-bind="text:name"></div>
             <span data-bind="text:tabNumber"></span>
         </li>
@@ -25,376 +25,109 @@
 
     <div class="module">
 
-        <h2 class="module-title">Shelteree input</h2>
+        <h2 class="module-title">{{nls.headerSheltereeInput}}</h2>
 
         <ul class="sheltree-navigation" data-template="vwsNavigationRow-template" data-bind="source:sheltreeTabs"></ul>
 
-        <div id="vwsDemographics" data-bind="visible:isDemographicsActive" > 
+        <div id="vwsDemographics" data-bind="visible:isDemographicsActive">
 
             <div class="module-section">
 
                 <h2 class="module-section__title">{{nls.lblPersonalDetails}}</h2>
-
-                <div class="module-container l--three-column">
-                    <div class="column-one">
-
-                        <label class="form-element-with-label">
-                            <span class="form-element-with-label__text">{{nls.lblFirstName}}</span>
-                            <input type="text" class="form-element-with-label__inp" maxlength="100"
-                                   id="vwsdTbFirstName" name="vwsdTbFirstName" required
-                                   validationmessage="{{nls.valmsgFNRequired}}"
-                                   data-bind="value:sheltereeData.Shelteree.FirstName" />
-                            <span class="k-invalid-msg" data-for="vwsdTbFirstName"></span>
-                        </label>
-                    </div>
-
-                    <div class="column-two">
-                        <label class="form-element-with-label">
-                            <span class="form-element-with-label__text">{{nls.lblMiddleName}}</span>
-                            <input type="text" class="form-element-with-label__inp" id="vwsdTbMiddleName"
-                                   name="vwsdTbMiddleName" data-bind="value:sheltereeData.Shelteree.MiddleName" maxlength="2" />
-
-                        </label>
-                    </div>
-                    <div class="column-three">
-                        <label class="form-element-with-label">
-                            <span class="form-element-with-label__text">{{nls.lblLastName}}</span>
-                            <input type="text" class="form-element-with-label__inp" id="vwsdTbLastName"
-                                   name="vwsdTbLastName" required validationmessage="{{nls.valmsgLNRequired}}" data-bind="value:sheltereeData.Shelteree.LastName" maxlength="100" />
-                            <span class="k-invalid-msg" data-for="vwsdTbLastName"></span>
-                        </label>
-                    </div>
-
-                </div>
-
-                <label class="form-element-with-label-full">
-                    <span class="form-element-with-label__text">{{nls.lblAddress1}}</span>
-                    <input type="text" class="form-element-with-label__inp" maxlength="250"
-                           id="vwsdTbAddress1" name="vwsdTbAddress1" required validationmessage="{{nls.valmsgAddress1Required}}"
-                           data-bind="value:sheltereeData.Shelteree.AddressLane1" />
-                    <span class="k-invalid-msg" data-for="vwsdTbAddress1"></span>
-
-                </label>
-                <label class="form-element-with-label-full">
-                    <span class="form-element-with-label__text">{{nls.lblAddress2}}</span>
-                    <input type="text" class="form-element-with-label__inp" maxlength="250"
-                           id="vwsdTbAddress2" name="vwsdTbAddress2"
-                           data-bind="value:sheltereeData.Shelteree.AddressLane2" />
-
-                </label>
-                <div class="module-container l--three-column">
-                    <div class="column-one">
-
-                        <label class="form-element-with-label">
-                            <span class="form-element-with-label__text">{{nls.lblCity}}</span>
-                            <input type="text" class="form-element-with-label__inp" maxlength="100"
-                                   id="vwsdTbCity" name="vwsdTbCity" required validationmessage="{{nls.valmsgCityRequired}}"
-                                   data-bind="value:sheltereeData.Shelteree.City" />
-                            <span class="k-invalid-msg" data-for="vwsdTbCity"></span>
-                        </label>
-                    </div>
-                    <div class="column-two">
-                        <label class="form-element-with-label">
-                            <span class="form-element-with-label__text">{{nls.lblZip}}</span>
-                            <input data-role="maskedtextbox" type="text" class="form-element-with-label__inp" id="vwsdTbZip"
-                                   name="vwsdTbZip" data-bind="value:sheltereeData.Shelteree.Zip"
-                                    data-mask="(00000)"
-                                    />
-                            <span   style="color:#e53935;"  data-bind="invisible: isPersonalZipValid">
-                                Please enter a valid zip
-                            </span>
-                        </label>
-                    </div>
-                    <div class="column-three">
-                        <label class="form-element-with-label">
-                            <span class="form-element-with-label__text">{{nls.lblState}}</span>
-                            <input type="text" class="form-element-with-label__inp" id="vwsdTbState"
-                                   required validationmessage="{{nls.valmsgStateRequired}}"
-                                   name="vwsdTbState" data-bind="value:sheltereeData.Shelteree.State" maxlength="50" />
-                            <span class="k-invalid-msg" data-for="vwsdTbState"></span>
-                        </label>
-                    </div>
-
-                </div>
-                <div class="module-container l--three-column">
-                    <div class="column-one">
-
-                        <label class="form-element-with-label">
-                            <span class="form-element-with-label__text">{{nls.lblModeOfTransportation}}</span>
-                            <div class="custom-select" data-bind="attr: { class: setClassForTransportationType, className:setClassForTransportationType}">
-                                <select id="vwsdDdlTransportation"
-                                        data-role="dropdownlist"
-                                        data-bind="source:dsTransportationType,value:selectedTransportationTypeItem"
-                                        data-text-field="Value"
-                                        data-value-field="Key" required />
-                               
-                                <span class="k-widget k-tooltip k-tooltip-validation k-invalid-msg" data-bind="invisible:setValidationMsgForTransportationType">
-                                    Please select Mode Of Transportation
-                                </span>
-                            </div>
-                        </label>
-                    </div>
-
-
-                    <div class="column-two">
-                        <label class="form-element-with-label">
-                            <span class="form-element-with-label__text">{{nls.lblHomeParish}}</span>
-                            <div class="custom-select" data-bind="attr: { class: setClassForHomeParish, className:setClassForHomeParish}">
-                                <select id="vwsdTbParish"
-                                        data-role="dropdownlist"
-                                        data-bind="source:dsParish,value:selectedParishItem"
-                                        data-text-field="Value"
-                                        data-value-field="Key" required />
-                                <span class="k-widget k-tooltip k-tooltip-validation k-invalid-msg" data-bind="invisible:setValidationMsgForHomeParish">
-                                    Please select Parish
-
-                                </span>
-                            </div>
-
-                        </label>
-                    </div>
-
-                    <div class="column-three">
-                        <label class="form-element-with-label">
-                            <span class="form-element-with-label__text">{{nls.lblSectionBed}}</span>
-                            <input type="text" class="form-element-with-label__inp" maxlength="50"
-                                   data-bind="value: sheltereeData.Shelteree.SectionBed" style="width:100%;">
-
-                        </label>
-                    </div>
-
-
-                </div>
-                <div class="module-container l--three-column">
-                    <div class="column-one">
-
-                        <label class="form-element-with-label">
-                            <span class="form-element-with-label__text">{{nls.lblDOB}}</span>
-
-                            <input id="vwsdDateOfBirth" name="vwsdDateOfBirth" class="form-element-with-label__inp"
-                                   data-role="datepicker"
-                                   data-bind="value:DOB,events:{change:caliculateAge}" />
-                            <span class="k-widget k-tooltip k-tooltip-validation k-invalid-msg" data-bind="invisible:isDateOfBirthValid">
-                                Date of Birth is required
-                            </span>
-                           
-                        </label>
-                    </div>
-                    <div class="column-two">
-                        <label class="form-element-with-label">
-                            <span class="form-element-with-label__text">{{nls.lblAge}}</span>
-                            <span style="font-size:18px;" type="text" id="vwsdTbAge" name="vwsdTbAge"
-                                  data-bind="text:sheltereeData.Shelteree.Age">
-                            </span>
-
-                            <span class="k-widget k-tooltip k-tooltip-validation k-invalid-msg" data-bind="invisible:setValidationMsgForAge">
-                                <span class="k-icon k-warning"></span>
-                                Less than One Year
-                            </span>
-                        </label>
-                    </div>
-                    <div class="column-three">
-                        <div class="form-element-with-label">
-                            <span class="form-element-with-label__text">{{nls.lblSex}}</span>
-                            <span data-bind="attr: { class: setClassForSex, className: setClassForSex }">
-                                <ul class="form-list-inline" data-template="vwsdGenderRow-template" data-bind="source:dsGender"></ul>
-                            </span>
-                            <span class="k-widget k-tooltip k-tooltip-validation k-invalid-msg" data-bind="invisible:isSexValid">
-                               
-                                Please select Gender
-                            </span>
-
-                        </div>
-                    </div>
-
-                </div>
-                <div class="module-container l--three-column">
-                    <div class="column-one">
-
-                        <label class="form-element-with-label">
-                            <span class="form-element-with-label__text">{{nls.lblHomePhone}}</span>
-
-                            <input data-role="maskedtextbox" class="form-element-with-label__inp" data-mask="(999) 000-0000" name="vwsdTbHomePhone" id="vwsdTbHomePhone"
-                                   data-bind="value: sheltereeData.Shelteree.HomePhone" style="width:100%;">
-
-                            <span  style="color:#e53935;" data-bind="invisible: isPersonalHomePhoneValid">
-                                Please enter a valid phone number
-                            </span>
-
-                        </label>
-                    </div>
-                    <div class="column-two">
-                        <label class="form-element-with-label">
-                            <span class="form-element-with-label__text">{{nls.lblCell}}</span>
-                            <input data-role="maskedtextbox" class="form-element-with-label__inp" data-mask="(999) 000-0000" name="vwsdTbCellPhone" id="vwsdTbCellPhone"
-                                   data-bind="value: sheltereeData.Shelteree.CellPhone" style="width:100%;">
-                          
-                              <span   style="color:#e53935;"  data-bind="invisible: isPersonalCellPhoneValid">
-                                Please enter a valid phone number
-                            </span>
-
-                        </label>
-                    </div>
-
-
-                </div>
-
-                <div class="module-section">
-                    <h2 class="module-section__title">{{nls.lblPhysicianDetails}}</h2>
-
-                    <label class="form-element-with-label-full">
-                        <span class="form-element-with-label__text">Physician Name</span>
-                        <input type="text" class="form-element-with-label__inp" maxlength="100"
-                               id="vwsdTbPhysicianName" name="vwsdTbPhysicianName" required validationmessage="{{nls.valmsgPhysicianNameRequired}}"
-                               data-bind="value:sheltereeData.Shelteree.SheltereePhysicianName" />
-                        <span class="k-invalid-msg" data-for="vwsdTbPhysicianName"></span>
-
-                    </label>
-                    <label class="form-element-with-label-full">
-                        <span class="form-element-with-label__text">{{nls.lblClinicName}}</span>
-                        <input type="text" class="form-element-with-label__inp" maxlength="100"
-                               id="vwsdTbClinicName" name="vwsdTbClinicName" required validationmessage="{{nls.valmsgClinicNameRequired}}"
-                               data-bind="value:sheltereeData.Shelteree.ClinicName" />
-                        <span class="k-invalid-msg" data-for="vwsdTbClinicName"></span>
-
-                    </label>
+                <div class="module-section-container">
                     <div class="module-container l--three-column">
                         <div class="column-one">
 
                             <label class="form-element-with-label">
-                                <span class="form-element-with-label__text">{{nls.lblHomePhone}}</span>
-                                <input data-role="maskedtextbox" class="form-element-with-label__inp" id="vwsdTbClinicPhoneNumber" name="vwsdTbPhoneNumber"
-                                       data-bind="value:sheltereeData.Shelteree.ClinicPhone " data-mask="(999) 000-0000" style="width:100%;">
-
-                                <span   style="color:#e53935;"  data-bind="invisible: isPersonalClinicPhoneValid">
-                                    Please enter a valid phone number
+                                <span class="form-element-with-label__text">
+                                    {{nls.lblFirstName}}
+                                    <em class="form-element-with-label__text__astrisk">*</em>
                                 </span>
-
+                                <input type="text" class="form-element-with-label__inp" maxlength="100"
+                                       id="vwsdTbFirstName" name="vwsdTbFirstName" required
+                                       validationmessage="{{nls.valmsgFNRequired}}"
+                                       data-bind="value:sheltereeData.Shelteree.FirstName" />
+                                <span class="k-invalid-msg" data-for="vwsdTbFirstName"></span>
                             </label>
                         </div>
 
+                        <div class="column-two">
+                            <label class="form-element-with-label">
+                                <span class="form-element-with-label__text">{{nls.lblMiddleName}}</span>
+                                <input type="text" class="form-element-with-label__inp" id="vwsdTbMiddleName"
+                                       name="vwsdTbMiddleName" data-bind="value:sheltereeData.Shelteree.MiddleName" maxlength="2" />
 
+                            </label>
+                        </div>
+                        <div class="column-three">
+                            <label class="form-element-with-label">
+                                <span class="form-element-with-label__text">
+                                    {{nls.lblLastName}}
+                                    <em class="form-element-with-label__text__astrisk">*</em>
+                                </span>
+                                <input type="text" class="form-element-with-label__inp" id="vwsdTbLastName"
+                                       name="vwsdTbLastName" required validationmessage="{{nls.valmsgLNRequired}}" data-bind="value:sheltereeData.Shelteree.LastName" maxlength="100" />
+                                <span class="k-invalid-msg" data-for="vwsdTbLastName"></span>
+                            </label>
+                        </div>
 
                     </div>
-
-
-                    <div class="form-element-with-label-full">
-                        <span class="form-element-with-label__text">{{nls.lblCareSettings}}</span>
-                            <ul class="form-list" data-template="vwsCareSettingsRow-template" data-bind="source:dsCareSettings"></ul>
-
-                        <span class="k-widget k-tooltip k-tooltip-validation k-invalid-msg" data-bind="invisible:isCareSettingsValid">
-                            
-                            Please select CareSettings
-                        </span>
-                    </div>
-                    <div  class="form-element-with-label-full">
-
-                        <div style="color:#e53935;">User must select either "stable" or "unstable" if selection is hospice</div>
-
-                            
-                        <ul class="form-list-alertmsg" data-template="vwsdHospiceRow-template" data-bind="source:dsHospice"></ul>
-
-                       
-
-
-                        <span  style="color:#e53935;" data-bind="invisible:setValidationMsgForHospice">
-
-                            Please select Hospice stability
-                        </span>
-
-                        <!--<span class="k-widget k-tooltip k-tooltip-validation k-invalid-msg" data-bind="invisible:setValidationMsgForHospice">
-                           
-                            Please select Hospice stability
-                        </span>-->
-                    </div>
-                    <label class="form-element-with-label-full">
-                        <span class="form-element-with-label__text">{{nls.lblFacilityName}}</span>
-
-                        <input type="text" class="form-element-with-label__inp" maxlength="100"
-                               id="vwsdTbFacilityName" name="vwsdTbFacilityName"
-                               required validationmessage="{{nls.valmsgFacilityNameRequired}}"
-                               data-bind="value:sheltereeData.Shelteree.SheltereeFacilityName" />
-                        <span class="k-invalid-msg" data-for="vwsdTbFacilityName"></span>
-                    </label>
-                    <div class="form-element-with-label">
-
-                            <span class="form-element-with-label__text">{{nls.lblHasSigned}}<span style="color:#e53935;">(If yes must have DNR Copy on hand)</span></span>
-                            <ul class="form-list-inline">
-                                <li>
-                                    <label class="radio-button">
-                                        <input class="radio-button__inp" name="vwsdRbHasSignedDNR" type="radio"
-                                               value="true" data-bind="checked: selectedHasSignedDNRId">
-                                        <span class="radio-button__text">Yes</span>
-                                    </label>
-                                </li>
-                                <li>
-                                    <label class="radio-button">
-                                        <input class="radio-button__inp" name="vwsdRbHasSignedDNR" type="radio"
-                                               value="false" data-bind="checked: selectedHasSignedDNRId">
-                                        <span class="radio-button__text">No</span>
-                                    </label>
-                                </li>
-
-                            </ul>
-
-                        <span class="k-widget k-tooltip k-tooltip-validation k-invalid-msg" data-bind="invisible:isHasSignedValid">
-
-                            Please select Has Signed DNR
-                        </span>
-                    </div>
-                </div>
-                <div class="module-section">
-                    <h2 class="module-section__title">ContactPerson</h2>
 
                     <label class="form-element-with-label-full">
-                        <span class="form-element-with-label__text">Name</span>
+                        <span class="form-element-with-label__text">
+                            {{nls.lblAddress1}}
+                            <em class="form-element-with-label__text__astrisk">*</em>
+                        </span>
                         <input type="text" class="form-element-with-label__inp" maxlength="250"
-                               id="vwsdTbContactName" name="vwsdTbContactName"
-                               data-bind="value:sheltereeData.Shelteree.ContactName" />
+                               id="vwsdTbAddress1" name="vwsdTbAddress1" required validationmessage="{{nls.valmsgAddress1Required}}"
+                               data-bind="value:sheltereeData.Shelteree.AddressLane1" />
+                        <span class="k-invalid-msg" data-for="vwsdTbAddress1"></span>
 
-                    </label>
-                    <label class="form-element-with-label-full">
-                        <span class="form-element-with-label__text">{{nls.lblAddress1}}</span>
-                        <input type="text" class="form-element-with-label__inp" maxlength="250"
-                               id="vwsdTbContactAddressLane1" name="vwsdTbContactAddressLane1"
-                               data-bind="value:sheltereeData.Shelteree.ContactAddressLane1" />
-                        <span class="k-invalid-msg" data-for="vwsdTbContactAddressLane1"></span>
                     </label>
                     <label class="form-element-with-label-full">
                         <span class="form-element-with-label__text">{{nls.lblAddress2}}</span>
                         <input type="text" class="form-element-with-label__inp" maxlength="250"
-                               id="vwsdTbContactAddressLane2" name="vwsdTbContactAddressLane2"
-                               data-bind="value:sheltereeData.Shelteree.ContactAddressLane2" />
+                               id="vwsdTbAddress2" name="vwsdTbAddress2"
+                               data-bind="value:sheltereeData.Shelteree.AddressLane2" />
 
                     </label>
                     <div class="module-container l--three-column">
                         <div class="column-one">
 
                             <label class="form-element-with-label">
-                                <span class="form-element-with-label__text">{{nls.lblCity}}</span>
+                                <span class="form-element-with-label__text">
+                                    {{nls.lblCity}}
+                                    <em class="form-element-with-label__text__astrisk">*</em>
+                                </span>
                                 <input type="text" class="form-element-with-label__inp" maxlength="100"
-                                       id="vwsdTbContactCity" name="vwsdTbContactCity"
-                                       data-bind="value:sheltereeData.Shelteree.ContactCity" />
-
+                                       id="vwsdTbCity" name="vwsdTbCity" required validationmessage="{{nls.valmsgCityRequired}}"
+                                       data-bind="value:sheltereeData.Shelteree.City" />
+                                <span class="k-invalid-msg" data-for="vwsdTbCity"></span>
                             </label>
                         </div>
                         <div class="column-two">
                             <label class="form-element-with-label">
                                 <span class="form-element-with-label__text">{{nls.lblZip}}</span>
-                                <input  data-role="maskedtextbox" type="text" class="form-element-with-label__inp" id="vwsdTbContactZip"
-                                       name="vwsdTbContactZip" data-bind="value:sheltereeData.Shelteree.ContactZip"
-                                        data-mask="(00000)"/>
-                                <span   style="color:#e53935;"  data-bind="invisible: isPersonalContactZipValid">
-                                    Please enter a valid zip
+                                <span>
+                                    <input data-role="maskedtextbox" type="text" class="form-element-with-label__inp" id="vwsdTbZip"
+                                           name="vwsdTbZip" data-bind="value:sheltereeData.Shelteree.Zip"
+                                           data-mask="0000#" data-prompt-char=" " />
+                                </span>
+                                <span class="k-widget k-tooltip k-tooltip-validation k-invalid-msg" data-bind="invisible: isPersonalZipValid">
+                                    {{nls.valmsgZipRequired}}
                                 </span>
                             </label>
                         </div>
                         <div class="column-three">
                             <label class="form-element-with-label">
-                                <span class="form-element-with-label__text">{{nls.lblState}}</span>
-                                <input type="text" class="form-element-with-label__inp" id="vwsdTbContactState"
-                                       name="vwsdTbContactState" data-bind="value:sheltereeData.Shelteree.ContactState" maxlength="50" />
-                                <span class="k-invalid-msg" data-for="vwsdTbContactState"></span>
+                                <span class="form-element-with-label__text">
+                                    {{nls.lblState}}
+                                    <em class="form-element-with-label__text__astrisk">*</em>
+                                </span>
+                                <input type="text" class="form-element-with-label__inp" id="vwsdTbState"
+                                       required validationmessage="{{nls.valmsgStateRequired}}"
+                                       name="vwsdTbState" data-bind="value:sheltereeData.Shelteree.State" maxlength="50" />
+                                <span class="k-invalid-msg" data-for="vwsdTbState"></span>
                             </label>
                         </div>
 
@@ -403,37 +136,480 @@
                         <div class="column-one">
 
                             <label class="form-element-with-label">
-                                <span class="form-element-with-label__text">{{nls.lblHomePhone}}</span>
-
-                                <input data-role="maskedtextbox" class="form-element-with-label__inp"
-                                          name="vwsdTbContactHomePhone" id="vwsdTbContactHomePhone"   
-                                       data-bind="value:sheltereeData.Shelteree.ContactHomePhone" data-mask="(999) 000-0000" style="width:100%;">
-
-                                <span   style="color:#e53935;"  data-bind="invisible: isPersonalContactHomePhoneValid">
-                                    Please enter a valid phone number
+                                <span class="form-element-with-label__text">
+                                    {{nls.lblModeOfTransportation}}
+                                    <em class="form-element-with-label__text__astrisk">*</em>
                                 </span>
+                                <div class="custom-select">
+                                    <select id="vwsdDdlTransportation"
+                                            data-role="dropdownlist"
+                                            data-bind="source:dsTransportationType,value:selectedTransportationTypeItem"
+                                            data-text-field="Value"
+                                            data-value-field="Key" required />
+
+                                    <span class="k-widget k-tooltip k-tooltip-validation k-invalid-msg" data-bind="invisible:isTransportationTypeValid">
+                                        {{nls.valmsgModeOfTranspotationRequired}}
+                                    </span>
+                                </div>
+                            </label>
+                        </div>
+
+
+                        <div class="column-two">
+                            <label class="form-element-with-label">
+                                <span class="form-element-with-label__text">
+                                    {{nls.lblHomeParish}}
+                                    <em class="form-element-with-label__text__astrisk">*</em>
+                                </span>
+                                <div class="custom-select">
+                                    <select id="vwsdTbParish"
+                                            data-role="dropdownlist"
+                                            data-bind="source:dsParish,value:selectedParishItem"
+                                            data-text-field="Value"
+                                            data-value-field="Key" required />
+                                    <span class="k-widget k-tooltip k-tooltip-validation k-invalid-msg" data-bind="invisible:isHomeParishValid">
+                                        {{nls.valmsgHomeParishRequired}}
+
+                                    </span>
+                                </div>
 
                             </label>
                         </div>
-                        <div class="column-two">
+
+                        <div class="column-three">
                             <label class="form-element-with-label">
-                                <span class="form-element-with-label__text">{{nls.lblCell}}</span>
-
-                                <input data-role="maskedtextbox" class="form-element-with-label__inp"
-                                       name="vwsdTbContactCellPhone" id="vwsdTbContactCellPhone"   
-                                       data-bind="value:sheltereeData.Shelteree.ContactCellPhone" data-mask="(999) 000-0000" style="width:100%;">
-
-                                <span   style="color:#e53935;"  data-bind="invisible: isPersonalContactCellPhoneValid">
-                                    Please enter a valid phone number
-                                </span>
+                                <span class="form-element-with-label__text">{{nls.lblSectionBed}}</span>
+                                <input type="text" class="form-element-with-label__inp" maxlength="50"
+                                       data-bind="value: sheltereeData.Shelteree.SectionBed">
 
                             </label>
                         </div>
 
 
                     </div>
+                    <div class="module-container l--three-column">
+                        <div class="column-one">
+
+                            <label class="form-element-with-label">
+                                <span class="form-element-with-label__text">
+                                    {{nls.lblDOB}}
+                                    <em class="form-element-with-label__text__astrisk">*</em>
+                                </span>
+                                <input id="vwsdDateOfBirth" name="vwsdDateOfBirth" class="form-element-with-label__inp"
+                                       data-role="datepicker"
+                                       data-bind="value:DOB,events:{change:caliculateAge}" />
+                                <span class="k-widget k-tooltip k-tooltip-validation k-invalid-msg" data-bind="invisible:isDateOfBirthValid">
+                                    {{nls.valmsgDOBRequired}}
+                                </span>
+
+                            </label>
+                        </div>
+                        <div class="column-two">
+                            <label class="form-element-with-label">
+                                <span class="form-element-with-label__text">{{nls.lblAge}}</span>
+                                <span class="font-age" type="text" id="vwsdTbAge" name="vwsdTbAge"
+                                      data-bind="text:sheltereeData.Shelteree.Age">
+                                </span>
+
+                            </label>
+                        </div>
+                        <div class="column-three">
+                            <div class="form-element-with-label">
+                                <span class="form-element-with-label__text">
+                                    {{nls.lblSex}}
+                                    <em class="form-element-with-label__text__astrisk">*</em>
+                                </span>
+
+                                <ul class="form-list-inline" data-template="vwsdGenderRow-template" data-bind="source:dsGender"></ul>
+
+                                <span class="k-widget k-tooltip k-tooltip-validation k-invalid-msg" data-bind="invisible:isSexValid">
+
+                                    {{nls.valmsgSexRequired}}
+                                </span>
+
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="module-container l--three-column">
+                        <div class="column-one">
+
+                            <label class="form-element-with-label">
+                                <span class="form-element-with-label__text">{{nls.lblHomePhone}}</span>
+                                <span>
+                                    <input data-role="maskedtextbox" class="form-element-with-label__inp" data-mask="(999) 000-0000" name="vwsdTbHomePhone" id="vwsdTbHomePhone"
+                                           data-bind="value: sheltereeData.Shelteree.HomePhone">
+                                </span>
+                                <span class="k-widget k-tooltip k-tooltip-validation k-invalid-msg" data-bind="invisible:isPersonalHomePhoneValid">
+
+                                    {{nls.valmsgPhonenumberRequired}}
+                                </span>
+                            </label>
+                        </div>
+                        <div class="column-two">
+                            <label class="form-element-with-label">
+                                <span class="form-element-with-label__text">{{nls.lblCell}}</span>
+                                <span>
+                                    <input data-role="maskedtextbox" class="form-element-with-label__inp" data-mask="(999) 000-0000" name="vwsdTbCellPhone" id="vwsdTbCellPhone"
+                                           data-bind="value: sheltereeData.Shelteree.CellPhone">
+                                </span>
+                                <span class="k-widget k-tooltip k-tooltip-validation k-invalid-msg" data-bind="invisible:isPersonalCellPhoneValid">
+
+                                    {{nls.valmsgCellnumberRequired}}
+                                </span>
+                            </label>
+                        </div>
 
 
+                    </div>
+
+                    <div class="form-element-with-label-full">
+                        <span class="form-element-with-label__text">
+                            {{nls.lblCareSettings}}
+                            <em class="form-element-with-label__text__astrisk">*</em>
+                        </span>
+                        <ul class="form-list" data-template="vwsCareSettingsRow-template" data-bind="source:dsCareSettings"></ul>
+
+                        <span class="k-widget k-tooltip k-tooltip-validation k-invalid-msg" data-bind="invisible:isCareSettingsValid">
+
+                            {{nls.valmsgSelectCareSetingsRequired}}
+                        </span>
+                    </div>
+                    <div class="form-element-with-label-full">
+
+                        <div class="instruction-text">{{nls.lblhospice}}</div>
+
+
+                        <ul class="form-list" data-template="vwsdHospiceRow-template" data-bind="source:dsHospice"></ul>
+
+                        <span class="k-widget k-tooltip k-tooltip-validation k-invalid-msg" data-bind="invisible:isHospiceStabilityIdValid">
+
+                            {{nls.valmsgtHospiceStabilityRequired}}
+                        </span>
+
+
+                        <!--<span class="k-widget k-tooltip k-tooltip-validation k-invalid-msg" data-bind="invisible:isHospiceStabilityIdValid">
+
+                            Please select Hospice stability
+                        </span>-->
+                    </div>
+                    <div class="form-element-with-label">
+                        <span class="form-element-with-label__text">
+                            {{nls.lblHasSigned}}
+                            <em class="form-element-with-label__text__astrisk">*</em>
+                            <span class="instruction-text">{{nls.lblDNRcopy}}</span>
+                        </span>
+
+                        <ul class="form-list-inline">
+                            <li>
+                                <label class="radio-button">
+                                    <input class="radio-button__inp" name="vwsdRbHasSignedDNR" type="radio"
+                                           value="true" data-bind="checked: selectedHasSignedDNRId">
+                                    <span class="radio-button__text">{{nls.lblRbYes}}</span>
+                                </label>
+                            </li>
+                            <li>
+                                <label class="radio-button">
+                                    <input class="radio-button__inp" name="vwsdRbHasSignedDNR" type="radio"
+                                           value="false" data-bind="checked: selectedHasSignedDNRId">
+                                    <span class="radio-button__text">{{nls.lblRbNo}}</span>
+                                </label>
+                            </li>
+
+                        </ul>
+
+                        <span class="k-widget k-tooltip k-tooltip-validation k-invalid-msg" data-bind="invisible:isHasSignedValid">
+
+                            {{nls.valmsgHasSignedDNRRequired}}
+                        </span>
+                    </div>
+
+                    <div class="module-container l--three-column">
+                        <div class="column-one">
+                            <label class="form-element-with-label-full">
+                                <span class="form-element-with-label__text">
+                                    {{nls.lblFacilityName}}
+                                    <em class="form-element-with-label__text__astrisk">*</em>
+                                </span>
+                                <input type="text" class="form-element-with-label__inp" maxlength="100"
+                                       id="vwsdTbFacilityName" name="vwsdTbFacilityName"
+                                       required validationmessage="{{nls.valmsgFacilityNameRequired}}"
+                                       data-bind="value:sheltereeData.Shelteree.HospiceFacilityName" />
+                                <span class="k-invalid-msg" data-for="vwsdTbFacilityName"></span>
+                            </label>
+                        </div>
+                        <div class="column-two">
+
+                            <label class="form-element-with-label">
+                                <span class="form-element-with-label__text">{{nls.lblHospiceCity}}</span>
+                                <input type="text" class="form-element-with-label__inp" maxlength="100"
+                                       id="vwsdTbHospiceCity" name="vwsdTbHospiceCity"
+                                       data-bind="value:sheltereeData.Shelteree.HospiceCity" />
+
+                            </label>
+                        </div>
+
+                        <div class="column-three">
+
+                            <label class="form-element-with-label">
+                                <span class="form-element-with-label__text">{{nls.lblHospicePhone}}</span>
+                                <span>
+                                    <input data-role="maskedtextbox" class="form-element-with-label__inp"
+                                           name="vwsdTbHospicePhone" id="vwsdTbHospicePhone"
+                                           data-bind="value:sheltereeData.Shelteree.HospicePhone" data-mask="(999) 000-0000">
+
+                                </span>
+                                <span class="k-widget k-tooltip k-tooltip-validation k-invalid-msg" data-bind="invisible:isPersonalHospicePhoneValid">
+                                    {{nls.valmsgPhonenumberRequired}}
+                                </span>
+                            </label>
+                        </div>
+
+
+                    </div>
+
+                    <div class="module-container l--three-column">
+                        <div class="column-one">
+                            <div class="form-element-with-label">
+                                <span class="form-element-with-label__text">
+                                    {{nls.lblIsCareGiver}}
+                                    <em class="form-element-with-label__text__astrisk">*</em>
+                                </span>
+                                <ul class="form-list-inline">
+                                    <li>
+                                        <label class="radio-button">
+                                            <input class="radio-button__inp" name="vwsdRbIsCareGiver" type="radio"
+                                                   value="true" data-bind="checked: selectedIsCareGiverId">
+                                            <span class="radio-button__text">{{nls.lblRbYes}}</span>
+                                        </label>
+                                    </li>
+                                    <li>
+                                        <label class="radio-button">
+                                            <input class="radio-button__inp" name="vwsdRbIsCareGiver" type="radio"
+                                                   value="false" data-bind="checked: selectedIsCareGiverId">
+                                            <span class="radio-button__text">{{nls.lblRbNo}}</span>
+                                        </label>
+                                    </li>
+
+                                </ul>
+                                <span class="k-widget k-tooltip k-tooltip-validation k-invalid-msg" data-bind="invisible:isCareGiverValid">
+
+                                    {{nls.vlamsgIsCareGiverRequired}}
+                                </span>
+
+                            </div>
+                        </div>
+                        <div class="column-two caregiver">
+                            <label class="form-element-with-label">
+                                <span class="form-element-with-label__text">
+                                   {{nls.lblIsCareGiverPersonName}}
+                                </span>
+                                <div class="custom-select">
+                                    <select id="vwsdDdlIsCareGiverLookup"
+                                            data-role="dropdownlist"
+                                            data-bind="source:dsNonCareGiverLookup,value:selectedHasCareGiverItem"
+                                            data-text-field="Value"
+                                            data-value-field="Key" required />
+
+                                    <span class="k-widget k-tooltip k-tooltip-validation k-invalid-msg" data-bind="invisible:isCareGiverPersonIdValid">
+                                        {{nls.valmsgIsCareGiverItemRequired}}
+                                    </span>
+                                </div>
+                            </label>
+                        </div>
+                    </div>
+
+                    <div  class="module-container l--three-column">
+                        <div class="column-one">
+                            <div class="form-element-with-label">
+                                <span class="form-element-with-label__text">
+                                    {{nls.lblHasCareGiver}}
+                                    <em class="form-element-with-label__text__astrisk">*</em>
+                                </span>
+                                <ul class="form-list-inline">
+                                    <li>
+                                        <label class="radio-button">
+                                            <input class="radio-button__inp" name="vwsdRbHasCareGiver" type="radio"
+                                                   value="true" data-bind="checked: selectedHasCareGiverId">
+                                            <span class="radio-button__text">{{nls.lblRbYes}}</span>
+                                        </label>
+                                    </li>
+                                    <li>
+                                        <label class="radio-button">
+                                            <input class="radio-button__inp" name="vwsdRbHasCareGiver" type="radio"
+                                                   value="false" data-bind="checked: selectedHasCareGiverId">
+                                            <span class="radio-button__text">{{nls.lblRbNo}}</span>
+                                        </label>
+                                    </li>
+
+                                </ul>
+                                <span class="k-widget k-tooltip k-tooltip-validation k-invalid-msg" data-bind="invisible:isHasCareGiverValid">
+
+                                    {{nls.vlamsgHasCareGiverRequired}}
+                                </span>
+
+                            </div>
+                        </div>
+
+                        <div class="column-two caregiver">
+                            <label class="form-element-with-label">
+                                <span class="form-element-with-label__text">
+                                   {{nls.lblHasCareGiverPersonName}}
+                                </span>
+                                <div class="custom-select">
+                                    <select id="vwsdDdlHasCareGiverLookup"
+                                            data-role="dropdownlist"
+                                            data-bind="source:dsCareGiverLookup,value:selectedIsCareGiverItem"
+                                            data-text-field="Value"
+                                            data-value-field="Key" required />
+
+                                    <span class="k-widget k-tooltip k-tooltip-validation k-invalid-msg" data-bind="invisible:isHasCareGiverPersonIdValid">
+                                        {{nls.valmsgHasCareGiverItemRequired}}
+                                    </span>
+
+                                </div>
+                            </label>
+                        </div>
+                    </div>
+
+
+                </div>
+                <div class="module-section">
+                    <h2 class="module-section__title">{{nls.lblPhysicianDetails}}</h2>
+                    <div class="module-section-container">
+                        <label class="form-element-with-label-full">
+                            <span class="form-element-with-label__text">{{nls.lblPhysicianName}}</span>
+                            <input type="text" class="form-element-with-label__inp" maxlength="100"
+                                   id="vwsdTbPhysicianName" name="vwsdTbPhysicianName"
+                                   data-bind="value:sheltereeData.Shelteree.SheltereePhysicianName" />
+
+
+                        </label>
+                        <label class="form-element-with-label-full">
+                            <span class="form-element-with-label__text">
+                                {{nls.lblClinicName}}
+                                <em class="form-element-with-label__text__astrisk">*</em>
+                            </span>
+                            <input type="text" class="form-element-with-label__inp" maxlength="100"
+                                   id="vwsdTbClinicName" name="vwsdTbClinicName" required validationmessage="{{nls.valmsgClinicNameRequired}}"
+                                   data-bind="value:sheltereeData.Shelteree.ClinicName" />
+                            <span class="k-invalid-msg" data-for="vwsdTbClinicName"></span>
+
+                        </label>
+                        <div class="module-container l--three-column">
+                            <div class="column-one">
+
+                                <label class="form-element-with-label">
+                                    <span class="form-element-with-label__text">{{nls.lblHomePhone}}</span>
+                                    <span>
+                                        <input data-role="maskedtextbox" class="form-element-with-label__inp" id="vwsdTbClinicPhoneNumber" name="vwsdTbPhoneNumber"
+                                               data-bind="value:sheltereeData.Shelteree.ClinicPhone " data-mask="(999) 000-0000">
+                                    </span>
+                                    <span class="k-widget k-tooltip k-tooltip-validation k-invalid-msg" data-bind="invisible:isPersonalClinicPhoneValid">
+
+                                        {{nls.valmsgPhonenumberRequired}}
+                                    </span>
+                                </label>
+                            </div>
+
+
+
+                        </div>
+
+
+                    </div>
+                </div>
+                <div class="module-section">
+                    <h2 class="module-section__title">{{nls.lblContactPerson}}</h2>
+                    <div class="module-section-container">
+                        <label class="form-element-with-label-full">
+                            <span class="form-element-with-label__text">{{nls.lblName}}</span>
+                            <input type="text" class="form-element-with-label__inp" maxlength="250"
+                                   id="vwsdTbContactName" name="vwsdTbContactName"
+                                   data-bind="value:sheltereeData.Shelteree.ContactName" />
+
+                        </label>
+                        <label class="form-element-with-label-full">
+                            <span class="form-element-with-label__text">{{nls.lblAddress1}}</span>
+                            <input type="text" class="form-element-with-label__inp" maxlength="250"
+                                   id="vwsdTbContactAddressLane1" name="vwsdTbContactAddressLane1"
+                                   data-bind="value:sheltereeData.Shelteree.ContactAddressLane1" />
+                            <span class="k-invalid-msg" data-for="vwsdTbContactAddressLane1"></span>
+                        </label>
+                        <label class="form-element-with-label-full">
+                            <span class="form-element-with-label__text">{{nls.lblAddress2}}</span>
+                            <input type="text" class="form-element-with-label__inp" maxlength="250"
+                                   id="vwsdTbContactAddressLane2" name="vwsdTbContactAddressLane2"
+                                   data-bind="value:sheltereeData.Shelteree.ContactAddressLane2" />
+
+                        </label>
+                        <div class="module-container l--three-column">
+                            <div class="column-one">
+
+                                <label class="form-element-with-label">
+                                    <span class="form-element-with-label__text">{{nls.lblCity}}</span>
+                                    <input type="text" class="form-element-with-label__inp" maxlength="100"
+                                           id="vwsdTbContactCity" name="vwsdTbContactCity"
+                                           data-bind="value:sheltereeData.Shelteree.ContactCity" />
+
+                                </label>
+                            </div>
+                            <div class="column-two">
+                                <label class="form-element-with-label">
+                                    <span class="form-element-with-label__text">{{nls.lblZip}}</span>
+                                    <span>
+                                        <input data-role="maskedtextbox" type="text" class="form-element-with-label__inp" id="vwsdTbContactZip"
+                                               name="vwsdTbContactZip" data-bind="value:sheltereeData.Shelteree.ContactZip"
+                                               data-mask="0000#" data-prompt-char=" " />
+                                    </span>
+                                    <span class="k-widget k-tooltip k-tooltip-validation k-invalid-msg" data-bind="invisible:isPersonalContactZipValid">
+                                        {{nls.valmsgZipRequired}}
+                                    </span>
+                                </label>
+                            </div>
+                            <div class="column-three">
+                                <label class="form-element-with-label">
+                                    <span class="form-element-with-label__text">{{nls.lblState}}</span>
+                                    <input type="text" class="form-element-with-label__inp" id="vwsdTbContactState"
+                                           name="vwsdTbContactState" data-bind="value:sheltereeData.Shelteree.ContactState" maxlength="50" />
+                                    <span class="k-invalid-msg" data-for="vwsdTbContactState"></span>
+                                </label>
+                            </div>
+
+                        </div>
+                        <div class="module-container l--three-column">
+                            <div class="column-one">
+
+                                <label class="form-element-with-label">
+                                    <span class="form-element-with-label__text">{{nls.lblHomePhone}}</span>
+                                    <span>
+                                        <input data-role="maskedtextbox" class="form-element-with-label__inp"
+                                               name="vwsdTbContactHomePhone" id="vwsdTbContactHomePhone"
+                                               data-bind="value:sheltereeData.Shelteree.ContactHomePhone" data-mask="(999) 000-0000">
+                                    </span>
+                                    <span class="k-widget k-tooltip k-tooltip-validation k-invalid-msg" data-bind="invisible:isPersonalContactHomePhoneValid">
+                                        {{nls.valmsgPhonenumberRequired}}
+                                    </span>
+                                </label>
+                            </div>
+                            <div class="column-two">
+                                <label class="form-element-with-label">
+                                    <span class="form-element-with-label__text">{{nls.lblCell}}</span>
+                                    <span>
+                                        <input data-role="maskedtextbox" class="form-element-with-label__inp"
+                                               name="vwsdTbContactCellPhone" id="vwsdTbContactCellPhone"
+                                               data-bind="value:sheltereeData.Shelteree.ContactCellPhone" data-mask="(999) 000-0000">
+                                    </span>
+                                    <span class="k-widget k-tooltip k-tooltip-validation k-invalid-msg" data-bind="invisible:isPersonalContactCellPhoneValid">
+                                        {{nls.valmsgCellnumberRequired}}
+                                    </span>
+                                </label>
+                            </div>
+
+
+                        </div>
+
+                    </div>
                 </div>
 
 
@@ -450,8 +626,8 @@
 
         <div class="module-container" data-bind="visible:isMedicalOrCareRequirementsActive">
 
-                <div  class="module-section" data-template="vwqrSection-template" data-bind="source:questionGroupData">
-                </div>
+            <div class="module-section" data-template="vwqrSection-template" data-bind="source:questionGroupData">
+            </div>
 
         </div>
 
@@ -466,24 +642,25 @@
 
         <div class="module-container" id="vwsMedication" data-bind="visible:isMedicationActive">
             <!--
-            <div class="gridsearch">
-                <div class="gridsearch__search-col">
-                    <label class="search-label">
+                <div class="gridsearch">
+                    <div class="gridsearch__search-col">
+                        <label class="search-label">
 
-                        <input type="text"
-                                class="search-label__inp"
-                                id="vwstlTxtSearch"
-                                placeholder="Search"
-                                data-bind="value:searchToken,events:{keyup:seachStafftypes}"
-                                data-value-update="keyup" />
-                    </label>
+                            <input type="text"
+                                    class="search-label__inp"
+                                    id="vwstlTxtSearch"
+                                    placeholder="Search"
+                                    data-bind="value:searchToken,events:{keyup:seachStafftypes}"
+                                    data-value-update="keyup" />
+                        </label>
+                    </div>
                 </div>
-            </div>
-        -->
-
+            -->
+            <span class="instruction-text">{{nls.lblMedications}}</span>
+            <span class="instruction-text">{{nls.lblMedicationsInformation}}</span>
             <div>
-                <div class="k-grid k-widget" style="margin-bottom:15px">
-                    <section class="k-grid-header" style="padding-right:16px">
+                <div class="k-grid k-widget custom-grid">
+                    <section class="k-grid-header custom-grid-header">
 
                         <div class="k-grid-header-wrap k-auto-scrollable">
                             <div class="k-auto-scrollable k-grid-content">
@@ -492,19 +669,19 @@
                                     <thead role="rowgroup">
                                         <tr role="row">
 
-                                            <th class="k-header"  width="31%">
-                                                Drug Name
+                                            <th class="k-header" width="31%">
+                                                {{nls.gdColDrugName}} <em class="form-element-with-label__text__astrisk">*</em>
                                             </th>
                                             <th class="k-header" width="17%">
-                                                Dosage
+                                                {{nls.gdColDosage}}
                                             </th>
                                             <th class="k-header" width="17%">
 
-                                                Frequency
+                                                {{nls.gdColFrequency}}
                                             </th>
                                             <th class="k-header" width="25%">
 
-                                                Last Time Used
+                                                {{nls.gdColLastTimeUsed}}
                                             </th>
                                             <th class="k-header" width="10%">
 
@@ -518,24 +695,39 @@
 
                                 </table>
                             </div>
-                    </div>
+                        </div>
 
                     </section>
 
 
                 </div>
 
+                <div class="form-element-with-label-full">
+                    <span class="form-element-with-label__text">
+                        {{nls.lblAdditionaMedicationComments}}
+                        <em class="form-element-with-label__text__astrisk">*</em>
+                    </span>
+                    <textarea id="vwsmTaAMedicationComments" name="vwsmTaAMedicationComments" class="form-element-with-label__inp"
+                              data-bind="value:sheltereeMedicationAllergy.AdditionalMedicationComment"
+                              required validationmessage="{{nls.vldmsgAdditionaMedicationComments}}" rows="5"></textarea>
+                    <span class="k-invalid-msg" data-for="vwsmTaAMedicationComments"></span>
 
+
+                </div>
 
                 <div class="form-element-with-label-full">
+                    <span class="form-element-with-label__text">
+                        {{nls.lblAllergies}}
+                        <em class="form-element-with-label__text__astrisk">*</em>
+                        <span class="instruction-text">{{nls.lblAllergiesinformation}}</span>
+                    </span>
 
-                    <span class="form-element-with-label__text">Allergies</span>
                     <textarea id="vwsmTaDescription" name="vwsmTaDescription" class="form-element-with-label__inp"
                               data-bind="value:sheltereeMedicationAllergy.Allergies, attr:{maxlength: allergyDescriptionLength} "
-                              required  validationmessage= "Allergies required" rows="5"></textarea>
+                              required validationmessage="{{nls.vldmsgAllergiesRequired}}" rows="5"></textarea>
                     <span class="k-invalid-msg" data-for="vwsmTaDescription"></span>
-                
-                
+
+
                 </div>
 
             </div>
@@ -544,29 +736,29 @@
         </div>
 
         <!--<div data-template="careRequirements-template" data-bind="source:dsCareRequirements,visible:isCareRequirementsActive"></div>-->
-        <div  data-bind="visible:isEquipmentSuppliesActive">
+        <div data-bind="visible:isEquipmentSuppliesActive">
 
-            <div class="k-grid k-widget" style="margin-bottom:15px">
-                <section class="k-grid-header" style="padding-right:16px">
+            <div class="k-grid k-widget custom-grid">
+                <section class="k-grid-header custom-grid-header">
 
                     <div class="k-grid-header-wrap k-auto-scrollable">
                         <div class="k-auto-scrollable k-grid-content">
-                            
-                            <table  class="grid split-table rwd-table1 k-selectable">
+
+                            <table class="grid split-table rwd-table1 k-selectable">
 
                                 <thead role="rowgroup">
                                     <tr role="row">
-                                        <th class="k-header">
-                                            Equipment Supply Name
+                                        <th class="k-header" width="27%">
+                                            {{nls.gdColEquipmentSupplyName}}
                                         </th>
-                                        <th class="k-header">
-                                            Need
+                                        <th class="k-header" width="23%">
+                                            {{nls.gdColNeed}}
                                         </th>
-                                        <th class="k-header">
-                                            Have
+                                        <th class="k-header" width="23%">
+                                            {{nls.gdColHave}}
                                         </th>
-                                        <th class="k-header">
-                                            Date Needed
+                                        <th class="k-header" width="27%">
+                                            {{nls.gdColDateNeeded}}
                                         </th>
                                     </tr>
                                 </thead>
@@ -577,7 +769,7 @@
 
                         </div>
 
-                        </div>
+                    </div>
 
                 </section>
 
@@ -585,269 +777,207 @@
 
         </div>
 
-
-
-        <div  class="module-container" data-bind="visible:isShelterIdentificationActive">
-
+        <div class="module-container" data-bind="visible:isShelterIdentificationActive">
             <div class="module-section">
+                <div class="module-section__title">{{nls.headingShelterDisposition}}</div>
 
-                <div class="module-section__title">{{nls.headingShelterIdentification}}</div>
-                <div class="shelter-identification">
+                <div class="module-section-container">
+                    <div class="disposition">
 
-                    <div class="form-element-with-label-full">
+                        <div class="form-element-with-label-full">
+                            <span class="form-element-with-label__text">{{nls.lblAccepted}}</span>
+                            <ul class="form-list-inline" data-template="vwsdisRow-template-accept">
+                                <li>
+                                    <label class="radio-button">
+                                        <input class="radio-button__inp" name="vwssiRbAcceptedToMSNS" type="radio"
+                                               value="true" data-bind="checked:acceptedToMSNS,events:{change:enableMSNSChildsOnChange}">
+                                        <span class="radio-button__text">{{nls.lblRbYes}}</span>
+                                    </label>
+                                </li>
+                                <li>
+                                    <label class="radio-button">
+                                        <input class="radio-button__inp" name="vwssiRbAcceptedToMSNS" type="radio"
+                                               value="false" data-bind="checked: acceptedToMSNS,events:{change:enableMSNSChildsOnChange}">
+                                        <span class="radio-button__text">{{nls.lblRbNo}}</span>
+                                    </label>
+                                </li>
+                            </ul>
+                            <span class="instruction-text">{{nls.lbltext}}</span>
+                        </div>
+
+                        <div class="form-element-with-label-full">
+                            <span class="form-element-with-label__text">{{nls.lblSelectone}}</span>
+                            <ul class="form-list-notaccepted" data-template="vwssiRowReferredShelterLookUp-template" data-bind="source:referredShelterLookUp"></ul>
+
+                            <span class="k-widget k-tooltip k-tooltip-validation k-invalid-msg" role="alert" data-bind="invisible:setValidationMsgForMSNS">
+                                {{nls.valmsgAnswerAtLeastOneOptionRequired}}
+                            </span>
+                        </div>
+
+                        <div class="form-element-with-label-full">
+                            <span class="form-element-with-label__text">{{nls.lblShelterSections}}</span>
+                            <ul class="form-list" data-template="vwssiRowShelterSections-template" data-bind="source:shelterSectionsList"></ul>
+                            <span class="k-widget k-tooltip k-tooltip-validation k-invalid-msg" data-bind="invisible: isAtLeastOneShelterIdentificationSelected">{{nls.valmsgshelteridentification}}</span>
+                        </div>
 
                         <div class="module-container l--two-column">
                             <div class="column-one">
-                                <span class="form-element-with-label__text">{{nls.lblShelterIdentification}}</span>
+                                <label class="form-element-with-label">
+                                    <span class="form-element-with-label__text">
+                                        {{nls.lblNameOfHospital}}
+                                    </span>
+                                    <!--TODO: Binding pending-->
+                                    <input type="text" class="form-element-with-label__inp" maxlength="250"
+                                           id="vwsdispTbNameOfHospital" name="vwsdispTbNameOfHospital"        
+                                           />
+                                </label>
                             </div>
                             <div class="column-two">
-                                <div class="form-element-with-label-full">
-
-                                    <ul class="form-list" data-template="vwssiRow-template" data-bind="source:shelterIdentificationList"></ul>
-                                    <span class="k-widget k-tooltip k-tooltip-validation k-invalid-msg" data-bind="invisible: isAtLeastOneShelterIdentificationSelected">{{nls.valmsgshelteridentification}}</span>
-
-                                </div>
-                            </div>
-                        </div>
-
-                    </div>
-
-                </div>
-
-                <div class="module-section__title">{{nls.headingShelterDisposition}}</div>
-                <div class="disposition">
-
-                    <div class="module-container l--two-column">
-                        <div class="column-one">
-                            <span class="form-element-with-label__text">{{nls.lblAccepted}}</span>
-                        </div>
-                        <div class="column-two">
-                            <div class="form-element-with-label">
-                                <ul class="form-list-horizontal-accepted" data-template="vwsdisRow-template-accept">
-                                    <li>
-                                        <label class="radio-button">
-                                            <input class="radio-button__inp" name="vwssiRbAcceptedToMSNS" type="radio"
-                                                   value="true" data-bind="checked:acceptedToMSNS,events:{change:enableMSNSChildsOnChange}">
-                                            <span class="radio-button__text">Yes</span>
-                                        </label>
-                                    </li>
-                                    <li>
-                                        <label class="radio-button">
-                                            <input class="radio-button__inp" name="vwssiRbAcceptedToMSNS" type="radio"
-                                                   value="false" data-bind="checked: acceptedToMSNS,events:{change:enableMSNSChildsOnChange}">
-                                            <span class="radio-button__text">No</span>
-                                        </label>
-                                    </li>
-                                </ul>
-                                <span class="disposition__accepted-text">{{nls.lbltext}}</span>
-                            </div>
-
-                        </div>
-                    </div>
-                    
-                    <div class="module-container l--two-column" style="margin-top:-10px;">
-                        
-                        <div class="column-one">
-                            <span class="form-element-with-label__text">{{nls.lblSelectone}}</span>
-                        </div>
-
-                        <div class="column-two">
-                            <div class="form-element-with-label">
-                                <ul class="form-list-horizontal-notaccepted" data-template="vwssiRowReferredShelterLookUp-template" data-bind="source:referredShelterLookUp">
-                                </ul> 
-                                
-                                <span class="k-widget k-tooltip k-tooltip-validation k-invalid-msg" role="alert" data-bind="invisible:setValidationMsgForMSNS">
-                                 Please select one option
-                                </span>
-                                                            
-                            </div>
-                        </div>
-                    </div>
-
-
-                    <div class="module-container l--two-column">
-                        <div class="column-one">
-                            <span class="form-element-with-label__text">{{nls.lblReason}}</span>
-
-                        </div>
-                        <div class="column-two">
-                            <label class="form-element-with-label">
-                                <input type="text" class="form-element-with-label__inp" maxlength="250"
-                                       id="vwsdispTbReason" name="vwsdispTbReason"
-                                       data-bind="value:dispositionData.Reason" />
-                            </label>
-                        </div>
-                    </div>
-
-                    
-
-                    <div class="module-container l--two-column">
-                        <div class="column-one">
-                            <span class="form-element-with-label__text">{{nls.lblContactPerson}}</span>
-
-                        </div>
-                        <div class="column-two">
-                            <label class="form-element-with-label">
-                                <input type="text" class="form-element-with-label__inp" maxlength="250"
-                                       id="vwsdispTbContact" name="vwsdispTbContact"
-                                       data-bind="value:dispositionData.DispositionContactPerson" />
-                            </label>
-                        </div>
-                    </div> 
-                    
-
-                    <div class="module-container l--two-column">
-                        <div class="column-one">
-                            <span class="form-element-with-label__text">{{nls.lblDisposition}}</span>
-
-                        </div>
-                        <div class="column-two">
-                            <label class="form-element-with-label">
-                                <select id="vwssiDdlShelters" class="inputClassSelect"
-                                        data-role="dropdownlist"
-                                        data-bind="source:dispositionLookUp,value:selectedDisposition"
-                                        data-text-field="Value"
-                                        data-value-field="Key" required />
-                            </label>
-                        </div>
-                    </div>
-
-                    <div class="module-container l--two-column">
-                        <div class="column-one">
-                            <span class="form-element-with-label__text">{{nls.lblDateandtime}}</span>
-
-                        </div>
-                        <div class="column-two">
-                            <div class="module-container l--two-column-datetimepickers">
-                                <div class="column-one">
-                                    <div class="custom-datetimepicker inlinedate-time ">
+                                <div class="form-element-with-label">
+                                    <span class="form-element-with-label__text">{{nls.lblDispositionDateandtime}}</span>
+                                    <div class="inlinedate-time">
                                         <input id="vwsdispContactDate" name="vwsdispContactDate" data-role="datepicker" data-bind="value:contactDate" />
                                         <span class="k-widget k-tooltip k-tooltip-validation k-invalid-msg" data-bind="invisible: isDispositionDateValid">{{nls.vldmsgDateRequired}}</span>
+
+                                        <input id="vwsdispContactTime" name="vwsdispContactTime" data-role="timepicker" data-bind="value:contactTime" />
+                                        <span class="k-widget k-tooltip k-tooltip-validation k-invalid-msg" data-bind="invisible: isDispositionTimeValid">{{nls.vldmsgTimeRequired}}</span>
                                     </div>
-                                </div>
-
-
-                                <div class="column-two">
-                                    <label class="form-element-with-label">
-                                        <div class="custom-datetimepicker inlinedate-time">
-                                            <input id="vwsdispContactTime" name="vwsdispContactTime" data-role="timepicker" data-bind="value:contactTime" />
-                                            <span class="k-widget k-tooltip k-tooltip-validation k-invalid-msg" data-bind="invisible: isDispositionTimeValid">{{nls.vldmsgTimeRequired}}</span>
-                                        </div>
-                                    </label>
                                 </div>
                             </div>
                         </div>
+
+                        <div class="module-container l--two-column">
+                            <div class="column-one">
+                                <label class="form-element-with-label">
+                                    <span class="form-element-with-label__text">
+                                        {{nls.lblContactPerson}}
+                                    </span>
+                                    <input type="text" class="form-element-with-label__inp" maxlength="250"
+                                           id="vwsdispTbContact" name="vwsdispTbContact"
+                                           data-bind="value:dispositionData.DispositionContactPerson" />
+                                </label>
+                            </div>
+                            <div class="column-two">
+                                <label class="form-element-with-label">
+                                    <span class="form-element-with-label__text">
+                                        {{nls.lblReason}}
+                                    </span>
+                                    <input type="text" class="form-element-with-label__inp" maxlength="250"
+                                           id="vwsdispTbReason" name="vwsdispTbReason"
+                                           data-bind="value:dispositionData.Reason" />
+                                </label>
+                            </div>
+                        </div>
                     </div>
-                     
                 </div>
 
                 <div class="module-section__title">{{nls.headingDischarge}}</div>
-                <div class="discharge">
 
-                    <div class="module-container l--two-column">
-                        <div class="column-one">
-                            <span class="form-element-with-label__text">{{nls.lblDischargeDateTime}}</span>
+                <div class="module-section-container">
+                    <div class="discharge">
 
-                        </div>
-                        <div class="column-two">
-                            <div class="module-container l--two-column-datetimepickers">
-                                <div class="column-one">
-                                    <div class="custom-datetimepicker inlinedate-time">
+                        <div class="module-container l--two-column">
+                            <div class="column-one">
+                                <div class="form-element-with-label">
+                                    <span class="form-element-with-label__text">{{nls.lblDischargeDateTime}}</span>
+                                    <div class="inlinedate-time">
                                         <input id="vwsdcDischargeDate" name="vwsdisDischargeDate" data-role="datepicker" data-bind="value:dischargeDate" />
                                         <span class="k-widget k-tooltip k-tooltip-validation k-invalid-msg" data-bind="invisible: isDischargeDateValid">{{nls.valmsgDischagedateRequired}}</span>
+
+                                        <input id="vwsdcDischargeTime" data-role="timepicker" data-bind="value: dischargeTime" />
+                                        <span class="k-widget k-tooltip k-tooltip-validation k-invalid-msg" data-bind="invisible: isDischargeTimeValid">{{nls.valmsgDischagetimeRequired}}</span>
                                     </div>
                                 </div>
 
-
-                                <div class="column-two">
-                                    <label class="form-element-with-label">
-                                        <div class="custom-datetimepicker inlinedate-time">
-                                            <input id="vwsdcDischargeTime" data-role="timepicker" data-bind="value: dischargeTime" />
-                                            <span class="k-widget k-tooltip k-tooltip-validation k-invalid-msg" data-bind="invisible: isDischargeTimeValid">{{nls.valmsgDischagetimeRequired}}</span>
-                                        </div>
-                                    </label>
-                                </div>
                             </div>
-                        </div>
-                    </div>
+                            <div class="column-two">
+                                <div class="form-element-with-label">
+                                    <span class="form-element-with-label__text">{{nls.lblDestinationArrivalDateTime}}</span>
 
-                    <div class="module-container l--two-column">
-                        <div class="column-one">
-                            <span class="form-element-with-label__text">{{nls.lblArrivalDateTime}}</span>
-                        </div>
-                        <div class="column-two">
-                            <div class="module-container l--two-column-datetimepickers">
-                                <div class="column-one">
-                                    <div class="custom-datetimepicker inlinedate-time">
+                                    <div class="inlinedate-time">
                                         <input id="vwsdisArrivalDate" name="vwsdisArrivalDate" data-role="datepicker" data-bind="value:arrivalDate" />
                                         <span class="k-widget k-tooltip k-tooltip-validation k-invalid-msg" data-bind="invisible: isArrivalDateValid">{{nls.valmsgArrivaldateRequired}}</span>
+
+                                        <input id="vwsdisArrivalTime" data-role="timepicker" data-bind="value: arrivalTime" />
+                                        <span class="k-widget k-tooltip k-tooltip-validation k-invalid-msg" data-bind="invisible: isArrivalTimeValid">{{nls.valmsgArrivaltimeRequired}}</span>
                                     </div>
-                                </div>
-
-
-                                <div class="column-two">
-                                    <label class="form-element-with-label">
-                                        <div class="custom-datetimepicker inlinedate-time">
-                                            <input id="vwsdisArrivalTime" data-role="timepicker" data-bind="value: arrivalTime" />
-                                            <span class="k-widget k-tooltip k-tooltip-validation k-invalid-msg" data-bind="invisible: isArrivalTimeValid">{{nls.valmsgArrivaltimeRequired}}</span>
-                                        </div>
-                                    </label>
                                 </div>
                             </div>
                         </div>
-                    </div>
 
-                    <div class="module-container l--two-column">
-                        <div class="column-one">
-                            <span class="form-element-with-label__text">{{nls.lblDestination}}</span>
-
+                        <div class="module-container l--two-column">
+                            <div class="column-one">
+                                <label class="form-element-with-label">
+                                    <span class="form-element-with-label__text">
+                                        {{nls.lblDestination}}
+                                    </span>
+                                    <input type="text" class="form-element-with-label__inp" maxlength="250"
+                                           id="vwsdcTbContact" name="vwsdcTbContact" data-bind="value:dischargeData.Destination" />
+                                </label>
+                            </div>
+                            <div class="column-two">
+                                <label class="form-element-with-label">
+                                    <span class="form-element-with-label__text">{{nls.lblDisposition}}</span>
+                                    <div class="custom-select">
+                                        <select id="vwssiDdlDestinationType"
+                                                data-role="dropdownlist"
+                                                data-bind="source:dispositionLookUp,value:selectedDisposition"
+                                                data-text-field="Value"
+                                                data-value-field="Key" />
+                                    </div>
+                                </label>
+                            </div>
                         </div>
-                        <div class="column-two">
-                            <label class="form-element-with-label">
-                                <input type="text" class="form-element-with-label__inp" maxlength="250"
-                                       id="vwsdcTbContact" name="vwsdcTbContact" data-bind="value:dischargeData.Destination" />
-                            </label>
+
+                        <div class="module-container l--two-column">
+                            <div class="column-one">
+                                <!--TODO: Databind is pending-->
+
+                                <label class="form-element-with-label">
+                                    <span class="form-element-with-label__text">
+                                        {{nls.lblDepartureModeOfTransportation}}
+                                        <em class="form-element-with-label__text__astrisk">*</em>
+                                    </span>
+                                    <div class="custom-select">
+                                        <select id="vwssiDdlDepartureModeOfTransportation"
+                                                data-role="dropdownlist"
+                                                data-text-field="Value"
+                                                data-value-field="Key" />
+                                    </div>
+                                </label>
+                            </div>
                         </div>
+
                     </div>
-
                 </div>
-
-                </div>
-
-
-
+            </div>
         </div>
-
-
-
     </div>
+
 
 
     <div class="footer-bts-container">
 
-        <button type="button" class="btn" data-bind="visible:isPreviousButtonVisible,click:previousClick" >
-            Previous
+        <button type="button" class="btn" data-bind="visible:isPreviousButtonVisible,click:previousClick">
+            {{nls.btnPrevious}}
         </button>
-        
+
         <button type="button" class="btn" data-bind="click:saveClick">
-            Save
+            {{nls.btnSave}}
         </button>
 
         <button type="button" class="btn" data-bind="click:backClick">
-            Back
+            {{nls.btnBack}}
         </button>
 
         <button type="button" class="btn" data-bind="visible:isNextButtonVisible,click:nextClick">
-            Next
+            {{nls.btnNext}}
         </button>
 
     </div>
 
-
-    
-
-
 </div>
+
 
 
 <script type="text/x-kendo-template" id="vwsesRow-template">
@@ -861,11 +991,11 @@
 
             <label class="radio-button">
                 <input class="radio-button__inp" type="radio" name="#:EquipmentSupplyId#Need" value=true data-bind="checked:Need" />
-                <span class="radio-button__text">Yes</span>
+                <span class="radio-button__text">{{nls.lblRbYes}}</span>
             </label>
             <label class="radio-button">
                 <input class="radio-button__inp" type="radio" name="#:EquipmentSupplyId#Need" value=false data-bind="checked:Need" />
-                <span class="radio-button__text marginL12">No</span>
+                <span class="radio-button__text marginL12">{{nls.lblRbNo}}</span>
             </label>
 
         </td>
@@ -874,20 +1004,21 @@
 
             <label class="radio-button">
                 <input class="radio-button__inp" type="radio" value=true name="#:EquipmentSupplyId#Have" data-bind="checked:Have" />
-                <span class="radio-button__text">Yes</span>
+                <span class="radio-button__text">{{nls.lblRbYes}}</span>
             </label>
             <label class="radio-button">
                 <input class="radio-button__inp" type="radio" value=false name="#:EquipmentSupplyId#Have" data-bind="checked:Have" />
-                <span class="radio-button__text marginL12">No</span>
+                <span class="radio-button__text marginL12">{{nls.lblRbNo}}</span>
             </label>
 
         </td>
 
         <td data-title="Date">
             <div>
-                <input id="#:EquipmentSupplyId#date" name="#:EquipmentSupplyId#date" data-role="datepicker" data-bind="value:DateNeededForDisplay" class="inputClass" />
-                <span class="k-widget k-tooltip k-tooltip-validation k-invalid-msg" data-bind="invisible: hideValidation">Please select valid date</span>
-
+                <input type="text" class="form-element-with-label__inp"
+                       data-role="numerictextbox" min="1" max="1000" data-format="n0" data-decimals="0" data-spinners="false"
+                      
+                        data-bind="value:AdditionalNumberNeededForNextFiveDays" />
             </div>
         </td>
 
@@ -900,11 +1031,23 @@
 
     <div>
         <h2 class="module-section__title" data-bind="text:Name"></h2>
-        <div class="module-section-content" data-template="vwqrQuestion-template" data-bind="source:Questions">
+        <div class="module-section-container">
+
+            # if((Id == $ct.other.getVitalSignsSectionId()) || (Id == $ct.other.getMiscellaneousSectionId()) ){ #
+
+            <div  class="module-section-content l--two-column-wrap"  data-template="vwqrQuestionTwoCol-template" data-bind="source:Questions">
+            </div>
+
+            #}else{#
+
+            <div class="module-section-content" data-template="vwqrQuestion-template" data-bind="source:Questions">
+            </div>
+
+            #}#
+
 
 
         </div>
-
     </div>
 
 
@@ -916,27 +1059,22 @@
 
     <div class="form-element-with-label-full">
 
-        # if (IsRequired) { #
 
-        <span class="form-element-with-label__text required" data-bind="text:QuestionText"></span>
+        <span class="form-element-with-label__text" data-bind="html:HTMLQuestionText"></span>
 
-        #}else{#
 
-        <span class="form-element-with-label__text" data-bind="text:QuestionText"></span>
-        
-        #}#
 
-        <div >
+        <div class="marginL12">
 
             <!--Text box question-->
             # if (AnswerTypeId == 1) { #
 
             <div>
 
-                <input type="text" class="form-element-with-label__inp marginL12 medicalconditiontb" data-bind="value:Answer, attr:{maxlength: AnswerWidth}" />
+                <input type="text" class="form-element-with-label__inp medicalconditiontb" data-bind="value:Answer, attr:{maxlength: AnswerWidth}" />
 
                 <span class="k-widget k-tooltip k-tooltip-validation k-invalid-msg" data-bind="invisible: hideValidation">
-                    Please enter value
+                    {{nls.valmsgAnswerTextRequired}}
                 </span>
 
             </div>
@@ -944,30 +1082,30 @@
             #} else if (AnswerTypeId == 2){ #
 
 
-            <div >
+            <div class="nmtxb">
 
-                <input type="text" class="form-element-with-label__inp  marginL12 "
+                <input type="text" class="form-element-with-label__inp"
                        data-role="numerictextbox" data-spinners="false" min="0" max="9999999" data-format="n0"
                        data-bind="value:Answer"
                        data-decimals="0" />
 
                 <span class="k-widget k-tooltip k-tooltip-validation k-invalid-msg" data-bind="invisible: hideValidation">
-                    Please enter number
+                    {{nls.valmsgAnswerNumericRequired}}
                 </span>
 
             </div>
 
             #} else if (AnswerTypeId == 3){ #
 
-            <div >
+            <div class="nmtxb">
 
-                <input type="text" class="form-element-with-label__inp  marginL12"
+                <input type="text" class="form-element-with-label__inp"
                        data-role="numerictextbox" data-spinners="false" min="0" max="9999999"
                        data-bind="value:Answer"
                        data-decimals="1" data-format="n1" />
 
-                <span class="k-widget k-tooltip k-tooltip-validation k-invalid-msg"  data-bind="invisible: hideValidation">
-                    Please enter number
+                <span class="k-widget k-tooltip k-tooltip-validation k-invalid-msg" data-bind="invisible: hideValidation">
+                    {{nls.valmsgAnswerDecimalRequired}}
                 </span>
 
             </div>
@@ -976,10 +1114,10 @@
 
             <div>
 
-                <textarea rows="5" class="form-element-with-label__inp marginL12 medicalconditiontb" data-bind="value:Answer, attr:{maxlength: AnswerWidth}"></textarea>
+                <textarea rows="5" class="form-element-with-label__inp medicalconditiontb" data-bind="value:Answer, attr:{maxlength: AnswerWidth}"></textarea>
 
-                <span  class="k-widget k-tooltip k-tooltip-validation k-invalid-msg" data-bind="invisible: hideValidation">
-                  Please enter value
+                <span class="k-widget k-tooltip k-tooltip-validation k-invalid-msg" data-bind="invisible: hideValidation">
+                    {{nls.valmsgAnswerTextAreaRequired}}
                 </span>
 
             </div>
@@ -998,14 +1136,14 @@
 
 
             <span class="k-widget k-tooltip k-tooltip-validation k-invalid-msg" role="alert" data-bind="invisible: hideValidation">
-                Please select an option
+                {{nls.valmsgAnswerOptionRequired}}
             </span>
 
             #} else if (AnswerTypeId == 6){ #
 
             # if(IsOptionsHorizontal ){ #
 
-            <ul class="form-list"data-template="vwqrMultipleCheckOptionH-template" data-bind="source: AnswerOptions"></ul>
+            <ul class="form-list" data-template="vwqrMultipleCheckOptionH-template" data-bind="source: AnswerOptions"></ul>
 
             #}else{#
 
@@ -1013,8 +1151,8 @@
 
             #}#
 
-            <span class="k-widget k-tooltip k-tooltip-validation k-invalid-msg" role="alert"  data-bind="invisible: hideValidation">
-                Please select atleast one option
+            <span class="k-widget k-tooltip k-tooltip-validation k-invalid-msg" role="alert" data-bind="invisible: hideValidation">
+                {{nls.valmsgAnswerAtLeastOneOptionRequired}}
             </span>
 
 
@@ -1022,14 +1160,14 @@
 
             <div class="custom-select">
 
-                <input data-role="dropdownlist"  data-bind="source:AnswerOptions ,  value:Answer"
+                <input data-role="dropdownlist" data-bind="source:AnswerOptions ,  value:Answer"
                        data-text-field="ChoiceText" data-value-field="Id" />
 
             </div>
 
             #}else{#
 
-            question type not found there is a configuration issue.
+            {{nls.valmsgAnswerTypeNotFoundRequired}}
 
             #}#
 
@@ -1037,11 +1175,135 @@
         </div>
 
 
-</div>
+    </div>
 
 
-        </script>
+</script>
 
+<script type="text/x-kendo-template" id="vwqrQuestionTwoCol-template">
+
+
+    <div  class="column-one">
+
+
+        <span class="form-element-with-label__text" data-bind="html:HTMLQuestionText"></span>
+
+
+        <div class="marginL12">
+
+            <!--Text box question-->
+            # if (AnswerTypeId == 1) { #
+
+            <div>
+
+                <input type="text" class="form-element-with-label__inp answertextbox" data-bind="value:Answer, attr:{maxlength: AnswerWidth}" />
+
+                <span class="k-widget k-tooltip k-tooltip-validation k-invalid-msg" data-bind="invisible: hideValidation">
+                    {{nls.valmsgAnswerTextRequired}}
+                </span>
+
+            </div>
+
+            #} else if (AnswerTypeId == 2){ #
+
+
+            <div>
+
+                <input type="text" class="form-element-with-label__inp answernumerictb"
+                       data-role="numerictextbox" data-spinners="false" min="0" max="9999999" data-format="n0"
+                       data-bind="value:Answer"
+                       data-decimals="0" />
+
+                <span class="k-widget k-tooltip k-tooltip-validation k-invalid-msg" data-bind="invisible: hideValidation">
+                    {{nls.valmsgAnswerNumericRequired}}
+                </span>
+
+            </div>
+
+            #} else if (AnswerTypeId == 3){ #
+
+            <div>
+
+                <input type="text" class="form-element-with-label__inp answernumerictb"
+                       data-role="numerictextbox" data-spinners="false" min="0" max="9999999"
+                       data-bind="value:Answer"
+                       data-decimals="1" data-format="n1" />
+
+                <span class="k-widget k-tooltip k-tooltip-validation k-invalid-msg" data-bind="invisible: hideValidation">
+                    {{nls.valmsgAnswerDecimalRequired}}
+                </span>
+
+            </div>
+
+            #} else if (AnswerTypeId == 4){ #
+
+            <div>
+
+                <textarea rows="5" class="form-element-with-label__inp medicalconditiontb" data-bind="value:Answer, attr:{maxlength: AnswerWidth}"></textarea>
+
+                <span class="k-widget k-tooltip k-tooltip-validation k-invalid-msg" data-bind="invisible: hideValidation">
+                    {{nls.valmsgAnswerTextAreaRequired}}
+                </span>
+
+            </div>
+
+            #} else if (AnswerTypeId == 5){ #
+
+            # if(IsOptionsHorizontal ){ #
+
+            <ul class="form-list" data-template="vwqrMultipleRadioOptionH-template" data-bind="source: AnswerOptions"></ul>
+
+            #}else{#
+
+            <ul class="form-list" data-template="vwqrMultipleRadioOptionV-template" data-bind="source: AnswerOptions"></ul>
+
+            #}#
+
+
+            <span class="k-widget k-tooltip k-tooltip-validation k-invalid-msg" role="alert" data-bind="invisible: hideValidation">
+                {{nls.valmsgAnswerOptionRequired}}
+            </span>
+
+            #} else if (AnswerTypeId == 6){ #
+
+            # if(IsOptionsHorizontal ){ #
+
+            <ul class="form-list" data-template="vwqrMultipleCheckOptionH-template" data-bind="source: AnswerOptions"></ul>
+
+            #}else{#
+
+            <ul class="form-list" data-template="vwqrMultipleCheckOptionV-template" data-bind="source: AnswerOptions"></ul>
+
+            #}#
+
+            <span class="k-widget k-tooltip k-tooltip-validation k-invalid-msg" role="alert" data-bind="invisible: hideValidation">
+                {{nls.valmsgAnswerAtLeastOneOptionRequired}}
+            </span>
+
+
+            #} else if (AnswerTypeId == 7){ #
+
+            <div class="custom-select">
+
+                <input data-role="dropdownlist" data-bind="source:AnswerOptions ,  value:Answer"
+                       data-text-field="ChoiceText" data-value-field="Id" />
+
+            </div>
+
+            #}else{#
+
+            {{nls.valmsgAnswerTypeNotFoundRequired}}
+
+            #}#
+
+
+        </div>
+
+
+    </div>
+
+
+</script>
 
 <script type="text/x-kendo-template" id="vwqrMultipleRadioOptionH-template">
 
@@ -1050,7 +1312,7 @@
 
             <input class="radio-button__inp" type="radio" value="${Id}" data-bind="checked: Answer, attr:{name:QuestionId}" />
 
-            <span class="radio-button__text  marginL12" data-bind="text:ChoiceText"></span>
+            <span class="radio-button__text" data-bind="text:ChoiceText"></span>
 
         </label>
     </li>
@@ -1059,12 +1321,12 @@
 
 <script type="text/x-kendo-template" id="vwqrMultipleRadioOptionV-template">
 
-    <li  class="displayBlock">
+    <li class="displayBlock">
         <label class="radio-button">
 
             <input class="radio-button__inp" type="radio" value="${Id}" data-bind="checked: Answer, attr:{name:QuestionId}" />
 
-            <span class="radio-button__text  marginL12" data-bind="text:ChoiceText"></span>
+            <span class="radio-button__text" data-bind="text:ChoiceText"></span>
 
         </label>
     </li>
@@ -1073,11 +1335,11 @@
 
 <script type="text/x-kendo-template" id="vwqrMultipleCheckOptionH-template">
 
-    <li >
+    <li>
         <label class="checkbox">
 
             <input class="checkbox__inp" type="checkbox" data-bind="checked: Answer" name="checkbox" id="checkbox">
-            <span class="checkbox__text  marginL12" data-bind="text:ChoiceText"></span>
+            <span class="checkbox__text" data-bind="text:ChoiceText"></span>
         </label>
     </li>
 
@@ -1086,11 +1348,11 @@
 
 <script type="text/x-kendo-template" id="vwqrMultipleCheckOptionV-template">
 
-    <li  class="displayBlock">
+    <li class="displayBlock">
         <label class="checkbox">
 
             <input class="checkbox__inp" type="checkbox" data-bind="checked: Answer" name="checkbox" id="checkbox">
-            <span class="checkbox__text  marginL12" data-bind="text:ChoiceText"></span>
+            <span class="checkbox__text" data-bind="text:ChoiceText"></span>
         </label>
     </li>
 
@@ -1099,14 +1361,15 @@
 
 
 
-<script type="text/x-kendo-template" id="vwssiRow-template">
+<!--TODO: Need to add binding and validation-->
+<script type="text/x-kendo-template" id="vwssiRowShelterSections-template">
 
     <li>
 
-        <label class="checkbox">
-
-            <input class="checkbox__inp" type="checkbox" data-bind="checked: IsSelected">
-            <span class="checkbox__text  marginL12" data-bind="text:ShelterIdentificationName"></span>
+        <label class="radio-button">
+            <input class="radio-button__inp" name="vwssiRbShelterSections" type="radio"
+                   value="${Key}" >
+            <span class="radio-button__text" data-bind="text:Value"></span>
         </label>
 
 
@@ -1132,7 +1395,7 @@
 
         <label class="radio-button">
             <input class="radio-button__inp" name="vwsdRbCareSettings" type="radio"
-                   value="${Key}" data-bind="checked:selectedCareSettingsId,events:{change:enableHospiceOnChange}">
+                   value="${Key}" data-bind="checked:selectedCareSettingsId">
             <span class="radio-button__text" data-bind="text:Value"></span>
         </label>
     </li>
@@ -1156,7 +1419,7 @@
 
         <label class="radio-button">
             <input class="radio-button__inp" name="vwsdTbHospice" type="radio"
-                   value="${Key}" data-bind="checked:selectedHospiceStabilityId, disabled: isHospiceDisabled">
+                   value="${Key}" data-bind="checked:selectedHospiceStabilityId, enabled: isHospiceSelected">
             <span class="radio-button__text" data-bind="text:Value"></span>
         </label>
     </li>
@@ -1171,30 +1434,34 @@
 
         # if (Id == -1) { #
 
-        <td style="vertical-align:top">
-            <input type="text"  class="form-element-with-label__inp medicationtx"  data-bind="value:DrugName" />
-            <span class="k-widget k-tooltip k-tooltip-validation k-invalid-msg" data-bind="invisible: isMedicationNameValid">Name is required</span>
+        <td class="align-top">
+            <span>
+                <input type="text" class="form-element-with-label__inp medicationtx" data-bind="value:DrugName" />
+            </span>
+            <span class="k-widget k-tooltip k-tooltip-validation k-invalid-msg" data-bind="invisible: isMedicationNameValid">
+                {{nls.valmsgMedicationNameRequired}}
+            </span>
         </td>
-        <td style="vertical-align:top">
-            <input type="text"  class="form-element-with-label__inp medicationtx"  data-bind="value:Dosage" />
+        <td class="align-top">
+            <input type="text" class="form-element-with-label__inp medicationtx" data-bind="value:Dosage" />
         </td>
-        <td style="vertical-align:top">
-            <input type="text"  class="form-element-with-label__inp medicationtx"  data-bind="value:Frequency" />
+        <td class="align-top">
+            <input type="text" class="form-element-with-label__inp medicationtx" data-bind="value:Frequency" />
         </td>
-        <td style="vertical-align:top">
-        
+        <td class="align-top">
+
             <div class="custom-datetimepicker">
                 <input type="text" data-role="datepicker" data-bind="value:LastTimeUsed" />
-                <span class="k-widget k-tooltip k-tooltip-validation k-invalid-msg" data-bind="invisible: isLastTimeUsedValid">Please select valid date</span>
+                <span class="k-widget k-tooltip k-tooltip-validation k-invalid-msg" data-bind="invisible: isLastTimeUsedValid">{{nls.valmsgDateRequired}}</span>
             </div>
-        
+
         </td>
 
 
-        <td style="vertical-align:top">
+        <td class="align-top">
             <button class="btn--secondary" data-bind="click:btnAddMedicationClick" type="button">
                 <span class="f-icon f-icon__add" aria-hidden="true"></span>
-                Add
+                {{nls.btnAdd}}
             </button>
 
         </td>
@@ -1223,7 +1490,7 @@
         <td>
             <button class="btn-delete" data-bind="click:btnMedicationDeleteClick">
                 <span class="f-icon f-icon__delete" aria-hidden="true"></span>
-                <span class="f-icon__text">Delete</span>
+                <span class="f-icon__text">{{nls.btnDelete}}</span>
             </button>
         </td>
 

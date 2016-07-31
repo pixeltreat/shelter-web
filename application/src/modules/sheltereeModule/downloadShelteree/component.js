@@ -33,7 +33,7 @@ define(['Boiler', './viewmodel', 'text!./view.html', 'i18n!./nls/resources'], fu
             vm.data.initializeShelters();
             panel.show();
            
-            moduleContext.parentContext.activeForm = $ct.rn.getDownloadShelteree();
+           // moduleContext.parentContext.activeForm = $ct.rn.getDownloadShelteree();
             moduleContext.notify($ct.en.getShowActiveSheltereeHeader(), null);
             moduleContext.notify($ct.en.getHideSheltereeShelterHeader(), null);
 

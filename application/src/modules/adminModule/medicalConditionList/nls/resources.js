@@ -8,6 +8,7 @@ define({
         "gdColDisplayOrder": "Display Order",
         "gdColUpdatedDate": "Updated Date",
         "gdColUserName": "User Name",
+        "gdColQuestionType": "Question Type",
         "gdColDescription": "Description",
 
         "btnAdd": "Add",

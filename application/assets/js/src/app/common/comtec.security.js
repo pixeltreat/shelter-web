@@ -27,21 +27,13 @@ $ct.security = function () {
         $.each(userIdentity.Roles, function (index, record) {
 
             if (
-            (record.Key == $ct.roles.getAdministratorId()) ||
+                    (record.Key == $ct.roles.getSuperAdminId()) ||
 
-            (record.Key == $ct.roles.getAssociationId()) ||
+                    (record.Key == $ct.roles.getAdministratorId()) ||
 
-            (record.Key == $ct.roles.getCallCenterId()) ||
+                    (record.Key == $ct.roles.getFacilityUpdateId()) ||
 
-            (record.Key == $ct.roles.getDrcId()) ||
-
-            (record.Key == $ct.roles.getDataCellId()) ||
-
-            (record.Key == $ct.roles.getFacilityUpdateId()) ||
-
-            (record.Key == $ct.roles.getFacilityReadOnlyId()) ||
-
-            (record.Key == $ct.roles.getSuperAdminId())
+                    (record.Key == $ct.roles.getFacilityReadOnlyId())
 
             ) {
                 validRole = true;
@@ -62,29 +54,17 @@ $ct.security = function () {
 
         $.each(userIdentity.Roles, function (index, record) {
 
+            if (record.Key == $ct.roles.getSuperAdminId())
+                isSuperAdmin = true;
+
             if (record.Key == $ct.roles.getAdministratorId())
                 isAdmin = true;
-
-            if (record.Key == $ct.roles.getAssociationId())
-                isAssociation = true;
-
-            if (record.Key == $ct.roles.getCallCenterId())
-                isCallCenter = true;
-
-            if (record.Key == $ct.roles.getDrcId())
-                isDrc = true;
-
-            if (record.Key == $ct.roles.getDataCellId())
-                isDataCell = true;
 
             if (record.Key == $ct.roles.getFacilityUpdateId())
                 isFacilityUpdate = true;
 
             if (record.Key == $ct.roles.getFacilityReadOnlyId())
                 isFacilityReadOnly = true;
-
-            if (record.Key == $ct.roles.getSuperAdminId())
-                isSuperAdmin = true;
 
         });
 
@@ -94,56 +74,12 @@ $ct.security = function () {
         if (isSuperAdmin) {
 
             isAdmin = false;
-            isAssociation = false;
-            isCallCenter = false;
-            isDrc = false;
-            isDataCell = false;
             isFacilityUpdate = false;
             isFacilityReadOnly = false;
 
         }
 
         if (isAdmin) {
-            isAssociation = false;
-            isCallCenter = false;
-            isDrc = false;
-            isDataCell = false;
-            isFacilityUpdate = false;
-            isFacilityReadOnly = false;
-        }
-
-        if (isDataCell) {
-
-            isAssociation = false;
-            isCallCenter = false;
-            isDrc = false;
-            isFacilityUpdate = false;
-            isFacilityReadOnly = false;
-
-        }
-
-
-
-
-        if (isCallCenter) {
-
-            isAssociation = false;
-            isDrc = false;
-            isFacilityUpdate = false;
-            isFacilityReadOnly = false;
-
-        }
-
-
-        if (isAssociation) {
-
-            isDrc = false;
-            isFacilityUpdate = false;
-            isFacilityReadOnly = false;
-
-        }
-
-        if (isDrc) {
 
             isFacilityUpdate = false;
             isFacilityReadOnly = false;
@@ -160,35 +96,16 @@ $ct.security = function () {
     };
 
 
+    var isSuperAdmin = false;
+
+    var isSuperAdminRole = function () {
+        return isSuperAdmin
+    };
 
     var isAdmin = false;
 
     var isAdminRole = function () {
         return isAdmin
-    };
-
-    var isAssociation = false;
-
-    var isAssociationRole = function () {
-        return isAssociation
-    };
-
-    var isCallCenter = false;
-
-    var isCallCenterRole = function () {
-        return isCallCenter
-    };
-
-    var isDrc = false;
-
-    var isDrcRole = function () {
-        return isDrc
-    };
-
-    var isDataCell = false;
-
-    var isDataCellRole = function () {
-        return isDataCell
     };
 
     var isFacilityUpdate = false;
@@ -203,11 +120,7 @@ $ct.security = function () {
         return isFacilityReadOnly
     };
 
-    var isSuperAdmin = false;
 
-    var isSuperAdminRole = function () {
-        return isSuperAdmin
-    };
 
 
     var getUserName = function () {
@@ -248,14 +161,10 @@ $ct.security = function () {
         setRoles: setRoles,
 
         //calling setRoles function is prerequisite
+        isSuperAdminRole: isSuperAdminRole,
         isAdminRole: isAdminRole,
-        isAssociationRole: isAssociationRole,
-        isCallCenterRole: isCallCenterRole,
-        isDrcRole: isDrcRole,
-        isDataCellRole: isDataCellRole,
         isFacilityUpdateRole: isFacilityUpdateRole,
-        isFacilityReadOnlyRole: isFacilityReadOnlyRole,
-        isSuperAdminRole: isSuperAdminRole
-
+        isFacilityReadOnlyRole: isFacilityReadOnlyRole
+        
     };
 } ();

@@ -1,12 +1,12 @@
 define({
     "root": {
 
-        "headerShelteree": "Shelteree",
+        "headerShelteree": "Shelteree List",
         "btnAdd": "Add",
         "btnDelete": "Delete",
         "btnEdit": "Edit",
         "lblShelterName": "Shelter Name :",
-        "btnExportToExcel": "Export To Excel",
+        "btnExportToExcel": "Export",
         "btnBulkUpdate": "Bulk Update",
         "btnFilterOff": "View All",
         "gdColIsSelected": "",
@@ -24,6 +24,7 @@ define({
         "btnGo": "Go",
         "btnFilterOff": "Show All",
         "lblEventName": "EventName:",
-        "lblDuration": "Duration:"
+        "lblDuration": "Duration:",
+        "btnReport": "Report"
     }
 });

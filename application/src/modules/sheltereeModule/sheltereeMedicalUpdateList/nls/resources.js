@@ -1,7 +1,7 @@
 define({
     "root": {
 
-        "headerSheltereeMedicalUpdate": "SheltereeMedicalUpdate",
+        "headerSheltereeMedicalUpdate": "Shelteree Medical Update List",
         "btnAdd": "Add",
         "btnDelete": "Delete",
         "btnEdit": "Edit",
@@ -23,7 +23,8 @@ define({
         "btnFilterOff": "Show All",
         "lblEventName": "EventName:",
         "lblDuration": "Duration:",
-        "btnReports": "Report"
+        "btnReports": "Report",
+        "btnReport": "Report"
 
     }
 });

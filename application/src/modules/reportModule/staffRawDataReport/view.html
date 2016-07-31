@@ -1,0 +1,101 @@
+
+<div id="vwStaffRawDataReport">
+    <!--View name : vwStaffRawDataReport-->
+    <!--Control id prefix : vwsrdr-->
+
+
+    <div class="module">
+        <div class="module-container">
+            <h2 class="module-title">{{nls.headerStaffRawDataReport}}</h2>
+            <div class="l--two-column-reports">
+                <div class="column-one">
+                    <label class="form-element-with-label">
+                        <span class="form-element-with-label__text">
+                            {{nls.lblSnapShotDate}}
+                            <em class="form-element-with-label__text__astrisk">*</em>
+                        </span>
+                        <input id="vwsrdrSnapShotDate" name="vwsrdrSnapShotDate"
+                               data-role="datetimepicker"
+                               data-bind="value:snapShotDate" />
+                        <span class="k-widget k-tooltip k-tooltip-validation k-invalid-msg" role="alert" data-bind="invisible:isSnapShotDateValid">
+                            <span class="k-icon k-warning"></span>{{nls.valmsgSnapShotDateRequired}}
+                        </span>
+
+                    </label>
+                </div>
+            </div>
+            <div class="form-element-with-label-full">
+                <span class="form-element-with-label__text">
+                    {{nls.lblShelters}}
+                    <em class="form-element-with-label__text__astrisk">*</em>
+                </span>
+                <!-- <ul class="form-list report-list">
+                                <li>
+                                    <label class="checkbox">
+                                        <input class="checkbox__inp" type="checkbox">
+                                        <span class="checkbox__text">{{nls.lblAll}}</span>
+                                    </label>
+                                </li>
+                            </ul>
+                -->
+                <ul class="form-list report-list" data-template="vwsrdrShelterRow-template" data-bind="source:dsShelters"></ul>
+                <span class="k-widget k-tooltip k-tooltip-validation k-invalid-msg" role="alert" data-bind="invisible:setValidationMsgForShelters">
+                    <span class="k-icon k-warning"></span>{{nls.valmsgSheltersRequired}}
+                </span>
+            </div>
+            <div class="form-element-with-label-full">
+                <span class="form-element-with-label__text">
+                    {{nls.lblEvents}}
+                    <em class="form-element-with-label__text__astrisk">*</em>
+                </span>
+                <!--  <ul class="form-list report-list">
+                                <li>
+                                    <label class="checkbox">
+                                        <input class="checkbox__inp" type="checkbox">
+                                        <span class="checkbox__text">{{nls.lblAll}}</span>
+                                    </label>
+                                </li>
+                            </ul>
+                -->
+                <ul class="form-list report-list" data-template="vwsrdrEventRow-template" data-bind="source:dsEvents"></ul>
+                <span class="k-widget k-tooltip k-tooltip-validation k-invalid-msg" role="alert" data-bind="invisible:setValidationMsgForEvents">
+                    <span class="k-icon k-warning"></span>{{nls.valmsgEventsRequired}}
+                </span>
+
+            </div>
+
+        </div>
+    </div>
+    <div class="footer-bts-container">
+        <button class="btn" data-bind="click:btnStaffRawGenerateReportClick" type="button">
+            {{nls.btnGenerateReport}}
+        </button>
+    </div>
+
+
+</div>
+
+<script type="text/x-kendo-template" id="vwsrdrShelterRow-template">
+    <li>
+        <label class="checkbox">
+            <input class="checkbox__inp" type="checkbox"
+                   data-bind="checked:IsSelected">
+            <span class="checkbox__text" data-bind="text:Value"></span>
+        </label>
+    </li>
+
+</script>
+<script type="text/x-kendo-template" id="vwsrdrEventRow-template">
+    <li>
+        <label class="checkbox">
+            <input class="checkbox__inp" type="checkbox"
+                   data-bind="checked:IsSelected">
+            <span class="checkbox__text" data-bind="text:Value"></span>
+        </label>
+    </li>
+
+</script>
+
+
+
+

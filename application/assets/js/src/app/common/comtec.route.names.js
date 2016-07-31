@@ -12,6 +12,18 @@ $ct.rn = function () {
         return noPermission;
     };
 
+    var noRole = "norole";
+
+    var getNoRole = function () {
+        return noRole;
+    };
+
+    var noActiveEvent = "noactiveevent";
+
+    var getNoActiveEvent = function () {
+        return noActiveEvent;
+    };
+
     /*end of other routes */
 
 
@@ -199,6 +211,19 @@ $ct.rn = function () {
     var getQuestion = function () {
         return question;
     };
+
+    var eventList = "eventlist";
+
+    var getEventList = function () {
+        return eventList;
+    };
+
+
+    var event = "event";
+
+    var getEvent= function () {
+        return event;
+    };
    
     //end of admin routes
     
@@ -373,14 +398,38 @@ $ct.rn = function () {
 
     //end of shelteree routes
     
+    //start of report routes
 
+
+    var staffRawDataReport = "staffrawdatareport";
+
+    var getStaffRawDataReport = function () {
+        return staffRawDataReport;
+    };
+
+
+    var staffAttendanceRawDataReport = "staffattendancerawdatareport";
+
+    var getStaffAttendanceRawDataReport = function () {
+        return staffAttendanceRawDataReport;
+    };
+
+
+    var sheltereeRawDataReport = "sheltereerawdatareport";
+
+    var getSheltereeRawDataReport = function () {
+        return sheltereeRawDataReport;
+    };
+
+    //end of report routes
 
     return {
 
         /*start of other routes */
 
-        getNoPermission : getNoPermission,
-
+        getNoPermission: getNoPermission,
+        getNoRole: getNoRole,
+        getNoActiveEvent : getNoActiveEvent,
         /*end of other module routes */
 
 
@@ -412,6 +461,8 @@ $ct.rn = function () {
         getshelterIdentificationList:getshelterIdentificationList,
         getQuestionList: getQuestionList,
         getQuestion: getQuestion,
+        getEventList: getEventList,
+        getEvent: getEvent,
         //end of admin routes
 
 
@@ -450,9 +501,16 @@ $ct.rn = function () {
         getBulkUpdateSheltereeDischarge: getBulkUpdateSheltereeDischarge,
         getBulkUpdateSheltereeMedicalUpdate: getBulkUpdateSheltereeMedicalUpdate,
         getDownloadShelteree: getDownloadShelteree,
-        getUploadShelteree: getUploadShelteree
-
+        getUploadShelteree: getUploadShelteree,
 
         //end of shelteree routes
+
+        //start of report routes
+
+        getStaffRawDataReport: getStaffRawDataReport,
+        getStaffAttendanceRawDataReport: getStaffAttendanceRawDataReport,
+        getSheltereeRawDataReport: getSheltereeRawDataReport
+
+        //end  of report routes
     };
 } ();

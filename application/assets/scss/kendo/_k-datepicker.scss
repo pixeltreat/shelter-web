@@ -10,7 +10,10 @@
     max-width: 400px;
 }
 
+//Added by UI Team
+//Start : Modified code to handle time picker (k-timepicker)
 .k-datepicker,
+.k-timepicker,
 .k-datetimepicker {
     width: 100%;
     box-sizing: border-box;
@@ -20,6 +23,7 @@
         min-height: 33px;
     }
 }
+//End : Modified code to handle time picker (k-timepicker)
 
 .k-picker-wrap{
     &.k-state-default {
@@ -51,29 +55,27 @@
     border-color: $inp-sucess-border;
 }
 
-//Styles for aligning date and time picker in bulkupdatesheltree
+//Added by UI Team
+//Start : Added code to handle date and time picker as inline
 .inlinedate-time .k-datepicker{
-width:62%;
-@include MediaQueries($mobile) {
-            width: 100%;
-        }
-
-        @include MediaQueries($tablet) {
-            width: 100%;
-        }
+    width:56.5%;
+    @include MediaQueries($mobile) {
+        width:100%;
+        margin-bottom:10px;
+    }
 }
 
 .inlinedate-time .k-timepicker{
-    width: 10.4em;
+    width: 42%;
     @include MediaQueries($mobile) {
-         width: 28.4em;
-    }
+        width:70%;
 
-    @include MediaQueries($tablet) {
-         width: 28.4em;
     }
 }
-//style for date piker formatting in all  pages (in firefox and edge)
+//End : Added code to handle date and time picker as inline
+
+//Start : Added code to handle date picker formatting in all  pages
 .k-calendar .k-content {
     padding:0 !important;
 }
+//End : Added code to handle date picker formatting in all  pages

@@ -8,7 +8,190 @@ define(["Boiler", 'text!./help/help.html'], function (Boiler, helpTmpl) {
                 $ct.helpers.displayWindow(panel, $ct.ht.getHelp());
             },
 
-            showMenu: true,
+
+            initializeSecurity: function () {
+
+                var data = $ct.ds.common.getUserIdentityData(function (result) {
+
+
+                    var errorObj = $ct.mt.getErrorObject(result);
+                    if (errorObj != null) {
+
+                        $ct.security.authenticationFailedAction();
+                        return;
+
+                    }
+
+
+                    if (result.Data == undefined) {
+
+                        $ct.security.authenticationFailedAction();
+                        return;
+                    }
+
+                    if (result.Data.UserIdentity == undefined) {
+
+                        $ct.security.authenticationFailedAction();
+                        return;
+                    }
+
+                    if (result.Data.UserIdentity.IsAuthenticated == undefined) {
+
+                        $ct.security.authenticationFailedAction();
+                        return;
+                    }
+
+                    if (result.Data.UserIdentity.Roles == undefined) {
+
+                        //Donot have permission
+                        $ct.security.authenticationFailedAction();
+                        return;
+                    }
+
+                    if (!result.Data.UserIdentity.IsAuthenticated) {
+
+                        $ct.security.authenticationFailedAction();
+                        return;
+                    }
+
+                    $ct.security.setUserIdentity(result.Data.UserIdentity);
+
+                    $ct.security.setRoles();
+
+                    //security object is available from here onwords
+
+                    moduleContext.notify($ct.en.getUpdateSecuritySettings(), null);
+
+                   // vm.setMenuPermissions();
+
+                    if (!$ct.security.isValidRole()) {
+
+                        //Donot have permission
+                        $ct.security.authenticationFailedAction();
+                        return;
+
+                    }
+
+                     $ct.ds.event.getActiveEvent( function (result) {
+
+                        var errorObj = $ct.mt.getErrorObject(result);
+                        if (errorObj != null) {
+                            vm.set("isActiveEventPresent", false);
+                           //' moduleContext.notify($ct.en.getShowErrorMsg(), errorObj);
+                        }
+
+                        if ($ct.mt.isNoActiveEvent(result)) {
+                            vm.set("isActiveEventPresent", false);
+                        }
+
+
+                        if (result.Data.ActiveEvent == null)
+                        {
+                            vm.set("isActiveEventPresent", false);
+                        }
+                        else
+                        {
+                            vm.set("isActiveEventPresent", true);
+                        }
+
+                        vm.setMenuPermissions();
+                        //$ct.helpers.hidePageBusyCursor();
+                        vm.goToHome();
+
+                    });
+
+
+                });
+
+            },
+
+            goToHome: function () {
+
+                if (!$ct.security.isValidRole())
+                    return;
+
+                if ($ct.security.isFacilityReadOnlyRole() ) {
+
+                    vm.sheltereeReportClick();
+
+                }
+                else if (vm.isActiveEventPresent) {
+
+                    vm.sheltereeMedicalUpdateListClick();
+
+                }
+                else {
+
+                    Boiler.UrlController.goTo($ct.rn.getNoActiveEvent());
+
+                }
+
+            },
+
+            userFullName : "",
+            showAdmin: false,
+            showStaffAndShelteree: false,
+            showReports: false,
+            showRefresh: false,
+            
+            isActiveEventPresent : false,
+
+           
+            setMenuPermissions: function () {
+
+                vm.set("userFullName", "Hi, " + $ct.security.getUserName());
+
+                if ($ct.security.isSuperAdminRole())
+                {
+                    vm.set("showAdmin", true);
+                    vm.set("showStaffAndShelteree", true);
+                    vm.set("showReports", true);
+                    vm.set("showRefresh", true);
+                    vm.showAlerts();
+                }
+
+                if ($ct.security.isAdminRole()) {
+                    vm.set("showAdmin", true);
+                    vm.set("showStaffAndShelteree", true);
+                    vm.set("showReports", true);
+                    vm.set("showRefresh", true);
+                    vm.showAlerts();
+                }
+
+                if ($ct.security.isFacilityUpdateRole()) {
+                    vm.set("showAdmin", false);
+                    vm.set("showStaffAndShelteree", true);
+                    vm.set("showReports", true);
+                    vm.set("showRefresh", true);
+                    vm.showAlerts();
+                }
+
+                if ($ct.security.isFacilityReadOnlyRole()) {
+                    vm.set("showAdmin", false);
+                    vm.set("showStaffAndShelteree", false);
+                    vm.set("showReports", true);
+                    vm.set("showRefresh", true);
+                }
+
+                if (!$ct.security.isValidRole()) {
+                    vm.set("showAdmin", false);
+                    vm.set("showStaffAndShelteree", false);
+                    vm.set("showReports", false);
+                    vm.set("showRefresh", false);
+                }
+
+                if(!vm.get("isActiveEventPresent"))
+                {
+
+                    vm.set("showStaffAndShelteree", false);
+                 }
+
+            },
+
+            showAlerts: function () {
+                var alerts = $("#idxAlerts").removeAttr("hidden");
+
+            },
 
             // expand/collapse main nav
             toggleSubnav: toggleMainNavActive,
@@ -17,11 +200,12 @@ define(["Boiler", 'text!./help/help.html'], function (Boiler, helpTmpl) {
             showActiveState: toggleSubNavActive,
 
             homeClick: function (e) {
-                if (!this.showMenu)
+
+                if (!$ct.security.isValidRole())
                     return;
-                moduleContext.notify($ct.en.getGoToHome());
-                //Uncommnet below line and comment above line to have old behavior.
-                //moduleContext.notify($ct.en.getGoToDashboard());
+
+                vm.goToHome();
+
             },
 
             refreshClick: function (e) {
@@ -137,6 +321,48 @@ define(["Boiler", 'text!./help/help.html'], function (Boiler, helpTmpl) {
 
             },
 
+            downloadEmployeeTemplateClick:function () {
+
+                    moduleContext.notify($ct.en.getHideErrorMsg());
+                    $ct.helpers.displayWorkAreaBusyCursor();
+
+                    $ct.ds.emp.employee.downloadEmployeeTemplate(function (result) {
+
+                        $ct.helpers.hideWorkAreaBusyCursor();
+
+
+                        if (result.Data.DownloadUrl != undefined) {
+
+                            window.location.href = result.Data.DownloadUrl;
+
+                        }
+                        else {
+
+                            var errorObj = $ct.mt.getErrorObject(result);
+                            if (errorObj != null) {
+                                moduleContext.notify($ct.en.getShowErrorMsg(), errorObj);
+                            }
+
+                        }
+
+                    });
+
+                
+            },
+
+            uploadEmployeeDataClick: function (e) {
+
+               // moduleContext.notify($ct.en.getEmployeeCreatedOrUpdated());
+                Boiler.UrlController.goTo($ct.rn.getUploadEmployee());
+            },
+
+
+            downloadEmployeeDataClick: function (e) {
+
+               // moduleContext.notify($ct.en.getEmployeeCreatedOrUpdated());
+                Boiler.UrlController.goTo($ct.rn.getDownloadEmployee());
+            },
+
 
             isSheltereeOrDischargeOrMedicalUpdateListClicked: false,
 
@@ -188,6 +414,52 @@ define(["Boiler", 'text!./help/help.html'], function (Boiler, helpTmpl) {
 
             },
 
+
+            downloadSheltereeTemplateClick: function () {
+               
+                    moduleContext.notify($ct.en.getHideErrorMsg());
+                    $ct.helpers.displayWorkAreaBusyCursor();
+
+                    $ct.ds.sheltree.sheltree.downloadSheltereeTemplate(function (result) {
+
+                        $ct.helpers.hideWorkAreaBusyCursor();
+
+
+                        if (result.Data.DownloadUrl != undefined) {
+
+                            window.location.href = result.Data.DownloadUrl;
+
+                        }
+                        else {
+
+                            var errorObj = $ct.mt.getErrorObject(result);
+                            if (errorObj != null) {
+                                moduleContext.notify($ct.en.getShowErrorMsg(), errorObj);
+                            }
+
+                        }
+
+                    });
+
+                
+               
+            },
+
+       
+            uploadSheltereeDataClick: function (e) {
+
+                //moduleContext.notify($ct.en.getSheltereeCreatedOrUpdated());
+                Boiler.UrlController.goTo($ct.rn.getUploadShelteree());
+            },
+
+
+            downloadSheltereeDataClick: function (e) {
+
+                //moduleContext.notify($ct.en.getSheltereeCreatedOrUpdated());
+                Boiler.UrlController.goTo($ct.rn.getDownloadShelteree());
+            },
+
+
             employeeAttendanceClick: function (e) {
                 moduleContext.notify($ct.en.getEmployeeAttendenceList(), null);
                 Boiler.UrlController.goTo($ct.rn.getEmployeeAttendance());
@@ -196,6 +468,23 @@ define(["Boiler", 'text!./help/help.html'], function (Boiler, helpTmpl) {
             shelterStatusClick: function (e) {
                 Boiler.UrlController.goTo($ct.rn.getShelterStatus());
             },
+
+            eventListClick: function (e) {
+                moduleContext.notify($ct.en.getDisplayEventList(), null);
+                Boiler.UrlController.goTo($ct.rn.getEventList());
+            },
+
+            staffReportClick: function (e) {
+                Boiler.UrlController.goTo($ct.rn.getStaffRawDataReport());
+            },
+
+            staffAttendanceReportClick: function (e) {
+                Boiler.UrlController.goTo($ct.rn.getStaffAttendanceRawDataReport());
+            },
+            sheltereeReportClick: function (e) {
+                Boiler.UrlController.goTo($ct.rn.getSheltereeRawDataReport());
+           },
+
 
             multifacilityEmployeeAttendanceClick: function (e) {
                 Boiler.UrlController.goTo($ct.rn.getMultiFacilityEmployeeAttendance());
@@ -207,6 +496,14 @@ define(["Boiler", 'text!./help/help.html'], function (Boiler, helpTmpl) {
 
             multifacilityEmployeeClick: function (e) {
                 Boiler.UrlController.goTo($ct.rn.getMultiFacilityEmployeeList());
+            },
+
+            logOutClick: function (e) {
+
+                $(document).ajaxError(null);
+
+                window.location.href = "logOut.aspx";
+
             }
         });
         //end of observable

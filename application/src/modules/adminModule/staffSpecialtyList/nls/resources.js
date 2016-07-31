@@ -1,6 +1,6 @@
 define({
     "root": {
-        "headerStaffSpecialtyList": "Staff Specialty",
+        "headerStaffSpecialty": "Staff Specialty",
         "lblSearch": "Search",
 
         "gdColName": "Name",

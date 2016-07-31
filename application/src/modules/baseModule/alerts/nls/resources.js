@@ -1,7 +1,9 @@
 define({
     "root": {
 
-        "lblHome" : "Home"
+        "lblHome": "Home",
+        "lblAlerts": "Alerts",
+        "lblAlertsLoaderImage": "Alerts Loader Image"
 
     }
 });

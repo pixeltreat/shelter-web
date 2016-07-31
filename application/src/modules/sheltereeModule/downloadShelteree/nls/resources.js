@@ -3,8 +3,8 @@ define({
 
         "headerDownloadShelteree": "Download Shelteree",
 
-        "lblShelterType": "ShelterType:",
-        "lblShelter": "Shelter:",
+        "lblShelterType": "ShelterType",
+        "lblShelter": "Shelter",
         "btnDownloadShelteree": "Download Shelteree"
 
         ////validation messages

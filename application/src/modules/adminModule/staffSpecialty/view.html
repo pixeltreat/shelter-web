@@ -7,13 +7,19 @@
         <h2 class="module-title">{{nls.headerAddEditStaffSpecialty}}</h2>
         <div class="module-container">
             <label class="form-element-with-label">
-                <span class="form-element-with-label__text">{{nls.lblName}}</span>
-                <input type="text" id="vwssTbName" name="vwssTbName"  maxlength="250" class="form-element-with-label__inp" data-bind="value:staffSpecialtyData.StaffSpeciality.Name" required validationmessage="{{nls.valmsgNameRequired}}">
+                <span class="form-element-with-label__text">
+                    {{nls.lblName}}
+                    <em class="form-element-with-label__text__astrisk">*</em>
+                </span>
+                <input type="text" id="vwssTbName" name="vwssTbName" maxlength="250" class="form-element-with-label__inp" data-bind="value:staffSpecialtyData.StaffSpeciality.Name" required validationmessage="{{nls.valmsgNameRequired}}">
                 <span class="k-invalid-msg" data-for="vwssTbName"></span>
             </label>
 
             <label class="form-element-with-label">
-                <span class="form-element-with-label__text">{{nls.lblDescription}}</span>
+                <span class="form-element-with-label__text">
+                    {{nls.lblDescription}}
+                    <em class="form-element-with-label__text__astrisk">*</em>
+                </span>
                 <textarea id="vwssTaDescription" name="vwssTaDescription" class="form-element-with-label__inp"
                           data-bind="value:staffSpecialtyData.StaffSpeciality.Description,attr:{maxlength: DescriptionLength}"
                           required validationmessage="{{nls.valmsgDescriptionRequired}}" rows="5"></textarea>
@@ -22,7 +28,10 @@
 
 
             <label class="form-element-with-label">
-                <span class="form-element-with-label__text">{{nls.lblDisplayOrder}}</span>
+                <span class="form-element-with-label__text">
+                    {{nls.lblDisplayOrder}}
+                    <em class="form-element-with-label__text__astrisk">*</em>
+                </span>
                 <input type="text" id="vwssTbDisplayOrder" name="vwssTbDisplayOrder" class="form-element-with-label__inp"
                        data-role="numerictextbox" min="1" max="1000" data-format="n0" data-decimals="0" data-spinners="false"
                        required validationmessage="{{nls.valmsgDisplayOrderRequired}}"
@@ -35,10 +44,13 @@
 
 
             <div class="form-element-with-label">
-                <span class="form-element-with-label__text">{{nls.lblMedticalConditions}}</span>
+                <span class="form-element-with-label__text">
+                    {{nls.lblMedticalConditions}}
+                    <em class="form-element-with-label__text__astrisk">*</em>
+                </span>
                 <ul class="form-list" data-template="vwssRow-template" data-bind="source:medicalConditionStaffSpecialities"></ul>
                 <span class="k-widget k-tooltip k-tooltip-validation k-invalid-msg" role="alert" data-bind="invisible:checkMappedMedicalConditions">
-                    <span class="k-icon k-warning"></span> At least one medical condition should be selected.
+                    <span class="k-icon k-warning"></span>{{nls.valmsgMedticalConditionsRequired}}
                 </span>
 
 
@@ -54,7 +66,7 @@
             {{nls.btnSave}}
         </button>
         <button type="button" class="btn" data-bind="click:btnCancelClick">
-            {{nls.btnCancel}}
+            {{nls.btnBack}}
         </button>
     </div>
 </div>

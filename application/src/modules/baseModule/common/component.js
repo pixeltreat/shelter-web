@@ -18,6 +18,19 @@ define(['Boiler', 'text!./responseError.htm', 'text!./responseSuccess.htm', 'tex
         });
 
 
+        $(document).bind($ct.en.getGoToNoRolePage(), function (e) {
+
+
+            Boiler.UrlController.goTo($ct.rn.getNoRole());
+            $ct.helpers.hidePageBusyCursor();
+            $ct.helpers.hideWorkAreaBusyCursor();
+            return;
+
+
+
+        });
+
+
         moduleContext.listen($ct.en.getShowValidationMsg(), function (validationMsg) {
 
             if (validationMsg === null || validationMsg === undefined) {

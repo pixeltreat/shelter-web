@@ -25,38 +25,31 @@
                             data-value-field="Key" />
                 </div>
             </label>
-            <label class="form-element-with-label">
+           
+            <div class="form-element-with-label">
                 <span class="form-element-with-label__text">{{nls.lblDischargeDate}}</span>
-                <div class="custom-datetimepicker">
+                <div class="inlinedate-time">
                     <input id="vwbusdDischargeDate" name="vwbusdDischargeDate"
                            data-role="datepicker"
-                           data-bind="value: saveRequest.valDischargeDate " />
-                </div>
-            </label>
-            <label class="form-element-with-label">
-                <span class="form-element-with-label__text">{{nls.lblDischargeTime}}</span>
-                <div class="custom-datetimepicker">
+                           data-bind="value: saveRequest.valDischargeDate "  />
                     <input id="vwbusdDischargeTime" name="vwbusdDischargeTime"
                            data-role="timepicker"
                            data-bind="value: saveRequest.valDischargeTime " />
                 </div>
-            </label>
-            <label class="form-element-with-label">
+            </div>
+
+            <div class="form-element-with-label">
                 <span class="form-element-with-label__text">{{nls.lblArrivalDate}}</span>
-                <div class="custom-datetimepicker">
+                <div class="inlinedate-time">
                     <input id="vwbusdArrivalDate" name="vwbusdArrivalDate"
                            data-role="datepicker"
                            data-bind="value: saveRequest.valArrivalDate" />
-                </div>
-            </label>
-            <label class="form-element-with-label">
-                <span class="form-element-with-label__text">{{nls.lblArrivalTime}}</span>
-                <div class="custom-datetimepicker">
                     <input id="vwbusdArrivalTime" name="vwbusdArrivalTime"
                            data-role="timepicker"
                            data-bind="value: saveRequest.valArrivalTime" />
                 </div>
-            </label>
+            </div>
+
             <label class="form-element-with-label">
                 <span class="form-element-with-label__text">{{nls.lblDestination}}</span>
 
@@ -70,7 +63,7 @@
             {{nls.btnUpdate}}
         </button>
         <button type="button" class="btn" data-bind="click:btnCancelClick">
-            {{nls.btnCancel}}
+            {{nls.btnBack}}
         </button>
     </div>
 

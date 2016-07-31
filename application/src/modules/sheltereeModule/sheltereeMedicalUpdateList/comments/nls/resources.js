@@ -6,12 +6,15 @@ define({
            
         "lblDescription": "Description",
         "lblHistory": "History",
-        "valmsgCommentRequired": "Comment is required",
- 
+        "lblAddedOn": ">>> Added on",
+        "lblat": "@",
+        "lblby":"by",
+        "valmsgCommentRequired": "Comment Is Required",
+        
       
 
         "btnSave": "Save",
-        "btnCancel": "Back"
+        "btnBack": "Back"
 
     }
 });

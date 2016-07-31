@@ -80,7 +80,7 @@
 
                 vm.set("isGoButtonDisabled", true);
 
-                var data = $ct.ds.shlt.shelter.getSheltersWithDs(function (result) {
+                var data = $ct.ds.shlt.shelter.getSheltersWithSecurityForActiveEventWithDs(function (result) {
 
                     //$ct.helpers.hidePageBusyCursor();
 
@@ -90,7 +90,7 @@
 
                         vm.set("selectedShelterNameItem", result[0]);
                         
-                        $ct.ds.emp.employee.getActiveEvents(vm.selectedShelterNameItem.Id, function (result) {
+                        $ct.ds.event.getActiveEvent(function(result) {
 
                             $ct.helpers.hidePageBusyCursor();
                             $ct.helpers.hideWorkAreaBusyCursor();
@@ -132,13 +132,13 @@
 
 
 
-            ddlShelterNames: function (e) {
+            ddlShelterChange: function (e) {
 
                 //vm.fillGrid();
 
                 $ct.helpers.displayWorkAreaBusyCursor();
 
-                $ct.ds.emp.employee.getActiveEvents(vm.selectedShelterNameItem.Id, function (result) {
+                 $ct.ds.event.getActiveEvent( function (result) {
 
                     $ct.helpers.hidePageBusyCursor();
                     $ct.helpers.hideWorkAreaBusyCursor();
@@ -160,19 +160,6 @@
 
                 });
 
-
-                //this.setPreviouslySelectedShelterTypeAndShelterNameToCurrent();
-                //this.setEmployeeHeaderDataToGlobalContext();
-
-                //if (moduleContext.parentContext.activeForm == $ct.rn.getEmployeeList()) {
-                //    moduleContext.notify($ct.en.getEmployeeHeaderDataChanged(), $ct.rn.getEmployeeList());
-                //}
-
-                //if (moduleContext.parentContext.activeForm == $ct.rn.getEmployeeExtendedList()) {
-                //    moduleContext.notify($ct.en.getEmployeeHeaderDataChanged(), $ct.rn.getEmployeeExtendedList());
-                //}
-
-
             },
 
             //End of shelter type and shelter names dropdowns code
@@ -187,22 +174,6 @@
 
                 moduleContext.notify($ct.en.getEmployeeHeaderDataChanged(), $ct.rn.getEmployeeList());
             },
-
-            btnGoClick: function (e) {
-
-                this.setPreviouslySelectedShelterTypeAndShelterNameToCurrent();
-                this.setEmployeeHeaderDataToGlobalContext();
-
-                if (moduleContext.parentContext.activeForm == $ct.rn.getEmployeeList()) {
-                    moduleContext.notify($ct.en.getEmployeeHeaderDataChanged(), $ct.rn.getEmployeeList());
-                }
-
-                if (moduleContext.parentContext.activeForm == $ct.rn.getEmployeeExtendedList()) {
-                    moduleContext.notify($ct.en.getEmployeeHeaderDataChanged(), $ct.rn.getEmployeeExtendedList());
-                }
- 
-            },
-
 
             setPreviouslySelectedShelterTypeAndShelterNameToCurrent: function () {
 
@@ -243,8 +214,7 @@
 
             btnManageEmployeeClick: function (e) {
 
-                this.activateCurrentMenuItem(e);
-                //moduleContext.notify($ct.en.getPatientCreatedOrUpdated());
+                
                 moduleContext.notify($ct.en.getManageEmployeeClicked());
 
                 Boiler.UrlController.goTo($ct.rn.getEmployeeList());
@@ -252,37 +222,30 @@
 
             btnManageEmployeeExpandedClick: function (e) {
 
-                this.activateCurrentMenuItem(e);
-                //moduleContext.notify($ct.en.getPatientMedicalEquipCreatedOrUpdated());
+                
                 moduleContext.notify($ct.en.getManageEmployeeExpandedClicked());
 
                 Boiler.UrlController.goTo($ct.rn.getEmployeeExtendedList());
-            },
-       
-            btnUploadEmployeeDataClick: function (e) {
-                this.activateCurrentMenuItem(e);
-                moduleContext.notify($ct.en.getEmployeeCreatedOrUpdated());
-                Boiler.UrlController.goTo($ct.rn.getUploadEmployee());
-            },
-
-
-            btnDownloadEmployeeDataClick: function (e) {
-                this.activateCurrentMenuItem(e);
-                moduleContext.notify($ct.en.getEmployeeCreatedOrUpdated());
-                Boiler.UrlController.goTo($ct.rn.getDownloadEmployee());
-            },
-
-            btnDownloadEmployeeTemplateClick: function () {
-                window.location.href = $ct.other.getEmployeeTemplateURL();
-            },
-
-
-            activateCurrentMenuItem: function (e) {
-
-                $(e.target.parentElement.parentElement).find(".item_nav_active").removeClass("item_nav_active");
-                $(e.target.parentElement).addClass("item_nav_active");
-
             }
+
+            //,
+       
+            //btnUploadEmployeeDataClick: function (e) {
+                
+            //    moduleContext.notify($ct.en.getEmployeeCreatedOrUpdated());
+            //    Boiler.UrlController.goTo($ct.rn.getUploadEmployee());
+            //},
+
+
+            //btnDownloadEmployeeDataClick: function (e) {
+               
+            //    moduleContext.notify($ct.en.getEmployeeCreatedOrUpdated());
+            //    Boiler.UrlController.goTo($ct.rn.getDownloadEmployee());
+            //},
+
+            //btnDownloadEmployeeTemplateClick: function () {
+            //    window.location.href = $ct.other.getEmployeeTemplateURL();
+            //}
             
 
         }

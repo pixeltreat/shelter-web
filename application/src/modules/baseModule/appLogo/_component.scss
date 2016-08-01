@@ -9,6 +9,10 @@
     min-width: $nav-width;
     background-color: $app-logo-bg;
 
+    @include MediaQueries($mobile) {
+        padding: 10px;
+    }
+
     &__link{
         @extend .flex-col__no-expand;
         min-height: 35px;
@@ -21,6 +25,12 @@
         //Start : Added code to show hand cursor in Ie when hover over app logo
         cursor:pointer;
         //End : Added code to show hand cursor in Ie when hover over app logo
+
+        @include MediaQueries($mobile) {
+            order: 2;
+            margin: 0 auto;
+            min-height: 25px;
+        }
     }
 }
 
@@ -81,6 +91,11 @@
     // @include MediaQueries(#{tablet-and-below}) {
     //     display: inline-block;
     // }
+
+    // mobile view
+    @include MediaQueries($mobile) {
+        order: 1;
+    }
 }
 
 // when expanded

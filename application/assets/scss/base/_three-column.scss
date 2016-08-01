@@ -1,0 +1,30 @@
+// ****************************************
+// three column layout
+// ****************************************
+
+// three column layout for add/edit screens
+.l--three-column {
+    @extend .flex-row;
+
+    .column-one {
+        @extend .flex-col-lg__1-3, .flex-col-md__1-3, .flex-col-sm__full;
+        padding-right: 30px;
+
+        @include MediaQueries($mobile) {
+            padding-right: 0;
+        }
+    }
+
+    .column-two {
+        @extend .flex-col-lg__1-3, .flex-col-md__1-3, .flex-col-sm__full;
+        padding-right: 30px;
+
+        @include MediaQueries($mobile) {
+            padding-right: 0;
+        }
+    }
+
+    .column-three {
+        @extend .flex-col-lg__1-3, .flex-col-md__1-3, .flex-col-sm__full ;
+    }
+}

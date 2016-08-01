@@ -11,8 +11,6 @@ var config      = require('../config');
 // base object from config.js
 var base       = config.base;
 var filepath   = config.filepath;
-var rjsOptions = config.requirejsOptimizeOptions;
-
 var scripts = {};
 
 scripts.vendorLibs = function (watch){
@@ -54,7 +52,14 @@ scripts.appScripts = function (watch){
     .pipe( plugins.size( {title: 'app scripts bundled'} ) );
 };
 
-scripts.requireMain = function (watch){
+scripts.requireMain = function (watch, publish){
+    var rjsOptions = config.requirejsOptimizeOptions;
+
+    // serve unminified code in development environment to allow debugging.
+    if (!publish) {
+        rjsOptions.optimize = 'none';
+    }
+
     return gulp
     .src(filepath.requireMain)
 	.pipe(plugins.sourcemaps.init())

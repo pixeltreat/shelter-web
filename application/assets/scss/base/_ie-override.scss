@@ -1,0 +1,53 @@
+// ****************************************
+// IE override
+// ****************************************
+
+//Styles for removing border around text in ie broswers
+.k-ie .outline:focus, :focus {
+    outline: none;
+}
+
+// ie 10 and 11 in two columns
+.k-ie .l--two-column{
+    .column-one {
+        @include MediaQueries($tablet) {
+            padding-right: 0;
+        }
+    }
+
+    .column-two {
+        @include MediaQueries($tablet) {
+            padding-right: 0;
+        }
+    }
+
+    &-reports {
+        .column-one {
+            @include MediaQueries($tablet) {
+                padding-right: 0;
+            }
+        }
+
+        .column-two {
+            @include MediaQueries($tablet) {
+                padding-right: 0;
+            }
+        }
+    }
+}
+
+// ie 10 and 11 in three column layouts
+.k-ie .l--three-column {
+    .column-one {
+        @include MediaQueries($tablet) {
+            padding-right: 23px;
+        }
+    }
+
+    .column-two {
+            flex:0 0 28% !important;
+            @include MediaQueries($tablet) {
+            padding-right: 23px;
+        }
+    }
+}

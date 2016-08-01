@@ -23,6 +23,11 @@
 @import "base/color-palette";
 @import "base/overlay";
 @import "base/notifications";
+@import "base/responsive-table";
+@import "base/two-column";
+@import "base/three-column";
+@import "base/ie-override";
+@import "base/responsive-table";
 
 // Layout
 @import "base/layout";
@@ -34,6 +39,7 @@
 @import "../../src/modules/sheltereeModule/_module";
 @import "../../src/modules/shelterModule/_module";
 @import "../../src/modules/reportModule/_module";
+@import "../../src/modules/otherModule/_module";
 
 // Helpers load at the end to get high speficity
 @import "libs/slient-extends";

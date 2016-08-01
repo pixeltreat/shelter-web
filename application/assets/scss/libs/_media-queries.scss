@@ -3,10 +3,10 @@
 // ****************************************
 
 // BREAK POINTS
-$xsmall-bp : 30em !default; // 30x16 = 480px
-$small-bp  : 40em !default; // 40x16 = 640px
-$medium-bp : 64em !default; // 64x16 = 1024px
-$large-bp  : 80em !default; // 80x16 = 1280px
+$xsmall-bp : 30em !default;      // 30x16 = 480px
+$small-bp  : 50em !default;      // 50x16 = 800px
+$medium-bp : 64em !default;      // 64x16 = 1024px
+$large-bp  : 80em !default;      // 80x16 = 1280px
 
 $screen            : "only screen" !default;
 $landscape         : "#{$screen} and (orientation: landscape)" !default;

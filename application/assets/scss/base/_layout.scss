@@ -19,6 +19,10 @@ body {
     min-width: 320px;
     background-color: $body__bg-color;
     color: $body__text-color;
+
+    .has-nav-expanded & {
+        overflow: hidden;
+    }
 }
 
 .accessibility-links {
@@ -45,12 +49,16 @@ body {
 
 .page-wrap{
     position: relative;
-    padding-left: 55px;
+    padding-left: 5.5rem;
     transition: $transition__default-all;
 
-    // .has-nav-expanded & {
-    //     padding-left: $nav-width;
-    // }
+    @include MediaQueries($mobile) {
+        padding-left: 0;
+
+        .has-nav-expanded & {
+            padding-left: $nav-width;
+        }
+    }
 }
 
 .wrapper {
@@ -74,19 +82,20 @@ body {
     z-index: 10003;
     //End : Modified code to handle
 
-    // &::after {
-    //     content: "";
-    //     box-shadow: -1px 0 5px rgba(0,0,0, 0.5);
-    //     position: absolute;
-    //     right: 0;
-    //     height: 100%;
-    //     width: 1px;
-    //     top: 0;
-    // }
-
     .has-nav-expanded & {
         width: $nav-width;
         box-shadow: 2px 0 4px rgba(0,0,0, 0.3);
+    }
+
+    // mobile view
+    @include MediaQueries($mobile) {
+        width: 100%;
+        position: relative;
+
+        .has-nav-expanded & {
+            width: 100%;
+            box-shadow: 0 0 0;
+        }
     }
 }
 
@@ -106,166 +115,8 @@ body {
     background: url(../img/loader.svg) no-repeat center center;
 }
 
-// two column layout for add/edit screens
-.l--two-column {
-    @extend .flex-row;
-
-    .column-one {
-        @extend .flex-col-lg__1-3, .flex-col-md__1-2, .flex-col-sm__full;
-        padding-right: 30px;
-
-        @include MediaQueries($mobile) {
-            padding-right: 0;
-        }
-
-    }
-
-    .column-two {
-        @extend .flex-col-lg__1-3, .flex-col-md__1-2, .flex-col-sm__full;
-        //Added by UI Team
-        //Start : Adding padding to labels and controls in second column to be in sync with firrst column padding
-        padding-right: 30px;
-        @include MediaQueries($mobile) {
-            padding-right: 0;
-        }
-
-        //End  : Adding padding to labels and controls in second column to be in sync with firrst column padding
-    }
-}
-
-//Added by UI Team
-//Start : Added code to handle three column layout for add/edit screens
-.l--three-column {
-    @extend .flex-row;
-
-    .column-one {
-        @extend .flex-col-lg__1-3, .flex-col-md__1-3, .flex-col-sm__full;
-        padding-right: 30px;
-
-        @include MediaQueries($mobile) {
-            padding-right: 0;
-        }
-
-    }
-
-    .column-two {
-        @extend .flex-col-lg__1-3, .flex-col-md__1-3, .flex-col-sm__full;
-        padding-right: 30px;
-
-        @include MediaQueries($mobile) {
-            padding-right: 0;
-        }
-
-    }
-        .column-three {
-        @extend .flex-col-lg__1-3, .flex-col-md__1-3, .flex-col-sm__full ;
-
-    }
-
-}
-// End : Added code to handle three column layout for add/edit screens
-
-
-//Added by UI Team
-//Start : Added code to handle issues in ie 10 and 11 in two columns and three column layouts
-
-.k-ie .l--two-column{
-    .column-one {
-        @include MediaQueries($tablet) {
-            padding-right: 0;
-        }
-    }
-
-    .column-two {
-        @include MediaQueries($tablet) {
-            padding-right: 0;
-        }
-    }
-}
-.k-ie .l--three-column {
-    .column-one {
-        @include MediaQueries($tablet) {
-            padding-right: 23px;
-        }
-    }
-
-    .column-two {
-        flex:0 0 28% !important;
-                @include MediaQueries($tablet) {
-            padding-right: 23px;
-        }
-    }
-}
-.k-ie .l--two-column-reports{
-    .column-one {
-        @include MediaQueries($tablet) {
-            padding-right: 0;
-        }
-    }
-
-    .column-two {
-        @include MediaQueries($tablet) {
-            padding-right: 0;
-        }
-    }
-}
-
-//Styles for removing border around text in ie broswers
-.k-ie {
-    &.outline:focus, :focus {
-        outline: none;
-    }
-}
-//End : Added code to handle issues in ie 10 and 11 in two columns and three column layouts
-
-
-//Added by UI Team
-//Start : Added code to handle no permission, invalida role and no active event
-.invalid-role {
-    background-color: $invalid-role-bg;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    height: 40em;
-
-    &__wrap {
-        background-color:$base-white;
-        padding: 10px 50px 0px 120px;
-        border: 1px solid #ef9a9a;
-        width: 70rem;
-        position: relative;
-        word-wrap: break-word;
-        min-height:77px;
-        text-align: center;
-
-        &__icon {
-            font-size: 5rem;
-            @extend .f-icon, .f-icon__exclamation;
-            color: $base-white;
-            border: 1px solid $invalid-icon-bg;
-            background-color: $invalid-icon-bg;
-            position: absolute;
-            left: 0px;
-            top: 0px;
-            line-height: 1;
-            padding:12px;
-
-        }
-
-        &__title {
-            font-size: 2.2rem;
-            font-weight: 400;
-            color: $invalid-icon-text;
-            margin: 0;
-
-        }
-    }
-}
-//End : Added code to handle no permission, invalida role and no active event
-
-//Added by UI Team
+//This should be moved into logout component - praSad
 //Start : Added code to handle logout page
-
 .logout-module {
     background-color: $logout-bg;
     width: 100%;

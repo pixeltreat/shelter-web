@@ -1,0 +1,73 @@
+// ****************************************
+// responsive table
+// ****************************************
+
+// mobile landscape
+@include MediaQueries($mobile) {
+	.k-grid.k-widget .k-grid-content {
+		overflow-x: hidden;
+	}
+
+	.k-grid-header-wrap thead{
+		display:none;
+	}
+
+	.split-table,
+	.split-table > thead,
+	.split-table > tbody,
+	.split-table > thead > tr > th,
+	.split-table > tbody > tr > td,
+	.split-table > thead > tr,
+	.split-table > tbody > tr {
+		display: block;
+	}
+
+	// Hide table headers (but not display: none;, for accessibility)
+	.split-table > thead > tr,
+	.split-table > tbody > tr > th {
+		position: absolute;
+		top: -9999px;
+		left: -9999px;
+	}
+
+	.split-table > thead > tr {
+		border: 1px solid;
+	}
+
+	.split-table > tbody > tr > td {
+		border: none;
+		border-bottom: 1px solid;
+		position: relative;
+		padding-left: 50%;
+		min-height:2.6rem;
+
+		&::before {
+			position: absolute;
+			top: 0.6rem;
+			left: 0.6rem;
+			width: 45%;
+			padding-right: 1rem;
+			content: attr(data-title);
+			font-weight: bold;
+		}
+	}
+}
+
+// mobile portrait
+@include MediaQueries($xmobile) {
+	.split-table > tbody > tr > td {
+		padding: 0.6rem;
+		width: 100%;
+		float: none;
+
+		&::before {
+			position: relative;
+			display: block;
+			top: auto;
+			left: auto;
+			padding: 0;
+			width: 100%;
+			margin-bottom: 1rem;
+		}
+	}
+}

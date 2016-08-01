@@ -32,9 +32,8 @@ module.exports = function (watch) {
             }
         }))
         .pipe( plugins.sourcemaps.init({ loadMaps: true }) )
-        .pipe( plugins.sass({ errLogToConsole: true }) )
+        .pipe( plugins.sass({outputStyle: 'compressed', errLogToConsole: true }) )
         .pipe( plugins.autoprefixer(afx_browsers) )
-        .pipe( cleanCSS() )
         .pipe( plugins.sourcemaps.write('.') )
         .pipe( gulp.dest(base.distCss) )
         .pipe( plugins.if( watch, reload({ stream: true }) ) )

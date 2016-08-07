@@ -133,10 +133,10 @@ define(["Boiler", 'text!./help/help.html'], function (Boiler, helpTmpl) {
             showStaffAndShelteree: false,
             showReports: false,
             showRefresh: false,
-            
+
             isActiveEventPresent : false,
 
-           
+
             setMenuPermissions: function () {
 
                 vm.set("userFullName", "Hi, " + $ct.security.getUserName());
@@ -194,10 +194,10 @@ define(["Boiler", 'text!./help/help.html'], function (Boiler, helpTmpl) {
             },
 
             // expand/collapse main nav
-            toggleSubnav: toggleMainNavActive,
+            //toggleSubnav: toggleMainNavActive,
 
             // toggle active state for subnav
-            showActiveState: toggleSubNavActive,
+            //showActiveState: toggleSubNavActive,
 
             homeClick: function (e) {
 
@@ -209,7 +209,7 @@ define(["Boiler", 'text!./help/help.html'], function (Boiler, helpTmpl) {
             },
 
             refreshClick: function (e) {
-               
+
                 if (moduleContext.parentContext.currentView != undefined) {
                     moduleContext.notify($ct.en.getRefreshView(), moduleContext.parentContext.currentView);
                 }
@@ -347,7 +347,7 @@ define(["Boiler", 'text!./help/help.html'], function (Boiler, helpTmpl) {
 
                     });
 
-                
+
             },
 
             uploadEmployeeDataClick: function (e) {
@@ -416,7 +416,7 @@ define(["Boiler", 'text!./help/help.html'], function (Boiler, helpTmpl) {
 
 
             downloadSheltereeTemplateClick: function () {
-               
+
                     moduleContext.notify($ct.en.getHideErrorMsg());
                     $ct.helpers.displayWorkAreaBusyCursor();
 
@@ -441,11 +441,11 @@ define(["Boiler", 'text!./help/help.html'], function (Boiler, helpTmpl) {
 
                     });
 
-                
-               
+
+
             },
 
-       
+
             uploadSheltereeDataClick: function (e) {
 
                 //moduleContext.notify($ct.en.getSheltereeCreatedOrUpdated());
@@ -513,54 +513,3 @@ define(["Boiler", 'text!./help/help.html'], function (Boiler, helpTmpl) {
     //end of ViewModel
     return ViewModel;
 });
-
-/**
- * Main nav active state toggle
- * @param  {Object} event
- */
-function toggleMainNavActive(event) {
-    var $ele               = $(event.currentTarget);
-    var mainNavActiveClass = 'is-mainnav-active';
-    var isActive           = $ele.hasClass(mainNavActiveClass);
-
-    // if the main menu already has active class remove
-    if (isActive) {
-        resetMainSubNavState(mainNavActiveClass);
-    } else {
-        resetMainSubNavState(mainNavActiveClass);
-
-        // add active class to current element
-        $ele.addClass(mainNavActiveClass);
-    }
-}
-
-/**
- * remove active class from main nav and subnav
- * @param {string} mainNavActiveClass
- */
-function resetMainSubNavState(mainNavActiveClass) {
-    var subNavActiveClass  = 'is-subnav-active';
-    var $mainNav           = $('.app-nav__main__li');
-    var $subNav            = $('.app-nav__sub__li');
-
-    $mainNav.removeClass(mainNavActiveClass);
-    $subNav.removeClass(subNavActiveClass);
-}
-
-/**
- * Subnav active state update based on clicked element
- * @param  {Object} event
- */
-function toggleSubNavActive(event) {
-    var $ele               = $(event.currentTarget);
-    var subNavActiveClass  = 'is-subnav-active';
-    var $subNavSiblings    = $ele.siblings('.'+subNavActiveClass);
-
-    event.stopPropagation();
-
-    // remove active class from siblings
-    $subNavSiblings.removeClass(subNavActiveClass);
-
-    // add active class to current element
-    $ele.addClass(subNavActiveClass);
-}

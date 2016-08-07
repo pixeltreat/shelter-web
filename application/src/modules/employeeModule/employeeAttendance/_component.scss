@@ -7,10 +7,18 @@
 }
 
 .employee-attendance__shelter-event {
-    @extend .flex-col__1-3, .flex-col-sm__full, .flex--right-align;
+    @extend .flex-col__1-4, .flex-col-md__full, .flex-col-sm__full, .flex--right-align;
     text-align: right;
 
-    @include MediaQueries($mobile){
+    @include MediaQueries($tablet-and-below) {
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 15px;
+    }
+
+    @include MediaQueries($xmobile) {
+        display: block;
+        margin-bottom: 15px;
         text-align: left;
     }
 
@@ -26,7 +34,7 @@
 }
 
 .employee-attendance__filters-section {
-    @extend .flex-row, .flex-col__2-3, .flex-col-sm__full;
+    @extend .flex-row, .flex-col__3-4, .flex-col-md__full, .flex-col-sm__full;
     margin: -15px 0 10px;
 
     label {
@@ -39,16 +47,25 @@
     &__shifts-date {
         margin: 10px 0;
         padding-right: 20px;
-        max-width: 250px;
+        max-width: 33.33%;
         width: 100%;
 
         &:last-child {
+            padding-right: 0;
+        }
+
+        @include MediaQueries($xmobile) {
+            max-width: none;
             padding-right: 0;
         }
     }
 
     .custom-datetimepicker {
         width: calc(100% - 50px);
+
+        @include MediaQueries($mobile) {
+            width: calc(100% - 55px);
+        }
     }
 
     &__go-btn {
@@ -63,17 +80,25 @@
 }
 
 .employee-attendance__action-buttons {
-    @extend .flex-col__1-3, .flex-col-sm__full, .flex--right-align;
+    @extend .flex-col__1-3, .flex-col-md__full, .flex-col-sm__full, .flex--right-align;
     text-align: right;
     margin: 20px 0;
 }
 
 .employee-attendance__notification-info {
-    @extend .flex-row, .flex-col__2-3, .flex-col-sm__full;
+    @extend .flex-row, .flex-col__2-3, .flex-col-md__full, .flex-col-sm__full;
     margin-bottom: 20px;
+
+    @include MediaQueries($mobile) {
+        margin-bottom: 0;
+    }
 
     ul {
         @extend %no-list, .flex-row;
+
+        @include MediaQueries($xmobile) {
+            display: block;
+        }
     }
 
     li {
@@ -87,6 +112,16 @@
 
         &:last-child {
             border-right: 0;
+        }
+
+        @include MediaQueries($tablet-and-below) {
+            max-width: 33.33%;
+        }
+
+        @include MediaQueries($xmobile) {
+            max-width: none;
+            border: 0;
+            margin-bottom: 8px;
         }
     }
 
@@ -104,9 +139,23 @@
             font-size: 2.8rem;
             margin-right: 10px;
             //Added by UI Team
-            //Start : Added code to remove hand cursor for assigned, NotReported and reported states 
+            //Start : Added code to remove hand cursor for assigned, NotReported and reported states
             cursor:auto;
-            //End : Added code to remove hand cursor for assigned, NotReported and reported states 
+            //End : Added code to remove hand cursor for assigned, NotReported and reported states
         }
     }
+}
+
+.employee-attendance__display-msg {
+    margin-top: 20px;
+    font-size: 1.6rem;
+    font-weight: $bold;
+    display: block;
+    padding: 20px;
+    background-color: $base-white;
+    border: 1px solid $base-orange;
+}
+
+.is-notificaion-action-btns {
+
 }

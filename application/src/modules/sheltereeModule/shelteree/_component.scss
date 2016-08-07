@@ -6,18 +6,25 @@
 //Start : Added view specific styles for sheltree Navigation
 
 .sheltree-navigation {
+    @extend .flex-row, .flex--center;
     margin: 0;
     padding: 0;
 
+    @include MediaQueries($xmobile) {
+        display: none;
+    }
+
     li {
-        display: inline-block;
-        width: 193px;
+        @extend .flex-col__equal;
+        // display: inline-block;
+        // width: 193px;
         list-style-type: none;
         margin: 0;
         text-align: center;
-        font-size: 16px;
+        font-size: 1.6rem;
         cursor: pointer;
-         
+        padding-right: 3px;
+
         span {
             width: 30px;
             border-radius: 15px;
@@ -65,10 +72,10 @@
     }
 }
 
-$sheltree-navigation: ( 
+$sheltree-navigation: (
     ('focus', #E7EFF7, #395D80, #395D80),
-    ('partial-data', #FFF9C4, #FBC02D, #395D80), 
-    ('no-data', #EAEAEA, #B2B2B2, #395D80), 
+    ('partial-data', #FFF9C4, #FBC02D, #395D80),
+    ('no-data', #EAEAEA, #B2B2B2, #395D80),
     ('disabled', #f2f2f2, #e8e8e8, #ddd) );
 
 @each $class, $bg-color, $border-color, $color in $sheltree-navigation {

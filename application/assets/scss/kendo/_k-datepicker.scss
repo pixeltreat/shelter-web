@@ -8,6 +8,12 @@
     vertical-align: middle;
     width: 100%;
     max-width: 400px;
+
+    @include MediaQueries($mobile) {
+        .k-grid td & {
+            width: calc(100% - 15px);
+        }
+    }
 }
 
 //Added by UI Team

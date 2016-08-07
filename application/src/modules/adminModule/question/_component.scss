@@ -7,7 +7,7 @@
     @extend .flex-row;
 
     &__length {
-        flex: 0 0 27%;
+        @extend .flex-col-lg__1-4, .flex-col-md__1-4, .flex-col-sm__1-2;
     }
 
     &__characters {

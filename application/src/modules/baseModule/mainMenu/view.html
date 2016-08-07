@@ -1,20 +1,20 @@
 <nav class="app-nav" role="navigation" id="app-nav">
     <ol class="app-nav__main">
-        <li class="app-nav__main__li has-subnav" data-bind="click:toggleSubnav">
+        <li class="app-nav__main__li has-subnav">
             <a class="app-nav__main__li__a">
                 <span class="f-icon__nav-user app-nav__main__li__a__icon" aria-hidden="true"></span>
                 <span class="app-nav__main__li__a__text"  data-bind="text:userFullName">
-                  
+
                 </span>
             </a>
 
             <ul class="app-nav__sub">
-                <!--<li class="app-nav__sub__li" data-bind="click:showActiveState">
+                <!--<li class="app-nav__sub__li">
                     <a class="app-nav__sub__li__a">
                         My Profile
                     </a>
                 </li>-->
-                <li class="app-nav__sub__li" data-bind="click:showActiveState">
+                <li class="app-nav__sub__li">
                     <a class="app-nav__sub__li__a" data-bind="click:logOutClick">
                         <!-- <span class="f-icon__nav-logout app-nav__main__li__a__icon" aria-hidden="true"></span> -->
                         {{nls.lblLogout}}
@@ -23,91 +23,91 @@
             </ul>
         </li>
 
-        <li class="app-nav__main__li has-subnav" data-bind="click:toggleSubnav, visible: showAdmin" >
+        <li class="app-nav__main__li has-subnav" data-bind="visible: showAdmin" >
             <a class="app-nav__main__li__a">
                 <span class="f-icon__nav-admin app-nav__main__li__a__icon" aria-hidden="true"></span>
                 <span class="app-nav__main__li__a__text">{{nls.lblAdmin}}</span>
             </a>
 
             <ul class="app-nav__sub">
-                <li class="app-nav__sub__li" data-bind="click:showActiveState">
+                <li class="app-nav__sub__li">
                     <a class="app-nav__sub__li__a" data-bind="click:agencyListClick">{{nls.lblAgency}}</a>
                 </li>
-                <li class="app-nav__sub__li" data-bind="click:showActiveState">
+                <li class="app-nav__sub__li">
                     <a class="app-nav__sub__li__a" data-bind="click:departmentListClick">{{nls.lblDepartment}}</a>
                 </li>
-                <li class="app-nav__sub__li" data-bind="click:showActiveState">
+                <li class="app-nav__sub__li">
                     <a class="app-nav__sub__li__a" data-bind="click:medicalConditionListClick">{{nls.lblMedicalCondition}}</a>
                 </li>
-                <li class="app-nav__sub__li" data-bind="click:showActiveState">
+                <li class="app-nav__sub__li">
                     <a class="app-nav__sub__li__a" data-bind="click:medicalConditionTierListClick">{{nls.lblMedicalConditionTier}}</a>
                 </li>
-                <li class="app-nav__sub__li" data-bind="click:showActiveState">
+                <li class="app-nav__sub__li">
                     <a class="app-nav__sub__li__a" data-bind="click:shelterTypeListClick">{{nls.lblShelterType}}</a>
                 </li>
-                <li class="app-nav__sub__li" data-bind="click:showActiveState">
+                <li class="app-nav__sub__li">
                     <a class="app-nav__sub__li__a" data-bind="click:sheltreeEmployeeRatioListClick">{{nls.lblSheltereeStaffRatio}}</a>
                 </li>
 
-                <li class="app-nav__sub__li" data-bind="click:showActiveState">
+                <li class="app-nav__sub__li">
                     <a class="app-nav__sub__li__a" data-bind="click:staffSpecialtyListClick">{{nls.lblStaffSpecialty}}</a>
                 </li>
-                <li class="app-nav__sub__li" data-bind="click:showActiveState">
+                <li class="app-nav__sub__li">
                     <a class="app-nav__sub__li__a" data-bind="click:stafftypeListClick">{{nls.lblStaffType}}</a>
                 </li>
-                <li class="app-nav__sub__li" data-bind="click:showActiveState">
+                <li class="app-nav__sub__li">
                     <a class="app-nav__sub__li__a" data-bind="click:transportTypeListClick">{{nls.lblTransportationType}}</a>
                 </li>
-                <li class="app-nav__sub__li" data-bind="click:showActiveState">
+                <li class="app-nav__sub__li">
                     <a class="app-nav__sub__li__a" data-bind="click:dispositionListClick">{{nls.lblDisposition}}</a>
                 </li>
-                <li class="app-nav__sub__li" data-bind="click:showActiveState">
+                <li class="app-nav__sub__li">
                     <a class="app-nav__sub__li__a" data-bind="click:equipmentSupplyListClick">{{nls.lblEquipmentSupply}}</a>
                 </li>
-                <li class="app-nav__sub__li" data-bind="click:showActiveState">
+                <li class="app-nav__sub__li">
                     <a class="app-nav__sub__li__a" data-bind="click:shelterIdentificationListClick">{{nls.lblShelterIdentification}}</a>
                 </li>
-                <li class="app-nav__sub__li" data-bind="click:showActiveState">
+                <li class="app-nav__sub__li">
                     <a class="app-nav__sub__li__a" data-bind="click:questionListClick">{{nls.lblQuestion}}</a>
                 </li>
-                <li class="app-nav__sub__li" data-bind="click:showActiveState">
+                <li class="app-nav__sub__li">
                     <a class="app-nav__sub__li__a" data-bind="click:shelterStatusClick">{{nls.lblShelterStatus}}</a>
                 </li>
-                <li class="app-nav__sub__li" data-bind="click:showActiveState">
+                <li class="app-nav__sub__li">
                     <a class="app-nav__sub__li__a" data-bind="click:eventListClick">{{nls.lblEvent}}</a>
                 </li>
             </ul>
         </li>
-        <!-- <li class="app-nav__main__li" data-bind="click:toggleSubnav">
+        <!-- <li class="app-nav__main__li">
             <a class="app-nav__main__li__a" href="#/dashboard" ui-sref="dashboard">
                 <span class="f-icon__nav-dashboard app-nav__main__li__a__icon" aria-hidden="true"></span>
                 <span class="app-nav__main__li__a__text">Dashboard</span>
             </a>
         </li> -->
 
-        <li class="app-nav__main__li has-subnav" data-bind="click:toggleSubnav , visible: showStaffAndShelteree">
+        <li class="app-nav__main__li has-subnav" data-bind="visible: showStaffAndShelteree">
             <a class="app-nav__main__li__a">
                 <span class="f-icon__nav-employee app-nav__main__li__a__icon" aria-hidden="true"></span>
                 <span class="app-nav__main__li__a__text">{{nls.lblStaff}}</span>
             </a>
 
             <ul class="app-nav__sub">
-                <li class="app-nav__sub__li" data-bind="click:showActiveState">
+                <li class="app-nav__sub__li">
                     <a class="app-nav__sub__li__a" data-bind="click:employeeAttendanceClick">{{nls.lblAttendance}}</a>
                 </li>
-                <li class="app-nav__sub__li" data-bind="click:showActiveState">
+                <li class="app-nav__sub__li">
                     <a class="app-nav__sub__li__a" data-bind="click:employeeListClick">{{nls.lblShortList}}</a>
                 </li>
-                <li class="app-nav__sub__li" data-bind="click:showActiveState">
+                <li class="app-nav__sub__li">
                     <a class="app-nav__sub__li__a" data-bind="click:employeeExpandedListClick">{{nls.lblExtendedList}}</a>
                 </li>
-                <li class="app-nav__sub__li" data-bind="click:showActiveState">
+                <li class="app-nav__sub__li">
                     <a class="app-nav__sub__li__a" data-bind="click:downloadEmployeeTemplateClick">{{nls.lblDownloadTemplate}}</a>
                 </li>
-                <li class="app-nav__sub__li" data-bind="click:showActiveState">
+                <li class="app-nav__sub__li">
                     <a class="app-nav__sub__li__a" data-bind="click:uploadEmployeeDataClick">{{nls.lblUploadData}}</a>
                 </li>
-                <li class="app-nav__sub__li" data-bind="click:showActiveState">
+                <li class="app-nav__sub__li">
                     <a class="app-nav__sub__li__a" data-bind="click:downloadEmployeeDataClick">{{nls.lblDownloadData}}</a>
                 </li>
 
@@ -115,28 +115,28 @@
         </li>
 
 
-        <li class="app-nav__main__li has-subnav" data-bind="click:toggleSubnav , visible: showStaffAndShelteree">
+        <li class="app-nav__main__li has-subnav" data-bind="visible: showStaffAndShelteree">
             <a class="app-nav__main__li__a">
                 <span class="f-icon__nav-shelteree app-nav__main__li__a__icon" aria-hidden="true"></span>
                 <span class="app-nav__main__li__a__text">{{nls.lblShelteree}}</span>
             </a>
             <ul class="app-nav__sub">
-                <li class="app-nav__sub__li" data-bind="click:showActiveState">
+                <li class="app-nav__sub__li">
                     <a class="app-nav__sub__li__a" data-bind="click:sheltereeListClick">{{nls.lblSheltereeList}}</a>
                 </li>
-                <li class="app-nav__sub__li" data-bind="click:showActiveState">
+                <li class="app-nav__sub__li">
                     <a class="app-nav__sub__li__a" data-bind="click:sheltereeDischargeListClick">{{nls.lblSheltereeDischargeList}}</a>
                 </li>
-                <li class="app-nav__sub__li" data-bind="click:showActiveState">
+                <li class="app-nav__sub__li">
                     <a class="app-nav__sub__li__a" data-bind="click:sheltereeMedicalUpdateListClick">{{nls.lblSheltereeMedicalUpdateList}}</a>
                 </li>
-                <li class="app-nav__sub__li" data-bind="click:showActiveState">
+                <li class="app-nav__sub__li">
                     <a class="app-nav__sub__li__a" data-bind="click:downloadSheltereeTemplateClick">{{nls.lblDownloadTemplate}}</a>
                 </li>
-                <li class="app-nav__sub__li" data-bind="click:showActiveState">
+                <li class="app-nav__sub__li">
                     <a class="app-nav__sub__li__a" data-bind="click:uploadSheltereeDataClick">{{nls.lblUploadData}}</a>
                 </li>
-                <li class="app-nav__sub__li" data-bind="click:showActiveState">
+                <li class="app-nav__sub__li">
                     <a class="app-nav__sub__li__a" data-bind="click:downloadSheltereeDataClick">{{nls.lblDownloadData}}</a>
                 </li>
 
@@ -145,61 +145,61 @@
         </li>
 
 
-        <!--<li class="app-nav__main__li has-subnav" data-bind="click:toggleSubnav">
+        <!--<li class="app-nav__main__li has-subnav">
             <a class="app-nav__main__li__a">
                 <span class="f-icon__nav-shelter app-nav__main__li__a__icon" aria-hidden="true"></span>
                 <span class="app-nav__main__li__a__text">Shelter</span>
             </a>
 
             <ul class="app-nav__sub">
-                <li class="app-nav__sub__li" data-bind="click:showActiveState">
+                <li class="app-nav__sub__li">
                     <a class="app-nav__sub__li__a" data-bind="click:shelterStatusClick">Shelter Status</a>
                 </li>
-            </ul>          
+            </ul>
         </li>-->
-        
 
-        <li class="app-nav__main__li has-subnav" data-bind="click:toggleSubnav , visible: showReports">
+
+        <li class="app-nav__main__li has-subnav" data-bind="visible: showReports">
             <a class="app-nav__main__li__a">
                 <span class="f-icon__nav-reports app-nav__main__li__a__icon" aria-hidden="true"></span>
                 <span class="app-nav__main__li__a__text">{{nls.lblReports}}</span>
             </a>
 
             <ul class="app-nav__sub">
-                <li class="app-nav__sub__li" data-bind="click:showActiveState">
+                <li class="app-nav__sub__li">
                     <a class="app-nav__sub__li__a" data-bind="click:staffReportClick">{{nls.lblStaff}}</a>
                 </li>
-                <li class="app-nav__sub__li" data-bind="click:showActiveState">
+                <li class="app-nav__sub__li">
                     <a class="app-nav__sub__li__a" data-bind="click:staffAttendanceReportClick">{{nls.lblStaffAttendance}}</a>
                 </li>
-                <li class="app-nav__sub__li" data-bind="click:showActiveState">
+                <li class="app-nav__sub__li">
                     <a class="app-nav__sub__li__a" data-bind="click:sheltereeReportClick">{{nls.lblShelteree}}</a>
                 </li>
             </ul>
         </li>
 
-        <li class="app-nav__main__li" data-bind="click:toggleSubnav">
+        <li class="app-nav__main__li">
             <a class="app-nav__main__li__a" data-bind="click:helpClick">
                 <span class="f-icon__nav-help app-nav__main__li__a__icon" aria-hidden="true"></span>
                 <span class="app-nav__main__li__a__text">{{nls.lblHelp}}</span>
             </a>
         </li>
 
-        <li class="app-nav__main__li" data-bind="click:toggleSubnav">
+        <li class="app-nav__main__li">
             <a class="app-nav__main__li__a" href="mailto:eocwatch@la.gov">
                 <span class="f-icon__nav-contact app-nav__main__li__a__icon" aria-hidden="true"></span>
                 <span class="app-nav__main__li__a__text">{{nls.lblContact}}</span>
             </a>
         </li>
 
-        <li class="app-nav__main__li" data-bind="click:toggleSubnav , visible: showRefresh">
+        <li class="app-nav__main__li" data-bind="visible: showRefresh">
             <a class="app-nav__main__li__a" data-bind="click:refreshClick">
                 <span class="f-icon__nav-refresh app-nav__main__li__a__icon" aria-hidden="true"></span>
                 <span class="app-nav__main__li__a__text">{{nls.lblRefresh}}</span>
             </a>
         </li>
 
-        <!-- <li class="app-nav__main__li" data-bind="click:toggleSubnav">
+        <!-- <li class="app-nav__main__li">
             <a class="app-nav__main__li__a">
                 <span class="f-icon__nav-logout app-nav__main__li__a__icon" aria-hidden="true"></span>
                 <span class="app-nav__main__li__a__text">Logout</span>

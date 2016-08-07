@@ -88,9 +88,10 @@
             transform: translateY(250%);
         }
     }
-    // @include MediaQueries(#{tablet-and-below}) {
-    //     display: inline-block;
-    // }
+
+    @include MediaQueries($tablet-and-above) {
+        display: none;
+    }
 
     // mobile view
     @include MediaQueries($mobile) {
@@ -125,7 +126,7 @@
 
     // hover state when open
     &:hover {
-        border-color: $base-red;
+        border-color: $secondary-color;
     }
 
     &:hover .app-logo__menu-collapse-icon {

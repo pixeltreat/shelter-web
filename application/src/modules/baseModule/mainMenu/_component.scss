@@ -4,23 +4,25 @@
 
 .main-menu {
     margin-top: 1px;
-    height: calc(100% - 65px);
+    height: calc(100vh - 65px);
     overflow: auto;
     min-width: $nav-width;
+    background-color: $app-header-bg;
 
     @include MediaQueries($mobile) {
         position: fixed;
         max-width: 100%;
-        height: 100%;
+        height: 100vh;
         overflow-y: auto;
         background-color: $app-header-bg;
         top: 0;
         left: -100%;
+        transition: left 0.3s $transition__default-ease;
 
         .has-nav-expanded & {
             left: 0;
             top: -1px;
-            transition: $transition__default-all;
+            height: 100vh;
         }
     }
 }

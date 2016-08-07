@@ -65,8 +65,8 @@
                 </div>
 
             </div>
-            
-            <div data-bind="style:{display:showMessage}">{{nls.valmsgStaffarenotassignedfortheselectedshift}} </div>
+
+            <div data-bind="style:{display:showMessage}" class="employee-attendance__display-msg">{{nls.valmsgStaffarenotassignedfortheselectedshift}} </div>
 
             <div class="employee-attendance__row is-notificaion-action-btns">
                 <!-- notification status -->
@@ -114,13 +114,14 @@
             </div>
             <div class="table-wrapper"  id="vweaDgEmployeeListParent"  data-bind="style:{display:showWorkArea}">
                 <table id="vweaDgEmployeeList"
+                        class="grid split-table"                
                        data-bind="source:dsEmployeeAttendance, events: { dataBound:vweaDataBoundEvent }"
                        data-role="grid" data-filterable="true"
                        data-sortable='{ "mode": "single", "allowUnsort": false }'
                        data-row-template="vweaRow-template"
                        data-columns="[{width:'40px'},
                         {title:'Add Comment',width:'120px'},
-                      
+
                         {field:'StatusName',title:'{{nls.gdColStatus}}', width:'250px',filterable: {multi:true,dataSource:[]}},
                         {field:'DepartmentName',title:'{{nls.gdColDepartmentName}}', width:'250px',filterable: {multi:true,dataSource:[]}},
                         {field:'FirstName',title:'{{nls.gdColFirstName}}', width:'200px'},
@@ -148,7 +149,7 @@
         <td>
             <button class="btn-add-comment" data-bind="click:btnEditClick"> <span class="f-icon f-icon__add-comment" aria-hidden="true"></span> <span class="f-icon__text">Edit</span> </button>
         </td>
-    
+
         <td data-title="{{nls.gdColStatus}}">
             <input data-role="dropdownlist" data-bind="source:StatusLookUpData,value:ReportId,events:{change:changeSaveClick}" data-template="item-template" data-value-template="value-template" data-text-field="Value" data-value-field="Key" />
         </td>

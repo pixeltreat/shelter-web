@@ -8,6 +8,11 @@
     border-top: 1px solid $footer-border;
     color: $footer-text;
 
+    @include MediaQueries($mobile) {
+        margin: 1rem 0;
+        padding: 1rem;
+    }
+
     p {
         margin: 0;
     }

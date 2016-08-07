@@ -13,5 +13,9 @@
         display: inline-block;
         vertical-align: top;
         width: 196px;
+
+        @include MediaQueries($mobile){
+            width: 100%;   
+        }
     }
 }

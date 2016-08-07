@@ -42,6 +42,10 @@ h1 {
     padding-bottom: 5px;
     border-bottom: 1px solid $border-color;
 
+    @include MediaQueries($xmobile) {
+        font-size: 2rem;
+    }
+
     &__icon {
         @extend .f-icon, .f-icon__nav-help;
         font-size: 1.6rem;
@@ -49,9 +53,9 @@ h1 {
         vertical-align: middle;
         margin-left: 5px;
         //Added by UI Team
-        //Start : Added code to show hand cursor for icons in IE 10 , 11 
+        //Start : Added code to show hand cursor for icons in IE 10 , 11
         cursor: pointer;
-        //End : Added code to show hand cursor for icons in IE 10 , 11 
+        //End : Added code to show hand cursor for icons in IE 10 , 11
     }
 }
 

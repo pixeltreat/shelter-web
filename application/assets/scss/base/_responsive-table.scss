@@ -31,12 +31,12 @@
 	}
 
 	.split-table > thead > tr {
-		border: 1px solid;
+		border: 1px solid $table-border;
 	}
 
 	.split-table > tbody > tr > td {
 		border: none;
-		border-bottom: 1px solid;
+		border-bottom: 1px solid $table-border;
 		position: relative;
 		padding-left: 50%;
 		min-height:2.6rem;
@@ -50,6 +50,10 @@
 			content: attr(data-title);
 			font-weight: bold;
 		}
+	}
+
+	.k-grid-content tr:last-child > td {
+		border-bottom: 1px solid $table-border;
 	}
 }
 
@@ -67,7 +71,7 @@
 			left: auto;
 			padding: 0;
 			width: 100%;
-			margin-bottom: 1rem;
+			margin-bottom: 0.6rem;
 		}
 	}
 }

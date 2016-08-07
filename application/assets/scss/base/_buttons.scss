@@ -35,6 +35,11 @@ button:disabled,
     &:active:not(:disabled) {
         background-color: darken($primary-color, 10%);
     }
+
+    @include MediaQueries($xmobile) {
+        width: 100%;
+        display: block;
+    }
 }
 
 .k-button {
@@ -68,6 +73,10 @@ button:disabled,
 .btn + .btn,
 .btn--secondary + .btn--secondary {
     margin-left: 15px;
+
+    @include MediaQueries($xmobile) {
+        margin:10px 0 0 0;
+    }
 }
 
 .btn__full {
@@ -97,6 +106,11 @@ button:disabled,
     &:active:not(:disabled) {
         background-color: $primary-color;
         color: $base-white;
+    }
+
+    @include MediaQueries($xmobile) {
+        width: 100%;
+        display: block;
     }
 }
 

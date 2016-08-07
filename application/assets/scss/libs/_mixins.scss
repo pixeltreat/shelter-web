@@ -208,6 +208,7 @@
     line-height: 1;
     font-weight: $regular;
     letter-spacing: 1px;
+    box-sizing: border-box;
 
     &:hover,
     &:active,

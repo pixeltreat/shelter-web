@@ -9,6 +9,10 @@
     left: 50%;
     transform: translate(-50%, -40%);
 
+    @include MediaQueries($xmobile) {
+        width: 90%;
+    }
+
     &__wrap {
         @extend .cfx;
         background-color:$base-white;

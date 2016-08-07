@@ -39,6 +39,13 @@
     width: 100%;
     min-height: 40px;
     box-sizing: border-box;
+
+    @include MediaQueries($xmobile) {
+        td & {
+            width: 98%;
+            background-color: transparent;
+        }
+    }
 }
 
 //Added by UI Team

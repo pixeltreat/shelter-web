@@ -21,11 +21,14 @@
     .search-label {
         display: block;
         position: relative;
-        max-width: 80%;
         //Added by UI Team
-        //Start : Added code to show hand cursor on hover of icons in IE 
+        //Start : Added code to show hand cursor on hover of icons in IE
         cursor:pointer;
-        //End : Added code to show hand cursor on hover of icons in IE 
+        //End : Added code to show hand cursor on hover of icons in IE
+
+        @include MediaQueries($desktop-and-above) {
+            max-width: 80%;
+        }
 
         &::before {
             @extend .f-icon:before, .f-icon__search:before;
@@ -54,9 +57,9 @@
     &__btns-col {
         @extend .flex-col__3-5, .flex-col-md__full, .flex-col-sm__full;
         margin-top: 15px;
+        text-align: right;
 
         @include MediaQueries($desktop-and-above){
-            text-align: right;
             margin-top: 0;
         }
     }

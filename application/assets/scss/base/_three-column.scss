@@ -28,3 +28,8 @@
         @extend .flex-col-lg__1-3, .flex-col-md__1-3, .flex-col-sm__full ;
     }
 }
+
+.l--three-column .form-element-with-label,
+.l--three-column .custom-select {
+    max-width: none;
+}

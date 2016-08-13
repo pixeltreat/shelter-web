@@ -16,11 +16,11 @@ define({
         "lblQuestionType": "Question Type",
         "lblQuestionTypeOptions": "Question Type Options",
         "lblSectionName": "Section Name",
-        "lblCharacters": "Characters",
+        "lblCharacters": "No. of characters",
         "lblEquipmentDependencies": "Equipment Dependencies",
         "lblDisplayAs": "Display As",
         "lblAnswerTypeNotFound": "Answer Type Not Found There Is A Configuration Issue.",
-        
+
 
         //validation messages
         "valmsgEquipmentDependenciesRequired": " Please Select At Least One Equipment Dependency",

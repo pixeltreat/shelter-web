@@ -116,7 +116,7 @@
             <div class="question-textbox__length">
                 <label class="form-element-with-label">
                     <span class="form-element-with-label__text">
-                        {{nls.lblTextBoxLength}}
+                        {{nls.lblTextBoxLength}} <span class="form-element-with-label__text_hint">({{nls.lblCharacters}})</span>
                         <em class="form-element-with-label__text__astrisk">*</em>
                     </span>
                     <input type="text" class="form-element-with-label__inp"
@@ -125,13 +125,9 @@
                     <span class="k-widget k-tooltip k-tooltip-validation k-invalid-msg" data-bind="invisible:Question.hideAnswerWidthValidation">{{nls.valmsgNumericRequired}}</span>
                 </label>
             </div>
-            <div class="question-textbox__characters">
-                <span>{{nls.lblCharacters}}</span>
-            </div>
-
         </div>
 
-        
+
         #} else if ((Question.AnswerTypeId == $ct.other.getNumericTextBoxId()) || (Question.AnswerTypeId == $ct.other.getDecimalTextBoxId()) ){ #
 
 
@@ -298,25 +294,19 @@
         -->
 
         <div class="add-option">
-
-            <div class="add-option__textbox">
-                <label class="form-element-with-label">
-                    <span>
-                        <input type="text" id="vwsecTbName" name="vwsecTbName" maxlength="5000" class="form-element-with-label__inp" data-bind="value:ChoiceText">
-                    </span>
-                    <span class="k-widget k-tooltip k-tooltip-validation k-invalid-msg" role="alert" data-bind="invisible: hideCTextValidation">
-                        <span class="k-icon k-warning"></span>{{nls.valmsgChoiceTextRequired}}
-                    </span>
-                </label>
-
-            </div>
-            <div class="add-option__delete">
+            <label class="form-element-with-label">
+                <span>
+                    <input type="text" id="vwsecTbName" name="vwsecTbName" maxlength="5000" class="form-element-with-label__inp" data-bind="value:ChoiceText">
+                </span>
+                <span class="k-widget k-tooltip k-tooltip-validation k-invalid-msg" role="alert" data-bind="invisible: hideCTextValidation">
+                    <span class="k-icon k-warning"></span>{{nls.valmsgChoiceTextRequired}}
+                </span>
+            </label>
+            <span class="add-option__delete">
                 <button class="btn-delete" data-bind="click:btnOptionDeleteClick">
-                    <span class="f-icon f-icon__delete">
-
-                    </span>
+                    <span class="f-icon f-icon__delete"></span>
                 </button>
-            </div>
+            </span>
         </div>
         <!--
                                         <span  class="icon-sprite_disabled icon_trash" >
@@ -326,7 +316,7 @@
 
 
 
-      
+
 
     </div>
 

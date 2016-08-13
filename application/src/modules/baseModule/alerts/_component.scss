@@ -19,7 +19,7 @@
 
     @include MediaQueries($mobile) {
         box-shadow: 0 0 0;
-        z-index: 99999;
+        z-index: 10002;
 
         &.is-alerts-visible {
             width: 100%;

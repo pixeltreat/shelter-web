@@ -2,9 +2,35 @@
     <!--View name : vwEmployeeAttendance-->
     <!--Control id prefix : vwea-->
     <div class="module" >
-        <h2 class="module-title">{{nls.headerStaffAttendance}}<span class="module-title__icon" data-bind="click:helpClick"></span></h2>
+        <div class="header-section">
+            <h2 class="module-title">{{nls.headerStaffAttendance}}<span class="module-title__icon" data-bind="click:helpClick"></span></h2>
+            <!-- notification status -->
+            <div class="employee-attendance__notification-info" data-bind="style:{display:showWorkArea}">
+                <!-- <div class="red-bold-text"> {{nls.lblMessage}} </div> -->
+                <ul>
+                    <li>
+                        <span class="icon-Reported">{{nls.lblReported}}:</span>
+                        <strong>
+                            <span data-bind="text:employeeAttendanceSummary.TotalReported"></span>/<span data-bind="text:employeeAttendanceSummary.TotalEmployees"></span>
+                        </strong>
+                    </li>
+                    <li>
+                        <span class="icon-NotReported">{{nls.lblNotReported}}:</span>
+                        <strong>
+                            <span data-bind="text:employeeAttendanceSummary.TotalNotReported"></span>/<span data-bind="text:employeeAttendanceSummary.TotalEmployees"></span>
+                        </strong>
+                    </li>
+                    <li>
+                        <span class="icon-Assigned">{{nls.lblAassigned}}:</span>
+                        <strong>
+                            <span data-bind="text:employeeAttendanceSummary.TotalAssigned"></span>/<span data-bind="text:employeeAttendanceSummary.TotalEmployees"></span>
+                        </strong>
+                    </li>
+                </ul>
+            </div>
+        </div>
         <div class="module-container employee-attendance">
-           
+
             <div class="employee-attendance__row is-filter-shelter">
                 <!--  filters section -->
                 <div class="employee-attendance__filters-section">
@@ -68,34 +94,18 @@
 
             <div data-bind="style:{display:showMessage}" class="employee-attendance__display-msg">{{nls.valmsgStaffarenotassignedfortheselectedshift}} </div>
 
-            <div class="employee-attendance__row is-notificaion-action-btns">
-                <!-- notification status -->
-                <div class="employee-attendance__notification-info" data-bind="style:{display:showWorkArea}">
-                    <!-- <div class="red-bold-text"> {{nls.lblMessage}} </div> -->
-                    <ul>
-                        <li>
-                            <span class="icon-Reported">{{nls.lblReported}}:</span>
-                            <strong>
-                                <span data-bind="text:employeeAttendanceSummary.TotalReported"></span>/<span data-bind="text:employeeAttendanceSummary.TotalEmployees"></span>
-                            </strong>
-                        </li>
-                        <li>
-                            <span class="icon-NotReported">{{nls.lblNotReported}}:</span>
-                            <strong>
-                                <span data-bind="text:employeeAttendanceSummary.TotalNotReported"></span>/<span data-bind="text:employeeAttendanceSummary.TotalEmployees"></span>
-                            </strong>
-                        </li>
-                        <li>
-                            <span class="icon-Assigned">{{nls.lblAassigned}}:</span>
-                            <strong>
-                                <span data-bind="text:employeeAttendanceSummary.TotalAssigned"></span>/<span data-bind="text:employeeAttendanceSummary.TotalEmployees"></span>
-                            </strong>
-                        </li>
-                    </ul>
+            <div class="gridsearch">
+                <div class="gridsearch__search-col">
+                    <label class="search-label">
+                        <input type="text" id="vweaTxtSearch" class="search-label__inp"
+                               placeholder="Search"
+                               data-bind="value:searchToken,events:{keyup:searchEmployeeAttendance}"
+                               data-value-update="keyup" />
+                    </label>
                 </div>
 
                 <!-- action buttons -->
-                <div class="employee-attendance__action-buttons" data-bind="style:{display:showWorkArea}">
+                <div class="gridsearch__btns-col" data-bind="style:{display:showWorkArea}">
                     <button class="btn--secondary" data-bind="visible:isRecordsPresentForExport, click:btnExportExcelClick" type="button">
                         <span class="f-icon f-icon__export" aria-hidden="true"></span>
                         {{nls.btnExport}}
@@ -112,20 +122,10 @@
                     </button>
                 </div>
             </div>
-            <div class="gridsearch">
-                <div class="gridsearch__search-col">
-                    <label class="search-label">
-                        <input type="text" id="vweaTxtSearch" class="search-label__inp"
-                               placeholder="Search"
-                               data-bind="value:searchToken,events:{keyup:searchEmployeeAttendance}"
-                               data-value-update="keyup" />
-                    </label>
-                </div>
 
-            </div>
             <div class="table-wrapper"  id="vweaDgEmployeeListParent"  data-bind="style:{display:showWorkArea}">
                 <table id="vweaDgEmployeeList"
-                        class="grid split-table"                
+                        class="grid split-table"
                        data-bind="source:dsEmployeeAttendance, events: { dataBound:vweaDataBoundEvent }"
                        data-role="grid" data-filterable="true"
                        data-sortable='{ "mode": "multiple", "allowUnsort": false }'
@@ -163,7 +163,7 @@
             #}else{#
             <button class="btn-add-comment" data-bind="click:btnEditClick"> <span class="f-icon f-icon__add-comment" aria-hidden="true"></span> <span class="f-icon__text">{{nls.btnEdit}}</span> </button>
             #}#
-            
+
         </td>
 
         <td data-title="{{nls.gdColStatus}}">

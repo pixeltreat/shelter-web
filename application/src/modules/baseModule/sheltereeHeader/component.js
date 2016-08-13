@@ -1,7 +1,7 @@
 define(['Boiler', './viewmodel', 'text!./view.html', 'i18n!./nls/resources'], function (Boiler, ViewModel, template, nls) {
 
     var Component = function (moduleContext) {
-        
+
         var vm, panel = null;
 
 
@@ -12,7 +12,7 @@ define(['Boiler', './viewmodel', 'text!./view.html', 'i18n!./nls/resources'], fu
         moduleContext.listen($ct.en.getHideSheltereeHeaderNavigation(), function () {
             $('#idxSheltereeHeader').show();
             $("#activeNavSheltereeheader").hide();
-            
+
         });
 
 
@@ -27,6 +27,7 @@ define(['Boiler', './viewmodel', 'text!./view.html', 'i18n!./nls/resources'], fu
         moduleContext.listen($ct.en.getHideSheltereeShelterHeader(), function () {
             $('#idxSheltereeHeader').show();
             $("#vwshDDLs").hide();
+            $("#vwshCensus").hide();
 
         });
 
@@ -34,15 +35,16 @@ define(['Boiler', './viewmodel', 'text!./view.html', 'i18n!./nls/resources'], fu
         moduleContext.listen($ct.en.getShowSheltereeShelterHeader(), function () {
             $('#idxSheltereeHeader').show();
             $("#vwshDDLs").show();
+            $("#vwshCensus").show();
 
         });
 
 
-        // To load data for shelter types and shelters 
+        // To load data for shelter types and shelters
         // when user first visit employee tracking module, this one time operation in entire life cycle of application
         moduleContext.listen($ct.en.getLoadSheltereeHeaderInfo(), function (viewName) {
 
-            if (vm) {              
+            if (vm) {
                 vm.data.initializeSheltereeHeader(viewName);
             }
 
@@ -58,7 +60,7 @@ define(['Boiler', './viewmodel', 'text!./view.html', 'i18n!./nls/resources'], fu
 
         });
 
-       
+
 
         //for shelter census data
         moduleContext.listen($ct.en.getSheltereeCensusData(), function (shelterCensusData) {
@@ -99,4 +101,4 @@ define(['Boiler', './viewmodel', 'text!./view.html', 'i18n!./nls/resources'], fu
 
     return Component;
 
-}); 
+});

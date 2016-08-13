@@ -43,7 +43,8 @@ h1 {
     border-bottom: 1px solid $border-color;
 
     @include MediaQueries($xmobile) {
-        font-size: 2rem;
+        font-size: 1.8rem;
+        margin-bottom: 10px;
     }
 
     &__icon {
@@ -52,10 +53,7 @@ h1 {
         display: inline-block;
         vertical-align: middle;
         margin-left: 5px;
-        //Added by UI Team
-        //Start : Added code to show hand cursor for icons in IE 10 , 11
         cursor: pointer;
-        //End : Added code to show hand cursor for icons in IE 10 , 11
     }
 }
 
@@ -65,11 +63,20 @@ h1 {
 //Start : Added code to handle styles for sheltree input
 .module-section-container {
     padding: 0 15px;
+
+    @include MediaQueries($xmobile) {
+        padding: 0;
+    }
 }
 
 .module-section {
     background-color: #fff;
     padding: 5px 5px 10px 5px;
+
+    @include MediaQueries($xmobile) {
+        background: transparent;
+        padding: 0;
+    }
 
     &__title {
         font-size: 1.6rem;

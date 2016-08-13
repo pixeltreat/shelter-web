@@ -1,7 +1,9 @@
 // ****************************************
 // employeeAttendance
 // ****************************************
-
+.header-section {
+    position: relative;
+}
 .employee-attendance__row {
     @extend .flex-row, .flex--center;
 }
@@ -86,11 +88,21 @@
 }
 
 .employee-attendance__notification-info {
-    @extend .flex-row, .flex-col__2-3, .flex-col-md__full, .flex-col-sm__full;
-    margin-bottom: 20px;
+    position: absolute;
+    top: -5px;
+    right: 40px;
 
-    @include MediaQueries($mobile) {
-        margin-bottom: 0;
+    @include MediaQueries($xlarge-and-above) {
+        right: 0;
+    }
+
+    @include MediaQueries($tablet-and-below) {
+        position: static;
+        width: 100%;
+    }
+
+    @include MediaQueries($xmobile) {
+        margin-bottom: 15px;
     }
 
     ul {
@@ -102,46 +114,42 @@
     }
 
     li {
-        @extend .flex-col__1-3;
+        flex: 1 0 auto;
         background-color: $base-white;
-        max-width: 250px;
-        width: 100%;
-        padding: 10px;
+        padding: 5px 10px;
         text-align: center;
-        border-right: 20px solid $quaternary-color;
+        border-right: 10px solid $quaternary-color;
 
         &:last-child {
             border-right: 0;
         }
 
         @include MediaQueries($tablet-and-below) {
-            max-width: 33.33%;
+            margin-bottom: 20px;
         }
 
         @include MediaQueries($xmobile) {
-            max-width: none;
             border: 0;
-            margin-bottom: 8px;
+            width: 100%;
+            margin-bottom: 4px;
+            text-align: left;
         }
     }
 
     strong {
         font-weight: $bold;
-        font-size: 2.4rem;
+        font-size: 1.8rem;
     }
 
     .icon-Reported,
     .icon-Assigned,
     .icon-NotReported {
-        font-size: 1.8rem;
+        font-size: 1.5rem;
 
         &::before {
-            font-size: 2.8rem;
+            font-size: 2.4rem;
             margin-right: 10px;
-            //Added by UI Team
-            //Start : Added code to remove hand cursor for assigned, NotReported and reported states
             cursor:auto;
-            //End : Added code to remove hand cursor for assigned, NotReported and reported states
         }
     }
 }
@@ -154,8 +162,4 @@
     padding: 20px;
     background-color: $base-white;
     border: 1px solid $base-orange;
-}
-
-.is-notificaion-action-btns {
-
 }

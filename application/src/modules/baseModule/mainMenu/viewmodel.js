@@ -77,7 +77,7 @@ define(["Boiler", 'text!./help/help.html'], function (Boiler, helpTmpl) {
                         var errorObj = $ct.mt.getErrorObject(result);
                         if (errorObj != null) {
                             vm.set("isActiveEventPresent", false);
-                           //' moduleContext.notify($ct.en.getShowErrorMsg(), errorObj);
+
                         }
 
                         if ($ct.mt.isNoActiveEvent(result)) {
@@ -94,6 +94,11 @@ define(["Boiler", 'text!./help/help.html'], function (Boiler, helpTmpl) {
                             vm.set("isActiveEventPresent", true);
                         }
 
+                        // TODO: Need to uncomment below section
+                        // if (vm.isActiveEventPresent) {
+                        //     moduleContext.notify($ct.en.getActiveEventPresent());
+                        // }
+
                         vm.setMenuPermissions();
                          //$ct.helpers.hidePageBusyCursor();
 
@@ -102,12 +107,12 @@ define(["Boiler", 'text!./help/help.html'], function (Boiler, helpTmpl) {
 
 
                             if ($ct.mt.isNoDataFound(result)) {
-                                
+
                                 vm.set("isFacilitiesAssociatedToUser", false);
 
                             }
                             else {
-                               
+
                                 vm.set("isFacilitiesAssociatedToUser", true);
 
                             }
@@ -130,7 +135,7 @@ define(["Boiler", 'text!./help/help.html'], function (Boiler, helpTmpl) {
 
                 if (!vm.isFacilitiesAssociatedToUser)
                 {
-                   
+
                     Boiler.UrlController.goTo($ct.rn.getNoFacilitiesFound());
                     return;
                 }
@@ -236,6 +241,8 @@ define(["Boiler", 'text!./help/help.html'], function (Boiler, helpTmpl) {
 
             refreshClick: function (e) {
 
+                vm.collapseMenu();
+
                 if (moduleContext.parentContext.currentView != undefined) {
                     moduleContext.notify($ct.en.getRefreshView(), moduleContext.parentContext.currentView);
                 }
@@ -246,64 +253,103 @@ define(["Boiler", 'text!./help/help.html'], function (Boiler, helpTmpl) {
             },
 
             transportTypeListClick: function (e) {
+
+                vm.collapseMenu();
+
                 moduleContext.notify($ct.en.getDisplayTransportTypeList(), null);
                 Boiler.UrlController.goTo($ct.rn.getTransportTypeList());
             },
 
             agencyListClick: function (e) {
+
+                vm.collapseMenu();
+
                 moduleContext.notify($ct.en.getDisplayAgencyList(), null);
                 Boiler.UrlController.goTo($ct.rn.getAgencyList());
             },
 
             departmentListClick: function (e) {
+
+                vm.collapseMenu();
+
                 moduleContext.notify($ct.en.getDisplayDepartmentList(), null);
                 Boiler.UrlController.goTo($ct.rn.getDepartmentList());
             },
 
             medicalConditionListClick: function (e) {
+
+                vm.collapseMenu();
+
                 moduleContext.notify($ct.en.getDisplayMedicalConditionList(), null);
                 Boiler.UrlController.goTo($ct.rn.getMedicalConditionList());
             },
 
             medicalConditionTierListClick: function (e) {
+
+                vm.collapseMenu();
+
                 moduleContext.notify($ct.en.getDisplayMedicalConditionTierList(), null);
                 Boiler.UrlController.goTo($ct.rn.getMedicalConditionTierList());
             },
 
             shelterTypeListClick: function (e) {
+
+                vm.collapseMenu();
+
                 moduleContext.notify($ct.en.getDisplayShelterTypeList(), null);
                 Boiler.UrlController.goTo($ct.rn.getShelterTypeList());
             },
 
             sheltreeEmployeeRatioListClick: function (e) {
+
+                vm.collapseMenu();
+
                 moduleContext.notify($ct.en.getDisplaySheltreeEmployeeRatioList(), null);
                 Boiler.UrlController.goTo($ct.rn.getSheltreeEmployeeRatioList());
             },
 
             staffSpecialtyListClick: function (e) {
+
+                vm.collapseMenu();
+
                 moduleContext.notify($ct.en.getDisplayStaffSpecialtyList(), null);
                 Boiler.UrlController.goTo($ct.rn.getStaffSpecialtyList());
             },
 
             stafftypeListClick: function (e) {
+
+                vm.collapseMenu();
+
                 moduleContext.notify($ct.en.getDisplayStaffTypeList(), null);
                 Boiler.UrlController.goTo($ct.rn.getStaffTypeList());
             },
 
             dispositionListClick: function (e) {
+
+                vm.collapseMenu();
+
                 moduleContext.notify($ct.en.getDisplayDispositionList(), null);
                 Boiler.UrlController.goTo($ct.rn.getDispositionList());
             },
 
             equipmentSupplyListClick: function (e) {
+
+                vm.collapseMenu();
+
                 moduleContext.notify($ct.en.getDisplayEquipmentSupplyList(), null);
                 Boiler.UrlController.goTo($ct.rn.getequipmentSupplyList());
             },
             shelterIdentificationListClick: function (e) {
+
+                vm.collapseMenu();
+
                 moduleContext.notify($ct.en.getDisplayShelterIdentificationList(), null);
                 Boiler.UrlController.goTo($ct.rn.getshelterIdentificationList());
             },
             questionListClick: function (e) {
+
+                vm.collapseMenu();
+
                 moduleContext.notify($ct.en.getDisplayquestionList(), null);
                 Boiler.UrlController.goTo($ct.rn.getQuestionList());
             },
@@ -313,6 +359,8 @@ define(["Boiler", 'text!./help/help.html'], function (Boiler, helpTmpl) {
             isEmployeeOrEmployeeExpandedListClicked: false,
 
             employeeListClick: function (e) {
+
+                vm.collapseMenu();
 
                 if (!vm.isEmployeeOrEmployeeExpandedListClicked) {
 
@@ -333,6 +381,8 @@ define(["Boiler", 'text!./help/help.html'], function (Boiler, helpTmpl) {
 
             employeeExpandedListClick: function (e) {
 
+                vm.collapseMenu();
+
                 if (!vm.isEmployeeOrEmployeeExpandedListClicked) {
 
                     moduleContext.notify($ct.en.getLoadEmployeeHeaderInfo(), $ct.rn.getEmployeeExtendedList());
@@ -348,6 +398,8 @@ define(["Boiler", 'text!./help/help.html'], function (Boiler, helpTmpl) {
             },
 
             downloadEmployeeTemplateClick:function () {
+
+                vm.collapseMenu();
 
                     moduleContext.notify($ct.en.getHideErrorMsg());
                     $ct.helpers.displayWorkAreaBusyCursor();
@@ -378,12 +430,16 @@ define(["Boiler", 'text!./help/help.html'], function (Boiler, helpTmpl) {
 
             uploadEmployeeDataClick: function (e) {
 
+                vm.collapseMenu();
+
                // moduleContext.notify($ct.en.getEmployeeCreatedOrUpdated());
                 Boiler.UrlController.goTo($ct.rn.getUploadEmployee());
             },
 
 
             downloadEmployeeDataClick: function (e) {
+
+                vm.collapseMenu();
 
                // moduleContext.notify($ct.en.getEmployeeCreatedOrUpdated());
                 Boiler.UrlController.goTo($ct.rn.getDownloadEmployee());
@@ -393,6 +449,8 @@ define(["Boiler", 'text!./help/help.html'], function (Boiler, helpTmpl) {
             isSheltereeOrDischargeOrMedicalUpdateListClicked: false,
 
             sheltereeListClick: function (e) {
+
+                vm.collapseMenu();
 
                 if (!vm.isSheltereeOrDischargeOrMedicalUpdateListClicked) {
 
@@ -410,6 +468,8 @@ define(["Boiler", 'text!./help/help.html'], function (Boiler, helpTmpl) {
 
             sheltereeDischargeListClick: function (e) {
 
+                vm.collapseMenu();
+
                 if (!vm.isSheltereeOrDischargeOrMedicalUpdateListClicked) {
 
                     moduleContext.notify($ct.en.getLoadSheltereeHeaderInfo(), $ct.rn.getSheltereeDischargeList());
@@ -425,6 +485,8 @@ define(["Boiler", 'text!./help/help.html'], function (Boiler, helpTmpl) {
             },
 
             sheltereeMedicalUpdateListClick: function (e) {
+
+                vm.collapseMenu();
 
                 if (!vm.isSheltereeOrDischargeOrMedicalUpdateListClicked) {
 
@@ -442,6 +504,8 @@ define(["Boiler", 'text!./help/help.html'], function (Boiler, helpTmpl) {
 
 
             downloadSheltereeTemplateClick: function () {
+
+                vm.collapseMenu();
 
                     moduleContext.notify($ct.en.getHideErrorMsg());
                     $ct.helpers.displayWorkAreaBusyCursor();
@@ -474,6 +538,8 @@ define(["Boiler", 'text!./help/help.html'], function (Boiler, helpTmpl) {
 
             uploadSheltereeDataClick: function (e) {
 
+                vm.collapseMenu();
+
                 //moduleContext.notify($ct.en.getSheltereeCreatedOrUpdated());
                 Boiler.UrlController.goTo($ct.rn.getUploadShelteree());
             },
@@ -481,56 +547,95 @@ define(["Boiler", 'text!./help/help.html'], function (Boiler, helpTmpl) {
 
             downloadSheltereeDataClick: function (e) {
 
+                vm.collapseMenu();
+
                 //moduleContext.notify($ct.en.getSheltereeCreatedOrUpdated());
                 Boiler.UrlController.goTo($ct.rn.getDownloadShelteree());
             },
 
 
             employeeAttendanceClick: function (e) {
+
+                vm.collapseMenu();
+
                 moduleContext.notify($ct.en.getEmployeeAttendenceList(), null);
                 Boiler.UrlController.goTo($ct.rn.getEmployeeAttendance());
             },
 
             shelterStatusClick: function (e) {
+
+                vm.collapseMenu();
+
                 Boiler.UrlController.goTo($ct.rn.getShelterStatus());
             },
 
             eventListClick: function (e) {
+
+                vm.collapseMenu();
+
                 moduleContext.notify($ct.en.getDisplayEventList(), null);
                 Boiler.UrlController.goTo($ct.rn.getEventList());
             },
 
             staffReportClick: function (e) {
+
+                vm.collapseMenu();
+
                 Boiler.UrlController.goTo($ct.rn.getStaffRawDataReport());
             },
 
             staffAttendanceReportClick: function (e) {
+
+                vm.collapseMenu();
+
                 Boiler.UrlController.goTo($ct.rn.getStaffAttendanceRawDataReport());
             },
             sheltereeReportClick: function (e) {
+
+                vm.collapseMenu();
+
                 Boiler.UrlController.goTo($ct.rn.getSheltereeRawDataReport());
            },
 
 
             multifacilityEmployeeAttendanceClick: function (e) {
+
+                vm.collapseMenu();
+
                 Boiler.UrlController.goTo($ct.rn.getMultiFacilityEmployeeAttendance());
             },
 
             multifacilityEmployeeExtendedClick: function (e) {
+
+                vm.collapseMenu();
+
                 Boiler.UrlController.goTo($ct.rn.getMultiFacilityEmployeeExtendedList());
             },
 
             multifacilityEmployeeClick: function (e) {
+
+                vm.collapseMenu();
+
                 Boiler.UrlController.goTo($ct.rn.getMultiFacilityEmployeeList());
             },
 
             logOutClick: function (e) {
-
                 $(document).ajaxError(null);
-
                 window.location.href = "logOut.aspx";
+            },
+            collapseMenu: function () {
+                var tabletAndBelow;
 
-            }
+                // check if match media api avaible on this browser to avoid throwing errors
+                if(window.matchMedia){
+                    tabletAndBelow = window.matchMedia("(max-width: 1024px)");
+                }
+
+                // check if table and below not undefined and matches
+                if (tabletAndBelow && tabletAndBelow.matches) {
+                    $('html').removeClass('has-nav-expanded');
+                }
+            },
         });
         //end of observable
 

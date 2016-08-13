@@ -35,19 +35,3 @@
         }
     }
 }
-
-// ie 10 and 11 in three column layouts
-.k-ie .l--three-column {
-    .column-one {
-        @include MediaQueries($tablet) {
-            padding-right: 23px;
-        }
-    }
-
-    .column-two {
-            flex:0 0 28% !important;
-            @include MediaQueries($tablet) {
-            padding-right: 23px;
-        }
-    }
-}

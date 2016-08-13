@@ -65,6 +65,7 @@
 //Start : Added code to handle date and time picker as inline
 .inlinedate-time .k-datepicker{
     width:56.5%;
+
     @include MediaQueries($mobile) {
         width:100%;
         margin-bottom:10px;
@@ -73,8 +74,9 @@
 
 .inlinedate-time .k-timepicker{
     width: 42%;
+
     @include MediaQueries($mobile) {
-        width:70%;
+        width:100%;
 
     }
 }

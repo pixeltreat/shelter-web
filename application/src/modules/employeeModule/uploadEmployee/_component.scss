@@ -17,8 +17,10 @@
         padding: 0 40px;
         font-size: 1.6rem;
 
-        @include MediaQueries($tablet) {
-            padding: 0 15px;
+        @include MediaQueries($tablet-and-below) {
+            display: block;
+            padding: 0;
+            border: 0;
         }
 
         &:first-child {
@@ -39,5 +41,7 @@
             color: $base-red;
             font-size: 2rem;
         }
+
+
     }
 }

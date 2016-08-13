@@ -34,7 +34,7 @@
                                 error: onError,
                                 remove:onRemove,
                                 progress:onProgressFileUpload}" />
-          
+
         </div>
     </div>
     <!-- uploaded data details -->
@@ -66,19 +66,21 @@
         </ul>
         <div hidden id="vwusDivGrid" class="uploaded-employee-data__table">
             <table id="vwuSheltereesList"
-                   data-scrolable="true"
-                   data-bind="source:UploadSummary.FailedImportedShelterees"
-                   data-role="grid"
-                   data-filterable="true"
-                   data-sortable="true"
-                   data-row-template="vwusRow-template"
-                   data-selectable="true"
-                   data-columns="[
-                        {field:'FirstName',title:'{{nls.gdColFirstName}}', width: '150px'},
-                        {field:'LastName',title:'{{nls.gdColLastName}}', width: '150px'},
-                        {field:'ValidationError',title:'{{nls.gdColReason}}'}
-                    ]"
-                   data-pageable="true"></table>
+                class="grid split-table"
+                data-scrolable="true"
+                data-bind="source:UploadSummary.FailedImportedShelterees"
+                data-role="grid"
+                data-filterable="true"
+                data-sortable="true"
+                data-row-template="vwusRow-template"
+                data-selectable="true"
+                data-columns="[
+                    {field:'FirstName',title:'{{nls.gdColFirstName}}', width: '150px'},
+                    {field:'LastName',title:'{{nls.gdColLastName}}', width: '150px'},
+                    {field:'ValidationError',title:'{{nls.gdColReason}}'}
+                ]"
+                data-pageable="true">
+            </table>
         </div>
 
     </section>

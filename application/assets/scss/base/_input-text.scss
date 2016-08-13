@@ -25,6 +25,10 @@ input[type="text"],
     &__text {
         display: block;
         margin-bottom: 5px;
+
+        &_hint {
+            color: $base-grey;
+        }
     }
 
     &__value {
@@ -37,17 +41,17 @@ input[type="text"],
 
     }
     //Added by UI Team
-    //Start : Modified code to handle 
-    //Style to Occupy text box full width 
+    //Start : Modified code to handle
+    //Style to Occupy text box full width
 	&-full {
         display: block;
         margin-bottom: 20px;
     }
-    //End : Modified code to handle 
+    //End : Modified code to handle
 }
 
 //Added by UI Team
-//Start : Added code to handle 
+//Start : Added code to handle
 //To apply styles for numeric textbox to be sync with textbox
 
 input[data-role="maskedtextbox"] {
@@ -57,7 +61,7 @@ input[data-role="maskedtextbox"] {
     text-indent: 0.4em;
 }
 
-//End : Added code to handle 
+//End : Added code to handle
 textarea {
     @include inputStyles();
     min-height: 160px;
@@ -79,4 +83,3 @@ textarea {
         display: none;
     }
 }
-

@@ -8,7 +8,7 @@ function (Boiler) {
 
             datafromParent: {},
             comment:"",
-
+            DescriptionLength:5000,
             isCommentHistoryPresent: false,
             history: [],
 

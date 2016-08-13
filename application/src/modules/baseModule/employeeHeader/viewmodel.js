@@ -136,15 +136,15 @@
 
                 //vm.fillGrid();
 
-                $ct.helpers.displayWorkAreaBusyCursor();
+                //$ct.helpers.displayWorkAreaBusyCursor();
 
-                 $ct.ds.event.getActiveEvent( function (result) {
+                // $ct.ds.event.getActiveEvent( function (result) {
 
-                    $ct.helpers.hidePageBusyCursor();
-                    $ct.helpers.hideWorkAreaBusyCursor();
+                //    $ct.helpers.hidePageBusyCursor();
+                //    $ct.helpers.hideWorkAreaBusyCursor();
 
-                    var resultData = result.Data.ActiveEvent;
-                    vm.set("eventdata", resultData);
+                //    var resultData = result.Data.ActiveEvent;
+                //    vm.set("eventdata", resultData);
 
                     vm.setPreviouslySelectedShelterTypeAndShelterNameToCurrent();
                     vm.setEmployeeHeaderDataToGlobalContext();
@@ -158,7 +158,7 @@
                     }
 
 
-                });
+              //  });
 
             },
 

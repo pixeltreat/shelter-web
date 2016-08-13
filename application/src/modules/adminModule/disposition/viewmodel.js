@@ -16,8 +16,7 @@ define(["Boiler", 'text!./help/help.html'], function (Boiler, helpTmpl) {
 
             initialLoad: false,
 
-
-            DescriptionLength: 4000,
+            DescriptionLength: 5000,
 
             //Query string parameters
             dispositionId: "",

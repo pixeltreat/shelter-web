@@ -45,8 +45,8 @@
                        data-row-template="vwqlRow-template"
                        data-selectable="true"
                        data-columns="[
-                            {title:'Edit',width:'60px'},
-                            {title:'Delete',width:'70px'},
+                            {title:'{{nls.gdColEdit}}',width:'60px'},
+                            {title:'{{nls.gdColDelete}}',width:'70px'},
                             {field:'QuestionText',title:'{{nls.gdColName}}',width:'150px'},
                             {field:'QuestionGroupName',title:'{{nls.gdColQuestionGroupName}}',width:'150px'},
                             {field:'QuestionTypeName',title:'{{nls.gdColQuestionTypeName}}',width:'150px'},
@@ -60,13 +60,13 @@
     </div>
     <script type="text/x-kendo-template" id="vwqlRow-template">
         <tr>
-            <td>
+            <td data-title="{{nls.gdColEdit}}">
                 <button class="btn-edit" data-bind="click:btnEditClick">
                     <span class="f-icon f-icon__edit" aria-hidden="true"></span>
                     <span class="f-icon__text">{{nls.btnEdit}}</span>
                 </button>
             </td>
-            <td>
+            <td data-title="{{nls.gdColDelete}}">
                 <button class="btn-delete" data-bind="click:btnDeleteClick">
                     <span class="f-icon f-icon__delete" aria-hidden="true"></span>
                     <span class="f-icon__text">{{nls.btnDelete}}</span>

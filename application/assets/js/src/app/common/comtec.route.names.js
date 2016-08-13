@@ -24,6 +24,14 @@ $ct.rn = function () {
         return noActiveEvent;
     };
 
+
+    var noFacilitiesFound = "nofacilitiesfound";
+
+    var getNoFacilitiesFound = function () {
+        return noFacilitiesFound;
+    };
+
+    
     /*end of other routes */
 
 
@@ -429,7 +437,8 @@ $ct.rn = function () {
 
         getNoPermission: getNoPermission,
         getNoRole: getNoRole,
-        getNoActiveEvent : getNoActiveEvent,
+        getNoActiveEvent: getNoActiveEvent,
+        getNoFacilitiesFound:getNoFacilitiesFound,
         /*end of other module routes */
 
 

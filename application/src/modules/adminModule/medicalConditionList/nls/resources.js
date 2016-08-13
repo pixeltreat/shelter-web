@@ -10,6 +10,8 @@ define({
         "gdColUserName": "User Name",
         "gdColQuestionType": "Question Type",
         "gdColDescription": "Description",
+        "gdColEdit": "Edit",
+        "gdColDelete": "Delete",
 
         "btnAdd": "Add",
         "btnDelete": "Delete",

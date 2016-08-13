@@ -16,7 +16,7 @@ define(["Boiler", 'text!./help/help.html'], function (Boiler, helpTmpl) {
             dsShelters: [],
             dsEvents: [],
 
-            snapShotDate: new Date(),
+            snapShotDate: null,
 
             initialize: function () {
 
@@ -24,7 +24,6 @@ define(["Boiler", 'text!./help/help.html'], function (Boiler, helpTmpl) {
                 $ct.helpers.clearValidations("vwSheltereeRawDataReport");
 
                 moduleContext.notify($ct.en.getHideErrorMsg());
-
                 $ct.helpers.hidePageBusyCursor();
                 $ct.helpers.displayWorkAreaBusyCursor();
 
@@ -50,6 +49,7 @@ define(["Boiler", 'text!./help/help.html'], function (Boiler, helpTmpl) {
 
                     vm.set("dsShelters", sheltersLookup);
                     vm.set("dsEvents", eventsLookup);
+                    vm.set("snapShotDate", null);
 
 
                     $ct.helpers.hideWorkAreaBusyCursor();
@@ -92,7 +92,14 @@ define(["Boiler", 'text!./help/help.html'], function (Boiler, helpTmpl) {
 
             },
 
-            //End of facility type. region and facility names dropdowns code
+            //validates and sets right values in start and end date fields
+            setDates: function () {
+
+                if (vm.get("snapShotDate") == "" || vm.get("snapShotDate") == null) {
+                    vm.set("snapShotDate", "");
+                    vm.set("snapShotDate", null);
+                }
+            },
 
             isSnapShotDateValid: function () {
 
@@ -113,17 +120,17 @@ define(["Boiler", 'text!./help/help.html'], function (Boiler, helpTmpl) {
 
             btnSheltereeRawDataReportClick: function () {
 
-                moduleContext.notify($ct.en.getHideErrorMsg());
-
                 vm.set("initialLoad", false);
 
-                if ((vm.get("snapShotDate") == "")
-                ||
-                (vm.get("snapShotDate") == null)
-                ) {
-                    //to fire observable added dummy set statement.
-                    vm.set("snapShotDate", "");
-                    vm.set("snapShotDate", null);
+                vm.setDates();
+
+                moduleContext.notify($ct.en.getHideErrorMsg());
+
+                var validator = $("#vwSheltereeRawDataReport").kendoValidator().data("kendoValidator");
+                if ((!validator.validate())) {
+                    moduleContext.notify($ct.en.getShowValidationMsg(), $ct.msg.getValidationMsg());
+
+                    return;
                 }
 
                 if (!vm.isSnapShotDateValid()) {

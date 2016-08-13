@@ -9,6 +9,8 @@ define({
         "gdColStaffspecailityid": "Staffspecaility Id",
         "gdColUserName": "User Name",
         "gdColUpdatedDate": "Updated Date",
+        "gdColEdit": "Edit",
+        "gdColDelete": "Delete",
         "btnAdd": "Add",
         "btnDelete": "Delete",
         "btnEdit": "Edit"

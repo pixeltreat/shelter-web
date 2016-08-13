@@ -488,6 +488,16 @@ $ct.en = function () {
         return manageSheltereeMedicalUpdateClicked;
     };
 
+
+    var sheltereeCensusData = "SHELTEREE_CENSUS_DATA";
+
+    var getSheltereeCensusData = function () {
+        return sheltereeCensusData;
+    };
+    
+
+
+
     //end of shelteree events
 
     return {
@@ -585,7 +595,8 @@ $ct.en = function () {
         getSheltereeRecordReload: getSheltereeRecordReload,
         getManageSheltereeClicked: getManageSheltereeClicked,
         getManageSheltereeDischargeClicked: getManageSheltereeDischargeClicked,
-        getManageSheltereeMedicalUpdateClicked: getManageSheltereeMedicalUpdateClicked
+        getManageSheltereeMedicalUpdateClicked: getManageSheltereeMedicalUpdateClicked,
+        getSheltereeCensusData: getSheltereeCensusData
 
         //end of shelteree events
     };

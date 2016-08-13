@@ -14,7 +14,7 @@ define(["Boiler", 'text!./help/help.html'], function (Boiler, helpTmpl) {
        
             shelterIdentificationData: {},
             initialLoad: false,
-            DescriptionLength: 4000,          
+            DescriptionLength: 5000,          
             shelterIdentificationId: "",
           
             fillQueryParam: function (param) {

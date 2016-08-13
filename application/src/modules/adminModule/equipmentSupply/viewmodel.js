@@ -16,8 +16,8 @@ function (Boiler, helpTmpl) {
             equipmentSupplyData: {},
 
             initialLoad: false,
-
-            DescriptionLength: 4000,
+            
+            DescriptionLength: 5000,
 
             //Query string parameters
             equipmentSupplyId: "",

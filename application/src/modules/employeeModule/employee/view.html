@@ -25,7 +25,7 @@
                 <label class="form-element-with-label">
                     <span class="form-element-with-label__text">{{nls.lblEmployeeId}}</span>
                     <input type="text" class="form-element-with-label__inp" id="vweTbEmployeeId" name="vweTbEmployeeId"
-                           data-bind="value:employeeData.Employee.EmployeeRefId" maxlength="250" />
+                           data-bind="value:employeeData.Employee.EmployeeRefId" maxlength="100" />
                 </label>
 
             </div>
@@ -37,7 +37,7 @@
                         {{nls.lblFirstName}}
                         <em class="form-element-with-label__text__astrisk">*</em>
                     </span>
-                    <input type="text" class="form-element-with-label__inp" maxlength="250"
+                    <input type="text" class="form-element-with-label__inp" maxlength="100"
                            id="vweTbFirstName" name="vweTbFirstName" required
                            validationmessage="{{nls.valmsgFNRequired}}"
                            data-bind="value:employeeData.Employee.FirstName" />
@@ -61,7 +61,7 @@
                         <em class="form-element-with-label__text__astrisk">*</em>
                     </span>
                     <input type="text" class="form-element-with-label__inp" id="vweTbLastName"
-                           name="vweTbLastName" required validationmessage="{{nls.valmsgLNRequired}}" data-bind="value:employeeData.Employee.LastName" maxlength="250" />
+                           name="vweTbLastName" required validationmessage="{{nls.valmsgLNRequired}}" data-bind="value:employeeData.Employee.LastName" maxlength="50" />
                     <span class="k-invalid-msg" data-for="vweTbLastName"></span>
                 </label>
 

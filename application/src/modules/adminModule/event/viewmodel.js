@@ -16,7 +16,7 @@ define(["Boiler", 'text!./help/help.html'], function (Boiler, helpTmpl) {
 
             initialLoad: false,
 
-            DescriptionLength: 4000,
+            DescriptionLength: 8000,
 
 
             eventId: "",
@@ -45,11 +45,15 @@ define(["Boiler", 'text!./help/help.html'], function (Boiler, helpTmpl) {
                         resultData.Event.Id = $ct.constants.getNewRecordId();
                         resultData.Event.EventName = "";
                         resultData.Event.EventDescription = "";
-                        //  eventData.Event.StartDate = null;
-                        // eventData.Event.EndDate = null;
-
-
+                        resultData.Event.StartDate = null;
+                        resultData.Event.EndDate = null;
                     }
+
+                    else {
+                        resultData.Event.StartDate = kendo.parseDate(resultData.Event.StartDate, "yyyy-MM-ddTHH:mm:s");
+                        resultData.Event.EndDate = kendo.parseDate(resultData.Event.EndDate, "yyyy-MM-ddTHH:mm:s");
+                    }
+
 
                     vm.set("eventData", resultData);
 
@@ -67,84 +71,19 @@ define(["Boiler", 'text!./help/help.html'], function (Boiler, helpTmpl) {
             },
 
 
+            //validates and sets right values in start and end date fields
+            setDates: function () {
 
-            btnSaveClick: function () {
-
-                this.trimWhiteSpaces();
-                vm.set("initialLoad", false);
-                moduleContext.notify($ct.en.getHideErrorMsg());
-
-                var validator = $("#vwEvent").kendoValidator().data("kendoValidator");
-                if ((!validator.validate())) {
-                    moduleContext.notify($ct.en.getShowValidationMsg(), $ct.msg.getValidationMsg());
-
-                    return;
+                if (vm.get("eventData.Event.StartDate") == "" || vm.get("eventData.Event.StartDate") == null) {
+                    vm.get("eventData.Event.StartDate", "");
+                    vm.get("eventData.Event.StartDate", null);
                 }
 
-                if (!vm.startDateEndDateValidation()) {
-                    moduleContext.notify($ct.en.getShowValidationMsg(), "Start Date Should Be Less Than End Date");
-
-                    return;
+                if (vm.get("eventData.Event.EndDate") == "" || vm.get("eventData.Event.EndDate") == null) {
+                    vm.get("eventData.Event.EndDate", "");
+                    vm.get("eventData.Event.EndDate", null);
                 }
-
-
-
-
-
-                var saveEventData = vm.eventData.toJSON();
-
-                var startDate = new Date(vm.eventData.StartDate);
-                var StartDate = kendo.toString(new Date(startDate), "yyyy-MM-ddTHH:mm:ss");
-
-                var endDate = new Date(vm.eventData.EndDate);
-                var EndDate = kendo.toString(new Date(endDate), "yyyy-MM-ddTHH:mm:ss");
-
-                $ct.helpers.displayWorkAreaBusyCursor();
-
-                $ct.ds.admin.event.saveEvent(saveEventData, function (data) {
-
-                    $ct.helpers.hideWorkAreaBusyCursor();
-
-                    if ($ct.mt.isVersionConflict(data)) {
-                        if ($ct.helpers.displayConfirmWindow($ct.msg.getVersionConflictReloadMsg())) {
-                            vm.initialize();
-                        }
-                        return;
-                    }
-
-
-                    //if ($ct.mt.isConcurrentEvent(data)) {
-                    //    var concurrentEventErrorObj = {};
-                    //    concurrentEventErrorObj.message = "System does not support concurrent events";
-                    //    moduleContext.notify($ct.en.getShowErrorMsg(), concurrentEventErrorObj);
-                    //    return;
-                    //}
-
-                    var errorObj = $ct.mt.getErrorObject(data);
-                    if (errorObj != null) {
-                        moduleContext.notify($ct.en.getShowErrorMsg(), errorObj);
-                        return;
-                    }
-                    else {
-                        moduleContext.notify($ct.en.getShowSuccMsg(), $ct.msg.getEventSuccessMsg());
-                    }
-
-                    moduleContext.notify($ct.en.getEventCreatedOrUpdated(), null);
-                    Boiler.UrlController.goTo($ct.rn.getEventList());
-
-                })
-
             },
-
-
-            btnCancelClick: function () {
-
-                moduleContext.notify($ct.en.getHideErrorMsg());
-
-                moduleContext.notify($ct.en.getEventCreatedOrUpdated(), null);
-                Boiler.UrlController.goTo($ct.rn.getEventList());
-            },
-
 
             isStartDateValid: function () {
 
@@ -155,6 +94,7 @@ define(["Boiler", 'text!./help/help.html'], function (Boiler, helpTmpl) {
                 var startdDt = vm.get("eventData.Event.StartDate");
 
                 if ((startdDt == "") || (startdDt == null)) {
+                   
                     return false;
                 }
 
@@ -179,24 +119,123 @@ define(["Boiler", 'text!./help/help.html'], function (Boiler, helpTmpl) {
 
             },
 
-            startDateEndDateValidation: function () {
 
-                if (!vm.get("initialLoad")) {
+            isstartDateEndDateValidation: function () {
 
-                    var startdDt = vm.get("eventData.Event.StartDate");
-                    var enddDt = vm.get("eventData.Event.EndDate");
+                if (vm.get("initialLoad")) {
+                    return true;
+                }
+
+                var startdDt = vm.get("eventData.Event.StartDate");
+
+                if ((startdDt == "") || (startdDt == null)) {
+                    return true;
+                }
+
+                var enddDt = vm.get("eventData.Event.EndDate");
+
+                if ((enddDt == "") || (enddDt == null)) {
+                    return true;
+                }
+
+                if (startdDt < enddDt) {
+                    return true;
+                }
+                else {
+                    return false;
+                }
+            },
 
 
-                    if (startdDt < enddDt) {
-                        return true;
+
+
+            btnSaveClick: function () {
+
+                this.trimWhiteSpaces();
+                vm.set("initialLoad", false);
+
+                vm.setDates();
+
+                moduleContext.notify($ct.en.getHideErrorMsg());
+
+                var validator = $("#vwEvent").kendoValidator().data("kendoValidator");
+                if ((!validator.validate())) {
+                    moduleContext.notify($ct.en.getShowValidationMsg(), $ct.msg.getValidationMsg());
+
+                    return;
+                }
+
+                if (!vm.isStartDateValid()) {
+                    moduleContext.notify($ct.en.getShowValidationMsg(), $ct.msg.getValidationMsg());
+
+                    return;
+                }
+
+                if (!vm.isEndDateValid()) {
+                    moduleContext.notify($ct.en.getShowValidationMsg(), $ct.msg.getValidationMsg());
+
+                    return;
+                }
+
+
+                if (!vm.isstartDateEndDateValidation()) {
+                    moduleContext.notify($ct.en.getShowValidationMsg(), $ct.msg.getStartDateEndDateValidationMsg());
+
+                    return;
+                }
+
+                var saveEventData = vm.eventData.toJSON();
+
+                saveEventData.Event.StartDate = kendo.toString(new Date(vm.eventData.Event.StartDate), "yyyy-MM-ddTHH:mm:ss");
+                saveEventData.Event.EndDate = kendo.toString(new Date(vm.eventData.Event.EndDate), "yyyy-MM-ddTHH:mm:ss");
+
+                $ct.helpers.displayWorkAreaBusyCursor();
+
+                $ct.ds.admin.event.saveEvent(saveEventData, function (data) {
+
+                    $ct.helpers.hideWorkAreaBusyCursor();
+
+                    if ($ct.mt.isVersionConflict(data)) {
+                        if ($ct.helpers.displayConfirmWindow($ct.msg.getVersionConflictReloadMsg())) {
+                            vm.initialize();
+                        }
+                        return;
+                    }
+                   
+                    if ($ct.mt.isConcurrentEvent(data)) {
+                        var concurrentEventErrorObj = {};
+                        concurrentEventErrorObj.message = $ct.msg.getConcurrentEventsValidationMsg();
+                        moduleContext.notify($ct.en.getShowErrorMsg(), concurrentEventErrorObj);
+                        return;
+                    }
+
+                    var errorObj = $ct.mt.getErrorObject(data);
+                    if (errorObj != null) {
+                        moduleContext.notify($ct.en.getShowErrorMsg(), errorObj);
+                        return;
                     }
                     else {
-                        return false;
+                        moduleContext.notify($ct.en.getShowSuccMsg(), $ct.msg.getEventSuccessMsg());
                     }
 
-                }
+                    moduleContext.notify($ct.en.getEventCreatedOrUpdated(), null);
+                    Boiler.UrlController.goTo($ct.rn.getEventList());
+
+                })
+
+            },
+
+
+            btnCancelClick: function () {
+
+                moduleContext.notify($ct.en.getHideErrorMsg());
+
+                moduleContext.notify($ct.en.getEventCreatedOrUpdated(), null);
+                Boiler.UrlController.goTo($ct.rn.getEventList());
             }
 
+
+            
 
 
 

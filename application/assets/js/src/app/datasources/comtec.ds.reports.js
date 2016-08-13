@@ -4,7 +4,7 @@
 
         var Data = "";
 
-        $ct.ajax.ajaxPost($ct.cn.getReportsUrl() + 'GetLookupsForStaffRawDataReport', Data, function (result) {
+        $ct.ajax.ajaxPost($ct.cn.getReportsUrl() + 'GetLookupsForEmployeeRawDataReport', Data, function (result) {
 
             if (successCallBack != null)
                 successCallBack(result);
@@ -35,7 +35,7 @@
 
         var Data = "";
 
-        $ct.ajax.ajaxPost($ct.cn.getReportsUrl() + 'GetLookupsForStaffAttendanceRawDataReport', Data, function (result) {
+        $ct.ajax.ajaxPost($ct.cn.getReportsUrl() + 'GetLookupsForEmployeeAttendanceRawDataReport', Data, function (result) {
 
             if (successCallBack != null)
                 successCallBack(result);
@@ -49,7 +49,7 @@
     var genarateStaffRawDataReport = function (params, successCallBack) {
 
 
-        $ct.ajax.ajaxPost($ct.cn.getReportsUrl() + 'GetReportForStaffRawData', params, function (result) {
+        $ct.ajax.ajaxPost($ct.cn.getReportsUrl() + 'GetReportForEmployeeRawData', params, function (result) {
 
             if (successCallBack != null)
                 successCallBack(result);
@@ -63,7 +63,7 @@
     var genarateStaffAttendanceRawDataReport = function (params, successCallBack) {
 
 
-        $ct.ajax.ajaxPost($ct.cn.getReportsUrl() + 'GetReportForStaffAttendanceRawData', params, function (result) {
+        $ct.ajax.ajaxPost($ct.cn.getReportsUrl() + 'GetReportForEmployeeAttendanceRawData', params, function (result) {
 
             if (successCallBack != null)
                 successCallBack(result);

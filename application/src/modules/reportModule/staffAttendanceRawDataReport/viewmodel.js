@@ -16,8 +16,8 @@ define(["Boiler", 'text!./help/help.html'], function (Boiler, helpTmpl) {
             dsShelters: [],
             dsEvents: [],
 
-            stratDate: new Date(),
-            endDate: new Date(),
+            startDate: null,
+            endDate: null,
 
             initialize: function () {
 
@@ -49,7 +49,8 @@ define(["Boiler", 'text!./help/help.html'], function (Boiler, helpTmpl) {
 
                     vm.set("dsShelters", sheltersLookup);
                     vm.set("dsEvents", eventsLookup);
-
+                    vm.set("startDate", null);
+                    vm.set("endDate", null);
 
                     $ct.helpers.hideWorkAreaBusyCursor();
                 });
@@ -90,8 +91,19 @@ define(["Boiler", 'text!./help/help.html'], function (Boiler, helpTmpl) {
                 return atLeastOneSelected;
 
             },
+           
+            setDates: function () {
 
-            //End of facility type. region and facility names dropdowns code
+                if (vm.get("startDate") == "" || vm.get("startDate") == null) {
+                    vm.set("startDate", "");
+                    vm.set("startDate", null);
+                }
+
+                if (vm.get("endDate") == "" || vm.get("endDate") == null) {
+                    vm.set("endDate", "");
+                    vm.set("endDate", null);
+                }
+            },
 
             isStratDateValid: function () {
 
@@ -99,7 +111,7 @@ define(["Boiler", 'text!./help/help.html'], function (Boiler, helpTmpl) {
                     return true;
                 }
 
-                var rptDate = vm.get("stratDate");
+                var rptDate = vm.get("startDate");
 
                 if ((rptDate == "") || (rptDate == null)) {
                     return false;
@@ -124,30 +136,49 @@ define(["Boiler", 'text!./help/help.html'], function (Boiler, helpTmpl) {
 
             },
 
+            isstartDateEndDateValidation: function () {
+
+                if (vm.get("initialLoad")) {
+                    return true;
+                }
+
+                var startdDt = vm.get("startDate");
+
+                if ((startdDt == "") || (startdDt == null)) {
+                    return true;
+                }
+
+                var enddDt = vm.get("endDate");
+
+                if ((enddDt == "") || (enddDt == null)) {
+                    return true;
+                }
+
+                if (startdDt < enddDt) {
+                    return true;
+                }
+                else {
+                    return false;
+                }
+            },
+
 
 
             btnStaffAttendanceRawDataReportClick: function () {
 
-                moduleContext.notify($ct.en.getHideErrorMsg());
+              
 
                 vm.set("initialLoad", false);
 
-                if ((vm.get("stratDate") == "")
-                ||
-                (vm.get("stratDate") == null)
-                ) {
-                    //to fire observable added dummy set statement.
-                    vm.set("stratDate", "");
-                    vm.set("stratDate", null);
-                }
+                vm.setDates();
 
-                if ((vm.get("endDate") == "")
-                ||
-                (vm.get("endDate") == null)
-                ) {
-                    //to fire observable added dummy set statement.
-                    vm.set("endDate", "");
-                    vm.set("endDate", null);
+                moduleContext.notify($ct.en.getHideErrorMsg());
+
+                var validator = $("#vwStaffAttendanceRawDataReport").kendoValidator().data("kendoValidator");
+                if ((!validator.validate())) {
+                    moduleContext.notify($ct.en.getShowValidationMsg(), $ct.msg.getValidationMsg());
+
+                    return;
                 }
 
                 if (!vm.isStratDateValid()) {
@@ -161,7 +192,12 @@ define(["Boiler", 'text!./help/help.html'], function (Boiler, helpTmpl) {
                     moduleContext.notify($ct.en.getShowValidationMsg(), $ct.msg.getValidationMsg());
                     return;
                 }
-              
+
+                if (!vm.isstartDateEndDateValidation()) {
+                    moduleContext.notify($ct.en.getShowValidationMsg(), $ct.msg.getStartDateEndDateValidationMsg());
+
+                    return;
+                }
                 var selectedShelterIds = [];
                 var selectedEventIds = [];
 
@@ -199,7 +235,7 @@ define(["Boiler", 'text!./help/help.html'], function (Boiler, helpTmpl) {
 
                 var objectForExcel = {};
                 
-                objectForExcel.StartDate = kendo.toString(new Date(vm.stratDate), "yyyy-MM-ddTHH:mm:ss");
+                objectForExcel.StartDate = kendo.toString(new Date(vm.startDate), "yyyy-MM-ddTHH:mm:ss");
                 objectForExcel.EndDate = kendo.toString(new Date(vm.endDate), "yyyy-MM-ddTHH:mm:ss");
                 objectForExcel.SelectedShelterLookUp = selectedShelterIds;
                 objectForExcel.SelectedEventLookUp = selectedEventIds;

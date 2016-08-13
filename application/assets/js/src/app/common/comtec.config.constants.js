@@ -12,6 +12,12 @@ $ct.other = function () {
         return hospiceId;
     };
 
+    var hospitalId = gloabalHospitalId;
+
+    var getHospitalId = function () {
+        return hospitalId;
+    };
+
     var miscellaneousSectionId = gloabalMiscellaneousSectionId;
 
     var getMiscellaneousSectionId = function () {
@@ -40,12 +46,78 @@ $ct.other = function () {
 
 
 
+    var answerTypes = globalAnswerTypes;
+
+    var getAnswerTypes = function () {
+        return answerTypes;
+    };
+
+
+    var defaultAnswerType = globalDefaultAnswerType;
+
+
+
+    var getDefaultAnswerType = function () {
+        return defaultAnswerType;
+    };
+
+
+
+    //start of question type id's
+    var stringTextBoxId = globalQtStringTextBoxId;
+    var getStringTextBoxId = function () {
+        return stringTextBoxId;
+    };
+
+    var numericTextBoxId = globalQtNumericTextBoxId;
+    var getNumericTextBoxId = function () {
+        return numericTextBoxId;
+    };
+
+    var decimalTextBoxId = globalQtDecimalTextBoxId;
+    var getDecimalTextBoxId = function () {
+        return decimalTextBoxId;
+    };
+
+    var textAreaId = globalQtTextAreaId;
+    var getTextAreaId = function () {
+        return textAreaId;
+    };
+
+    var multipleChoiceOnlyOneAnswerId = globalQtMultipleChoiceOnlyOneAnswerId;
+    var getMultipleChoiceOnlyOneAnswerId = function () {
+        return multipleChoiceOnlyOneAnswerId;
+    };
+
+    var multipleChoiceMultipleAnswerId = globalQtMultipleChoiceMultipleAnswerId;
+    var getMultipleChoiceMultipleAnswerId = function () {
+        return multipleChoiceMultipleAnswerId;
+    };
+
+    var dropdownListId = globalQtDropdownListId;
+    var getDropdownListId = function () {
+        return dropdownListId;
+    };
+
+
+
     return {
         getHospiceId: getHospiceId,
+        getHospitalId: getHospitalId,
         getMiscellaneousSectionId: getMiscellaneousSectionId,
         getVitalSignsSectionId : getVitalSignsSectionId,
         getEmployeeTemplateURL: getEmployeeTemplateURL,
-        getSheltereeTemplateURL: getSheltereeTemplateURL
+        getSheltereeTemplateURL: getSheltereeTemplateURL,
+        getAnswerTypes: getAnswerTypes,
+        getDefaultAnswerType: getDefaultAnswerType,
+
+        getStringTextBoxId: getStringTextBoxId,
+        getNumericTextBoxId: getNumericTextBoxId,
+        getDecimalTextBoxId: getDecimalTextBoxId,
+        getTextAreaId: getTextAreaId,
+        getMultipleChoiceOnlyOneAnswerId: getMultipleChoiceOnlyOneAnswerId,
+        getMultipleChoiceMultipleAnswerId: getMultipleChoiceMultipleAnswerId,
+        getDropdownListId: getDropdownListId
 
     };
 

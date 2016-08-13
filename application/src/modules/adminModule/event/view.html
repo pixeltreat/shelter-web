@@ -10,7 +10,7 @@
                     {{nls.lblEventName}}
                     <em class="form-element-with-label__text__astrisk">*</em>
                 </span>
-                <input type="text" id="vweveTbEventName" name="vweveTbEventName" maxlength="250" class="form-element-with-label__inp" data-bind="value:eventData.Event.EventName" required validationmessage="{{nls.valmsgEventNameRequired}}">
+                <input type="text" id="vweveTbEventName" name="vweveTbEventName" maxlength="1000" class="form-element-with-label__inp" data-bind="value:eventData.Event.EventName" required validationmessage="{{nls.valmsgEventNameRequired}}">
                 <span class="k-invalid-msg" data-for="vweveTbEventName"></span>
             </label>
             <label class="form-element-with-label">
@@ -46,6 +46,11 @@
                       data-bind="invisible:isEndDateValid">
 
                     {{nls.valmsgEndDateRequired}}
+                </span>
+
+                <span class="k-widget k-tooltip k-tooltip-validation k-invalid-msg" 
+                      data-bind="invisible: isstartDateEndDateValidation">
+                {{nls.valmsgStartDateAndEndDate}} 
                 </span>
             </label>
 

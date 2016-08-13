@@ -10,7 +10,7 @@ function (Boiler) {
             comment: "",
             history: [],
             isCommentHistoryPresent: false,
-            DescriptionLength: 4000,
+            DescriptionLength: 5000,
             initialLoad:true,
 
             //To initialize utilityData

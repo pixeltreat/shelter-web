@@ -37,7 +37,8 @@ define({
         "btnBulkUpdate": "Bulk Update",
         "btnShowAll":"Show All",
         "btnExport": "Export",
-        "btnGo" : "Go"
+        "btnGo": "Go",
+        "btnEdit": "Edit"
 
 
 

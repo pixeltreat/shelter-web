@@ -1,11 +1,14 @@
 define(['Boiler', './settings',
 './noPermission/component',
 './noRole/component',
-'./noActiveEvent/component'
+'./noActiveEvent/component',
+'./noFacilitiesFound/component'
+
 ], function (Boiler, settings,
             NoPermissionComponent,
             noRoleComponent,
-           noActiveEventComponent
+           noActiveEventComponent,
+           noFacilitiesFoundComponent
 
 ) {
 
@@ -19,7 +22,11 @@ define(['Boiler', './settings',
 
 		    'nopermission': new NoPermissionComponent(context),
 		    'norole': new noRoleComponent(context),
-		    'noactiveevent': new noActiveEventComponent(context)
+		    'noactiveevent': new noActiveEventComponent(context),
+		    'nofacilitiesfound': new noFacilitiesFoundComponent(context)
+
+
+
             
 		});
 		controller.start();

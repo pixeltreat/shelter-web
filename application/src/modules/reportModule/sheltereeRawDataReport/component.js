@@ -6,23 +6,23 @@ define(['Boiler', './viewmodel', 'text!./view.html', 'i18n!./nls/resources'], fu
 
 
 
-        //moduleContext.listen($ct.en.getRefreshView(), function (viewName) {
+        moduleContext.listen($ct.en.getRefreshView(), function (viewName) {
 
-        //    if ($ct.rn.getShelterStatus() == viewName) {
-        //        refreshViewData();
-        //    }
-        //});
+            if ($ct.rn.getSheltereeRawDataReport() == viewName) {
+                refreshViewData();
+            }
+        });
 
 
-        //var refreshViewData = function () {
+        var refreshViewData = function () {
 
-        //    if (panel) {
-        //        vm = new ViewModel(moduleContext);
-        //        kendo.bind(panel.getDomElement(), vm.data);
-        //        vm.data.initializeEvents();
-        //    }
+            if (panel) {
+                vm = new ViewModel(moduleContext);
+                kendo.bind(panel.getDomElement(), vm.data);
+                vm.data.initialize();
+            }
 
-        //}
+        }
 
         this.activate = function (parent, params) {
 

@@ -10,8 +10,8 @@ function (Boiler) {
 
             staffTypeId: -1,
             initialLoad: false,
-            NameLength: 250,
-            DescriptionLength: 4000,
+            //NameLength: 250,
+            DescriptionLength: 5000,
 
            
 

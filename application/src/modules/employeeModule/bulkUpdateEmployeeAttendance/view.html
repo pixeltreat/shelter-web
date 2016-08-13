@@ -11,7 +11,7 @@
                     data-bind="source:StatusToLookUpData, value:selectedStatus"
                     data-template="item-template"
                     data-value-template="value-template"
-                    data-text-field="Value"
+                    data-text-field="Description"
                     data-value-field="Key" />
             </label>
 
@@ -38,9 +38,9 @@
 </div>
 
 <script id="item-template" type="text/x-kendo-template">
-    <span class="icon-#:Value#">#:Value #</span>
+    <span class="icon-#:Description#">#:Value #</span>
 </script>
 <script id="value-template" type="text/x-kendo-template">
-    <span class="icon-#:Value#">#:Value #</span>
+    <span class="icon-#:Description#">#:Value #</span>
 </script>
 

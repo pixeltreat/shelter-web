@@ -252,7 +252,7 @@ define(["Boiler", 'text!./help/help.html'], function (Boiler, helpTmpl) {
 
                     vm.set("sheltreeTabs[" + vm.shelterIdentificationTabIndex + "].tabClass", $ct.styles.getActiveTabClass());
                 }
-                else if (sheltereeInputFlags.IsShelterIdentificationExist) {
+                else if (sheltereeInputFlags.IsDispositionExist) {
                     vm.set("sheltreeTabs[" + vm.shelterIdentificationTabIndex + "].tabClass", $ct.styles.getCompleteDataPresentClass());
                 } else {
                     vm.set("sheltreeTabs[" + vm.shelterIdentificationTabIndex + "].tabClass", $ct.styles.getNoDataClass());
@@ -488,6 +488,9 @@ define(["Boiler", 'text!./help/help.html'], function (Boiler, helpTmpl) {
 
             DOB: null,
 
+            isHasCareGiverDisabled: false,
+            isIsCareGiverDisabled: false,
+
             getDemographicsById: function (newTabIndex) {
 
                 vm.set("initialLoad", true)
@@ -519,7 +522,7 @@ define(["Boiler", 'text!./help/help.html'], function (Boiler, helpTmpl) {
                 vm.set("selectedIsCareGiverId", -1);
                 vm.set("selectedHasCareGiverId", -1);
 
-                $ct.ds.sheltree.sheltreeinput.getDemographicsById(vm.sheltereeId, function (result) {
+                $ct.ds.sheltree.sheltreeinput.getDemographicsById(vm.sheltereeId,vm.shelterId, function (result) {
 
                     var errorObj = $ct.mt.getErrorObject(result);
                     if (errorObj != null) {
@@ -661,10 +664,12 @@ define(["Boiler", 'text!./help/help.html'], function (Boiler, helpTmpl) {
                     }
                     if (resultData.Shelteree.IsCareGiver == null) {
                         resultData.Shelteree.IsCareGiver = -1;
+                        vm.set("isIsCareGiverDisabled", true);
                     }
 
                     if (resultData.Shelteree.HasCareGiver == null) {
                         resultData.Shelteree.HasCareGiver = -1;
+                        vm.set("isHasCareGiverDisabled", true);
                     }
 
                     if (resultData.Shelteree.ContactName == null) {
@@ -731,8 +736,20 @@ define(["Boiler", 'text!./help/help.html'], function (Boiler, helpTmpl) {
                         vm.set("selectedHasSignedDNRId", resultData.Shelteree.HasSignedDNR);
 
                         vm.set("selectedIsCareGiverId", resultData.Shelteree.IsCareGiver);
-                        vm.set("selectedHasCareGiverId", resultData.Shelteree.HasCareGiver);
 
+                        if (vm.selectedIsCareGiverId == true) {
+                            vm.set("isIsCareGiverDisabled", false);
+                        }
+                        else {
+                            vm.set("isIsCareGiverDisabled", true);
+                        }
+                        vm.set("selectedHasCareGiverId", resultData.Shelteree.HasCareGiver);
+                        if (vm.selectedHasCareGiverId == true) {
+                            vm.set("isHasCareGiverDisabled", false);
+                        }
+                        else {
+                            vm.set("isHasCareGiverDisabled", true);
+                        }
                         vm.set("dsCareSettings", resultData.SheltereeFacilityLookUpData.CareSettingsData);
                         vm.set("selectedCareSettingsId", resultData.Shelteree.CareSettingsId);
 
@@ -757,6 +774,7 @@ define(["Boiler", 'text!./help/help.html'], function (Boiler, helpTmpl) {
                         careGiverLookupData.splice(0, 0, selectItem);
                         vm.set("dsCareGiverLookup", careGiverLookupData);
 
+                      
                         var selectedHasCareGiver = {};
                         selectedHasCareGiver.Key = resultData.Shelteree.HasCareGiverPersonId;
                         vm.set("selectedHasCareGiverItem", selectedHasCareGiver);
@@ -779,6 +797,8 @@ define(["Boiler", 'text!./help/help.html'], function (Boiler, helpTmpl) {
                         vm.set("DOB", null);
 
                     }
+
+                    vm.caliculateAge();
 
                     vm.setTabClasses(resultData.SheltereeDependentFlagData, newTabIndex);
 
@@ -837,14 +857,13 @@ define(["Boiler", 'text!./help/help.html'], function (Boiler, helpTmpl) {
 
                 dob = vm.get("DOB");
                 var today = new Date();
+                if (dob != null) {
                 var age = Math.floor((today - dob) / (365.25 * 24 * 60 * 60 * 1000));
                 vm.set("sheltereeData.Shelteree.Age", age);
-                if (age == 0) {
-
-                    vm.set("sheltereeData.Shelteree.Age", "0");
                 }
-
-
+                else {
+                    vm.set("sheltereeData.Shelteree.Age", 0);
+                }
             },
 
 
@@ -966,21 +985,67 @@ define(["Boiler", 'text!./help/help.html'], function (Boiler, helpTmpl) {
 
             },
            
+
+            disableHasCareGiver: function () {
+
+                if ((vm.get("selectedHasCareGiverId") == true) || (vm.get("selectedHasCareGiverId") == "true")) {
+                    
+                    vm.set("isHasCareGiverDisabled", false);
+                }
+                else {
+                    vm.set("isHasCareGiverDisabled", true);
+                     selectedobj={};
+                     selectedobj.Key=-1;
+                     vm.set("selectedHasCareGiverItem", selectedobj);
+                    
+                }
+
+            },
+
+
+             disableIsCareGiver: function () {
+                    
+                 if ((vm.get("selectedIsCareGiverId") == "true") || (vm.get("selectedIsCareGiverId") == true)) {
+                     vm.set("isIsCareGiverDisabled", false);
+                 }
+                 else {
+                     vm.set("isIsCareGiverDisabled", true);
+                       selectedobj ={};
+                     selectedobj.Key=-1;
+
+                     vm.set("selectedIsCareGiverItem", selectedobj);
+                    }
+                },
+
+
             isCareGiverPersonIdValid: function () {
 
                 if (vm.get("initialLoad")) {
                     return true;
                 }
 
+                    
+                    if (vm.dsNonCareGiverLookup.length > 1) {
+
+                        if ((vm.get("selectedIsCareGiverId") == "true") || (vm.get("selectedIsCareGiverId") == true)) {
+                            if (vm.get("selectedIsCareGiverItem.Key") == -1) {
+                                return false;
+
+                            }
+                            else {
                 return true;
                 
-                //if (vm.get("selectedIsCareGiverItem.Key") == -1) {
-                //    return false;
-                //}
-                //else {
-                //    return true;
+                            }
 
-                //}
+                        }
+                        else {
+                            return true;
+                        }
+
+                    }
+
+                     return true;
+
 
             },
 
@@ -990,15 +1055,22 @@ define(["Boiler", 'text!./help/help.html'], function (Boiler, helpTmpl) {
                     return true;
                 }
 
-                return true;
+                    if (vm.dsCareGiverLookup.length > 1) {
 
-                //if (vm.get("selectedHasCareGiverItem.Key") == -1) {
-                //    return false;
-                //}
-                //else {
-                //    return true;
+                        if ((vm.get("selectedHasCareGiverId") == true) || (vm.get("selectedHasCareGiverId") == "true")) {
+                            if (vm.get("selectedHasCareGiverItem.Key") == -1) {
+                                return false;
 
-                //}
+                            }
+                            else {
+                                return true;
+
+                            }
+                        } else {
+                            return true;
+                        }
+                    }
+                     return true;
 
             },
             //            setClassForHomeParish: function () {
@@ -1420,7 +1492,7 @@ define(["Boiler", 'text!./help/help.html'], function (Boiler, helpTmpl) {
                 saveDemographicsData.Shelteree.TransportationTypeId = vm.selectedTransportationTypeItem.Key;
                 saveDemographicsData.Shelteree.HomeParishId = vm.selectedParishItem.Key;
 
-                if (vm.selectedHasCareGiverItem.Key == "-1")
+                if (vm.selectedHasCareGiverItem.Key == -1)
                 {
                     saveDemographicsData.Shelteree.HasCareGiverPersonId = null;
                 }
@@ -1430,7 +1502,7 @@ define(["Boiler", 'text!./help/help.html'], function (Boiler, helpTmpl) {
 
                 }
 
-                if (vm.selectedIsCareGiverItem.Key == "-1") {
+                if (vm.selectedIsCareGiverItem.Key == -1) {
                     saveDemographicsData.Shelteree.CareGiverPersonId = null;
                 }
                 else {
@@ -1571,10 +1643,10 @@ define(["Boiler", 'text!./help/help.html'], function (Boiler, helpTmpl) {
                         question.triggerValidations = false;
 
                         if (
-                            (question.AnswerTypeId == $ct.ds.admin.question.getStringTextBoxId())
-                            || (question.AnswerTypeId == $ct.ds.admin.question.getNumericTextBoxId())
-                            || (question.AnswerTypeId == $ct.ds.admin.question.getDecimalTextBoxId())
-                            || (question.AnswerTypeId == $ct.ds.admin.question.getTextAreaId())
+                            (question.AnswerTypeId == $ct.other.getStringTextBoxId())
+                            || (question.AnswerTypeId == $ct.other.getNumericTextBoxId())
+                            || (question.AnswerTypeId == $ct.other.getDecimalTextBoxId())
+                            || (question.AnswerTypeId == $ct.other.getTextAreaId())
                            ) {
 
                             question.hideValidation = function () {
@@ -1594,7 +1666,7 @@ define(["Boiler", 'text!./help/help.html'], function (Boiler, helpTmpl) {
 
                         }
 
-                        else if (question.AnswerTypeId == $ct.ds.admin.question.getMultipleChoiceOnlyOneAnswerId()) {
+                        else if (question.AnswerTypeId == $ct.other.getMultipleChoiceOnlyOneAnswerId()) {
 
                             question.hideValidation = function () {
 
@@ -1612,7 +1684,7 @@ define(["Boiler", 'text!./help/help.html'], function (Boiler, helpTmpl) {
                             };
 
                         }
-                        else if (question.AnswerTypeId == $ct.ds.admin.question.getMultipleChoiceMultipleAnswerId()) {
+                        else if (question.AnswerTypeId == $ct.other.getMultipleChoiceMultipleAnswerId()) {
 
                             question.hideValidation = function () {
 
@@ -1637,7 +1709,7 @@ define(["Boiler", 'text!./help/help.html'], function (Boiler, helpTmpl) {
                             };
 
                         }
-                        else if (question.AnswerTypeId == $ct.ds.admin.question.getDropdownListId()) {
+                        else if (question.AnswerTypeId == $ct.other.getDropdownListId()) {
 
                             question.hideValidation = function () {
 
@@ -1709,19 +1781,19 @@ define(["Boiler", 'text!./help/help.html'], function (Boiler, helpTmpl) {
 
 
                     if (
-                        (question.AnswerTypeId == $ct.ds.admin.question.getStringTextBoxId()) || (question.AnswerTypeId == $ct.ds.admin.question.getNumericTextBoxId())
-                        || (question.AnswerTypeId == $ct.ds.admin.question.getDecimalTextBoxId()) || (question.AnswerTypeId == $ct.ds.admin.question.getTextAreaId())
+                        (question.AnswerTypeId == $ct.other.getStringTextBoxId()) || (question.AnswerTypeId == $ct.other.getNumericTextBoxId())
+                        || (question.AnswerTypeId == $ct.other.getDecimalTextBoxId()) || (question.AnswerTypeId == $ct.other.getTextAreaId())
                         ) {
 
                         question.Answer = question.AnswerOptions[0].QuestionResponse.Answer;
 
                     }
-                    else if (question.AnswerTypeId == $ct.ds.admin.question.getMultipleChoiceOnlyOneAnswerId()) {
+                    else if (question.AnswerTypeId == $ct.other.getMultipleChoiceOnlyOneAnswerId()) {
 
                         question.Answer = question.AnswerOptions[0].QuestionResponse.Answer;
 
                     }
-                    else if (question.AnswerTypeId == $ct.ds.admin.question.getMultipleChoiceMultipleAnswerId()) {
+                    else if (question.AnswerTypeId == $ct.other.getMultipleChoiceMultipleAnswerId()) {
 
                         $.each(question.AnswerOptions, function (index, answerOption) {
 
@@ -1744,7 +1816,7 @@ define(["Boiler", 'text!./help/help.html'], function (Boiler, helpTmpl) {
                         })
 
                     }
-                    else if (question.AnswerTypeId == $ct.ds.admin.question.getDropdownListId()) {
+                    else if (question.AnswerTypeId == $ct.other.getDropdownListId()) {
 
                         if (question.AnswerOptions[0].QuestionResponse.Answer == "") {
                             question.Answer = { Id: question.AnswerOptions[0].Id };
@@ -1830,8 +1902,8 @@ define(["Boiler", 'text!./help/help.html'], function (Boiler, helpTmpl) {
 
 
                     if (
-                        (question.AnswerTypeId == $ct.ds.admin.question.getStringTextBoxId()) || (question.AnswerTypeId == $ct.ds.admin.question.getNumericTextBoxId())
-                        || (question.AnswerTypeId == $ct.ds.admin.question.getDecimalTextBoxId()) || (question.AnswerTypeId == $ct.ds.admin.question.getTextAreaId())
+                        (question.AnswerTypeId == $ct.other.getStringTextBoxId()) || (question.AnswerTypeId == $ct.other.getNumericTextBoxId())
+                        || (question.AnswerTypeId == $ct.other.getDecimalTextBoxId()) || (question.AnswerTypeId == $ct.other.getTextAreaId())
 
                     ) {
                         //new kendo version is setting null to bound variable in numeric and decimal control
@@ -1844,7 +1916,7 @@ define(["Boiler", 'text!./help/help.html'], function (Boiler, helpTmpl) {
                         question.AnswerOptions[0].QuestionResponse.Answer = question.Answer;
 
                     }
-                    else if (question.AnswerTypeId == $ct.ds.admin.question.getMultipleChoiceOnlyOneAnswerId()) {
+                    else if (question.AnswerTypeId == $ct.other.getMultipleChoiceOnlyOneAnswerId()) {
 
                         $.each(question.AnswerOptions, function (index, answerOption) {
 
@@ -1853,14 +1925,14 @@ define(["Boiler", 'text!./help/help.html'], function (Boiler, helpTmpl) {
                         })
 
                     }
-                    else if (question.AnswerTypeId == $ct.ds.admin.question.getMultipleChoiceMultipleAnswerId()) {
+                    else if (question.AnswerTypeId == $ct.other.getMultipleChoiceMultipleAnswerId()) {
 
                         $.each(question.AnswerOptions, function (index, answerOption) {
                             answerOption.QuestionResponse.Answer = answerOption.Answer;
                         })
 
                     }
-                    else if (question.AnswerTypeId == $ct.ds.admin.question.getDropdownListId()) {
+                    else if (question.AnswerTypeId == $ct.other.getDropdownListId()) {
 
                         $.each(question.AnswerOptions, function (index, answerOption) {
 
@@ -2170,7 +2242,8 @@ define(["Boiler", 'text!./help/help.html'], function (Boiler, helpTmpl) {
 
             //Start of medication tab code
 
-            allergyDescriptionLength: 4000,
+            allergyDescriptionLength: 5000,
+            additionaMedicationCommentsLength: 5000,
 
             sheltereeMedication: {
             },
@@ -2533,7 +2606,9 @@ define(["Boiler", 'text!./help/help.html'], function (Boiler, helpTmpl) {
 
             referredShelterLookUp: [],
 
-            acceptedToMSNS: false,
+                    transportationTypeLookUpData: [],
+                    selectedTransportationTypeId: { },
+                    acceptedToMSNS: -1,
             isMSNSChildDisabled: true,
             selectedReferredShelterId: null,
 
@@ -2543,6 +2618,7 @@ define(["Boiler", 'text!./help/help.html'], function (Boiler, helpTmpl) {
             contactTime: null,
             dischargeTime: null,
             arrivalTime: null,
+                    selectedShelterSectionId: null,
 
 
             //To initialize dispositionData , dischargeData and shelter identification data 
@@ -2580,7 +2656,8 @@ define(["Boiler", 'text!./help/help.html'], function (Boiler, helpTmpl) {
                         resultData.SheltereeDisposition.SheltereeId = vm.sheltereeId;
                         resultData.SheltereeDisposition.DispositionId = null;
                         resultData.SheltereeDisposition.ReferredShelterId = null;
-                        resultData.SheltereeDisposition.AcceptedToMSNS = true;
+                         resultData.SheltereeDisposition.ShelterSectionId = null;
+                        resultData.SheltereeDisposition.AcceptedToMSNS = -1;
                         resultData.SheltereeDisposition.Reason = "";
                         resultData.SheltereeDisposition.DispositionContactPerson = "";
                         resultData.SheltereeDisposition.DispositionDateValue = null;
@@ -2607,11 +2684,13 @@ define(["Boiler", 'text!./help/help.html'], function (Boiler, helpTmpl) {
 
 
 
-                    vm.set("dispositionData", resultData.SheltereeDisposition);
+
+
                     vm.set("dischargeData", resultData.SheltereeDischarge);
                     //vm.set("shelterIdentificationList", resultData.SheltereeShelterIdentificationData);
                     vm.set("shelterSectionsList", resultData.ShelterSectionLookUpData);
                     
+                        vm.set("transportationTypeLookUpData", resultData.TransportationTypeLookUpData);
 
                     vm.set("dispositionLookUp", resultData.DispositionLookUpData);
                     vm.set("referredShelterLookUp", resultData.ReferredShelterData);
@@ -2632,6 +2711,7 @@ define(["Boiler", 'text!./help/help.html'], function (Boiler, helpTmpl) {
                     }
 
 
+                     vm.set("acceptedToMSNS", resultData.SheltereeDisposition.AcceptedToMSNS);
                     if ((resultData.SheltereeDisposition.IsNew) || (resultData.SheltereeDisposition.ReferredShelterId == null)) {
                         //vm.set("selectedReferredShelterId", resultData.ReferredShelterData[0].Key);
                         vm.set("selectedReferredShelterId", 0);
@@ -2640,10 +2720,10 @@ define(["Boiler", 'text!./help/help.html'], function (Boiler, helpTmpl) {
                         vm.set("selectedReferredShelterId", resultData.SheltereeDisposition.ReferredShelterId);
                     }
 
-                    vm.set("acceptedToMSNS", resultData.SheltereeDisposition.AcceptedToMSNS);
 
 
-                    if (vm.get("acceptedToMSNS") == false) {
+
+                        if (vm.get("acceptedToMSNS") === false) {
 
                         vm.set("isMSNSChildDisabled", false);
                     }
@@ -2651,33 +2731,66 @@ define(["Boiler", 'text!./help/help.html'], function (Boiler, helpTmpl) {
                         vm.set("isMSNSChildDisabled", true);
                     }
 
+
+                     if ((resultData.SheltereeDisposition.IsNew) || (resultData.SheltereeDisposition.ShelterSectionId == null)) {
+
+                        vm.set("selectedShelterSectionId", 0);
+                }
+                else {
+                               vm.set("selectedShelterSectionId", resultData.SheltereeDisposition.ShelterSectionId);
+                    }
+
+
+
+                        if (resultData.SheltereeDischarge.DepartureTransportationTypeId == null) {
+
+                        vm.set("selectedTransportationTypeId", resultData.TransportationTypeLookUpData[0]);
+}
+else {
+
+ var selectedObject = {
+                        };
+                        selectedObject.Key = resultData.SheltereeDischarge.DepartureTransportationTypeId;
+                        vm.set("selectedTransportationTypeId", selectedObject);
+                }
+
+
+                     vm.set("dispositionData", resultData.SheltereeDisposition);
+
+
                     //date parsing
 
+                     vm.set("dischargeDate", new Date());
                     vm.set("dischargeDate", null);
                     if (vm.dischargeData.DischargeDateValue != null) {
                         vm.set("dischargeDate", kendo.parseDate(vm.dischargeData.DischargeDateValue));
                     }
 
+                    vm.set("arrivalDate", new Date());
                     vm.set("arrivalDate", null);
                     if (vm.dischargeData.ArrivalDateValue != null) {
                         vm.set("arrivalDate", kendo.parseDate(vm.dischargeData.ArrivalDateValue));
                     }
 
+                    vm.set("contactDate", new Date());
                     vm.set("contactDate", null);
                     if (vm.dispositionData.DispositionDateValue != null) {
                         vm.set("contactDate", kendo.parseDate(vm.dispositionData.DispositionDateValue));
                     }
 
+                    vm.set("dischargeTime", new Date());
                     vm.set("dischargeTime", null);
                     if (vm.dischargeData.DischargeTimeValue != null) {
                         vm.set("dischargeTime", kendo.parseDate(vm.dischargeData.DischargeTimeValue, "HH:mm"));
                     }
 
+                    vm.set("arrivalTime", new Date());
                     vm.set("arrivalTime", null);
                     if (vm.dischargeData.ArrivalTimeValue != null) {
                         vm.set("arrivalTime", kendo.parseDate(vm.dischargeData.ArrivalTimeValue, "HH:mm"));
                     }
 
+                    vm.set("contactTime", new Date());
                     vm.set("contactTime", null);
                     if (vm.dispositionData.DispositionTimeValue != null) {
                         vm.set("contactTime", kendo.parseDate(vm.dispositionData.DispositionTimeValue, "HH:mm"));
@@ -2695,6 +2808,12 @@ define(["Boiler", 'text!./help/help.html'], function (Boiler, helpTmpl) {
             isShelterIdentyDischargeAndDispositionDataValid: function () {
 
                 vm.set("initialLoad", false);
+
+
+                  if (!vm.isAcceptedToMSNSValid()) {
+
+                      return false;
+                    }
 
                 if (!vm.isDispositionDateValid()) {
                     return false;
@@ -2720,7 +2839,7 @@ define(["Boiler", 'text!./help/help.html'], function (Boiler, helpTmpl) {
                     return false;
                 }
 
-                if (!vm.isAtLeastOneShelterIdentificationSelected()) {
+                if (!vm.setValidationMsgShelterSections()) {
                     return false;
                 }
 
@@ -2768,23 +2887,27 @@ define(["Boiler", 'text!./help/help.html'], function (Boiler, helpTmpl) {
 
             },
 
-            isAtLeastOneShelterIdentificationSelected: function () {
 
+                        isAcceptedToMSNSValid: function () {
+                                if((vm.get("acceptedToMSNS") == - 1) && (vm.get("initialLoad") == false)) {
+                                    return false;
+                        }
+                        else {
                 return true;
 
-                //if (vm.get("initialLoad")) {
-                //    return true;
-                //}
+                   }
 
-                //var atLeastOneSelected = false;
-                //$.each(vm.get("shelterIdentificationList"), function (mainIndex, mainRec) {
+                   },
 
-                //    if (mainRec.IsSelected) {
-                //        atLeastOneSelected = true;
-                //    }
-                //});
-
-                //return atLeastOneSelected;
+                    setValidationMsgShelterSections: function () {
+                        if(((vm.get("selectedShelterSectionId") == 0) || (vm.get("selectedShelterSectionId") == null))
+                            && (vm.get("initialLoad") == false)
+                             && (vm.get("isMSNSChildDisabled") == true)) {
+                            return false;
+                    }
+                else {
+                        return true;
+                    }
 
             },
 
@@ -2800,20 +2923,48 @@ define(["Boiler", 'text!./help/help.html'], function (Boiler, helpTmpl) {
                 }
             },
 
+                        isDispositionDataDisabled: function () {
+
+                                if(vm.get("selectedReferredShelterId") === $ct.other.getHospitalId()) {
+                                         return false;
+
+                        }
+                        else if (vm.get("selectedReferredShelterId") === "" +$ct.other.getHospitalId() +"") {
+
+                            return false;
+                        }
+                        else {
+
+
+                       vm.set("contactDate", null);
+                       vm.set("contactTime", null);
+                       vm.set("dispositionData.Reason", null);
+                       vm.set("dispositionData.DispositionContactPerson", null);
+                       vm.set("dispositionData.HospitalName", null);
+                               return true;
+
+                }
+
+
+                },
 
             enableMSNSChildsOnChange: function () {
 
 
-                if (vm.get("acceptedToMSNS") == "false") {
+                       if (vm.get("acceptedToMSNS") === "false") {
 
                     vm.set("isMSNSChildDisabled", false);
-                    //  vm.set("selectedReferredShelterId", vm.referredShelterLookUp[0].Key);
+                           vm.set("selectedShelterSectionId", 0);
+                           vm.set("selectedReferredShelterId", 0);
+
+
 
                 }
                 else {
 
                     vm.set("isMSNSChildDisabled", true);
                     vm.set("selectedReferredShelterId", 0);
+           vm.set("selectedShelterSectionId", 0);
 
                 }
 
@@ -2840,11 +2991,24 @@ define(["Boiler", 'text!./help/help.html'], function (Boiler, helpTmpl) {
                 saveDispositionData.DispositionId = vm.selectedDisposition.Key;
                 saveDispositionData.AcceptedToMSNS = vm.acceptedToMSNS;
 
-                if (vm.acceptedToMSNS == "true") {
+                if (vm.get("acceptedToMSNS") == "true") {
                     saveDispositionData.ReferredShelterId = null;
-                } else {
-                    saveDispositionData.ReferredShelterId = vm.selectedReferredShelterId;
+                    saveDispositionData.ShelterSectionId = vm.selectedShelterSectionId;
                 }
+                else if (vm.get("acceptedToMSNS") == true) {
+                    saveDispositionData.ReferredShelterId = null;
+                    saveDispositionData.ShelterSectionId = vm.selectedShelterSectionId;
+                }
+                else if (vm.get("acceptedToMSNS") == "false") {
+                    saveDispositionData.ReferredShelterId = vm.selectedReferredShelterId;
+                    saveDispositionData.ShelterSectionId = null;
+            }
+
+                 else if (vm.get("acceptedToMSNS") == false) {
+                    saveDispositionData.ReferredShelterId = vm.selectedReferredShelterId;
+                     saveDispositionData.ShelterSectionId = null;
+                }
+
 
                 if (vm.contactDate != null) {
                     var contactDate = (vm.contactDate.getMonth() + 1) + "/" + vm.contactDate.getDate() + "/" + vm.contactDate.getFullYear();
@@ -2873,6 +3037,8 @@ define(["Boiler", 'text!./help/help.html'], function (Boiler, helpTmpl) {
                 saveDischargeData.DischargeTimeValue = dischargeTime;
                 saveDischargeData.ArrivalDateValue = arrivalDate;
                 saveDischargeData.ArrivalTimeValue = arrivalTime;
+
+                saveDischargeData.DepartureTransportationTypeId = vm.selectedTransportationTypeId.Key;
 
                 saveData.SheltereeDisposition = saveDispositionData;
                 saveData.SheltereeDischarge = saveDischargeData;

@@ -330,6 +330,7 @@
                                 <span class="form-element-with-label__text">
                                     {{nls.lblFacilityName}}
                                     <em class="form-element-with-label__text__astrisk">*</em>
+                                    <span class="instruction-text">{{nls.lblInstructionHospiceFacilityName}}</span>
                                 </span>
                                 <input type="text" class="form-element-with-label__inp" maxlength="100"
                                        id="vwsdTbFacilityName" name="vwsdTbFacilityName"
@@ -379,14 +380,14 @@
                                     <li>
                                         <label class="radio-button">
                                             <input class="radio-button__inp" name="vwsdRbIsCareGiver" type="radio"
-                                                   value="true" data-bind="checked: selectedIsCareGiverId">
+                                                   value="true" data-bind="checked: selectedIsCareGiverId,events:{change:disableIsCareGiver}">
                                             <span class="radio-button__text">{{nls.lblRbYes}}</span>
                                         </label>
                                     </li>
                                     <li>
                                         <label class="radio-button">
                                             <input class="radio-button__inp" name="vwsdRbIsCareGiver" type="radio"
-                                                   value="false" data-bind="checked: selectedIsCareGiverId">
+                                                   value="false" data-bind="checked: selectedIsCareGiverId,events:{change:disableIsCareGiver}">
                                             <span class="radio-button__text">{{nls.lblRbNo}}</span>
                                         </label>
                                     </li>
@@ -407,9 +408,9 @@
                                 <div class="custom-select">
                                     <select id="vwsdDdlIsCareGiverLookup"
                                             data-role="dropdownlist"
-                                            data-bind="source:dsNonCareGiverLookup,value:selectedHasCareGiverItem"
+                                            data-bind="source:dsNonCareGiverLookup,value:selectedIsCareGiverItem,disabled:isIsCareGiverDisabled"
                                             data-text-field="Value"
-                                            data-value-field="Key" required />
+                                            data-value-field="Key"  />
 
                                     <span class="k-widget k-tooltip k-tooltip-validation k-invalid-msg" data-bind="invisible:isCareGiverPersonIdValid">
                                         {{nls.valmsgIsCareGiverItemRequired}}
@@ -430,14 +431,14 @@
                                     <li>
                                         <label class="radio-button">
                                             <input class="radio-button__inp" name="vwsdRbHasCareGiver" type="radio"
-                                                   value="true" data-bind="checked: selectedHasCareGiverId">
+                                                   value="true" data-bind="checked: selectedHasCareGiverId,events:{change:disableHasCareGiver}">
                                             <span class="radio-button__text">{{nls.lblRbYes}}</span>
                                         </label>
                                     </li>
                                     <li>
                                         <label class="radio-button">
                                             <input class="radio-button__inp" name="vwsdRbHasCareGiver" type="radio"
-                                                   value="false" data-bind="checked: selectedHasCareGiverId">
+                                                   value="false" data-bind="checked: selectedHasCareGiverId,events:{change:disableHasCareGiver}">
                                             <span class="radio-button__text">{{nls.lblRbNo}}</span>
                                         </label>
                                     </li>
@@ -459,9 +460,9 @@
                                 <div class="custom-select">
                                     <select id="vwsdDdlHasCareGiverLookup"
                                             data-role="dropdownlist"
-                                            data-bind="source:dsCareGiverLookup,value:selectedIsCareGiverItem"
+                                            data-bind="source:dsCareGiverLookup,value:selectedHasCareGiverItem,disabled:isHasCareGiverDisabled"
                                             data-text-field="Value"
-                                            data-value-field="Key" required />
+                                            data-value-field="Key"  />
 
                                     <span class="k-widget k-tooltip k-tooltip-validation k-invalid-msg" data-bind="invisible:isHasCareGiverPersonIdValid">
                                         {{nls.valmsgHasCareGiverItemRequired}}
@@ -520,7 +521,7 @@
                     </div>
                 </div>
                 <div class="module-section">
-                    <h2 class="module-section__title">{{nls.lblContactPerson}}</h2>
+                    <h2 class="module-section__title">{{nls.lblContactPerson}}<span class="instruction-text">{{nls.lblContactPersonInstructionText}}</span></h2>
                     <div class="module-section-container">
                         <label class="form-element-with-label-full">
                             <span class="form-element-with-label__text">{{nls.lblName}}</span>
@@ -708,7 +709,7 @@
                         <em class="form-element-with-label__text__astrisk">*</em>
                     </span>
                     <textarea id="vwsmTaAMedicationComments" name="vwsmTaAMedicationComments" class="form-element-with-label__inp"
-                              data-bind="value:sheltereeMedicationAllergy.AdditionalMedicationComment"
+                              data-bind="value:sheltereeMedicationAllergy.AdditionalMedicationComment, attr:{maxlength: additionaMedicationCommentsLength} "
                               required validationmessage="{{nls.vldmsgAdditionaMedicationComments}}" rows="5"></textarea>
                     <span class="k-invalid-msg" data-for="vwsmTaAMedicationComments"></span>
 
@@ -802,6 +803,10 @@
                                     </label>
                                 </li>
                             </ul>
+                            <span class="k-widget k-tooltip k-tooltip-validation k-invalid-msg" role="alert" data-bind="invisible:isAcceptedToMSNSValid">
+
+                                {{nls.lblPleaseSelectMSNS}}
+                            </span>
                             <span class="instruction-text">{{nls.lbltext}}</span>
                         </div>
 
@@ -817,7 +822,7 @@
                         <div class="form-element-with-label-full">
                             <span class="form-element-with-label__text">{{nls.lblShelterSections}}</span>
                             <ul class="form-list" data-template="vwssiRowShelterSections-template" data-bind="source:shelterSectionsList"></ul>
-                            <span class="k-widget k-tooltip k-tooltip-validation k-invalid-msg" data-bind="invisible: isAtLeastOneShelterIdentificationSelected">{{nls.valmsgshelteridentification}}</span>
+                            <span class="k-widget k-tooltip k-tooltip-validation k-invalid-msg" data-bind="invisible: setValidationMsgShelterSections">{{nls.valmsgshelteridentification}}</span>
                         </div>
 
                         <div class="module-container l--two-column">
@@ -827,8 +832,8 @@
                                         {{nls.lblNameOfHospital}}
                                     </span>
                                     <!--TODO: Binding pending-->
-                                    <input type="text" class="form-element-with-label__inp" maxlength="250"
-                                           id="vwsdispTbNameOfHospital" name="vwsdispTbNameOfHospital"        
+                                    <input type="text" class="form-element-with-label__inp" maxlength="500"
+                                           id="vwsdispTbNameOfHospital" name="vwsdispTbNameOfHospital" data-bind="value:dispositionData.HospitalName,disabled:isDispositionDataDisabled"       
                                            />
                                 </label>
                             </div>
@@ -836,10 +841,10 @@
                                 <div class="form-element-with-label">
                                     <span class="form-element-with-label__text">{{nls.lblDispositionDateandtime}}</span>
                                     <div class="inlinedate-time">
-                                        <input id="vwsdispContactDate" name="vwsdispContactDate" data-role="datepicker" data-bind="value:contactDate" />
+                                        <input id="vwsdispContactDate" name="vwsdispContactDate" data-role="datepicker" data-bind="value:contactDate,disabled:isDispositionDataDisabled" />
                                         <span class="k-widget k-tooltip k-tooltip-validation k-invalid-msg" data-bind="invisible: isDispositionDateValid">{{nls.vldmsgDateRequired}}</span>
 
-                                        <input id="vwsdispContactTime" name="vwsdispContactTime" data-role="timepicker" data-bind="value:contactTime" />
+                                        <input id="vwsdispContactTime" name="vwsdispContactTime" data-role="timepicker" data-bind="value:contactTime,disabled:isDispositionDataDisabled" />
                                         <span class="k-widget k-tooltip k-tooltip-validation k-invalid-msg" data-bind="invisible: isDispositionTimeValid">{{nls.vldmsgTimeRequired}}</span>
                                     </div>
                                 </div>
@@ -852,9 +857,9 @@
                                     <span class="form-element-with-label__text">
                                         {{nls.lblContactPerson}}
                                     </span>
-                                    <input type="text" class="form-element-with-label__inp" maxlength="250"
+                                    <input type="text" class="form-element-with-label__inp" maxlength="100"
                                            id="vwsdispTbContact" name="vwsdispTbContact"
-                                           data-bind="value:dispositionData.DispositionContactPerson" />
+                                           data-bind="value:dispositionData.DispositionContactPerson,disabled:isDispositionDataDisabled" />
                                 </label>
                             </div>
                             <div class="column-two">
@@ -862,9 +867,9 @@
                                     <span class="form-element-with-label__text">
                                         {{nls.lblReason}}
                                     </span>
-                                    <input type="text" class="form-element-with-label__inp" maxlength="250"
+                                    <input type="text" class="form-element-with-label__inp" maxlength="100"
                                            id="vwsdispTbReason" name="vwsdispTbReason"
-                                           data-bind="value:dispositionData.Reason" />
+                                           data-bind="value:dispositionData.Reason,disabled:isDispositionDataDisabled" />
                                 </label>
                             </div>
                         </div>
@@ -936,10 +941,11 @@
                                 <label class="form-element-with-label">
                                     <span class="form-element-with-label__text">
                                         {{nls.lblDepartureModeOfTransportation}}
-                                        <em class="form-element-with-label__text__astrisk">*</em>
+
                                     </span>
                                     <div class="custom-select">
                                         <select id="vwssiDdlDepartureModeOfTransportation"
+                                                data-bind="source:transportationTypeLookUpData,value:selectedTransportationTypeId"
                                                 data-role="dropdownlist"
                                                 data-text-field="Value"
                                                 data-value-field="Key" />
@@ -958,20 +964,22 @@
 
     <div class="footer-bts-container">
 
-        <button type="button" class="btn" data-bind="visible:isPreviousButtonVisible,click:previousClick">
-            {{nls.btnPrevious}}
-        </button>
+       
 
         <button type="button" class="btn" data-bind="click:saveClick">
             {{nls.btnSave}}
         </button>
 
-        <button type="button" class="btn" data-bind="click:backClick">
+        <button type="button" class="back-btn" data-bind="click:backClick">
             {{nls.btnBack}}
         </button>
 
-        <button type="button" class="btn" data-bind="visible:isNextButtonVisible,click:nextClick">
-            {{nls.btnNext}}
+        <button type="button" class="previous-btn " data-bind="visible:isPreviousButtonVisible,click:previousClick">
+            <span class="previous-btn__icon"></span>
+        </button>
+
+        <button type="button" class="next-btn" data-bind="visible:isNextButtonVisible,click:nextClick">
+            <span class="next-btn__icon"></span>
         </button>
 
     </div>
@@ -1067,7 +1075,7 @@
         <div class="marginL12">
 
             <!--Text box question-->
-            # if (AnswerTypeId == 1) { #
+            # if (AnswerTypeId == $ct.other.getStringTextBoxId()) { #
 
             <div>
 
@@ -1079,7 +1087,7 @@
 
             </div>
 
-            #} else if (AnswerTypeId == 2){ #
+            #} else if (AnswerTypeId == $ct.other.getNumericTextBoxId()){ #
 
 
             <div class="nmtxb">
@@ -1095,7 +1103,7 @@
 
             </div>
 
-            #} else if (AnswerTypeId == 3){ #
+            #} else if (AnswerTypeId == $ct.other.getDecimalTextBoxId()){ #
 
             <div class="nmtxb">
 
@@ -1110,7 +1118,7 @@
 
             </div>
 
-            #} else if (AnswerTypeId == 4){ #
+            #} else if (AnswerTypeId == $ct.other.getTextAreaId()){ #
 
             <div>
 
@@ -1122,7 +1130,7 @@
 
             </div>
 
-            #} else if (AnswerTypeId == 5){ #
+            #} else if (AnswerTypeId == $ct.other.getMultipleChoiceOnlyOneAnswerId()){ #
 
             # if(IsOptionsHorizontal ){ #
 
@@ -1139,7 +1147,7 @@
                 {{nls.valmsgAnswerOptionRequired}}
             </span>
 
-            #} else if (AnswerTypeId == 6){ #
+            #} else if (AnswerTypeId == $ct.other.getMultipleChoiceMultipleAnswerId()){ #
 
             # if(IsOptionsHorizontal ){ #
 
@@ -1156,7 +1164,7 @@
             </span>
 
 
-            #} else if (AnswerTypeId == 7){ #
+            #} else if (AnswerTypeId == $ct.other.getDropdownListId()){ #
 
             <div class="custom-select">
 
@@ -1192,7 +1200,7 @@
         <div class="marginL12">
 
             <!--Text box question-->
-            # if (AnswerTypeId == 1) { #
+            # if (AnswerTypeId == $ct.other.getStringTextBoxId()) { #
 
             <div>
 
@@ -1204,7 +1212,7 @@
 
             </div>
 
-            #} else if (AnswerTypeId == 2){ #
+            #} else if (AnswerTypeId == $ct.other.getNumericTextBoxId()){ #
 
 
             <div>
@@ -1220,7 +1228,7 @@
 
             </div>
 
-            #} else if (AnswerTypeId == 3){ #
+            #} else if (AnswerTypeId == $ct.other.getDecimalTextBoxId()){ #
 
             <div>
 
@@ -1235,7 +1243,7 @@
 
             </div>
 
-            #} else if (AnswerTypeId == 4){ #
+            #} else if (AnswerTypeId == $ct.other.getTextAreaId()){ #
 
             <div>
 
@@ -1247,7 +1255,7 @@
 
             </div>
 
-            #} else if (AnswerTypeId == 5){ #
+            #} else if (AnswerTypeId == $ct.other.getMultipleChoiceOnlyOneAnswerId()){ #
 
             # if(IsOptionsHorizontal ){ #
 
@@ -1264,7 +1272,7 @@
                 {{nls.valmsgAnswerOptionRequired}}
             </span>
 
-            #} else if (AnswerTypeId == 6){ #
+            #} else if (AnswerTypeId == $ct.other.getMultipleChoiceMultipleAnswerId()){ #
 
             # if(IsOptionsHorizontal ){ #
 
@@ -1281,7 +1289,7 @@
             </span>
 
 
-            #} else if (AnswerTypeId == 7){ #
+            #} else if (AnswerTypeId == $ct.other.getDropdownListId()){ #
 
             <div class="custom-select">
 
@@ -1368,7 +1376,7 @@
 
         <label class="radio-button">
             <input class="radio-button__inp" name="vwssiRbShelterSections" type="radio"
-                   value="${Key}" >
+                   value="${Key}"  data-bind="checked:selectedShelterSectionId,enabled:isMSNSChildDisabled">
             <span class="radio-button__text" data-bind="text:Value"></span>
         </label>
 
@@ -1436,17 +1444,17 @@
 
         <td class="align-top">
             <span>
-                <input type="text" class="form-element-with-label__inp medicationtx" data-bind="value:DrugName" />
+                <input type="text" class="form-element-with-label__inp medicationtx" data-bind="value:DrugName" maxlength="100"/>
             </span>
             <span class="k-widget k-tooltip k-tooltip-validation k-invalid-msg" data-bind="invisible: isMedicationNameValid">
                 {{nls.valmsgMedicationNameRequired}}
             </span>
         </td>
         <td class="align-top">
-            <input type="text" class="form-element-with-label__inp medicationtx" data-bind="value:Dosage" />
+            <input type="text" class="form-element-with-label__inp medicationtx" data-bind="value:Dosage" maxlength="50" />
         </td>
         <td class="align-top">
-            <input type="text" class="form-element-with-label__inp medicationtx" data-bind="value:Frequency" />
+            <input type="text" class="form-element-with-label__inp medicationtx" data-bind="value:Frequency" maxlength="100" />
         </td>
         <td class="align-top">
 

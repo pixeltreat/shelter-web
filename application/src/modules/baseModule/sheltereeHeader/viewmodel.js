@@ -12,6 +12,7 @@
 
             previousShelterName: "",
 
+            censusData:"",
 
             //To hide shelter header on shelter dashboard and dashboard visualization page
             // shelter header depends on whether logged in user is associated to single facility or multi facility 
@@ -80,7 +81,7 @@
 
                 vm.set("isGoButtonDisabled", true);
 
-                var data = $ct.ds.shlt.shelter.getSheltersWithSecurityAndCensusForActiveEventWithDs(function (result) {
+                var data = $ct.ds.shlt.shelter.getSheltersWithSecurityForActiveEventWithDs(function (result) {
 
                    // $ct.helpers.hidePageBusyCursor();
 
@@ -141,15 +142,15 @@
 
                 //vm.fillGrid();
 
-                $ct.helpers.displayWorkAreaBusyCursor();
+                //$ct.helpers.displayWorkAreaBusyCursor();
 
-                $ct.ds.event.getActiveEvent(function (result) {
+                //$ct.ds.event.getActiveEvent(function (result) {
 
-                    $ct.helpers.hidePageBusyCursor();
-                    $ct.helpers.hideWorkAreaBusyCursor();
+                //    $ct.helpers.hidePageBusyCursor();
+                //    $ct.helpers.hideWorkAreaBusyCursor();
 
-                    var resultData = result.Data.ActiveEvent;
-                    vm.set("eventdata", resultData);
+                //    var resultData = result.Data.ActiveEvent;
+                //    vm.set("eventdata", resultData);
 
                     vm.setPreviouslySelectedShelterTypeAndShelterNameToCurrent();
                     vm.setSheltereeHeaderDataToGlobalContext();
@@ -167,7 +168,7 @@
                         moduleContext.notify($ct.en.getSheltereeHeaderDataChanged(), $ct.rn.getSheltereeMedicalUpdateList());
                     }
 
-                });
+                //});
 
             },
 
@@ -240,7 +241,19 @@
                 moduleContext.notify($ct.en.getManageSheltereeMedicalUpdateClicked());
 
                 Boiler.UrlController.goTo($ct.rn.getSheltereeMedicalUpdateList());
+            },
+
+            shelterCensusData: function (shelterCensusData) {
+
+                var ShelterCensus = shelterCensusData.ShelterCensus;
+                var ShelterCapacity = shelterCensusData.ShelterCapacity;
+
+                var censusData = ShelterCensus + "/" + ShelterCapacity;
+                vm.set("censusData", censusData);
+
             }
+
+
 
             //,
 

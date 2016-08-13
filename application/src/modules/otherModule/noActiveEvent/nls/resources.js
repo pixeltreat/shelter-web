@@ -1,7 +1,7 @@
 define({
     "root": {
 
-        "lblNoActiveEvent": "There Is No Active Event"
+        "lblNoActiveEvent": "There is no active event"
 
     }
 });

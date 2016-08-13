@@ -15,6 +15,7 @@ define({
         "valmsgEventDescriptionRequired": "Event Description Is Required",
         "valmsgStartDateRequired": "Start Date Is Required",
         "valmsgEndDateRequired": "End Date Is Required",
+        "valmsgStartDateAndEndDate":"Start Date Should Be Less Than End Date",
 
 
         "btnSave": "Save",

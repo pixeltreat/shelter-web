@@ -78,7 +78,7 @@
                 <em class="form-element-with-label__text__astrisk">*</em>
             </span>
             <span>
-                <textarea id="vwqQuestion" name="vwqTaDescription" class="form-element-with-label__inp" data-bind="value:Question.QuestionText" rows="5"></textarea>
+                <textarea id="vwqQuestion" name="vwqTaDescription" class="form-element-with-label__inp" data-bind="value:Question.QuestionText, attr:{maxlength: DescriptionLength}" rows="5"></textarea>
             </span>
                 <span class="k-widget k-tooltip k-tooltip-validation k-invalid-msg" data-bind="invisible: Question.hideQTextValidation">{{nls.valmsgQuestionRequired}}</span>
         </label>
@@ -95,7 +95,7 @@
             <span class="k-widget k-tooltip k-tooltip-validation k-invalid-msg" data-bind="invisible: Question.hideQNumericValidation">{{nls.valmsgDisplayOrderRequired}}</span>
         </label>
         <!-- if statement start -->
-        # if( (Question.AnswerTypeId == 1) || (Question.AnswerTypeId == 4)){ #
+        # if( (Question.AnswerTypeId == $ct.other.getStringTextBoxId()) || (Question.AnswerTypeId == $ct.other.getTextAreaId())){ #
 
 
         <div class="form-element-with-label">
@@ -132,7 +132,7 @@
         </div>
 
         
-        #} else if ((Question.AnswerTypeId == 2) || (Question.AnswerTypeId == 3) ){ #
+        #} else if ((Question.AnswerTypeId == $ct.other.getNumericTextBoxId()) || (Question.AnswerTypeId == $ct.other.getDecimalTextBoxId()) ){ #
 
 
         <div class="form-element-with-label">
@@ -149,7 +149,7 @@
             </ul>
 
         </div>
-        #} else if ((Question.AnswerTypeId == 5) || (Question.AnswerTypeId == 6) ) { #
+        #} else if ((Question.AnswerTypeId == $ct.other.getMultipleChoiceOnlyOneAnswerId()) || (Question.AnswerTypeId == $ct.other.getMultipleChoiceMultipleAnswerId()) ) { #
 
 
         <div>
@@ -218,7 +218,7 @@
 
 
 
-        #} else if (Question.AnswerTypeId == 7){ #
+        #} else if (Question.AnswerTypeId == $ct.other.getDropdownListId()){ #
 
         <div>
             <!--<label>Add Options</label>-->
@@ -302,7 +302,7 @@
             <div class="add-option__textbox">
                 <label class="form-element-with-label">
                     <span>
-                        <input type="text" id="vwsecTbName" name="vwsecTbName" maxlength="500" class="form-element-with-label__inp" data-bind="value:ChoiceText">
+                        <input type="text" id="vwsecTbName" name="vwsecTbName" maxlength="5000" class="form-element-with-label__inp" data-bind="value:ChoiceText">
                     </span>
                     <span class="k-widget k-tooltip k-tooltip-validation k-invalid-msg" role="alert" data-bind="invisible: hideCTextValidation">
                         <span class="k-icon k-warning"></span>{{nls.valmsgChoiceTextRequired}}

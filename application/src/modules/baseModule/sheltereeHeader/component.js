@@ -58,7 +58,16 @@ define(['Boiler', './viewmodel', 'text!./view.html', 'i18n!./nls/resources'], fu
 
         });
 
+       
 
+        //for shelter census data
+        moduleContext.listen($ct.en.getSheltereeCensusData(), function (shelterCensusData) {
+
+            if (vm) {
+                vm.data.shelterCensusData(shelterCensusData);
+            }
+
+        });
 
         this.activate = function (parent, params) {
 

@@ -12,6 +12,8 @@ define({
         "gdColDisplayOrder": "DisplayOrder",
         "gdColUpdatedByUserName": "User Name",
         "gdColUpdatedOnValue": "Updated Date",
+        "gdColEdit": "Edit",
+        "gdColDelete": "Delete",
       
 
 

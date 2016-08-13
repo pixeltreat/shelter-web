@@ -63,7 +63,7 @@
                     }
 
                     var requestParam = {};
-                    requestParam.Criteria = { PageSize: options.data.pageSize, PageIndex: options.data.page, SearchToken: "", Filter: filter, Sort: sort };
+                    requestParam.Criteria = { PageSize: options.data.pageSize, PageIndex: options.data.page, SearchToken: ViewModel.searchToken, Filter: filter, Sort: sort };
 
 
                     //previousAttendenceDatestring
@@ -98,7 +98,7 @@
             serverSorting: true,
             serverPaging: true,
             serverFiltering: true,
-            pageSize: 10,
+            pageSize: 9,
             schema: {
                 data: function (response) {
 

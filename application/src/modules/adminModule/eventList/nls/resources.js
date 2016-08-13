@@ -9,6 +9,8 @@ define({
         "gdColEventDescription": "Event Description",
         "gdColStartDate": "Start Date",
         "gdColEndDate": "End Date",
+        "gdColEdit": "Edit",
+        "gdColDelete": "Delete"
 
     }
 });

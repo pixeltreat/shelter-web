@@ -25,7 +25,8 @@ function (Boiler, helpTmpl) {
 
                 var selectItem = {};
                 selectItem.Key = -1;
-                selectItem.Value = "--Select--";
+                selectItem.Description = "--Select--";
+                selectItem.Value = "";
               
                 moduleContext.parentContext.StatusLookUpData.splice(0, 0, selectItem);
                 vm.set("StatusToLookUpData", moduleContext.parentContext.StatusLookUpData);

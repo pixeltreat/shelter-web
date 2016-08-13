@@ -15,6 +15,8 @@ define(["Boiler", 'text!./help/help.html',
                 var panel = new Boiler.ViewTemplate(null, helpTmpl, null);
                 $ct.helpers.displayWindow(panel);
             },
+            initialSearchToken: "",
+            searchToken: "",
 
             dsFacilities: [],
             selectedFacility: {},
@@ -43,6 +45,14 @@ define(["Boiler", 'text!./help/help.html',
 
 
             ActiveEvent: {},
+
+
+            searchEmployeeAttendance: function (e) {
+                if (this.initialSearchToken !== this.searchToken) {
+                    this.fillGrid();
+                    this.initialSearchToken = this.searchToken;
+                }
+            },
 
 
             dcRequestData: {
@@ -103,7 +113,7 @@ define(["Boiler", 'text!./help/help.html',
                 return true;
 
             },
-
+                  
             initializeFacilities: function () {
                 $ct.helpers.displayWorkAreaBusyCursor();
 
@@ -166,7 +176,8 @@ define(["Boiler", 'text!./help/help.html',
                     vm.set("attendenceDatestring", date);
                     vm.set("previousSelectedShift", vm.selectedShift.Key);
                     vm.set("previousSelectedFacility", vm.selectedFacility.Id);
-                    $ct.helpers.displayWorkAreaBusyCursor();
+                   // $ct.helpers.displayWorkAreaBusyCursor();
+                    $ct.helpers.hideWorkAreaBusyCursor();
                     this.fillGrid();
 
                    
@@ -309,7 +320,7 @@ define(["Boiler", 'text!./help/help.html',
                      moduleContext.parentContext.dcRequestData.selectedEmployeeIds = vm.get("dcRequestData.selectedEmployeeIds");
                     moduleContext.parentContext.dcRequestData.unSelectedEmployeeIds = vm.get("dcRequestData.unSelectedEmployeeIds");
 
-                    $ct.helpers.hideWorkAreaBusyCursor();
+                  //  $ct.helpers.hideWorkAreaBusyCursor();
 
 
 

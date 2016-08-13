@@ -44,7 +44,6 @@
                        data-selectable="true"
                        data-columns="[
                        {title:'{{nls.gdColSave}}',width:'60px'},
-                       {field:'ShelterTypeName',title:'{{nls.gdColShelterType}}',width:'100px'},
                        {field:'ShelterName',title:'{{nls.gdColShelterName}}',width:'150px'},
                        {field:'Status',title:'{{nls.gdColStatus}}',width:'120px'},
                        {field:'OpenDate',title:'{{nls.gdColOpenDate}}',filterable:false,width:'250px'},
@@ -69,12 +68,6 @@
             <button class="btn-save"  data-bind="click:btnSaveClick"><span class="f-icon f-icon__save" aria-hidden="true"></span> <span class="f-icon__text">{{nls.btnSave}}</span></button>
         </td>
 
-
-        <td data-title="{{nls.gdColShelterType}}">
-            ${ShelterTypeName}
-
-        </td>
-
         <td data-title="{{nls.gdColShelterName}}">
             ${ShelterName}
         </td>
@@ -92,6 +85,7 @@
                 <span class="k-widget k-tooltip k-tooltip-validation k-invalid-msg" data-bind="invisible: hideOpenDateValidation">
                     {{nls.valmsgOpenDateRequired}}
                 </span>
+                <span class="k-widget k-tooltip k-tooltip-validation k-invalid-msg" data-bind="invisible: hideOpenClosedDateValidation">{{nls.valmsgCDateGtODateRequired}} </span>
             </div>
 
         </td>
@@ -100,9 +94,9 @@
         <div class="custom-datetimepicker">
             <input data-role="datetimepicker" data-bind="value: ClosedDate" />
             <span class="k-widget k-tooltip k-tooltip-validation k-invalid-msg" data-bind="invisible: hideClosedDateValidation">{{nls.valmsgClosedDateRequired}}</span>
-            <span class="k-widget k-tooltip k-tooltip-validation k-invalid-msg" data-bind="invisible: hideOpenClosedDateValidation">{{nls.valmsgCDateGtODateRequired}} </span>
         </div>
     </td>
 
     </tr>
 </script>
+

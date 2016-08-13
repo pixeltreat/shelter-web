@@ -1,7 +1,7 @@
 define({
     "root": {
 
-        "lblNoRole": "You Do Not Have Valid Role To Do This Operation. Please Contact Administrator."
+        "lblNoRole": "You do not have valid role to do this operation. Please contact administrator."
 
     }
 });

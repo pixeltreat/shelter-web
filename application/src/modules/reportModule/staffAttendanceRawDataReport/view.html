@@ -13,11 +13,14 @@
 
                     <input id="vwsardrStratDate" name="vwsardrStratDate"
                            data-role="datetimepicker"
-                           data-bind="value:stratDate" />
+                           data-bind="value:startDate" />
                     <span class="k-widget k-tooltip k-tooltip-validation k-invalid-msg" data-bind="invisible:isStratDateValid">
                         {{nls.valmsgStratDateRequired}}
                     </span>
-
+                    <span class="k-widget k-tooltip k-tooltip-validation k-invalid-msg"
+                          data-bind="invisible: isstartDateEndDateValidation">
+                        {{nls.valmsgStartDateAndEndDate}}
+                    </span>
                 </label>
             </div>
             <div class="column-two">
@@ -33,7 +36,7 @@
                     <span class="k-widget k-tooltip k-tooltip-validation k-invalid-msg" data-bind="invisible:isEndDateValid">
                         {{nls.valmsgEndDateRequired}}
                     </span>
-
+                    
                 </label>
             </div>
         </div>

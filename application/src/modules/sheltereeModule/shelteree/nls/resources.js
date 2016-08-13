@@ -26,6 +26,7 @@ define({
         "lblClinicName": "Clinic Name",
         "lblCareSettings": "Type Of Shelteree",
         "lblFacilityName": "Hospice Facility Name",
+        "lblInstructionHospiceFacilityName": "(If Applicable)",
         "lblHasSigned": "Has Signed DNR?",
         "lblIsCareGiver": "Is Care Giver",
         "lblHasCareGiver": "Has Care Giver",
@@ -34,6 +35,7 @@ define({
         "lblRbYes": "Yes",
         "lblRbNo": "No",
         "lblContactPerson": "Contact Person:",
+        "lblContactPersonInstructionText":"(Preferably not from evacuating region)",
         "lblName":"Name",
         "lblHospiceCity": "Hospice City",
         "lblHospicePhone": "Hospice Phone",
@@ -54,7 +56,7 @@ define({
         "valmsgSexRequired": "Please Select Sex",
         "valmsgPhonenumberRequired": "Please Enter A Valid Phone Number",
         "valmsgCellnumberRequired": "Please Enter A Valid Cell Number",
-        "valmsgSelectCareSetingsRequired": "Please Select Care Settings",
+        "valmsgSelectCareSetingsRequired": "Please Select Type Of Shelteree",
         "valmsgtHospiceStabilityRequired": " Please Select Hospice Stability",
         "valmsgHasSignedDNRRequired": "Please Select Has Signed DNR",
         "vlamsgIsCareGiverRequired": " Please Select Is Care Giver",
@@ -66,12 +68,13 @@ define({
 
 
         //START OF DISPOSITION DISCHARGE AND SHELTER IDENTIFICATION
-       
+
         "headingShelterIdentification": "Shelter Identification",
         "headingDischarge": "Discharge",
         "lblShelterSections": "Shelter Sections",
         "headingShelterDisposition": "Disposition",
         "lblAccepted": "Accepted To MSNS?",
+        "lblPleaseSelectMSNS": "Please Select One Option",
         "lbltext": "(If answer is No ask for below block)",
         "lblSelectone": "Select One",
         "lblDisposition": "Destination Type",
@@ -88,11 +91,11 @@ define({
 
         //validation messages
         "valmsgSelectOneOptionRequired": "Please Select One Option",
-        "valmsgshelteridentification": " Atleast One Shelter Identification Should Be Selected.",
-        "valmsgDischagedateRequired": "Date is required",
-        "valmsgDischagetimeRequired": "Time is required",
-        "valmsgArrivaldateRequired": "Date is required",
-        "valmsgArrivaltimeRequired": "Time is required",
+        "valmsgshelteridentification": " Please Select One Option",
+        "valmsgDischagedateRequired": "Date Is Required",
+        "valmsgDischagetimeRequired": "Time Is Required",
+        "valmsgArrivaldateRequired": "Date Is Required",
+        "valmsgArrivaltimeRequired": "Time Is Required",
         "valmsgDestinationRequired": "Destination Required",
         "vldmsgDateRequired": "Date is required",
         "vldmsgTimeRequired": "Time is required",
@@ -102,7 +105,7 @@ define({
         //START OF Medication    
         "lblMedications": "Medications : ",
         "lblMedicationsInformation": "Rxs,OTCs, Vitamins And Herbal Remedies",
-        "lblAllergies": "Allergies",        
+        "lblAllergies": "Allergies",
         "lblAdditionaMedicationComments": "Additional Medication Comments",
         "lblAllergiesinformation":"(Medication, Latex Or Food)",
         "gdColDrugName": "Name",
@@ -125,7 +128,7 @@ define({
         "gdColNeed": "Need",
         "gdColHave": "Have",
         "gdColDateNeeded": "Additional # Needed For 5 Day Supply",
-        
+
         "valmsgEDdateRequired": "Please Select Valid Date",
 
         //END OF Equipment Supply Name  
@@ -133,7 +136,7 @@ define({
         //START OF Common Messages In  Shelteree Input      
         "btnPrevious": "Previous",
         "btnSave": "Save",
-        "btnBack": "Back",
+        "btnBack": "Back To List",
         "btnNext": "Next",
 
         "valmsgAnswerTextRequired": "Please Enter value",
@@ -146,7 +149,7 @@ define({
         "valmsgAnswerTypeNotFoundRequired": " Answer Type Not Found There Is A Configuration Issue."
 
         //END OF Common Messages In Shelteree Input   
-       
-       
+
+
     }
 });

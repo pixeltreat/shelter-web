@@ -13,6 +13,6 @@ define({
         "gdColClosedDate": "Closed Date",
         "valmsgOpenDateRequired": "Open Date Is Required",
         "valmsgClosedDateRequired": "Closed Date Is Required",
-        "valmsgCDateGtODateRequired": "Closed Date Should Be Greater Than Open Date"
+        "valmsgCDateGtODateRequired": "Open Date Should Be Less Than Closed Date"
     }
 });

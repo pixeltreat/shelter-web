@@ -1,0 +1,144 @@
+// ****************************************
+// Shelteree header
+// ****************************************
+.shelteree-header {
+    position: relative;
+    width: 100%;
+}
+
+.is-shelteree-section {
+    margin-top: 110px;
+
+    @include MediaQueries($mobile) {
+        margin-top: 200px;
+    }
+}
+
+.shelteree-header__nav-list {
+    @extend %no-list;
+    position: absolute;
+    right: 0;
+
+    li {
+        margin-left: 10px;
+        display: inline-block;
+    }
+}
+
+.shelteree-header__shelter {
+    @extend .flex-row;
+    position: absolute;
+    top: 50px;
+    width: 100%;
+    margin: 20px 0;
+
+    &-dropdown {
+        @extend .flex-col__2-5, .flex-col-sm__full;
+
+        &__value-label {
+            font-weight: $bold;
+        }
+    }
+
+    &-census {
+
+        @extend .flex-col__1-5, .flex-col-sm__full, .flex--right-align;
+
+        &__details {
+            margin: 0px 0 0 73px;
+
+            &__icon { 
+                color:$secondary-color;
+                font-size: 2rem;
+                cursor:auto;
+            }
+
+            &__text {
+                font-size: 1.6rem;
+            }
+
+            strong {
+                font-weight: $bold;
+                font-size: 2.4rem;
+            }
+
+            @include MediaQueries($mobile) {
+                margin: 0px 0 0 0;
+            }
+
+            @include MediaQueries($tablet) {
+                margin: 0px 0 0 0;
+            }
+        }
+
+        @include MediaQueries($mobile) {
+            text-align: left;
+            margin: 10px 0 0;
+        }
+    }
+
+
+    &-event {
+        @extend .flex-col__2-5, .flex-col-sm__full, .flex--right-align;
+        text-align: right;
+
+        @include MediaQueries($mobile) {
+            text-align: left;
+            margin: 10px 0 0;
+        }
+    }
+
+    &-event__name {
+        // font-size: 1.6rem;
+        // font-weight: $bold;
+        text-transform: capitalize;
+    }
+
+    &-event__duration {
+        //font-size: 1.2rem;
+    }
+}
+
+// alignment fixes
+.shelteree-header.is-option-one {
+    .shelteree-header__shelter {
+        top: 35px;
+        background: #fff;
+        padding: 15px;
+        border: 1px solid #ddd;
+    }
+
+    .custom-select {
+        max-width: calc(80% - 6px);
+
+        @include MediaQueries($mobile) {
+            max-width: 100%;
+        }
+    }
+}
+
+.app-content.shelteree-header-option-two {
+    .shelteree-header__shelter {
+        top: 15px;
+    }
+
+    .is-shelteree-section {
+        margin-top: 140px;
+    }
+}
+
+.app-content.shelteree-header-option-three {
+    .shelteree-header__shelter {
+        background-color: transparent;
+        padding: 0 0 20px;
+        border-width: 0 0 1px;
+    }
+
+    .custom-select {
+        max-width: 80%;
+    }
+
+    .is-shelteree-section {
+        margin-top: 150px;
+    }
+}

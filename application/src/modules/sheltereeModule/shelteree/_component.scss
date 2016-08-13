@@ -56,9 +56,9 @@
     }
 
     span {
-        margin: -5px !important;
+       
         position: relative !important;
-        top: -11px !important;
+        top: -18px !important;
         @extend .f-icon, .f-icon__success;
         border: 1px solid #fff !important;
         color: #9CCC65 !important;
@@ -66,9 +66,7 @@
         line-height: 2px !important;
         box-shadow: 0px 0px 0px 13px #fff inset !important;
 
-        @media screen and (min-width:0\0) and (min-resolution: +72dpi) {
-            margin: -3px !important;
-        }
+       
     }
 }
 
@@ -120,6 +118,7 @@ $sheltree-navigation: (
 //Start : Added Styles for Demographics
 .instruction-text {
     color: $base-grey;
+    padding:5px;
 }
 
 .font-age {
@@ -209,5 +208,40 @@ $sheltree-navigation: (
     background-color:#fff !important;
 }
 
+//Added Styles for Previous and Next buttons
+.previous-btn {
+    @extend .btn--secondary;
+    padding: 10px 20px 10px 10px;
 
+    &__icon {
+        @include Arrow(6, top);
+        border-top-color: $primary-color;
+        transform: rotate(90deg);
+    }
+}
+
+.next-btn {
+    @extend .btn--secondary;
+    padding: 10px 10px 10px 20px;
+    
+    &__icon {
+        @include Arrow(6, top);
+        border-top-color: $primary-color;
+        transform: rotate(-90deg);
+     
+    }
+}
+.next-btn:active .next-btn__icon, .previous-btn:active .previous-btn__icon{
+     border-top-color: $base-white;
+}
+.back-btn {
+    @extend .btn--secondary;
+    padding: 10px 15px;
+    margin: 0px 30px 0px 10px;
+     @include MediaQueries($xmobile) {
+          margin: 10px 0px 0px 0px;
+    
+    }
+}
 //End : Added view specific styles
+

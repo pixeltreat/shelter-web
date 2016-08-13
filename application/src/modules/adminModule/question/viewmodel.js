@@ -27,12 +27,12 @@ function (Boiler) {
             selectedQuestionType: {},
             selectedQuestionTypeOption: {},
             selectedQuestionGroup: {},
-
+            DescriptionLength:5000,
             //initialLoad: false,
 
-            dsAnswerTypes: $ct.ds.admin.question.getAnswerTypes(),
+            dsAnswerTypes: $ct.other.getAnswerTypes(),
 
-            selectedAnswerType: $ct.ds.admin.question.getDefaultAnswerType(),
+            selectedAnswerType: $ct.other.getDefaultAnswerType(),
 
             originalAnswerOptions: [],
 
@@ -238,7 +238,7 @@ function (Boiler) {
 
                 vm.set("isAtLeastOneEquipmentDependencySelected", equipmentDependencyValidation);
 
-
+                vm.set("triggerValidation", false);
                 //Pending:  Validate question id
 
                 //To validate question text
@@ -317,9 +317,9 @@ function (Boiler) {
                 quesDef.hideQDefValidation = function () { return true };
 
                 if (
-                    (quesDef.Question.AnswerTypeId == $ct.ds.admin.question.getMultipleChoiceOnlyOneAnswerId()) ||
-                    (quesDef.Question.AnswerTypeId == $ct.ds.admin.question.getMultipleChoiceMultipleAnswerId()) ||
-                    (quesDef.Question.AnswerTypeId == $ct.ds.admin.question.getDropdownListId())
+                    (quesDef.Question.AnswerTypeId == $ct.other.getMultipleChoiceOnlyOneAnswerId()) ||
+                    (quesDef.Question.AnswerTypeId == $ct.other.getMultipleChoiceMultipleAnswerId()) ||
+                    (quesDef.Question.AnswerTypeId == $ct.other.getDropdownListId())
                     ) {
 
                     //Validation function to validate at least two options should present
@@ -346,8 +346,8 @@ function (Boiler) {
                 quesDef.Question.hideQTextValidation = hideQuestionTextValidation;
                 quesDef.Question.hideQNumericValidation = hideQuestionNumericValidation;
 
-                if ((quesDef.Question.AnswerTypeId == $ct.ds.admin.question.getStringTextBoxId())
-                || (quesDef.Question.AnswerTypeId == $ct.ds.admin.question.getTextAreaId())) {
+                if ((quesDef.Question.AnswerTypeId == $ct.other.getStringTextBoxId())
+                || (quesDef.Question.AnswerTypeId == $ct.other.getTextAreaId())) {
 
                     quesDef.Question.hideAnswerWidthValidation = hideAnswerWidthValidation;
 
@@ -361,9 +361,9 @@ function (Boiler) {
                     answerOption.triggerValidations = false;
 
                     if (
-                    (quesDef.Question.AnswerTypeId == $ct.ds.admin.question.getMultipleChoiceOnlyOneAnswerId()) ||
-                    (quesDef.Question.AnswerTypeId == $ct.ds.admin.question.getMultipleChoiceMultipleAnswerId()) ||
-                    (quesDef.Question.AnswerTypeId == $ct.ds.admin.question.getDropdownListId())
+                    (quesDef.Question.AnswerTypeId == $ct.other.getMultipleChoiceOnlyOneAnswerId()) ||
+                    (quesDef.Question.AnswerTypeId == $ct.other.getMultipleChoiceMultipleAnswerId()) ||
+                    (quesDef.Question.AnswerTypeId == $ct.other.getDropdownListId())
                     ) {
 
                         answerOption.hideCTextValidation = hideChoiceTextValidation;
@@ -416,8 +416,8 @@ function (Boiler) {
                     isDataValid = false;
                 }
 
-                if ((vm.questionData[0].Question.AnswerTypeId == $ct.ds.admin.question.getStringTextBoxId()) ||
-                (vm.questionData[0].Question.AnswerTypeId == $ct.ds.admin.question.getTextAreaId())) {
+                if ((vm.questionData[0].Question.AnswerTypeId == $ct.other.getStringTextBoxId()) ||
+                (vm.questionData[0].Question.AnswerTypeId == $ct.other.getTextAreaId())) {
 
                     if (!vm.questionData[0].Question.hideAnswerWidthValidation()) {
                         isDataValid = false;
@@ -430,9 +430,9 @@ function (Boiler) {
                 $.each(vm.questionData[0].Question.AnswerOptions, function (index, answerOption) {
 
                     if (
-                                    (vm.questionData[0].Question.AnswerTypeId == $ct.ds.admin.question.getMultipleChoiceOnlyOneAnswerId()) ||
-                                    (vm.questionData[0].Question.AnswerTypeId == $ct.ds.admin.question.getMultipleChoiceMultipleAnswerId()) ||
-                                    (vm.questionData[0].Question.AnswerTypeId == $ct.ds.admin.question.getDropdownListId())
+                                    (vm.questionData[0].Question.AnswerTypeId == $ct.other.getMultipleChoiceOnlyOneAnswerId()) ||
+                                    (vm.questionData[0].Question.AnswerTypeId == $ct.other.getMultipleChoiceMultipleAnswerId()) ||
+                                    (vm.questionData[0].Question.AnswerTypeId == $ct.other.getDropdownListId())
                                     ) {
 
                         if (!answerOption.hideCTextValidation()) {
@@ -509,10 +509,10 @@ function (Boiler) {
                         (quest.Id == $ct.constants.getemptyGUID())
                         &&
                         (
-                            (quest.AnswerTypeId == $ct.ds.admin.question.getStringTextBoxId()) ||
-                            (quest.AnswerTypeId == $ct.ds.admin.question.getNumericTextBoxId()) ||
-                            (quest.AnswerTypeId == $ct.ds.admin.question.getDecimalTextBoxId()) ||
-                            (quest.AnswerTypeId == $ct.ds.admin.question.getTextAreaId())
+                            (quest.AnswerTypeId == $ct.other.getStringTextBoxId()) ||
+                            (quest.AnswerTypeId == $ct.other.getNumericTextBoxId()) ||
+                            (quest.AnswerTypeId == $ct.other.getDecimalTextBoxId()) ||
+                            (quest.AnswerTypeId == $ct.other.getTextAreaId())
                         )
                     ) {
 

@@ -125,10 +125,11 @@
         return "";
     };
 
-    var getDemographicsById = function (sheltreeId, successCallBack) {
+    var getDemographicsById = function (sheltreeId,shelterId, successCallBack) {
         var requestParam = {};
 
         requestParam.SheltereeId = sheltreeId;
+        requestParam.FacilityId = shelterId;
 
         $ct.ajax.ajaxPost($ct.cn.getSheltereeFacilityUrl() + 'GetSheltereeById', requestParam, function (result) {
             if (successCallBack != null)

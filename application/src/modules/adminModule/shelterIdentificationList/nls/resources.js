@@ -8,6 +8,8 @@ define({
         "gdColDisplayOrder": "Display Order",
         "gdColUserName": "User Name",
         "gdColUpdatedDate": "Updated Date",
+        "gdColEdit": "Edit",
+        "gdColDelete": "Delete",
 
 
         "btnAdd": "Add",

@@ -228,7 +228,7 @@ $ct.msg = function () {
     };
 
 
-    var employeeAttendenceUpdatedSuccessMsg = "Staff Attendence" + successMsg;
+    var employeeAttendenceUpdatedSuccessMsg = "Staff Attendance" + successMsg;
     var getEmployeeAttendenceUpdatedSuccessMsg = function () {
         return employeeAttendenceUpdatedSuccessMsg;
     };
@@ -372,6 +372,15 @@ $ct.msg = function () {
         return reportEventsValidationMsg;
     };
 
+    var startDateEndDateValidationMsg = "Start Date Should Be Less Than End Date";
+    var getStartDateEndDateValidationMsg = function () {
+        return startDateEndDateValidationMsg;
+    };
+
+    var concurrentEventsValidationMsg = "System Does Not Support Concurrent Events";
+    var getConcurrentEventsValidationMsg = function () {
+        return concurrentEventsValidationMsg;
+    };
     
     return {
 
@@ -465,7 +474,9 @@ $ct.msg = function () {
         getBulkUpdateSheltreeDischargeValidationMsg: getBulkUpdateSheltreeDischargeValidationMsg,
         getBulkUpdateSheltreeMedicalUpdateValidationMsg: getBulkUpdateSheltreeMedicalUpdateValidationMsg,
         getReportSheltersValidationMsg: getReportSheltersValidationMsg,
-        getReportEventsValidationMsg: getReportEventsValidationMsg
+        getReportEventsValidationMsg: getReportEventsValidationMsg,
+        getStartDateEndDateValidationMsg: getStartDateEndDateValidationMsg,
+        getConcurrentEventsValidationMsg: getConcurrentEventsValidationMsg
 
     };
 } ();

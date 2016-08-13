@@ -95,8 +95,26 @@ define(["Boiler", 'text!./help/help.html'], function (Boiler, helpTmpl) {
                         }
 
                         vm.setMenuPermissions();
-                        //$ct.helpers.hidePageBusyCursor();
-                        vm.goToHome();
+                         //$ct.helpers.hidePageBusyCursor();
+
+                        //checking whether currently logged in user is associated to facilties or not
+                        var data = $ct.ds.shlt.shelter.getSheltersWithSecurityForActiveEvent(function (result) {
+
+
+                            if ($ct.mt.isNoDataFound(result)) {
+                                
+                                vm.set("isFacilitiesAssociatedToUser", false);
+
+                            }
+                            else {
+                               
+                                vm.set("isFacilitiesAssociatedToUser", true);
+
+                            }
+
+                            vm.goToHome();
+
+                        });
 
                     });
 
@@ -109,6 +127,13 @@ define(["Boiler", 'text!./help/help.html'], function (Boiler, helpTmpl) {
 
                 if (!$ct.security.isValidRole())
                     return;
+
+                if (!vm.isFacilitiesAssociatedToUser)
+                {
+                   
+                    Boiler.UrlController.goTo($ct.rn.getNoFacilitiesFound());
+                    return;
+                }
 
                 if ($ct.security.isFacilityReadOnlyRole() ) {
 
@@ -134,7 +159,8 @@ define(["Boiler", 'text!./help/help.html'], function (Boiler, helpTmpl) {
             showReports: false,
             showRefresh: false,
 
-            isActiveEventPresent : false,
+            isActiveEventPresent: false,
+            isFacilitiesAssociatedToUser : false,
 
 
             setMenuPermissions: function () {

@@ -84,11 +84,11 @@ function (Boiler, helpTmpl) {
 
                 vm.set("sheltereeHeaderData", moduleContext.parentContext.sheltereeHeaderData);
 
-                $ct.ds.event.getActiveEvent( function (result) {
+                //$ct.ds.event.getActiveEvent( function (result) {
 
-                    var resultData = result.Data.ActiveEvent;
-                    vm.set("eventdata", resultData);
-                });
+                //    var resultData = result.Data.ActiveEvent;
+                //    vm.set("eventdata", resultData);
+                //});
 
 
             },
@@ -220,6 +220,10 @@ function (Boiler, helpTmpl) {
                 this.set("dsSheltereeDischargeList", $ct.ds.sheltree.sheltree.getSheltereeDischargees(this, function (result) {
 
                     $ct.helpers.hideWorkAreaBusyCursor();
+
+                    var shelterCensusData = result.Data.ShelterCensusData;
+
+                    moduleContext.notify($ct.en.getSheltereeCensusData(), shelterCensusData);
 
                     vm.shelterFilterLookUp = result.Data.ShelterLookupData;
                     vm.parishFilterLookUp = result.Data.ParishLookupData;
@@ -816,7 +820,8 @@ function (Boiler, helpTmpl) {
 
                     if (result.Data.DownloadUrl != undefined) {
 
-                        window.location.href = result.Data.DownloadUrl;
+                        //window.location.href = result.Data.DownloadUrl;
+                        window.open(result.Data.DownloadUrl, "_blank");
 
                     }
                     else {

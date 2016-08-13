@@ -16,7 +16,8 @@ define({
         "mnuDownloadTemplate": "Download Template",
         "lblEventName": "Event Name:",
         "lblDuration": "Duration:",
-        "lblAllShelter": "All Shelters"
+        "lblAllShelter": "All Shelters",
+        "lblCensus": "Census:"
 
 
     }

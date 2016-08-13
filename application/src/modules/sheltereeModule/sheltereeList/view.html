@@ -4,7 +4,7 @@
     <div class="module">
         <!-- view title -->
         <h2 class="module-title">{{nls.headerShelteree}}<span class="module-title__icon" data-bind="click:helpClick"></span></h2>
-        <div class="module-container is-employee-section">
+        <div class="module-container is-shelteree-section">
             <div class="gridsearch">
                 <div class="gridsearch__search-col">
                     <label class="search-label">
@@ -47,7 +47,7 @@
                        data-bind="source:dsSheltereeList, events: { change: rowSelectionChange,dataBound:dsDataBoundEvent }"
                        data-role="grid"
                        data-filterable="true"
-                       data-sortable='{ "mode": "single", "allowUnsort": false }'
+                       data-sortable='{ "mode": "multiple", "allowUnsort": false }'
                        data-row-template="vwslRow-template"
                        data-selectable="true"
                        data-columns="[
@@ -85,25 +85,25 @@
 </script>
 <script type="text/x-kendo-template" id="vwslRow-template">
     <tr>
-        <td data-title="{{nls.gdColIsSelected}}">
+        <td data-title="Select">
             <label class="checkbox">
                 <input class="checkbox__inp" data-bind="checked:IsSelected, events:{change:vwslChkShelteree}" type="checkbox" data-item-type="child" data-id=${Id} />
                 <span class="checkbox__text"></span>
             </label>
         </td>
-        <td>
+        <td data-title="Edit">
             <button class="btn-edit" data-bind="click:btnEditClick">
                 <span class="f-icon f-icon__edit" aria-hidden="true"></span>
                 <span class="f-icon__text">{{nls.btnEdit}}</span>
             </button>
         </td>
-        <td>
+        <td data-title="Delete">
             <button class="btn-delete" data-bind="click:btnDeleteClick">
                 <span class="f-icon f-icon__delete" aria-hidden="true"></span>
                 <span class="f-icon__text">{{nls.btnDelete}}</span>
             </button>
         </td>
-        <td>
+        <td data-title="Report">
             <button class="btn-pdf" data-bind="click:btnReportClick">
                 <span class="f-icon f-icon__pdf" aria-hidden="true"></span>
                 <span class="f-icon__text">{{nls.btnReport}}</span>

@@ -4,7 +4,7 @@
     <div class="module" >
         <h2 class="module-title">{{nls.headerStaffAttendance}}<span class="module-title__icon" data-bind="click:helpClick"></span></h2>
         <div class="module-container employee-attendance">
-
+           
             <div class="employee-attendance__row is-filter-shelter">
                 <!--  filters section -->
                 <div class="employee-attendance__filters-section">
@@ -112,12 +112,23 @@
                     </button>
                 </div>
             </div>
+            <div class="gridsearch">
+                <div class="gridsearch__search-col">
+                    <label class="search-label">
+                        <input type="text" id="vweaTxtSearch" class="search-label__inp"
+                               placeholder="Search"
+                               data-bind="value:searchToken,events:{keyup:searchEmployeeAttendance}"
+                               data-value-update="keyup" />
+                    </label>
+                </div>
+
+            </div>
             <div class="table-wrapper"  id="vweaDgEmployeeListParent"  data-bind="style:{display:showWorkArea}">
                 <table id="vweaDgEmployeeList"
                         class="grid split-table"                
                        data-bind="source:dsEmployeeAttendance, events: { dataBound:vweaDataBoundEvent }"
                        data-role="grid" data-filterable="true"
-                       data-sortable='{ "mode": "single", "allowUnsort": false }'
+                       data-sortable='{ "mode": "multiple", "allowUnsort": false }'
                        data-row-template="vweaRow-template"
                        data-columns="[{width:'40px'},
                         {title:'Add Comment',width:'120px'},
@@ -139,19 +150,24 @@
 
 <script type="text/x-kendo-template" id="vweaRow-template">
     <tr>
-        <td data-title="{{nls.gdColIsSelected}}">
+        <td data-title="Select">
             <label class="checkbox">
                 <input class="checkbox__inp" data-bind="checked:IsSelected, events:{change:vweaChkEmployee}" type="checkbox" data-item-type="child" data-id=${EmployeeId} />
                 <span class="checkbox__text"></span>
             </label>
         </td>
 
-        <td>
-            <button class="btn-add-comment" data-bind="click:btnEditClick"> <span class="f-icon f-icon__add-comment" aria-hidden="true"></span> <span class="f-icon__text">Edit</span> </button>
+        <td data-title="Add Comment">
+            #if(IsCommentExist){#
+            <button class="btn-add-comment" data-bind="click:btnEditClick"> <span class="f-icon f-icon__view-add-comment" aria-hidden="true"></span> <span class="f-icon__text">{{nls.btnEdit}}</span> </button>
+            #}else{#
+            <button class="btn-add-comment" data-bind="click:btnEditClick"> <span class="f-icon f-icon__add-comment" aria-hidden="true"></span> <span class="f-icon__text">{{nls.btnEdit}}</span> </button>
+            #}#
+            
         </td>
 
         <td data-title="{{nls.gdColStatus}}">
-            <input data-role="dropdownlist" data-bind="source:StatusLookUpData,value:ReportId,events:{change:changeSaveClick}" data-template="item-template" data-value-template="value-template" data-text-field="Value" data-value-field="Key" />
+            <input data-role="dropdownlist" data-bind="source:StatusLookUpData,value:ReportId,events:{change:changeSaveClick}" data-template="item-template" data-value-template="value-template" data-text-field="Description" data-value-field="Key" />
         </td>
         <td data-title="{{nls.gdColDepartmentName}}"> ${DepartmentName} </td>
         <td data-title="{{nls.gdColFirstName}}"> ${FirstName} </td>
@@ -163,13 +179,13 @@
 
         <td data-title="{{nls.gdColStaffSpeciality}}"> ${StaffSpecialityName} </td>
         <td data-title="{{nls.gdColComments}}"> ${Comment} </td>
-        <td data-title="{{nls.gdColUserName}}"> ${EmployeeAttendanceUpdatedUserName} </td>
+        <td data-title="{{nls.gdColUpdatedUserName}}"> ${EmployeeAttendanceUpdatedUserName} </td>
         <td data-title="{{nls.gdColUpdatedDate}}"> ${EmployeeAttendanceUpdatedOnValue} </td>
     </tr>
 </script>
 <script id="item-template" type="text/x-kendo-template">
-    <span class="icon-#:Value#">#:Value #</span>
+    <span class="icon-#:Value#">#:Description #</span>
 </script>
 <script id="value-template" type="text/x-kendo-template">
-    <span class="icon-#:Value#">#:Value #</span>
+    <span class="icon-#:Value#">#:Description #</span>
 </script>

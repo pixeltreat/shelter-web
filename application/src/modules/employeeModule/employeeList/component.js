@@ -84,7 +84,7 @@ define(['Boiler', './viewmodel', 'text!./view.html', 'i18n!./nls/resources'], fu
                 });
 
                 kendo.bind(panel.getDomElement(), vm.data);
-
+                menuClicked = false;
                 vm.data.initialize();
                 vm.data.initializeEmployeeHeader();
 

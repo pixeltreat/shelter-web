@@ -9,6 +9,8 @@ define({
         "gdColUpdatedDate": "Updated Date",
         "gdColUserName": "User Name",
         "gdColDescription": "Description",
+        "gdColEdit": "Edit",
+        "gdColDelete": "Delete",
 
         "btnAdd": "Add",
         "btnDelete": "Delete",

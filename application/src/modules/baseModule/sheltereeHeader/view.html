@@ -1,6 +1,6 @@
-<div id="vwSheltereeHeader" class="employee-header is-option-one">
+<div id="vwSheltereeHeader" class="shelteree-header is-option-one">
     <!-- nav list to filter table data -->
-    <!--<ul id="activeNavSheltereeheader" class="employee-header__nav-list">
+    <!--<ul id="activeNavSheltereeheader" class="shelteree-header__nav-list">
 
         <li>
             <button class="btn--secondary" data-bind="click:btnDownloadSheltereeTemplateClick">
@@ -9,23 +9,23 @@
             </button>
         </li>
         <li>
-            <button class="btn--secondary" id="vwehuploademployee" data-bind="click:btnUploadSheltereeDataClick">
+            <button class="btn--secondary" id="vwehuploadshelteree" data-bind="click:btnUploadSheltereeDataClick">
                 <span class="f-icon f-icon__upload" aria-hidden="true"></span>
                 {{nls.mnuUploadData}}
             </button>
         </li>
         <li>
-            <button class="btn--secondary" id="vwehdownloademployee" data-bind="click:btnDownloadSheltereeDataClick">
+            <button class="btn--secondary" id="vwehdownloadshelteree" data-bind="click:btnDownloadSheltereeDataClick">
                 <span class="f-icon f-icon__download" aria-hidden="true"></span>
                 {{nls.mnuDownloadData}}
             </button>
         </li>
     </ul>-->
     <!--SHELTER HEADER START-->
-    <div id="vwshDDLs" class="employee-header__shelter">
-        <div class="employee-header__shelter-dropdown">
-            <!-- <label for="vwshDdlShelterNames" class="employee-header__shelter-dropdown__label">{{nls.lblShelter}}:</label> -->
-            <div class="custom-select employee-header__shelter-dropdown__select">
+    <div id="vwshDDLs" class="shelteree-header__shelter">
+        <div class="shelteree-header__shelter-dropdown">
+            <!-- <label for="vwshDdlShelterNames" class="shelteree-header__shelter-dropdown__label">{{nls.lblShelter}}:</label> -->
+            <div class="custom-select shelteree-header__shelter-dropdown__select">
                 <select id="vwshDdlShelterNames"
                         data-role="dropdownlist"
                         data-bind="source:dsShelterNames,events:{change:ddlShelterChange},value:selectedShelterNameItem"
@@ -33,17 +33,26 @@
                         data-value-field="Id"></select>
             </div>
             <!--To show label for single facility user-->
-            <label class="employee-header__shelter-dropdown__value-label" hidden>{{nls.lblAllShelter}}</label>
+            <label class="shelteree-header__shelter-dropdown__value-label" hidden>{{nls.lblAllShelter}}</label>
             <!-- <button class="btn" data-bind="disabled:isGoButtonDisabled, click:btnGoClick">{{nls.btnGo}}</button> -->
         </div>
+        <div class="shelteree-header__shelter-census">
+            <div class="shelteree-header__shelter-census__details">
+                <span class="shelteree-header__shelter-census__details__icon">
+                    <span class="f-icon f-icon__reports"></span>
+                </span>
+                <span class="shelteree-header__shelter-census__details__text">{{nls.lblCensus}}</span>
+                <strong data-bind="text:censusData"></strong>
+            </div>
+        </div>
 
-        <div class="employee-header__shelter-event">
-            <div class="employee-header__shelter-event__name">
+        <div class="shelteree-header__shelter-event">
+            <div class="shelteree-header__shelter-event__name">
                 <!--Need to populate event and duration from API-->
                 <span>{{nls.lblEventName}}</span>
                 <strong data-bind="text:eventdata.EventName"></strong>
             </div>
-            <div class="employee-header__shelter-event__duration">
+            <div class="shelteree-header__shelter-event__duration">
                 <span>{{nls.lblDuration}}</span>
                 <strong data-bind="text:eventdata.EventDuration"></strong>
             </div>

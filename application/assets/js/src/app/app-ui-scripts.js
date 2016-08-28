@@ -4,6 +4,38 @@
 */
 var rootEle = document.documentElement;
 
+// media queries, to keep this wrapped in a IIFE so that we can move out later.
+(function(w){
+    w.mediaQuery = w.mediaQuery || {};
+    w.device     = w.device || {};
+    var BP;
+
+    // check if match media api avaible on this browser to avoid throwing errors
+    if(!Modernizr && !Modernizr.mq && !Modernizr.touch){
+        return;
+    }
+
+    BP = {
+        'TABLET'    : '(max-width  : 1024px)',
+        'MOBILE'    : '(max-width  : 800px)',
+        'XMOBILE'   : '(max-width  : 480px)',
+        'LANDSCAPE' : '(orientation: landscape)',
+        'PORTRAIT'  : '(orientation: portrait)'
+    };
+
+    // check for media query passed
+    mediaQuery.is = function (key) {
+        return Modernizr.mq(BP[key]);
+    };
+
+    // device check
+    device.has = function(key) {
+        return Modernizr[key];
+    };
+
+    return mediaQuery;
+})(window);
+
 $(document).ready(function (e) {
     var $appHeader  = $('#hd');
     var $appContent = $('#bd');
@@ -11,11 +43,15 @@ $(document).ready(function (e) {
     // alerts
     $appContent.on('click', '.app-alerts', alertsToggle);
 
-    // navigation view toggle
-    $appHeader.on({
-        'mouseenter': showNavPanel,
-        'mouseleave': hideNavPanel
-    },'.main-menu');
+    // navigation view toggle if tablet && landscape with touch
+    if(device.has('touch')){
+        $appHeader.on('click', '.main-menu', showNavPanel);
+    }else {
+        $appHeader.on({
+            'mouseenter': showNavPanel,
+            'mouseleave': hideNavPanel
+        },'.main-menu');
+    }
 
     // hide nav when close button clicked
     $appHeader.on('click', '.app-logo__menu-collapse', toggleNavPanel);
@@ -26,7 +62,6 @@ $(document).ready(function (e) {
     // active class for selected subnav
     $appHeader.on('click', '.app-nav__sub__li', toggleSubNavActive);
 });
-
 
 /**
  * Toggle alerts view on the page

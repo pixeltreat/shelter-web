@@ -241,7 +241,7 @@ define(["Boiler", 'text!./help/help.html'], function (Boiler, helpTmpl) {
 
             refreshClick: function (e) {
 
-                vm.collapseMenu();
+                vm.collapseMenu(e);
 
                 if (moduleContext.parentContext.currentView != undefined) {
                     moduleContext.notify($ct.en.getRefreshView(), moduleContext.parentContext.currentView);
@@ -254,7 +254,7 @@ define(["Boiler", 'text!./help/help.html'], function (Boiler, helpTmpl) {
 
             transportTypeListClick: function (e) {
 
-                vm.collapseMenu();
+                vm.collapseMenu(e);
 
                 moduleContext.notify($ct.en.getDisplayTransportTypeList(), null);
                 Boiler.UrlController.goTo($ct.rn.getTransportTypeList());
@@ -262,7 +262,7 @@ define(["Boiler", 'text!./help/help.html'], function (Boiler, helpTmpl) {
 
             agencyListClick: function (e) {
 
-                vm.collapseMenu();
+                vm.collapseMenu(e);
 
                 moduleContext.notify($ct.en.getDisplayAgencyList(), null);
                 Boiler.UrlController.goTo($ct.rn.getAgencyList());
@@ -270,7 +270,7 @@ define(["Boiler", 'text!./help/help.html'], function (Boiler, helpTmpl) {
 
             departmentListClick: function (e) {
 
-                vm.collapseMenu();
+                vm.collapseMenu(e);
 
                 moduleContext.notify($ct.en.getDisplayDepartmentList(), null);
                 Boiler.UrlController.goTo($ct.rn.getDepartmentList());
@@ -278,7 +278,7 @@ define(["Boiler", 'text!./help/help.html'], function (Boiler, helpTmpl) {
 
             medicalConditionListClick: function (e) {
 
-                vm.collapseMenu();
+                vm.collapseMenu(e);
 
                 moduleContext.notify($ct.en.getDisplayMedicalConditionList(), null);
                 Boiler.UrlController.goTo($ct.rn.getMedicalConditionList());
@@ -286,7 +286,7 @@ define(["Boiler", 'text!./help/help.html'], function (Boiler, helpTmpl) {
 
             medicalConditionTierListClick: function (e) {
 
-                vm.collapseMenu();
+                vm.collapseMenu(e);
 
                 moduleContext.notify($ct.en.getDisplayMedicalConditionTierList(), null);
                 Boiler.UrlController.goTo($ct.rn.getMedicalConditionTierList());
@@ -294,7 +294,7 @@ define(["Boiler", 'text!./help/help.html'], function (Boiler, helpTmpl) {
 
             shelterTypeListClick: function (e) {
 
-                vm.collapseMenu();
+                vm.collapseMenu(e);
 
                 moduleContext.notify($ct.en.getDisplayShelterTypeList(), null);
                 Boiler.UrlController.goTo($ct.rn.getShelterTypeList());
@@ -302,7 +302,7 @@ define(["Boiler", 'text!./help/help.html'], function (Boiler, helpTmpl) {
 
             sheltreeEmployeeRatioListClick: function (e) {
 
-                vm.collapseMenu();
+                vm.collapseMenu(e);
 
                 moduleContext.notify($ct.en.getDisplaySheltreeEmployeeRatioList(), null);
                 Boiler.UrlController.goTo($ct.rn.getSheltreeEmployeeRatioList());
@@ -310,7 +310,7 @@ define(["Boiler", 'text!./help/help.html'], function (Boiler, helpTmpl) {
 
             staffSpecialtyListClick: function (e) {
 
-                vm.collapseMenu();
+                vm.collapseMenu(e);
 
                 moduleContext.notify($ct.en.getDisplayStaffSpecialtyList(), null);
                 Boiler.UrlController.goTo($ct.rn.getStaffSpecialtyList());
@@ -318,7 +318,7 @@ define(["Boiler", 'text!./help/help.html'], function (Boiler, helpTmpl) {
 
             stafftypeListClick: function (e) {
 
-                vm.collapseMenu();
+                vm.collapseMenu(e);
 
                 moduleContext.notify($ct.en.getDisplayStaffTypeList(), null);
                 Boiler.UrlController.goTo($ct.rn.getStaffTypeList());
@@ -326,7 +326,7 @@ define(["Boiler", 'text!./help/help.html'], function (Boiler, helpTmpl) {
 
             dispositionListClick: function (e) {
 
-                vm.collapseMenu();
+                vm.collapseMenu(e);
 
                 moduleContext.notify($ct.en.getDisplayDispositionList(), null);
                 Boiler.UrlController.goTo($ct.rn.getDispositionList());
@@ -334,21 +334,21 @@ define(["Boiler", 'text!./help/help.html'], function (Boiler, helpTmpl) {
 
             equipmentSupplyListClick: function (e) {
 
-                vm.collapseMenu();
+                vm.collapseMenu(e);
 
                 moduleContext.notify($ct.en.getDisplayEquipmentSupplyList(), null);
                 Boiler.UrlController.goTo($ct.rn.getequipmentSupplyList());
             },
             shelterIdentificationListClick: function (e) {
 
-                vm.collapseMenu();
+                vm.collapseMenu(e);
 
                 moduleContext.notify($ct.en.getDisplayShelterIdentificationList(), null);
                 Boiler.UrlController.goTo($ct.rn.getshelterIdentificationList());
             },
             questionListClick: function (e) {
 
-                vm.collapseMenu();
+                vm.collapseMenu(e);
 
                 moduleContext.notify($ct.en.getDisplayquestionList(), null);
                 Boiler.UrlController.goTo($ct.rn.getQuestionList());
@@ -360,7 +360,7 @@ define(["Boiler", 'text!./help/help.html'], function (Boiler, helpTmpl) {
 
             employeeListClick: function (e) {
 
-                vm.collapseMenu();
+                vm.collapseMenu(e);
 
                 if (!vm.isEmployeeOrEmployeeExpandedListClicked) {
 
@@ -381,7 +381,7 @@ define(["Boiler", 'text!./help/help.html'], function (Boiler, helpTmpl) {
 
             employeeExpandedListClick: function (e) {
 
-                vm.collapseMenu();
+                vm.collapseMenu(e);
 
                 if (!vm.isEmployeeOrEmployeeExpandedListClicked) {
 
@@ -399,7 +399,7 @@ define(["Boiler", 'text!./help/help.html'], function (Boiler, helpTmpl) {
 
             downloadEmployeeTemplateClick:function () {
 
-                vm.collapseMenu();
+                vm.collapseMenu(e);
 
                     moduleContext.notify($ct.en.getHideErrorMsg());
                     $ct.helpers.displayWorkAreaBusyCursor();
@@ -430,7 +430,7 @@ define(["Boiler", 'text!./help/help.html'], function (Boiler, helpTmpl) {
 
             uploadEmployeeDataClick: function (e) {
 
-                vm.collapseMenu();
+                vm.collapseMenu(e);
 
                // moduleContext.notify($ct.en.getEmployeeCreatedOrUpdated());
                 Boiler.UrlController.goTo($ct.rn.getUploadEmployee());
@@ -439,7 +439,7 @@ define(["Boiler", 'text!./help/help.html'], function (Boiler, helpTmpl) {
 
             downloadEmployeeDataClick: function (e) {
 
-                vm.collapseMenu();
+                vm.collapseMenu(e);
 
                // moduleContext.notify($ct.en.getEmployeeCreatedOrUpdated());
                 Boiler.UrlController.goTo($ct.rn.getDownloadEmployee());
@@ -450,7 +450,7 @@ define(["Boiler", 'text!./help/help.html'], function (Boiler, helpTmpl) {
 
             sheltereeListClick: function (e) {
 
-                vm.collapseMenu();
+                vm.collapseMenu(e);
 
                 if (!vm.isSheltereeOrDischargeOrMedicalUpdateListClicked) {
 
@@ -468,7 +468,7 @@ define(["Boiler", 'text!./help/help.html'], function (Boiler, helpTmpl) {
 
             sheltereeDischargeListClick: function (e) {
 
-                vm.collapseMenu();
+                vm.collapseMenu(e);
 
                 if (!vm.isSheltereeOrDischargeOrMedicalUpdateListClicked) {
 
@@ -486,7 +486,7 @@ define(["Boiler", 'text!./help/help.html'], function (Boiler, helpTmpl) {
 
             sheltereeMedicalUpdateListClick: function (e) {
 
-                vm.collapseMenu();
+                vm.collapseMenu(e);
 
                 if (!vm.isSheltereeOrDischargeOrMedicalUpdateListClicked) {
 
@@ -505,7 +505,7 @@ define(["Boiler", 'text!./help/help.html'], function (Boiler, helpTmpl) {
 
             downloadSheltereeTemplateClick: function () {
 
-                vm.collapseMenu();
+                vm.collapseMenu(e);
 
                     moduleContext.notify($ct.en.getHideErrorMsg());
                     $ct.helpers.displayWorkAreaBusyCursor();
@@ -538,7 +538,7 @@ define(["Boiler", 'text!./help/help.html'], function (Boiler, helpTmpl) {
 
             uploadSheltereeDataClick: function (e) {
 
-                vm.collapseMenu();
+                vm.collapseMenu(e);
 
                 //moduleContext.notify($ct.en.getSheltereeCreatedOrUpdated());
                 Boiler.UrlController.goTo($ct.rn.getUploadShelteree());
@@ -547,7 +547,7 @@ define(["Boiler", 'text!./help/help.html'], function (Boiler, helpTmpl) {
 
             downloadSheltereeDataClick: function (e) {
 
-                vm.collapseMenu();
+                vm.collapseMenu(e);
 
                 //moduleContext.notify($ct.en.getSheltereeCreatedOrUpdated());
                 Boiler.UrlController.goTo($ct.rn.getDownloadShelteree());
@@ -556,7 +556,7 @@ define(["Boiler", 'text!./help/help.html'], function (Boiler, helpTmpl) {
 
             employeeAttendanceClick: function (e) {
 
-                vm.collapseMenu();
+                vm.collapseMenu(e);
 
                 moduleContext.notify($ct.en.getEmployeeAttendenceList(), null);
                 Boiler.UrlController.goTo($ct.rn.getEmployeeAttendance());
@@ -564,14 +564,14 @@ define(["Boiler", 'text!./help/help.html'], function (Boiler, helpTmpl) {
 
             shelterStatusClick: function (e) {
 
-                vm.collapseMenu();
+                vm.collapseMenu(e);
 
                 Boiler.UrlController.goTo($ct.rn.getShelterStatus());
             },
 
             eventListClick: function (e) {
 
-                vm.collapseMenu();
+                vm.collapseMenu(e);
 
                 moduleContext.notify($ct.en.getDisplayEventList(), null);
                 Boiler.UrlController.goTo($ct.rn.getEventList());
@@ -579,20 +579,20 @@ define(["Boiler", 'text!./help/help.html'], function (Boiler, helpTmpl) {
 
             staffReportClick: function (e) {
 
-                vm.collapseMenu();
+                vm.collapseMenu(e);
 
                 Boiler.UrlController.goTo($ct.rn.getStaffRawDataReport());
             },
 
             staffAttendanceReportClick: function (e) {
 
-                vm.collapseMenu();
+                vm.collapseMenu(e);
 
                 Boiler.UrlController.goTo($ct.rn.getStaffAttendanceRawDataReport());
             },
             sheltereeReportClick: function (e) {
 
-                vm.collapseMenu();
+                vm.collapseMenu(e);
 
                 Boiler.UrlController.goTo($ct.rn.getSheltereeRawDataReport());
            },
@@ -600,21 +600,21 @@ define(["Boiler", 'text!./help/help.html'], function (Boiler, helpTmpl) {
 
             multifacilityEmployeeAttendanceClick: function (e) {
 
-                vm.collapseMenu();
+                vm.collapseMenu(e);
 
                 Boiler.UrlController.goTo($ct.rn.getMultiFacilityEmployeeAttendance());
             },
 
             multifacilityEmployeeExtendedClick: function (e) {
 
-                vm.collapseMenu();
+                vm.collapseMenu(e);
 
                 Boiler.UrlController.goTo($ct.rn.getMultiFacilityEmployeeExtendedList());
             },
 
             multifacilityEmployeeClick: function (e) {
 
-                vm.collapseMenu();
+                vm.collapseMenu(e);
 
                 Boiler.UrlController.goTo($ct.rn.getMultiFacilityEmployeeList());
             },
@@ -623,16 +623,9 @@ define(["Boiler", 'text!./help/help.html'], function (Boiler, helpTmpl) {
                 $(document).ajaxError(null);
                 window.location.href = "logOut.aspx";
             },
-            collapseMenu: function () {
-                var tabletAndBelow;
-
-                // check if match media api avaible on this browser to avoid throwing errors
-                if(window.matchMedia){
-                    tabletAndBelow = window.matchMedia("(max-width: 1024px)");
-                }
-
-                // check if table and below not undefined and matches
-                if (tabletAndBelow && tabletAndBelow.matches) {
+            collapseMenu: function (e) {
+                // check if tablet or below and touch device
+                if(mediaQuery.is('TABLET') && device.has('touch')) {
                     $('html').removeClass('has-nav-expanded');
                 }
             },

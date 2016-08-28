@@ -94,6 +94,7 @@ button:disabled,
     border-radius: $border-radius__width;
     background: transparent;
     color: $primary-color;
+    box-sizing: border-box;
 
     & .f-icon {
         margin-right: 5px;

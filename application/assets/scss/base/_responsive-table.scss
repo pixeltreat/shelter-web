@@ -63,6 +63,7 @@
 		padding: 0.6rem;
 		width: 100%;
 		float: none;
+		box-sizing: border-box;
 
 		&::before {
 			position: relative;

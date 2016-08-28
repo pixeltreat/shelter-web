@@ -89,7 +89,7 @@
         }
     }
 
-    @include MediaQueries($tablet-and-above) {
+    @include MediaQueries($desktop-and-above) {
         display: none;
     }
 
@@ -103,6 +103,10 @@
 .has-nav-expanded .app-logo__menu-collapse {
     border: 1px solid $menu-collapse-btn-normal;
     border-radius: 100%;
+
+    @include MediaQueries($desktop-and-above) {
+        display: block;
+    }
 
     &-icon {
         margin: 0 0 0 3px;

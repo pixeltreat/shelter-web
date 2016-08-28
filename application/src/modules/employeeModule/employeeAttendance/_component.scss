@@ -49,15 +49,14 @@
     &__shifts-date {
         margin: 10px 0;
         padding-right: 20px;
-        max-width: 33.33%;
-        width: 100%;
+        width: 33.33%;
 
         &:last-child {
             padding-right: 0;
         }
 
         @include MediaQueries($xmobile) {
-            max-width: none;
+            width: 100%;
             padding-right: 0;
         }
     }

@@ -54,12 +54,12 @@
 
     span {
         @extend .f-icon, .f-icon__success;
-        color: #9CCC65;
-        background-color:#fff;
+        color: #fff;
+        background-color:#9CCC65;
 
         &::before {
-            font-size: 2.66rem;
-            margin: -3px 0 0 -3px;
+            font-size: 1.8rem;
+            line-height: 1.2;
         }
     }
 }
@@ -158,14 +158,12 @@ $sheltree-navigation: (
 //Start : Added styles for medication page
 
 // Added styles for question response
-.medicalconditiontb
-{
+.medicalconditiontb {
     width:97.5% !important;
 }
 
 // to reduce width of numeric text box in question response, to be in align with header.
-.nmtxb span
-{
+.nmtxb span {
  margin-left:0px !important;
  width:97.5%;
 }
@@ -178,6 +176,10 @@ $sheltree-navigation: (
         @extend .flex-col-lg__1-2, .flex-col-md__1-2, .flex-col-sm__full;
         padding-right: 30px;
         margin-bottom: 20px;
+
+        @include MediaQueries($mobile) {
+            padding-right: 0;
+        }
     }
 }
 
@@ -231,10 +233,10 @@ $sheltree-navigation: (
 .back-btn {
     @extend .btn--secondary;
     padding: 10px 15px;
-    margin: 0px 30px 0px 10px;
-     @include MediaQueries($xmobile) {
-          margin: 10px 0px 0px 0px;
+    margin: 0 30px 0 10px;
 
+    @include MediaQueries($xmobile) {
+        margin: 10px 0 0;
     }
 }
 //End : Added view specific styles

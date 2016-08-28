@@ -120,6 +120,12 @@ body {
     @include MediaQueries($xlarge-and-above) {
         padding: 2rem 8rem 4rem 3rem;
     }
+
+    @include MediaQueries($mobile) {
+        .has-nav-expanded & {
+            pointer-events: none;
+        }
+    }
 }
 
 .loader-icon {

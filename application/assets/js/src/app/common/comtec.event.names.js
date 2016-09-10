@@ -68,6 +68,13 @@ $ct.en = function () {
     };
 
 
+    var activeEventPresent = "Active_Event_Present";
+
+    var getActiveEventPresent = function () {
+        return activeEventPresent;
+    };
+
+    
     //end of application independant common events
 
 
@@ -515,6 +522,7 @@ $ct.en = function () {
         getHideErrorMsg: getHideErrorMsg,
         getRefreshView: getRefreshView,
         getGoToHome: getGoToHome,
+        getActiveEventPresent: getActiveEventPresent,
 
         //end of application independant common events
 

@@ -159,7 +159,7 @@ function (Boiler, helpTmpl) {
             shelterChange: function (e) {
 
 
-                $ct.helpers.displayWorkAreaBusyCursor();
+               // $ct.helpers.displayWorkAreaBusyCursor();
 
                 this.setFetchSelectedDataParams();
                 this.initializeEmployeeHeader();

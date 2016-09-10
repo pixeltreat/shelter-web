@@ -164,7 +164,7 @@ define(["Boiler", 'text!./help/help.html',
 
             shelterChange: function (e) {
 
-                $ct.helpers.displayWorkAreaBusyCursor();
+                //$ct.helpers.displayWorkAreaBusyCursor();
 
                 this.setFetchSelectedDataParams();
                 this.initializeSheltereeHeader();

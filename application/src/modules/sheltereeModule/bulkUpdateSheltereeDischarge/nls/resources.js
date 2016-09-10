@@ -5,11 +5,12 @@ define({
         "headerEmployee": "BulkUpdate",
         "btnUpdate": "Update",
         "btnBack": "Back",
-        "lblDiposition": "Diposition",
-        "lblTransportation": "Transportation Type",
+        "lblDiposition": "Destination Type",
+        "lblTransportation": "Arrival Mode Of Transportation",
         "lblDischargeDate": "Discharge Date & Time",
         "lblArrivalDate": "Arrival Date & Time",
-        "lblDestination": "Destination"
+        "lblDestination": "Destination",
+        "lblDepartureModeOfTransportation": "Departure Mode Of Transportation"
 
 
     }

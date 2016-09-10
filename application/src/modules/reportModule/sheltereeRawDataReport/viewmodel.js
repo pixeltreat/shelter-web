@@ -49,7 +49,10 @@ define(["Boiler", 'text!./help/help.html'], function (Boiler, helpTmpl) {
 
                     vm.set("dsShelters", sheltersLookup);
                     vm.set("dsEvents", eventsLookup);
+
+                    vm.set("snapShotDate", new Date());
                     vm.set("snapShotDate", null);
+                   
 
 
                     $ct.helpers.hideWorkAreaBusyCursor();

@@ -18,7 +18,7 @@ define({
         "gdColCaregivers": "Caregivers",
         "gdColOxygenDependent": "Oxygen Dependent",
         "gdColElectricalDependent": "Electrical Dependent",
-        "gdColDisposition": "Disposition",
+        "gdColDisposition": "Destination Type",
         "gdColUserName": "Updated User",
         "gdColLastUpdated": "Updated Date",
         "btnGo": "Go",

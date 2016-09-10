@@ -42,7 +42,9 @@ define(['Boiler', './viewmodel', 'text!./view.html', 'i18n!./nls/resources'], fu
                     viewAll: true,
                     fetchSelectedOnly: false,
                     selectedEmployeeIds: new kendo.data.ObservableArray([]),
-                    unSelectedEmployeeIds: new kendo.data.ObservableArray([])
+                    unSelectedEmployeeIds: new kendo.data.ObservableArray([]),
+                    selectedEmployeeWithShiftIds: new kendo.data.ObservableArray([]),
+                    unSelectedEmployeeWithShiftIds: new kendo.data.ObservableArray([])
                 };
 
 
@@ -74,7 +76,9 @@ define(['Boiler', './viewmodel', 'text!./view.html', 'i18n!./nls/resources'], fu
                     viewAll: true,
                     fetchSelectedOnly: false,
                     selectedEmployeeIds: new kendo.data.ObservableArray([]),
-                    unSelectedEmployeeIds: new kendo.data.ObservableArray([])
+                    unSelectedEmployeeIds: new kendo.data.ObservableArray([]),
+                    selectedEmployeeWithShiftIds: new kendo.data.ObservableArray([]),
+                    unSelectedEmployeeWithShiftIds: new kendo.data.ObservableArray([])
                 };
 
 

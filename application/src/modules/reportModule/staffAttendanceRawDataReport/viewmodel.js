@@ -49,8 +49,15 @@ define(["Boiler", 'text!./help/help.html'], function (Boiler, helpTmpl) {
 
                     vm.set("dsShelters", sheltersLookup);
                     vm.set("dsEvents", eventsLookup);
+
+
+                    vm.set("startDate", new Date());
                     vm.set("startDate", null);
+
+                    vm.set("endDate", new Date());
                     vm.set("endDate", null);
+                  
+  
 
                     $ct.helpers.hideWorkAreaBusyCursor();
                 });

@@ -79,6 +79,8 @@
                     requestParam.ShiftId = ViewModel.previousSelectedShift;
                     requestParam.SelectedEmployeeIds = ViewModel.dcRequestData.selectedEmployeeIds;
                     requestParam.UnSelectedEmployeeIds = ViewModel.dcRequestData.unSelectedEmployeeIds;
+                    requestParam.SelectedEmployeeWithShiftIds = ViewModel.dcRequestData.selectedEmployeeWithShiftIds;
+                    requestParam.UnSelectedEmployeeWithShiftIds = ViewModel.dcRequestData.unSelectedEmployeeWithShiftIds;        
                     requestParam.ViewAll = ViewModel.dcRequestData.viewAll;
                     requestParam.FetchSelectedOnly = ViewModel.dcRequestData.fetchSelectedOnly;
 

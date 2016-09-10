@@ -73,11 +73,11 @@ define(["Boiler", 'text!./help/help.html'], function (Boiler, helpTmpl) {
                 if ((gridObj != undefined) && (gridObj != null))
                     gridObj.content.scrollLeft("0");
 
-                $ct.helpers.displayWorkAreaBusyCursor();
+               // $ct.helpers.displayWorkAreaBusyCursor();
 
                 this.set("dsShelterStatus", $ct.ds.shlt.shelter.getShelterStatus(this, function (result) {
 
-                    $ct.helpers.hideWorkAreaBusyCursor();
+                   // $ct.helpers.hideWorkAreaBusyCursor();
 
                     if (
                     ($ct.mt.isNoDataFound(result))

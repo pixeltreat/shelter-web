@@ -143,6 +143,42 @@ $ct.helpers = function () {
         window.center().open();
     };
 
+    //Start:phone number and zip validations
+
+    var isOptionalZipValueValid= function (ctrlValue) {
+
+        return (isOptionalPhoneOrZipValueValid(ctrlValue, 5));
+
+    };
+
+   var isOptionalPhoneValueValid= function (ctrlValue) {
+
+        return (isOptionalPhoneOrZipValueValid(ctrlValue, 10));
+
+    };
+
+    var isOptionalPhoneOrZipValueValid=function (ctrlValue, maxchar) {
+
+        if ((ctrlValue == null) || (ctrlValue == undefined) || (ctrlValue.length == 0)) {
+
+            return true;
+        }
+
+        if ((ctrlValue.length > 0) && (ctrlValue.length < maxchar)) {
+
+            return false;
+
+        }
+        else {
+
+            return true;
+
+        }
+
+    };
+
+    //End:phone number and zip validations
+
     var toLower = function (data) {
         return data.toLowerCase();
     };
@@ -189,6 +225,9 @@ $ct.helpers = function () {
         displayConfirmWindow: displayConfirmWindow,
         displayWindow: displayWindow,
 
+        isOptionalZipValueValid: isOptionalZipValueValid,
+        isOptionalPhoneValueValid: isOptionalPhoneValueValid,
+        
         errorMsgShow: errorMsgShow,
         sucessMsgShow: sucessMsgShow,
         hideErrorMsgWindow: hideErrorMsgWindow,

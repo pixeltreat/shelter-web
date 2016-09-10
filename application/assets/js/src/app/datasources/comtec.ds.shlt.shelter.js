@@ -1,6 +1,22 @@
 ﻿$ct.ds.shlt.shelter = function () {
 
 
+    var getShelters = function (successCallBack) {
+
+        var requestParam = "";
+        $ct.ajax.ajaxPost($ct.cn.getShelterUrl() + 'GetShelters', requestParam, function (result) {
+
+            if (successCallBack != null)
+                successCallBack(result);
+
+        }, null, true)
+
+
+        return "";
+    };
+
+
+
     var getSheltersWithSecurityForActiveEvent = function (successCallBack) {
 
         var requestParam = "";
@@ -357,6 +373,7 @@
 
 
     return {
+        getShelters:getShelters,
         getSheltersWithSecurityForActiveEvent: getSheltersWithSecurityForActiveEvent,
         getSheltersWithSecurityForActiveEventWithDs: getSheltersWithSecurityForActiveEventWithDs,
         getSheltersWithSecurityAndCensusForActiveEventWithDs: getSheltersWithSecurityAndCensusForActiveEventWithDs,

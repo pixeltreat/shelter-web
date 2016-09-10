@@ -48,7 +48,7 @@ define({
         "valmsgCityRequired": "City Is Required",
         "valmsgStateRequired": "State Is Required",
         "valmsgClinicNameRequired": "Clinic Name Is Required",
-        "valmsgFacilityNameRequired": "Facility Name Is Required",
+        "valmsgFacilityNameRequired": "Hospice Facility Name Is Required",
         "valmsgZipRequired": "Please Enter A Valid Zip",
         "valmsgModeOfTranspotationRequired": "Please Select Mode Of Transportation",
         "valmsgHomeParishRequired": "Please Select A Parish",
@@ -112,6 +112,7 @@ define({
         "gdColDosage": "Dosage",
         "gdColFrequency": "Frequency",
         "gdColLastTimeUsed": "Date & Time Of Last Dose",
+        "gdColDelete": "Delete",
         "btnAdd": "Add",
         "btnDelete": "Delete",
 
@@ -128,6 +129,7 @@ define({
         "gdColNeed": "Need",
         "gdColHave": "Have",
         "gdColDateNeeded": "Additional # Needed For 5 Day Supply",
+        "gdColDateTimeNeeded": "Additional \\# Needed For 5 Day Supply",
 
         "valmsgEDdateRequired": "Please Select Valid Date",
 

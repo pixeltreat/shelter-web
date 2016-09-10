@@ -11,13 +11,15 @@
 //var globalBaseServiceUrl = 'http://localhost:7222/';
 //var globalBaseServiceUrl = 'https://beta.comtecinfo.com/sheltersl/';
 //QA Service URL
-var globalBaseServiceUrl = 'https://beta.comtecinfo.com/msnssldemo/';
+//var globalBaseServiceUrl = 'https://qa.comtecinfo.com:452/msns/msnsservice/';
 
 //var globalBaseServiceUrl = 'http://localhost:52848/';
+var globalBaseServiceUrl = 'https://beta.comtecinfo.com/msnssldemo/';
 
 var gloabalHospitalId = 640502;
 
 var gloabalHospiceId = 640306;
+var gloabalDestinationTypeInShelterId = 1;
 
 var gloabalMiscellaneousSectionId = 2;
 var gloabalVitalSignsSectionId = 4;

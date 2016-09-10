@@ -6,6 +6,12 @@
         var vm = kendo.observable({
 
             showAlerts: false,
+            activeEventPresent: false,
+
+            isActiveEventPresent: function () {
+                
+                vm.set("activeEventPresent", true);
+            },
 
             alertsData: [],
 

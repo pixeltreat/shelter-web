@@ -72,56 +72,65 @@ define(["Boiler", 'text!./help/help.html'], function (Boiler, helpTmpl) {
 
                     }
 
-                     $ct.ds.event.getActiveEvent( function (result) {
+
+                    //checking whether currently logged in user is associated to facilties or not
+                    var data = $ct.ds.shlt.shelter.getShelters(function (result) {
 
                         var errorObj = $ct.mt.getErrorObject(result);
                         if (errorObj != null) {
-                            vm.set("isActiveEventPresent", false);
+
+                            vm.set("isFacilitiesAssociatedToUser", false);
+                            Boiler.UrlController.goTo($ct.rn.getNoFacilitiesFound());
+                            return;
 
                         }
 
-                        if ($ct.mt.isNoActiveEvent(result)) {
-                            vm.set("isActiveEventPresent", false);
+                        if ($ct.mt.isNoDataFound(result)) {
+
+                            vm.set("isFacilitiesAssociatedToUser", false);
+                            Boiler.UrlController.goTo($ct.rn.getNoFacilitiesFound());
+                            return;
+
+                        }
+                        else {
+
+                            vm.set("isFacilitiesAssociatedToUser", true);
+
                         }
 
 
-                        if (result.Data.ActiveEvent == null)
-                        {
-                            vm.set("isActiveEventPresent", false);
-                        }
-                        else
-                        {
-                            vm.set("isActiveEventPresent", true);
-                        }
+                        $ct.ds.event.getActiveEvent(function (result) {
 
-                        // TODO: Need to uncomment below section
-                        // if (vm.isActiveEventPresent) {
-                        //     moduleContext.notify($ct.en.getActiveEventPresent());
-                        // }
+                            var errorObj = $ct.mt.getErrorObject(result);
+                            if (errorObj != null) {
+                                vm.set("isActiveEventPresent", false);
+                            }
 
-                        vm.setMenuPermissions();
-                         //$ct.helpers.hidePageBusyCursor();
-
-                        //checking whether currently logged in user is associated to facilties or not
-                        var data = $ct.ds.shlt.shelter.getSheltersWithSecurityForActiveEvent(function (result) {
+                            if ($ct.mt.isNoActiveEvent(result)) {
+                                vm.set("isActiveEventPresent", false);
+                            }
 
 
-                            if ($ct.mt.isNoDataFound(result)) {
-
-                                vm.set("isFacilitiesAssociatedToUser", false);
-
+                            if (result.Data.ActiveEvent == null) {
+                                vm.set("isActiveEventPresent", false);
                             }
                             else {
-
-                                vm.set("isFacilitiesAssociatedToUser", true);
-
+                                vm.set("isActiveEventPresent", true);
                             }
 
+
+                            vm.setMenuPermissions();
                             vm.goToHome();
+
+
 
                         });
 
+
+
                     });
+
+                     
 
 
                 });
@@ -135,7 +144,7 @@ define(["Boiler", 'text!./help/help.html'], function (Boiler, helpTmpl) {
 
                 if (!vm.isFacilitiesAssociatedToUser)
                 {
-
+                   
                     Boiler.UrlController.goTo($ct.rn.getNoFacilitiesFound());
                     return;
                 }
@@ -204,13 +213,13 @@ define(["Boiler", 'text!./help/help.html'], function (Boiler, helpTmpl) {
                     vm.set("showRefresh", true);
                 }
 
-                if (!$ct.security.isValidRole()) {
+                if ((!$ct.security.isValidRole()) || (!vm.get("isFacilitiesAssociatedToUser"))) {
                     vm.set("showAdmin", false);
                     vm.set("showStaffAndShelteree", false);
                     vm.set("showReports", false);
                     vm.set("showRefresh", false);
                 }
-
+                
                 if(!vm.get("isActiveEventPresent"))
                 {
 
@@ -220,7 +229,11 @@ define(["Boiler", 'text!./help/help.html'], function (Boiler, helpTmpl) {
             },
 
             showAlerts: function () {
-                var alerts = $("#idxAlerts").removeAttr("hidden");
+
+                if (vm.isActiveEventPresent) {
+                    var alerts = $("#idxAlerts").removeAttr("hidden");
+                    moduleContext.notify($ct.en.getActiveEventPresent());
+                }
 
             },
 
@@ -397,7 +410,7 @@ define(["Boiler", 'text!./help/help.html'], function (Boiler, helpTmpl) {
 
             },
 
-            downloadEmployeeTemplateClick:function () {
+            downloadEmployeeTemplateClick:function (e) {
 
                 vm.collapseMenu(e);
 
@@ -503,7 +516,7 @@ define(["Boiler", 'text!./help/help.html'], function (Boiler, helpTmpl) {
             },
 
 
-            downloadSheltereeTemplateClick: function () {
+            downloadSheltereeTemplateClick: function (e) {
 
                 vm.collapseMenu(e);
 
@@ -620,15 +633,20 @@ define(["Boiler", 'text!./help/help.html'], function (Boiler, helpTmpl) {
             },
 
             logOutClick: function (e) {
+
                 $(document).ajaxError(null);
+
                 window.location.href = "logOut.aspx";
+
             },
+
             collapseMenu: function (e) {
                 // check if tablet or below and touch device
-                if(mediaQuery.is('TABLET') && device.has('touch')) {
+                if (mediaQuery.is('TABLET') && device.has('touch')) {
                     $('html').removeClass('has-nav-expanded');
                 }
-            },
+            }
+
         });
         //end of observable
 

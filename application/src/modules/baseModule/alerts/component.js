@@ -4,6 +4,12 @@ define(['require', 'Boiler', 'text!./view.html', 'i18n!./nls/resources', './view
 
         var vm, panel = null;
 
+        moduleContext.listen($ct.en.getActiveEventPresent(), function () {
+         
+                vm.data.isActiveEventPresent();
+           
+        });
+
         this.activate = function (parent, params) {
             if (!panel) {
 

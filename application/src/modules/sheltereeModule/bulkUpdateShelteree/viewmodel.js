@@ -43,6 +43,7 @@ function (Boiler, helpTmpl) {
                     vm.saveRequest.valArrivalDate = null;
                     vm.saveRequest.valArrivalTime = null;
                     vm.saveRequest.valDestination = "";
+                    vm.saveRequest.valDepartureModeOfTransportationType = "-1";
                 });
 
             },
@@ -53,11 +54,21 @@ function (Boiler, helpTmpl) {
 
                 vm.set("saveRequest.valDisposition", "-1");
                 vm.set("saveRequest.valTransportationType", "-1");
+
+                vm.set("saveRequest.valDischargeDate", new Date());
                 vm.set("saveRequest.valDischargeDate", null);
+
+                vm.set("saveRequest.valDischargeTime", new Date());
                 vm.set("saveRequest.valDischargeTime", null);
+
+                vm.set("saveRequest.valArrivalDate", new Date());
                 vm.set("saveRequest.valArrivalDate", null);
+
+                vm.set("saveRequest.valArrivalTime", new Date());
                 vm.set("saveRequest.valArrivalTime", null);
+
                 vm.set("saveRequest.valDestination", "");
+                vm.set("saveRequest.valDepartureModeOfTransportationType", "-1");
             },
 
             dsLookupData: {
@@ -79,7 +90,8 @@ function (Boiler, helpTmpl) {
                 valDischargeTime: null,
                 valArrivalDate: null,
                 valArrivalTime: null,
-                valDestination: ""
+                valDestination: "",
+                valDepartureModeOfTransportationType: "-1"
             },
             //SelectedEmployeeIds: new kendo.data.ObservableArray([]),
 

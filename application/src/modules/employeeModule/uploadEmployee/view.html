@@ -69,7 +69,7 @@
             </ul>
 
             <div hidden id="vwueDivGrid" class="uploaded-employee-data__table">
-                <table id="vwueEmployeesLst"
+                <table id="vwueEmployeesLst" class="grid split-table"
                     data-scrolable="true"
                     data-bind="source:UploadSummary.FailedImportedEmployees"
                     data-role="grid"
@@ -78,9 +78,19 @@
                     data-row-template="vwupdRow-template"
                     data-selectable="true"
                     data-columns="[
+                        {field:'ValidationError',title:'{{nls.gdColValidationError}}',width: '450px'},
+                       {field:'Id',title:'{{nls.gdColId}}',width: '150px'}, 
+                       {field:'EmployeeRefNumber',title:'{{nls.gdColEmployeeRefNumber}}',width: '150px'},                                                                
                         {field:'FirstName',title:'{{nls.gdColFirstName}}', width: '150px'},
                         {field:'LastName',title:'{{nls.gdColLastName}}', width: '150px'},
-                        {field:'ValidationError',title:'{{nls.gdColReason}}'}
+                        {field:'MiddleName',title:'{{nls.gdColMiddleName}}', width: '150px'},
+                        {field:'StaffType',title:'{{nls.gdColStaffType}}', width: '150px'},
+                        {field:'IsMedical',title:'{{nls.gdColIsMedical}}', width: '70px'},
+                        {field:'Department',title:'{{nls.gdColDepartment}}', width: '150px'},
+                        {field:'StaffTypeSpecialty',title:'{{nls.gdColStaffTypeSpecialty}}', width: '150px'},
+                         {field:'ShiftTime',title:'{{nls.gdColShiftTime}}', width: '150px'}
+                      
+
                     ]"
                     data-pageable="true">
                 </table>
@@ -97,9 +107,20 @@
 
 <script type="text/x-kendo-template" id="vwupdRow-template">
      <tr>
-        <td>${FirstName}</td>
-        <td>${LastName}</td>
-        <td><span data-bind="text:ValidationError"></span></td>
+                 
+         <td data-title="{{nls.gdColValidationError}}"><span data-bind="text:ValidationError"></span></td>
+         <td data-title="{{nls.gdColId}}">${Id}</td>
+         <td data-title="{{nls.gdColEmployeeRefNumber}}">${EmployeeRefNumber}</td>    
+        <td data-title="{{nls.gdColFirstName}}">${FirstName}</td>
+        <td data-title="{{nls.gdColLastName}}">${LastName}</td>
+        <td data-title="{{nls.gdColMiddleName}}">${MiddleName}</td>
+         <td data-title="{{nls.gdColStaffType}}">${StaffType}</td>
+         <td data-title="{{nls.gdColIsMedical}}">${IsMedical}</td>
+         <td data-title="{{nls.gdColDepartment}}">${Department}</td>
+         <td data-title="{{nls.gdColStaffTypeSpecialty}}">${StaffTypeSpecialty}</td>
+         <td data-title="{{nls.gdColShiftTime}}">${ShiftTime}</td>
+      
+         
     </tr>
 </script>
 

@@ -94,8 +94,8 @@
 
             <div data-bind="style:{display:showMessage}" class="employee-attendance__display-msg">{{nls.valmsgStaffarenotassignedfortheselectedshift}} </div>
 
-            <div class="gridsearch">
-                <div class="gridsearch__search-col">
+            <div class="gridsearch"  >
+                <div class="gridsearch__search-col" data-bind="style:{display:showWorkArea}" >
                     <label class="search-label">
                         <input type="text" id="vweaTxtSearch" class="search-label__inp"
                                placeholder="Search"
@@ -103,15 +103,14 @@
                                data-value-update="keyup" />
                     </label>
                 </div>
-
                 <!-- action buttons -->
                 <div class="gridsearch__btns-col" data-bind="style:{display:showWorkArea}">
                     <button class="btn--secondary" data-bind="visible:isRecordsPresentForExport, click:btnExportExcelClick" type="button">
                         <span class="f-icon f-icon__export" aria-hidden="true"></span>
                         {{nls.btnExport}}
                     </button>
-
-                    <button class="btn--secondary" data-bind="click:btnFilterOffClick" type="button">
+                    
+                    <button class="btn--secondary" data-bind="visible:isShowAllVisible,click:btnFilterOffClick" type="button">
                         <span class="f-icon f-icon__showall" aria-hidden="true"></span>
                         {{nls.btnShowAll}}
                     </button>
@@ -121,8 +120,8 @@
                         {{nls.btnBulkUpdate}}
                     </button>
                 </div>
-            </div>
 
+            </div>
             <div class="table-wrapper"  id="vweaDgEmployeeListParent"  data-bind="style:{display:showWorkArea}">
                 <table id="vweaDgEmployeeList"
                         class="grid split-table"
@@ -134,12 +133,12 @@
                         {title:'Add Comment',width:'120px'},
 
                         {field:'StatusName',title:'{{nls.gdColStatus}}', width:'250px',filterable: {multi:true,dataSource:[]}},
-                        {field:'DepartmentName',title:'{{nls.gdColDepartmentName}}', width:'250px',filterable: {multi:true,dataSource:[]}},
+                        {field:'DepartmentName',title:'{{nls.gdColDepartmentName}}', width:'150px',filterable: {multi:true,dataSource:[]}},
                         {field:'FirstName',title:'{{nls.gdColFirstName}}', width:'200px'},
                         {field:'LastName',title:'{{nls.gdColLastName}}', width:'150px'},
                         {field:'ShiftTime',title:'{{nls.gdColShiftTime}}', width:'150px',filterable: {multi:true,dataSource:[]}},
                         {field:'StaffSpecialityName',title:'{{nls.gdColStaffSpeciality}}', filterable: {multi:true,dataSource:[]}, width:'150px'},
-                        {field:'Comment',title:'{{nls.gdColComments}}', width:'150px'},
+                        {field:'Comment',title:'{{nls.gdColComments}}', width:'250px'},
                         {field:'EmployeeAttendanceUpdatedUserName',title:'{{nls.gdColUpdatedUserName}}', width:'150px'},            {field:'EmployeeAttendanceUpdatedOn',title:'{{nls.gdColUpdatedDate}}',filterable:false,width:'200px'}]"
                        data-pageable="true" data-scrollable="true"></table>
             </div>
@@ -152,7 +151,7 @@
     <tr>
         <td data-title="Select">
             <label class="checkbox">
-                <input class="checkbox__inp" data-bind="checked:IsSelected, events:{change:vweaChkEmployee}" type="checkbox" data-item-type="child" data-id=${EmployeeId} />
+                <input class="checkbox__inp" data-bind="checked:IsSelected, events:{change:vweaChkEmployee}" type="checkbox" data-item-type="child" data-id=${EmployeeId}   data-shiftid=${ShiftId}/>
                 <span class="checkbox__text"></span>
             </label>
         </td>

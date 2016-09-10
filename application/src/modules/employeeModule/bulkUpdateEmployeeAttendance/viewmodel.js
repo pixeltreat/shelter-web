@@ -48,6 +48,8 @@ function (Boiler, helpTmpl) {
                 bulkUpdateEmployeeAttendenceData.FacilityId = moduleContext.parentContext.facilityId;
                 bulkUpdateEmployeeAttendenceData.SelectedEmployeeIds = moduleContext.parentContext.dcRequestData.selectedEmployeeIds;
                 bulkUpdateEmployeeAttendenceData.UnSelectedEmployeeIds = moduleContext.parentContext.dcRequestData.unSelectedEmployeeIds;
+                bulkUpdateEmployeeAttendenceData.selectedEmployeeWithShiftIds = moduleContext.parentContext.dcRequestData.selectedEmployeeWithShiftIds;
+                bulkUpdateEmployeeAttendenceData.unSelectedEmployeeWithShiftIds = moduleContext.parentContext.dcRequestData.unSelectedEmployeeWithShiftIds;   
               
                 bulkUpdateEmployeeAttendenceData.ShiftDate = moduleContext.parentContext.attendenceDate;
                 bulkUpdateEmployeeAttendenceData.ShiftId = moduleContext.parentContext.selectedShift;

@@ -198,6 +198,8 @@
         }
 
         requestParam.Destination = reqObj.valDestination;
+
+        requestParam.SelectedDepartureTransportationTypeId = reqObj.valDepartureModeOfTransportationType;
        
         $ct.ajax.ajaxPost($ct.cn.getSheltereeFacilityUrl() + 'BulkUpdateSheltereeData', requestParam, function (result) {
 

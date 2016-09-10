@@ -25,6 +25,16 @@
                             data-value-field="Key" />
                 </div>
             </label>
+            <label class="form-element-with-label">
+                <span class="form-element-with-label__text">{{nls.lblDepartureModeOfTransportation}}</span>
+                <div class="custom-select">
+                    <select id="vwbusdDdlDepartureModeOfTransportation"
+                            data-role="dropdownlist"
+                            data-bind="source:dsLookupData.DepartureTransportationTypeData, value:saveRequest.valDepartureModeOfTransportationType"
+                            data-text-field="Value"
+                            data-value-field="Key" />
+                </div>
+            </label>
            
             <div class="form-element-with-label">
                 <span class="form-element-with-label__text">{{nls.lblDischargeDate}}</span>
@@ -55,7 +65,7 @@
 
                 <input type="text" class="form-element-with-label__inp" id="vwbusdDestination" name="vwbusdDestination"
                        data-bind="value:saveRequest.valDestination" maxlength="250" />
-            </label>
+            </label>            
         </div>
     </div>
     <div class="footer-bts-container">

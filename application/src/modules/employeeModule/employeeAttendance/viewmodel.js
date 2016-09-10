@@ -59,7 +59,9 @@ define(["Boiler", 'text!./help/help.html',
                 viewAll: true,
                 fetchSelectedOnly: false,
                 selectedEmployeeIds: new kendo.data.ObservableArray([]),
-                unSelectedEmployeeIds: new kendo.data.ObservableArray([])
+                unSelectedEmployeeIds: new kendo.data.ObservableArray([]),
+                selectedEmployeeWithShiftIds: new kendo.data.ObservableArray([]),
+                unSelectedEmployeeWithShiftIds: new kendo.data.ObservableArray([])
             },
 
             initializeEvent: function () {
@@ -307,9 +309,22 @@ define(["Boiler", 'text!./help/help.html',
                     vm.set("dcRequestData.fetchSelectedOnly", false);
                     vm.set("dcRequestData.selectedEmployeeIds", new kendo.data.ObservableArray([]));
                     vm.set("dcRequestData.unSelectedEmployeeIds", new kendo.data.ObservableArray([]));
+                    vm.set("dcRequestData.selectedEmployeeWithShiftIds", new kendo.data.ObservableArray([]));
+                    vm.set("dcRequestData.unSelectedEmployeeWithShiftIds", new kendo.data.ObservableArray([]));
+
                     $.each(result.Data.EmployeeAttendanceRawData, function (index, record) {
                         if (record.IsSelected) {
                             vm.get("dcRequestData.selectedEmployeeIds").push(record.EmployeeId);
+
+                            var selectedobj={
+                            };
+                            selectedobj.SelectedEmployeeId = record.EmployeeId;
+                            selectedobj.ShiftId = record.ShiftId;
+
+
+                            vm.get("dcRequestData.selectedEmployeeWithShiftIds").push(selectedobj);
+
+
                         }
                     });
 
@@ -318,7 +333,9 @@ define(["Boiler", 'text!./help/help.html',
                      moduleContext.parentContext.dcRequestData.fetchSelectedOnly = false;
 
                      moduleContext.parentContext.dcRequestData.selectedEmployeeIds = vm.get("dcRequestData.selectedEmployeeIds");
-                    moduleContext.parentContext.dcRequestData.unSelectedEmployeeIds = vm.get("dcRequestData.unSelectedEmployeeIds");
+                     moduleContext.parentContext.dcRequestData.unSelectedEmployeeIds = vm.get("dcRequestData.unSelectedEmployeeIds");
+                     moduleContext.parentContext.dcRequestData.selectedEmployeeWithShiftIds = vm.get("dcRequestData.selectedEmployeeWithShiftIds");
+                     moduleContext.parentContext.dcRequestData.unSelectedEmployeeWithShiftIds = vm.get("dcRequestData.unSelectedEmployeeWithShiftIds");
 
                   //  $ct.helpers.hideWorkAreaBusyCursor();
 
@@ -334,6 +351,22 @@ define(["Boiler", 'text!./help/help.html',
 
 
             },
+
+            isShowAllVisible: function () {
+
+                if (
+                        (vm.get("dcRequestData.selectedEmployeeIds").length > 0) ||
+                        (vm.hasCachedData && !vm.isLastPageCachedData)
+                    ) {
+
+                    return true;
+                }
+                else {
+                      return false;
+                }
+
+
+        },
 
 
 
@@ -486,21 +519,59 @@ define(["Boiler", 'text!./help/help.html',
 
                     if ($.inArray(e.data.EmployeeId, arrayUnSel) > -1) {
                         vm.get("dcRequestData.unSelectedEmployeeIds").splice($.inArray(e.data.EmployeeId, arrayUnSel), 1);
+
+                        someArray = vm.get("dcRequestData.unSelectedEmployeeWithShiftIds");
+
+                         $.each(someArray, function(i) {
+                             if (someArray[i].SelectedEmployeeId == e.data.EmployeeId) {
+                                 vm.get("dcRequestData.unSelectedEmployeeWithShiftIds").splice(i, 1);
+                            return false;
+                            }
+                         });
+                      
+
                     }
 
                     if ($.inArray(e.data.EmployeeId, arraySel) < 0) {
                         vm.get("dcRequestData.selectedEmployeeIds").push(e.data.EmployeeId);
+
+                        var selectedObj = {};
+                        selectedObj.SelectedEmployeeId = e.data.EmployeeId;
+                        selectedObj.ShiftId = e.data.ShiftId;
+                          
+                          vm.get("dcRequestData.selectedEmployeeWithShiftIds").push(selectedObj);
+
                     }
                 }
+
                 else {
 
 
                     if ($.inArray(e.data.EmployeeId, arraySel) > -1) {
                         vm.get("dcRequestData.selectedEmployeeIds").splice($.inArray(e.data.EmployeeId, arraySel), 1);
+                        someArray = vm.get("dcRequestData.selectedEmployeeWithShiftIds");
+                    
+                         $.each(someArray, function (i) {
+                            
+                             if (someArray[i].SelectedEmployeeId == e.data.EmployeeId) {
+                                
+                              vm.get("dcRequestData.selectedEmployeeWithShiftIds").splice(i, 1);
+                            return false;
+                       }
+                         });
+                       
+                        
                     }
 
                     if ($.inArray(e.data.EmployeeId, arrayUnSel) < 0) {
                         vm.get("dcRequestData.unSelectedEmployeeIds").push(e.data.EmployeeId);
+
+                        var selectedObj = {};
+                        selectedObj.UnSelectedEmployeeId = e.data.EmployeeId;
+                        selectedObj.ShiftId = e.data.ShiftId;
+
+                        vm.get("dcRequestData.unSelectedEmployeeWithShiftIds").push(selectedObj);
+                       
                     }
                 }
 
@@ -522,7 +593,8 @@ define(["Boiler", 'text!./help/help.html',
 
                     moduleContext.parentContext.dcRequestData.selectedEmployeeIds = vm.get("dcRequestData.selectedEmployeeIds");
                     moduleContext.parentContext.dcRequestData.unSelectedEmployeeIds = vm.get("dcRequestData.unSelectedEmployeeIds");
-
+                    moduleContext.parentContext.dcRequestData.selectedEmployeeWithShiftIds = vm.get("dcRequestData.selectedEmployeeWithShiftIds");
+                    moduleContext.parentContext.dcRequestData.unSelectedEmployeeWithShiftIds = vm.get("dcRequestData.unSelectedEmployeeWithShiftIds");
 
 
                 }
@@ -548,13 +620,39 @@ define(["Boiler", 'text!./help/help.html',
 
                         $(childItems).each(function (index, obj) {
                             var id = $(obj).attr("data-id");
-
+                            var shiftId = $(obj).attr("data-shiftid");
+                           
                             if ($.inArray(id, arrayUnSel) > -1) {
                                 vm.get("dcRequestData.unSelectedEmployeeIds").splice($.inArray(id, arrayUnSel), 1);
+
+                                someArray = vm.get("dcRequestData.unSelectedEmployeeWithShiftIds");
+
+
+                                var isCheckedEmployeeRemoved = false;
+                                $.each(someArray, function (i) {
+
+                                    if (!isCheckedEmployeeRemoved) {
+                                        if (someArray[i].SelectedEmployeeId === id) {
+                                            vm.get("dcRequestData.unSelectedEmployeeWithShiftIds").splice(i, 1);
+                                            isCheckedEmployeeRemoved = true;
+                                        }
+                                    }
+
+                                });
+
+
                             }
 
                             if ($.inArray(id, arraySel) < 0) {
                                 vm.get("dcRequestData.selectedEmployeeIds").push(id);
+
+                                  var selectedObj = {};
+                                  selectedObj.SelectedEmployeeId = id;
+                                  selectedObj.ShiftId = kendo.parseInt(shiftId);
+                               
+
+                          vm.get("dcRequestData.selectedEmployeeWithShiftIds").push(selectedObj);
+
                             }
                         })
                     }
@@ -563,15 +661,43 @@ define(["Boiler", 'text!./help/help.html',
                         $(childItems).prop("checked", false);
 
                         $(childItems).each(function (index, obj) {
+
                             var id = $(obj).attr("data-id");
+                            var shiftId = $(obj).attr("data-shiftid");
 
                             if ($.inArray(id, arraySel) > -1) {
 
                                 vm.get("dcRequestData.selectedEmployeeIds").splice($.inArray(id, arraySel), 1);
+
+                                someArray = vm.get("dcRequestData.selectedEmployeeWithShiftIds");
+                                
+                                var isNotCheckedEmployeeRemoved = false;
+                                $.each(someArray, function (i) {
+                                    if (!isNotCheckedEmployeeRemoved)
+                                    {
+
+                                        if (someArray[i].SelectedEmployeeId == id) {
+                                            vm.get("dcRequestData.selectedEmployeeWithShiftIds").splice(i, 1);
+                                            isNotCheckedEmployeeRemoved = true;
+                                        }
+
+                                    }
+                                    
+
+                                });
+
+
                             }
 
                             if ($.inArray(id, arrayUnSel) < 0) {
+
                                 vm.get("dcRequestData.unSelectedEmployeeIds").push(id);
+                                  var selectedObj = {};
+                                  selectedObj.UnSelectedEmployeeId = id;
+                                  selectedObj.ShiftId = kendo.parseInt(shiftId);
+
+                          vm.get("dcRequestData.unSelectedEmployeeWithShiftIds").push(selectedObj);
+
                             }
                         })
                     }
@@ -593,6 +719,8 @@ define(["Boiler", 'text!./help/help.html',
 
                     moduleContext.parentContext.dcRequestData.selectedEmployeeIds = vm.get("dcRequestData.selectedEmployeeIds");
                     moduleContext.parentContext.dcRequestData.unSelectedEmployeeIds = vm.get("dcRequestData.unSelectedEmployeeIds");
+                    moduleContext.parentContext.dcRequestData.selectedEmployeeWithShiftIds = vm.get("dcRequestData.selectedEmployeeWithShiftIds");
+                     moduleContext.parentContext.dcRequestData.unSelectedEmployeeWithShiftIds = vm.get("dcRequestData.unSelectedEmployeeWithShiftIds");
                 });
 
 
@@ -607,10 +735,15 @@ define(["Boiler", 'text!./help/help.html',
                 vm.dcRequestData.FetchSelectedOnly = false;
                 vm.dcRequestData.selectedEmployeeIds = new kendo.data.ObservableArray([]);
                 vm.dcRequestData.unSelectedEmployeeIds = new kendo.data.ObservableArray([]);
+                vm.dcRequestData.selectedEmployeeWithShiftIds = new kendo.data.ObservableArray([]);
+                vm.dcRequestData.unSelectedEmployeeWithShiftIds = new kendo.data.ObservableArray([]);
                 moduleContext.parentContext.dcRequestData.viewAll = true;
                 moduleContext.parentContext.dcRequestData.FetchSelectedOnly = false;
                 moduleContext.parentContext.dcRequestData.selectedEmployeeIds = new kendo.data.ObservableArray([]);
                 moduleContext.parentContext.dcRequestData.unSelectedEmployeeIds = new kendo.data.ObservableArray([]);
+                moduleContext.parentContext.dcRequestData.selectedEmployeeWithShiftIds = new kendo.data.ObservableArray([]);
+                moduleContext.parentContext.dcRequestData.unSelectedEmployeeWithShiftIds = new kendo.data.ObservableArray([]);
+                
                 vm.fillGrid();
 
             },

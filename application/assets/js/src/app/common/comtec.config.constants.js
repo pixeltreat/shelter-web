@@ -5,7 +5,7 @@
 
 
 $ct.other = function () {
-
+   
     var hospiceId = gloabalHospiceId;
 
     var getHospiceId = function () {
@@ -17,6 +17,12 @@ $ct.other = function () {
     var getHospitalId = function () {
         return hospitalId;
     };
+
+    var destinationTypeInDisposition = gloabalDestinationTypeInShelterId;
+
+    var getDestinationTypeInDisposition = function () {
+        return destinationTypeInDisposition;
+        };
 
     var miscellaneousSectionId = gloabalMiscellaneousSectionId;
 
@@ -104,6 +110,7 @@ $ct.other = function () {
     return {
         getHospiceId: getHospiceId,
         getHospitalId: getHospitalId,
+        getDestinationTypeInDisposition:getDestinationTypeInDisposition,
         getMiscellaneousSectionId: getMiscellaneousSectionId,
         getVitalSignsSectionId : getVitalSignsSectionId,
         getEmployeeTemplateURL: getEmployeeTemplateURL,

@@ -34,7 +34,7 @@
                                 error: onError,
                                 remove:onRemove,
                                 progress:onProgressFileUpload}" />
-
+          
         </div>
     </div>
     <!-- uploaded data details -->
@@ -65,22 +65,36 @@
 
         </ul>
         <div hidden id="vwusDivGrid" class="uploaded-employee-data__table">
-            <table id="vwuSheltereesList"
-                class="grid split-table"
-                data-scrolable="true"
-                data-bind="source:UploadSummary.FailedImportedShelterees"
-                data-role="grid"
-                data-filterable="true"
-                data-sortable="true"
-                data-row-template="vwusRow-template"
-                data-selectable="true"
-                data-columns="[
-                    {field:'FirstName',title:'{{nls.gdColFirstName}}', width: '150px'},
-                    {field:'LastName',title:'{{nls.gdColLastName}}', width: '150px'},
-                    {field:'ValidationError',title:'{{nls.gdColReason}}'}
-                ]"
-                data-pageable="true">
-            </table>
+            <table id="vwuSheltereesList" class="grid split-table"
+                   data-scrolable="true"
+                   data-bind="source:UploadSummary.FailedImportedShelterees"
+                   data-role="grid"
+                   data-filterable="true"
+                   data-sortable="true"
+                   data-row-template="vwusRow-template"
+                   data-selectable="true"
+                   data-columns="[
+                         {field:'ValidationError',title:'{{nls.gdColValidationError}}', width: '450px'},
+                         {field:'SheltereeId',title:'{{nls.gdColSheltereeId}}', width: '150px'},
+                         {field:'FirstName',title:'{{nls.gdColFirstName}}', width: '150px'},
+                         {field:'LastName',title:'{{nls.gdColLastName}}', width: '150px'},
+                         {field:'MiddleName',title:'{{nls.gdColMiddleName}}', width: '150px'},
+                         {field:'AddressLane1',title:'{{nls.gdColAddressLane1}}', width: '150px'},
+                         {field:'AddressLane2',title:'{{nls.gdColAddressLane2}}', width: '150px'},
+                         {field:'State',title:'{{nls.gdColState}}', width: '150px'},
+                         {field:'City',title:'{{nls.gdColCity}}', width: '150px'},
+                         {field:'Zip',title:'{{nls.gdColZip}}', width: '150px'},
+                         {field:'SheltreeHomePhone',title:'{{nls.gdColSheltreeHomePhone}}', width: '150px'},
+                         {field:'Parish',title:'{{nls.gdColParish}}', width: '150px'},
+                         {field:'SheltreeCellPhone',title:'{{nls.gdColSheltreeCellPhone}}', width: '150px'},
+                         {field:'DOB',title:'{{nls.gdColDOB}}', width: '150px'},
+                         {field:'Sex',title:'{{nls.gdColSex}}', width: '150px'},
+                         {field:'PhysicianName',title:'{{nls.gdColPhysicianName}}', width: '150px'},
+                         {field:'ClinicName',title:'{{nls.gdColClinicName}}', width: '150px'},
+                         {field:'ClinicPhoneNumber',title:'{{nls.gdColClinicPhoneNumber}}', width: '150px'}
+
+                    ]"
+                   data-pageable="true"></table>
         </div>
 
     </section>
@@ -92,9 +106,25 @@
 
 <script type="text/x-kendo-template" id="vwusRow-template">
     <tr>
-        <td>${FirstName}</td>
-        <td>${LastName}</td>
-        <td><span data-bind="text:ValidationError"></span></td>
+        <td data-title="{{nls.gdColValidationError}}"><span data-bind="text:ValidationError"></span></td> 
+        <td data-title="{{nls.gdColSheltereeId}}">${SheltereeId}</td>
+        <td data-title="{{nls.gdColFirstName}}">${FirstName}</td>
+        <td data-title="{{nls.gdColLastName}}">${LastName}</td>
+        <td data-title="{{nls.gdColMiddleName}}">${MiddleName}</td>
+        <td data-title="{{nls.gdColAddressLane1}}">${AddressLane1}</td>
+        <td data-title="{{nls.gdColAddressLane2}}">${AddressLane2}</td>
+        <td data-title="{{nls.gdColState}}">${State}</td>
+        <td data-title="{{nls.gdColCity}}">${City}</td>
+        <td data-title="{{nls.gdColZip}}">${Zip}</td>
+        <td data-title="{{nls.gdColParish}}">${Parish}</td>
+        <td data-title="{{nls.gdColSheltreeHomePhone}}">${SheltreeHomePhone}</td>
+        <td data-title="{{nls.gdColSheltreeCellPhone}}">${SheltreeCellPhone}</td>
+        <td data-title="{{nls.gdColDOB}}">${DOB}</td>
+        <td data-title="{{nls.gdColSex}}">${Sex}</td>        
+        <td data-title="{{nls.gdColPhysicianName}}">${PhysicianName}</td>
+        <td data-title="{{nls.gdColClinicName}}">${ClinicName}</td>
+        <td data-title="{{nls.gdColClinicPhoneNumber}}">${ClinicPhoneNumber}</td>
+                   
     </tr>
 </script>
 <script type="text/x-kendo-template" id="vwusImportOptions-template">

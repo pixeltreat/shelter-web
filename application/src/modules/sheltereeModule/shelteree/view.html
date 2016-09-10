@@ -403,7 +403,7 @@
                         <div class="column-two caregiver">
                             <label class="form-element-with-label">
                                 <span class="form-element-with-label__text">
-                                   {{nls.lblIsCareGiverPersonName}}
+                                    {{nls.lblIsCareGiverPersonName}}
                                 </span>
                                 <div class="custom-select">
                                     <select id="vwsdDdlIsCareGiverLookup"
@@ -455,7 +455,7 @@
                         <div class="column-two caregiver">
                             <label class="form-element-with-label">
                                 <span class="form-element-with-label__text">
-                                   {{nls.lblHasCareGiverPersonName}}
+                                    {{nls.lblHasCareGiverPersonName}}
                                 </span>
                                 <div class="custom-select">
                                     <select id="vwsdDdlHasCareGiverLookup"
@@ -738,16 +738,16 @@
 
         <!--<div data-template="careRequirements-template" data-bind="source:dsCareRequirements,visible:isCareRequirementsActive"></div>-->
         <div data-bind="visible:isEquipmentSuppliesActive">
-
-            <div class="k-grid k-widget custom-grid">
+          
+              <div class="k-grid k-widget custom-grid">
                 <section class="k-grid-header custom-grid-header">
-
+                    
                     <div class="k-grid-header-wrap k-auto-scrollable">
                         <div class="k-auto-scrollable k-grid-content">
-
+                            
                             <table class="grid split-table k-selectable">
-
-                                <thead role="rowgroup">
+                               
+                                 <thead role="rowgroup">
                                     <tr role="row">
                                         <th class="k-header" width="27%">
                                             {{nls.gdColEquipmentSupplyName}}
@@ -765,27 +765,27 @@
                                 </thead>
                                 <tbody data-template="vwsesRow-template" data-bind="source:dsEquipmentSupplies"></tbody>
 
-
+                            
                             </table>
-
+                        
                         </div>
-
+                    
                     </div>
-
+                
                 </section>
-
-            </div>
-
-        </div>
-
+           
+               </div>
+       
+         </div>
+        
         <div class="module-container" data-bind="visible:isShelterIdentificationActive">
             <div class="module-section">
                 <div class="module-section__title">{{nls.headingShelterDisposition}}</div>
-
+                
                 <div class="module-section-container">
                     <div class="disposition">
-
-                        <div class="form-element-with-label-full">
+                       
+                         <div class="form-element-with-label-full">
                             <span class="form-element-with-label__text">{{nls.lblAccepted}}</span>
                             <ul class="form-list-inline" data-template="vwsdisRow-template-accept">
                                 <li>
@@ -809,23 +809,23 @@
                             </span>
                             <span class="instruction-text">{{nls.lbltext}}</span>
                         </div>
-
-                        <div class="form-element-with-label-full">
+                       
+                         <div class="form-element-with-label-full">
                             <span class="form-element-with-label__text">{{nls.lblSelectone}}</span>
                             <ul class="form-list-notaccepted" data-template="vwssiRowReferredShelterLookUp-template" data-bind="source:referredShelterLookUp"></ul>
-
-                            <span class="k-widget k-tooltip k-tooltip-validation k-invalid-msg" role="alert" data-bind="invisible:setValidationMsgForMSNS">
+                           
+                              <span class="k-widget k-tooltip k-tooltip-validation k-invalid-msg" role="alert" data-bind="invisible:setValidationMsgForMSNS">
                                 {{nls.valmsgAnswerAtLeastOneOptionRequired}}
                             </span>
                         </div>
-
+                        
                         <div class="form-element-with-label-full">
                             <span class="form-element-with-label__text">{{nls.lblShelterSections}}</span>
                             <ul class="form-list" data-template="vwssiRowShelterSections-template" data-bind="source:shelterSectionsList"></ul>
                             <span class="k-widget k-tooltip k-tooltip-validation k-invalid-msg" data-bind="invisible: setValidationMsgShelterSections">{{nls.valmsgshelteridentification}}</span>
                         </div>
-
-                        <div class="module-container l--two-column">
+                       
+                         <div class="module-container l--two-column">
                             <div class="column-one">
                                 <label class="form-element-with-label">
                                     <span class="form-element-with-label__text">
@@ -833,8 +833,8 @@
                                     </span>
                                     <!--TODO: Binding pending-->
                                     <input type="text" class="form-element-with-label__inp" maxlength="500"
-                                           id="vwsdispTbNameOfHospital" name="vwsdispTbNameOfHospital" data-bind="value:dispositionData.HospitalName,disabled:isDispositionDataDisabled"       
-                                           />
+                                           id="vwsdispTbNameOfHospital" name="vwsdispTbNameOfHospital" data-bind="value:dispositionData.HospitalName,disabled:isDispositionDataDisabled"          
+                                           />    
                                 </label>
                             </div>
                             <div class="column-two">
@@ -843,15 +843,15 @@
                                     <div class="inlinedate-time">
                                         <input id="vwsdispContactDate" name="vwsdispContactDate" data-role="datepicker" data-bind="value:contactDate,disabled:isDispositionDataDisabled" />
                                         <span class="k-widget k-tooltip k-tooltip-validation k-invalid-msg" data-bind="invisible: isDispositionDateValid">{{nls.vldmsgDateRequired}}</span>
-
-                                        <input id="vwsdispContactTime" name="vwsdispContactTime" data-role="timepicker" data-bind="value:contactTime,disabled:isDispositionDataDisabled" />
+                                       
+                                         <input id="vwsdispContactTime" name="vwsdispContactTime" data-role="timepicker" data-bind="value:contactTime,disabled:isDispositionDataDisabled" />
                                         <span class="k-widget k-tooltip k-tooltip-validation k-invalid-msg" data-bind="invisible: isDispositionTimeValid">{{nls.vldmsgTimeRequired}}</span>
                                     </div>
                                 </div>
                             </div>
                         </div>
-
-                        <div class="module-container l--two-column">
+                       
+                         <div class="module-container l--two-column">
                             <div class="column-one">
                                 <label class="form-element-with-label">
                                     <span class="form-element-with-label__text">
@@ -875,41 +875,41 @@
                         </div>
                     </div>
                 </div>
-
+                
                 <div class="module-section__title">{{nls.headingDischarge}}</div>
-
-                <div class="module-section-container">
+               
+                 <div class="module-section-container">
                     <div class="discharge">
-
-                        <div class="module-container l--two-column">
+                       
+                         <div class="module-container l--two-column">
                             <div class="column-one">
                                 <div class="form-element-with-label">
                                     <span class="form-element-with-label__text">{{nls.lblDischargeDateTime}}</span>
                                     <div class="inlinedate-time">
                                         <input id="vwsdcDischargeDate" name="vwsdisDischargeDate" data-role="datepicker" data-bind="value:dischargeDate" />
                                         <span class="k-widget k-tooltip k-tooltip-validation k-invalid-msg" data-bind="invisible: isDischargeDateValid">{{nls.valmsgDischagedateRequired}}</span>
-
+                                        
                                         <input id="vwsdcDischargeTime" data-role="timepicker" data-bind="value: dischargeTime" />
                                         <span class="k-widget k-tooltip k-tooltip-validation k-invalid-msg" data-bind="invisible: isDischargeTimeValid">{{nls.valmsgDischagetimeRequired}}</span>
                                     </div>
                                 </div>
-
-                            </div>
+                           
+                             </div>
                             <div class="column-two">
                                 <div class="form-element-with-label">
                                     <span class="form-element-with-label__text">{{nls.lblDestinationArrivalDateTime}}</span>
-
+                                    
                                     <div class="inlinedate-time">
                                         <input id="vwsdisArrivalDate" name="vwsdisArrivalDate" data-role="datepicker" data-bind="value:arrivalDate" />
                                         <span class="k-widget k-tooltip k-tooltip-validation k-invalid-msg" data-bind="invisible: isArrivalDateValid">{{nls.valmsgArrivaldateRequired}}</span>
-
+                                        
                                         <input id="vwsdisArrivalTime" data-role="timepicker" data-bind="value: arrivalTime" />
                                         <span class="k-widget k-tooltip k-tooltip-validation k-invalid-msg" data-bind="invisible: isArrivalTimeValid">{{nls.valmsgArrivaltimeRequired}}</span>
                                     </div>
                                 </div>
                             </div>
                         </div>
-
+                        
                         <div class="module-container l--two-column">
                             <div class="column-one">
                                 <label class="form-element-with-label">
@@ -933,15 +933,15 @@
                                 </label>
                             </div>
                         </div>
-
+                        
                         <div class="module-container l--two-column">
                             <div class="column-one">
                                 <!--TODO: Databind is pending-->
-
-                                <label class="form-element-with-label">
+                               
+                                 <label class="form-element-with-label">
                                     <span class="form-element-with-label__text">
                                         {{nls.lblDepartureModeOfTransportation}}
-
+                                    
                                     </span>
                                     <div class="custom-select">
                                         <select id="vwssiDdlDepartureModeOfTransportation"
@@ -953,36 +953,36 @@
                                 </label>
                             </div>
                         </div>
-
+                    
                     </div>
                 </div>
             </div>
         </div>
     </div>
 
+   
+    
+     <div class="footer-bts-container">
 
-
-    <div class="footer-bts-container">
-
-       
-
-        <button type="button" class="btn" data-bind="click:saveClick">
+        
+         
+         <button type="button" class="btn" data-bind="click:saveClick">
             {{nls.btnSave}}
         </button>
-
-        <button type="button" class="back-btn" data-bind="click:backClick">
+        
+         <button type="button" class="back-btn" data-bind="click:backClick">
             {{nls.btnBack}}
         </button>
-
-        <button type="button" class="previous-btn " data-bind="visible:isPreviousButtonVisible,click:previousClick">
+        
+         <button type="button" class="previous-btn " data-bind="visible:isPreviousButtonVisible,click:previousClick">
             <span class="previous-btn__icon"></span>
         </button>
-
-        <button type="button" class="next-btn" data-bind="visible:isNextButtonVisible,click:nextClick">
+        
+         <button type="button" class="next-btn" data-bind="visible:isNextButtonVisible,click:nextClick">
             <span class="next-btn__icon"></span>
         </button>
-
-    </div>
+    
+     </div>
 
 </div>
 
@@ -990,14 +990,14 @@
 
 <script type="text/x-kendo-template" id="vwsesRow-template">
     <tr>
-
-        <td data-title="EquipmentSupplyName">
-            ${EquipmentSupplyName}
+        
+        <td data-title="{{nls.gdColEquipmentSupplyName}}">                    
+                        ${EquipmentSupplyName}
         </td>
 
-        <td data-title="Need">
+        <td data-title="{{nls.gdColNeed}}">
 
-            <label class="radio-button">
+ <label class="radio-button">
                 <input class="radio-button__inp" type="radio" name="#:EquipmentSupplyId#Need" value=true data-bind="checked:Need" />
                 <span class="radio-button__text">{{nls.lblRbYes}}</span>
             </label>
@@ -1008,7 +1008,7 @@
 
         </td>
 
-        <td data-title="Have">
+        <td data-title="{{nls.gdColHave}}">
 
             <label class="radio-button">
                 <input class="radio-button__inp" type="radio" value=true name="#:EquipmentSupplyId#Have" data-bind="checked:Have" />
@@ -1021,36 +1021,36 @@
 
         </td>
 
-        <td data-title="Date">
-            <div>
+        <td data-title="{{nls.gdColDateTimeNeeded}}">
+ <div>
                 <input type="text" class="form-element-with-label__inp"
                        data-role="numerictextbox" min="1" max="1000" data-format="n0" data-decimals="0" data-spinners="false"
-                      
-                        data-bind="value:AdditionalNumberNeededForNextFiveDays" />
+                       
+                       data-bind="value:AdditionalNumberNeededForNextFiveDays" />
             </div>
         </td>
 
-
-    </tr>
+   
+     </tr>
 </script>
 
 <script type="text/x-kendo-template" id="vwqrSection-template">
 
-
+    
     <div>
         <h2 class="module-section__title" data-bind="text:Name"></h2>
         <div class="module-section-container">
-
+            
             # if((Id == $ct.other.getVitalSignsSectionId()) || (Id == $ct.other.getMiscellaneousSectionId()) ){ #
 
             <div  class="module-section-content l--two-column-wrap"  data-template="vwqrQuestionTwoCol-template" data-bind="source:Questions">
             </div>
-
-            #}else{#
+           
+             #}else{#
 
             <div class="module-section-content" data-template="vwqrQuestion-template" data-bind="source:Questions">
             </div>
-
+            
             #}#
 
 
@@ -1064,23 +1064,23 @@
 
 <script type="text/x-kendo-template" id="vwqrQuestion-template">
 
-
+    
     <div class="form-element-with-label-full">
 
+       
+         <span class="form-element-with-label__text" data-bind="html:HTMLQuestionText"></span>
 
-        <span class="form-element-with-label__text" data-bind="html:HTMLQuestionText"></span>
-
-
-
+        
+        
         <div class="marginL12">
-
-            <!--Text box question-->
+           
+             <!--Text box question-->
             # if (AnswerTypeId == $ct.other.getStringTextBoxId()) { #
 
             <div>
-
-                <input type="text" class="form-element-with-label__inp medicalconditiontb" data-bind="value:Answer, attr:{maxlength: AnswerWidth}" />
-
+              
+                  <input type="text" class="form-element-with-label__inp medicalconditiontb" data-bind="value:Answer, attr:{maxlength: AnswerWidth}" />
+                
                 <span class="k-widget k-tooltip k-tooltip-validation k-invalid-msg" data-bind="invisible: hideValidation">
                     {{nls.valmsgAnswerTextRequired}}
                 </span>
@@ -1135,54 +1135,54 @@
             # if(IsOptionsHorizontal ){ #
 
             <ul class="form-list" data-template="vwqrMultipleRadioOptionH-template" data-bind="source: AnswerOptions"></ul>
-
+            
             #}else{#
 
             <ul class="form-list" data-template="vwqrMultipleRadioOptionV-template" data-bind="source: AnswerOptions"></ul>
-
+            
             #}#
 
 
             <span class="k-widget k-tooltip k-tooltip-validation k-invalid-msg" role="alert" data-bind="invisible: hideValidation">
                 {{nls.valmsgAnswerOptionRequired}}
             </span>
-
+            
             #} else if (AnswerTypeId == $ct.other.getMultipleChoiceMultipleAnswerId()){ #
 
             # if(IsOptionsHorizontal ){ #
 
             <ul class="form-list" data-template="vwqrMultipleCheckOptionH-template" data-bind="source: AnswerOptions"></ul>
-
+            
             #}else{#
 
             <ul class="form-list" data-template="vwqrMultipleCheckOptionV-template" data-bind="source: AnswerOptions"></ul>
-
+            
             #}#
 
             <span class="k-widget k-tooltip k-tooltip-validation k-invalid-msg" role="alert" data-bind="invisible: hideValidation">
                 {{nls.valmsgAnswerAtLeastOneOptionRequired}}
             </span>
 
-
+            
             #} else if (AnswerTypeId == $ct.other.getDropdownListId()){ #
 
             <div class="custom-select">
-
+                
                 <input data-role="dropdownlist" data-bind="source:AnswerOptions ,  value:Answer"
                        data-text-field="ChoiceText" data-value-field="Id" />
-
+            
             </div>
-
+            
             #}else{#
 
             {{nls.valmsgAnswerTypeNotFoundRequired}}
-
-            #}#
+           
+             #}#
 
 
         </div>
 
-
+    
     </div>
 
 
@@ -1190,162 +1190,162 @@
 
 <script type="text/x-kendo-template" id="vwqrQuestionTwoCol-template">
 
-
+    
     <div  class="column-one">
 
-
+               
         <span class="form-element-with-label__text" data-bind="html:HTMLQuestionText"></span>
 
-
+        
         <div class="marginL12">
-
-            <!--Text box question-->
+           
+             <!--Text box question-->
             # if (AnswerTypeId == $ct.other.getStringTextBoxId()) { #
 
             <div>
-
+                
                 <input type="text" class="form-element-with-label__inp answertextbox" data-bind="value:Answer, attr:{maxlength: AnswerWidth}" />
-
+                
                 <span class="k-widget k-tooltip k-tooltip-validation k-invalid-msg" data-bind="invisible: hideValidation">
                     {{nls.valmsgAnswerTextRequired}}
                 </span>
-
+            
             </div>
-
-            #} else if (AnswerTypeId == $ct.other.getNumericTextBoxId()){ #
+           
+             #} else if (AnswerTypeId == $ct.other.getNumericTextBoxId()){ #
 
 
             <div>
-
+                
                 <input type="text" class="form-element-with-label__inp answernumerictb"
                        data-role="numerictextbox" data-spinners="false" min="0" max="9999999" data-format="n0"
                        data-bind="value:Answer"
                        data-decimals="0" />
-
+                
                 <span class="k-widget k-tooltip k-tooltip-validation k-invalid-msg" data-bind="invisible: hideValidation">
                     {{nls.valmsgAnswerNumericRequired}}
                 </span>
-
+            
             </div>
-
-            #} else if (AnswerTypeId == $ct.other.getDecimalTextBoxId()){ #
+           
+             #} else if (AnswerTypeId == $ct.other.getDecimalTextBoxId()){ #
 
             <div>
-
+                
                 <input type="text" class="form-element-with-label__inp answernumerictb"
                        data-role="numerictextbox" data-spinners="false" min="0" max="9999999"
                        data-bind="value:Answer"
                        data-decimals="1" data-format="n1" />
-
+                
                 <span class="k-widget k-tooltip k-tooltip-validation k-invalid-msg" data-bind="invisible: hideValidation">
                     {{nls.valmsgAnswerDecimalRequired}}
                 </span>
 
             </div>
-
+                        
             #} else if (AnswerTypeId == $ct.other.getTextAreaId()){ #
 
             <div>
-
-                <textarea rows="5" class="form-element-with-label__inp medicalconditiontb" data-bind="value:Answer, attr:{maxlength: AnswerWidth}"></textarea>
-
-                <span class="k-widget k-tooltip k-tooltip-validation k-invalid-msg" data-bind="invisible: hideValidation">
+               
+                 <textarea rows="5" class="form-element-with-label__inp medicalconditiontb" data-bind="value:Answer, attr:{maxlength: AnswerWidth}"></textarea>
+               
+                 <span class="k-widget k-tooltip k-tooltip-validation k-invalid-msg" data-bind="invisible: hideValidation">
                     {{nls.valmsgAnswerTextAreaRequired}}
                 </span>
-
+            
             </div>
-
+            
             #} else if (AnswerTypeId == $ct.other.getMultipleChoiceOnlyOneAnswerId()){ #
 
             # if(IsOptionsHorizontal ){ #
 
             <ul class="form-list" data-template="vwqrMultipleRadioOptionH-template" data-bind="source: AnswerOptions"></ul>
-
+            
             #}else{#
 
             <ul class="form-list" data-template="vwqrMultipleRadioOptionV-template" data-bind="source: AnswerOptions"></ul>
-
+            
             #}#
 
 
             <span class="k-widget k-tooltip k-tooltip-validation k-invalid-msg" role="alert" data-bind="invisible: hideValidation">
                 {{nls.valmsgAnswerOptionRequired}}
             </span>
-
-            #} else if (AnswerTypeId == $ct.other.getMultipleChoiceMultipleAnswerId()){ #
+           
+             #} else if (AnswerTypeId == $ct.other.getMultipleChoiceMultipleAnswerId()){ #
 
             # if(IsOptionsHorizontal ){ #
 
             <ul class="form-list" data-template="vwqrMultipleCheckOptionH-template" data-bind="source: AnswerOptions"></ul>
-
-            #}else{#
+           
+             #}else{#
 
             <ul class="form-list" data-template="vwqrMultipleCheckOptionV-template" data-bind="source: AnswerOptions"></ul>
-
+            
             #}#
 
             <span class="k-widget k-tooltip k-tooltip-validation k-invalid-msg" role="alert" data-bind="invisible: hideValidation">
                 {{nls.valmsgAnswerAtLeastOneOptionRequired}}
             </span>
 
-
-            #} else if (AnswerTypeId == $ct.other.getDropdownListId()){ #
+           
+             #} else if (AnswerTypeId == $ct.other.getDropdownListId()){ #
 
             <div class="custom-select">
-
-                <input data-role="dropdownlist" data-bind="source:AnswerOptions ,  value:Answer"
+               
+                 <input data-role="dropdownlist" data-bind="source:AnswerOptions ,  value:Answer"
                        data-text-field="ChoiceText" data-value-field="Id" />
-
-            </div>
-
-            #}else{#
+           
+             </div>
+           
+             #}else{#
 
             {{nls.valmsgAnswerTypeNotFoundRequired}}
-
-            #}#
+           
+             #}#
 
 
         </div>
 
-
+    
     </div>
 
 
 </script>
 
 <script type="text/x-kendo-template" id="vwqrMultipleRadioOptionH-template">
-
+    
     <li>
         <label class="radio-button">
-
+            
             <input class="radio-button__inp" type="radio" value="${Id}" data-bind="checked: Answer, attr:{name:QuestionId}" />
-
+            
             <span class="radio-button__text" data-bind="text:ChoiceText"></span>
-
+        
         </label>
     </li>
 
 </script>
 
 <script type="text/x-kendo-template" id="vwqrMultipleRadioOptionV-template">
-
-    <li class="displayBlock">
+   
+     <li class="displayBlock">
         <label class="radio-button">
-
+            
             <input class="radio-button__inp" type="radio" value="${Id}" data-bind="checked: Answer, attr:{name:QuestionId}" />
-
-            <span class="radio-button__text" data-bind="text:ChoiceText"></span>
-
+           
+             <span class="radio-button__text" data-bind="text:ChoiceText"></span>
+        
         </label>
     </li>
 
 </script>
 
 <script type="text/x-kendo-template" id="vwqrMultipleCheckOptionH-template">
-
+    
     <li>
         <label class="checkbox">
-
+            
             <input class="checkbox__inp" type="checkbox" data-bind="checked: Answer" name="checkbox" id="checkbox">
             <span class="checkbox__text" data-bind="text:ChoiceText"></span>
         </label>
@@ -1355,10 +1355,10 @@
 </script>
 
 <script type="text/x-kendo-template" id="vwqrMultipleCheckOptionV-template">
-
+    
     <li class="displayBlock">
         <label class="checkbox">
-
+            
             <input class="checkbox__inp" type="checkbox" data-bind="checked: Answer" name="checkbox" id="checkbox">
             <span class="checkbox__text" data-bind="text:ChoiceText"></span>
         </label>
@@ -1371,23 +1371,23 @@
 
 <!--TODO: Need to add binding and validation-->
 <script type="text/x-kendo-template" id="vwssiRowShelterSections-template">
-
+    
     <li>
-
+        
         <label class="radio-button">
             <input class="radio-button__inp" name="vwssiRbShelterSections" type="radio"
                    value="${Key}"  data-bind="checked:selectedShelterSectionId,enabled:isMSNSChildDisabled">
             <span class="radio-button__text" data-bind="text:Value"></span>
         </label>
 
-
+    
     </li>
 
 </script>
 
 <script type="text/x-kendo-template" id="vwssiRowReferredShelterLookUp-template">
     <li>
-
+        
         <label class="radio-button">
             <input class="radio-button__inp" name="vwssiTbReferredShelter" type="radio"
                    value="${Key}" data-bind="checked: selectedReferredShelterId,disabled: isMSNSChildDisabled">
@@ -1400,7 +1400,7 @@
 
 <script type="text/x-kendo-template" id="vwsCareSettingsRow-template">
     <li>
-
+        
         <label class="radio-button">
             <input class="radio-button__inp" name="vwsdRbCareSettings" type="radio"
                    value="${Key}" data-bind="checked:selectedCareSettingsId">
@@ -1412,8 +1412,8 @@
 
 <script type="text/x-kendo-template" id="vwsdGenderRow-template">
     <li>
-
-        <label class="radio-button">
+       
+         <label class="radio-button">
             <input class="radio-button__inp" name="vwsdTbSex" type="radio"
                    value="${Key}" data-bind="checked:selectedGenderId">
             <span class="radio-button__text" data-bind="text:Value"></span>
@@ -1424,7 +1424,7 @@
 
 <script type="text/x-kendo-template" id="vwsdHospiceRow-template">
     <li>
-
+        
         <label class="radio-button">
             <input class="radio-button__inp" name="vwsdTbHospice" type="radio"
                    value="${Key}" data-bind="checked:selectedHospiceStabilityId, enabled: isHospiceSelected">
@@ -1437,73 +1437,75 @@
 
 
 <script type="text/x-kendo-template" id="vwsmMedicationRow-template">
-
+    
     <tr>
-
+        
         # if (Id == -1) { #
 
-        <td class="align-top">
+        <td class="align-top" data-title="{{nls.gdColDrugName}}">
             <span>
-                <input type="text" class="form-element-with-label__inp medicationtx" data-bind="value:DrugName" maxlength="100"/>
+                <input type="text" class="form-element-with-label__inp medicationtx" data-bind="value:DrugName" maxlength="100" />
             </span>
             <span class="k-widget k-tooltip k-tooltip-validation k-invalid-msg" data-bind="invisible: isMedicationNameValid">
                 {{nls.valmsgMedicationNameRequired}}
             </span>
         </td>
-        <td class="align-top">
+        <td class="align-top" data-title="{{nls.gdColDosage}}">
             <input type="text" class="form-element-with-label__inp medicationtx" data-bind="value:Dosage" maxlength="50" />
         </td>
-        <td class="align-top">
+        <td class="align-top" data-title="{{nls.gdColFrequency}}">
             <input type="text" class="form-element-with-label__inp medicationtx" data-bind="value:Frequency" maxlength="100" />
         </td>
-        <td class="align-top">
-
+        <td class="align-top" data-title="{{nls.gdColLastTimeUsed}}">
+            
             <div class="custom-datetimepicker">
                 <input type="text" data-role="datepicker" data-bind="value:LastTimeUsed" />
                 <span class="k-widget k-tooltip k-tooltip-validation k-invalid-msg" data-bind="invisible: isLastTimeUsedValid">{{nls.valmsgDateRequired}}</span>
             </div>
+       
+         </td>
 
-        </td>
-
-
+        
         <td class="align-top">
             <button class="btn--secondary" data-bind="click:btnAddMedicationClick" type="button">
                 <span class="f-icon f-icon__add" aria-hidden="true"></span>
                 {{nls.btnAdd}}
             </button>
-
+        
         </td>
 
-
-
+        
+        
         #}else{#
 
-        <td>
+        <td data-title="{{nls.gdColDrugName}}">
             ${DrugName}
         </td>
 
-        <td>
+        <td data-title="{{nls.gdColDosage}}">
+
             ${Dosage}
         </td>
 
-        <td>
+        <td data-title="{{nls.gdColFrequency}}">
+
             ${Frequency}
         </td>
 
-        <td>
+        <td data-title="{{nls.gdColLastTimeUsed}}">
             ${LastTimeUsedValue}
 
         </td>
 
-        <td>
-            <button class="btn-delete" data-bind="click:btnMedicationDeleteClick">
+        <td data-title="{{nls.gdColDelete}}">
+ <button class="btn-delete" data-bind="click:btnMedicationDeleteClick">
                 <span class="f-icon f-icon__delete" aria-hidden="true"></span>
                 <span class="f-icon__text">{{nls.btnDelete}}</span>
             </button>
         </td>
 
-
-        #}#
+       
+         #}#
 
 
 

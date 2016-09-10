@@ -178,7 +178,7 @@ define(["Boiler", 'text!./help/help.html'], function (Boiler, helpTmpl) {
             },
 
             setTabClasses: function (sheltereeInputFlags, newTabIndex) {
-
+               
                 if (!sheltereeInputFlags.IsDemographicsExist) {
 
                     vm.set("sheltreeTabs[" + vm.demographicsTabIndex + "].tabClass", $ct.styles.getActiveTabClass());
@@ -210,7 +210,7 @@ define(["Boiler", 'text!./help/help.html'], function (Boiler, helpTmpl) {
 
                     vm.set("sheltreeTabs[" + vm.medicalTabIndex + "].tabClass", $ct.styles.getActiveTabClass());
                 }
-                else if (sheltereeInputFlags.IsMedicalConditionExist) {
+                else if ((sheltereeInputFlags.IsMedicalConditionExist)||(sheltereeInputFlags.IsVitalsExist)||(sheltereeInputFlags.IsMiscellaneousExist)||(sheltereeInputFlags.IsElectricalDependenceExist)) {
                     vm.set("sheltreeTabs[" + vm.medicalTabIndex + "].tabClass", $ct.styles.getCompleteDataPresentClass());
                 } else {
                     vm.set("sheltreeTabs[" + vm.medicalTabIndex + "].tabClass", $ct.styles.getNoDataClass());
@@ -221,7 +221,7 @@ define(["Boiler", 'text!./help/help.html'], function (Boiler, helpTmpl) {
 
                     vm.set("sheltreeTabs[" + vm.careRequirementsTabIndex + "].tabClass", $ct.styles.getActiveTabClass());
                 }
-                else if (sheltereeInputFlags.IsCareRequirementExist) {
+                else if(sheltereeInputFlags.IsCareRequirementExist)  {
                     vm.set("sheltreeTabs[" + vm.careRequirementsTabIndex + "].tabClass", $ct.styles.getCompleteDataPresentClass());
                 } else {
                     vm.set("sheltreeTabs[" + vm.careRequirementsTabIndex + "].tabClass", $ct.styles.getNoDataClass());
@@ -242,7 +242,7 @@ define(["Boiler", 'text!./help/help.html'], function (Boiler, helpTmpl) {
 
                     vm.set("sheltreeTabs[" + vm.medicationTabIndex + "].tabClass", $ct.styles.getActiveTabClass());
                 }
-                else if (sheltereeInputFlags.IsMedicationAllergyExist) {
+                else if ((sheltereeInputFlags.IsMedicationAllergyExist) ||(sheltereeInputFlags.IsMedicationExist)){
                     vm.set("sheltreeTabs[" + vm.medicationTabIndex + "].tabClass", $ct.styles.getCompleteDataPresentClass());
                 } else {
                     vm.set("sheltreeTabs[" + vm.medicationTabIndex + "].tabClass", $ct.styles.getNoDataClass());
@@ -252,7 +252,7 @@ define(["Boiler", 'text!./help/help.html'], function (Boiler, helpTmpl) {
 
                     vm.set("sheltreeTabs[" + vm.shelterIdentificationTabIndex + "].tabClass", $ct.styles.getActiveTabClass());
                 }
-                else if (sheltereeInputFlags.IsDispositionExist) {
+                else if ((sheltereeInputFlags.IsDispositionExist) || (sheltereeInputFlags.IsDischargeExist)) {
                     vm.set("sheltreeTabs[" + vm.shelterIdentificationTabIndex + "].tabClass", $ct.styles.getCompleteDataPresentClass());
                 } else {
                     vm.set("sheltreeTabs[" + vm.shelterIdentificationTabIndex + "].tabClass", $ct.styles.getNoDataClass());
@@ -265,8 +265,12 @@ define(["Boiler", 'text!./help/help.html'], function (Boiler, helpTmpl) {
 
             sheltreeTabClick: function (event) {
 
-                vm.validateSaveCurrentTabAndMoveToNewTab(event.currentTarget.id);
-
+                if (kendo.parseInt(vm.currentTabIndex) == event.currentTarget.id) {
+                    return;
+                 }
+                else {
+                    vm.validateSaveCurrentTabAndMoveToNewTab(event.currentTarget.id);
+                }
             },
 
             validateSaveCurrentTabAndMoveToNewTab: function (newTabIndex) {
@@ -1129,7 +1133,9 @@ define(["Boiler", 'text!./help/help.html'], function (Boiler, helpTmpl) {
                 var maskedtextbox = $("#vwsdTbZip").data("kendoMaskedTextBox");
                 var zip = maskedtextbox.raw();
 
-                return (this.isOptionalZipValueValid(zip));
+                return ($ct.helpers.isOptionalZipValueValid(zip));
+              
+                
 
             },
 
@@ -1142,7 +1148,7 @@ define(["Boiler", 'text!./help/help.html'], function (Boiler, helpTmpl) {
                 var maskedtextbox = $("#vwsdTbContactZip").data("kendoMaskedTextBox");
                 var zip = maskedtextbox.raw();
 
-                return (this.isOptionalZipValueValid(zip));
+                  return ($ct.helpers.isOptionalZipValueValid(zip));
 
             },
 
@@ -1155,8 +1161,8 @@ define(["Boiler", 'text!./help/help.html'], function (Boiler, helpTmpl) {
                 var maskedtextbox = $("#vwsdTbHomePhone").data("kendoMaskedTextBox");
                 var homePhone = maskedtextbox.raw();
 
-                return (this.isOptionalPhoneValueValid(homePhone));
-
+                return ($ct.helpers.isOptionalPhoneValueValid(homePhone));
+               
             },
 
             isPersonalCellPhoneValid: function () {
@@ -1168,7 +1174,7 @@ define(["Boiler", 'text!./help/help.html'], function (Boiler, helpTmpl) {
                 vm.get("sheltereeData.Shelteree.CellPhone");
                 var maskedtextbox = $("#vwsdTbCellPhone").data("kendoMaskedTextBox");
                 var cellPhone = maskedtextbox.raw();
-                return (this.isOptionalPhoneValueValid(cellPhone));
+                return ($ct.helpers.isOptionalPhoneValueValid(cellPhone));
 
             },
 
@@ -1181,7 +1187,7 @@ define(["Boiler", 'text!./help/help.html'], function (Boiler, helpTmpl) {
                 vm.get("sheltereeData.Shelteree.ClinicPhone");
                 var maskedtextbox = $("#vwsdTbClinicPhoneNumber").data("kendoMaskedTextBox");
                 var clinicPhone = maskedtextbox.raw();
-                return (this.isOptionalPhoneValueValid(clinicPhone));
+                return ($ct.helpers.isOptionalPhoneValueValid(clinicPhone));
 
             },
 
@@ -1194,7 +1200,7 @@ define(["Boiler", 'text!./help/help.html'], function (Boiler, helpTmpl) {
                 vm.get("sheltereeData.Shelteree.HospicePhone");
                 var maskedtextbox = $("#vwsdTbHospicePhone").data("kendoMaskedTextBox");
                 var hospicePhone = maskedtextbox.raw();
-                return (this.isOptionalPhoneValueValid(hospicePhone));
+                return ($ct.helpers.isOptionalPhoneValueValid(hospicePhone));
 
             },
 
@@ -1207,7 +1213,7 @@ define(["Boiler", 'text!./help/help.html'], function (Boiler, helpTmpl) {
                 vm.get("sheltereeData.Shelteree.ContactHomePhone");
                 var maskedtextbox = $("#vwsdTbContactHomePhone").data("kendoMaskedTextBox");
                 var contactHomePhone = maskedtextbox.raw();
-                return (this.isOptionalPhoneValueValid(contactHomePhone));
+                return ($ct.helpers.isOptionalPhoneValueValid(contactHomePhone));
 
             },
 
@@ -1218,45 +1224,14 @@ define(["Boiler", 'text!./help/help.html'], function (Boiler, helpTmpl) {
                 }
 
                 var homePhone = vm.get("sheltereeData.Shelteree.ContactCellPhone");
-
                 var maskedtextbox = $("#vwsdTbContactCellPhone").data("kendoMaskedTextBox");
                 var contactCellPhone = maskedtextbox.raw();
-                return (this.isOptionalPhoneValueValid(contactCellPhone));
+                return ($ct.helpers.isOptionalPhoneValueValid(contactCellPhone));
 
             },
 
-            isOptionalZipValueValid: function (ctrlValue) {
-
-                return (this.isOptionalPhoneOrZipValueValid(ctrlValue, 5));
-
-            },
-
-            isOptionalPhoneValueValid: function (ctrlValue) {
-
-                return (this.isOptionalPhoneOrZipValueValid(ctrlValue, 10));
-
-            },
-
-            isOptionalPhoneOrZipValueValid: function (ctrlValue, maxchar) {
-
-                if ((ctrlValue == null) || (ctrlValue == undefined) || (ctrlValue.length == 0)) {
-
-                    return true;
-                }
-
-                if ((ctrlValue.length > 0) && (ctrlValue.length < maxchar)) {
-
-                    return false;
-
-                }
-                else {
-
-                    return true;
-
-                }
-
-            },
-
+          
+         
 
             isDemographicsDataValid: function () {
 
@@ -2700,8 +2675,9 @@ define(["Boiler", 'text!./help/help.html'], function (Boiler, helpTmpl) {
 
 
                     if (resultData.SheltereeDisposition.DispositionId == null) {
-
-                        vm.set("selectedDisposition", resultData.DispositionLookUpData[0]);
+                            var selectedObject = {};
+                            selectedObject.Key =  $ct.other.getDestinationTypeInDisposition();
+                        vm.set("selectedDisposition", selectedObject);
                     }
                     else {
 

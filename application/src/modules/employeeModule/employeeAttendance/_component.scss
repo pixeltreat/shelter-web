@@ -151,6 +151,14 @@
             cursor:auto;
         }
     }
+
+    .icon-Reported::before {
+        color: $base-white;
+        background: $base-green;
+        border-radius: 100%;
+        font-size: 1.6rem !important;
+        padding: 0.4rem;
+    }
 }
 
 .employee-attendance__display-msg {

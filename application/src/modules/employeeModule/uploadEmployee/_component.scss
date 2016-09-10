@@ -33,15 +33,16 @@
         }
 
         .f-icon__success {
-            color: $base-green;
-            font-size: 2rem;
+            color: $base-white;
+            background: $base-green;
+            border-radius: 100%;
+            font-size: 1.4rem;
+            padding: 0 3px 1px;
         }
 
         .f-icon__not-reported {
             color: $base-red;
             font-size: 2rem;
         }
-
-
     }
 }
